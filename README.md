@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI-Learn Platform
 
-## Getting Started
+TryHackMe-style AI learning platform with interactive theory + tasks, built with Next.js App Router.
 
-First, run the development server:
+## What is implemented
+- RU/EN locale routing via middleware (`/ru` default redirect for non-localized paths).
+- Dashboard (`/[lang]`) with recommended rooms and path CTA.
+- Learning paths pages:
+  - `/${lang}/paths`
+  - `/${lang}/paths/beginner`
+- Rooms pages:
+  - `/${lang}/rooms` (listing page)
+  - `/${lang}/rooms/[id]` (LLM Landscape room content, task-driven)
+  - `/${lang}/rooms/llm-mechanics`
+  - `/${lang}/rooms/prompting-101`
+  - `/${lang}/rooms/native-multimodality`
+- Interactive `TaskQuestion` component with:
+  - `input`
+  - `multiple-choice`
+  - `multiple-select`
 
+## Current architecture
+- `src/app/[lang]/...` for localized routes.
+- `src/components/AppShell.tsx` for shared shell layout.
+- `src/components/Sidebar.tsx` + `src/components/Navbar.tsx` for navigation.
+- `src/dictionaries/{en,ru}.json` + `src/dictionaries/get-dictionary.ts` for localized UI strings.
+
+## Tech stack
+- Next.js `16.1.6`
+- React `19.2.3`
+- TypeScript `^5`
+- Tailwind CSS `^4`
+- Framer Motion `^12.34.0`
+- Lucide React `^0.564.0`
+
+## Known limitations
+- Progress is in-memory only (resets on refresh); no localStorage/backend persistence yet.
+- Sidebar links `/${lang}/compete`, `/${lang}/leaderboard`, `/${lang}/settings` are present in UI but routes are not implemented yet.
+- Room metadata is duplicated across pages (dashboard/rooms/path each define their own room arrays).
+- Some user stats are static UI values (points/streak/completion are not sourced from a profile store).
+
+## Content rules
+- **Localization rule:** all user-facing lesson content and tasks must be available in both English and Russian (no EN-only or RU-only blocks).
+- **Task coverage rule:** every task must be solvable from the lesson content in both languages.
+- **Explicit mapping rule:** if a task asks for classification (for example, "Select models that do NOT belong to US companies"), the lesson must explicitly provide that mapping in the theory text.
+- **Terminology tooltip rule:** each room must include hover tooltips (or equivalent inline clarifications) for complex technical terms so beginners can understand content without leaving the page.
+
+## Development
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000` (it redirects to `/ru`).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project docs
+- `PROGRESS.md`: implementation status and milestones
+- `BACKLOG.md`: active engineering backlog
+- `CURRICULUM.md`: learning-path curriculum status
+- `ROOMS_IDEAS.md`: content ideas and room/task design notes

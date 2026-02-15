@@ -1,0 +1,39 @@
+{
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "paths": "Learning Paths",
+    "rooms": "All Rooms",
+    "compete": "Compete",
+    "leaderboard": "Leaderboard",
+    "settings": "Settings",
+    "level": "Lvl",
+    "beginner": "Beginner"
+  },
+  "navbar": {
+    "search": "Search for rooms, paths...",
+    "points": "pts",
+    "streak": "Streak",
+    "days": "days"
+  },
+  "dashboard": {
+    "welcome": "Welcome back",
+    "description": "Your AI learning journey continues. Last topic:",
+    "featured": "Recommended rooms",
+    "viewAll": "View all",
+    "pathTitle": "Latest Path: The LLM Revolution",
+    "pathDesc": "Dive into the technology that changed everything. From Transformers to RLHF.",
+    "continue": "Continue Path",
+    "curriculum": "View Curriculum"
+  },
+  "room": {
+    "tasks": "Room Tasks",
+    "progress": "Room Progress",
+    "check": "Check",
+    "submit": "Submit Answer",
+    "hint": "Show Hint",
+    "correct": "Correct!",
+    "placeholder": "Type your answer...",
+    "learners": "learners",
+    "time": "1h"
+  }
+}
