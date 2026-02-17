@@ -354,28 +354,32 @@ export default function RoomPage(props: { params: Promise<{ lang: string, id: st
           <span className="text-emerald-500 font-medium">{lang === 'ru' ? 'Ландшафт LLM' : 'LLM Landscape'}</span>
         </nav>
 
-        <h1 className="text-4xl font-bold mb-4">{lang === 'ru' ? 'Ландшафт LLM' : 'LLM Landscape'}</h1>
-        <div className="flex items-center gap-6 mb-8 text-sm text-neutral-400">
-          <span className="flex items-center gap-2 text-emerald-500 font-bold bg-emerald-500/10 px-2 py-1 rounded text-xs uppercase border border-emerald-500/20">
-            {lang === 'ru' ? 'Новичок' : 'Beginner'}
-          </span>
-          <span className="flex items-center gap-2">
-             <Users size={16} className="text-neutral-500" /> 1.2k {lang === 'ru' ? 'учеников' : 'learners'}
-          </span>
-          <span className="flex items-center gap-2">
-             <Clock size={16} className="text-neutral-500" /> {lang === 'ru' ? '1 ч' : '1h'}
-          </span>
-        </div>
+        <div className="mb-8 flex flex-col lg:flex-row lg:items-start gap-5">
+          <div className="flex-1 min-w-0">
+            <h1 className="text-4xl font-bold mb-4">{lang === 'ru' ? 'Ландшафт LLM' : 'LLM Landscape'}</h1>
+            <div className="flex items-center gap-6 text-sm text-neutral-400">
+              <span className="flex items-center gap-2 text-emerald-500 font-bold bg-emerald-500/10 px-2 py-1 rounded text-xs uppercase border border-emerald-500/20">
+                {lang === 'ru' ? 'Новичок' : 'Beginner'}
+              </span>
+              <span className="flex items-center gap-2">
+                <Users size={16} className="text-neutral-500" /> 1.2k {lang === 'ru' ? 'учеников' : 'learners'}
+              </span>
+              <span className="flex items-center gap-2">
+                <Clock size={16} className="text-neutral-500" /> {lang === 'ru' ? '1 ч' : '1h'}
+              </span>
+            </div>
+          </div>
 
-        <div className="mb-8 rounded-xl overflow-hidden border border-[#262626] bg-[#141414]">
-          <Image
-            src="/images/llm-landscape-network.png"
-            alt={lang === 'ru' ? 'Схема нейросети для комнаты Ландшафт LLM' : 'Neural network visual for the LLM Landscape room'}
-            width={1152}
-            height={768}
-            priority
-            className="w-full h-auto object-cover"
-          />
+          <div className="w-full lg:w-[320px] rounded-xl overflow-hidden border border-[#262626] bg-[#141414] shrink-0">
+            <Image
+              src="/images/llm-landscape-network.png"
+              alt={lang === 'ru' ? 'Схема нейросети для комнаты Ландшафт LLM' : 'Neural network visual for the LLM Landscape room'}
+              width={1152}
+              height={768}
+              priority
+              className="w-full h-[180px] object-cover"
+            />
+          </div>
         </div>
 
         <div className="prose prose-invert max-w-none">

@@ -1,5 +1,7 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Terminal, Users, Clock, ArrowUpRight, ChevronRight } from 'lucide-react';
+import RoomStatusBadge from '@/components/RoomStatusBadge';
 
 export default async function RoomsPage(props: {
   params: Promise<{ lang: string }>;
@@ -17,7 +19,6 @@ export default async function RoomsPage(props: {
       users: 1240,
       time: lang === 'ru' ? '1 ч' : '1h',
       category: lang === 'ru' ? 'Основы' : 'Foundations',
-      status: 'completed' as const,
     },
     {
       id: 'llm-mechanics',
@@ -29,7 +30,6 @@ export default async function RoomsPage(props: {
       users: 980,
       time: lang === 'ru' ? '45 мин' : '45m',
       category: lang === 'ru' ? 'Основы' : 'Foundations',
-      status: 'active' as const,
     },
     {
       id: 'ai-history',
@@ -41,7 +41,6 @@ export default async function RoomsPage(props: {
       users: 540,
       time: lang === 'ru' ? '1 ч' : '1h',
       category: lang === 'ru' ? 'Основы' : 'Foundations',
-      status: 'active' as const,
     },
     {
       id: 'prompting-101',
@@ -53,7 +52,6 @@ export default async function RoomsPage(props: {
       users: 0,
       time: lang === 'ru' ? '1 ч' : '1h',
       category: lang === 'ru' ? 'Основы' : 'Foundations',
-      status: 'locked' as const,
     },
     {
       id: 'native-multimodality',
@@ -65,7 +63,6 @@ export default async function RoomsPage(props: {
       users: 0,
       time: lang === 'ru' ? '1.5 ч' : '1.5h',
       category: lang === 'ru' ? 'Архитектура' : 'Architecture',
-      status: 'locked' as const,
     },
     {
       id: 'prompt-evals',
@@ -77,7 +74,6 @@ export default async function RoomsPage(props: {
       users: 460,
       time: lang === 'ru' ? '55 мин' : '55m',
       category: lang === 'ru' ? 'Практика' : 'Practice',
-      status: 'active' as const,
     },
     {
       id: 'ai-image-creation',
@@ -89,15 +85,10 @@ export default async function RoomsPage(props: {
       users: 460,
       time: lang === 'ru' ? '50 мин' : '50m',
       category: lang === 'ru' ? 'Практика' : 'Practice',
-      status: 'active' as const,
     },
   ];
 
-  const statusLabel = {
-    completed: { label: lang === 'ru' ? 'Пройдено' : 'Completed' },
-    active: { label: lang === 'ru' ? 'В процессе' : 'In Progress' },
-    locked: { label: lang === 'ru' ? 'Скоро' : 'Coming Soon' },
-  };
+  const lockedRooms = new Set(['prompting-101', 'native-multimodality']);
 
   return (
     <div className="max-w-5xl mx-auto">
@@ -120,8 +111,7 @@ export default async function RoomsPage(props: {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {rooms.map((room) => {
-          const isLocked = room.status === 'locked';
-          const badge = statusLabel[room.status];
+          const isLocked = lockedRooms.has(room.id);
 
           return (
             <div
@@ -131,12 +121,27 @@ export default async function RoomsPage(props: {
               }`}
             >
               <div className="h-24 bg-[#1a1a1a] relative flex items-center justify-center border-b border-[#282828]">
-                <Terminal size={32} className="text-neutral-800 group-hover:text-neutral-600 transition-colors" />
+                {room.id === 'llm-landscape' ? (
+                  <>
+                    <Image
+                      src="/images/llm-landscape-network.png"
+                      alt={lang === 'ru' ? 'Миниатюра комнаты Ландшафт LLM' : 'LLM Landscape room thumbnail'}
+                      fill
+                      className="object-cover opacity-75"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/35 to-black/55" />
+                  </>
+                ) : (
+                  <Terminal size={32} className="text-neutral-800 group-hover:text-neutral-600 transition-colors" />
+                )}
                 <div className="absolute top-3 left-3 px-2 py-0.5 rounded text-[10px] font-medium uppercase text-neutral-500 bg-white/5">
                   {room.category}
                 </div>
-                <div className="absolute top-3 right-3 px-2 py-0.5 rounded text-[10px] font-medium text-neutral-500 bg-white/5">
-                  {badge.label}
+                <div className="absolute top-3 right-3">
+                  {isLocked
+                    ? <span className="px-2 py-0.5 rounded text-[10px] font-medium text-neutral-500 bg-white/5">{lang === 'ru' ? 'Скоро' : 'Coming Soon'}</span>
+                    : <RoomStatusBadge roomId={room.id} lang={lang} />
+                  }
                 </div>
               </div>
 
