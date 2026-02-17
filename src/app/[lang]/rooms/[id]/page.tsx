@@ -2,23 +2,43 @@
 
 import React, { useState, use } from 'react';
 import Link from 'next/link';
-import { ChevronRight, Info, BookOpen, HelpCircle, Globe } from 'lucide-react';
+import { ChevronRight, Info, BookOpen, HelpCircle, Globe, Cpu } from 'lucide-react';
 import { motion } from 'framer-motion';
 import TaskQuestion, { TaskType } from '@/components/TaskQuestion';
+import TaskSorting from '@/components/TaskSorting';
+import TerminologyTooltip from '@/components/TerminologyTooltip';
+import { useProgress } from '@/hooks/useProgress';
 
 export default function RoomPage(props: { params: Promise<{ lang: string, id: string }> }) {
   const params = use(props.params);
   const lang = params.lang;
 
+  const { completedIds, markCompleted: persistCompleted } = useProgress('llm-landscape');
+
   const [tasks, setTasks] = useState([
+    {
+      id: 0,
+      type: 'multiple-choice' as TaskType,
+      question: lang === 'ru'
+        ? 'Что такое ИИ-модель (веса) по своей сути?'
+        : 'What is an AI model (weights) at its core?',
+      options: lang === 'ru'
+        ? ['Набор жестких правил "если-то"', 'Статический файл с результатами обучения', 'Живой организм, который растет сам']
+        : ['A set of hard "if-then" rules', 'A static file containing training results', 'A living organism that grows on its own'],
+      answer: lang === 'ru' ? 'Статический файл с результатами обучения' : 'A static file containing training results',
+      explanation: lang === 'ru'
+        ? 'Верно! Модель — это снимок знаний (весов), полученных в процессе обучения. Она не меняется динамически, пока вы её используете.'
+        : 'Correct! A model is a snapshot of knowledge (weights) gained during training. It doesn\'t change dynamically while you use it.',
+      completed: false
+    },
     {
       id: 1,
       type: 'input' as TaskType,
       question: lang === 'ru'
-        ? 'Какая компания разработала ChatGPT, которую Карпати называет "Original Gangster"?'
-        : 'Which company developed ChatGPT, which Karpathy calls the "Original Gangster"?',
-      answer: 'OpenAI',
-      hint: lang === 'ru' ? 'Она была основана Сэмом Альтманом и другими.' : 'It was founded by Sam Altman and others.',
+        ? 'Какая компания разработала Claude?'
+        : 'Which company developed Claude?',
+      answer: 'Anthropic',
+      hint: lang === 'ru' ? 'Название компании уже указано в блоке про Claude в теории.' : 'The company name is explicitly shown in the Claude theory block.',
       completed: false
     },
     {
@@ -66,6 +86,9 @@ export default function RoomPage(props: { params: Promise<{ lang: string, id: st
       hint: lang === 'ru'
         ? 'Ищите те, которые можно запускать в своей инфраструктуре.'
         : 'Pick those commonly self-hosted on your own infrastructure.',
+      explanation: lang === 'ru'
+        ? 'Верно! Llama, Mistral и Qwen — лидеры открытого мира. В отличие от Claude и Gemini, их веса доступны для скачивания и запуска локально.'
+        : 'Correct! Llama, Mistral, and Qwen are leaders of the open world. Unlike Claude and Gemini, their weights are available to download and run locally.',
       completed: false
     },
     {
@@ -299,10 +322,28 @@ export default function RoomPage(props: { params: Promise<{ lang: string, id: st
       hint: lang === 'ru' ? 'Решение принимается на данных вашего продукта.' : 'Decisions should be based on your product data.',
       completed: false
     },
+    {
+      id: 25,
+      type: 'sorting' as TaskType,
+      question: lang === 'ru'
+        ? 'Упорядочите шаги фреймворка выбора модели (Model Selection Framework).'
+        : 'Sort the steps of the Model Selection Framework.',
+      initialItems: lang === 'ru'
+        ? ['Выбор стратегии Fallback', 'Сбор Shortlist', 'Определение KPI', 'Проведение A/B Eval']
+        : ['Define Fallback Strategy', 'Build Shortlist', 'Define KPIs', 'Run A/B Evals'],
+      correctOrder: lang === 'ru'
+        ? ['Определение KPI', 'Сбор Shortlist', 'Проведение A/B Eval', 'Выбор стратегии Fallback']
+        : ['Define KPIs', 'Build Shortlist', 'Run A/B Evals', 'Define Fallback Strategy'],
+      explanation: lang === 'ru'
+        ? 'Верно! Сначала мы понимаем, что измеряем (KPI), затем выбираем кандидатов, тестируем их и настраиваем резервные варианты.'
+        : 'Correct! First, we understand what we measure (KPIs), then select candidates, test them, and set up fallback options.',
+      completed: false
+    },
   ]);
 
   const markCompleted = (id: number) => {
     setTasks(prev => prev.map(t => t.id === id ? { ...t, completed: true } : t));
+    persistCompleted(id);
   };
 
   return (
@@ -348,13 +389,8 @@ export default function RoomPage(props: { params: Promise<{ lang: string, id: st
             </p>
             <p className="text-neutral-300 leading-relaxed mb-4">
               {lang === 'ru'
-                ? 'Курс model-agnostic: он не привязан к одной компании-разработчику (вендору). Мы рассматриваем разные модели, сравниваем их под конкретные задачи и выбираем решение по требованиям бизнеса, а не по названию бренда.'
-                : 'This course is model-agnostic: it is not tied to one provider. We compare multiple models against real tasks and choose solutions by business requirements, not by brand name.'}
-            </p>
-            <p className="text-neutral-300 leading-relaxed mb-4">
-              {lang === 'ru'
-                ? 'В ранней фазе массового внедрения ChatGPT часто описывали как "original gangster" потребительских LLM: это был первый продукт, который вывел диалоговый интерфейс с большой языковой моделью в мейнстрим.'
-                : 'In the early mass-adoption phase, ChatGPT was often described as the "original gangster" of consumer LLM products: the first interface that made direct LLM interaction mainstream.'}
+                ? 'Курс model-agnostic: он не привязан к одной компании-разработчику (вендору). Важно познакомиться с разными моделями, чтобы понимать их преимущества и ограничения при решении конкретных задач, а не ориентироваться только на название бренда.'
+                : 'This course is model-agnostic: it is not tied to one provider. It is important to explore different models to understand their strengths and limitations for specific tasks, rather than relying solely on brand names.'}
             </p>
             {lang === 'ru' ? (
               <p className="text-neutral-300 leading-relaxed">
@@ -367,6 +403,158 @@ export default function RoomPage(props: { params: Promise<{ lang: string, id: st
                 </p>
               </div>
             )}
+            <p className="text-neutral-400 text-sm italic mt-6 border-t border-[#262626] pt-4">
+              {lang === 'ru'
+                ? 'Но прежде чем мы перейдем к карте этого ландшафта, нам нужно договориться о терминах: что именно мы имеем в виду, когда говорим «модель ИИ»?'
+                : 'But before we explore the map of this landscape, we need to agree on terms: what exactly do we mean when we say "AI model"?'}
+            </p>
+          </div>
+
+          <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+            <h2 className="text-2xl font-bold mb-4 flex items-center gap-3 text-emerald-400">
+              <Cpu className="text-emerald-500" />
+              {lang === 'ru' ? 'Что такое «модель» на самом деле?' : 'What is a "Model" exactly?'}
+            </h2>
+            <p className="text-neutral-300 leading-relaxed mb-6">
+              {lang === 'ru'
+                ? 'Представьте модель как «цифрового подмастерья». Она не родилась умной; она «училась», просматривая миллиарды страниц текста из интернета. В результате этого обучения получилась не программа с четкими правилами (если А, то Б), а огромный файл с числами — «весами».'
+                : 'Think of a model as a "digital apprentice." It wasn\'t born smart; it "learned" by looking at billions of pages of text from the internet. The result of this training isn\'t a program with fixed rules (if A, then B), but a massive file of numbers called "weights."'}
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-6 mb-6">
+              <div className="bg-[#1a1a1a] p-4 rounded-lg border border-[#262626]">
+                <h4 className="text-emerald-400 font-bold mb-2 text-sm uppercase">{lang === 'ru' ? 'Аналогия: Цифровая интуиция' : 'Analogy: Digital Intuition'}</h4>
+                <p className="text-xs text-neutral-400 leading-relaxed">
+                  {lang === 'ru'
+                    ? 'Веса — это как «мышечная память» или интуиция. Модель не «знает» факты в обычном смысле, она чувствует паттерны: какие слова чаще всего стоят рядом.'
+                    : 'Weights are like "muscle memory" or intuition. The model doesn\'t "know" facts in the usual sense; it senses patterns: which words most likely belong together.'}
+                </p>
+              </div>
+              <div className="bg-[#1a1a1a] p-4 rounded-lg border border-[#262626]">
+                <h4 className="text-emerald-400 font-bold mb-2 text-sm uppercase">{lang === 'ru' ? 'Это просто файл' : 'It\'s just a file'}</h4>
+                <p className="text-xs text-neutral-400 leading-relaxed">
+                  {lang === 'ru'
+                    ? 'Технически, модель — это статический файл (часто в формате .safetensors). Чтобы он «ожил», нужна видеокарта (GPU), которая прогонит ваш запрос через эти миллиарды чисел.'
+                    : 'Technically, a model is a static file (often in .safetensors format). To make it "come alive," you need a GPU to run your query through those billions of numbers.'}
+                </p>
+              </div>
+            </div>
+
+            <div className="border-l-4 border-emerald-500 bg-emerald-500/5 p-4 rounded-r-lg">
+              <p className="text-sm text-emerald-200">
+                <span className="font-bold">{lang === 'ru' ? 'Суть:' : 'The Bottom Line:'}</span>{' '}
+                {lang === 'ru'
+                  ? 'Модель — это застывший результат обучения. Она не меняется сама по себе, когда вы с ней общаетесь. Чтобы она стала лучше, разработчики должны выпустить новую версию файла.'
+                  : 'A model is the frozen result of training. It doesn\'t change on its own while you talk to it. To make it better, developers must release a new version of the file.'}
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+            <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+              {lang === 'ru' ? 'Открытые vs закрытые модели: когда что выбирать' : 'Open vs Closed Models: When to Choose Which'}
+            </h2>
+            <p className="text-neutral-300 leading-relaxed mb-6">
+              {lang === 'ru'
+                ? <>У каждой стратегии есть компромиссы. Закрытые API часто быстрее дают state-of-the-art качество и удобную инфраструктуру. Open-weight модели дают контроль, кастомизацию и возможность <TerminologyTooltip term="on-prem развертывания" definition="On-premise: запуск модели на собственных серверах компании, а не в облаке вендора." />.</>
+                : <>Each strategy has tradeoffs. Closed APIs often deliver state-of-the-art quality and easier infrastructure. Open-weight models offer control, customization, and <TerminologyTooltip term="on-prem deployment" definition="On-premise: running the model on your own company servers rather than the vendor's cloud." />.</>}
+            </p>
+
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="bg-[#1a1a1a] p-4 rounded-lg border border-[#262626]">
+                <h4 className="text-sm font-bold text-neutral-200 mb-2">{lang === 'ru' ? 'Закрытые API' : 'Closed APIs'}</h4>
+                <ul className="text-sm text-neutral-400 space-y-1">
+                  <li>{lang === 'ru' ? 'Быстрый старт и меньше DevOps-нагрузки' : 'Fast launch with less DevOps overhead'}</li>
+                  <li>{lang === 'ru' ? 'Сильное качество на широком классе задач' : 'Strong quality across broad task classes'}</li>
+                  <li>{lang === 'ru' ? 'Ограниченный контроль над данными и настройкой' : 'Limited control over data and internals'}</li>
+                </ul>
+              </div>
+              <div className="bg-[#1a1a1a] p-4 rounded-lg border border-[#262626]">
+                <h4 className="text-sm font-bold text-neutral-200 mb-2">{lang === 'ru' ? 'Open-weight модели' : 'Open-weight models'}</h4>
+                <ul className="text-sm text-neutral-400 space-y-1">
+                  <li>{lang === 'ru' ? 'Контроль над приватностью и инфраструктурой' : 'Greater privacy and infrastructure control'}</li>
+                  <li>{lang === 'ru' ? 'Возможность дообучения/тонкой настройки' : 'Fine-tuning and adaptation flexibility'}</li>
+                  <li>{lang === 'ru' ? 'Нужны ресурсы на поддержку и оптимизацию' : 'Requires resources for optimization and maintenance'}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+            <h2 className="text-2xl font-bold mb-4 flex items-center gap-3 text-emerald-400">
+              <BookOpen className="text-emerald-500" />
+              {lang === 'ru' ? 'Open-Weight экосистема: Владение и Контроль' : 'The Open-Weight Ecosystem: Ownership and Control'}
+            </h2>
+            
+            <p className="text-neutral-300 leading-relaxed mb-6">
+              {lang === 'ru'
+                ? 'Представьте разницу между заказом еды в ресторане (API) и наличием полного рецепта и кухни (Open-weight). В первом случае вам не нужно мыть посуду, но вы не можете изменить ингредиенты. Во втором — вы полностью контролируете процесс.'
+                : 'Think of the difference between ordering food at a restaurant (API) and having the full recipe and your own kitchen (Open-weight). In the first case, you don\'t have to wash dishes, but you can\'t change the ingredients. In the second, you have total control over the process.'}
+            </p>
+
+            <div className="border-l-4 border-amber-500 bg-amber-500/5 p-4 rounded-r-lg mb-6">
+              <p className="text-sm text-amber-200">
+                <span className="font-bold">{lang === 'ru' ? 'Важный нюанс:' : 'Important distinction:'}</span>{' '}
+                {lang === 'ru'
+                  ? 'Мы говорим "open-weight", а не "open-source", потому что компании часто делятся финальными весами модели, но не обучающими данными или кодом обучения. Это "открытые веса", которые можно запустить на своем железе.'
+                  : 'We say "open-weight" rather than "open-source" because companies often share the final model weights but not the training data or the training code. They are "open weights" you can run on your own hardware.'}
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-4 mb-6">
+              <div className="bg-[#1a1a1a] p-4 rounded-lg border border-[#262626]">
+                <h4 className="font-bold text-neutral-200 mb-2 text-xs uppercase">{lang === 'ru' ? 'Приватность' : 'Privacy'}</h4>
+                <p className="text-xs text-neutral-500">
+                  {lang === 'ru' ? 'Данные никогда не покидают ваш сервер. Идеально для медицины, юристов и госсектора.' : 'Data never leaves your server. Ideal for healthcare, legal, and government sectors.'}
+                </p>
+              </div>
+              <div className="bg-[#1a1a1a] p-4 rounded-lg border border-[#262626]">
+                <h4 className="font-bold text-neutral-200 mb-2 text-xs uppercase">{lang === 'ru' ? 'Независимость' : 'Independence'}</h4>
+                <p className="text-[11px] text-neutral-400 leading-tight mb-2">
+                  {lang === 'ru' 
+                    ? 'API — это ресторан: если он закроется, вы потеряете доступ. Цены и политики могут измениться в любой момент.' 
+                    : 'API is a restaurant: if it closes, you lose access. Access, pricing, and policies can change at any time.'}
+                </p>
+                <p className="text-[11px] text-emerald-500/80 leading-tight">
+                  {lang === 'ru' 
+                    ? 'Open-weight — это ваша кухня: никто не отзовет доступ. Вы полностью контролируете модель и владеете процессом.' 
+                    : 'Open-weight is your kitchen: no one can revoke access. You run the model under your own control.'}
+                </p>
+              </div>
+              <div className="bg-[#1a1a1a] p-4 rounded-lg border border-[#262626]">
+                <h4 className="font-bold text-neutral-200 mb-2 text-xs uppercase">{lang === 'ru' ? 'Тонкая настройка' : 'Fine-tuning'}</h4>
+                <p className="text-[11px] text-neutral-400 leading-tight mb-2">
+                  {lang === 'ru'
+                    ? 'API — это просьба «поменьше соли». Open-weight — это переработка всего блюда под свою нишу.'
+                    : 'API is asking for "less salt." Open-weight is redesigning the entire dish for your niche domain.'}
+                </p>
+                <p className="text-[11px] text-emerald-500/80 leading-tight">
+                  {lang === 'ru'
+                    ? 'Вы не просто заказываете — вы готовите: дообучайте модель на своих данных и меняйте её поведение глубже, чем промптами.'
+                    : 'You are not just ordering — you are cooking: fine-tune on your data and modify behavior deeper than prompt engineering.'}
+                </p>
+              </div>
+            </div>
+
+            <p className="text-neutral-300 leading-relaxed mb-4">
+              {lang === 'ru'
+                ? 'Главные игроки открытого мира:'
+                : 'Leading players in the open world:'}
+            </p>
+            <ul className="space-y-3">
+              <li className="flex gap-3">
+                <span className="text-emerald-500 font-bold font-mono">Llama (Meta)</span>
+                <span className="text-sm text-neutral-400">{lang === 'ru' ? '— фактический стандарт индустрии. Огромное сообщество и поддержка любого железа.' : '— the de facto industry standard. Huge community and support for any hardware.'}</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-emerald-500 font-bold font-mono">Mistral / Mixtral</span>
+                <span className="text-sm text-neutral-400">{lang === 'ru' ? '— европейские чемпионы. Популяризировали технологию MoE (смесь экспертов) для высокой скорости.' : '— European champions. Popularized MoE (Mixture of Experts) for high speed.'}</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-emerald-500 font-bold font-mono">Qwen (Alibaba)</span>
+                <span className="text-sm text-neutral-400">{lang === 'ru' ? '— мощные модели из Китая, часто лидирующие в тестах на кодинг и математику.' : '— powerful models from China, often leading in coding and math benchmarks.'}</span>
+              </li>
+            </ul>
           </div>
 
           <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
@@ -381,19 +569,15 @@ export default function RoomPage(props: { params: Promise<{ lang: string, id: st
             </p>
             <p className="text-xs text-neutral-500 mb-4">
               {lang === 'ru' ? 'Термины:' : 'Terms:'}{' '}
-              <span
-                className="underline decoration-dotted underline-offset-4 cursor-help text-neutral-300"
-                title={lang === 'ru' ? 'Гиперскейлеры: крупнейшие облачные провайдеры с глобальной инфраструктурой (AWS, Azure, Google Cloud).' : 'Hyperscalers: the largest cloud providers with global-scale infrastructure (AWS, Azure, Google Cloud).'}
-              >
-                hyperscalers
-              </span>
+              <TerminologyTooltip 
+                term="hyperscalers" 
+                definition={lang === 'ru' ? 'Гиперскейлеры: крупнейшие облачные провайдеры с глобальной инфраструктурой (AWS, Azure, Google Cloud).' : 'Hyperscalers: the largest cloud providers with global-scale infrastructure (AWS, Azure, Google Cloud).'} 
+              />
               {' · '}
-              <span
-                className="underline decoration-dotted underline-offset-4 cursor-help text-neutral-300"
-                title={lang === 'ru' ? 'Export controls: государственные ограничения на экспорт критических технологий (например, продвинутых AI-чипов).' : 'Export controls: government restrictions on exporting critical technologies (for example, advanced AI chips).'}
-              >
-                export controls
-              </span>
+              <TerminologyTooltip 
+                term="export controls" 
+                definition={lang === 'ru' ? 'Export controls: государственные ограничения на экспорт критических технологий (например, продвинутых AI-чипов).' : 'Export controls: government restrictions on exporting critical technologies (for example, advanced AI chips).'} 
+              />
             </p>
             
             <div className="space-y-4">
@@ -583,8 +767,8 @@ export default function RoomPage(props: { params: Promise<{ lang: string, id: st
             </h2>
             <p className="text-neutral-300 leading-relaxed mb-6">
               {lang === 'ru'
-                ? 'У каждой стратегии есть компромиссы. Закрытые API часто быстрее дают state-of-the-art качество и удобную инфраструктуру. Open-weight модели дают контроль, кастомизацию и возможность on-prem развертывания.'
-                : 'Each strategy has tradeoffs. Closed APIs often deliver state-of-the-art quality and easier infrastructure. Open-weight models offer control, customization, and on-prem deployment.'}
+                ? <>У каждой стратегии есть компромиссы. Закрытые API часто быстрее дают state-of-the-art качество и удобную инфраструктуру. Open-weight модели дают контроль, кастомизацию и возможность <TerminologyTooltip term="on-prem развертывания" definition="On-premise: запуск модели на собственных серверах компании, а не в облаке вендора." />.</>
+                : <>Each strategy has tradeoffs. Closed APIs often deliver state-of-the-art quality and easier infrastructure. Open-weight models offer control, customization, and <TerminologyTooltip term="on-prem deployment" definition="On-premise: running the model on your own company servers rather than the vendor's cloud." />.</>}
             </p>
 
             <div className="grid md:grid-cols-2 gap-4">
@@ -605,6 +789,83 @@ export default function RoomPage(props: { params: Promise<{ lang: string, id: st
                 </ul>
               </div>
             </div>
+          </div>
+
+          <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+            <h2 className="text-2xl font-bold mb-4 flex items-center gap-3 text-emerald-400">
+              <BookOpen className="text-emerald-500" />
+              {lang === 'ru' ? 'Open-Weight экосистема: Владение и Контроль' : 'The Open-Weight Ecosystem: Ownership and Control'}
+            </h2>
+            
+            <p className="text-neutral-300 leading-relaxed mb-6">
+              {lang === 'ru'
+                ? 'Представьте разницу между заказом еды в ресторане (API) и наличием полного рецепта и кухни (Open-weight). В первом случае вам не нужно мыть посуду, но вы не можете изменить ингредиенты. Во втором — вы полностью контролируете процесс.'
+                : 'Think of the difference between ordering food at a restaurant (API) and having the full recipe and your own kitchen (Open-weight). In the first case, you don\'t have to wash dishes, but you can\'t change the ingredients. In the second, you have total control over the process.'}
+            </p>
+
+            <div className="border-l-4 border-amber-500 bg-amber-500/5 p-4 rounded-r-lg mb-6">
+              <p className="text-sm text-amber-200">
+                <span className="font-bold">{lang === 'ru' ? 'Важный нюанс:' : 'Important distinction:'}</span>{' '}
+                {lang === 'ru'
+                  ? 'Мы говорим "open-weight", а не "open-source", потому что компании часто делятся финальными весами модели, но не обучающими данными или кодом обучения. Это "открытые веса", которые можно запустить на своем железе.'
+                  : 'We say "open-weight" rather than "open-source" because companies often share the final model weights but not the training data or the training code. They are "open weights" you can run on your own hardware.'}
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-4 mb-6">
+              <div className="bg-[#1a1a1a] p-4 rounded-lg border border-[#262626]">
+                <h4 className="font-bold text-neutral-200 mb-2 text-xs uppercase">{lang === 'ru' ? 'Приватность' : 'Privacy'}</h4>
+                <p className="text-xs text-neutral-500">
+                  {lang === 'ru' ? 'Данные никогда не покидают ваш сервер. Идеально для медицины, юристов и госсектора.' : 'Data never leaves your server. Ideal for healthcare, legal, and government sectors.'}
+                </p>
+              </div>
+              <div className="bg-[#1a1a1a] p-4 rounded-lg border border-[#262626]">
+                <h4 className="font-bold text-neutral-200 mb-2 text-xs uppercase">{lang === 'ru' ? 'Независимость' : 'Independence'}</h4>
+                <p className="text-[11px] text-neutral-400 leading-tight mb-2">
+                  {lang === 'ru' 
+                    ? 'API — это ресторан: если он закроется, вы потеряете доступ. Цены и политики могут измениться в любой момент.' 
+                    : 'API is a restaurant: if it closes, you lose access. Access, pricing, and policies can change at any time.'}
+                </p>
+                <p className="text-[11px] text-emerald-500/80 leading-tight">
+                  {lang === 'ru' 
+                    ? 'Open-weight — это ваша кухня: никто не отзовет доступ. Вы полностью контролируете модель и владеете процессом.' 
+                    : 'Open-weight is your kitchen: no one can revoke access. You run the model under your own control.'}
+                </p>
+              </div>
+              <div className="bg-[#1a1a1a] p-4 rounded-lg border border-[#262626]">
+                <h4 className="font-bold text-neutral-200 mb-2 text-xs uppercase">{lang === 'ru' ? 'Тонкая настройка' : 'Fine-tuning'}</h4>
+                <p className="text-[11px] text-neutral-400 leading-tight mb-2">
+                  {lang === 'ru'
+                    ? 'API — это просьба «поменьше соли». Open-weight — это переработка всего блюда под свою нишу.'
+                    : 'API is asking for "less salt." Open-weight is redesigning the entire dish for your niche domain.'}
+                </p>
+                <p className="text-[11px] text-emerald-500/80 leading-tight">
+                  {lang === 'ru'
+                    ? 'Вы не просто заказываете — вы готовите: дообучайте модель на своих данных и меняйте её поведение глубже, чем промптами.'
+                    : 'You are not just ordering — you are cooking: fine-tune on your data and modify behavior deeper than prompt engineering.'}
+                </p>
+              </div>
+            </div>
+
+            <p className="text-neutral-300 leading-relaxed mb-4">
+              {lang === 'ru'
+                ? 'Главные игроки открытого мира:'
+                : 'Leading players in the open world:'}
+            </p>
+            <ul className="space-y-3">
+              <li className="flex gap-3">
+                <span className="text-emerald-500 font-bold font-mono">Llama (Meta)</span>
+                <span className="text-sm text-neutral-400">{lang === 'ru' ? '— фактический стандарт индустрии. Огромное сообщество и поддержка любого железа.' : '— the de facto industry standard. Huge community and support for any hardware.'}</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-emerald-500 font-bold font-mono">Mistral / Mixtral</span>
+                <span className="text-sm text-neutral-400">{lang === 'ru' ? '— европейские чемпионы. Популяризировали технологию MoE (смесь экспертов) для высокой скорости.' : '— European champions. Popularized MoE (Mixture of Experts) for high speed.'}</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="text-emerald-500 font-bold font-mono">Qwen (Alibaba)</span>
+                <span className="text-sm text-neutral-400">{lang === 'ru' ? '— мощные модели из Китая, часто лидирующие в тестах на кодинг и математику.' : '— powerful models from China, often leading in coding and math benchmarks.'}</span>
+              </li>
+            </ul>
           </div>
 
           <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
@@ -649,6 +910,11 @@ export default function RoomPage(props: { params: Promise<{ lang: string, id: st
             <div className="grid md:grid-cols-2 gap-4 mb-6">
               <div className="bg-[#1a1a1a] border border-[#262626] rounded-lg p-4">
                 <h4 className="font-bold text-neutral-200 mb-2">ChatGPT (OpenAI)</h4>
+                <p className="text-xs text-neutral-400 mb-3 leading-relaxed italic border-l-2 border-emerald-500/30 pl-3">
+                  {lang === 'ru'
+                    ? 'В ранней фазе массового внедрения ChatGPT часто описывали как "original gangster" потребительских LLM: это был первый продукт, который вывел диалоговый интерфейс с большой языковой моделью в мейнстрим.'
+                    : 'In the early mass-adoption phase, ChatGPT was often described as the "original gangster" of consumer LLM products: the first interface that made direct LLM interaction mainstream.'}
+                </p>
                 <p className="text-xs text-neutral-500 mb-2">{lang === 'ru' ? 'Модели: GPT-4o, GPT-4.1, GPT-4 Turbo' : 'Models: GPT-4o, GPT-4.1, GPT-4 Turbo'}</p>
                 <ul className="text-sm text-neutral-400 space-y-1">
                   <li>{lang === 'ru' ? 'Сильный generalist в разных доменах' : 'Strong generalist across domains'}</li>
@@ -659,6 +925,11 @@ export default function RoomPage(props: { params: Promise<{ lang: string, id: st
               </div>
               <div className="bg-[#1a1a1a] border border-[#262626] rounded-lg p-4">
                 <h4 className="font-bold text-neutral-200 mb-2">Claude (Anthropic)</h4>
+                <p className="text-xs text-neutral-400 mb-3 leading-relaxed italic border-l-2 border-emerald-500/30 pl-3">
+                  {lang === 'ru'
+                    ? 'Claude разработан компанией Anthropic. Это важно помнить при сравнении вендоров и их стратегий безопасности.'
+                    : 'Claude is developed by Anthropic. This is an important anchor when comparing vendors and their safety strategies.'}
+                </p>
                 <p className="text-xs text-neutral-500 mb-2">{lang === 'ru' ? 'Модели: Claude 3 family (Opus, Sonnet, Haiku)' : 'Models: Claude 3 family (Opus, Sonnet, Haiku)'}</p>
                 <ul className="text-sm text-neutral-400 space-y-1">
                   <li>{lang === 'ru' ? 'Аккуратное long-form письмо' : 'Careful long-form writing'}</li>
@@ -753,16 +1024,31 @@ export default function RoomPage(props: { params: Promise<{ lang: string, id: st
           </h3>
           <div className="space-y-2">
             {tasks.map((task) => (
-              <TaskQuestion 
-                key={task.id}
-                id={task.id}
-                question={task.question}
-                correctAnswer={task.answer}
-                options={task.options}
-                hint={task.hint}
-                type={task.type}
-                onSuccess={markCompleted}
-              />
+              task.type === 'sorting' ? (
+                <TaskSorting
+                  key={task.id}
+                  id={task.id}
+                  question={task.question}
+                  initialItems={(task as any).initialItems}
+                  correctOrder={(task as any).correctOrder}
+                  explanation={(task as any).explanation}
+                  onSuccess={markCompleted}
+                  initialCompleted={completedIds.has(task.id)}
+                />
+              ) : (
+                <TaskQuestion
+                  key={task.id}
+                  id={task.id}
+                  question={task.question}
+                  correctAnswer={(task as any).answer}
+                  options={(task as any).options}
+                  hint={task.hint}
+                  explanation={(task as any).explanation}
+                  type={task.type}
+                  onSuccess={markCompleted}
+                  initialCompleted={completedIds.has(task.id)}
+                />
+              )
             ))}
           </div>
         </div>
@@ -771,14 +1057,14 @@ export default function RoomPage(props: { params: Promise<{ lang: string, id: st
           <div className="flex justify-between items-center mb-2">
             <span className="text-xs font-bold text-neutral-400 uppercase tracking-wider">{lang === 'ru' ? 'Прогресс' : 'Progress'}</span>
             <span className="text-sm font-bold text-emerald-500">
-              {Math.round((tasks.filter(t => t.completed).length / tasks.length) * 100)}%
+              {Math.round((Math.max(tasks.filter(t => t.completed).length, completedIds.size) / tasks.length) * 100)}%
             </span>
           </div>
           <div className="h-1.5 bg-[#0a0a0a] rounded-full overflow-hidden border border-[#262626]">
-            <motion.div 
+            <motion.div
               className="h-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"
               initial={{ width: 0 }}
-              animate={{ width: `${(tasks.filter(t => t.completed).length / tasks.length) * 100}%` }}
+              animate={{ width: `${(Math.max(tasks.filter(t => t.completed).length, completedIds.size) / tasks.length) * 100}%` }}
             />
           </div>
         </div>
