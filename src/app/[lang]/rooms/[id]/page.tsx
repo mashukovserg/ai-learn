@@ -66,16 +66,6 @@ export default function RoomPage(props: { params: Promise<{ lang: string, id: st
       completed: false
     },
     {
-      id: 4,
-      type: 'input' as TaskType,
-      question: lang === 'ru'
-        ? 'Как называется концепция, согласно которой страна должна иметь свою модель ИИ для независимости?'
-        : 'What is the concept of a country having its own AI model for independence called?',
-      answer: lang === 'ru' ? 'Суверенный ИИ' : 'Sovereign AI',
-      hint: lang === 'ru' ? 'Слово начинается на "Сув...".' : 'The word starts with "Sov...".',
-      completed: false
-    },
-    {
       id: 6,
       type: 'multiple-select' as TaskType,
       question: lang === 'ru'
@@ -450,30 +440,43 @@ export default function RoomPage(props: { params: Promise<{ lang: string, id: st
             <h2 className="text-2xl font-bold mb-4 text-emerald-400">
               {lang === 'ru' ? 'Открытые vs закрытые модели: когда что выбирать' : 'Open vs Closed Models: When to Choose Which'}
             </h2>
-            <p className="text-neutral-300 leading-relaxed mb-6">
-              {lang === 'ru'
-                ? <>У каждой стратегии есть компромиссы. Закрытые API часто быстрее дают state-of-the-art качество и удобную инфраструктуру. Open-weight модели дают контроль, кастомизацию и возможность <TerminologyTooltip term="on-prem развертывания" definition="On-premise: запуск модели на собственных серверах компании, а не в облаке вендора." />.</>
-                : <>Each strategy has tradeoffs. Closed APIs often deliver state-of-the-art quality and easier infrastructure. Open-weight models offer control, customization, and <TerminologyTooltip term="on-prem deployment" definition="On-premise: running the model on your own company servers rather than the vendor's cloud." />.</>}
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-[#1a1a1a] p-4 rounded-lg border border-[#262626]">
-                <h4 className="text-sm font-bold text-neutral-200 mb-2">{lang === 'ru' ? 'Закрытые API' : 'Closed APIs'}</h4>
-                <ul className="text-sm text-neutral-400 space-y-1">
-                  <li>{lang === 'ru' ? 'Быстрый старт и меньше DevOps-нагрузки' : 'Fast launch with less DevOps overhead'}</li>
-                  <li>{lang === 'ru' ? 'Сильное качество на широком классе задач' : 'Strong quality across broad task classes'}</li>
-                  <li>{lang === 'ru' ? 'Ограниченный контроль над данными и настройкой' : 'Limited control over data and internals'}</li>
-                </ul>
-              </div>
-              <div className="bg-[#1a1a1a] p-4 rounded-lg border border-[#262626]">
-                <h4 className="text-sm font-bold text-neutral-200 mb-2">{lang === 'ru' ? 'Open-weight модели' : 'Open-weight models'}</h4>
-                <ul className="text-sm text-neutral-400 space-y-1">
-                  <li>{lang === 'ru' ? 'Контроль над приватностью и инфраструктурой' : 'Greater privacy and infrastructure control'}</li>
-                  <li>{lang === 'ru' ? 'Возможность дообучения/тонкой настройки' : 'Fine-tuning and adaptation flexibility'}</li>
-                  <li>{lang === 'ru' ? 'Нужны ресурсы на поддержку и оптимизацию' : 'Requires resources for optimization and maintenance'}</li>
-                </ul>
-              </div>
-            </div>
+            {lang === 'ru' ? (
+              <>
+                <p className="text-neutral-300 leading-relaxed mb-4">
+                  Выбор между закрытым API и open-weight моделью — это прежде всего вопрос о том, что подходит под вашу задачу, бюджет и уровень зрелости команды».
+                </p>
+                <p className="text-neutral-300 leading-relaxed mb-4">
+                  <strong className="text-neutral-200">Закрытые API</strong> (GPT-4, Claude, Gemini) — это путь наименьшего сопротивления. Вы получаете state-of-the-art качество через единый эндпоинт, не думая о серверах, GPU и обновлениях модели. DevOps-нагрузка минимальна: зарегистрировались, получили ключ, отправили запрос. Для прототипирования, стартапов и задач общего назначения это часто оптимальный выбор. Обратная сторона — ограниченный контроль. Ваши данные проходят через чужую инфраструктуру. Вы не можете дообучить модель под специфику своего домена (или можете, но в узких рамках, заданных провайдером). Если завтра провайдер изменит модель, поднимет цены или закроет API — вы зависимы.
+                </p>
+                <p className="text-neutral-300 leading-relaxed">
+                  <strong className="text-neutral-200">Open-weight модели</strong> (LLaMA, Mistral, Qwen, DeepSeek) — это путь контроля и дополнительной работы. Вы скачиваете веса модели, разворачиваете её на своей инфраструктуре (или в арендованном облаке) и получаете полную свободу: дообучение на собственных данных, тонкая настройка под домен, гарантия того, что чувствительные данные не покидают ваш контур. Для регулируемых отраслей — медицина, финансы, государственный сектор — это часто необходимое требование. Цена — вам нужна команда, способная это поддерживать: подбор оборудования, оптимизация инференса (квантизация, batching, KV-cache), мониторинг качества после дообучения.
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="text-neutral-300 leading-relaxed mb-6">
+                  Each strategy has tradeoffs. Closed APIs often deliver state-of-the-art quality and easier infrastructure. Open-weight models offer control, customization, and <TerminologyTooltip term="on-prem deployment" definition="On-premise: running the model on your own company servers rather than the vendor's cloud." />.
+                </p>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="bg-[#1a1a1a] p-4 rounded-lg border border-[#262626]">
+                    <h4 className="text-sm font-bold text-neutral-200 mb-2">Closed APIs</h4>
+                    <ul className="text-sm text-neutral-400 space-y-1">
+                      <li>Fast launch with less DevOps overhead</li>
+                      <li>Strong quality across broad task classes</li>
+                      <li>Limited control over data and internals</li>
+                    </ul>
+                  </div>
+                  <div className="bg-[#1a1a1a] p-4 rounded-lg border border-[#262626]">
+                    <h4 className="text-sm font-bold text-neutral-200 mb-2">Open-weight models</h4>
+                    <ul className="text-sm text-neutral-400 space-y-1">
+                      <li>Greater privacy and infrastructure control</li>
+                      <li>Fine-tuning and adaptation flexibility</li>
+                      <li>Requires resources for optimization and maintenance</li>
+                    </ul>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
 
           <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
@@ -761,30 +764,43 @@ export default function RoomPage(props: { params: Promise<{ lang: string, id: st
             <h2 className="text-2xl font-bold mb-4 text-emerald-400">
               {lang === 'ru' ? 'Открытые vs закрытые модели: когда что выбирать' : 'Open vs Closed Models: When to Choose Which'}
             </h2>
-            <p className="text-neutral-300 leading-relaxed mb-6">
-              {lang === 'ru'
-                ? <>У каждой стратегии есть компромиссы. Закрытые API часто быстрее дают state-of-the-art качество и удобную инфраструктуру. Open-weight модели дают контроль, кастомизацию и возможность <TerminologyTooltip term="on-prem развертывания" definition="On-premise: запуск модели на собственных серверах компании, а не в облаке вендора." />.</>
-                : <>Each strategy has tradeoffs. Closed APIs often deliver state-of-the-art quality and easier infrastructure. Open-weight models offer control, customization, and <TerminologyTooltip term="on-prem deployment" definition="On-premise: running the model on your own company servers rather than the vendor's cloud." />.</>}
-            </p>
-
-            <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-[#1a1a1a] p-4 rounded-lg border border-[#262626]">
-                <h4 className="text-sm font-bold text-neutral-200 mb-2">{lang === 'ru' ? 'Закрытые API' : 'Closed APIs'}</h4>
-                <ul className="text-sm text-neutral-400 space-y-1">
-                  <li>{lang === 'ru' ? 'Быстрый старт и меньше DevOps-нагрузки' : 'Fast launch with less DevOps overhead'}</li>
-                  <li>{lang === 'ru' ? 'Сильное качество на широком классе задач' : 'Strong quality across broad task classes'}</li>
-                  <li>{lang === 'ru' ? 'Ограниченный контроль над данными и настройкой' : 'Limited control over data and internals'}</li>
-                </ul>
-              </div>
-              <div className="bg-[#1a1a1a] p-4 rounded-lg border border-[#262626]">
-                <h4 className="text-sm font-bold text-neutral-200 mb-2">{lang === 'ru' ? 'Open-weight модели' : 'Open-weight models'}</h4>
-                <ul className="text-sm text-neutral-400 space-y-1">
-                  <li>{lang === 'ru' ? 'Контроль над приватностью и инфраструктурой' : 'Greater privacy and infrastructure control'}</li>
-                  <li>{lang === 'ru' ? 'Возможность дообучения/тонкой настройки' : 'Fine-tuning and adaptation flexibility'}</li>
-                  <li>{lang === 'ru' ? 'Нужны ресурсы на поддержку и оптимизацию' : 'Requires resources for optimization and maintenance'}</li>
-                </ul>
-              </div>
-            </div>
+            {lang === 'ru' ? (
+              <>
+                <p className="text-neutral-300 leading-relaxed mb-4">
+                  Выбор между закрытым API и open-weight моделью — это прежде всего вопрос о том, что подходит под вашу задачу, бюджет и уровень зрелости команды».
+                </p>
+                <p className="text-neutral-300 leading-relaxed mb-4">
+                  <strong className="text-neutral-200">Закрытые API</strong> (GPT-4, Claude, Gemini) — это путь наименьшего сопротивления. Вы получаете state-of-the-art качество через единый эндпоинт, не думая о серверах, GPU и обновлениях модели. DevOps-нагрузка минимальна: зарегистрировались, получили ключ, отправили запрос. Для прототипирования, стартапов и задач общего назначения это часто оптимальный выбор. Обратная сторона — ограниченный контроль. Ваши данные проходят через чужую инфраструктуру. Вы не можете дообучить модель под специфику своего домена (или можете, но в узких рамках, заданных провайдером). Если завтра провайдер изменит модель, поднимет цены или закроет API — вы зависимы.
+                </p>
+                <p className="text-neutral-300 leading-relaxed">
+                  <strong className="text-neutral-200">Open-weight модели</strong> (LLaMA, Mistral, Qwen, DeepSeek) — это путь контроля и дополнительной работы. Вы скачиваете веса модели, разворачиваете её на своей инфраструктуре (или в арендованном облаке) и получаете полную свободу: дообучение на собственных данных, тонкая настройка под домен, гарантия того, что чувствительные данные не покидают ваш контур. Для регулируемых отраслей — медицина, финансы, государственный сектор — это часто необходимое требование. Цена — вам нужна команда, способная это поддерживать: подбор оборудования, оптимизация инференса (квантизация, batching, KV-cache), мониторинг качества после дообучения.
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="text-neutral-300 leading-relaxed mb-6">
+                  Each strategy has tradeoffs. Closed APIs often deliver state-of-the-art quality and easier infrastructure. Open-weight models offer control, customization, and <TerminologyTooltip term="on-prem deployment" definition="On-premise: running the model on your own company servers rather than the vendor's cloud." />.
+                </p>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="bg-[#1a1a1a] p-4 rounded-lg border border-[#262626]">
+                    <h4 className="text-sm font-bold text-neutral-200 mb-2">Closed APIs</h4>
+                    <ul className="text-sm text-neutral-400 space-y-1">
+                      <li>Fast launch with less DevOps overhead</li>
+                      <li>Strong quality across broad task classes</li>
+                      <li>Limited control over data and internals</li>
+                    </ul>
+                  </div>
+                  <div className="bg-[#1a1a1a] p-4 rounded-lg border border-[#262626]">
+                    <h4 className="text-sm font-bold text-neutral-200 mb-2">Open-weight models</h4>
+                    <ul className="text-sm text-neutral-400 space-y-1">
+                      <li>Greater privacy and infrastructure control</li>
+                      <li>Fine-tuning and adaptation flexibility</li>
+                      <li>Requires resources for optimization and maintenance</li>
+                    </ul>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
 
           <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
