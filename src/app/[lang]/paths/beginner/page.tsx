@@ -61,8 +61,8 @@ export default async function BeginnerPathPage(props: {
         {rooms.map((room) => (
           <div key={room.id} className="flex gap-6 items-start relative">
             <div className={`mt-1 w-14 h-14 rounded-lg flex items-center justify-center shrink-0 z-10 ${
-              room.status === 'Completed' ? 'bg-white/10 text-neutral-300' :
-              room.status === 'Active' ? 'bg-[#1a1a1a] border border-neutral-600 text-neutral-400' :
+              room.status === 'Completed' ? 'bg-emerald-500/10 text-emerald-300 border border-emerald-500/25' :
+              room.status === 'Active' ? 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-300' :
               'bg-[#1a1a1a] border border-[#282828] text-neutral-700'
             }`}>
               {room.status === 'Completed' ? <CheckCircle2 size={24} /> :
@@ -72,8 +72,8 @@ export default async function BeginnerPathPage(props: {
 
             <div className={`flex-1 bg-[#171717] border rounded-lg p-5 transition-colors ${
               room.status === 'Locked' ? 'border-[#282828] opacity-50' :
-              room.status === 'Active' ? 'border-neutral-700' :
-              'border-[#282828] hover:border-neutral-700'
+              room.status === 'Active' ? 'border-emerald-500/35' :
+              'border-[#282828] hover:border-emerald-500/25'
             }`}>
               <div className="mb-1.5">
                 <h3 className="text-base font-semibold text-neutral-200 mb-1">{room.title}</h3>
@@ -85,8 +85,8 @@ export default async function BeginnerPathPage(props: {
                   href={`/${lang}/rooms/${room.id}`}
                   className={`px-4 py-1.5 rounded-md text-sm font-medium transition-colors ${
                     room.status === 'Completed'
-                      ? 'bg-white/5 text-neutral-400 hover:bg-white/10'
-                      : 'bg-white/10 text-neutral-200 hover:bg-white/15'
+                      ? 'bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/15 border border-emerald-500/25'
+                      : 'bg-emerald-300 text-emerald-950 hover:bg-emerald-200'
                   }`}
                 >
                   {room.status === 'Completed' ? (lang === 'ru' ? 'Повторить' : 'Review') : (lang === 'ru' ? 'Начать' : 'Start')}

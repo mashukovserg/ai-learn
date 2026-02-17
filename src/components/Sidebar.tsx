@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { Home, BookOpen, Layout, Terminal, Trophy, Settings, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 
 export default function Sidebar({
   lang,
@@ -12,6 +13,8 @@ export default function Sidebar({
   collapsed: boolean;
   onToggle: () => void;
 }) {
+  const pathname = usePathname();
+
   const menuItems = [
     { icon: Home, label: lang === 'ru' ? 'Панель управления' : 'Dashboard', href: `/${lang}` },
     { icon: BookOpen, label: lang === 'ru' ? 'Пути обучения' : 'Learning Paths', href: `/${lang}/paths` },
@@ -55,17 +58,26 @@ export default function Sidebar({
       </div>
 
       <nav className={`${collapsed ? 'px-2 py-2' : 'px-3 py-2'} flex-1`}>
-        {menuItems.map((item) => (
-          <Link
-            key={item.label}
-            href={item.href}
-            className={`flex items-center ${collapsed ? 'justify-center' : 'gap-3'} px-3 py-2 text-neutral-500 hover:text-neutral-200 hover:bg-white/5 rounded-md transition-colors mb-0.5 text-sm`}
-            title={item.label}
-          >
-            <item.icon size={18} />
-            {!collapsed && <span className="font-medium">{item.label}</span>}
-          </Link>
-        ))}
+        {menuItems.map((item) => {
+          const isExactDashboard = item.href === `/${lang}`;
+          const isActive = isExactDashboard ? pathname === item.href : pathname?.startsWith(`${item.href}/`) || pathname === item.href;
+
+          return (
+            <Link
+              key={item.label}
+              href={item.href}
+              className={`flex items-center ${collapsed ? 'justify-center' : 'gap-3'} px-3 py-2 rounded-md transition-colors mb-0.5 text-sm ${
+                isActive
+                  ? 'bg-emerald-500/10 text-emerald-300 border border-emerald-500/30'
+                  : 'text-neutral-500 hover:text-neutral-200 hover:bg-white/5 border border-transparent'
+              }`}
+              title={item.label}
+            >
+              <item.icon size={18} />
+              {!collapsed && <span className="font-medium">{item.label}</span>}
+            </Link>
+          );
+        })}
       </nav>
 
       <div className={`${collapsed ? 'p-2' : 'p-4'} border-t border-[#282828]`}>
