@@ -2,6 +2,7 @@
 
 import React, { useState, use } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ChevronRight, Info, BookOpen, HelpCircle, Globe, Cpu } from 'lucide-react';
 import { motion } from 'framer-motion';
 import TaskQuestion, { TaskType } from '@/components/TaskQuestion';
@@ -364,6 +365,17 @@ export default function RoomPage(props: { params: Promise<{ lang: string, id: st
           <span className="flex items-center gap-2">
              <Clock size={16} className="text-neutral-500" /> {lang === 'ru' ? '1 ч' : '1h'}
           </span>
+        </div>
+
+        <div className="mb-8 rounded-xl overflow-hidden border border-[#262626] bg-[#141414]">
+          <Image
+            src="/images/llm-landscape-network.png"
+            alt={lang === 'ru' ? 'Схема нейросети для комнаты Ландшафт LLM' : 'Neural network visual for the LLM Landscape room'}
+            width={1152}
+            height={768}
+            priority
+            className="w-full h-auto object-cover"
+          />
         </div>
 
         <div className="prose prose-invert max-w-none">
