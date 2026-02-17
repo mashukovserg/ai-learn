@@ -18,7 +18,7 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Skip all internal paths (_next, assets, etc)
-    '/((?!_next|api|favicon.ico).*)',
+    // Skip static files and internal paths so assets are not locale-redirected.
+    '/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)',
   ],
 }
