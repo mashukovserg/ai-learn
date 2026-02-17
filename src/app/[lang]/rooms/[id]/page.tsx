@@ -384,25 +384,21 @@ export default function RoomPage(props: { params: Promise<{ lang: string, id: st
             </h2>
             <p className="text-neutral-300 leading-relaxed mb-4">
               {lang === 'ru' 
-                ? 'В 2026 году ИИ корректнее рассматривать как слой цифровой инфраструктуры, а не как один класс продуктов. Производительность моделей важна, но итоговая ценность все чаще определяется доступом к вычислениям, стоимостью инференса (сколько стоит обработка запросов пользователя), качеством интеграции и регуляторными ограничениями.'
+                ? 'В 2026 году ИИ корректнее рассматривать как слой цифровой инфраструктуры, а не как один класс продуктов. В отличие от ноября 2022 года, когда вышел ChatGPT от OpenAI, сегодня на рынке доступно множество продуктов и моделей от крупнейших компаний - Claude от Anthropic, Gemini от Google, DeepSeek от одноимённой китайской лаборатории, Qwen от Alibaba, LLaMA от Meta, Mistral от европейского стартапа Mistral AI, Grok от xAI Илона Маска — и это лишь наиболее заметные имена. Модели различаются по архитектуре, размеру, лицензиям и специализации: одни оптимизированы под длинные рассуждения (reasoning), другие — под скорость и дешевизну, третьи — под работу с изображениями, видео и аудио одновременно. Рыночная структура стала полицентричной: разные модели доминируют в разных классах задач (код, long-context, мультимодальность, стоимость).'
                 : 'In 2026, AI is best analyzed as digital infrastructure rather than a single product category. Model capability still matters, but practical outcomes are increasingly determined by compute access, inference economics, integration quality, and regulatory constraints.'}
             </p>
             <p className="text-neutral-300 leading-relaxed mb-4">
               {lang === 'ru'
-                ? 'Курс model-agnostic: он не привязан к одной компании-разработчику (вендору). Важно познакомиться с разными моделями, чтобы понимать их преимущества и ограничения при решении конкретных задач, а не ориентироваться только на название бренда.'
+                ? 'Данный курс model-agnostic: он не привязан к одной компании-разработчику. Важно познакомиться с разными моделями, чтобы понимать их преимущества и ограничения при решении конкретных задач, а не ориентироваться только на название бренда.'
                 : 'This course is model-agnostic: it is not tied to one provider. It is important to explore different models to understand their strengths and limitations for specific tasks, rather than relying solely on brand names.'}
             </p>
-            {lang === 'ru' ? (
-              <p className="text-neutral-300 leading-relaxed">
-                Рыночная структура стала полицентричной: разные модели доминируют в разных классах задач (код, long-context, мультимодальность, стоимость). Поэтому ключевая компетенция сегодня — системная оценка качества, рисков, стоимости и операционной устойчивости.
-              </p>
-            ) : (
+            {lang !== 'ru' ? (
               <div className="text-neutral-300 leading-relaxed">
                 <p>
                   The market is now structurally multi-vendor: different models lead in different workload classes (coding, long-context reasoning, multimodal processing, cost efficiency). The core skill is rigorous evaluation of quality, risk, cost, and operational resilience.
                 </p>
               </div>
-            )}
+            ) : null}
             <p className="text-neutral-400 text-sm italic mt-6 border-t border-[#262626] pt-4">
               {lang === 'ru'
                 ? 'Но прежде чем мы перейдем к карте этого ландшафта, нам нужно договориться о терминах: что именно мы имеем в виду, когда говорим «модель ИИ»?'
