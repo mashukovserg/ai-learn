@@ -4,10 +4,14 @@ import React, { useState, use } from 'react';
 import { ChevronRight, Info, BookOpen, HelpCircle, Cpu, Thermometer } from 'lucide-react';
 import { motion } from 'framer-motion';
 import TaskQuestion, { TaskType } from '@/components/TaskQuestion';
+import TaskSorting from '@/components/TaskSorting';
+import { useProgress } from '@/hooks/useProgress';
 
 export default function LlmMechanicsPage(props: { params: Promise<{ lang: string }> }) {
   const params = use(props.params);
   const lang = params.lang;
+
+  const { completedIds, markCompleted: persistCompleted } = useProgress('llm-mechanics');
 
   const [tasks, setTasks] = useState([
     {
@@ -18,29 +22,26 @@ export default function LlmMechanicsPage(props: { params: Promise<{ lang: string
         : 'What is the process of splitting text into fragments (subwords) called?',
       answer: lang === 'ru' ? 'Токенизация' : 'Tokenization',
       hint: lang === 'ru' ? 'Слово связано с "токенами".' : 'The word is related to "tokens".',
+      explanation: lang === 'ru' 
+        ? 'Верно! Токенизация — это первый шаг, где сырой текст превращается в числа, понятные модели.'
+        : 'Correct! Tokenization is the first step where raw text is converted into numbers the model can understand.',
       completed: false,
     },
     {
       id: 2,
-      type: 'multiple-choice' as TaskType,
+      type: 'sorting' as TaskType,
       question: lang === 'ru'
-        ? 'Что происходит ПОСЛЕ того, как модель выбирает следующий токен?'
-        : 'What happens AFTER the model selects the next token?',
-      options: lang === 'ru'
-        ? [
-            'Токен добавляется к последовательности, и процесс повторяется',
-            'Модель планирует всё предложение заранее',
-            'Модель останавливается и проверяет грамматику',
-          ]
-        : [
-            'The token is appended to the sequence and the process repeats',
-            'The model plans the entire sentence in advance',
-            'The model stops and checks grammar',
-          ],
-      answer: lang === 'ru'
-        ? 'Токен добавляется к последовательности, и процесс повторяется'
-        : 'The token is appended to the sequence and the process repeats',
-      hint: lang === 'ru' ? 'LLM генерируют текст по одному токену.' : 'LLMs generate text one token at a time.',
+        ? 'Упорядочите шаги цикла генерации токена.'
+        : 'Sort the steps of the token generation loop.',
+      initialItems: lang === 'ru' 
+        ? ['Выбор токена', 'Токенизация ввода', 'Расчет вероятностей', 'Добавление в контекст']
+        : ['Select token', 'Tokenize input', 'Compute probabilities', 'Append to context'],
+      correctOrder: lang === 'ru'
+        ? ['Токенизация ввода', 'Расчет вероятностей', 'Выбор токена', 'Добавление в контекст']
+        : ['Tokenize input', 'Compute probabilities', 'Select token', 'Append to context'],
+      explanation: lang === 'ru'
+        ? 'Правильно! Сначала мы превращаем текст в числа, затем модель предсказывает вероятности, мы выбираем лучший вариант и возвращаем его обратно в модель.'
+        : 'Correct! First we turn text into numbers, then the model predicts probabilities, we select the best option, and feed it back into the model.',
       completed: false,
     },
     {
@@ -52,6 +53,9 @@ export default function LlmMechanicsPage(props: { params: Promise<{ lang: string
       options: ['GPT-3.5', 'GPT-4 Turbo', 'Claude 3.5 Sonnet', 'Gemini 1.5 Pro'],
       answer: ['GPT-4 Turbo', 'Claude 3.5 Sonnet', 'Gemini 1.5 Pro'],
       hint: lang === 'ru' ? 'GPT-3.5 имеет всего 4K токенов.' : 'GPT-3.5 only has 4K tokens.',
+      explanation: lang === 'ru'
+        ? 'Правильно. Современные модели соревнуются в размере контекста: от 128K у GPT-4 Turbo до миллионов у Gemini.'
+        : 'Correct. Modern models compete in context size: from 128K in GPT-4 Turbo to millions in Gemini.',
       completed: false,
     },
     {
@@ -65,12 +69,16 @@ export default function LlmMechanicsPage(props: { params: Promise<{ lang: string
         : ['Temperature = 0', 'Temperature = 0.7', 'Temperature = 1'],
       answer: 'Temperature = 0',
       hint: lang === 'ru' ? 'Чем ниже, тем детерминированнее.' : 'The lower, the more deterministic.',
+      explanation: lang === 'ru'
+        ? 'Верно! При T=0 модель всегда выбирает наиболее вероятный токен, что делает код стабильным и уменьшает ошибки.'
+        : 'Correct! At T=0, the model always picks the most probable token, making code stable and reducing errors.',
       completed: false,
     },
   ]);
 
   const markCompleted = (id: number) => {
     setTasks(prev => prev.map(t => t.id === id ? { ...t, completed: true } : t));
+    persistCompleted(id);
   };
 
   return (
@@ -458,6 +466,17 @@ for lang, text in texts.items():
               </div>
             </div>
 
+            <div className="bg-[#1a1a1a] border border-[#262626] rounded-lg p-4 mb-6">
+              <h4 className="text-sm font-bold text-neutral-200 mb-2">
+                {lang === 'ru' ? 'Практика' : 'Practice'}
+              </h4>
+              <p className="text-sm text-neutral-300 leading-relaxed">
+                {lang === 'ru'
+                  ? 'Открой playground любой модели (ChatGPT, Claude, или локальную через Ollama). Задай один и тот же промпт с temperature=0 и temperature=1. Зафиксируй разницу.'
+                  : 'Open a playground for any model (ChatGPT, Claude, or a local one via Ollama). Run the same prompt with temperature=0 and temperature=1. Record the difference.'}
+              </p>
+            </div>
+
             <div className="border-l-4 border-red-500 bg-red-500/5 p-4 rounded-r-lg">
               <p className="text-sm text-red-200">
                 {lang === 'ru'
@@ -478,16 +497,31 @@ for lang, text in texts.items():
           </h3>
           <div className="space-y-2">
             {tasks.map((task) => (
-              <TaskQuestion
-                key={task.id}
-                id={task.id}
-                question={task.question}
-                correctAnswer={task.answer}
-                options={task.options}
-                hint={task.hint}
-                type={task.type}
-                onSuccess={markCompleted}
-              />
+              task.type === 'sorting' ? (
+                <TaskSorting
+                  key={task.id}
+                  id={task.id}
+                  question={task.question}
+                  initialItems={task.initialItems!}
+                  correctOrder={task.correctOrder!}
+                  explanation={task.explanation}
+                  onSuccess={markCompleted}
+                  initialCompleted={completedIds.has(task.id)}
+                />
+              ) : (
+                <TaskQuestion
+                  key={task.id}
+                  id={task.id}
+                  question={task.question}
+                  correctAnswer={(task as any).answer}
+                  options={(task as any).options}
+                  hint={task.hint}
+                  explanation={task.explanation}
+                  type={task.type}
+                  onSuccess={markCompleted}
+                  initialCompleted={completedIds.has(task.id)}
+                />
+              )
             ))}
           </div>
         </div>
@@ -498,14 +532,14 @@ for lang, text in texts.items():
               {lang === 'ru' ? 'Прогресс' : 'Progress'}
             </span>
             <span className="text-sm font-bold text-emerald-500">
-              {Math.round((tasks.filter(t => t.completed).length / tasks.length) * 100)}%
+              {Math.round((Math.max(tasks.filter(t => t.completed).length, completedIds.size) / tasks.length) * 100)}%
             </span>
           </div>
           <div className="h-1.5 bg-[#0a0a0a] rounded-full overflow-hidden border border-[#262626]">
             <motion.div
               className="h-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"
               initial={{ width: 0 }}
-              animate={{ width: `${(tasks.filter(t => t.completed).length / tasks.length) * 100}%` }}
+              animate={{ width: `${(Math.max(tasks.filter(t => t.completed).length, completedIds.size) / tasks.length) * 100}%` }}
             />
           </div>
         </div>
