@@ -138,6 +138,11 @@ export default function LlmMechanicsPage(props: { params: Promise<{ lang: string
                 ? 'LLM не читают текст так, как это делаем мы. Вместо этого они разбивают входной текст на маленькие фрагменты — токены. Токен может быть словом, частью слова или даже одним символом.'
                 : 'LLMs don\'t read text the way we do. Instead, they break the input text into small fragments — tokens. A token can be a word, part of a word, or even a single character.'}
             </p>
+            <p className="text-neutral-300 leading-relaxed mb-4">
+              {lang === 'ru'
+                ? 'Современные модели всё чаще мультимодальные: обучаются не только на текстах, но и на изображениях, аудио, видео, коде. GPT-4, Gemini, Claude — все работают с несколькими модальностями. Называть их чисто «текстовыми» — это упрощение, которое было актуально для GPT-2/3, но не для текущего поколения.'
+                : 'Modern models are increasingly multimodal: they are trained not only on text, but also on images, audio, video, and code. GPT-4, Gemini, and Claude all work across multiple modalities. Calling them purely "text models" is an oversimplification that fit GPT-2/3 better than the current generation.'}
+            </p>
 
             {/* Visual tokenization demo */}
             <div className="bg-[#0a0a0a] border border-[#262626] rounded-lg p-4 mb-4">
