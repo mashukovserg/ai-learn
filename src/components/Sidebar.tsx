@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import { Home, BookOpen, Layout, Terminal, Trophy, Settings, PanelLeftClose, PanelLeftOpen, BarChart, LogIn, LogOut, FlaskConical } from 'lucide-react';
+import { Home, BookOpen, Layout, Terminal, Settings, PanelLeftClose, PanelLeftOpen, BarChart, LogIn, LogOut, FlaskConical } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 
@@ -27,8 +27,6 @@ export default function Sidebar({
     { icon: Layout, label: lang === 'ru' ? 'Все комнаты' : 'All Rooms', href: `/${lang}/rooms` },
     { icon: BarChart, label: lang === 'ru' ? 'Матрица навыков' : 'Skills Matrix', href: `/${lang}/skills` },
     { icon: FlaskConical, label: lang === 'ru' ? 'Лаборатории' : 'Labs', href: `/${lang}/labs` },
-    { icon: Terminal, label: lang === 'ru' ? 'Соревнования' : 'Compete', href: `/${lang}/compete` },
-    { icon: Trophy, label: lang === 'ru' ? 'Таблица лидеров' : 'Leaderboard', href: `/${lang}/leaderboard` },
     { icon: Settings, label: lang === 'ru' ? 'Настройки' : 'Settings', href: `/${lang}/settings` },
   ];
 
