@@ -121,7 +121,7 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     difficulty: 'Beginner',
     time: { ru: '20 мин', en: '20m' },
     category: { ru: 'Основы', en: 'Foundations' },
-    image: '/images/ai-history.png',
+    image: '/images/ai-history-room.png',
     pathIds: ['beginner', 'ideas-history'],
     icon: 'Terminal',
   },
