@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Term from '@/components/Term';
-import { Info, Thermometer, Zap, Layers, BrainCircuit } from 'lucide-react';
+import { Info, Thermometer, Zap, Layers, BrainCircuit, FlaskConical } from 'lucide-react';
 
 export default function LlmMechanicsTheory({ lang }: { lang: string }) {
   return (
@@ -269,6 +269,76 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
           <li>{lang === 'ru' ? 'Проверь длину контекста и риск "Lost in the Middle".' : 'Check context length and Lost-in-the-Middle risk.'}</li>
           <li>{lang === 'ru' ? 'Для high-stakes ответов добавь валидацию и источники.' : 'For high-stakes outputs, add validation and sources.'}</li>
         </ol>
+      </div>
+
+      {/* Chapter 7: Lab — compare models */}
+      <div className="bg-[#141414] border border-emerald-500/20 rounded-xl p-8 mb-8">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="p-2 rounded-lg bg-emerald-500/10">
+            <FlaskConical size={22} className="text-emerald-400" />
+          </div>
+          <h2 className="text-3xl font-bold text-emerald-400">
+            {lang === 'ru' ? 'Глава 7: Лаборатория' : 'Chapter 7: Lab'}
+          </h2>
+        </div>
+
+        <p className="text-neutral-300 leading-relaxed mb-5">
+          {lang === 'ru'
+            ? 'Вся теория выше описывает, как модель генерирует текст: токены, вероятности, температура, размер контекста. Теперь пришло время увидеть это своими глазами. Ниже — встроенный инструмент сравнения моделей. Используйте его для выполнения финального задания.'
+            : 'All the theory above describes how a model generates text: tokens, probabilities, temperature, context size. Now it is time to see it with your own eyes. Below is an embedded model comparison tool. Use it for the final task.'}
+        </p>
+
+        <div className="bg-[#0f0f0f] border border-[#262626] rounded-xl p-5 mb-5">
+          <h3 className="text-sm font-semibold text-neutral-200 mb-3">
+            {lang === 'ru' ? 'Инструкция к эксперименту' : 'Experiment instructions'}
+          </h3>
+          <ol className="space-y-2 text-sm text-neutral-400 list-decimal pl-5">
+            <li>{lang === 'ru'
+              ? 'Откройте Prompt Lab по ссылке ниже.'
+              : 'Open the Prompt Lab using the link below.'}</li>
+            <li>{lang === 'ru'
+              ? 'Выберите модель A — Llama 3.3 70B, модель B — Llama 4 Scout 17B.'
+              : 'Select model A — Llama 3.3 70B, model B — Llama 4 Scout 17B.'}</li>
+            <li>{lang === 'ru'
+              ? 'Введите незавершённую фразу «американцы это» (или «americans are» для EN). Не добавляйте системный промпт.'
+              : 'Enter the incomplete phrase "americans are" (or "американцы это" for RU). Do not add a system prompt.'}</li>
+            <li>{lang === 'ru'
+              ? 'Нажмите «Сравнить» и изучите: текст ответов, количество токенов (вход/выход), латентность.'
+              : 'Hit "Compare" and study: response text, token counts (in/out), latency.'}</li>
+            <li>{lang === 'ru'
+              ? 'Обратите внимание: одна модель даёт развёрнутый ответ, другая — компактный. Почему?'
+              : 'Notice: one model gives a verbose answer, the other — a concise one. Why?'}</li>
+          </ol>
+        </div>
+
+        <Link
+          href={`/${lang}/labs/prompt-compare`}
+          target="_blank"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/25 hover:bg-emerald-500/25 hover:border-emerald-500/40 transition-colors"
+        >
+          <FlaskConical size={16} />
+          {lang === 'ru' ? 'Открыть Prompt Lab' : 'Open Prompt Lab'}
+        </Link>
+
+        <div className="mt-6 p-4 bg-[#0f0f0f] rounded-lg border border-[#262626]">
+          <h3 className="text-sm font-semibold text-neutral-200 mb-3">
+            {lang === 'ru' ? 'На что обратить внимание' : 'What to look for'}
+          </h3>
+          <ul className="space-y-2 text-sm text-neutral-400">
+            <li>{lang === 'ru'
+              ? '→ Токены и латентность: во сколько раз отличается объём выхода и скорость между моделями?'
+              : '→ Tokens and latency: how much do output volume and speed differ between models?'}</li>
+            <li>{lang === 'ru'
+              ? '→ Стиль: большая модель структурирует ответ списками и подпунктами, маленькая — отвечает коротко. Это не значит, что она "хуже".'
+              : '→ Style: the large model structures the response with lists and subpoints, the small one answers briefly. This does not mean it is "worse."'}</li>
+            <li>{lang === 'ru'
+              ? '→ Механизм: ни один ответ не содержит ссылок на источники. Модель не ищет информацию — она генерирует наиболее вероятное продолжение.'
+              : '→ Mechanism: neither response contains source references. The model does not search for information — it generates the most probable continuation.'}</li>
+            <li>{lang === 'ru'
+              ? '→ Открытый промпт усиливает расхождение: чем меньше контекста, тем сильнее проявляется дефолтный стиль каждой модели.'
+              : '→ An open prompt amplifies divergence: the less context, the more each model\'s default style shows through.'}</li>
+          </ul>
+        </div>
       </div>
     </>
   );

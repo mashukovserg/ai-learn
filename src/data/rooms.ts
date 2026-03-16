@@ -948,6 +948,79 @@ export const ROOM_TASKS: Record<string, LocalizedTask[]> = {
           }
         ]
       }
+    },
+    {
+      id: 9,
+      type: 'scenario',
+      question: {
+        ru: 'Лаборатория: сравнение моделей на открытом промпте',
+        en: 'Lab: comparing models on an open-ended prompt'
+      },
+      answer: '',
+      explanation: {
+        ru: 'Чем меньше контекста в запросе, тем сильнее проявляется дефолтный стиль конкретной модели. Чёткий промпт сближает ответы разных моделей, размытый — разводит. Маленькая модель не "хуже" — она кодирует менее детализированную карту связей между токенами, поэтому отвечает компактнее.',
+        en: 'The less context in the prompt, the more each model\'s default style shows through. A precise prompt makes different models converge; a vague one makes them diverge. A smaller model is not "worse" — it encodes a less detailed map of token relationships, so it responds more concisely.'
+      },
+      scenario: {
+        brief: {
+          ru: 'Откройте Prompt Lab (Лаборатории → Сравнение промптов). Введите незавершённую фразу «американцы это» без системного промпта. Выберите модель A — Llama 3.3 70B, модель B — Llama 4 Scout 17B. Нажмите «Сравнить» и изучите результаты: текст ответов, количество токенов и латентность. Теперь выберите стратегию для продакшна.',
+          en: 'Open the Prompt Lab (Labs → Prompt Compare). Enter the incomplete phrase "americans are" with no system prompt. Pick model A — Llama 3.3 70B, model B — Llama 4 Scout 17B. Hit "Compare" and study the results: response text, token counts, and latency. Now choose a production strategy.'
+        },
+        constraints: [
+          { ru: 'Вы платите $0.05 за 1K выходных токенов', en: 'You pay $0.05 per 1K output tokens' },
+          { ru: 'SLA требует ответ за < 2 секунды', en: 'SLA requires response in < 2 seconds' },
+          { ru: 'Задача — классифицировать входящие сообщения в чате поддержки (короткие ответы)', en: 'Task — classify incoming support chat messages (short answers needed)' }
+        ],
+        choices: [
+          {
+            text: { ru: 'Всегда использовать большую модель (70B) — она умнее и даёт более полные ответы', en: 'Always use the larger model (70B) — it is smarter and gives more complete answers' },
+            outcome: { ru: 'Для классификации развёрнутый ответ не нужен. Вы переплачиваете за токены и рискуете не вписаться в SLA по латентности. "Больше" не значит "лучше" для каждой задачи.', en: 'Classification does not need verbose responses. You overpay for tokens and risk missing the latency SLA. "Bigger" does not mean "better" for every task.' },
+            score: 20,
+            tags: ['cost', 'latency']
+          },
+          {
+            text: { ru: 'Всегда использовать маленькую модель (17B) — она дешевле и быстрее', en: 'Always use the smaller model (17B) — it is cheaper and faster' },
+            outcome: { ru: 'Для простой классификации это разумно, но "всегда" — опасное слово. Есть задачи (суммаризация, анализ), где маленькая модель упустит нюансы. Стратегия должна зависеть от задачи.', en: 'For simple classification this is reasonable, but "always" is a dangerous word. There are tasks (summarization, analysis) where the small model will miss nuances. Strategy should depend on the task.' },
+            score: 55,
+            tags: ['cost', 'quality']
+          },
+          {
+            text: { ru: 'Разделить: маленькая модель для классификации и коротких ответов, большая — для сложных задач с анализом', en: 'Split: small model for classification and short answers, large model for complex analytical tasks' },
+            outcome: { ru: 'Верная стратегия. Вы видели в эксперименте, что модели по-разному реагируют на один промпт. Маленькая модель экономит токены и время на простых задачах. Большая нужна там, где важна глубина и структура. Это называется model routing.', en: 'Correct strategy. You saw in the experiment that models react differently to the same prompt. The small model saves tokens and time on simple tasks. The large one is needed where depth and structure matter. This is called model routing.' },
+            score: 95,
+            tags: ['cost', 'quality', 'latency']
+          },
+          {
+            text: { ru: 'Не важно какую модель выбрать — они дают одинаковые ответы на одинаковый промпт', en: 'It does not matter which model to choose — they give identical answers to the same prompt' },
+            outcome: { ru: 'Вы только что видели в эксперименте, что это не так. Одинаковый промпт порождает разные ответы у моделей разного размера — по объёму, стилю и скорости. Модель не копирует шаблон, а генерирует продолжение на основе своих весов.', en: 'You just saw in the experiment that this is not true. The same prompt produces different responses from different-sized models — in length, style, and speed. The model does not copy a template; it generates a continuation based on its weights.' },
+            score: 5,
+            tags: ['quality']
+          }
+        ],
+        passingScore: 60
+      }
+    },
+    {
+      id: 10,
+      type: 'multiple-choice',
+      question: {
+        ru: 'Вы ввели незавершённую фразу в LLM и получили развёрнутый текст без ссылок на источники. Что на самом деле сделала модель?',
+        en: 'You entered an incomplete phrase into an LLM and received a detailed text with no source references. What did the model actually do?'
+      },
+      options: [
+        { ru: 'Нашла релевантную статью в своей базе данных и процитировала её', en: 'Found a relevant article in its database and quoted it' },
+        { ru: 'Сгенерировала наиболее вероятное продолжение на основе паттернов, усвоенных при обучении', en: 'Generated the most probable continuation based on patterns learned during training' },
+        { ru: 'Отправила запрос в поисковую систему и пересказала результат', en: 'Sent a query to a search engine and paraphrased the result' },
+        { ru: 'Скопировала ответ из обучающего набора данных', en: 'Copied the answer from the training dataset' }
+      ],
+      answer: {
+        ru: 'Сгенерировала наиболее вероятное продолжение на основе паттернов, усвоенных при обучении',
+        en: 'Generated the most probable continuation based on patterns learned during training'
+      },
+      explanation: {
+        ru: 'Модель — это функция продолжения, а не база данных и не поисковик. Она не хранит статьи и не ищет информацию. Незаконченная фраза — это просто последовательность токенов, для которой модель вычисляет наиболее вероятное продолжение на основе весов, усвоенных при обучении на больших текстовых корпусах.',
+        en: 'A model is a continuation function, not a database or a search engine. It does not store articles or look up information. An incomplete phrase is just a token sequence for which the model computes the most probable continuation based on weights learned from large text corpora during training.'
+      }
     }
   ],
     'ai-history': [
