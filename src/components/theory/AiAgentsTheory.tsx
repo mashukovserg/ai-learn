@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Cpu, Zap, Search, Code, ShieldAlert, Users, Terminal, Database, Target, Eye, Lock, Repeat, Lightbulb } from 'lucide-react';
+import { Cpu, Zap, Search, Code, ShieldAlert, Users, Terminal, Database, Target, Eye, Lock, Repeat, Lightbulb, Share2 } from 'lucide-react';
 
 export default function AiAgentsTheory({ lang }: { lang: string }) {
   return (
