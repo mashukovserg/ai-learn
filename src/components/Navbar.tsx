@@ -3,9 +3,11 @@
 import { Search, Zap } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function Navbar({ lang }: { lang: string }) {
   const pathname = usePathname();
+  const { user } = useAuth();
 
   const redirectedPathname = (locale: string) => {
     if (!pathname) return `/${locale}`;
@@ -44,12 +46,12 @@ export default function Navbar({ lang }: { lang: string }) {
 
         <div className="flex items-center gap-1.5 text-neutral-400 text-sm">
           <Zap size={14} />
-          <span className="font-medium">450 {lang === 'ru' ? 'очков' : 'pts'}</span>
+          <span className="font-medium">{user?.points ?? 0} {lang === 'ru' ? 'очков' : 'pts'}</span>
         </div>
 
         <div className="flex flex-col items-end">
           <span className="text-xs text-neutral-600">{lang === 'ru' ? 'Серия' : 'Streak'}</span>
-          <span className="text-sm font-medium text-neutral-400">5 {lang === 'ru' ? 'дн.' : 'days'}</span>
+          <span className="text-sm font-medium text-neutral-400">{user?.streak_days ?? 0} {lang === 'ru' ? 'дн.' : 'days'}</span>
         </div>
       </div>
     </header>

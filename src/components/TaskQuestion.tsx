@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Check, ShieldQuestion, ListChecks } from 'lucide-react';
 
-export type TaskType = 'input' | 'multiple-choice' | 'multiple-select' | 'sorting';
+export type TaskType = 'input' | 'multiple-choice' | 'multiple-select' | 'sorting' | 'categorize' | 'timeline' | 'scenario';
 
 interface TaskQuestionProps {
   id: number;

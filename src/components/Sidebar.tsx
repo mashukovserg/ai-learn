@@ -1,8 +1,9 @@
 "use client";
 
 import Link from 'next/link';
-import { Home, BookOpen, Layout, Terminal, Trophy, Settings, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
+import { Home, BookOpen, Layout, Terminal, Trophy, Settings, PanelLeftClose, PanelLeftOpen, BarChart, LogIn, LogOut, FlaskConical } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function Sidebar({
   lang,
@@ -14,11 +15,18 @@ export default function Sidebar({
   onToggle: () => void;
 }) {
   const pathname = usePathname();
+  const { user, isAuthenticated, logout } = useAuth();
+
+  const initials = user?.login ? user.login.slice(0, 2).toUpperCase() : '??';
+  const displayName = user?.login ?? (lang === 'ru' ? 'Гость' : 'Guest');
+  const level = Math.floor((user?.points ?? 0) / 100) + 1;
 
   const menuItems = [
     { icon: Home, label: lang === 'ru' ? 'Панель управления' : 'Dashboard', href: `/${lang}` },
     { icon: BookOpen, label: lang === 'ru' ? 'Пути обучения' : 'Learning Paths', href: `/${lang}/paths` },
     { icon: Layout, label: lang === 'ru' ? 'Все комнаты' : 'All Rooms', href: `/${lang}/rooms` },
+    { icon: BarChart, label: lang === 'ru' ? 'Матрица навыков' : 'Skills Matrix', href: `/${lang}/skills` },
+    { icon: FlaskConical, label: lang === 'ru' ? 'Лаборатории' : 'Labs', href: `/${lang}/labs` },
     { icon: Terminal, label: lang === 'ru' ? 'Соревнования' : 'Compete', href: `/${lang}/compete` },
     { icon: Trophy, label: lang === 'ru' ? 'Таблица лидеров' : 'Leaderboard', href: `/${lang}/leaderboard` },
     { icon: Settings, label: lang === 'ru' ? 'Настройки' : 'Settings', href: `/${lang}/settings` },
@@ -81,17 +89,37 @@ export default function Sidebar({
       </nav>
 
       <div className={`${collapsed ? 'p-2' : 'p-4'} border-t border-[#282828]`}>
-        <div className={`flex items-center ${collapsed ? 'justify-center' : 'gap-3'} px-2`}>
-          <div className="w-8 h-8 rounded-full bg-[#282828] flex items-center justify-center text-neutral-400 text-xs font-medium">
-            SM
-          </div>
-          {!collapsed && (
-            <div>
-              <p className="text-sm font-medium text-neutral-300">Satoshi</p>
-              <p className="text-xs text-neutral-600">{lang === 'ru' ? 'Ур. 1' : 'Lvl 1'}</p>
+        {isAuthenticated ? (
+          <div className={`flex items-center ${collapsed ? 'justify-center' : 'gap-3'} px-2`}>
+            <div className="w-8 h-8 rounded-full bg-[#282828] flex items-center justify-center text-neutral-400 text-xs font-medium">
+              {initials}
             </div>
-          )}
-        </div>
+            {!collapsed && (
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-neutral-300 truncate">{displayName}</p>
+                <p className="text-xs text-neutral-600">{lang === 'ru' ? `Ур. ${level}` : `Lvl ${level}`}</p>
+              </div>
+            )}
+            {!collapsed && (
+              <button
+                type="button"
+                onClick={() => logout()}
+                className="p-1.5 rounded-md text-neutral-500 hover:text-neutral-200 hover:bg-white/5 transition-colors"
+                title={lang === 'ru' ? 'Выйти' : 'Logout'}
+              >
+                <LogOut size={14} />
+              </button>
+            )}
+          </div>
+        ) : (
+          <Link
+            href={`/${lang}/login`}
+            className={`flex items-center ${collapsed ? 'justify-center' : 'gap-3'} px-3 py-2 rounded-md text-sm text-neutral-500 hover:text-neutral-200 hover:bg-white/5 transition-colors`}
+          >
+            <LogIn size={18} />
+            {!collapsed && <span className="font-medium">{lang === 'ru' ? 'Войти' : 'Sign in'}</span>}
+          </Link>
+        )}
       </div>
     </aside>
   );

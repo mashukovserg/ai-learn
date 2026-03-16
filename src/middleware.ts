@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-let locales = ['en', 'ru']
+const locales = ['en', 'ru']
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
@@ -11,8 +11,11 @@ export function middleware(request: NextRequest) {
 
   if (pathnameHasLocale) return
 
+  const preferredLanguage = request.cookies.get('preferred-language')?.value
+  const locale = locales.includes(preferredLanguage ?? '') ? preferredLanguage : 'ru'
+
   // Redirect if there is no locale
-  request.nextUrl.pathname = `/ru${pathname}`
+  request.nextUrl.pathname = pathname === '/' ? `/${locale}` : `/${locale}${pathname}`
   return NextResponse.redirect(request.nextUrl)
 }
 
