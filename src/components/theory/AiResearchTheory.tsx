@@ -1,14 +1,14 @@
+"use client";
+
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Search, BookOpen, Cpu, Workflow, Layers, Zap, Info, Share2, Target, Eye, Microscope, FileText, BarChart3, ShieldCheck, Scale, History, ShieldAlert, Database, FileDigit } from 'lucide-react';
-import Term from '@/components/Term';
+import { Search, Workflow, Layers, Zap, Target, Microscope, FileText, BarChart3, ShieldCheck, Scale, History, ShieldAlert, Database, FileDigit } from 'lucide-react';
 
 export default function AiResearchTheory({ lang }: { lang: string }) {
   return (
     <div className="space-y-12">
       {/* Introduction */}
       <section>
-        <div className="bg-[#141414] border border-[#262626] rounded-xl p-8">
+        <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
             <Microscope className="text-emerald-500" />
             {lang === 'ru' ? 'Глава 1: Исследовательский тупик — Проблема объемов' : 'Chapter 1: The Research Bottleneck — The Volume Problem'}
@@ -29,7 +29,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
                 ? 'Использование ИИ в исследованиях — это не просто быстрый "гугл". Это переход от линейного чтения к параллельному активному синтезу. Мы превращаем языковую модель из пассивного читателя в проактивного "навигатора", который строит сложные цепочки рассуждений, ищет неочевидные связи между работами из разных областей знаний и формулирует новые гипотезы на основе гигантских объемов данных.'
                 : 'Using AI in research is not just a fast "Google." It is a transition from linear reading to parallel active synthesis. We are transforming the language model from a passive reader into a proactive "navigator" that builds complex reasoning chains, finds non-obvious connections between works from different fields of knowledge, and formulates new hypotheses based on gigantic datasets.'}
             </p>
-            <div className="bg-[#1a1a1a] border border-[#303030] rounded-xl p-6 my-6">
+            <div className="bg-card border border-border-emphasis rounded-xl p-6 my-6">
                <h4 className="text-emerald-400 font-bold mb-2 flex items-center gap-2"><History size={18} /> {lang === 'ru' ? 'Эволюция ИИ в науке:' : 'Evolution of AI in Science:'}</h4>
                <p className="text-neutral-400 leading-relaxed">
                  {lang === 'ru'
@@ -43,7 +43,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
 
       {/* Chapter 2: Automated Literature Search */}
       <section>
-        <div className="bg-[#141414] border border-[#262626] rounded-xl p-8">
+        <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
             <Search className="text-emerald-500" />
             {lang === 'ru' ? 'Глава 2: Автономный поиск и протокол PRISMA' : 'Chapter 2: Automated Search and the PRISMA Protocol'}
@@ -55,7 +55,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
                 : 'A researcher agent shouldn\'t just "Google" the first phrase that comes to mind. High-quality search must be systematic, reproducible, and transparent. In academia, the gold standard for systematic reviews is the PRISMA protocol (Preferred Reporting Items for Systematic Reviews and Meta-Analyses). Modern AI agents are programmed to mimic this strict human protocol.'}
             </p>
             <div className="space-y-4">
-              <div className="p-6 rounded-xl border border-[#262626] bg-[#1a1a1a]">
+              <div className="p-6 rounded-xl border border-border-card bg-card">
                 <h4 className="text-emerald-400 font-bold mb-2 flex items-center gap-2"><Target size={16} /> Multi-step Query Expansion (Многошаговое расширение запроса)</h4>
                 <p className="text-neutral-400 leading-relaxed">
                   {lang === 'ru' 
@@ -63,7 +63,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
                     : 'The agent takes your baseline idea (e.g., "type 2 diabetes treatment") and programmatically expands it into 20-30 search query variations. It uses specialized ontologies (like MeSH in medicine) to account for all possible synonyms, abbreviations, and related terms. It then sends these queries via API to arXiv or PubMed, downloads metadata for thousands of papers, and applies initial filters (e.g., discarding works older than 5 years or un-peer-reviewed papers).'}
                 </p>
               </div>
-              <div className="p-6 rounded-xl border border-[#262626] bg-[#1a1a1a]">
+              <div className="p-6 rounded-xl border border-border-card bg-card">
                 <h4 className="text-blue-400 font-bold mb-2 flex items-center gap-2"><Layers size={16} /> Semantic Reranking (Семантическое переранжирование)</h4>
                 <p className="text-neutral-400 leading-relaxed">
                   {lang === 'ru' 
@@ -78,7 +78,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
 
       {/* Chapter 3: Recursive Summarization — Synthesizing Giants */}
       <section>
-        <div className="bg-[#141414] border border-[#262626] rounded-xl p-8">
+        <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
             <Workflow className="text-emerald-500" />
             {lang === 'ru' ? 'Глава 3: Рекурсивный синтез — Как сжать библиотеку' : 'Chapter 3: Recursive Synthesis — Compressing a Library'}
@@ -90,7 +90,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
                 : 'The main "bottleneck" of any LLM is the context window limit. Even with a 1-million-token window, you cannot simply "shove" the text of 100 complex scientific papers into a single prompt and ask the model to write a review. The model will get "lost" in the details, forget the beginning, and generate a superficial answer. The architectural solution to this problem is the "Snowball" algorithm (Recursive Summarization).'}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
-              <div className="bg-black/40 p-6 rounded-xl border border-[#262626] relative overflow-hidden">
+              <div className="bg-black/40 p-6 rounded-xl border border-border-card relative overflow-hidden">
                  <h4 className="font-bold text-emerald-500 mb-3 flex items-center gap-2"><FileDigit size={16}/> {lang === 'ru' ? 'Шаг 1: Атомарное сжатие' : 'Step 1: Atomic Compression'}</h4>
                  <p className="text-neutral-400 leading-relaxed">
                    {lang === 'ru'
@@ -98,7 +98,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
                      : 'Each paper from the top 50 is processed in isolation. The LLM extracts only the most important parts from a 20-page PDF: hypothesis, sample size, methodology, numerical results, and conclusions. We remove all the "fluff," introductions, and references. A huge paper turns into a dense, 300-word JSON object.'}
                  </p>
               </div>
-              <div className="bg-black/40 p-6 rounded-xl border border-[#262626] relative overflow-hidden">
+              <div className="bg-black/40 p-6 rounded-xl border border-border-card relative overflow-hidden">
                  <h4 className="font-bold text-blue-500 mb-3 flex items-center gap-2"><Database size={16}/> {lang === 'ru' ? 'Шаг 2: Тематическая кластеризация' : 'Step 2: Thematic Clustering'}</h4>
                  <p className="text-neutral-400 leading-relaxed">
                    {lang === 'ru'
@@ -118,7 +118,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
 
       {/* Chapter 4: Code Interpreter for Data Analysis */}
       <section>
-        <div className="bg-[#141414] border border-[#262626] rounded-xl p-8">
+        <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
             <BarChart3 className="text-emerald-500" />
             {lang === 'ru' ? 'Глава 4: Проверка расчетов — ИИ как строгий лаборант' : 'Chapter 4: Verifying Calculations — AI as a Strict Lab Assistant'}
@@ -129,7 +129,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
                 ? 'Настоящее исследование — это работа с жесткими цифрами, а не только с текстом. К сожалению, даже в престижных рецензируемых журналах регулярно встречаются ошибки в расчетах, p-hacking или прямые манипуляции с данными. Языковые модели сами по себе плохи в математике, но если дать им инструмент Code Interpreter (возможность писать и выполнять код), они превращаются в беспощадных аудиторов.'
                 : 'Real research is about working with hard numbers, not just text. Unfortunately, even in prestigious peer-reviewed journals, calculation errors, p-hacking, or outright data manipulation regularly occur. Language models alone are bad at math, but if you give them a Code Interpreter tool (the ability to write and execute code), they become ruthless auditors.'}
             </p>
-            <div className="bg-[#1a1a1a] p-6 rounded-xl border border-[#262626] my-6">
+            <div className="bg-card p-6 rounded-xl border border-border-card my-6">
                <h4 className="font-bold text-emerald-400 mb-4 flex items-center gap-2">
                  <FileText className="text-emerald-500" size={18} />
                  {lang === 'ru' ? 'Сценарий автономного аудита данных:' : 'Autonomous Data Audit Scenario:'}
@@ -160,7 +160,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
 
       {/* Chapter 5: Citations and Citation Hallucinations */}
       <section>
-        <div className="bg-[#141414] border border-[#262626] rounded-xl p-8">
+        <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-red-400">
             <Zap className="text-red-500" />
             {lang === 'ru' ? 'Глава 5: Дисциплина цитирования — Борьба с призраками' : 'Chapter 5: Citation Discipline — Fighting Ghosts'}
@@ -195,7 +195,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
 
       {/* Chapter 6: Ethics and the Future of Authorship */}
       <section>
-        <div className="bg-[#141414] border border-[#262626] rounded-xl p-8">
+        <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
             <Scale className="text-emerald-500" />
             {lang === 'ru' ? 'Глава 6: Этика ИИ-соавторства' : 'Chapter 6: The Ethics of AI Co-authorship'}

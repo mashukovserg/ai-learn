@@ -63,7 +63,7 @@ export default function LoginPage() {
             value={email}
             onChange={e => setEmail(e.target.value)}
             required
-            className="w-full px-3 py-2 bg-[#171717] border border-[#282828] rounded-md text-sm text-neutral-300 placeholder:text-neutral-600 outline-none focus:border-emerald-500/50"
+            className="w-full px-3 py-2 bg-input border border-border-subtle rounded-md text-sm text-neutral-300 placeholder:text-neutral-600 outline-none focus:border-emerald-500/50"
           />
         )}
         <input
@@ -72,7 +72,7 @@ export default function LoginPage() {
           value={loginVal}
           onChange={e => setLoginVal(e.target.value)}
           required
-          className="w-full px-3 py-2 bg-[#171717] border border-[#282828] rounded-md text-sm text-neutral-300 placeholder:text-neutral-600 outline-none focus:border-emerald-500/50"
+          className="w-full px-3 py-2 bg-input border border-border-subtle rounded-md text-sm text-neutral-300 placeholder:text-neutral-600 outline-none focus:border-emerald-500/50"
         />
         <input
           type="password"
@@ -80,7 +80,7 @@ export default function LoginPage() {
           value={password}
           onChange={e => setPassword(e.target.value)}
           required
-          className="w-full px-3 py-2 bg-[#171717] border border-[#282828] rounded-md text-sm text-neutral-300 placeholder:text-neutral-600 outline-none focus:border-emerald-500/50"
+          className="w-full px-3 py-2 bg-input border border-border-subtle rounded-md text-sm text-neutral-300 placeholder:text-neutral-600 outline-none focus:border-emerald-500/50"
         />
 
         {error && (

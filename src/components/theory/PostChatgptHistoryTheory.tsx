@@ -1,11 +1,14 @@
+"use client";
+
 import React from 'react';
+import Term from '@/components/Term';
 
 export default function PostChatgptHistoryTheory({ lang }: { lang: string }) {
   return (
     <div className="space-y-12">
       {/* Introduction */}
       <section>
-        <div className="bg-[#141414] border border-[#262626] rounded-xl p-8">
+        <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-3xl font-bold mb-6 text-emerald-400">
             {lang === 'ru' ? 'Эпоха после ChatGPT: Гонка вооружений' : 'The Post-ChatGPT Era: An Arms Race'}
           </h2>
@@ -17,8 +20,8 @@ export default function PostChatgptHistoryTheory({ lang }: { lang: string }) {
             </p>
             <p className="text-neutral-300 leading-relaxed">
               {lang === 'ru'
-                ? 'В считанные месяцы гиганты индустрии (Google, Meta, Microsoft) объявили "Красный код" (Code Red), перестроив все свои стратегии вокруг генеративного ИИ. То, что мы наблюдаем с 2023 года по сегодняшний день, — это стремительная эволюция от простых чат-ботов к мыслящим системам и автономным агентам.'
-                : 'In a matter of months, industry giants (Google, Meta, Microsoft) declared a "Code Red," completely realigning their strategies around generative AI. What we have witnessed from 2023 to the present day is a rapid evolution from simple chatbots to reasoning systems and autonomous agents.'}
+                ? <>В считанные месяцы гиганты индустрии (Google, Meta, Microsoft) объявили &quot;<Term id="code-red" lang={lang}>Красный код</Term>&quot; (Code Red), перестроив все свои стратегии вокруг генеративного ИИ. То, что мы наблюдаем с 2023 года по сегодняшний день, - это стремительная эволюция от простых чат-ботов к мыслящим системам и автономным агентам.</>
+                : <>In a matter of months, industry giants (Google, Meta, Microsoft) declared a &quot;<Term id="code-red" lang={lang}>Code Red</Term>,&quot; completely realigning their strategies around generative AI. What we have witnessed from 2023 to the present day is a rapid evolution from simple chatbots to reasoning systems and autonomous agents.</>}
             </p>
           </div>
         </div>
@@ -26,42 +29,42 @@ export default function PostChatgptHistoryTheory({ lang }: { lang: string }) {
 
       {/* Chapter 1: Closed vs Open Source */}
       <section>
-        <div className="bg-[#141414] border border-[#262626] rounded-xl p-8">
+        <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-2xl font-bold mb-6 text-blue-400">
-            {lang === 'ru' ? 'Глава 1: Война парадигм — Закрытый vs Открытый ИИ' : 'Chapter 1: The Paradigm War — Closed vs Open AI'}
+            {lang === 'ru' ? 'Глава 1: Модели по доступу — API и открытые веса' : 'Chapter 1: Access Models - API and Open Weights'}
           </h2>
           <div className="prose prose-invert max-w-none">
             <p className="text-neutral-300 leading-relaxed mb-6">
               {lang === 'ru'
-                ? 'Первая половина 2023 года прошла под флагом закрытых моделей (Proprietary Models). GPT-4 от OpenAI и Claude от Anthropic доминировали, предлагая доступ только через API. Они утверждали, что это необходимо для безопасности.'
-                : 'The first half of 2023 was dominated by proprietary models. GPT-4 by OpenAI and Claude by Anthropic ruled the landscape, offering access only via API. They argued this was necessary for safety.'}
+                ? 'В первой половине 2023 года рынок в основном строился вокруг закрытых API-моделей. GPT-4 и Claude задавали уровень качества, а доступ к ним оставался централизованным через облачные интерфейсы провайдеров. Такой формат давал поставщикам контроль над безопасностью, политиками использования и скоростью обновлений.'
+                : 'In early 2023, the market was largely organized around closed API models. GPT-4 and Claude set the quality bar, while access remained centralized through provider-hosted endpoints. This model gave vendors strong control over safety policy, usage constraints, and release cadence.'}
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-              <div className="bg-[#1a1a1a] border border-[#262626] rounded-xl p-6">
+            <div className="space-y-4 mb-6">
+              <div className="bg-card border border-border-card rounded-xl p-6">
                 <h4 className="font-bold text-neutral-200 mb-3 text-lg">
                   {lang === 'ru' ? 'Закрытые модели (Frontier APIs)' : 'Closed Models (Frontier APIs)'}
                 </h4>
                 <ul className="text-neutral-400 space-y-2 list-disc list-inside">
-                  <li>{lang === 'ru' ? 'Огромные затраты на обучение ($100M+).' : 'Massive training costs ($100M+).'}</li>
-                  <li>{lang === 'ru' ? 'Максимальный уровень интеллекта (SOTA).' : 'State-of-the-art (SOTA) intelligence.'}</li>
-                  <li>{lang === 'ru' ? 'Полный контроль над цензурой и безопасностью.' : 'Full control over censorship and safety.'}</li>
+                  <li>{lang === 'ru' ? 'Крупные бюджеты на обучение и инфраструктуру.' : 'Large training and infrastructure budgets.'}</li>
+                  <li>{lang === 'ru' ? 'Сильные показатели на сложных бенчмарках в момент релиза.' : 'Strong benchmark performance at release time.'}</li>
+                  <li>{lang === 'ru' ? 'Централизованное управление модерацией, безопасностью и ценовой политикой.' : 'Centralized control over moderation, safety, and pricing policy.'}</li>
                 </ul>
               </div>
-              <div className="bg-[#1a1a1a] border border-blue-500/30 rounded-xl p-6 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
-                <h4 className="font-bold text-blue-400 mb-3 text-lg">
+              <div className="bg-card border border-border-card rounded-xl p-6">
+                <h4 className="font-bold text-neutral-200 mb-3 text-lg">
                   {lang === 'ru' ? 'Открытые веса (Open-Weight)' : 'Open-Weight Models'}
                 </h4>
                 <ul className="text-neutral-400 space-y-2 list-disc list-inside">
-                  <li>{lang === 'ru' ? 'Meta выпускает семейство LLaMA.' : 'Meta releases the LLaMA family.'}</li>
-                  <li>{lang === 'ru' ? 'Появление Mistral (Европа).' : 'The rise of Mistral (Europe).'}</li>
-                  <li>{lang === 'ru' ? 'Демократизация: каждый может запустить ИИ у себя локально (приватность).' : 'Democratization: anyone can run AI locally (privacy).'}</li>
+                  <li>{lang === 'ru' ? 'Публикация весов LLaMA ускорила внешний R&D-цикл.' : 'LLaMA weight releases accelerated external R&D cycles.'}</li>
+                  <li>{lang === 'ru' ? 'Новые команды (например, Mistral) быстро сократили разрыв по качеству.' : 'New teams (for example, Mistral) reduced quality gaps quickly.'}</li>
+                  <li>{lang === 'ru' ? 'Появились сценарии локального запуска: приватность, кастомизация, офлайн-контуры.' : 'Local deployment paths expanded: privacy, customization, and offline workflows.'}</li>
                 </ul>
               </div>
             </div>
-            <p className="text-neutral-300 leading-relaxed italic">
+            <p className="text-neutral-300 leading-relaxed">
               {lang === 'ru'
-                ? 'Утечка документа Google "У нас нет рва, и у OpenAI тоже" (We Have No Moat) подтвердила: сообщество open-source развивается так быстро, что закрытым гигантам становится сложно удерживать абсолютное лидерство.'
-                : 'The leaked Google document "We Have No Moat, And Neither Does OpenAI" confirmed it: the open-source community moves so fast that closed giants struggle to maintain absolute dominance.'}
+                ? 'Записка Google "We Have No Moat" зафиксировала ключевой вывод периода: открытая экосистема итеративно улучшается быстрее за счет распределенного сообщества, поэтому конкурентная динамика сместилась от статуса "лидер на релизе" к скорости инженерного цикла и интеграции в продукты.'
+                : 'The Google memo "We Have No Moat" captured the core takeaway: open ecosystems improved through distributed iteration, shifting competition from one-time model leadership toward execution speed, product integration, and operational reliability.'}
             </p>
           </div>
         </div>
@@ -69,7 +72,7 @@ export default function PostChatgptHistoryTheory({ lang }: { lang: string }) {
 
       {/* Chapter 2: The Shift to Reasoning */}
       <section>
-        <div className="bg-[#141414] border border-[#262626] rounded-xl p-8">
+        <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-2xl font-bold mb-6 text-amber-400">
             {lang === 'ru' ? 'Глава 2: Сдвиг к рассуждениям (Reasoning Models)' : 'Chapter 2: The Shift to Reasoning Models'}
           </h2>
@@ -100,7 +103,7 @@ export default function PostChatgptHistoryTheory({ lang }: { lang: string }) {
 
       {/* Chapter 3: The Geopolitics of Compute */}
       <section>
-        <div className="bg-[#141414] border border-[#262626] rounded-xl p-8">
+        <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-2xl font-bold mb-6 text-cyan-400">
             {lang === 'ru' ? 'Глава 3: Геополитика и DeepSeek' : 'Chapter 3: Geopolitics and DeepSeek'}
           </h2>
@@ -110,7 +113,7 @@ export default function PostChatgptHistoryTheory({ lang }: { lang: string }) {
                 ? 'ИИ стал вопросом национальной безопасности. США ввели санкции на экспорт передовых чипов NVIDIA в Китай, пытаясь замедлить развитие китайского ИИ. Однако это привело к неожиданному результату.'
                 : 'AI became a matter of national security. The US imposed export controls on advanced NVIDIA chips to China, attempting to slow Chinese AI development. However, this led to an unexpected result.'}
             </p>
-            <div className="bg-[#0a0a0a] border border-[#282828] rounded-lg p-5">
+            <div className="bg-deep border border-border-subtle rounded-lg p-5">
               <h4 className="text-cyan-400 font-bold mb-2">{lang === 'ru' ? 'Эффект DeepSeek' : 'The DeepSeek Effect'}</h4>
               <p className="text-sm text-neutral-400 leading-relaxed">
                 {lang === 'ru'

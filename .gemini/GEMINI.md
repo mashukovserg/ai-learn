@@ -17,5 +17,6 @@
 
 ## Current State
 - **Implemented Rooms:** 12 rooms across 'AI Foundations', 'Ideas and Debates', and 'Practice' modules.
-- **Metadata Source:** `src/data/rooms.ts` is the single source of truth for all room metadata (titles, descriptions, task IDs, durations).
+- **Metadata Source:** `src/data/rooms/` directory is the single source of truth for all room metadata (`metadata.ts`), types (`types.ts`), paths (`paths.ts`), and per-room tasks (`tasks/<room-id>.ts`).
 - **Architecture:** Next.js 16 (App Router) + FastAPI (Python) backend.
+- **Design Tokens:** Surface and border colors are defined as Tailwind v4 `@theme` tokens in `src/app/[lang]/globals.css`. Use `bg-card`, `bg-card-dark`, `bg-base`, `bg-deep`, `bg-input`, `bg-muted` for backgrounds and `border-border-card`, `border-border-subtle`, `border-border-emphasis` for borders. Never use arbitrary hex values like `bg-[#1a1a1a]` or `border-[#262626]`.

@@ -4,14 +4,16 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GLOSSARY } from '@/data/glossary';
 import { BookOpen } from 'lucide-react';
+import { useLang } from '@/hooks/useLang';
 
 interface TermProps {
   id: string;
-  lang: string;
   children?: React.ReactNode;
+  lang?: string;
 }
 
-export default function Term({ id, lang, children }: TermProps) {
+export default function Term({ id, children, lang: forcedLang }: TermProps) {
+  const currentLang = useLang();
   const [isHovered, setIsHovered] = useState(false);
   const glossaryEntry = GLOSSARY[id];
 
@@ -19,7 +21,9 @@ export default function Term({ id, lang, children }: TermProps) {
     return <span className="text-red-500 font-bold">{children || id} [Term not found]</span>;
   }
 
-  const l = lang as 'ru' | 'en';
+  const l = (forcedLang === 'ru' || forcedLang === 'en'
+    ? forcedLang
+    : currentLang) as 'ru' | 'en';
   const termText = children || glossaryEntry.term[l];
   const definition = glossaryEntry.definition[l];
 
@@ -39,7 +43,7 @@ export default function Term({ id, lang, children }: TermProps) {
             initial={{ opacity: 0, y: 10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 5, scale: 0.95 }}
-            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-64 p-4 bg-[#1a1a1a] border border-[#333] rounded-xl shadow-2xl z-[100] pointer-events-none"
+            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-64 p-4 bg-card border border-border-emphasis rounded-xl shadow-2xl z-[100] pointer-events-none"
           >
             <span className="flex items-center gap-2 mb-2">
               <BookOpen size={14} className="text-emerald-500" />

@@ -1,11 +1,14 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link';
+import Term from '@/components/Term';
 
 export default function LlmLandscapeTheory({ lang }: { lang: string }) {
   return (
     <>
       {/* 1. Why this room exists */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-2xl font-bold mb-4 text-emerald-400">
           {lang === 'ru' ? 'Зачем нужна карта LLM-ландшафта' : 'Why You Need an LLM Landscape Map'}
         </h2>
@@ -38,7 +41,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
             </>
           )}
         </p>
-        <p className="text-neutral-400 mt-6 border-t border-[#262626] pt-4">
+        <p className="text-neutral-400 mt-6 border-t border-border-card pt-4">
           {lang === 'ru'
             ? 'Начинаем с базового вопроса: что вообще такое "модель" в техническом смысле?'
             : 'We start with the core question: what exactly is a "model" in technical terms?'}
@@ -46,7 +49,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
       </div>
 
       {/* 2. What is a model */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-2xl font-bold mb-4 text-emerald-400">
           {lang === 'ru' ? 'Что такое «модель»?' : 'What Is a "Model"?'}
         </h2>
@@ -97,7 +100,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
               : 'The file alone does nothing; a GPU is needed to run inference. And the model does not change from chat to chat: to improve it, developers release a new version of weights.'}
           </p>
 
-          <div className="pt-3 border-t border-[#262626] text-sm text-neutral-500">
+          <div className="pt-3 border-t border-border-card text-sm text-neutral-500">
             <p>
               <span className="text-neutral-400 mr-1">[1]</span>
               {lang === 'ru' ? (
@@ -123,7 +126,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
       </div>
 
       {/* 3. Category map */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-2xl font-bold mb-3 text-emerald-400">
           {lang === 'ru' ? 'Карта LLM-ландшафта' : 'LLM Landscape Map'}
         </h2>
@@ -133,50 +136,50 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
             : 'A simple category map: start from model class, not from brand.'}
         </p>
 
-        <div className="overflow-x-auto border border-[#2b2b2b] rounded-xl">
+        <div className="overflow-x-auto border border-border-subtle rounded-xl">
           <table className="min-w-[920px] w-full text-left">
             <thead>
-              <tr className="border-b border-[#2a2a2a] bg-[#171717]">
+              <tr className="border-b border-border-subtle bg-input">
                 <th className="px-4 py-3 text-xs uppercase tracking-wider text-neutral-500">{lang === 'ru' ? 'Категория' : 'Category'}</th>
-                <th className="px-4 py-3 text-xs uppercase tracking-wider text-neutral-300 border-l border-[#2a2a2a]">{lang === 'ru' ? 'Примеры' : 'Examples'}</th>
-                <th className="px-4 py-3 text-xs uppercase tracking-wider text-emerald-300 border-l border-[#2a2a2a]">{lang === 'ru' ? 'Когда использовать' : 'When to use'}</th>
+                <th className="px-4 py-3 text-xs uppercase tracking-wider text-neutral-300 border-l border-border-subtle">{lang === 'ru' ? 'Примеры' : 'Examples'}</th>
+                <th className="px-4 py-3 text-xs uppercase tracking-wider text-emerald-300 border-l border-border-subtle">{lang === 'ru' ? 'Когда использовать' : 'When to use'}</th>
               </tr>
             </thead>
             <tbody className="text-sm">
-              <tr className="border-b border-[#252525]">
+              <tr className="border-b border-border-subtle">
                 <td className="px-4 py-3 text-neutral-200">{lang === 'ru' ? 'Фронтир-модели' : 'Frontier models'}</td>
-                <td className="px-4 py-3 text-neutral-300 border-l border-[#252525]">GPT-4o, Claude 3.5, Gemini 1.5</td>
-                <td className="px-4 py-3 text-neutral-400 border-l border-[#252525]">{lang === 'ru' ? 'Сложные reasoning-задачи' : 'Complex reasoning tasks'}</td>
+                <td className="px-4 py-3 text-neutral-300 border-l border-border-subtle">GPT-4o, Claude 3.5, Gemini 1.5</td>
+                <td className="px-4 py-3 text-neutral-400 border-l border-border-subtle">{lang === 'ru' ? 'Сложные reasoning-задачи' : 'Complex reasoning tasks'}</td>
               </tr>
-              <tr className="border-b border-[#252525]">
+              <tr className="border-b border-border-subtle">
                 <td className="px-4 py-3 text-neutral-200">{lang === 'ru' ? 'Эффективные модели' : 'Efficient models'}</td>
-                <td className="px-4 py-3 text-neutral-300 border-l border-[#252525]">Mistral, Mixtral, LLaMA</td>
-                <td className="px-4 py-3 text-neutral-400 border-l border-[#252525]">{lang === 'ru' ? 'Дешёвый инференс' : 'Low-cost inference'}</td>
+                <td className="px-4 py-3 text-neutral-300 border-l border-border-subtle">Mistral, Mixtral, LLaMA</td>
+                <td className="px-4 py-3 text-neutral-400 border-l border-border-subtle">{lang === 'ru' ? 'Дешёвый инференс' : 'Low-cost inference'}</td>
               </tr>
-              <tr className="border-b border-[#252525]">
+              <tr className="border-b border-border-subtle">
                 <td className="px-4 py-3 text-neutral-200">{lang === 'ru' ? 'Кодовые модели' : 'Coding models'}</td>
-                <td className="px-4 py-3 text-neutral-300 border-l border-[#252525]">DeepSeek-Coder, GPT-4o</td>
-                <td className="px-4 py-3 text-neutral-400 border-l border-[#252525]">{lang === 'ru' ? 'Программирование' : 'Programming'}</td>
+                <td className="px-4 py-3 text-neutral-300 border-l border-border-subtle">DeepSeek-Coder, GPT-4o</td>
+                <td className="px-4 py-3 text-neutral-400 border-l border-border-subtle">{lang === 'ru' ? 'Программирование' : 'Programming'}</td>
               </tr>
-              <tr className="border-b border-[#252525]">
+              <tr className="border-b border-border-subtle">
                 <td className="px-4 py-3 text-neutral-200">{lang === 'ru' ? 'Модели рассуждения' : 'Reasoning models'}</td>
-                <td className="px-4 py-3 text-neutral-300 border-l border-[#252525]">o1, Claude 4, DeepSeek-R1</td>
-                <td className="px-4 py-3 text-neutral-400 border-l border-[#252525]">{lang === 'ru' ? 'Сложные логические и многошаговые задачи' : 'Hard logic and multi-step planning tasks'}</td>
+                <td className="px-4 py-3 text-neutral-300 border-l border-border-subtle">o1, Claude 4, DeepSeek-R1</td>
+                <td className="px-4 py-3 text-neutral-400 border-l border-border-subtle">{lang === 'ru' ? 'Сложные логические и многошаговые задачи' : 'Hard logic and multi-step planning tasks'}</td>
               </tr>
-              <tr className="border-b border-[#252525]">
+              <tr className="border-b border-border-subtle">
                 <td className="px-4 py-3 text-neutral-200">{lang === 'ru' ? 'Длинный контекст' : 'Long-context'}</td>
-                <td className="px-4 py-3 text-neutral-300 border-l border-[#252525]">Gemini 1.5+, Claude Sonnet 4.6 (beta)</td>
-                <td className="px-4 py-3 text-neutral-400 border-l border-[#252525]">{lang === 'ru' ? 'Анализ больших документов' : 'Large document analysis'}</td>
+                <td className="px-4 py-3 text-neutral-300 border-l border-border-subtle">Gemini 1.5+, Claude Sonnet 4.6 (beta)</td>
+                <td className="px-4 py-3 text-neutral-400 border-l border-border-subtle">{lang === 'ru' ? 'Анализ больших документов' : 'Large document analysis'}</td>
               </tr>
-              <tr className="border-b border-[#252525]">
+              <tr className="border-b border-border-subtle">
                 <td className="px-4 py-3 text-neutral-200">{lang === 'ru' ? 'Мультимодальные' : 'Multimodal'}</td>
-                <td className="px-4 py-3 text-neutral-300 border-l border-[#252525]">GPT-4o, Gemini</td>
-                <td className="px-4 py-3 text-neutral-400 border-l border-[#252525]">{lang === 'ru' ? 'Изображения, аудио, видео' : 'Images, audio, and video tasks'}</td>
+                <td className="px-4 py-3 text-neutral-300 border-l border-border-subtle">GPT-4o, Gemini</td>
+                <td className="px-4 py-3 text-neutral-400 border-l border-border-subtle">{lang === 'ru' ? 'Изображения, аудио, видео' : 'Images, audio, and video tasks'}</td>
               </tr>
               <tr>
                 <td className="px-4 py-3 text-neutral-200">{lang === 'ru' ? 'Локальные (on-device)' : 'On-device'}</td>
-                <td className="px-4 py-3 text-neutral-300 border-l border-[#252525]">Phi-3, Gemma</td>
-                <td className="px-4 py-3 text-neutral-400 border-l border-[#252525]">{lang === 'ru' ? 'Edge-устройства' : 'Edge devices'}</td>
+                <td className="px-4 py-3 text-neutral-300 border-l border-border-subtle">Phi-3, Gemma</td>
+                <td className="px-4 py-3 text-neutral-400 border-l border-border-subtle">{lang === 'ru' ? 'Edge-устройства' : 'Edge devices'}</td>
               </tr>
             </tbody>
           </table>
@@ -184,7 +187,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
       </div>
 
       {/* 4. API vs open-weight */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-2xl font-bold mb-4 text-emerald-400">
           {lang === 'ru' ? 'Закрытый API vs Open-weight: базовый выбор' : 'Closed API vs Open-weight: First Decision'}
         </h2>
@@ -196,7 +199,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
           </p>
 
           <div className="space-y-4">
-            <div className="rounded-xl border border-[#2b2b2b] bg-gradient-to-br from-[#161a18] via-[#141414] to-[#131313] p-5">
+            <div className="rounded-xl border border-border-subtle bg-gradient-to-br from-[#161a18] via-card-dark to-card-dark p-5">
               <div className="inline-flex items-center px-2.5 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-[11px] font-semibold text-emerald-300 uppercase tracking-wider mb-3">
                 {lang === 'ru' ? 'КОНЦЕПТ' : 'CONCEPT'}
               </div>
@@ -206,12 +209,12 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
                   ? 'Endpoint — это URL API, куда ваше приложение отправляет запрос и откуда получает ответ модели.'
                   : 'An endpoint is the API URL where your app sends a request and receives the model response.'}
               </p>
-              <div className="rounded-lg border border-[#2f2f2f] bg-[#111111] px-3 py-2 text-xs text-neutral-400 font-mono">
+              <div className="rounded-lg border border-border-emphasis bg-card-dark px-3 py-2 text-xs text-neutral-400 font-mono">
                 POST /v1/responses
               </div>
             </div>
 
-            <div className="rounded-xl border border-[#2b2b2b] bg-[#181818] p-5">
+            <div className="rounded-xl border border-border-subtle bg-card p-5">
               <div className="text-[11px] uppercase tracking-wider text-emerald-300/90 mb-3">
                 {lang === 'ru' ? 'Закрытый API' : 'Closed API'}
               </div>
@@ -220,38 +223,38 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
                 <li>• {lang === 'ru' ? 'Минимум DevOps на старте.' : 'Minimal DevOps overhead at start.'}</li>
                 <li>• {lang === 'ru' ? 'Хорошо для MVP и проверки гипотез.' : 'Best for MVP and hypothesis testing.'}</li>
               </ul>
-              <div className="text-sm text-neutral-500 border-t border-[#2b2b2b] pt-3">
+              <div className="text-sm text-neutral-500 border-t border-border-subtle pt-3">
                 {lang === 'ru' ? 'Фокус: скорость и простота.' : 'Focus: speed and simplicity.'}
               </div>
             </div>
 
-            <div className="rounded-xl border border-[#2b2b2b] bg-[#181818] p-5">
+            <div className="rounded-xl border border-border-subtle bg-card p-5">
               <div className="text-[11px] uppercase tracking-wider text-emerald-300/90 mb-3">Open-weight</div>
               <ul className="space-y-2 text-neutral-300 leading-relaxed mb-4">
                 <li>• {lang === 'ru' ? 'Больше контроля и приватности.' : 'More control and privacy.'}</li>
                 <li>• {lang === 'ru' ? 'Гибкая кастомизация под домен.' : 'Flexible domain customization.'}</li>
                 <li>• {lang === 'ru' ? 'Нужны инфраструктура и опытная команда.' : 'Requires infrastructure and mature engineering.'}</li>
               </ul>
-              <div className="text-sm text-neutral-500 border-t border-[#2b2b2b] pt-3">
+              <div className="text-sm text-neutral-500 border-t border-border-subtle pt-3">
                 {lang === 'ru' ? 'Фокус: владение и долгосрочный контроль.' : 'Focus: ownership and long-term control.'}
               </div>
             </div>
           </div>
 
-          <div className="rounded-xl border border-[#2b2b2b] bg-[#171717] p-4">
+          <div className="rounded-xl border border-border-subtle bg-input p-4">
             <h4 className="text-neutral-200 font-semibold mb-3">
               {lang === 'ru' ? 'Практический порядок выбора' : 'Practical decision flow'}
             </h4>
             <ol className="space-y-3 text-sm text-neutral-400">
-              <li className="rounded-lg border border-[#2a2a2a] bg-[#121212] px-3 py-2">
+              <li className="rounded-lg border border-border-subtle bg-card-dark px-3 py-2">
                 <span className="text-emerald-300 mr-1">1.</span>
                 {lang === 'ru' ? 'Определите workload.' : 'Define the workload.'}
               </li>
-              <li className="rounded-lg border border-[#2a2a2a] bg-[#121212] px-3 py-2">
+              <li className="rounded-lg border border-border-subtle bg-card-dark px-3 py-2">
                 <span className="text-emerald-300 mr-1">2.</span>
                 {lang === 'ru' ? 'Выберите класс модели.' : 'Pick the model class.'}
               </li>
-              <li className="rounded-lg border border-[#2a2a2a] bg-[#121212] px-3 py-2">
+              <li className="rounded-lg border border-border-subtle bg-card-dark px-3 py-2">
                 <span className="text-emerald-300 mr-1">3.</span>
                 {lang === 'ru' ? 'Выберите провайдера/endpoint.' : 'Choose provider/endpoint.'}
               </li>
@@ -261,7 +264,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
       </div>
 
       {/* 5. Workload-first choice */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-2xl font-bold mb-4 text-emerald-400">
           {lang === 'ru' ? 'Как выбирать по задаче (workload-first)' : 'How to Choose by Workload (Workload-First)'}
         </h2>
@@ -271,7 +274,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
             : 'Below are four common workload classes. Read them top to bottom and map them to your use case by objective, traffic profile, and quality requirements. This is a fast orientation step before deeper model and provider comparison.'}
         </p>
         <div className="grid grid-cols-1 gap-4">
-          <div className="bg-[#1a1a1a] border border-[#2b2b2b] rounded-lg p-4">
+          <div className="bg-card border border-border-subtle rounded-lg p-4">
             <h4 className="text-neutral-200 font-semibold mb-1">{lang === 'ru' ? 'Качество критично' : 'Quality-critical tasks'}</h4>
             <p className="text-neutral-400 text-sm">{lang === 'ru' ? 'Reasoning, сложные агентные цепочки, многошаговый анализ.' : 'Reasoning-heavy workflows, complex agentic chains, multi-step analysis.'}</p>
             <p className="text-emerald-300 text-sm mt-2">{lang === 'ru' ? 'Обычно: Frontier + eval-gates' : 'Typical: Frontier + evaluation gates'}</p>
@@ -281,7 +284,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
                 : 'Example: a legal copilot drafts a position on a complex dispute based on dozens of documents. It then stress-tests the reasoning for contradictions and flags weak arguments. The lawyer receives a structured draft with risk notes and can make a final decision much faster.'}
             </p>
           </div>
-          <div className="bg-[#1a1a1a] border border-[#2b2b2b] rounded-lg p-4">
+          <div className="bg-card border border-border-subtle rounded-lg p-4">
             <h4 className="text-neutral-200 font-semibold mb-1">{lang === 'ru' ? 'Цена и масштаб' : 'Cost and scale-sensitive tasks'}</h4>
             <p className="text-neutral-400 text-sm">{lang === 'ru' ? 'Массовые FAQ, классификация, шаблонные ответы.' : 'High-volume FAQ, classification, templated responses.'}</p>
             <p className="text-emerald-300 text-sm mt-2">{lang === 'ru' ? 'Обычно: эффективные модели' : 'Typical: Efficient models'}</p>
@@ -291,7 +294,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
                 : 'Example: an e-commerce support bot handles up to 200k repetitive shipping and returns questions per day. Users expect replies in seconds, while margins do not allow expensive inference per ticket. The team uses an efficient model, enforces strict cost/query limits, and scales traffic without a budget spike.'}
             </p>
           </div>
-          <div className="bg-[#1a1a1a] border border-[#2b2b2b] rounded-lg p-4">
+          <div className="bg-card border border-border-subtle rounded-lg p-4">
             <h4 className="text-neutral-200 font-semibold mb-1">{lang === 'ru' ? 'Большой контекст' : 'Long-context analysis'}</h4>
             <p className="text-neutral-400 text-sm">{lang === 'ru' ? 'Контракты, отчеты, многостраничные документы.' : 'Contracts, reports, and long multi-document analysis.'}</p>
             <p className="text-emerald-300 text-sm mt-2">{lang === 'ru' ? 'Обычно: модели длинного контекста' : 'Typical: Long-context class'}</p>
@@ -301,7 +304,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
                 : 'Example: an investment team uploads a 300-page annual report plus appendices. The model must extract key KPIs, summarize risks, and detect cross-section inconsistencies that humans often miss. The analyst gets not a generic summary but a signal map with references to exact pages and quotes.'}
             </p>
           </div>
-          <div className="bg-[#1a1a1a] border border-[#2b2b2b] rounded-lg p-4">
+          <div className="bg-card border border-border-subtle rounded-lg p-4">
             <h4 className="text-neutral-200 font-semibold mb-1">{lang === 'ru' ? 'Мультимодальные потоки' : 'Multimodal pipelines'}</h4>
             <p className="text-neutral-400 text-sm">{lang === 'ru' ? 'Изображения, видео, аудио + текст в одном workflow.' : 'Image, video, audio, and text in one workflow.'}</p>
             <p className="text-emerald-300 text-sm mt-2">{lang === 'ru' ? 'Обычно: мультимодальные модели' : 'Typical: Multimodal class'}</p>
@@ -315,30 +318,30 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
       </div>
 
       {/* 6. Open-weight details */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-2xl font-bold mb-4 text-emerald-400">
           {lang === 'ru' ? 'Open-Weight экосистема: владение и контроль' : 'Open-Weight Ecosystem: Ownership and Control'}
         </h2>
 
         <div className="grid grid-cols-1 gap-4 mb-5">
-          <div className="bg-[#1a1a1a] border border-[#2d2d2d] rounded-xl overflow-hidden">
+          <div className="bg-card border border-border-emphasis rounded-xl overflow-hidden">
             <div className="grid grid-cols-[180px_1fr_1fr] text-xs uppercase tracking-wider">
-              <div className="px-4 py-3 text-neutral-500 border-b border-[#2a2a2a]">{lang === 'ru' ? 'Критерий' : 'Criteria'}</div>
-              <div className="px-4 py-3 text-neutral-300 border-l border-b border-[#2a2a2a]">{lang === 'ru' ? 'Закрытый API' : 'Closed API'}</div>
-              <div className="px-4 py-3 text-emerald-300 border-l border-b border-[#2a2a2a]">Open-weight</div>
+              <div className="px-4 py-3 text-neutral-500 border-b border-border-subtle">{lang === 'ru' ? 'Критерий' : 'Criteria'}</div>
+              <div className="px-4 py-3 text-neutral-300 border-l border-b border-border-subtle">{lang === 'ru' ? 'Закрытый API' : 'Closed API'}</div>
+              <div className="px-4 py-3 text-emerald-300 border-l border-b border-border-subtle">Open-weight</div>
             </div>
             <div className="grid grid-cols-[180px_1fr_1fr] text-sm">
-              <div className="px-4 py-3 text-neutral-500 border-b border-[#252525]">{lang === 'ru' ? 'Запуск' : 'Launch speed'}</div>
-              <div className="px-4 py-3 text-neutral-300 border-l border-b border-[#252525]">{lang === 'ru' ? 'Очень быстро' : 'Very fast'}</div>
-              <div className="px-4 py-3 text-neutral-400 border-l border-b border-[#252525]">{lang === 'ru' ? 'Медленнее, нужна настройка' : 'Slower, requires setup'}</div>
+              <div className="px-4 py-3 text-neutral-500 border-b border-border-subtle">{lang === 'ru' ? 'Запуск' : 'Launch speed'}</div>
+              <div className="px-4 py-3 text-neutral-300 border-l border-b border-border-subtle">{lang === 'ru' ? 'Очень быстро' : 'Very fast'}</div>
+              <div className="px-4 py-3 text-neutral-400 border-l border-b border-border-subtle">{lang === 'ru' ? 'Медленнее, нужна настройка' : 'Slower, requires setup'}</div>
 
-              <div className="px-4 py-3 text-neutral-500 border-b border-[#252525]">{lang === 'ru' ? 'Контроль' : 'Control'}</div>
-              <div className="px-4 py-3 text-neutral-400 border-l border-b border-[#252525]">{lang === 'ru' ? 'Ограниченный' : 'Limited'}</div>
-              <div className="px-4 py-3 text-emerald-300 border-l border-b border-[#252525]">{lang === 'ru' ? 'Максимальный' : 'Maximum'}</div>
+              <div className="px-4 py-3 text-neutral-500 border-b border-border-subtle">{lang === 'ru' ? 'Контроль' : 'Control'}</div>
+              <div className="px-4 py-3 text-neutral-400 border-l border-b border-border-subtle">{lang === 'ru' ? 'Ограниченный' : 'Limited'}</div>
+              <div className="px-4 py-3 text-emerald-300 border-l border-b border-border-subtle">{lang === 'ru' ? 'Максимальный' : 'Maximum'}</div>
 
-              <div className="px-4 py-3 text-neutral-500 border-b border-[#252525]">{lang === 'ru' ? 'Приватность' : 'Privacy'}</div>
-              <div className="px-4 py-3 text-neutral-400 border-l border-b border-[#252525]">{lang === 'ru' ? 'Провайдер обрабатывает данные' : 'Provider handles data'}</div>
-              <div className="px-4 py-3 text-emerald-300 border-l border-b border-[#252525]">{lang === 'ru' ? 'Данные остаются у вас' : 'Data stays with you'}</div>
+              <div className="px-4 py-3 text-neutral-500 border-b border-border-subtle">{lang === 'ru' ? 'Приватность' : 'Privacy'}</div>
+              <div className="px-4 py-3 text-neutral-400 border-l border-b border-border-subtle">{lang === 'ru' ? 'Провайдер обрабатывает данные' : 'Provider handles data'}</div>
+              <div className="px-4 py-3 text-emerald-300 border-l border-b border-border-subtle">{lang === 'ru' ? 'Данные остаются у вас' : 'Data stays with you'}</div>
 
               <div className="px-4 py-3 text-neutral-500">{lang === 'ru' ? 'DevOps-нагрузка' : 'Ops burden'}</div>
               <div className="px-4 py-3 text-neutral-300 border-l">{lang === 'ru' ? 'Низкая' : 'Low'}</div>
@@ -346,7 +349,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
             </div>
           </div>
 
-          <div className="bg-[#171717] border border-amber-500/30 rounded-xl p-4">
+          <div className="bg-input border border-amber-500/30 rounded-xl p-4">
             <p className="text-[11px] uppercase tracking-wider text-amber-300 mb-2">
               {lang === 'ru' ? 'Важный нюанс' : 'Important nuance'}
             </p>
@@ -360,7 +363,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
       </div>
 
       {/* 7. Geopolitics and sovereignty */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-2xl font-bold mb-4 text-emerald-400">
           {lang === 'ru' ? 'Геополитика ИИ и технологический суверенитет' : 'AI Geopolitics and Technological Sovereignty'}
         </h2>
@@ -371,24 +374,24 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
         </p>
 
         <div className="space-y-4 mb-6">
-          <div className="bg-[#1a1a1a] border border-[#2b2b2b] rounded-xl overflow-x-auto">
+          <div className="bg-card border border-border-subtle rounded-xl overflow-x-auto">
             <div className="min-w-[960px]">
               <div className="grid grid-cols-[110px_1fr_1fr_1.25fr] text-[11px] uppercase tracking-wider">
-                <div className="px-3 py-2.5 text-neutral-500 border-b border-[#2a2a2a]">{lang === 'ru' ? 'Регион' : 'Region'}</div>
-                <div className="px-3 py-2.5 text-neutral-300 border-l border-b border-[#2a2a2a]">{lang === 'ru' ? 'Сильная сторона' : 'Strength'}</div>
-                <div className="px-3 py-2.5 text-neutral-400 border-l border-b border-[#2a2a2a]">{lang === 'ru' ? 'Ограничение' : 'Constraint'}</div>
-                <div className="px-3 py-2.5 text-emerald-300 border-l border-b border-[#2a2a2a]">{lang === 'ru' ? 'Типичная стратегия' : 'Typical strategy'}</div>
+                <div className="px-3 py-2.5 text-neutral-500 border-b border-border-subtle">{lang === 'ru' ? 'Регион' : 'Region'}</div>
+                <div className="px-3 py-2.5 text-neutral-300 border-l border-b border-border-subtle">{lang === 'ru' ? 'Сильная сторона' : 'Strength'}</div>
+                <div className="px-3 py-2.5 text-neutral-400 border-l border-b border-border-subtle">{lang === 'ru' ? 'Ограничение' : 'Constraint'}</div>
+                <div className="px-3 py-2.5 text-emerald-300 border-l border-b border-border-subtle">{lang === 'ru' ? 'Типичная стратегия' : 'Typical strategy'}</div>
               </div>
               <div className="grid grid-cols-[110px_1fr_1fr_1.25fr] text-sm">
-                <div className="px-3 py-3 text-neutral-300 border-b border-[#252525]">{lang === 'ru' ? 'США' : 'USA'}</div>
-                <div className="px-3 py-3 text-neutral-300 border-l border-b border-[#252525]">{lang === 'ru' ? 'Frontier-вычисления и сильная платформа дистрибуции' : 'Frontier compute and strong distribution platform'}</div>
-                <div className="px-3 py-3 text-neutral-500 border-l border-b border-[#252525]">{lang === 'ru' ? 'Высокая цена и влияние экспортных ограничений' : 'Higher cost and export-control exposure'}</div>
-                <div className="px-3 py-3 text-emerald-300 border-l border-b border-[#252525]">{lang === 'ru' ? 'Премиальные кейсы и tool-heavy copilot-продукты' : 'Premium workloads and tool-heavy copilot products'}</div>
+                <div className="px-3 py-3 text-neutral-300 border-b border-border-subtle">{lang === 'ru' ? 'США' : 'USA'}</div>
+                <div className="px-3 py-3 text-neutral-300 border-l border-b border-border-subtle">{lang === 'ru' ? 'Frontier-вычисления и сильная платформа дистрибуции' : 'Frontier compute and strong distribution platform'}</div>
+                <div className="px-3 py-3 text-neutral-500 border-l border-b border-border-subtle">{lang === 'ru' ? 'Высокая цена и влияние экспортных ограничений' : 'Higher cost and export-control exposure'}</div>
+                <div className="px-3 py-3 text-emerald-300 border-l border-b border-border-subtle">{lang === 'ru' ? 'Премиальные кейсы и tool-heavy copilot-продукты' : 'Premium workloads and tool-heavy copilot products'}</div>
 
-                <div className="px-3 py-3 text-neutral-300 border-b border-[#252525]">{lang === 'ru' ? 'Китай' : 'China'}</div>
-                <div className="px-3 py-3 text-neutral-300 border-l border-b border-[#252525]">{lang === 'ru' ? 'Эффективный инференс и массовый rollout' : 'Efficient inference and fast mass rollout'}</div>
-                <div className="px-3 py-3 text-neutral-500 border-l border-b border-[#252525]">{lang === 'ru' ? 'Более сложный трансграничный комплаенс' : 'More complex cross-border compliance'}</div>
-                <div className="px-3 py-3 text-emerald-300 border-l border-b border-[#252525]">{lang === 'ru' ? 'Высокий объем трафика при жестком контроле cost/query' : 'High-volume traffic with strict cost/query focus'}</div>
+                <div className="px-3 py-3 text-neutral-300 border-b border-border-subtle">{lang === 'ru' ? 'Китай' : 'China'}</div>
+                <div className="px-3 py-3 text-neutral-300 border-l border-b border-border-subtle">{lang === 'ru' ? 'Эффективный инференс и массовый rollout' : 'Efficient inference and fast mass rollout'}</div>
+                <div className="px-3 py-3 text-neutral-500 border-l border-b border-border-subtle">{lang === 'ru' ? 'Более сложный трансграничный комплаенс' : 'More complex cross-border compliance'}</div>
+                <div className="px-3 py-3 text-emerald-300 border-l border-b border-border-subtle">{lang === 'ru' ? 'Высокий объем трафика при жестком контроле cost/query' : 'High-volume traffic with strict cost/query focus'}</div>
 
                 <div className="px-3 py-3 text-neutral-300">{lang === 'ru' ? 'Европа' : 'Europe'}</div>
                 <div className="px-3 py-3 text-neutral-300 border-l">{lang === 'ru' ? 'Регуляторное лидерство и фокус на суверенитете' : 'Regulatory leadership and sovereignty focus'}</div>
@@ -398,7 +401,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
             </div>
           </div>
 
-          <div className="bg-[#171717] border border-[#2b2b2b] rounded-xl p-4">
+          <div className="bg-input border border-border-subtle rounded-xl p-4">
             <h4 className="text-neutral-200 font-semibold mb-3">{lang === 'ru' ? 'Ключевые точки давления 2026' : 'Pressure Points 2026'}</h4>
             <ul className="space-y-2 text-sm text-neutral-400">
               <li>{lang === 'ru' ? '• Концентрация вычислений у ограниченного числа облачных и чип-поставщиков.' : '• Compute concentration among a small set of cloud and chip providers.'}</li>
@@ -411,7 +414,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
       </div>
 
       {/* 8. Practical team playbook */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-2xl font-bold mb-4 text-emerald-400">
           {lang === 'ru' ? 'Enterprise-чеклист 2.0' : 'Enterprise Checklist 2.0'}
         </h2>
@@ -444,7 +447,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
       </div>
 
       {/* 9. Scenario mission intro */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-2xl font-bold mb-4 text-emerald-400">
           {lang === 'ru' ? 'Сценарная миссия: применяем карту на практике' : 'Scenario Mission: Apply the Map in Practice'}
         </h2>
@@ -454,15 +457,15 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
             : 'Instead of an abstract quiz, you solve a mini-case like a product engineer: select architecture under real cost, latency, and compliance constraints.'}
         </p>
         <div className="grid grid-cols-1 gap-3 text-sm">
-          <div className="bg-[#1a1a1a] border border-[#2b2b2b] rounded-lg p-4">
+          <div className="bg-card border border-border-subtle rounded-lg p-4">
             <p className="text-neutral-200 font-semibold mb-1">{lang === 'ru' ? 'Контекст' : 'Context'}</p>
             <p className="text-neutral-400">{lang === 'ru' ? 'Банк, 100k запросов/день, mix простых и сложных кейсов.' : 'Bank assistant, 100k requests/day, mix of simple and complex cases.'}</p>
           </div>
-          <div className="bg-[#1a1a1a] border border-[#2b2b2b] rounded-lg p-4">
+          <div className="bg-card border border-border-subtle rounded-lg p-4">
             <p className="text-neutral-200 font-semibold mb-1">{lang === 'ru' ? 'Ограничения' : 'Constraints'}</p>
             <p className="text-neutral-400">{lang === 'ru' ? 'PII внутри VPC, P95 latency <= 2.5s, бюджет <= $0.02/query.' : 'PII stays in VPC, P95 latency <= 2.5s, budget <= $0.02/query.'}</p>
           </div>
-          <div className="bg-[#1a1a1a] border border-[#2b2b2b] rounded-lg p-4">
+          <div className="bg-card border border-border-subtle rounded-lg p-4">
             <p className="text-neutral-200 font-semibold mb-1">{lang === 'ru' ? 'Критерий успеха' : 'Success criterion'}</p>
             <p className="text-neutral-400">{lang === 'ru' ? 'Рациональный routing: качество там, где нужно, и контроль там, где критичны риски.' : 'Rational routing: quality where needed and control where risk is critical.'}</p>
           </div>
@@ -470,7 +473,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
       </div>
 
       {/* 10. Major builders map */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-2xl font-bold mb-4 text-emerald-400">
           {lang === 'ru' ? 'Кто формирует рынок в 2026' : 'Who Shapes the Market in 2026'}
         </h2>
@@ -481,7 +484,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
         </p>
 
         <div className="grid grid-cols-1 gap-4 text-sm">
-          <div className="bg-[#1a1a1a] border border-[#2b2b2b] rounded-lg p-4">
+          <div className="bg-card border border-border-subtle rounded-lg p-4">
             <h4 className="font-semibold text-neutral-100 mb-2">OpenAI</h4>
             <p className="text-neutral-400 mb-2">
               {lang === 'ru'
@@ -491,7 +494,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
             <a href="https://developers.openai.com/api/docs/models" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">{lang === 'ru' ? 'Каталог моделей' : 'Models Catalog'}</a>
           </div>
 
-          <div className="bg-[#1a1a1a] border border-[#2b2b2b] rounded-lg p-4">
+          <div className="bg-card border border-border-subtle rounded-lg p-4">
             <h4 className="font-semibold text-neutral-100 mb-2">Anthropic</h4>
             <p className="text-neutral-400 mb-2">
               {lang === 'ru'
@@ -501,7 +504,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
             <a href="https://www.anthropic.com/system-cards" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">{lang === 'ru' ? 'Системные карточки' : 'System Cards'}</a>
           </div>
 
-          <div className="bg-[#1a1a1a] border border-[#2b2b2b] rounded-lg p-4">
+          <div className="bg-card border border-border-subtle rounded-lg p-4">
             <h4 className="font-semibold text-neutral-100 mb-2">Google (Gemini/Gemma)</h4>
             <p className="text-neutral-400 mb-2">
               {lang === 'ru'
@@ -511,7 +514,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
             <a href="https://ai.google.dev/gemini-api/docs/models" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">{lang === 'ru' ? 'Модели Gemini' : 'Gemini Models'}</a>
           </div>
 
-          <div className="bg-[#1a1a1a] border border-[#2b2b2b] rounded-lg p-4">
+          <div className="bg-card border border-border-subtle rounded-lg p-4">
             <h4 className="font-semibold text-neutral-100 mb-2">Meta (Llama)</h4>
             <p className="text-neutral-400 mb-2">
               {lang === 'ru'
@@ -521,7 +524,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
             <a href="https://ai.meta.com/blog/llama-4-multimodal-intelligence/" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">{lang === 'ru' ? 'Обзор Llama 4' : 'Llama 4 Overview'}</a>
           </div>
 
-          <div className="bg-[#1a1a1a] border border-[#2b2b2b] rounded-lg p-4">
+          <div className="bg-card border border-border-subtle rounded-lg p-4">
             <h4 className="font-semibold text-neutral-100 mb-2">DeepSeek / Mistral / Qwen</h4>
             <p className="text-neutral-400 mb-2">
               {lang === 'ru'
@@ -531,7 +534,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
             <a href="https://api-docs.deepseek.com/" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">{lang === 'ru' ? 'Документация DeepSeek' : 'DeepSeek Docs'}</a>
           </div>
 
-          <div className="bg-[#1a1a1a] border border-[#2b2b2b] rounded-lg p-4">
+          <div className="bg-card border border-border-subtle rounded-lg p-4">
             <h4 className="font-semibold text-neutral-100 mb-2">Microsoft / Cohere / xAI</h4>
             <p className="text-neutral-400 mb-2">
               {lang === 'ru'
@@ -544,7 +547,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
       </div>
 
       {/* 11. LLM infrastructure stack */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-2xl font-bold mb-4 text-emerald-400">
           {lang === 'ru' ? 'LLM как инфраструктурный стек' : 'LLMs as an Infrastructure Stack'}
         </h2>
@@ -555,15 +558,15 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
         </p>
 
         <div className="space-y-3 text-sm">
-          <div className="bg-[#1a1a1a] border border-[#2b2b2b] rounded-lg p-4">
+          <div className="bg-card border border-border-subtle rounded-lg p-4">
             <p className="text-neutral-200 font-semibold mb-1">1. {lang === 'ru' ? 'Уровень приложений' : 'Applications layer'}</p>
             <p className="text-neutral-400">{lang === 'ru' ? 'Копилоты, ассистенты, внутренние AI-инструменты команды.' : 'Copilots, assistants, and internal AI tools.'}</p>
           </div>
-          <div className="bg-[#1a1a1a] border border-[#2b2b2b] rounded-lg p-4">
+          <div className="bg-card border border-border-subtle rounded-lg p-4">
             <p className="text-neutral-200 font-semibold mb-1">2. {lang === 'ru' ? 'Уровень оркестрации' : 'Orchestration layer'}</p>
             <p className="text-neutral-400">{lang === 'ru' ? 'RAG, tool-calling, guardrails, eval-gates, fallback routing.' : 'RAG, tool-calling, guardrails, eval-gates, and fallback routing.'}</p>
           </div>
-          <div className="bg-[#1a1a1a] border border-[#2b2b2b] rounded-lg p-4">
+          <div className="bg-card border border-border-subtle rounded-lg p-4">
             <p className="text-neutral-200 font-semibold mb-1">3. {lang === 'ru' ? 'Уровень API-моделей' : 'Model API layer'}</p>
             <p className="text-neutral-400">
               {lang === 'ru'
@@ -571,11 +574,11 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
                 : 'Usually this is model catalogs and managed endpoints (for example AWS Bedrock) where multiple model families are available side by side.'}
             </p>
           </div>
-          <div className="bg-[#1a1a1a] border border-[#2b2b2b] rounded-lg p-4">
+          <div className="bg-card border border-border-subtle rounded-lg p-4">
             <p className="text-neutral-200 font-semibold mb-1">4. {lang === 'ru' ? 'Уровень весов' : 'Weights layer'}</p>
             <p className="text-neutral-400">{lang === 'ru' ? 'Open-weight ветка для self-hosting, distillation и доменной кастомизации.' : 'Open-weight branch for self-hosting, distillation, and domain customization.'}</p>
           </div>
-          <div className="bg-[#1a1a1a] border border-[#2b2b2b] rounded-lg p-4">
+          <div className="bg-card border border-border-subtle rounded-lg p-4">
             <p className="text-neutral-200 font-semibold mb-1">5. {lang === 'ru' ? 'Уровень вычислений и дата-центров' : 'Compute + datacenter layer'}</p>
             <p className="text-neutral-400">{lang === 'ru' ? 'GPU/энергия/сеть задают реальные пределы latency и стоимости.' : 'GPU, power, and interconnect determine real latency and cost limits.'}</p>
           </div>
@@ -583,42 +586,62 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
       </div>
 
       {/* 12. Snapshot 2026 + links */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-2xl font-bold mb-4 text-emerald-400">
           {lang === 'ru' ? 'Снимок рынка 2026 + ссылки на источники' : '2026 Market Snapshot + Source Links'}
         </h2>
+        <p className="text-neutral-400 text-sm mb-3">
+          {lang === 'ru'
+            ? 'Обновлено по вашему документу (состояние на 7 марта 2026): позиции игроков и тренды быстро меняются. Поэтому этот блок стоит читать как операционный срез, а не как вечный рейтинг. Цель здесь — быстро увидеть, где у каждого игрока сильная сторона именно сейчас: reasoning, long-context, мультимодальность, open-weight экосистема, стоимость и управляемость API.'
+            : 'Updated from your document (as of March 7, 2026): vendor positioning and trends change quickly. Treat this section as an operational snapshot, not a permanent ranking. The goal is to quickly map where each vendor is strongest right now: reasoning, long-context, multimodality, open-weight ecosystem, cost profile, and API controllability.'}
+        </p>
+        <p className="text-neutral-400 text-sm mb-3">
+          {lang === 'ru' ? (
+            <>
+              {'Важно сравнивать не только «качество ответа в вакууме», но и инженерные параметры: предсказуемость latency, поведение при tool-calling, прозрачность safety-политик, зрелость '}
+              <Term id="sdk">SDK</Term>
+              {', ограничения по лицензии и требования к резидентности данных. На практике именно эти факторы чаще всего определяют, можно ли модель стабильно внедрить в продукт и поддерживать в продакшене.'}
+            </>
+          ) : (
+            <>
+              {'It is important to compare not only output quality in isolation, but also engineering constraints: latency predictability, tool-calling behavior, safety-policy transparency, '}
+              <Term id="sdk">SDK</Term>
+              {' maturity, license limits, and data-residency requirements. In real deployments, these factors often decide whether a model can be integrated reliably and maintained in production.'}
+            </>
+          )}
+        </p>
         <p className="text-neutral-400 text-sm mb-5">
           {lang === 'ru'
-            ? 'Обновлено по вашему документу (состояние на 7 марта 2026): позиции игроков и тренды быстро меняются.'
-            : 'Updated from your document (as of March 7, 2026): vendor positioning and trends change quickly.'}
+            ? 'Ниже — компактные профили ключевых игроков. Используйте их как стартовую карту для шорт-листа: сначала выбирайте 2–3 кандидата под ваш use case, затем подтверждайте выбор через eval-наборы, нагрузочные тесты и пилот на реальных пользовательских сценариях.'
+            : 'Below are compact profiles of key players. Use them as a starting map for shortlisting: pick 2-3 candidates for your use case, then validate with eval sets, load tests, and a pilot on real user scenarios.'}
         </p>
         <div className="grid grid-cols-1 gap-4 mb-5">
-          <div className="bg-[#1a1a1a] border border-[#262626] rounded-lg p-4">
+          <div className="bg-card border border-border-card rounded-lg p-4">
             <h4 className="font-bold text-neutral-200 mb-1">ChatGPT (OpenAI)</h4>
             <p className="text-neutral-500 mb-2">{lang === 'ru' ? 'Frontier + reasoning + Responses API' : 'Frontier + reasoning + Responses API'}</p>
             <p className="text-neutral-400">{lang === 'ru' ? 'Сильный универсал с акцентом на reasoning-модели и tool/agent workflows.' : 'Strong generalist with a focus on reasoning models and tool/agent workflows.'}</p>
           </div>
-          <div className="bg-[#1a1a1a] border border-[#262626] rounded-lg p-4">
+          <div className="bg-card border border-border-card rounded-lg p-4">
             <h4 className="font-bold text-neutral-200 mb-1">Claude (Anthropic)</h4>
             <p className="text-neutral-500 mb-2">{lang === 'ru' ? 'Claude 4, hybrid reasoning' : 'Claude 4, hybrid reasoning'}</p>
             <p className="text-neutral-400">{lang === 'ru' ? 'Стабильное качество текста/кода и прозрачность через system cards.' : 'Strong writing/coding consistency with transparent system cards.'}</p>
           </div>
-          <div className="bg-[#1a1a1a] border border-[#262626] rounded-lg p-4">
+          <div className="bg-card border border-border-card rounded-lg p-4">
             <h4 className="font-bold text-neutral-200 mb-1">Gemini (Google)</h4>
             <p className="text-neutral-500 mb-2">Gemini 2.5/3 + Live</p>
             <p className="text-neutral-400">{lang === 'ru' ? 'Сильный long-context, multimodal и real-time voice/video API.' : 'Strong in long-context, multimodal, and real-time voice/video APIs.'}</p>
           </div>
-          <div className="bg-[#1a1a1a] border border-[#262626] rounded-lg p-4">
+          <div className="bg-card border border-border-card rounded-lg p-4">
             <h4 className="font-bold text-neutral-200 mb-1">Meta / Llama</h4>
             <p className="text-neutral-500 mb-2">{lang === 'ru' ? 'Llama 4: open-weight + multimodal' : 'Llama 4: open-weight + multimodal'}</p>
             <p className="text-neutral-400">{lang === 'ru' ? 'Ключевой open-weight игрок; важно читать условия лицензии для enterprise-использования.' : 'Major open-weight ecosystem; licensing terms matter for enterprise usage.'}</p>
           </div>
-          <div className="bg-[#1a1a1a] border border-[#262626] rounded-lg p-4">
+          <div className="bg-card border border-border-card rounded-lg p-4">
             <h4 className="font-bold text-neutral-200 mb-1">DeepSeek</h4>
             <p className="text-neutral-500 mb-2">V3 (MoE), R1 (reasoning)</p>
             <p className="text-neutral-400">{lang === 'ru' ? 'Усилил open-weight reasoning-тренд и предлагает OpenAI-совместимый API-формат.' : 'A key open-weight reasoning player with OpenAI-compatible API formatting.'}</p>
           </div>
-          <div className="bg-[#1a1a1a] border border-[#262626] rounded-lg p-4">
+          <div className="bg-card border border-border-card rounded-lg p-4">
             <h4 className="font-bold text-neutral-200 mb-1">Mistral / Qwen</h4>
             <p className="text-neutral-500 mb-2">{lang === 'ru' ? 'Суверенитет + широкий модельный каталог' : 'Sovereignty + broad model catalogs'}</p>
             <p className="text-neutral-400">{lang === 'ru' ? 'Сильные альтернативы для EU/Asia сценариев, где важны стоимость, контроль и резидентность данных.' : 'Strong alternatives for EU/Asia scenarios where cost, control, and data residency are key.'}</p>
@@ -636,7 +659,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
           </div>
         </div>
 
-        <div className="mt-5 bg-[#171717] border border-[#2a2a2a] rounded-xl p-5">
+        <div className="mt-5 bg-input border border-border-subtle rounded-xl p-5">
           <h4 className="font-bold text-neutral-200 mb-3">
             {lang === 'ru' ? 'Основные ссылки из документа' : 'Primary links from the document'}
           </h4>
@@ -656,12 +679,12 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
       </div>
 
       {/* 13. Structural trends */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-2xl font-bold mb-4 text-emerald-400">
           {lang === 'ru' ? 'Структурные тренды 2026' : 'Structural Trends in 2026'}
         </h2>
         <div className="space-y-4 text-sm">
-          <div className="bg-[#1a1a1a] border border-[#2b2b2b] rounded-lg p-4">
+          <div className="bg-card border border-border-subtle rounded-lg p-4">
             <p className="text-neutral-200 font-semibold mb-1">{lang === 'ru' ? 'MoE стал нормой' : 'MoE is mainstream'}</p>
             <p className="text-neutral-400">
               {lang === 'ru'
@@ -669,7 +692,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
                 : 'Models scale total capacity while activating only a subset of parameters per token. This improves quality/cost for inference.'}
             </p>
           </div>
-          <div className="bg-[#1a1a1a] border border-[#2b2b2b] rounded-lg p-4">
+          <div className="bg-card border border-border-subtle rounded-lg p-4">
             <p className="text-neutral-200 font-semibold mb-1">{lang === 'ru' ? 'Reasoning = отдельный продуктовый класс' : 'Reasoning is a separate product class'}</p>
             <p className="text-neutral-400">
               {lang === 'ru'
@@ -677,7 +700,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
                 : 'There is now a clear split between fast chat models and deep-thinking models, with different latency and token economics.'}
             </p>
           </div>
-          <div className="bg-[#1a1a1a] border border-[#2b2b2b] rounded-lg p-4">
+          <div className="bg-card border border-border-subtle rounded-lg p-4">
             <p className="text-neutral-200 font-semibold mb-1">{lang === 'ru' ? 'Multimodal и long-context стали базовым ожиданием' : 'Multimodal and long-context became baseline expectations'}</p>
             <p className="text-neutral-400">
               {lang === 'ru'
@@ -685,7 +708,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
                 : 'For enterprise workflows, text-only is no longer enough: teams expect documents, images, audio, and long context in one pipeline.'}
             </p>
           </div>
-          <div className="bg-[#1a1a1a] border border-[#2b2b2b] rounded-lg p-4">
+          <div className="bg-card border border-border-subtle rounded-lg p-4">
             <p className="text-neutral-200 font-semibold mb-1">{lang === 'ru' ? 'Цена теперь = токены + инструменты' : 'Pricing now = tokens + tools'}</p>
             <p className="text-neutral-400">
               {lang === 'ru'
@@ -697,7 +720,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
       </div>
 
       {/* 14. Summary */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-2xl font-bold mb-4 text-emerald-400">
           {lang === 'ru' ? 'Итог: 5 правил выбора модели' : 'Summary: 5 Rules for Model Selection'}
         </h2>

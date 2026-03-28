@@ -1,13 +1,14 @@
+"use client";
+
 import React from 'react';
-import Term from '@/components/Term';
-import { Info, Target, Zap, MessageSquare, ListTree, Repeat, AlertTriangle, Terminal, Code, AlignLeft } from 'lucide-react';
+import { Info, Target, Zap, MessageSquare, ListTree, AlertTriangle, Terminal, Code, AlignLeft } from 'lucide-react';
 
 export default function Prompting101Theory({ lang }: { lang: string }) {
   return (
     <div className="space-y-12">
       {/* Introduction */}
       <section>
-        <div className="bg-[#141414] border border-[#262626] rounded-xl p-8">
+        <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-3xl font-bold mb-4 flex items-center gap-3 text-emerald-400">
             <Info className="text-emerald-500" />
             {lang === 'ru' ? 'Искусство управления вниманием ИИ' : 'The Art of Attention Control'}
@@ -29,7 +30,7 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
 
       {/* Components Deep Dive */}
       <section>
-        <div className="bg-[#141414] border border-[#262626] rounded-xl p-8">
+        <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
             <Target className="text-emerald-500" />
             {lang === 'ru' ? 'Анатомия идеального запроса (CRISPE Framework)' : 'Anatomy of an Ideal Prompt (CRISPE Framework)'}
@@ -41,7 +42,7 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
                 : 'A professional production prompt rarely consists of a single sentence. Usually, it is a structured document containing several mandatory blocks. We use the CRISPE framework or a simpler classical approach.'}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-[#1a1a1a] p-5 rounded-lg border border-[#262626]">
+              <div className="bg-card p-5 rounded-lg border border-border-card">
                 <h4 className="text-emerald-400 font-bold mb-2 uppercase tracking-widest">{lang === 'ru' ? '1. Роль (Role)' : '1. Role (Persona)'}</h4>
                 <p className="text-neutral-300 leading-relaxed">
                   {lang === 'ru' 
@@ -49,7 +50,7 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
                     : 'Sets the starting weights for the model. "You are a Senior Python Developer, an expert in security." This forces the model to activate the part of its neural network containing high-level knowledge, not beginner answers.'}
                 </p>
               </div>
-              <div className="bg-[#1a1a1a] p-5 rounded-lg border border-[#262626]">
+              <div className="bg-card p-5 rounded-lg border border-border-card">
                 <h4 className="text-emerald-400 font-bold mb-2 uppercase tracking-widest">{lang === 'ru' ? '2. Инструкция (Task)' : '2. Instruction (Task)'}</h4>
                 <p className="text-neutral-300 leading-relaxed">
                   {lang === 'ru' 
@@ -57,7 +58,7 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
                     : 'A clear description of what the model should do. Use strong action verbs: "analyze," "classify," "extract." Avoid weak phrasing like "think about" or "maybe write."'}
                 </p>
               </div>
-              <div className="bg-[#1a1a1a] p-5 rounded-lg border border-[#262626]">
+              <div className="bg-card p-5 rounded-lg border border-border-card">
                 <h4 className="text-emerald-400 font-bold mb-2 uppercase tracking-widest">{lang === 'ru' ? '3. Контекст (Context)' : '3. Context & Constraints'}</h4>
                 <p className="text-neutral-300 leading-relaxed">
                   {lang === 'ru' 
@@ -65,7 +66,7 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
                     : 'External data, rules, and hard constraints. "Use only the provided text. Length limit is strictly 50 words. Do not use passive voice."'}
                 </p>
               </div>
-              <div className="bg-[#1a1a1a] p-5 rounded-lg border border-[#262626]">
+              <div className="bg-card p-5 rounded-lg border border-border-card">
                 <h4 className="text-emerald-400 font-bold mb-2 uppercase tracking-widest">{lang === 'ru' ? '4. Формат (Output Format)' : '4. Output Format'}</h4>
                 <p className="text-neutral-300 leading-relaxed">
                   {lang === 'ru' 
@@ -80,7 +81,7 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
 
       {/* System Prompt vs User Prompt */}
       <section>
-        <div className="bg-[#141414] border border-[#262626] rounded-xl p-8">
+        <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-3xl font-bold mb-4 flex items-center gap-3 text-emerald-400">
             <MessageSquare className="text-emerald-500" />
             {lang === 'ru' ? 'Системный промпт (System Prompt)' : 'The System Prompt'}
@@ -92,7 +93,7 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
                 : 'When working via API, you don\'t just send text; you send an array of messages with different roles (system, user, assistant). The System Prompt is a "God-level" instruction that sets the rules of the game permanently. The model pays the most attention to the system prompt.'}
             </p>
             
-            <div className="bg-[#1a1a1a] border border-[#262626] rounded-lg p-5 mb-4">
+            <div className="bg-card border border-border-card rounded-lg p-5 mb-4">
               <h4 className="font-bold text-neutral-200 uppercase mb-3 tracking-widest">{lang === 'ru' ? 'Разделение ответственности:' : 'Separation of Responsibilities:'}</h4>
               <ul className="text-neutral-400 space-y-4">
                 <li className="flex gap-4 items-start">
@@ -117,13 +118,13 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
 
       {/* Few-shot vs Zero-shot */}
       <section>
-        <div className="bg-[#141414] border border-[#262626] rounded-xl p-8">
+        <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-3xl font-bold mb-4 flex items-center gap-3 text-emerald-400">
             <Zap className="text-emerald-500" />
             {lang === 'ru' ? 'Zero-shot, Few-shot и Edge Cases' : 'Zero-shot, Few-shot and Edge Cases'}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div className="bg-[#1a1a1a] border border-[#262626] rounded-xl p-6">
+            <div className="bg-card border border-border-card rounded-xl p-6">
               <h4 className="font-bold text-neutral-200 mb-3 text-lg">Zero-shot (Без примеров)</h4>
               <p className="text-neutral-400 leading-relaxed mb-4">
                 {lang === 'ru' 
@@ -134,7 +135,7 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
                 {lang === 'ru' ? 'Промпт: "Переведи это на французский: привет мир."' : 'Prompt: "Translate this to French: hello world."'}
               </div>
             </div>
-            <div className="bg-[#1a1a1a] border border-blue-500/30 rounded-xl p-6 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
+            <div className="bg-card border border-blue-500/30 rounded-xl p-6 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
               <h4 className="font-bold text-blue-400 mb-3 text-lg">Few-shot (С примерами)</h4>
               <p className="text-neutral-400 leading-relaxed mb-4">
                 {lang === 'ru' 
@@ -156,7 +157,7 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
 
       {/* Reasoning (CoT) */}
       <section>
-        <div className="bg-[#141414] border border-[#262626] rounded-xl p-8">
+        <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-3xl font-bold mb-4 flex items-center gap-3 text-emerald-400">
             <ListTree className="text-emerald-500" />
             {lang === 'ru' ? 'Chain of Thought (CoT): Заставьте модель "думать"' : 'Chain of Thought (CoT): Make the Model "Think"'}
@@ -167,7 +168,7 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
                 ? 'Языковые модели "думают" со скоростью генерации токенов. Если вы просите модель решить сложную математическую задачу или логическую головоломку и требуете сразу выдать финальный ответ, она почти наверняка ошибется. Почему? Потому что у нее не было "времени" (токенов) на вычисления.'
                 : 'Language models "think" at the speed of token generation. If you ask a model to solve a complex math problem or logic puzzle and demand the final answer immediately, it will almost certainly fail. Why? Because it had no "time" (tokens) to compute.'}
             </p>
-            <div className="bg-[#0a0a0a] border border-[#282828] rounded-lg p-6 font-mono mb-6">
+            <div className="bg-deep border border-border-subtle rounded-lg p-6 font-mono mb-6">
               <p className="text-emerald-500 mb-4">{`// ${lang === 'ru' ? 'Магия одной фразы (Zero-Shot CoT)' : 'The Magic of One Phrase (Zero-Shot CoT)'}`}</p>
               <p className="text-neutral-300 leading-relaxed text-lg border-l-4 border-emerald-500 pl-4 py-1">
                 {lang === 'ru' 
@@ -191,7 +192,7 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
 
       {/* Formatting & Delimiters */}
       <section>
-        <div className="bg-[#141414] border border-[#262626] rounded-xl p-8">
+        <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-3xl font-bold mb-4 flex items-center gap-3 text-emerald-400">
             <Code className="text-emerald-500" />
             {lang === 'ru' ? 'Разделители и строгий парсинг' : 'Delimiters & Strict Parsing'}
@@ -208,7 +209,7 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
                 : 'The best practice for safety and structure is using XML tags or Markdown for delimiters.'}
             </p>
             
-            <div className="bg-[#0a0a0a] border border-[#282828] rounded-lg p-5 font-mono text-sm text-neutral-400">
+            <div className="bg-deep border border-border-subtle rounded-lg p-5 font-mono text-sm text-neutral-400">
               <p className="text-blue-400 mb-2">System Prompt:</p>
               <p>Ты — редактор. Проверь текст на ошибки.</p>
               <p>Текст пользователя находится внутри тегов &lt;user_input&gt;.</p>
@@ -240,7 +241,7 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
                 ? 'Решение: Явно разрешите модели отказывать.'
                 : 'Solution: Explicitly give the model permission to refuse.'}
             </p>
-            <div className="bg-[#1a1a1a] p-4 rounded-lg border-l-4 border-amber-500">
+            <div className="bg-card p-4 rounded-lg border-l-4 border-amber-500">
                <p className="text-neutral-400 italic">
                  {lang === 'ru'
                    ? '"Используй только предоставленный контекст. Если в контексте нет ответа на вопрос, строго ответь: \"Информация не найдена\". Не пытайся угадывать."'

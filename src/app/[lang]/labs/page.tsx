@@ -30,7 +30,7 @@ export default function LabsPage(props: { params: Promise<{ lang: string }> }) {
 
       <Link
         href={`/${lang}/labs/prompt-compare`}
-        className="block bg-[#171717] border border-[#282828] rounded-xl p-6 hover:border-emerald-500/30 transition-colors group"
+        className="block bg-input border border-border-subtle rounded-xl p-6 hover:border-emerald-500/30 transition-colors group"
       >
         <div className="flex items-start gap-4">
           <div className="p-2.5 rounded-lg bg-emerald-500/10 text-emerald-400">
@@ -46,10 +46,10 @@ export default function LabsPage(props: { params: Promise<{ lang: string }> }) {
                 : 'Send the same prompt to two models and compare responses side by side.'}
             </p>
             <div className="flex items-center gap-2 mt-3 text-xs text-neutral-600">
-              <span className="px-2 py-0.5 bg-[#1a1a1a] rounded border border-[#303030]">Groq</span>
-              <span className="px-2 py-0.5 bg-[#1a1a1a] rounded border border-[#303030]">Llama 3.3</span>
-              <span className="px-2 py-0.5 bg-[#1a1a1a] rounded border border-[#303030]">Llama 4 Scout</span>
-              <span className="px-2 py-0.5 bg-[#1a1a1a] rounded border border-[#303030]">Qwen 3</span>
+              <span className="px-2 py-0.5 bg-card rounded border border-border-emphasis">Groq</span>
+              <span className="px-2 py-0.5 bg-card rounded border border-border-emphasis">Llama 3.3</span>
+              <span className="px-2 py-0.5 bg-card rounded border border-border-emphasis">Llama 4 Scout</span>
+              <span className="px-2 py-0.5 bg-card rounded border border-border-emphasis">Qwen 3</span>
             </div>
           </div>
         </div>

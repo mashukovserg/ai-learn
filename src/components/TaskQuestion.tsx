@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Check, ShieldQuestion, ListChecks } from 'lucide-react';
+import TaskWrapper from './TaskWrapper';
 
 export type TaskType = 'input' | 'multiple-choice' | 'multiple-select' | 'sorting' | 'categorize' | 'timeline' | 'scenario';
 
@@ -40,7 +41,7 @@ export default function TaskQuestion({
     value
       .toLowerCase()
       .trim()
-      .replace(/[“”«»"]/g, '')
+      .replace(/[""«»"]/g, '')
       .replace(/[.,!?;:]+$/g, '');
 
   const checkAnswer = (e: React.FormEvent | React.MouseEvent) => {
@@ -81,20 +82,26 @@ export default function TaskQuestion({
     });
   };
 
-  return (
-    <div className={`bg-[#1a1a1a] border rounded-lg p-4 mb-3 transition-colors ${
-      resolvedStatus === 'correct' ? 'border-neutral-600' : 'border-[#282828]'
-    }`}>
-      <div className="flex items-start gap-3 mb-3">
-        <div className={`p-1.5 rounded-md ${resolvedStatus === 'correct' ? 'bg-white/10 text-neutral-300' : 'bg-white/5 text-neutral-500'}`}>
-          {type === 'input' ? <ShieldQuestion size={16} /> : <ListChecks size={16} />}
-        </div>
-        <div className="flex-1">
-          <p className="text-sm text-neutral-300">{question}</p>
-          {type === 'multiple-select' && <p className="text-[10px] text-neutral-600 uppercase mt-1">Select all that apply</p>}
-        </div>
-      </div>
+  const hintFooter = hint && resolvedStatus !== 'correct' ? (
+    <div className="mt-2.5">
+      <button onClick={() => setShowHint(!showHint)} className="text-[10px] font-medium text-neutral-600 uppercase hover:text-neutral-400 transition-colors">
+        {showHint ? 'Hide Hint' : 'Show Hint'}
+      </button>
+      {showHint && <p className="text-xs text-neutral-500 mt-1 italic border-l-2 border-neutral-700 pl-2">{hint}</p>}
+    </div>
+  ) : undefined;
 
+  return (
+    <TaskWrapper
+      resolvedStatus={resolvedStatus}
+      icon={type === 'input' ? <ShieldQuestion size={16} /> : <ListChecks size={16} />}
+      question={question}
+      subtitle={type === 'multiple-select' ? 'Select all that apply' : undefined}
+      explanation={explanation}
+      incorrectMessage="Not quite. Try again or use hint."
+      successLabel="Correct!"
+      footer={hintFooter}
+    >
       {type === 'input' && (
         <form onSubmit={checkAnswer} className="flex gap-2">
           <div className="relative flex-1">
@@ -106,9 +113,9 @@ export default function TaskQuestion({
                 setAnswer(e.target.value);
               }}
               disabled={resolvedStatus === 'correct'}
-              className={`w-full bg-[#0f0f0f] border rounded-md px-3 py-1.5 text-sm outline-none transition-colors ${
+              className={`w-full bg-base border rounded-md px-3 py-1.5 text-sm outline-none transition-colors ${
                 resolvedStatus === 'correct' ? 'border-neutral-600 text-neutral-400' :
-                resolvedStatus === 'incorrect' ? 'border-red-900/50' : 'border-[#282828] focus:border-neutral-600'
+                resolvedStatus === 'incorrect' ? 'border-red-900/50' : 'border-border-subtle focus:border-neutral-600'
               }`}
             />
           </div>
@@ -144,7 +151,7 @@ export default function TaskQuestion({
               className={`w-full p-2.5 rounded-md border text-sm text-left flex items-center gap-3 transition-colors ${
                 selected
                   ? 'border-neutral-600 bg-white/5 text-neutral-200'
-                  : 'border-[#282828] bg-[#0f0f0f] text-neutral-500 hover:border-neutral-700'
+                  : 'border-border-subtle bg-base text-neutral-500 hover:border-neutral-700'
               }`}
             >
               <div className={`w-3.5 h-3.5 rounded-sm border flex items-center justify-center ${
@@ -167,31 +174,6 @@ export default function TaskQuestion({
           )}
         </div>
       )}
-
-      {resolvedStatus === 'correct' && (
-        <div className="mt-3 p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-md">
-          <p className="text-xs font-bold text-emerald-400 flex items-center gap-1.5 mb-1">
-            <Check size={14} /> Correct!
-          </p>
-          {explanation && (
-            <p className="text-xs text-emerald-200/80 leading-relaxed">
-              {explanation}
-            </p>
-          )}
-        </div>
-      )}
-      {resolvedStatus === 'incorrect' && (
-        <p className="mt-2 text-xs text-red-300">Not quite. Try again or use hint.</p>
-      )}
-
-      {hint && resolvedStatus !== 'correct' && (
-        <div className="mt-2.5">
-          <button onClick={() => setShowHint(!showHint)} className="text-[10px] font-medium text-neutral-600 uppercase hover:text-neutral-400 transition-colors">
-            {showHint ? 'Hide Hint' : 'Show Hint'}
-          </button>
-          {showHint && <p className="text-xs text-neutral-500 mt-1 italic border-l-2 border-neutral-700 pl-2">{hint}</p>}
-        </div>
-      )}
-    </div>
+    </TaskWrapper>
   );
 }

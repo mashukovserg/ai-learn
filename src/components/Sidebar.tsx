@@ -1,19 +1,19 @@
 "use client";
 
 import Link from 'next/link';
-import { Home, BookOpen, Layout, Terminal, Settings, PanelLeftClose, PanelLeftOpen, BarChart, LogIn, LogOut, FlaskConical } from 'lucide-react';
+import { Home, BookOpen, Layout, Terminal, Settings, PanelLeftClose, PanelLeftOpen, LogIn, LogOut, FlaskConical } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
+import { useLang } from '@/hooks/useLang';
 
 export default function Sidebar({
-  lang,
   collapsed,
   onToggle,
 }: {
-  lang: string;
   collapsed: boolean;
   onToggle: () => void;
 }) {
+  const lang = useLang();
   const pathname = usePathname();
   const { user, isAuthenticated, logout } = useAuth();
 
@@ -25,14 +25,13 @@ export default function Sidebar({
     { icon: Home, label: lang === 'ru' ? 'Панель управления' : 'Dashboard', href: `/${lang}` },
     { icon: BookOpen, label: lang === 'ru' ? 'Пути обучения' : 'Learning Paths', href: `/${lang}/paths` },
     { icon: Layout, label: lang === 'ru' ? 'Все комнаты' : 'All Rooms', href: `/${lang}/rooms` },
-    { icon: BarChart, label: lang === 'ru' ? 'Матрица навыков' : 'Skills Matrix', href: `/${lang}/skills` },
     { icon: FlaskConical, label: lang === 'ru' ? 'Лаборатории' : 'Labs', href: `/${lang}/labs` },
-    { icon: Settings, label: lang === 'ru' ? 'Настройки' : 'Settings', href: `/${lang}/settings` },
+    { icon: Settings, label: lang === 'ru' ? 'Профиль' : 'Profile', href: `/${lang}/settings` },
   ];
 
   return (
     <aside
-      className={`h-screen bg-[#171717] border-r border-[#282828] flex flex-col sticky top-0 transition-[width] duration-300 ease-out ${
+      className={`h-screen bg-card border-r border-border-card flex flex-col sticky top-0 transition-[width] duration-300 ease-out ${
         collapsed ? 'w-[64px]' : 'w-[208px]'
       }`}
     >
@@ -45,7 +44,7 @@ export default function Sidebar({
           <button
             type="button"
             onClick={onToggle}
-            className="p-1.5 rounded-md text-neutral-500 hover:text-neutral-200 hover:bg-white/5 transition-colors"
+            className="p-1.5 rounded-md text-neutral-500 hover:text-neutral-200 hover:bg-base transition-colors"
             aria-label="Collapse sidebar"
           >
             <PanelLeftClose size={16} />
@@ -55,7 +54,7 @@ export default function Sidebar({
           <button
             type="button"
             onClick={onToggle}
-            className="absolute top-4 right-2 p-1.5 rounded-md text-neutral-500 hover:text-neutral-200 hover:bg-white/5 transition-colors"
+            className="absolute top-4 right-2 p-1.5 rounded-md text-neutral-500 hover:text-neutral-200 hover:bg-base transition-colors"
             aria-label="Expand sidebar"
           >
             <PanelLeftOpen size={16} />
@@ -72,10 +71,10 @@ export default function Sidebar({
             <Link
               key={item.label}
               href={item.href}
-              className={`flex items-center ${collapsed ? 'justify-center' : 'gap-3'} px-3 py-2 rounded-md transition-colors mb-0.5 text-sm ${
+              className={`flex items-center ${collapsed ? 'justify-center' : 'gap-3'} px-3 py-2.5 rounded-lg transition-colors mb-1 text-sm ${
                 isActive
-                  ? 'bg-emerald-500/10 text-emerald-300 border border-emerald-500/30'
-                  : 'text-neutral-500 hover:text-neutral-200 hover:bg-white/5 border border-transparent'
+                  ? 'bg-emerald-500/10 text-emerald-200 border border-emerald-500/20'
+                  : 'text-neutral-500 hover:text-neutral-200 hover:bg-base border border-transparent'
               }`}
               title={item.label}
             >
@@ -86,10 +85,10 @@ export default function Sidebar({
         })}
       </nav>
 
-      <div className={`${collapsed ? 'p-2' : 'p-4'} border-t border-[#282828]`}>
+      <div className={`${collapsed ? 'p-2' : 'p-4'} border-t border-border-card`}>
         {isAuthenticated ? (
           <div className={`flex items-center ${collapsed ? 'justify-center' : 'gap-3'} px-2`}>
-            <div className="w-8 h-8 rounded-full bg-[#282828] flex items-center justify-center text-neutral-400 text-xs font-medium">
+            <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-neutral-400 text-xs font-medium">
               {initials}
             </div>
             {!collapsed && (
@@ -102,7 +101,7 @@ export default function Sidebar({
               <button
                 type="button"
                 onClick={() => logout()}
-                className="p-1.5 rounded-md text-neutral-500 hover:text-neutral-200 hover:bg-white/5 transition-colors"
+                className="p-1.5 rounded-md text-neutral-500 hover:text-neutral-200 hover:bg-base transition-colors"
                 title={lang === 'ru' ? 'Выйти' : 'Logout'}
               >
                 <LogOut size={14} />
@@ -112,7 +111,7 @@ export default function Sidebar({
         ) : (
           <Link
             href={`/${lang}/login`}
-            className={`flex items-center ${collapsed ? 'justify-center' : 'gap-3'} px-3 py-2 rounded-md text-sm text-neutral-500 hover:text-neutral-200 hover:bg-white/5 transition-colors`}
+            className={`flex items-center ${collapsed ? 'justify-center' : 'gap-3'} px-3 py-2.5 rounded-lg text-sm text-neutral-500 hover:text-neutral-200 hover:bg-base transition-colors`}
           >
             <LogIn size={18} />
             {!collapsed && <span className="font-medium">{lang === 'ru' ? 'Войти' : 'Sign in'}</span>}

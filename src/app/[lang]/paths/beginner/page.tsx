@@ -30,7 +30,7 @@ export default async function BeginnerPathPage(props: {
       </div>
 
       <div className="space-y-3 relative">
-        <div className="absolute left-[27px] top-8 bottom-8 w-px bg-[#282828]" />
+        <div className="absolute left-[27px] top-8 bottom-8 w-px bg-muted" />
 
         {rooms.map((room) => (
           <div key={room.id} className="flex gap-6 items-start relative">
@@ -38,7 +38,7 @@ export default async function BeginnerPathPage(props: {
               <Play size={24} fill="currentColor" />
             </div>
 
-            <div className="flex-1 bg-[#171717] border rounded-lg p-5 transition-colors border-emerald-500/35">
+            <div className="flex-1 bg-input border rounded-lg p-5 transition-colors border-emerald-500/35">
               <div className="mb-1.5">
                 <h3 className="text-base font-semibold text-neutral-200 mb-1">{room.title[l]}</h3>
                 <p className="text-neutral-500 text-sm">{room.description[l]}</p>

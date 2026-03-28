@@ -1,25 +1,89 @@
 @import "tailwindcss";
 
+@theme {
+  /* Surface backgrounds (darkest → lightest) */
+  --color-base: #121211;
+  --color-deep: #0e0e0d;
+  --color-card-dark: #171715;
+  --color-card: #1c1b19;
+  --color-input: #1a1917;
+  --color-muted: #2d2b28;
+
+  /* Borders */
+  --color-border-card: #2b2926;
+  --color-border-subtle: #302e2b;
+  --color-border-emphasis: #393733;
+}
+
 :root {
-  --background: #0f0f0f;
-  --foreground: #e0e0e0;
-  --card: #171717;
-  --card-foreground: #e0e0e0;
-  --primary: #e0e0e0;
-  --primary-foreground: #0f0f0f;
-  --muted: #282828;
-  --muted-foreground: #737373;
-  --border: #282828;
+  --background: #121211;
+  --foreground: #e6e2da;
+  --card: #1c1b19;
+  --card-foreground: #e6e2da;
+  --primary: #e6e2da;
+  --primary-foreground: #121211;
+  --muted: #2d2b28;
+  --muted-foreground: #8f8a82;
+  --border: #302e2b;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --radius-card: 0.875rem;
+}
+
+html {
+  font-size: 105%;
+  text-rendering: optimizeLegibility;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-ui, "Avenir Next"), "Segoe UI", "Inter", "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.65;
+  letter-spacing: -0.008em;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: -0.02em;
+}
+
+p,
+li {
+  line-height: 1.72;
 }
 
 @layer base {
   * {
     border-color: var(--border);
   }
+}
+
+.content-shell {
+  margin-inline: auto;
+  width: min(100%, 94rem);
+  padding-inline: clamp(var(--space-4), 2vw, var(--space-10));
+  padding-block: clamp(var(--space-6), 2.2vw, var(--space-10));
+}
+
+.app-main {
+  background:
+    radial-gradient(circle at 100% 0%, rgba(44, 85, 61, 0.12), transparent 36%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.01), transparent 40%);
+}
+
+.reading-prose {
+  font-family: var(--font-reading, "Iowan Old Style"), "Palatino Linotype", "Book Antiqua", Palatino, Georgia, serif;
+  line-height: 1.85;
+  letter-spacing: 0.002em;
+}
+
+.reading-prose p {
+  margin-block: 0.95rem;
 }

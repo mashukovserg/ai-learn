@@ -90,19 +90,21 @@ Known absent routes (do not assume they exist):
 1. `/${lang}/compete`
 2. `/${lang}/leaderboard`
 
-### Room inventory (19 rooms in `ROOMS_METADATA`)
+### Room inventory (24 rooms in `ROOMS_METADATA`)
 
-Rooms with theory + tasks fully wired (19): `llm-landscape`, `llm-mechanics`, `ai-history`, `prompting-101`, `chatgpt-moment`, `scaling-hypothesis`, `ai-rag` (Enriched), `ai-security` (Enriched), `ai-research` (Enriched), `ai-alignment`, `ai-agents` (Enriched), `deep-search-agents`, `native-multimodality`, `research-grounding` (Enriched), `fine-tuning-101`, `ai-singularity`, `prompt-evals`, `ai-image-creation`, `embeddings-101`.
+Rooms with theory + tasks fully wired (24): `agent-coding-foundations`, `llm-landscape`, `llm-mechanics`, `ai-history`, `prompting-101`, `chatgpt-moment`, `post-chatgpt-history`, `scaling-hypothesis`, `ai-singularity`, `prompt-evals`, `ai-image-creation`, `research-grounding`, `ai-alignment`, `native-multimodality`, `ai-agents` (Enriched), `deep-search-agents`, `ai-rag` (Enriched), `ai-security` (Enriched), `ai-research` (Enriched), `fine-tuning-101`, `embeddings-101`, `llm-guardrails`, `ai-regulation-ru`, `ai-regulation-eu`.
 
-Theory components mapped in `THEORY_COMPONENTS` (19 total) inside `src/app/[lang]/rooms/[id]/page.tsx`. Rooms without a mapping show a fallback placeholder.
+Theory components mapped in `THEORY_COMPONENTS` (24 total) inside `src/app/[lang]/rooms/[id]/page.tsx`. Rooms without a mapping show a fallback placeholder.
 
 ### Source of truth files (use these first)
 
 When changing learning content or room behavior, prefer these files:
 
-1. `src/data/rooms.ts`
-   - Canonical room metadata (`ROOMS_METADATA`)
-   - Canonical task sets (`ROOM_TASKS`)
+1. `src/data/rooms/` (barrel: `src/data/rooms/index.ts`)
+   - `types.ts` — shared interfaces (`LocalizedString`, `LocalizedTask`, `LocalizedRoomMetadata`)
+   - `metadata.ts` — canonical room metadata (`ROOMS_METADATA`)
+   - `paths.ts` — learning path metadata (`PATHS_METADATA`)
+   - `tasks/<room-id>.ts` — per-room task arrays, assembled in `tasks/index.ts` as `ROOM_TASKS`
 2. `src/app/[lang]/rooms/[id]/page.tsx`
    - Dynamic room renderer
    - Theory component mapping
@@ -116,6 +118,14 @@ When changing learning content or room behavior, prefer these files:
    - Backend API contracts for auth/progress/users
 7. `src/types/room.ts`
    - `TaskType` union: `'input' | 'multiple-choice' | 'multiple-select' | 'sorting' | 'mentor' | 'categorize' | 'timeline' | 'scenario'`
+
+### Design tokens (Mandatory)
+
+Surface and border colors are defined as Tailwind v4 theme tokens in `src/app/[lang]/globals.css` under `@theme`. When writing or editing component styles:
+
+- Use `bg-card`, `bg-card-dark`, `bg-base`, `bg-deep`, `bg-input`, `bg-muted` for backgrounds.
+- Use `border-border-card`, `border-border-subtle`, `border-border-emphasis` for borders.
+- **Never** introduce new arbitrary hex background or border values (e.g. `bg-[#1a1a1a]`, `border-[#262626]`). Use the existing tokens or propose a new token in `globals.css`.
 
 ### Available task components
 
@@ -215,6 +225,42 @@ For room and theory headings (page titles, chapter headings, section headings):
 2. If a heading currently has a leading icon, remove it unless the user explicitly requests it.
 3. Keep emphasis through typography, spacing, and color only (not icon prefixes).
 
+### Anti-Vibecode Frontend Gate (Mandatory)
+
+This gate applies to:
+
+1. Frontend UI composition and visual presentation.
+2. User-facing lesson copy (theory blocks, explanatory text, summaries, and comparison framing).
+
+Pass/fail points:
+
+1. **Layout clarity:** do not use a default desktop two-column split for long narrative theory blocks; use a single-column reading flow unless the user explicitly requests a split comparison.
+2. **Text alignment:** body and summary text must be left-aligned by default; centered paragraphs are allowed only when explicitly requested.
+3. **Typography emphasis:** do not use full-paragraph italic styling for core explanatory content.
+4. **Visual restraint:** avoid decorative glow, neon, or attention-grabbing shadow accents on core reading cards by default.
+5. **Heading discipline:** do not add decorative leading icons; follow `No leading icons in headings (Mandatory)`.
+6. **Tone discipline:** avoid hype or dramatic wording; prefer analytical and concrete phrasing.
+7. **Comparison cards:** for camp/model tradeoff blocks, default to stacked sequential cards instead of side-by-side split cards.
+8. **Evidence framing:** frame claims as observations and tradeoffs, not as absolute dominance narratives.
+9. **Localization parity:** any style/tone rewrite must be shipped in both locales (`en` and `ru`) in the same task.
+10. **User override:** explicit user instruction can override any point above, limited to the requested scope.
+
+Vibecode markers to remove:
+
+1. Desktop two-column narrative cards for long explanatory text.
+2. Paragraph-level italics used only for dramatic emphasis.
+3. Decorative glow emphasis on core text containers.
+4. Overly dramatic copy templates.
+
+Pre-ship checklist (yes/no):
+
+1. Is long-form narrative content presented in a single-column flow by default?
+2. Are body and summary paragraphs left-aligned unless the user requested centering?
+3. Are core explanatory paragraphs free of full-paragraph italics?
+4. Are decorative glow/neon/shadow accents removed from core reading cards?
+5. Is wording analytical and tradeoff-oriented instead of dramatic?
+6. Were style/tone changes applied in both `en` and `ru`?
+
 ### Forbidden phrase pattern: "это не просто" (Mandatory)
 
 For any generated content and agent communication in this repository (theory text, docs, room content, summaries, PR notes, and user replies):
@@ -222,6 +268,14 @@ For any generated content and agent communication in this repository (theory tex
 1. Do not use the construction `это не просто` (any case form).
 2. Treat the regex-like pattern `/(^|\\s)это\\s+не\\s+просто(\\s|$)/i` as forbidden in authored text.
 3. Rewrite with direct, concrete wording instead of contrastive template phrasing.
+
+### Forbidden word pattern: "вендор" (Mandatory)
+
+For any generated content and agent communication in this repository (theory text, docs, room content, summaries, PR notes, and user replies):
+
+1. Do not use the word `вендор` in any case form.
+2. Treat the regex-like pattern `/(^|\\s)вендор(а|у|ом|е|ы|ов|ам|ами|ах)?(\\s|$)/i` as forbidden in authored text.
+3. Use concrete alternatives by context, for example: `поставщик модели`, `игрок рынка`, `платформа`, `компания`.
 
 ### Completion checklist (Mandatory)
 
@@ -250,5 +304,27 @@ When behavior/setup/content changes, update docs in the same task:
 2. `PROGRESS.md`: implementation status and milestones.
 3. `CURRICULUM.md`: path/module/room coverage changes.
 4. `BACKLOG.md`: newly identified follow-up engineering/content work.
+5. `DEPLOYMENT.md`: any deployment-related change (see rule below).
 
 If Russian mirrors exist and are maintained (`*.ru.md`), update them in the same task unless explicitly scoped out by the user.
+
+### Deployment Docs Sync Rule (Mandatory)
+
+When any of the following are changed, update `DEPLOYMENT.md` in the same task:
+
+1. `backend/Dockerfile` — startup command, base image, build steps, user setup.
+2. `next.config.ts` — rewrite rules, env var references affecting the API proxy.
+3. `backend/settings.py` — new or renamed env vars consumed by the app.
+4. `backend/.env.sample` — env var additions, removals, or default changes.
+5. `docker-compose.yml` — service definitions, port mappings, volume changes.
+6. `alembic/` — new migrations that add deploy-time database requirements.
+7. Any new service, port, or third-party integration added to the stack.
+
+What to update in `DEPLOYMENT.md`:
+
+- Add a **"What Was Changed"** entry explaining the before/after and why.
+- Update the **Environment Variables Reference** table if vars were added/renamed/removed.
+- Update startup commands or steps if the deploy sequence changed.
+- Keep the Architecture / Request Flow section accurate if the topology changed.
+
+Do not defer `DEPLOYMENT.md` updates to a follow-up task.

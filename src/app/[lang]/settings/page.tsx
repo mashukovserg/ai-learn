@@ -4,6 +4,7 @@ import { use, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { ChevronRight, Globe2, RotateCcw } from 'lucide-react';
+import SkillsMatrix from '@/components/SkillsMatrix';
 import { ROOMS_METADATA } from '@/data/rooms';
 import { useAuth } from '@/hooks/useAuth';
 
@@ -95,28 +96,42 @@ export default function SettingsPage(props: { params: Promise<{ lang: string }> 
   };
 
   return (
-    <div className="max-w-3xl mx-auto">
+    <div className="max-w-6xl mx-auto">
       <nav className="flex items-center gap-2 text-sm text-neutral-500 mb-6">
         <Link href={`/${lang}`} className="hover:text-neutral-300 transition-colors">
           {lang === 'ru' ? 'Главная' : 'Home'}
         </Link>
         <ChevronRight size={14} />
-        <span className="text-neutral-300">{lang === 'ru' ? 'Настройки' : 'Settings'}</span>
+        <span className="text-neutral-300">{lang === 'ru' ? 'Профиль' : 'Profile'}</span>
       </nav>
 
       <div className="mb-10">
         <h1 className="text-2xl font-semibold mb-3 text-neutral-200">
-          {lang === 'ru' ? 'Настройки' : 'Settings'}
+          {lang === 'ru' ? 'Профиль' : 'Profile'}
         </h1>
         <p className="text-neutral-500 text-sm leading-relaxed">
           {lang === 'ru'
-            ? 'Управляйте языком интерфейса и прогрессом обучения.'
-            : 'Manage interface language and learning progress.'}
+            ? 'Следите за прогрессом, анализируйте навыки и управляйте персональными настройками обучения.'
+            : 'Track progress, analyze your skills, and manage personal learning settings.'}
         </p>
       </div>
 
       <div className="space-y-5">
-        <section className="bg-[#171717] border border-[#282828] rounded-xl p-6">
+        <section id="skills-matrix">
+          <div className="mb-3">
+            <h2 className="text-lg font-semibold text-neutral-200 mb-2">
+              {lang === 'ru' ? 'Матрица навыков' : 'Skills Matrix'}
+            </h2>
+            <p className="text-sm text-neutral-500">
+              {lang === 'ru'
+                ? 'Матрица теперь доступна прямо в профиле и обновляется на основе завершённых комнат.'
+                : 'The matrix is now available directly in your profile and updates from completed rooms.'}
+            </p>
+          </div>
+          <SkillsMatrix />
+        </section>
+
+        <section className="bg-input border border-border-subtle rounded-xl p-6">
           <h2 className="text-lg font-semibold text-neutral-200 mb-2 flex items-center gap-2">
             <Globe2 size={18} className="text-emerald-400" />
             {lang === 'ru' ? 'Язык' : 'Language'}
@@ -131,7 +146,7 @@ export default function SettingsPage(props: { params: Promise<{ lang: string }> 
             <select
               value={selectedLanguage}
               onChange={(e) => setSelectedLanguage(e.target.value)}
-              className="bg-[#0f0f0f] border border-[#2b2b2b] rounded-md px-3 py-2 text-sm text-neutral-200"
+              className="bg-base border border-border-subtle rounded-md px-3 py-2 text-sm text-neutral-200"
             >
               <option value="ru">Русский</option>
               <option value="en">English</option>
@@ -149,7 +164,7 @@ export default function SettingsPage(props: { params: Promise<{ lang: string }> 
           </div>
         </section>
 
-        <section className="bg-[#171717] border border-[#282828] rounded-xl p-6">
+        <section className="bg-input border border-border-subtle rounded-xl p-6">
           <h2 className="text-lg font-semibold text-neutral-200 mb-2 flex items-center gap-2">
             <RotateCcw size={18} className="text-amber-400" />
             {lang === 'ru' ? 'Сброс прогресса комнаты' : 'Reset Room Progress'}
@@ -164,7 +179,7 @@ export default function SettingsPage(props: { params: Promise<{ lang: string }> 
             <select
               value={selectedRoomId}
               onChange={(e) => setSelectedRoomId(e.target.value)}
-              className="bg-[#0f0f0f] border border-[#2b2b2b] rounded-md px-3 py-2 text-sm text-neutral-200 sm:min-w-[260px]"
+              className="bg-base border border-border-subtle rounded-md px-3 py-2 text-sm text-neutral-200 sm:min-w-[260px]"
             >
               {roomOptions.map((room) => (
                 <option key={room.id} value={room.id}>

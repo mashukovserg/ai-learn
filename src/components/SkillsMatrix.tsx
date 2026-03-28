@@ -6,8 +6,10 @@ import { Target, Info, Sparkles, CheckCircle2, Clock, Lock } from 'lucide-react'
 import Link from 'next/link';
 import { ROLES, RoleId, ROLE_STYLES, calculateSkillScores, calculateTotalScore, getSkillRecommendations, roleHasContent } from '@/data/skills';
 import RadarChart from './RadarChart';
+import { useLang } from '@/hooks/useLang';
 
-export default function SkillsMatrix({ lang }: { lang: string }) {
+export default function SkillsMatrix() {
+  const lang = useLang();
   const [selectedRole, setSelectedRole] = useState<RoleId>('foundational');
   const [lastSelectedSkill, setLastSelectedSkill] = useState<string | null>(null);
   const [refreshKey, setRefreshKey] = useState(0);
@@ -47,9 +49,9 @@ export default function SkillsMatrix({ lang }: { lang: string }) {
     return role.skills.find(s => s.name === lastSelectedSkill)?.slug ?? null;
   }, [lastSelectedSkill, role]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const recommendations = useMemo(
     () => selectedSkillSlug ? getSkillRecommendations(selectedSkillSlug) : [],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [selectedSkillSlug, refreshKey]
   );
 
@@ -58,9 +60,9 @@ export default function SkillsMatrix({ lang }: { lang: string }) {
   }, []);
 
   return (
-    <div className="flex bg-[#0a0a0a] border border-[#1a1a1a] rounded-2xl overflow-hidden min-h-[600px] shadow-2xl">
+    <div className="flex bg-deep border border-border-card rounded-2xl overflow-hidden min-h-[600px] shadow-2xl">
       {/* Sidebar */}
-      <aside className="w-[200px] border-r border-[#1a1a1a] bg-[#0d0d0d] p-4 flex flex-col gap-2 shrink-0">
+      <aside className="w-[200px] border-r border-border-card bg-base p-4 flex flex-col gap-2 shrink-0">
         <h4 className="text-[10px] font-bold text-neutral-600 uppercase tracking-widest px-3 mb-2">
           {lang === 'ru' ? 'Выбор роли' : 'Select Role'}
         </h4>
@@ -178,7 +180,7 @@ export default function SkillsMatrix({ lang }: { lang: string }) {
             </div>
 
             <div className="w-full lg:w-[320px] flex flex-col gap-4 self-stretch">
-              <div className="bg-[#141414] border border-[#262626] rounded-xl p-5 flex flex-col">
+              <div className="bg-card-dark border border-border-card rounded-xl p-5 flex flex-col">
                 <h3 className="text-xs font-bold text-neutral-400 uppercase tracking-widest mb-4 flex items-center gap-2">
                   <Target size={14} style={{ color: styles.text }} />
                   {lang === 'ru' ? 'Акцент навыка' : 'Skill Focus'}
@@ -222,7 +224,7 @@ export default function SkillsMatrix({ lang }: { lang: string }) {
                             <Link
                               key={rec.roomId}
                               href={`/${lang}/room/${rec.roomId}`}
-                              className="flex items-center justify-between p-2 rounded-lg bg-[#0d0d0d] border border-white/5 group cursor-pointer transition-colors"
+                              className="flex items-center justify-between p-2 rounded-lg bg-base border border-white/5 group cursor-pointer transition-colors"
                               style={{ ['--hover-border' as string]: styles.border30 }}
                               onMouseEnter={e => (e.currentTarget.style.borderColor = styles.border30)}
                               onMouseLeave={e => (e.currentTarget.style.borderColor = '')}
@@ -253,7 +255,7 @@ export default function SkillsMatrix({ lang }: { lang: string }) {
                 </AnimatePresence>
               </div>
 
-              <div className="mt-auto bg-gradient-to-br from-[#141414] to-black border border-white/5 rounded-xl p-5">
+              <div className="mt-auto bg-gradient-to-br from-card-dark to-black border border-white/5 rounded-xl p-5">
                 <div className="flex items-center gap-3 mb-3">
                   <div
                     className="w-8 h-8 rounded-lg flex items-center justify-center"

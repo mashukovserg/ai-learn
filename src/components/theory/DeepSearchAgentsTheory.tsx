@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
@@ -76,7 +76,7 @@ Final output format:
 2) Key facts with citations (bullet list)
 3) "What remains uncertain" block
 4) Recommended next research steps`;
-  }, [lang]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     return () => {
@@ -141,7 +141,7 @@ Final output format:
 
   return (
     <>
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-2xl font-bold mb-4 text-emerald-400">
           {lang === 'ru' ? 'Что такое «глубокий поиск» в агенте' : 'What Deep Search Means in an Agent'}
         </h2>
@@ -184,7 +184,7 @@ Final output format:
         </p>
       </div>
 
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-2xl font-bold mb-4 text-emerald-400">
           {lang === 'ru' ? 'Базовый цикл глубокого поиска' : 'Core Deep-Search Loop'}
         </h2>
@@ -228,7 +228,7 @@ Final output format:
         </ol>
       </div>
 
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-2xl font-bold mb-4 text-emerald-400">
           {lang === 'ru' ? 'Задержка (latency) и стоимость в глубоком поиске' : 'Latency and Cost in Deep Search'}
         </h2>
@@ -253,7 +253,7 @@ Final output format:
         />
       </div>
 
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-2xl font-bold mb-4 text-emerald-400">
           {lang === 'ru' ? 'Критерии качества перед публикацией ответа' : 'Quality Gates Before Shipping the Answer'}
         </h2>
@@ -286,7 +286,7 @@ Final output format:
         </ul>
       </div>
 
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-2xl font-bold mb-4 text-emerald-400">
           {lang === 'ru' ? 'Мини-шаблон архитектуры' : 'Mini Architecture Template'}
         </h2>
@@ -295,7 +295,7 @@ Final output format:
             ? 'Для минимального жизнеспособного продукта (MVP) достаточно следующей последовательности компонентов:'
             : 'For an MVP, this component sequence is enough:'}
         </p>
-        <pre className="bg-[#0f0f0f] border border-[#2b2b2b] rounded-lg p-4 text-sm text-neutral-300 overflow-x-auto">
+        <pre className="bg-base border border-border-subtle rounded-lg p-4 text-sm text-neutral-300 overflow-x-auto">
 {lang === 'ru'
   ? `Цель пользователя
   -> Планировщик

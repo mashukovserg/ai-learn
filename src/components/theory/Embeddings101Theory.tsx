@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { Info, GitCompare, Ruler, Database, Scissors, Workflow, AlertTriangle } from 'lucide-react';
 
@@ -5,7 +7,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
   return (
     <>
       {/* Chapter 1: What Are Embeddings? */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
           <Info className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 1: Что такое эмбеддинги?' : 'Chapter 1: What Are Embeddings?'}
@@ -27,28 +29,28 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
               : 'Modern transformer embeddings go further: they are context-aware. The word "bank" in "I sat on the river bank" and "I opened a bank account" will get different vectors. This is a huge leap from static embeddings, where each word had exactly one vector.'}
           </p>
 
-          <div className="bg-[#1a1a1a] border border-[#303030] rounded-xl p-5">
+          <div className="bg-card border border-border-emphasis rounded-xl p-5">
             <div className="overflow-x-auto">
               <table className="w-full text-sm text-neutral-400">
                 <thead>
-                  <tr className="border-b border-[#303030]">
+                  <tr className="border-b border-border-emphasis">
                     <th className="text-left py-2 pr-4 text-neutral-500 font-medium">{lang === 'ru' ? 'Модель' : 'Model'}</th>
                     <th className="text-left py-2 pr-4 text-neutral-500 font-medium">{lang === 'ru' ? 'Размерность' : 'Dimensions'}</th>
                     <th className="text-left py-2 text-neutral-500 font-medium">{lang === 'ru' ? 'Примечание' : 'Note'}</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b border-[#262626]">
+                  <tr className="border-b border-border-card">
                     <td className="py-2 pr-4 text-neutral-300 font-medium">all-MiniLM-L6</td>
                     <td className="py-2 pr-4">384</td>
                     <td className="py-2">{lang === 'ru' ? 'Лёгкая, быстрая, бесплатная' : 'Lightweight, fast, free'}</td>
                   </tr>
-                  <tr className="border-b border-[#262626]">
+                  <tr className="border-b border-border-card">
                     <td className="py-2 pr-4 text-neutral-300 font-medium">BERT base</td>
                     <td className="py-2 pr-4">768</td>
                     <td className="py-2">{lang === 'ru' ? 'Классика, хорошая базовая линия' : 'Classic, good baseline'}</td>
                   </tr>
-                  <tr className="border-b border-[#262626]">
+                  <tr className="border-b border-border-card">
                     <td className="py-2 pr-4 text-neutral-300 font-medium">text-embedding-ada-002</td>
                     <td className="py-2 pr-4">1536</td>
                     <td className="py-2">{lang === 'ru' ? 'OpenAI, платная API' : 'OpenAI, paid API'}</td>
@@ -75,13 +77,13 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
       </div>
 
       {/* Chapter 2: From TF-IDF to Transformers */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
           <GitCompare className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 2: От TF-IDF до трансформеров' : 'Chapter 2: From TF-IDF to Transformers'}
         </h2>
         <div className="space-y-6">
-          <div className="bg-[#1a1a1a] p-5 rounded-xl border border-[#262626]">
+          <div className="bg-card p-5 rounded-xl border border-border-card">
             <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">TF-IDF</h4>
             <p className="text-neutral-400 leading-relaxed text-sm">
               {lang === 'ru'
@@ -90,7 +92,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </p>
           </div>
 
-          <div className="bg-[#1a1a1a] p-5 rounded-xl border border-[#262626]">
+          <div className="bg-card p-5 rounded-xl border border-border-card">
             <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">Word2Vec / GloVe</h4>
             <p className="text-neutral-400 leading-relaxed text-sm">
               {lang === 'ru'
@@ -99,7 +101,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </p>
           </div>
 
-          <div className="bg-[#1a1a1a] p-5 rounded-xl border border-[#262626]">
+          <div className="bg-card p-5 rounded-xl border border-border-card">
             <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">BERT / {lang === 'ru' ? 'Трансформерные эмбеддинги' : 'Transformer Embeddings'}</h4>
             <p className="text-neutral-400 leading-relaxed text-sm">
               {lang === 'ru'
@@ -108,7 +110,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </p>
           </div>
 
-          <div className="bg-[#1a1a1a] p-5 rounded-xl border border-[#262626]">
+          <div className="bg-card p-5 rounded-xl border border-border-card">
             <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Современные модели эмбеддингов' : 'Modern Embedding Models'}</h4>
             <div className="space-y-2 text-sm text-neutral-400">
               <div><span className="text-neutral-300 font-medium">text-embedding-3-small (OpenAI)</span> — {lang === 'ru' ? '1536 измерений, отличное качество, платная API ($0.02/1M токенов)' : '1536 dimensions, excellent quality, paid API ($0.02/1M tokens)'}</div>
@@ -119,14 +121,14 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
           </div>
 
           {/* Comparison table */}
-          <div className="bg-[#1a1a1a] border border-[#303030] rounded-xl p-5">
+          <div className="bg-card border border-border-emphasis rounded-xl p-5">
             <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-3 block">
               {lang === 'ru' ? 'Сравнение подходов' : 'Approach Comparison'}
             </span>
             <div className="overflow-x-auto">
               <table className="w-full text-sm text-neutral-400">
                 <thead>
-                  <tr className="border-b border-[#303030]">
+                  <tr className="border-b border-border-emphasis">
                     <th className="text-left py-2 pr-4 text-neutral-500 font-medium"></th>
                     <th className="text-left py-2 pr-4 text-neutral-500 font-medium">TF-IDF</th>
                     <th className="text-left py-2 pr-4 text-neutral-500 font-medium">Word2Vec</th>
@@ -134,19 +136,19 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b border-[#262626]">
+                  <tr className="border-b border-border-card">
                     <td className="py-2 pr-4 text-neutral-300 font-medium">{lang === 'ru' ? 'Размерность' : 'Dimensions'}</td>
                     <td className="py-2 pr-4">{lang === 'ru' ? 'Размер словаря (10K-100K)' : 'Vocab size (10K-100K)'}</td>
                     <td className="py-2 pr-4">100-300</td>
                     <td className="py-2">384-3072</td>
                   </tr>
-                  <tr className="border-b border-[#262626]">
+                  <tr className="border-b border-border-card">
                     <td className="py-2 pr-4 text-neutral-300 font-medium">{lang === 'ru' ? 'Семантика' : 'Semantics'}</td>
                     <td className="py-2 pr-4">{lang === 'ru' ? 'Нет' : 'No'}</td>
                     <td className="py-2 pr-4">{lang === 'ru' ? 'Да (статическая)' : 'Yes (static)'}</td>
                     <td className="py-2">{lang === 'ru' ? 'Да (контекстуальная)' : 'Yes (contextual)'}</td>
                   </tr>
-                  <tr className="border-b border-[#262626]">
+                  <tr className="border-b border-border-card">
                     <td className="py-2 pr-4 text-neutral-300 font-medium">{lang === 'ru' ? 'Контекст' : 'Context'}</td>
                     <td className="py-2 pr-4">{lang === 'ru' ? 'Нет' : 'No'}</td>
                     <td className="py-2 pr-4">{lang === 'ru' ? 'Нет' : 'No'}</td>
@@ -166,7 +168,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
       </div>
 
       {/* Chapter 3: Similarity & Distance */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
           <Ruler className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 3: Сходство и расстояние' : 'Chapter 3: Similarity & Distance'}
@@ -178,7 +180,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
               : 'Once we have vectors, we need to measure how similar they are. This is the fundamental operation: it determines which documents are "relevant" to your query. There are three main metrics.'}
           </p>
 
-          <div className="bg-[#1a1a1a] p-5 rounded-xl border border-[#262626]">
+          <div className="bg-card p-5 rounded-xl border border-border-card">
             <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Косинусное сходство (Cosine Similarity)' : 'Cosine Similarity'}</h4>
             <p className="text-neutral-400 leading-relaxed text-sm mb-3">
               {lang === 'ru'
@@ -191,7 +193,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </div>
           </div>
 
-          <div className="bg-[#1a1a1a] p-5 rounded-xl border border-[#262626]">
+          <div className="bg-card p-5 rounded-xl border border-border-card">
             <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Скалярное произведение (Dot Product)' : 'Dot Product'}</h4>
             <p className="text-neutral-400 leading-relaxed text-sm mb-3">
               {lang === 'ru'
@@ -204,7 +206,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </div>
           </div>
 
-          <div className="bg-[#1a1a1a] p-5 rounded-xl border border-[#262626]">
+          <div className="bg-card p-5 rounded-xl border border-border-card">
             <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Евклидово расстояние (L2)' : 'Euclidean Distance (L2)'}</h4>
             <p className="text-neutral-400 leading-relaxed text-sm mb-3">
               {lang === 'ru'
@@ -218,24 +220,24 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
           </div>
 
           {/* When to use which */}
-          <div className="bg-[#1a1a1a] border border-[#303030] rounded-xl p-5">
+          <div className="bg-card border border-border-emphasis rounded-xl p-5">
             <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-3 block">
               {lang === 'ru' ? 'Когда использовать какую метрику' : 'When to Use Which Metric'}
             </span>
             <div className="overflow-x-auto">
               <table className="w-full text-sm text-neutral-400">
                 <thead>
-                  <tr className="border-b border-[#303030]">
+                  <tr className="border-b border-border-emphasis">
                     <th className="text-left py-2 pr-4 text-neutral-500 font-medium">{lang === 'ru' ? 'Метрика' : 'Metric'}</th>
                     <th className="text-left py-2 text-neutral-500 font-medium">{lang === 'ru' ? 'Лучше всего подходит' : 'Best For'}</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b border-[#262626]">
+                  <tr className="border-b border-border-card">
                     <td className="py-2 pr-4 text-neutral-300 font-medium">Cosine</td>
                     <td className="py-2">{lang === 'ru' ? 'Семантический поиск, сравнение текстов (по умолчанию)' : 'Semantic search, text comparison (default choice)'}</td>
                   </tr>
-                  <tr className="border-b border-[#262626]">
+                  <tr className="border-b border-border-card">
                     <td className="py-2 pr-4 text-neutral-300 font-medium">Dot Product</td>
                     <td className="py-2">{lang === 'ru' ? 'Нормализованные эмбеддинги, рекомендательные системы' : 'Normalized embeddings, recommendation systems'}</td>
                   </tr>
@@ -260,7 +262,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
       </div>
 
       {/* Chapter 4: Vector Databases */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
           <Database className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 4: Векторные базы данных' : 'Chapter 4: Vector Databases'}
@@ -272,7 +274,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
               : 'Traditional databases are optimized for exact lookups: find the record with id=42, or all records where price < 100. B-tree indexes handle this well. But when you have a million vectors of 1536 dimensions and need to find the 10 nearest ones — B-trees are useless. You need specialized data structures.'}
           </p>
 
-          <div className="bg-[#1a1a1a] p-5 rounded-xl border border-[#262626]">
+          <div className="bg-card p-5 rounded-xl border border-border-card">
             <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Алгоритмы приближённого поиска (ANN)' : 'Approximate Nearest Neighbor (ANN) Algorithms'}</h4>
             <p className="text-neutral-400 leading-relaxed text-sm mb-4">
               {lang === 'ru'
@@ -286,14 +288,14 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
           </div>
 
           {/* Vector DB comparison */}
-          <div className="bg-[#1a1a1a] border border-[#303030] rounded-xl p-5">
+          <div className="bg-card border border-border-emphasis rounded-xl p-5">
             <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-3 block">
               {lang === 'ru' ? 'Сравнение векторных баз данных' : 'Vector Database Comparison'}
             </span>
             <div className="overflow-x-auto">
               <table className="w-full text-sm text-neutral-400">
                 <thead>
-                  <tr className="border-b border-[#303030]">
+                  <tr className="border-b border-border-emphasis">
                     <th className="text-left py-2 pr-4 text-neutral-500 font-medium">{lang === 'ru' ? 'База' : 'Database'}</th>
                     <th className="text-left py-2 pr-4 text-neutral-500 font-medium">{lang === 'ru' ? 'Тип' : 'Type'}</th>
                     <th className="text-left py-2 pr-4 text-neutral-500 font-medium">{lang === 'ru' ? 'Фильтрация' : 'Filtering'}</th>
@@ -301,25 +303,25 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b border-[#262626]">
+                  <tr className="border-b border-border-card">
                     <td className="py-2 pr-4 text-neutral-300 font-medium">Pinecone</td>
                     <td className="py-2 pr-4">{lang === 'ru' ? 'Облако (managed)' : 'Hosted (managed)'}</td>
                     <td className="py-2 pr-4">{lang === 'ru' ? 'Метаданные, неймспейсы' : 'Metadata, namespaces'}</td>
                     <td className="py-2">{lang === 'ru' ? 'Бесплатный тир, потом от $70/мес' : 'Free tier, then from $70/mo'}</td>
                   </tr>
-                  <tr className="border-b border-[#262626]">
+                  <tr className="border-b border-border-card">
                     <td className="py-2 pr-4 text-neutral-300 font-medium">Weaviate</td>
                     <td className="py-2 pr-4">{lang === 'ru' ? 'Облако / self-hosted' : 'Hosted / self-hosted'}</td>
                     <td className="py-2 pr-4">{lang === 'ru' ? 'GraphQL фильтры' : 'GraphQL filters'}</td>
                     <td className="py-2">{lang === 'ru' ? 'Open-source, облако платно' : 'Open-source, cloud paid'}</td>
                   </tr>
-                  <tr className="border-b border-[#262626]">
+                  <tr className="border-b border-border-card">
                     <td className="py-2 pr-4 text-neutral-300 font-medium">Qdrant</td>
                     <td className="py-2 pr-4">{lang === 'ru' ? 'Облако / self-hosted' : 'Hosted / self-hosted'}</td>
                     <td className="py-2 pr-4">{lang === 'ru' ? 'Богатые фильтры, payload' : 'Rich filters, payload'}</td>
                     <td className="py-2">{lang === 'ru' ? 'Open-source, облако от $25/мес' : 'Open-source, cloud from $25/mo'}</td>
                   </tr>
-                  <tr className="border-b border-[#262626]">
+                  <tr className="border-b border-border-card">
                     <td className="py-2 pr-4 text-neutral-300 font-medium">Chroma</td>
                     <td className="py-2 pr-4">{lang === 'ru' ? 'Локальная / self-hosted' : 'Local / self-hosted'}</td>
                     <td className="py-2 pr-4">{lang === 'ru' ? 'Метаданные' : 'Metadata'}</td>
@@ -348,7 +350,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
       </div>
 
       {/* Chapter 5: Chunking Strategies */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
           <Scissors className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 5: Стратегии чанкинга' : 'Chapter 5: Chunking Strategies'}
@@ -360,7 +362,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
               : 'Embedding models have input length limits — typically 512 tokens (some modern models up to 8192). Long documents must be split into chunks. How you do this critically affects retrieval quality.'}
           </p>
 
-          <div className="bg-[#1a1a1a] p-5 rounded-xl border border-[#262626]">
+          <div className="bg-card p-5 rounded-xl border border-border-card">
             <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Фиксированный размер' : 'Fixed-Size Chunking'}</h4>
             <p className="text-neutral-400 leading-relaxed text-sm mb-3">
               {lang === 'ru'
@@ -374,7 +376,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </div>
           </div>
 
-          <div className="bg-[#1a1a1a] p-5 rounded-xl border border-[#262626]">
+          <div className="bg-card p-5 rounded-xl border border-border-card">
             <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Семантический чанкинг' : 'Semantic Chunking'}</h4>
             <p className="text-neutral-400 leading-relaxed text-sm">
               {lang === 'ru'
@@ -383,7 +385,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </p>
           </div>
 
-          <div className="bg-[#1a1a1a] p-5 rounded-xl border border-[#262626]">
+          <div className="bg-card p-5 rounded-xl border border-border-card">
             <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Перекрывающиеся чанки (Sliding Window)' : 'Overlapping Chunks (Sliding Window)'}</h4>
             <p className="text-neutral-400 leading-relaxed text-sm mb-3">
               {lang === 'ru'
@@ -399,31 +401,31 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
           </div>
 
           {/* Chunk size tradeoffs */}
-          <div className="bg-[#1a1a1a] border border-[#303030] rounded-xl p-5">
+          <div className="bg-card border border-border-emphasis rounded-xl p-5">
             <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-3 block">
               {lang === 'ru' ? 'Размер чанков по типу задачи' : 'Chunk Sizes by Use Case'}
             </span>
             <div className="overflow-x-auto">
               <table className="w-full text-sm text-neutral-400">
                 <thead>
-                  <tr className="border-b border-[#303030]">
+                  <tr className="border-b border-border-emphasis">
                     <th className="text-left py-2 pr-4 text-neutral-500 font-medium">{lang === 'ru' ? 'Задача' : 'Use Case'}</th>
                     <th className="text-left py-2 pr-4 text-neutral-500 font-medium">{lang === 'ru' ? 'Размер чанка' : 'Chunk Size'}</th>
                     <th className="text-left py-2 text-neutral-500 font-medium">{lang === 'ru' ? 'Почему' : 'Why'}</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b border-[#262626]">
+                  <tr className="border-b border-border-card">
                     <td className="py-2 pr-4 text-neutral-300 font-medium">Q&A</td>
                     <td className="py-2 pr-4">256-512 {lang === 'ru' ? 'токенов' : 'tokens'}</td>
                     <td className="py-2">{lang === 'ru' ? 'Точный ответ важнее широкого контекста' : 'Precise answer matters more than broad context'}</td>
                   </tr>
-                  <tr className="border-b border-[#262626]">
+                  <tr className="border-b border-border-card">
                     <td className="py-2 pr-4 text-neutral-300 font-medium">{lang === 'ru' ? 'Суммаризация' : 'Summarization'}</td>
                     <td className="py-2 pr-4">1024-2048 {lang === 'ru' ? 'токенов' : 'tokens'}</td>
                     <td className="py-2">{lang === 'ru' ? 'Нужен широкий контекст для связного резюме' : 'Broad context needed for coherent summary'}</td>
                   </tr>
-                  <tr className="border-b border-[#262626]">
+                  <tr className="border-b border-border-card">
                     <td className="py-2 pr-4 text-neutral-300 font-medium">{lang === 'ru' ? 'Код' : 'Code'}</td>
                     <td className="py-2 pr-4">{lang === 'ru' ? 'На уровне функций' : 'Function-level'}</td>
                     <td className="py-2">{lang === 'ru' ? 'Функция — естественная единица смысла' : 'A function is a natural unit of meaning'}</td>
@@ -450,7 +452,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
       </div>
 
       {/* Chapter 6: Building a RAG Pipeline with Embeddings */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
           <Workflow className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 6: RAG-пайплайн на эмбеддингах' : 'Chapter 6: Building a RAG Pipeline with Embeddings'}
@@ -462,7 +464,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
               : 'Now let\'s put it all together. RAG (Retrieval-Augmented Generation) is an architecture where an LLM receives relevant context from an external knowledge base before generating an answer. Embeddings are the key technology that makes this possible.'}
           </p>
 
-          <div className="bg-[#1a1a1a] p-5 rounded-xl border border-[#262626]">
+          <div className="bg-card p-5 rounded-xl border border-border-card">
             <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Полный поток данных' : 'The Full Data Flow'}</h4>
             <div className="bg-black/40 rounded-lg p-4 font-mono text-xs text-neutral-400">
               <div className="text-neutral-500 mb-3">{lang === 'ru' ? '// Фаза индексации (один раз)' : '// Indexing phase (once)'}</div>
@@ -472,7 +474,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </div>
           </div>
 
-          <div className="bg-[#1a1a1a] p-5 rounded-xl border border-[#262626]">
+          <div className="bg-card p-5 rounded-xl border border-border-card">
             <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Ре-ранкинг: от top-100 к top-5' : 'Re-ranking: From Top-100 to Top-5'}</h4>
             <p className="text-neutral-400 leading-relaxed text-sm mb-3">
               {lang === 'ru'
@@ -487,7 +489,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </div>
           </div>
 
-          <div className="bg-[#1a1a1a] p-5 rounded-xl border border-[#262626]">
+          <div className="bg-card p-5 rounded-xl border border-border-card">
             <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Гибридный поиск: BM25 + эмбеддинги' : 'Hybrid Search: BM25 + Embeddings'}</h4>
             <p className="text-neutral-400 leading-relaxed text-sm mb-3">
               {lang === 'ru'
@@ -504,7 +506,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
           </div>
 
           {/* Practical pseudocode */}
-          <div className="bg-[#1a1a1a] p-5 rounded-xl border border-[#262626]">
+          <div className="bg-card p-5 rounded-xl border border-border-card">
             <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Полный пример (псевдокод)' : 'Full Example (Pseudocode)'}</h4>
             <div className="bg-black/40 rounded-lg p-4 font-mono text-xs text-neutral-400 overflow-x-auto">
               <div className="text-neutral-500 mb-2">{lang === 'ru' ? '// 1. Пользователь задаёт вопрос' : '// 1. User asks a question'}</div>
@@ -524,7 +526,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
       </div>
 
       {/* Chapter 7: Pitfalls and Best Practices */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
           <AlertTriangle className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 7: Ошибки и лучшие практики' : 'Chapter 7: Pitfalls and Best Practices'}
@@ -537,7 +539,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
           </p>
 
           <div className="space-y-3">
-            <div className="bg-[#1a1a1a] p-5 rounded-xl border border-[#262626]">
+            <div className="bg-card p-5 rounded-xl border border-border-card">
               <h4 className="text-emerald-400 font-bold mb-2">{lang === 'ru' ? 'Выбор модели важнее выбора базы данных' : 'Model Choice Matters More Than DB Choice'}</h4>
               <p className="text-neutral-400 text-sm leading-relaxed">
                 {lang === 'ru'
@@ -546,7 +548,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
               </p>
             </div>
 
-            <div className="bg-[#1a1a1a] p-5 rounded-xl border border-[#262626]">
+            <div className="bg-card p-5 rounded-xl border border-border-card">
               <h4 className="text-emerald-400 font-bold mb-2">{lang === 'ru' ? 'Нормализуйте эмбеддинги' : 'Normalize Your Embeddings'}</h4>
               <p className="text-neutral-400 text-sm leading-relaxed">
                 {lang === 'ru'
@@ -555,7 +557,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
               </p>
             </div>
 
-            <div className="bg-[#1a1a1a] p-5 rounded-xl border border-[#262626]">
+            <div className="bg-card p-5 rounded-xl border border-border-card">
               <h4 className="text-emerald-400 font-bold mb-2">{lang === 'ru' ? 'Не смешивайте модели эмбеддингов' : 'Don\'t Mix Embedding Models'}</h4>
               <p className="text-neutral-400 text-sm leading-relaxed">
                 {lang === 'ru'
@@ -564,7 +566,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
               </p>
             </div>
 
-            <div className="bg-[#1a1a1a] p-5 rounded-xl border border-[#262626]">
+            <div className="bg-card p-5 rounded-xl border border-border-card">
               <h4 className="text-emerald-400 font-bold mb-2">{lang === 'ru' ? 'Фильтрация по метаданным' : 'Metadata Filtering'}</h4>
               <p className="text-neutral-400 text-sm leading-relaxed">
                 {lang === 'ru'
@@ -573,7 +575,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
               </p>
             </div>
 
-            <div className="bg-[#1a1a1a] p-5 rounded-xl border border-[#262626]">
+            <div className="bg-card p-5 rounded-xl border border-border-card">
               <h4 className="text-emerald-400 font-bold mb-2">{lang === 'ru' ? 'Мониторинг качества поиска' : 'Monitor Retrieval Quality'}</h4>
               <p className="text-neutral-400 text-sm leading-relaxed">
                 {lang === 'ru'
@@ -582,7 +584,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
               </p>
             </div>
 
-            <div className="bg-[#1a1a1a] p-5 rounded-xl border border-[#262626]">
+            <div className="bg-card p-5 rounded-xl border border-border-card">
               <h4 className="text-emerald-400 font-bold mb-2">{lang === 'ru' ? 'Стоимость на масштабе' : 'Cost at Scale'}</h4>
               <p className="text-neutral-400 text-sm leading-relaxed">
                 {lang === 'ru'

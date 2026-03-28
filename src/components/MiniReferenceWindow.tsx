@@ -18,7 +18,7 @@ export default function MiniReferenceWindow({
   linkHref,
 }: MiniReferenceWindowProps) {
   return (
-    <div className="w-full max-w-md rounded-xl overflow-hidden border border-[#2b2b2b] bg-[#151515] shadow-[0_14px_40px_rgba(0,0,0,0.45)]">
+    <div className="w-full max-w-md rounded-xl overflow-hidden border border-border-subtle bg-card-dark shadow-[0_14px_40px_rgba(0,0,0,0.45)]">
       <div className="flex items-center justify-between px-4 py-2 bg-[#d4d4d8] text-[#111827]">
         <span className="text-sm font-medium tracking-wide">{title}</span>
         <span className="text-lg leading-none opacity-70">x</span>

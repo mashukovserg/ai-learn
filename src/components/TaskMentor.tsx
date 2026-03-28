@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { MessageSquare, ArrowRight, CheckCircle2, RefreshCcw } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLang } from '@/hooks/useLang';
 
 interface UserOption {
   text: string;
@@ -18,7 +19,6 @@ interface TaskMentorProps {
   userOptions: UserOption[];
   onSuccess: (id: number) => void;
   initialCompleted?: boolean;
-  lang?: string;
 }
 
 export default function TaskMentor({
@@ -28,8 +28,8 @@ export default function TaskMentor({
   userOptions,
   onSuccess,
   initialCompleted = false,
-  lang = 'en',
 }: TaskMentorProps) {
+  const lang = useLang();
   const [selectedOption, setSelectedOption] = useState<UserOption | null>(null);
   const [step, setStep] = useState<'selection' | 'reaction' | 'deepening'>(initialCompleted ? 'deepening' : 'selection');
   const [completed, setCompleted] = useState(initialCompleted);
@@ -49,11 +49,11 @@ export default function TaskMentor({
   };
 
   return (
-    <div className={`bg-[#141414] border rounded-xl overflow-hidden mb-4 transition-all duration-500 ${
-      completed ? 'border-emerald-500/30 shadow-[0_0_20px_rgba(16,185,129,0.05)]' : 'border-[#262626]'
+    <div className={`bg-card-dark border rounded-xl overflow-hidden mb-4 transition-all duration-500 ${
+      completed ? 'border-emerald-500/30 shadow-[0_0_20px_rgba(16,185,129,0.05)]' : 'border-border-card'
     }`}>
       {/* Header */}
-      <div className="bg-[#1a1a1a] px-4 py-3 border-b border-[#262626] flex items-center justify-between">
+      <div className="bg-card px-4 py-3 border-b border-border-card flex items-center justify-between">
         <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
             <MessageSquare size={14} className="text-emerald-500" />
@@ -84,7 +84,7 @@ export default function TaskMentor({
                 <div className="w-8 h-8 rounded-full bg-neutral-800 flex-shrink-0 flex items-center justify-center text-xs font-bold text-neutral-400 border border-neutral-700">
                   M
                 </div>
-                <div className="bg-[#1a1a1a] border border-[#262626] rounded-2xl rounded-tl-none p-4 text-sm text-neutral-300 leading-relaxed shadow-sm">
+                <div className="bg-card border border-border-card rounded-2xl rounded-tl-none p-4 text-sm text-neutral-300 leading-relaxed shadow-sm">
                   {mentorMessage}
                 </div>
               </div>
@@ -94,7 +94,7 @@ export default function TaskMentor({
                   <button
                     key={idx}
                     onClick={() => handleSelect(option)}
-                    className="text-left p-3.5 rounded-xl border border-[#262626] bg-[#0f0f0f] hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all group relative overflow-hidden"
+                    className="text-left p-3.5 rounded-xl border border-border-card bg-base hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all group relative overflow-hidden"
                   >
                     <div className="relative z-10 flex items-center justify-between gap-3">
                       <span className="text-sm text-neutral-400 group-hover:text-neutral-200 transition-colors">
@@ -130,7 +130,7 @@ export default function TaskMentor({
                 <div className="w-8 h-8 rounded-full bg-neutral-800 flex-shrink-0 flex items-center justify-center text-xs font-bold text-neutral-400 border border-neutral-700">
                   M
                 </div>
-                <div className="bg-[#1a1a1a] border border-[#262626] rounded-2xl rounded-tl-none p-4 text-sm text-neutral-300 leading-relaxed shadow-sm flex-1">
+                <div className="bg-card border border-border-card rounded-2xl rounded-tl-none p-4 text-sm text-neutral-300 leading-relaxed shadow-sm flex-1">
                   {selectedOption.reaction}
                   
                   <div className="mt-4 flex gap-2">

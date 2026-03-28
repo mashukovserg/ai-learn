@@ -4,11 +4,11 @@ import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { CheckCircle, ArrowRight, X } from 'lucide-react';
+import { useLang } from '@/hooks/useLang';
 
 interface RoomSuccessModalProps {
   isOpen: boolean;
   onClose: () => void;
-  lang: string;
   roomTitle: string;
   taskCount: number;
 }
@@ -16,10 +16,10 @@ interface RoomSuccessModalProps {
 export default function RoomSuccessModal({
   isOpen,
   onClose,
-  lang,
   roomTitle,
   taskCount,
 }: RoomSuccessModalProps) {
+  const lang = useLang();
   // Close on Escape
   useEffect(() => {
     if (!isOpen) return;
@@ -52,7 +52,7 @@ export default function RoomSuccessModal({
             className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none"
           >
             <motion.div
-              className="relative bg-[#141414] border border-[#303030] rounded-2xl p-8 w-full max-w-md pointer-events-auto shadow-2xl"
+              className="relative bg-card-dark border border-border-emphasis rounded-2xl p-8 w-full max-w-md pointer-events-auto shadow-2xl"
               initial={{ opacity: 0, scale: 0.92, y: 24 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.92, y: 24 }}

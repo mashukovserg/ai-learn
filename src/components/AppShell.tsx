@@ -6,10 +6,8 @@ import Navbar from "@/components/Navbar";
 import { AuthProvider } from "@/hooks/useAuth";
 
 export default function AppShell({
-  lang,
   children,
 }: {
-  lang: string;
   children: React.ReactNode;
 }) {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -21,13 +19,14 @@ export default function AppShell({
         style={{ gridTemplateColumns: sidebarCollapsed ? "64px minmax(0,1fr)" : "208px minmax(0,1fr)" }}
       >
         <Sidebar
-          lang={lang}
           collapsed={sidebarCollapsed}
           onToggle={() => setSidebarCollapsed((v) => !v)}
         />
         <div className="min-w-0 flex flex-col">
-          <Navbar lang={lang} />
-          <main className="p-8 flex-1 min-w-0">{children}</main>
+          <Navbar />
+          <main className="app-main flex-1 min-w-0">
+            <div className="content-shell">{children}</div>
+          </main>
         </div>
       </div>
     </AuthProvider>

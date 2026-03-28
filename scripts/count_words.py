@@ -14,58 +14,54 @@ def count_words(text):
     return len(words)
 
 def extract_from_ts():
-    rooms_path = os.path.join(PROJECT_ROOT, 'src/data/rooms.ts')
-    if not os.path.exists(rooms_path):
-        print(f"Error: {rooms_path} not found")
+    rooms_dir = os.path.join(PROJECT_ROOT, 'src/data/rooms')
+    metadata_path = os.path.join(rooms_dir, 'metadata.ts')
+    tasks_dir = os.path.join(rooms_dir, 'tasks')
+
+    if not os.path.exists(metadata_path):
+        print(f"Error: {metadata_path} not found")
         print(f"Current working directory: {os.getcwd()}")
         return {}, {}
-    
-    with open(rooms_path, 'r', encoding='utf-8') as f:
+
+    # Extract from metadata.ts
+    metadata_results = {}
+    with open(metadata_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # Improved extraction for ROOMS_METADATA
-    metadata_results = {}
-    metadata_match = re.search(r'export const ROOMS_METADATA: LocalizedRoomMetadata\[\] = \[(.*?)\];', content, re.DOTALL)
-    if metadata_match:
-        rooms_raw = metadata_match.group(1)
-        # Find individual room objects - splitting by 'id:' since it's a stable key
-        room_blocks = re.split(r'\{\s*id:', rooms_raw)
-        for block in room_blocks:
-            if not block.strip(): continue
-            
-            id_match = re.search(r"^['\"]([^'\"]+)['\"]", block.strip())
-            if not id_match: continue
-            room_id = id_match.group(1)
-            
-            # Find all ru: and en: strings
-            ru_strings = re.findall(r"ru:\s*['\"](.*?)['\"]", block, re.DOTALL)
-            en_strings = re.findall(r"en:\s*['\"](.*?)['\"]", block, re.DOTALL)
-            
-            metadata_results[room_id] = {
-                'ru': count_words(" ".join(ru_strings)),
-                'en': count_words(" ".join(en_strings))
-            }
+    room_blocks = re.split(r'\{\s*id:', content)
+    for block in room_blocks:
+        if not block.strip(): continue
+        id_match = re.search(r"^['\"]([^'\"]+)['\"]", block.strip())
+        if not id_match: continue
+        room_id = id_match.group(1)
 
-    # Improved extraction for ROOM_TASKS
+        ru_strings = re.findall(r"ru:\s*['\"](.*?)['\"]", block, re.DOTALL)
+        en_strings = re.findall(r"en:\s*['\"](.*?)['\"]", block, re.DOTALL)
+
+        metadata_results[room_id] = {
+            'ru': count_words(" ".join(ru_strings)),
+            'en': count_words(" ".join(en_strings))
+        }
+
+    # Extract from per-room task files in tasks/
     task_results = {}
-    tasks_match = re.search(r'export const ROOM_TASKS: Record<string, LocalizedTask\[\]> = \{(.*?)\};', content, re.DOTALL)
-    if tasks_match:
-        tasks_raw = tasks_match.group(1)
-        # Split by room keys
-        room_tasks_blocks = re.findall(r"['\"]([^'\"]+)['\"]:\s*\[(.*?)\]\s*,\s*(?=['\"]|\})", tasks_raw + "}", re.DOTALL)
-        if not room_tasks_blocks:
-            # Fallback if the trailing lookahead fails
-            room_tasks_blocks = re.findall(r"['\"]([^'\"]+)['\"]:\s*\[(.*?)\]", tasks_raw, re.DOTALL)
+    if os.path.exists(tasks_dir):
+        for fname in os.listdir(tasks_dir):
+            if fname == 'index.ts' or not fname.endswith('.ts'):
+                continue
+            room_id = fname.replace('.ts', '')
+            fpath = os.path.join(tasks_dir, fname)
+            with open(fpath, 'r', encoding='utf-8') as f:
+                block = f.read()
 
-        for room_id, block in room_tasks_blocks:
             ru_strings = re.findall(r"ru:\s*['\"](.*?)['\"]", block, re.DOTALL)
             en_strings = re.findall(r"en:\s*['\"](.*?)['\"]", block, re.DOTALL)
-            
+
             task_results[room_id] = {
                 'ru': count_words(" ".join(ru_strings)),
                 'en': count_words(" ".join(en_strings))
             }
-            
+
     return metadata_results, task_results
 
 def get_markdown_counts():

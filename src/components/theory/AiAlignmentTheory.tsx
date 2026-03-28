@@ -1,12 +1,14 @@
+"use client";
+
 import React from 'react';
 import Term from '@/components/Term';
-import { ShieldCheck, Target, Zap, Award, AlertCircle, MessageSquare, Microscope, Workflow, Scale, ShieldAlert } from 'lucide-react';
+import { ShieldCheck, Target, Zap, Award, MessageSquare, Microscope, Workflow, Scale, ShieldAlert } from 'lucide-react';
 
 export default function AiAlignmentTheory({ lang }: { lang: string }) {
   return (
     <>
       {/* Chapter 1: The Alignment Problem & The Wild Model */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
           <Target className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 1: Проблема выравнивания — Укрощение хаоса' : 'Chapter 1: The Alignment Problem — Taming Chaos'}
@@ -34,7 +36,7 @@ export default function AiAlignmentTheory({ lang }: { lang: string }) {
       </div>
 
       {/* Chapter 2: SFT — The Lesson of Imitation */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
           <Microscope className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 2: SFT — Первый учитель и границы имитации' : 'Chapter 2: SFT — The First Teacher and the Limits of Imitation'}
@@ -45,7 +47,7 @@ export default function AiAlignmentTheory({ lang }: { lang: string }) {
               ? 'Процесс "очеловечивания" начинается с SFT (Supervised Fine-Tuning). На этом этапе мы берем сырую модель и даем ей учебник "хороших манер". Тысячи высокооплачиваемых специалистов (AI Trainers) вручную создают идеальные диалоги. Они показывают модели: "Если пользователь просит написать код, напиши его чисто, с комментариями и без ошибок". "Если пользователь просит совета по медицине, будь осторожен и посоветуй обратиться к врачу".'
               : 'The process of "humanizing" begins with SFT (Supervised Fine-Tuning). At this stage, we take a raw model and give it a "good manners" textbook. Thousands of well-paid specialists (AI Trainers) manually create ideal dialogues. They show the model: "If a user asks for code, write it cleanly, with comments and no errors." "If a user asks for medical advice, be cautious and advise consulting a doctor."'}
           </p>
-          <div className="bg-[#1a1a1a] p-6 rounded-xl border border-[#262626]">
+          <div className="bg-card p-6 rounded-xl border border-border-card">
             <h4 className="text-emerald-400 font-bold mb-4 uppercase  tracking-widest">{lang === 'ru' ? 'Парадокс LIMA (Less Is More for Alignment):' : 'The LIMA Paradox (Less Is More for Alignment):'}</h4>
             <p className=" text-neutral-400 leading-relaxed">
               {lang === 'ru'
@@ -61,20 +63,20 @@ export default function AiAlignmentTheory({ lang }: { lang: string }) {
         </div>
       </div>
 
-      {/* Chapter 3: <Term id="rlhf" lang={lang}>RLHF</Term> — The Architecture of Preference */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      {/* Chapter 3: <Term id="rlhf">RLHF</Term> — The Architecture of Preference */}
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
           <Workflow className="text-emerald-500" />
-          {lang === 'ru' ? <><Term id="rlhf" lang={lang} /> и Модель вознаграждения</> : <><Term id="rlhf" lang={lang} /> and the Reward Model</>}
+          {lang === 'ru' ? <><Term id="rlhf" /> и Модель вознаграждения</> : <><Term id="rlhf" /> and the Reward Model</>}
         </h2>
         <div className="space-y-6">
           <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru'
-              ? <><Term id="rlhf" lang={lang}>Reinforcement Learning from Human Feedback</Term> {' (<Term id="rlhf" lang={lang}>RLHF</Term>) — это то, что превратило GPT-3.5 в легендарный ChatGPT. Здесь мы перестаем давать модели готовые ответы и начинаем давать ей возможность выбирать.'}</>
-              : <><Term id="rlhf" lang={lang}>Reinforcement Learning from Human Feedback</Term> {' (<Term id="rlhf" lang={lang}>RLHF</Term>) is what turned GPT-3.5 into the legendary ChatGPT. Here, we stop giving the model ready-made answers and start giving it the opportunity to choose.'}</>}
+              ? <><Term id="rlhf">Reinforcement Learning from Human Feedback</Term> (<Term id="rlhf">RLHF</Term>) — это то, что превратило GPT-3.5 в легендарный ChatGPT. Здесь мы перестаем давать модели готовые ответы и начинаем давать ей возможность выбирать.</>
+              : <><Term id="rlhf">Reinforcement Learning from Human Feedback</Term> (<Term id="rlhf">RLHF</Term>) is what turned GPT-3.5 into the legendary ChatGPT. Here, we stop giving the model ready-made answers and start giving it the opportunity to choose.</>}
           </p>
           <div className="grid grid-cols-1 gap-6 my-8">
-            <div className="bg-black/40 p-6 rounded-xl border border-[#262626] relative overflow-hidden">
+            <div className="bg-black/40 p-6 rounded-xl border border-border-card relative overflow-hidden">
                <div className="absolute top-0 right-0 p-2 opacity-10"><Award size={64} /></div>
                <h4 className="font-bold text-emerald-500 mb-3">{lang === 'ru' ? 'Модель вознаграждения' : 'The Reward Model'}</h4>
                <p className=" text-neutral-400 leading-relaxed">
@@ -83,7 +85,7 @@ export default function AiAlignmentTheory({ lang }: { lang: string }) {
                    : 'This is a separate neural network critic. It is trained on millions of human preferences (A > B). Its task is to predict what rating a human would give to any new answer. It becomes the "digital embodiment of human taste."'}
                </p>
             </div>
-            <div className="bg-black/40 p-6 rounded-xl border border-[#262626] relative overflow-hidden">
+            <div className="bg-black/40 p-6 rounded-xl border border-border-card relative overflow-hidden">
                <div className="absolute top-0 right-0 p-2 opacity-10"><Zap size={64} /></div>
                <h4 className="font-bold text-emerald-500 mb-3">{lang === 'ru' ? 'Алгоритм PPO' : 'The PPO Algorithm'}</h4>
                <p className=" text-neutral-400 leading-relaxed">
@@ -104,18 +106,18 @@ export default function AiAlignmentTheory({ lang }: { lang: string }) {
                 : 'If we simply force the model to maximize the Critic\'s score, it might start "hacking" the system (Reward Hacking)—for example, by producing a nonsensical string of words that the Critic somehow finds ideal. To prevent this, we introduce a penalty: the model must not deviate too far from its original SFT state. It must get better while remaining itself.'}
             </p>
           </div>
-          <div className="bg-[#1a1a1a] border-l-4 border-blue-500 p-6 my-8">
+          <div className="bg-card border-l-4 border-blue-500 p-6 my-8">
             <p className="text-neutral-200 leading-relaxed font-medium">
               {lang === 'ru'
-                ? 'Важно понимать: <Term id="rlhf" lang={lang}>RLHF</Term> не сделал модель «умной» в философском смысле. Он сделал её социально адаптированной. Модель научилась не только генерировать текст, но и угадывать человеческие ожидания. Это принципиально новый шаг: в вероятностную машину был встроен слой человеческой нормативности. ChatGPT не знает, что такое правда. Он знает, что люди считают хорошим ответом.'
-                : 'It is vital to understand: <Term id="rlhf" lang={lang}>RLHF</Term> did not make the model "smart" in a philosophical sense. It made it socially adapted. The model learned not just to generate text, but to guess human expectations. This is a fundamentally new step: a layer of human normativity was embedded into a probabilistic machine. ChatGPT doesn\'t know what truth is. It knows what humans consider a good answer.'}
+                ? 'Важно понимать: <Term id="rlhf">RLHF</Term> не сделал модель «умной» в философском смысле. Он сделал её социально адаптированной. Модель научилась не только генерировать текст, но и угадывать человеческие ожидания. Это принципиально новый шаг: в вероятностную машину был встроен слой человеческой нормативности. ChatGPT не знает, что такое правда. Он знает, что люди считают хорошим ответом.'
+                : 'It is vital to understand: <Term id="rlhf">RLHF</Term> did not make the model "smart" in a philosophical sense. It made it socially adapted. The model learned not just to generate text, but to guess human expectations. This is a fundamentally new step: a layer of human normativity was embedded into a probabilistic machine. ChatGPT doesn\'t know what truth is. It knows what humans consider a good answer.'}
             </p>
           </div>
         </div>
       </div>
 
       {/* Chapter 4: DPO and Constitutional AI */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
           <Scale className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 4: Прямая оптимизация (DPO) и Автономия' : 'Chapter 4: Direct Preference Optimization (DPO) and Autonomy'}
@@ -123,10 +125,10 @@ export default function AiAlignmentTheory({ lang }: { lang: string }) {
         <div className="space-y-6">
           <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru'
-              ? '<Term id="rlhf" lang={lang}>RLHF</Term> — это невероятно дорого и сложно. Обучение двух нейросетей одновременно (основной и критика) часто приводит к нестабильности. В 2023 году исследователи из Стэнфорда предложили DPO (Direct Preference Optimization). Этот метод позволяет обучать модель напрямую на данных о предпочтениях (A лучше B) без создания промежуточной Модели вознаграждения. DPO математически элегантнее и позволяет достичь тех же результатов в разы быстрее.'
-              : '<Term id="rlhf" lang={lang}>RLHF</Term> is incredibly expensive and complex. Training two neural networks simultaneously (the main one and the critic) often leads to instability. In 2023, Stanford researchers proposed DPO (Direct Preference Optimization). This method allows for training the model directly on preference data (A is better than B) without creating an intermediate Reward Model. DPO is mathematically more elegant and achieves the same results much faster.'}
+              ? '<Term id="rlhf">RLHF</Term> — это невероятно дорого и сложно. Обучение двух нейросетей одновременно (основной и критика) часто приводит к нестабильности. В 2023 году исследователи из Стэнфорда предложили DPO (Direct Preference Optimization). Этот метод позволяет обучать модель напрямую на данных о предпочтениях (A лучше B) без создания промежуточной Модели вознаграждения. DPO математически элегантнее и позволяет достичь тех же результатов в разы быстрее.'
+              : '<Term id="rlhf">RLHF</Term> is incredibly expensive and complex. Training two neural networks simultaneously (the main one and the critic) often leads to instability. In 2023, Stanford researchers proposed DPO (Direct Preference Optimization). This method allows for training the model directly on preference data (A is better than B) without creating an intermediate Reward Model. DPO is mathematically more elegant and achieves the same results much faster.'}
           </p>
-          <div className="bg-[#1a1a1a] p-6 rounded-xl border border-[#262626] my-6">
+          <div className="bg-card p-6 rounded-xl border border-border-card my-6">
              <h4 className="font-bold text-emerald-400 mb-4 flex items-center gap-2">
                <MessageSquare className="text-emerald-500" size={18} />
                {lang === 'ru' ? 'Конституционный ИИ: Когда ИИ учит ИИ' : 'Constitutional AI: When AI Trains AI'}
@@ -146,7 +148,7 @@ export default function AiAlignmentTheory({ lang }: { lang: string }) {
       </div>
 
       {/* Chapter 5: Scalable Oversight & Superalignment */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
           <ShieldCheck className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 5: Масштабируемый надзор и Супервыравнивание' : 'Chapter 5: Scalable Oversight & Superalignment'}

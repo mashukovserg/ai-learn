@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { getRoomProgress } from '@/hooks/useProgress';
+import { useLang } from '@/hooks/useLang';
 
-export default function RoomStatusBadge({ roomId, lang }: { roomId: string; lang: string }) {
+export default function RoomStatusBadge({ roomId }: { roomId: string }) {
+  const lang = useLang();
   const [status, setStatus] = useState<'not-started' | 'in-progress' | 'completed'>('not-started');
 
   useEffect(() => {

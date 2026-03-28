@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { CheckCircle2, AlertTriangle, ChevronRight, RotateCcw, Target } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLang } from '@/hooks/useLang';
 
 interface ScenarioChoice {
   text: string;
@@ -21,7 +22,6 @@ interface TaskScenarioProps {
   passingScore?: number;
   onSuccess: (id: number) => void;
   initialCompleted?: boolean;
-  lang?: string;
 }
 
 export default function TaskScenario({
@@ -34,8 +34,8 @@ export default function TaskScenario({
   passingScore = 60,
   onSuccess,
   initialCompleted = false,
-  lang = 'en',
 }: TaskScenarioProps) {
+  const lang = useLang();
   const [step, setStep] = useState<'brief' | 'choose' | 'outcome'>(
     initialCompleted ? 'outcome' : 'brief'
   );
@@ -72,11 +72,11 @@ export default function TaskScenario({
   };
 
   return (
-    <div className={`bg-[#141414] border rounded-xl overflow-hidden mb-4 transition-all duration-500 ${
-      completed ? 'border-emerald-500/30 shadow-[0_0_20px_rgba(16,185,129,0.05)]' : 'border-[#262626]'
+    <div className={`bg-card-dark border rounded-xl overflow-hidden mb-4 transition-all duration-500 ${
+      completed ? 'border-emerald-500/30 shadow-[0_0_20px_rgba(16,185,129,0.05)]' : 'border-border-card'
     }`}>
       {/* Header */}
-      <div className="bg-[#1a1a1a] px-4 py-3 border-b border-[#262626] flex items-center justify-between">
+      <div className="bg-card px-4 py-3 border-b border-border-card flex items-center justify-between">
         <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-full bg-amber-500/10 flex items-center justify-center border border-amber-500/20">
             <Target size={14} className="text-amber-500" />
@@ -102,7 +102,7 @@ export default function TaskScenario({
               exit={{ opacity: 0, y: -10 }}
               className="space-y-4"
             >
-              <div className="bg-[#0f0f0f] border border-[#262626] rounded-lg p-4">
+              <div className="bg-base border border-border-card rounded-lg p-4">
                 <p className="text-[10px] font-bold text-neutral-500 uppercase tracking-wider mb-2">
                   {lang === 'ru' ? 'Ситуация' : 'Situation'}
                 </p>
@@ -152,7 +152,7 @@ export default function TaskScenario({
                 <button
                   key={idx}
                   onClick={() => handleSelect(choice)}
-                  className="w-full text-left p-3.5 rounded-lg border border-[#262626] bg-[#0f0f0f] hover:border-amber-500/30 hover:bg-amber-500/5 transition-all group"
+                  className="w-full text-left p-3.5 rounded-lg border border-border-card bg-base hover:border-amber-500/30 hover:bg-amber-500/5 transition-all group"
                 >
                   <div className="flex items-center justify-between gap-3">
                     <span className="text-sm text-neutral-400 group-hover:text-neutral-200 transition-colors">
@@ -184,7 +184,7 @@ export default function TaskScenario({
                       {selected.score}/100
                     </span>
                   </div>
-                  <div className="h-1.5 bg-[#0a0a0a] rounded-full overflow-hidden border border-[#262626]">
+                  <div className="h-1.5 bg-deep rounded-full overflow-hidden border border-border-card">
                     <motion.div
                       className={`h-full rounded-full ${getScoreBarColor(selected.score)}`}
                       initial={{ width: 0 }}

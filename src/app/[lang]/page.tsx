@@ -25,7 +25,7 @@ export default async function Home(props: {
       <WelcomeLine welcomeText={dict.dashboard.welcome} />
 
       {/* Continue learning — primary CTA */}
-      <section className="bg-gradient-to-br from-[#171717] via-[#151d18] to-[#171717] border border-emerald-500/25 rounded-xl p-5 mb-9">
+      <section className="bg-gradient-to-br from-input via-[#151d18] to-input border border-emerald-500/25 rounded-xl p-5 mb-9">
         <div className="flex items-center justify-between gap-6">
           <div className="flex-1 min-w-0">
             <p className="text-xs text-emerald-300/80 mb-1.5">
@@ -37,7 +37,7 @@ export default async function Home(props: {
             <p className="text-sm text-neutral-500">
               {lang === 'ru' ? 'Следующее: Как мыслят LLM' : 'Next: How LLMs Think'}
             </p>
-            <DashboardProgress totalRooms={totalRooms} lang={lang} />
+            <DashboardProgress totalRooms={totalRooms} />
           </div>
 
           <div className="flex items-center gap-3">
@@ -70,7 +70,7 @@ export default async function Home(props: {
             const time = room.time[lang as 'en' | 'ru'];
 
             return (
-              <Link key={room.id} href={`/${lang}/rooms/${room.id}`} className="flex items-center gap-3 bg-[#171717] border border-[#282828] rounded-lg px-3.5 py-3 hover:border-emerald-500/35 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-16px_rgba(16,185,129,0.55)] transition-all group">
+              <Link key={room.id} href={`/${lang}/rooms/${room.id}`} className="flex items-center gap-3 bg-input border border-border-subtle rounded-lg px-3.5 py-3 hover:border-emerald-500/35 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-16px_rgba(16,185,129,0.55)] transition-all group">
                 <div className="w-9 h-9 rounded-md bg-emerald-500/10 border border-emerald-500/25 text-emerald-300 flex items-center justify-center shrink-0">
                   <Icon size={16} />
                 </div>
@@ -101,7 +101,7 @@ export default async function Home(props: {
       {/* Curriculum link — compact */}
       <Link
         href={`/${lang}/paths`}
-        className="flex items-center justify-between bg-[#171717] border border-[#282828] rounded-lg px-4 py-2.5 hover:border-emerald-500/35 transition-colors group"
+        className="flex items-center justify-between bg-input border border-border-subtle rounded-lg px-4 py-2.5 hover:border-emerald-500/35 transition-colors group"
       >
         <div>
           <h3 className="text-sm font-medium text-neutral-300 group-hover:text-neutral-100 transition-colors">

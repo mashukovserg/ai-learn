@@ -19,8 +19,8 @@ export default function RoomCard({ id, title, description, difficulty, users, ti
   }[difficulty];
 
   return (
-    <div className="bg-[#171717] border border-[#282828] rounded-lg overflow-hidden hover:border-neutral-600 transition-colors group flex flex-col h-full">
-      <div className="h-28 bg-[#1a1a1a] relative flex items-center justify-center border-b border-[#282828]">
+    <div className="bg-input border border-border-subtle rounded-lg overflow-hidden hover:border-neutral-600 transition-colors group flex flex-col h-full">
+      <div className="h-28 bg-card relative flex items-center justify-center border-b border-border-subtle">
         <Terminal size={36} className="text-neutral-800 group-hover:text-neutral-600 transition-colors" />
         <div className="absolute top-3 left-3 px-2 py-0.5 rounded text-[10px] font-medium uppercase text-neutral-500 bg-white/5">
           {category}
@@ -39,7 +39,7 @@ export default function RoomCard({ id, title, description, difficulty, users, ti
           {description}
         </p>
 
-        <div className="mt-auto pt-4 border-t border-[#282828] flex items-center justify-between">
+        <div className="mt-auto pt-4 border-t border-border-subtle flex items-center justify-between">
           <div className="flex gap-4">
             <div className="flex items-center gap-1.5 text-xs text-neutral-600">
               <Users size={13} />

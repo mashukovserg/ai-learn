@@ -2,8 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { getCompletedRoomCount } from '@/hooks/useProgress';
+import { useLang } from '@/hooks/useLang';
 
-export default function DashboardProgress({ totalRooms, lang }: { totalRooms: number; lang: string }) {
+export default function DashboardProgress({ totalRooms }: { totalRooms: number }) {
+  const lang = useLang();
   const [completedRooms, setCompletedRooms] = useState(0);
 
   useEffect(() => {

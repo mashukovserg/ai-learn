@@ -1,11 +1,12 @@
 import Link from 'next/link';
-import { GraduationCap, Brain, BookOpen, ArrowRight, Lock } from 'lucide-react';
-import { PATHS_METADATA, getRoomsByPath } from '@/data/rooms';
+import { GraduationCap, Brain, BookOpen, ArrowRight, Lock, Cpu } from 'lucide-react';
+import { PATHS_METADATA } from '@/data/rooms';
 
 const ICON_MAP: Record<string, React.ComponentType<{ size?: number }>> = {
   GraduationCap,
   Brain,
   BookOpen,
+  Cpu,
 };
 
 export default async function PathsPage(props: {
@@ -32,7 +33,7 @@ export default async function PathsPage(props: {
           return (
             <div
               key={path.id}
-              className={`group bg-[#171717] border rounded-lg p-6 flex flex-col md:flex-row items-center gap-6 transition-colors ${path.unlocked ? 'border-[#282828] hover:border-emerald-500/35' : 'border-[#282828] opacity-50 cursor-not-allowed'}`}
+              className={`group bg-input border rounded-lg p-6 flex flex-col md:flex-row items-center gap-6 transition-colors ${path.unlocked ? 'border-border-subtle hover:border-emerald-500/35' : 'border-border-subtle opacity-50 cursor-not-allowed'}`}
             >
               <div className={`w-14 h-14 rounded-lg flex items-center justify-center ${
                 path.unlocked ? 'bg-emerald-500/10 text-emerald-300 border border-emerald-500/25' : 'bg-white/5 text-neutral-400'

@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import Link from 'next/link';
 import Term from '@/components/Term';
@@ -7,7 +9,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
   return (
     <>
       {/* Chapter 1: Tokens & The BPE Process */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-start gap-3 text-emerald-400">
           <Info className="text-emerald-500 shrink-0 mt-1" />
           <span className="leading-tight text-balance">
@@ -18,17 +20,17 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
           <p>
             {lang === 'ru'
               ? <>Представьте, что вам нужно передать сообщение человеку, который не знает вашего языка, но умеет работать с числовыми кодами. Вы не можете отправить текст как есть — сначала нужно разбить его на стандартные фрагменты и присвоить каждому номер. Именно это происходит с любым текстом, прежде чем его увидит языковая модель.</>
-              : <>{'Neural networks do not understand words. They live in a world of numbers and vectors. For an '} <Term id="llm" lang={lang}>AI</Term> {' to read this text, it must be broken down into fragments called '} <Term id="token" lang={lang}>tokens</Term>. A token is not always a whole word. It can be a root, a suffix, or even a single character if the word is rare.</>}
+              : <>{'Neural networks do not understand words. They live in a world of numbers and vectors. For an '} <Term id="llm">AI</Term> {' to read this text, it must be broken down into fragments called '} <Term id="token" lang={lang}>tokens</Term>. A token is not always a whole word. It can be a root, a suffix, or even a single character if the word is rare.</>}
           </p>
           <p>
             {lang === 'ru'
-              ? <>{'Нейросети не понимают слов. Они живут в мире чисел и векторов. Чтобы '} <Term id="llm" lang={lang}>ИИ</Term> {' мог прочитать этот текст, его нужно разбить на фрагменты, называемые '} <Term id="token" lang={lang}>токенами</Term>. Токен — это не всегда целое слово. Это может быть корень, суффикс или даже отдельный символ, если слово редкое.</>
-              : <>{'Modern models use the '} <Term id="bpe" lang={lang} /> {' algorithm. It starts with individual characters and gradually merges the most frequent character pairs into a single token. For example, "cat" + "s" might become "cats" as one token because they frequently appear together. This allows the AI to efficiently compress language.'}</>}
+              ? <>{'Нейросети не понимают слов. Они живут в мире чисел и векторов. Чтобы '} <Term id="llm">ИИ</Term> {' мог прочитать этот текст, его нужно разбить на фрагменты, называемые '} <Term id="token" lang={lang}>токенами</Term>. Токен — это не всегда целое слово. Это может быть корень, суффикс или даже отдельный символ, если слово редкое.</>
+              : <>{'Modern models use the '} <Term id="bpe" /> {' algorithm. It starts with individual characters and gradually merges the most frequent character pairs into a single token. For example, "cat" + "s" might become "cats" as one token because they frequently appear together. This allows the AI to efficiently compress language.'}</>}
           </p>
           <p>
             {lang === 'ru'
-              ? <>{'Современные модели используют алгоритм '} <Term id="bpe" lang={lang} /> {'. Он начинает с отдельных букв и постепенно объединяет самые частые пары символов в один токен. Например, в английском слово "playing" часто кодируется двумя токенами: "play" + "ing", потому что обе части встречаются в огромном количестве слов. Для русского языка принцип тот же, хотя конкретные границы токенов зависят от обучающего корпуса и могут не совпадать с привычными морфемами.'}</>
-              : <>Historically, Russian words were split into more tokens than English in older tokenizers, which increased <Term id="inference" lang={lang}>inference</Term> cost. Newer models reduced this gap, but token accounting still matters for budgets.</>}
+              ? <>{'Современные модели используют алгоритм '} <Term id="bpe" /> {'. Он начинает с отдельных букв и постепенно объединяет самые частые пары символов в один токен. Например, в английском слово "playing" часто кодируется двумя токенами: "play" + "ing", потому что обе части встречаются в огромном количестве слов. Для русского языка принцип тот же, хотя конкретные границы токенов зависят от обучающего корпуса и могут не совпадать с привычными морфемами.'}</>
+              : <>Historically, Russian words were split into more tokens than English in older tokenizers, which increased <Term id="inference">inference</Term> cost. Newer models reduced this gap, but token accounting still matters for budgets.</>}
           </p>
           <p>
             {lang === 'ru'
@@ -55,7 +57,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
       </div>
 
       {/* Chapter 2: The Next-Token Game */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
           <BrainCircuit className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 2: Великая игра в предсказания' : 'Chapter 2: The Great Prediction Game'}
@@ -68,21 +70,72 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
           </p>
           <p>
             {lang === 'ru'
-              ? <>На каждом шаге модель рассчитывает вероятность для каждого возможного продолжения — по сути, составляет рейтинг всех кандидатов из своего словаря. Технически этот рейтинг проходит через шаг <Term id="softmax" lang={lang}>Softmax</Term>, который превращает сырые баллы в нормализованные вероятности. Дальше происходит отбор: система может взять только несколько самых вероятных вариантов, либо набрать минимальную группу, покрывающую заданный порог уверенности. Этот элемент случайности — не дефект, а конструктивное решение: без него модель повторяла бы одни и те же фразы дословно.</>
-              : <>At each step, the model computes logits for the whole token vocabulary. <Term id="softmax" lang={lang}>Softmax</Term> then turns them into probabilities. The decoder selects the next token from this distribution.</>}
+              ? <>На каждом шаге модель рассчитывает вероятность для каждого возможного продолжения — по сути, составляет рейтинг всех кандидатов из своего словаря (обычно это 50,000 – 100,000 токенов). Технически этот рейтинг проходит через шаг <Term id="softmax">Softmax</Term>, который превращает сырые баллы в нормализованные вероятности.</>
+              : <>At each step, the model computes logits for the whole token vocabulary (typically 50,000 – 100,000 entries). <Term id="softmax">Softmax</Term> then turns them into normalized probabilities. The decoder selects the next token from this distribution.</>}
           </p>
-          {lang !== 'ru' ? (
-            <ul className="space-y-2 text-sm text-neutral-400 list-disc pl-5">
-              <li>top-k: keep only the k most likely tokens.</li>
-              <li>top-p (nucleus): keep the smallest set of tokens covering probability p.</li>
-              <li>Sampling prevents loops and enables varied wording.</li>
-            </ul>
-          ) : null}
+          <p>
+            {lang === 'ru'
+              ? 'Интересно, что модель не выбирает всегда самый вероятный токен. Если бы она это делала (Greedy Search), ответы были бы крайне сухими, повторяющимися и "роботизированными". Вместо этого используются различные стратегии сэмплирования, которые вносят контролируемую долю случайности.'
+              : 'Interestingly, the model does not always pick the most likely token. If it did (Greedy Search), the output would be repetitive and "robotic." Instead, sampling strategies introduce a controlled amount of randomness.'}
+          </p>
         </div>
       </div>
 
+      {/* Chapter 3: Self-Attention — The "Focus" Mechanism */}
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-blue-400">
+          <Layers className="text-blue-500" />
+          {lang === 'ru' ? 'Глава 3: Self-Attention — Механизм внимания' : 'Chapter 3: Self-Attention — The Focus Mechanism'}
+        </h2>
+        <div className="space-y-5 text-neutral-300 leading-relaxed">
+          <p>
+            {lang === 'ru'
+              ? <>Как модель понимает, к какому существительному относится местоимение &quot;он&quot; в длинном абзаце? Для этого используется <Term id="self-attention">Self-Attention</Term>. Это математический способ вычислить &quot;важность&quot; каждого слова относительно всех остальных слов в текущем контексте.</>
+              : <>How does a model know which noun the pronoun &quot;it&quot; refers to in a long paragraph? It uses <Term id="self-attention">Self-Attention</Term>. This is a mathematical way to weigh the &quot;importance&quot; of every word relative to every other word in the current context.</>}
+          </p>
+          <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-6">
+            <h4 className="text-blue-400 font-bold mb-3">{lang === 'ru' ? 'Как это работает наглядно:' : 'How it works visually:'}</h4>
+            <p className="text-sm italic mb-4">
+              {lang === 'ru' ? 'Фраза: "Банк закрыл счёт, потому что он был пуст."' : 'Phrase: "The bank closed the account because it was empty."'}
+            </p>
+            <p>
+              {lang === 'ru'
+                ? 'Когда модель обрабатывает слово "он", механизм внимания подсвечивает слово "счёт" гораздо ярче, чем слово "банк". Модель понимает: пустым может быть счёт, а не здание банка. Это и есть контекстное понимание через математику.'
+                : 'When the model processes "it," the attention mechanism highlights "account" much more than "bank." The model understands that an account can be empty, not the physical building. This is contextual understanding through math.'}
+            </p>
+          </div>
+          <p>
+            {lang === 'ru'
+              ? 'Трансформеры используют "многоголовое" внимание (Multi-Head Attention). Разные "головы" следят за разными аспектами: одна следит за грамматикой, другая — за смыслом, третья — за фактическими данными. Это позволяет модели строить многомерную карту связей в тексте.'
+              : 'Transformers use Multi-Head Attention. Different "heads" focus on different aspects: one on syntax, another on semantics, a third on entities. This allows the model to build a multidimensional map of relationships within the text.'}
+          </p>
+        </div>
+      </div>
+
+      {/* Chapter 4: Positional Encoding — Knowing the Order */}
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-amber-400">
+          <Zap className="text-amber-500" />
+          {lang === 'ru' ? 'Глава 4: Позиционное кодирование' : 'Chapter 4: Positional Encoding'}
+        </h2>
+        <div className="space-y-5 text-neutral-300 leading-relaxed">
+          <p>
+            {lang === 'ru'
+              ? 'В отличие от человека или старых ИИ, Трансформер читает весь текст сразу, а не слева направо. Для него фразы "Собака кусает человека" и "Человек кусает собаку" выглядят как один и тот же набор слов (Bag of Words).'
+              : 'Unlike humans or older AIs, a Transformer reads the whole text at once rather than left-to-right. To the attention mechanism, "Dog bites man" and "Man bites dog" look like the same set of words (a Bag of Words).'}
+          </p>
+          <p>
+            {lang === 'ru'
+              ? 'Чтобы решить эту проблему, к вектору каждого токена добавляется "позиционный сигнал". Это специальная математическая метка, которая говорит модели: "это слово стоит на первом месте, а это — на десятом". Без этого ИИ не понимал бы структуру предложений и логику повествования.'
+              : 'To solve this, a "positional signal" is added to every token vector. This is a mathematical label that tells the model: "this word is at index 1, and this one is at index 10." Without this, the AI would fail to understand sentence structure and narrative logic.'}
+          </p>
+        </div>
+      </div>
+
+      {/* Chapter 5: Temperature */}
+
       {/* Chapter 3: Temperature */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
           <Thermometer className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 3: Температура' : 'Chapter 3: Temperature'}
@@ -122,7 +175,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
               ? 'Практическое правило: начинайте с консервативного значения (обычно 0.2-0.4), прогоняйте реальные кейсы и только потом повышайте температуру там, где действительно нужна вариативность. Если задача чувствительна к фактам, лучше сначала улучшить контекст и структуру промпта, а не компенсировать проблемы высокой температурой.'
               : 'Practical rule: start conservative (usually 0.2-0.4), evaluate on real cases, and only then raise temperature where variation is truly needed. If a task is fact-sensitive, improve context and prompt structure first instead of trying to compensate with higher temperature.'}
           </p>
-          <div className="rounded-xl border border-[#2a2a2a] bg-[#101010] p-5 space-y-4">
+          <div className="rounded-xl border border-border-subtle bg-base p-5 space-y-4">
             <h3 className="text-lg font-semibold text-emerald-300">
               {lang === 'ru' ? 'Где бесплатно потренироваться с температурой' : 'Where to practice temperature for free'}
             </h3>
@@ -168,7 +221,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
             )}
           </div>
 
-          <div className="rounded-xl border border-[#2a2a2a] bg-[#101010] p-5 space-y-4">
+          <div className="rounded-xl border border-border-subtle bg-base p-5 space-y-4">
             <h3 className="text-lg font-semibold text-emerald-300">
               {lang === 'ru' ? 'Мини-упражнение' : 'Mini exercise'}
             </h3>
@@ -197,7 +250,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
       </div>
 
       {/* Chapter 4: Context Window */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
           <Layers className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 4: Контекстное окно' : 'Chapter 4: Context Window'}
@@ -234,15 +287,15 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
       </div>
 
       {/* Chapter 5: Why It Hallucinates */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
           <Zap className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 5: Природа галлюцинаций' : 'Chapter 5: The Nature of Hallucinations'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-5">
           {lang === 'ru'
-            ? <><Term id="hallucination" lang={lang}>Галлюцинации</Term> {' — это не баг, это особенность архитектуры. Поскольку модель всегда обязана выдать следующий токен, она сделает это, даже если не уверена в ответе. Если вероятность правильного факта — 5%, а вероятность красивой, но ложной фразы — 15%, при определенной температуре модель выберет ложь.'}</>
-            : <><Term id="hallucination" lang={lang}>Hallucinations</Term> {' are not a bug; they are a feature of the architecture. Since the model is always required to output a next token, it will do so even if it is unsure of the answer. If the probability of a correct fact is 5%, and the probability of a beautiful but false phrase is 15%, at a certain temperature, the model will choose the lie.'}</>}
+            ? <><Term id="hallucination">Галлюцинации</Term> {' — это не баг, это особенность архитектуры. Поскольку модель всегда обязана выдать следующий токен, она сделает это, даже если не уверена в ответе. Если вероятность правильного факта — 5%, а вероятность красивой, но ложной фразы — 15%, при определенной температуре модель выберет ложь.'}</>
+            : <><Term id="hallucination">Hallucinations</Term> {' are not a bug; they are a feature of the architecture. Since the model is always required to output a next token, it will do so even if it is unsure of the answer. If the probability of a correct fact is 5%, and the probability of a beautiful but false phrase is 15%, at a certain temperature, the model will choose the lie.'}</>}
         </p>
         <p className="text-neutral-300 leading-relaxed">
           {lang === 'ru'
@@ -259,7 +312,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
       </div>
 
       {/* Chapter 6: Practical decoding checklist */}
-      <div className="bg-[#141414] border border-[#262626] rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 text-emerald-400">
           {lang === 'ru' ? 'Глава 6: Быстрый чек-лист перед запуском' : 'Chapter 6: Fast Pre-Launch Checklist'}
         </h2>
@@ -272,7 +325,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
       </div>
 
       {/* Chapter 7: Lab — compare models */}
-      <div className="bg-[#141414] border border-emerald-500/20 rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-emerald-500/20 rounded-xl p-8 mb-8">
         <div className="flex items-center gap-3 mb-6">
           <div className="p-2 rounded-lg bg-emerald-500/10">
             <FlaskConical size={22} className="text-emerald-400" />
@@ -288,7 +341,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
             : 'All the theory above describes how a model generates text: tokens, probabilities, temperature, context size. Now it is time to see it with your own eyes. Below is an embedded model comparison tool. Use it for the final task.'}
         </p>
 
-        <div className="bg-[#0f0f0f] border border-[#262626] rounded-xl p-5 mb-5">
+        <div className="bg-base border border-border-card rounded-xl p-5 mb-5">
           <h3 className="text-sm font-semibold text-neutral-200 mb-3">
             {lang === 'ru' ? 'Инструкция к эксперименту' : 'Experiment instructions'}
           </h3>
@@ -320,7 +373,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
           {lang === 'ru' ? 'Открыть Prompt Lab' : 'Open Prompt Lab'}
         </Link>
 
-        <div className="mt-6 p-4 bg-[#0f0f0f] rounded-lg border border-[#262626]">
+        <div className="mt-6 p-4 bg-base rounded-lg border border-border-card">
           <h3 className="text-sm font-semibold text-neutral-200 mb-3">
             {lang === 'ru' ? 'На что обратить внимание' : 'What to look for'}
           </h3>

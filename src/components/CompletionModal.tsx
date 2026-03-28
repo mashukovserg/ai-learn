@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, ArrowRight, Trophy, Sparkles } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import Link from 'next/link';
+import { useLang } from '@/hooks/useLang';
 
 interface CompletionModalProps {
   isOpen: boolean;
@@ -12,7 +13,6 @@ interface CompletionModalProps {
   roomTitle: string;
   pointsEarned: number;
   nextRoomId?: string;
-  lang: string;
 }
 
 export default function CompletionModal({
@@ -21,8 +21,8 @@ export default function CompletionModal({
   roomTitle,
   pointsEarned,
   nextRoomId,
-  lang
 }: CompletionModalProps) {
+  const lang = useLang();
   
   useEffect(() => {
     if (isOpen) {
@@ -66,7 +66,7 @@ export default function CompletionModal({
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
-            className="relative w-full max-w-md bg-[#141414] border border-[#262626] rounded-2xl overflow-hidden shadow-2xl shadow-emerald-500/10"
+            className="relative w-full max-w-md bg-card-dark border border-border-card rounded-2xl overflow-hidden shadow-2xl shadow-emerald-500/10"
           >
             {/* Header with gradient */}
             <div className="h-32 bg-gradient-to-br from-emerald-500/20 to-blue-500/10 flex items-center justify-center relative overflow-hidden">
@@ -78,7 +78,7 @@ export default function CompletionModal({
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ type: 'spring', damping: 12, stiffness: 200, delay: 0.2 }}
-                className="bg-[#141414] p-4 rounded-full border-4 border-emerald-500/30"
+                className="bg-card-dark p-4 rounded-full border-4 border-emerald-500/30"
               >
                 <CheckCircle2 className="text-emerald-500" size={48} />
               </motion.div>
@@ -95,7 +95,7 @@ export default function CompletionModal({
               </p>
 
               {/* Stats Card */}
-              <div className="bg-[#0a0a0a] border border-[#262626] rounded-xl p-6 mb-8 flex justify-center items-center gap-8">
+              <div className="bg-deep border border-border-card rounded-xl p-6 mb-8 flex justify-center items-center gap-8">
                 <div className="text-center">
                   <div className="flex items-center justify-center gap-2 text-emerald-500 mb-1">
                     <Trophy size={18} />

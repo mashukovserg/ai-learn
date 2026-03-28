@@ -3,15 +3,10 @@
    Это помогает TypeScript проверять правильность данных
 */
 
-
-
-
 import type { Metadata } from "next"; // 
-import { Inter } from "next/font/google";
 import "./globals.css";
 import AppShell from "@/components/AppShell";
-
-const inter = Inter({ subsets: ["latin"] });
+import { LangProvider } from "@/hooks/useLang";
 
 export const metadata: Metadata = {
   title: "AI-Rooms",
@@ -31,8 +26,10 @@ export default async function RootLayout(props: {
 
   return (
     <html lang={lang}>
-      <body className={inter.className} style={{ backgroundColor: "#0f0f0f", color: "#e0e0e0" }}>
-        <AppShell lang={lang}>{props.children}</AppShell>
+      <body>
+        <LangProvider lang={lang}>
+          <AppShell>{props.children}</AppShell>
+        </LangProvider>
       </body>
     </html>
   );

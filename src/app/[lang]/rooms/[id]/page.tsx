@@ -38,6 +38,10 @@ import FineTuning101Theory from '@/components/theory/FineTuning101Theory';
 import AiSingularityTheory from "@/components/theory/AiSingularityTheory";
 import PromptEvalsTheory from "@/components/theory/PromptEvalsTheory";
 import Embeddings101Theory from "@/components/theory/Embeddings101Theory";
+import LlmGuardrailsTheory from "@/components/theory/LlmGuardrailsTheory";
+import AiRegulationRuTheory from "@/components/theory/AiRegulationRuTheory";
+import AiRegulationEuTheory from "@/components/theory/AiRegulationEuTheory";
+import AgentCodingFoundationsTheory from '@/components/theory/AgentCodingFoundationsTheory';
 
 const THEORY_COMPONENTS: Record<string, React.ComponentType<{ lang: string }>> = {
   'llm-mechanics': LlmMechanicsTheory,
@@ -60,6 +64,10 @@ const THEORY_COMPONENTS: Record<string, React.ComponentType<{ lang: string }>> =
   'prompt-evals': PromptEvalsTheory,
   'ai-singularity': AiSingularityTheory,
   'embeddings-101': Embeddings101Theory,
+  'llm-guardrails': LlmGuardrailsTheory,
+  'ai-regulation-ru': AiRegulationRuTheory,
+  'ai-regulation-eu': AiRegulationEuTheory,
+  'agent-coding-foundations': AgentCodingFoundationsTheory,
 };
 
 const DefaultTheory = () => <div className="p-8 text-neutral-500">Theory content coming soon...</div>;
@@ -223,7 +231,7 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
 
   return (
     <>
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_320px] gap-10 items-start">
         {/* Content Area */}
         <div className="min-w-0">
           <nav className="flex items-center gap-2 text-sm text-neutral-500 mb-6">
@@ -238,7 +246,7 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
 
           <div className="mb-8 flex flex-col md:flex-row md:items-start gap-5">
             <div className="flex-1 min-w-0">
-              <h1 className="text-4xl font-bold mb-4">{metadata.title[lang as 'en' | 'ru']}</h1>
+              <h1 className="text-3xl md:text-4xl font-semibold mb-4">{metadata.title[lang as 'en' | 'ru']}</h1>
                           <div className="flex items-center gap-6 text-sm text-neutral-400">
                             <span className="flex items-center gap-2 text-emerald-500 font-bold bg-emerald-500/10 px-2 py-1 rounded text-xs uppercase border border-emerald-500/20">
                               {metadata.difficulty}
@@ -251,7 +259,7 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
             </div>
 
             {metadata.image && (
-              <div className="w-full md:w-[320px] rounded-xl overflow-hidden border border-[#262626] bg-[#141414] shrink-0">
+              <div className="w-full md:w-[320px] rounded-xl overflow-hidden border border-border-card bg-card-dark shrink-0">
                 <Image
                   src={metadata.image}
                   alt={metadata.title[lang as 'en' | 'ru']}
@@ -264,14 +272,14 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
             )}
           </div>
 
-          <div className="prose prose-invert max-w-none">
+          <div className="prose prose-invert max-w-none reading-prose">
              <TheoryComponent lang={lang} />
           </div>
         </div>
 
         {/* Task Sidebar */}
         <aside className="w-full lg:w-[320px] lg:sticky lg:top-[100px] flex flex-col gap-4">
-          <div className="bg-[#141414] border border-[#262626] rounded-xl p-6 overflow-y-auto max-h-[calc(100vh-280px)]">
+          <div className="bg-card-dark border border-border-card rounded-xl p-6 overflow-y-auto max-h-[calc(100vh-280px)]">
             <h3 className="text-lg font-bold mb-6 flex items-center gap-2">
               <HelpCircle className="text-emerald-500" size={20} />
               {lang === 'ru' ? 'Задания комнаты' : 'Room Tasks'}
@@ -298,7 +306,6 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
                     userOptions={task.dialogue!.userOptions}
                     onSuccess={markCompleted}
                     initialCompleted={task.completed}
-                    lang={lang}
                   />
                 ) : task.type === 'categorize' ? (
                   <TaskCategorize
@@ -311,7 +318,6 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
                     explanation={task.explanation}
                     onSuccess={markCompleted}
                     initialCompleted={task.completed}
-                    lang={lang}
                   />
                 ) : task.type === 'timeline' ? (
                   <TaskTimeline
@@ -323,7 +329,6 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
                     explanation={task.explanation}
                     onSuccess={markCompleted}
                     initialCompleted={task.completed}
-                    lang={lang}
                   />
                 ) : task.type === 'scenario' ? (
                   <TaskScenario
@@ -337,7 +342,6 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
                     passingScore={task.scenario!.passingScore}
                     onSuccess={markCompleted}
                     initialCompleted={task.completed}
-                    lang={lang}
                   />
                 ) : (
                   <TaskQuestion
@@ -357,7 +361,7 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
             </div>
           </div>
 
-          <div className="bg-[#141414] border border-[#262626] rounded-xl p-6">
+          <div className="bg-card-dark border border-border-card rounded-xl p-6">
             <div className="flex justify-between items-center mb-2">
               <span className="text-xs font-bold text-neutral-400 uppercase tracking-wider">
                 {lang === 'ru' ? 'Прогресс' : 'Progress'}
@@ -366,7 +370,7 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
                 {Math.round((tasks.filter(t => t.completed).length / tasks.length) * 100)}%
               </span>
             </div>
-            <div className="h-1.5 bg-[#0a0a0a] rounded-full overflow-hidden border border-[#262626]">
+            <div className="h-1.5 bg-deep rounded-full overflow-hidden border border-border-card">
               <motion.div
                 className="h-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"
                 initial={{ width: 0 }}
@@ -381,7 +385,6 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
       <CompletionModal
         isOpen={showSuccessModal}
         onClose={() => setShowSuccessModal(false)}
-        lang={lang}
         roomTitle={metadata.title[lang as 'en' | 'ru']}
         pointsEarned={tasks.length * 10}
         nextRoomId={nextRoom?.id}

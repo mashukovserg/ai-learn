@@ -1,12 +1,14 @@
+"use client";
+
 import React from 'react';
-import { ClipboardCheck, Target, Zap, ShieldCheck } from 'lucide-react';
+import { ClipboardCheck, ShieldCheck } from 'lucide-react';
 
 export default function PromptEvalsTheory({ lang }: { lang: string }) {
   return (
     <div className="space-y-12">
       {/* Chapter 1: The Vibe Check vs. Evals */}
       <section>
-        <div className="bg-[#141414] border border-[#262626] rounded-xl p-8">
+        <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-cyan-400">
             <ClipboardCheck className="text-cyan-500" />
             {lang === 'ru' ? 'Глава 1: От "вайб-чека" к метрикам' : 'Chapter 1: From "Vibe Check" to Metrics'}
@@ -28,7 +30,7 @@ export default function PromptEvalsTheory({ lang }: { lang: string }) {
       {/* Chapter 2: The Three Types of Evals */}
       <section>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-[#141414] border border-[#262626] rounded-xl p-6">
+          <div className="bg-card-dark border border-border-card rounded-xl p-6">
             <h3 className="text-lg font-bold mb-4 text-emerald-400">
               {lang === 'ru' ? 'Детерминированные' : 'Deterministic'}
             </h3>
@@ -38,7 +40,7 @@ export default function PromptEvalsTheory({ lang }: { lang: string }) {
                 : 'Simple checks: Does the answer contain JSON? Is there a link? Is the text length within limits? (Python/Regex)'}
             </p>
           </div>
-          <div className="bg-[#141414] border border-[#262626] rounded-xl p-6">
+          <div className="bg-card-dark border border-border-card rounded-xl p-6">
             <h3 className="text-lg font-bold mb-4 text-blue-400">
               {lang === 'ru' ? 'LLM-as-a-Judge' : 'LLM-as-a-Judge'}
             </h3>
@@ -48,7 +50,7 @@ export default function PromptEvalsTheory({ lang }: { lang: string }) {
                 : 'A more powerful model (e.g., GPT-4o) evaluates the response of a weaker model on a 1-5 scale or based on criteria (tone, accuracy, friendliness).'}
             </p>
           </div>
-          <div className="bg-[#141414] border border-[#262626] rounded-xl p-6">
+          <div className="bg-card-dark border border-border-card rounded-xl p-6">
             <h3 className="text-lg font-bold mb-4 text-amber-400">
               {lang === 'ru' ? 'Human-in-the-loop' : 'Human-in-the-loop'}
             </h3>
@@ -62,7 +64,7 @@ export default function PromptEvalsTheory({ lang }: { lang: string }) {
       </section>
       {/* Chapter 3: Building a Release Gate */}
       <section>
-        <div className="bg-[#141414] border border-[#262626] rounded-xl p-8">
+        <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-rose-400">
             <ShieldCheck className="text-rose-500" />
             {lang === 'ru' ? 'Глава 2: Release Gate и жизненный цикл' : 'Chapter 2: Release Gate and Lifecycle'}

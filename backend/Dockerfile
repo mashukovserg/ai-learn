@@ -18,7 +18,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 
 FROM python:3.12-slim-bookworm
 
-COPY --from=uv-builder --chown=app:app /app /app
+COPY --from=uv-builder /app /app
 
 WORKDIR /app
 
@@ -27,4 +27,6 @@ ENV PYTHONDONTWRITEBYTECODE=1
 
 ENV PATH="/app/.venv/bin:$PATH"
 
-CMD ["python", "-m", "app.main"]
+# Run migrations then start with gunicorn + uvicorn workers.
+# PORT is injected by Railway (defaults to 8000 for local docker-compose).
+CMD ["sh", "-c", "alembic upgrade head && gunicorn app.main:app -w 2 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:${PORT:-8000}"]

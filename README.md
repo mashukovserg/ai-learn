@@ -5,26 +5,47 @@ AI learning platform with interactive theory + tasks, built with Next.js App Rou
 **Live demo:** [ai-learning-platform-murex.vercel.app](https://ai-learning-platform-murex.vercel.app)
 
 ## What is implemented
-- RU/EN locale routing via middleware (`/ru` default redirect for non-localized paths).
+- RU/EN locale routing via `proxy.ts` (`/ru` default redirect for non-localized paths).
 - Dashboard (`/[lang]`) with recommended rooms, real progress bar from localStorage.
 - Learning paths pages:
   - `/${lang}/paths`
   - `/${lang}/paths/beginner`
   - `/${lang}/paths/ideas-history` (Ideas and Debates in AI)
+  - `/${lang}/paths/agentic-systems`
+  - `/${lang}/paths/agent-coding` (Agent Coding)
 - Consistent green accent styling across primary product flows:
   - active sidebar route states
   - dashboard CTAs
   - paths cards and actions
   - active elements in path detail flow
-- Rooms pages (19 rooms):
-  - `/${lang}/rooms` (listing page with live status badges)
-  - `/${lang}/rooms/[id]` — Dynamic room renderer for 19 topics:
-    - `llm-landscape` (13 tasks), `llm-mechanics` (8 tasks), `prompting-101` (6 tasks)
-    - `chatgpt-moment` (6 tasks), `ai-singularity` (6 tasks), `ai-history` (6 tasks)
-    - `prompt-evals` (6 tasks), `ai-image-creation` (6 tasks), `research-grounding` (6 tasks)
-    - `ai-agents` (6 tasks, Enriched), `ai-rag` (6 tasks, Enriched), `ai-security` (6 tasks, Enriched)
-    - `ai-research` (5 tasks, Enriched), `ai-alignment` (6 tasks), `native-multimodality` (6 tasks)
-    - `fine-tuning-101` (12 tasks), `post-chatgpt-history` (6 tasks), `embeddings-101` (10 tasks)
+- Notion-style visual polish pass for readability and rhythm:
+  - upgraded typography system (clean sans UI stack + serif reading mode for long theory content)
+  - softer surface palette with warmer neutrals and lower-contrast borders
+  - unified app spacing container (`content-shell`) and calmer top/nav chrome density
+- AI History theory chapter event cards now use a single-column layout (no desktop two-column split) for a consistent reading flow.
+- AI History theory chapter reflective paragraph now uses regular text style (italic emphasis removed).
+- AI History room now includes glossary tooltips for key figures (`Eliezer Yudkowsky`, `Ray Kurzweil`, `John von Neumann`, `I.J. Good`, `Nick Bostrom`) in theory text.
+- AI History final summary block is left-aligned (centered text removed for readability).
+- LLM Landscape chapter "2026 Market Snapshot + Source Links" now has an expanded pre-model introduction with practical vendor-evaluation guidance.
+- LLM Landscape chapter now includes an `SDK` tooltip in the pre-model evaluation criteria paragraph.
+- AGENTS authoring policy now forbids the word `вендор` and requires neutral alternatives by context.
+- AGENTS now includes an `Anti-Vibecode Frontend Gate (Mandatory)` with a deterministic pass/fail checklist for layout, alignment, emphasis, tone, and `en`/`ru` parity.
+- ChatGPT Moment theory Chapter 3 and Chapter 4 "Code Red" section were enriched with deeper interface-adoption and market-structure explanations (EN/RU).
+- Singularity in AI Debates Chapter 2 camp comparison cards now use a single-column layout (no desktop two-column split).
+- Post-ChatGPT Era Chapter 1 was rewritten in a more analytical tone with a single-column comparison flow; decorative glow emphasis and italicized conclusion styling were removed.
+- Post-ChatGPT Era Chapter 1 now includes a glossary tooltip for the term "Code Red" / "Красный код".
+- Post-ChatGPT Era room now uses a dedicated cover image (`/images/post-chatgpt-era.webp`) on room cards and room header.
+- Singularity in AI Debates room now uses a dedicated cover image (`/images/ai-singularity.avif`) on room cards and room header.
+- Implemented AC-101 room `agent-coding-foundations` with full theory + 10 localized tasks and added Agent Coding path wiring (`/${lang}/paths/agent-coding`).
+- Added glossary terms for `guardrails` and `context-window` for AC-101 theory tooltips in EN/RU.
+- Rooms catalog (`/${lang}/rooms`) now uses a responsive tile grid layout (3 columns from `1200px`, 2 from `768px`, 1 on mobile) with equal-height cards, image-first composition, filter controls for difficulty/progress status, and a compact meta row for difficulty + status above each title (image overlays removed).
+- Fixed `/${lang}/rooms` hydration mismatch by deferring localStorage-based progress status reads to post-mount client sync.
+- Moved Skills Matrix to the Profile page (`/${lang}/settings`) and wired `/${lang}/skills` to redirect to `/${lang}/settings#skills-matrix` for backward compatibility.
+- Rooms pages (24 rooms):
+  - `/${lang}/rooms` (listing page with live progress states and compact difficulty/status metadata)
+  - `/${lang}/rooms/[id]` — Dynamic room renderer for 24 topics, including:
+    - `agent-coding-foundations`, `llm-landscape`, `llm-mechanics`, `prompting-101`, `chatgpt-moment`, `post-chatgpt-history`, `ai-history`, `scaling-hypothesis`, `ai-singularity`, `prompt-evals`, `ai-image-creation`, `research-grounding`
+    - `ai-agents`, `deep-search-agents`, `ai-rag`, `ai-security`, `ai-research`, `ai-alignment`, `native-multimodality`, `fine-tuning-101`, `embeddings-101`, `llm-guardrails`, `ai-regulation-ru`, `ai-regulation-eu`
 - Interactive task components:
   - `TaskQuestion` — input, multiple-choice, multiple-select
   - `TaskSorting` — drag-to-reorder with Framer Motion
@@ -32,7 +53,7 @@ AI learning platform with interactive theory + tasks, built with Next.js App Rou
   - `TaskTimeline` — chronological ordering
   - `TaskScenario` — decision-making missions with scoring
   - `TaskMentor` — dialogue-based learning
-- Progress persistence via `useProgress` hook (API-backed when authenticated, localStorage fallback for guests).
+- Progress persistence via `useProgress` hook (API-backed when authenticated, localStorage fallback for guests, and automatic guest-progress sync to server on signup).
 - Rooms list and dashboard show real progress (Completed / In Progress / Not Started).
 - **Backend (FastAPI + PostgreSQL):**
   - User authentication (signup/login/logout) with JWT in httpOnly cookies.
@@ -86,10 +107,8 @@ AI learning platform with interactive theory + tasks, built with Next.js App Rou
 - `uv` (package manager)
 
 ## Known limitations
-- Sidebar links `/${lang}/compete`, `/${lang}/leaderboard`, `/${lang}/settings` are present in UI but routes are not implemented yet.
+- Sidebar links `/${lang}/compete` and `/${lang}/leaderboard` are present in UI but routes are not implemented yet.
 - Room metadata is duplicated across pages (dashboard/rooms/path each define their own room arrays).
-- Next.js currently shows a build warning that `middleware` convention is deprecated and should migrate to `proxy`.
-- Guest users (not logged in) still use localStorage for progress; progress is not synced when they later sign up.
 
 ## Content rules
 - **Style rule (Pragmatic Instructional Narrative):** use conceptual analogies (scaffolding), maintain a conversational tone to reduce "tech anxiety," provide contextual justification for why the topic matters, and keep a clear roadmap-oriented structure.

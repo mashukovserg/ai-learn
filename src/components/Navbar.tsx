@@ -4,8 +4,10 @@ import { Search, Zap } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
+import { useLang } from '@/hooks/useLang';
 
-export default function Navbar({ lang }: { lang: string }) {
+export default function Navbar() {
+  const lang = useLang();
   const pathname = usePathname();
   const { user } = useAuth();
 
@@ -18,9 +20,9 @@ export default function Navbar({ lang }: { lang: string }) {
   };
 
   return (
-    <header className="h-14 border-b border-[#282828] bg-[#0f0f0f]/80 backdrop-blur-md sticky top-0 z-10 flex items-center justify-between px-8">
-      <div className="flex items-center gap-3 bg-[#171717] px-3 py-1.5 rounded-md border border-[#282828] w-80">
-        <Search size={16} className="text-neutral-600" />
+    <header className="h-16 border-b border-border-card bg-card/90 backdrop-blur-sm sticky top-0 z-10 flex items-center justify-between px-4 md:px-6 lg:px-10">
+      <div className="flex items-center gap-3 bg-base px-3.5 py-2 rounded-lg border border-border-card w-[min(26rem,60vw)]">
+        <Search size={15} className="text-neutral-600" />
         <input
           type="text"
           placeholder={lang === 'ru' ? "Поиск комнат..." : "Search rooms..."}
@@ -28,17 +30,17 @@ export default function Navbar({ lang }: { lang: string }) {
         />
       </div>
 
-      <div className="flex items-center gap-5">
-        <div className="flex items-center gap-1 bg-[#171717] p-0.5 rounded-md border border-[#282828]">
+      <div className="flex items-center gap-4 md:gap-5">
+        <div className="flex items-center gap-1 bg-base p-0.5 rounded-lg border border-border-card">
           <Link
             href={redirectedPathname('ru')}
-            className={`px-2.5 py-1 text-xs font-medium rounded ${lang === 'ru' ? 'bg-white/10 text-neutral-200' : 'text-neutral-500 hover:text-neutral-300'}`}
+            className={`px-2.5 py-1 text-xs font-medium rounded-md transition-colors ${lang === 'ru' ? 'bg-white/10 text-neutral-200' : 'text-neutral-500 hover:text-neutral-300'}`}
           >
             RU
           </Link>
           <Link
             href={redirectedPathname('en')}
-            className={`px-2.5 py-1 text-xs font-medium rounded ${lang === 'en' ? 'bg-white/10 text-neutral-200' : 'text-neutral-500 hover:text-neutral-300'}`}
+            className={`px-2.5 py-1 text-xs font-medium rounded-md transition-colors ${lang === 'en' ? 'bg-white/10 text-neutral-200' : 'text-neutral-500 hover:text-neutral-300'}`}
           >
             EN
           </Link>
@@ -46,12 +48,12 @@ export default function Navbar({ lang }: { lang: string }) {
 
         <div className="flex items-center gap-1.5 text-neutral-400 text-sm">
           <Zap size={14} />
-          <span className="font-medium">{user?.points ?? 0} {lang === 'ru' ? 'очков' : 'pts'}</span>
+          <span className="font-medium tracking-tight">{user?.points ?? 0} {lang === 'ru' ? 'очков' : 'pts'}</span>
         </div>
 
-        <div className="flex flex-col items-end">
+        <div className="hidden sm:flex flex-col items-end">
           <span className="text-xs text-neutral-600">{lang === 'ru' ? 'Серия' : 'Streak'}</span>
-          <span className="text-sm font-medium text-neutral-400">{user?.streak_days ?? 0} {lang === 'ru' ? 'дн.' : 'days'}</span>
+          <span className="text-sm font-medium text-neutral-400 tracking-tight">{user?.streak_days ?? 0} {lang === 'ru' ? 'дн.' : 'days'}</span>
         </div>
       </div>
     </header>

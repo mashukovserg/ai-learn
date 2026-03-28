@@ -34,10 +34,10 @@ We use a system called **App Router**. In Next.js, folders inside `src/app` auto
 ---
 
 ## 🗄️ Step 3: The Catalog (The "Single Source of Truth")
-Look at `src/data/rooms.ts`. 
+Look at `src/data/rooms/`.
 - **The Concept:** In the past, room names and tasks were scattered everywhere. If you wanted to change a typo, you had to find it in three different files.
-- **The Fix:** We moved everything into `ROOMS_METADATA` and `ROOM_TASKS`. 
-- **Instruction:** Open `src/data/rooms.ts`. Notice how it’s just a big list (an Array) of objects. If you want to add a new room, you just add a new object to this list!
+- **The Fix:** We moved everything into a structured `src/data/rooms/` directory with separate files for types, metadata, paths, and per-room tasks.
+- **Instruction:** Open `src/data/rooms/metadata.ts` for room listings, or `src/data/rooms/tasks/<room-id>.ts` for a specific room’s tasks. Each room has its own file, making edits easy!
 
 ---
 
@@ -67,8 +67,8 @@ Since the app supports Russian and English, we can't hardcode words like "Submit
 
 ## 🛠️ Summary for Beginners: How to add a new room?
 If you wanted to add a new lesson today, here is the "Roadmap":
-1. **Add Metadata**: Add the room title and description to `src/data/rooms.ts`.
-2. **Add Tasks**: Add the questions/answers to the `ROOM_TASKS` object in the same file.
+1. **Add Metadata**: Add the room title and description to `src/data/rooms/metadata.ts`.
+2. **Add Tasks**: Create a new file `src/data/rooms/tasks/<room-id>.ts` with your tasks, then register it in `src/data/rooms/tasks/index.ts`.
 3. **Write Theory**: Create a new file in `src/components/theory/` with your lesson text.
 4. **Connect it**: Add your new theory component to the mapping in `src/app/[lang]/rooms/[id]/page.tsx`.
 

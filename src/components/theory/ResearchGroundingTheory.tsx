@@ -1,13 +1,14 @@
+"use client";
+
 import React from 'react';
-import Term from '@/components/Term';
-import { Database, Search, ShieldCheck, Link, AlertTriangle } from 'lucide-react';
+import { Database, Search, ShieldCheck, AlertTriangle } from 'lucide-react';
 
 export default function ResearchGroundingTheory({ lang }: { lang: string }) {
   return (
     <div className="space-y-12">
       {/* Introduction */}
       <section>
-        <div className="bg-[#141414] border border-[#262626] rounded-xl p-8">
+        <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
             <Search className="text-emerald-500" />
             {lang === 'ru' ? 'Зачем модели нужен внешний источник' : 'Why Models Need External Evidence'}
@@ -34,7 +35,7 @@ export default function ResearchGroundingTheory({ lang }: { lang: string }) {
 
       {/* Chapter 1: The RAG Architecture */}
       <section>
-        <div className="bg-[#141414] border border-[#262626] rounded-xl p-8">
+        <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-blue-400">
             <Database className="text-blue-500" />
             {lang === 'ru' ? 'Глава 1: Анатомия RAG' : 'Chapter 1: The Anatomy of RAG'}
@@ -47,7 +48,7 @@ export default function ResearchGroundingTheory({ lang }: { lang: string }) {
             </p>
             
             <div className="space-y-6">
-              <div className="bg-[#0a0a0a] border border-[#282828] rounded-lg p-5">
+              <div className="bg-deep border border-border-subtle rounded-lg p-5">
                 <h4 className="text-blue-400 font-bold mb-2">1. Поиск (Retrieve)</h4>
                 <p className="text-sm text-neutral-400">
                   {lang === 'ru'
@@ -55,7 +56,7 @@ export default function ResearchGroundingTheory({ lang }: { lang: string }) {
                     : 'The user asks a question. The system takes this query and searches for relevant information in an external database (company knowledge base, internet, PDF folders). The search can be keyword-based (like Google) or semantic (via vector databases and embeddings).'}
                 </p>
               </div>
-              <div className="bg-[#0a0a0a] border border-[#282828] rounded-lg p-5">
+              <div className="bg-deep border border-border-subtle rounded-lg p-5">
                 <h4 className="text-blue-400 font-bold mb-2">2. Дополнение (Augment)</h4>
                 <p className="text-sm text-neutral-400">
                   {lang === 'ru'
@@ -63,7 +64,7 @@ export default function ResearchGroundingTheory({ lang }: { lang: string }) {
                     : 'The retrieved text chunks are not shown directly to the user. They are injected into a hidden system prompt for the LLM. The prompt now looks like: "Answer the user\'s question using ONLY the following facts: [Insert 5 paragraphs of text]. Question: [User question]".'}
                 </p>
               </div>
-              <div className="bg-[#0a0a0a] border border-[#282828] rounded-lg p-5">
+              <div className="bg-deep border border-border-subtle rounded-lg p-5">
                 <h4 className="text-blue-400 font-bold mb-2">3. Генерация (Generate)</h4>
                 <p className="text-sm text-neutral-400">
                   {lang === 'ru'
@@ -78,7 +79,7 @@ export default function ResearchGroundingTheory({ lang }: { lang: string }) {
 
       {/* Chapter 2: Where Grounding Fails */}
       <section>
-        <div className="bg-[#141414] border border-[#262626] rounded-xl p-8">
+        <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-amber-400">
             <AlertTriangle className="text-amber-500" />
             {lang === 'ru' ? 'Глава 2: Где ломается RAG' : 'Chapter 2: Where RAG Fails'}
@@ -116,7 +117,7 @@ export default function ResearchGroundingTheory({ lang }: { lang: string }) {
 
       {/* Chapter 3: Trust Calibration and UX */}
       <section>
-        <div className="bg-[#141414] border border-[#262626] rounded-xl p-8">
+        <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-cyan-400">
             <ShieldCheck className="text-cyan-500" />
             {lang === 'ru' ? 'Глава 3: Калибровка доверия и UX' : 'Chapter 3: Trust Calibration and UX'}
@@ -148,7 +149,7 @@ export default function ResearchGroundingTheory({ lang }: { lang: string }) {
               </div>
             </div>
 
-            <div className="bg-[#0a0a0a] border border-[#282828] rounded-lg p-5 italic text-sm text-neutral-400">
+            <div className="bg-deep border border-border-subtle rounded-lg p-5 italic text-sm text-neutral-400">
               {lang === 'ru'
                 ? 'Для пользователя отказ модели ответить на вопрос из-за отсутствия данных — это не баг, а признак высококачественной и безопасной системы. Лучше честное "не знаю", чем убедительная выдумка.'
                 : 'For a user, a model\'s refusal to answer due to lack of data is not a bug; it is a sign of a high-quality, safe system. An honest "I don\'t know" is always better than a convincing fabrication.'}

@@ -118,7 +118,7 @@ export default function PromptComparePage(props: { params: Promise<{ lang: strin
       <HowItWorks lang={lang} />
 
       {/* Input section */}
-      <div className="bg-[#171717] border border-[#282828] rounded-xl p-6 mb-6">
+      <div className="bg-input border border-border-subtle rounded-xl p-6 mb-6">
         {/* System prompt toggle */}
         <div className="mb-4">
           <button
@@ -135,7 +135,7 @@ export default function PromptComparePage(props: { params: Promise<{ lang: strin
               value={systemPrompt}
               onChange={(e) => setSystemPrompt(e.target.value)}
               placeholder={lang === 'ru' ? 'Системный промпт (опционально)...' : 'System prompt (optional)...'}
-              className="w-full mt-2 bg-[#0f0f0f] border border-[#2b2b2b] rounded-lg px-4 py-3 text-sm text-neutral-200 placeholder-neutral-600 resize-none focus:outline-none focus:border-emerald-500/40 transition-colors"
+              className="w-full mt-2 bg-base border border-border-subtle rounded-lg px-4 py-3 text-sm text-neutral-200 placeholder-neutral-600 resize-none focus:outline-none focus:border-emerald-500/40 transition-colors"
               rows={2}
             />
           )}
@@ -146,7 +146,7 @@ export default function PromptComparePage(props: { params: Promise<{ lang: strin
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
           placeholder={lang === 'ru' ? 'Введите промпт...' : 'Enter your prompt...'}
-          className="w-full bg-[#0f0f0f] border border-[#2b2b2b] rounded-lg px-4 py-3 text-sm text-neutral-200 placeholder-neutral-600 resize-none focus:outline-none focus:border-emerald-500/40 transition-colors"
+          className="w-full bg-base border border-border-subtle rounded-lg px-4 py-3 text-sm text-neutral-200 placeholder-neutral-600 resize-none focus:outline-none focus:border-emerald-500/40 transition-colors"
           rows={4}
         />
 
@@ -157,7 +157,7 @@ export default function PromptComparePage(props: { params: Promise<{ lang: strin
             <select
               value={modelA}
               onChange={(e) => setModelA(e.target.value)}
-              className="bg-[#0f0f0f] border border-[#2b2b2b] rounded-md px-3 py-2 text-sm text-neutral-200"
+              className="bg-base border border-border-subtle rounded-md px-3 py-2 text-sm text-neutral-200"
             >
               {MODELS.map(m => (
                 <option key={m.id} value={m.id}>{m.label}</option>
@@ -172,7 +172,7 @@ export default function PromptComparePage(props: { params: Promise<{ lang: strin
             <select
               value={modelB}
               onChange={(e) => setModelB(e.target.value)}
-              className="bg-[#0f0f0f] border border-[#2b2b2b] rounded-md px-3 py-2 text-sm text-neutral-200"
+              className="bg-base border border-border-subtle rounded-md px-3 py-2 text-sm text-neutral-200"
             >
               {MODELS.map(m => (
                 <option key={m.id} value={m.id}>{m.label}</option>
@@ -245,7 +245,7 @@ function HowItWorks({ lang }: { lang: string }) {
       <ol className="list-decimal list-inside space-y-2 text-neutral-400">
         <li>
           <strong className="text-neutral-300">Браузер → наш сервер.</strong>{' '}
-          Ваш промпт, системный промпт и выбранные модели отправляются POST-запросом на наш FastAPI-бэкенд через прокси Next.js (<code className="text-xs bg-[#0f0f0f] px-1.5 py-0.5 rounded">/api/labs/compare</code>).
+          Ваш промпт, системный промпт и выбранные модели отправляются POST-запросом на наш FastAPI-бэкенд через прокси Next.js (<code className="text-xs bg-base px-1.5 py-0.5 rounded">/api/labs/compare</code>).
         </li>
         <li>
           <strong className="text-neutral-300">Параллельные запросы к Groq.</strong>{' '}
@@ -264,7 +264,7 @@ function HowItWorks({ lang }: { lang: string }) {
           Оба ответа возвращаются одним JSON-объектом и отображаются бок о бок. Ваш API-ключ никогда не покидает сервер — браузер не знает ключ Groq.
         </li>
       </ol>
-      <div className="mt-4 p-3 bg-[#0f0f0f] rounded-lg border border-[#262626]">
+      <div className="mt-4 p-3 bg-base rounded-lg border border-border-card">
         <p className="text-xs text-neutral-500 font-mono">
           Браузер → POST /api/labs/compare → FastAPI → asyncio.gather(groq(A), groq(B)) → JSON → Браузер
         </p>
@@ -280,7 +280,7 @@ function HowItWorks({ lang }: { lang: string }) {
       <ol className="list-decimal list-inside space-y-2 text-neutral-400">
         <li>
           <strong className="text-neutral-300">Browser → our server.</strong>{' '}
-          Your prompt, system prompt, and selected models are sent as a POST request to our FastAPI backend via Next.js proxy (<code className="text-xs bg-[#0f0f0f] px-1.5 py-0.5 rounded">/api/labs/compare</code>).
+          Your prompt, system prompt, and selected models are sent as a POST request to our FastAPI backend via Next.js proxy (<code className="text-xs bg-base px-1.5 py-0.5 rounded">/api/labs/compare</code>).
         </li>
         <li>
           <strong className="text-neutral-300">Parallel requests to Groq.</strong>{' '}
@@ -299,7 +299,7 @@ function HowItWorks({ lang }: { lang: string }) {
           Both responses come back as a single JSON object and render side by side. Your API key never leaves the server — the browser never sees the Groq key.
         </li>
       </ol>
-      <div className="mt-4 p-3 bg-[#0f0f0f] rounded-lg border border-[#262626]">
+      <div className="mt-4 p-3 bg-base rounded-lg border border-border-card">
         <p className="text-xs text-neutral-500 font-mono">
           Browser → POST /api/labs/compare → FastAPI → asyncio.gather(groq(A), groq(B)) → JSON → Browser
         </p>
@@ -319,7 +319,7 @@ function HowItWorks({ lang }: { lang: string }) {
         <ChevronDown size={14} className={`transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
       {open && (
-        <div className="mt-3 bg-[#171717] border border-[#282828] rounded-xl p-6 text-sm text-neutral-300 leading-relaxed">
+        <div className="mt-3 bg-input border border-border-subtle rounded-xl p-6 text-sm text-neutral-300 leading-relaxed">
           {lang === 'ru' ? ru : en}
         </div>
       )}
@@ -329,8 +329,8 @@ function HowItWorks({ lang }: { lang: string }) {
 
 function ResponsePanel({ label, response, lang }: { label: string; response: ModelResponse; lang: string }) {
   return (
-    <div className="bg-[#171717] border border-[#282828] rounded-xl overflow-hidden">
-      <div className="px-5 py-3 border-b border-[#282828] flex items-center justify-between">
+    <div className="bg-input border border-border-subtle rounded-xl overflow-hidden">
+      <div className="px-5 py-3 border-b border-border-subtle flex items-center justify-between">
         <span className="text-sm font-semibold text-neutral-200">{label}</span>
         <div className="flex items-center gap-3 text-xs text-neutral-500">
           <span className="flex items-center gap-1">
@@ -351,16 +351,16 @@ function ResponsePanel({ label, response, lang }: { label: string; response: Mod
 
 function SkeletonPanel() {
   return (
-    <div className="bg-[#171717] border border-[#282828] rounded-xl overflow-hidden animate-pulse">
-      <div className="px-5 py-3 border-b border-[#282828]">
-        <div className="h-4 w-32 bg-[#282828] rounded" />
+    <div className="bg-input border border-border-subtle rounded-xl overflow-hidden animate-pulse">
+      <div className="px-5 py-3 border-b border-border-subtle">
+        <div className="h-4 w-32 bg-muted rounded" />
       </div>
       <div className="px-5 py-4 space-y-3">
-        <div className="h-3 w-full bg-[#282828] rounded" />
-        <div className="h-3 w-5/6 bg-[#282828] rounded" />
-        <div className="h-3 w-4/6 bg-[#282828] rounded" />
-        <div className="h-3 w-full bg-[#282828] rounded" />
-        <div className="h-3 w-3/6 bg-[#282828] rounded" />
+        <div className="h-3 w-full bg-muted rounded" />
+        <div className="h-3 w-5/6 bg-muted rounded" />
+        <div className="h-3 w-4/6 bg-muted rounded" />
+        <div className="h-3 w-full bg-muted rounded" />
+        <div className="h-3 w-3/6 bg-muted rounded" />
       </div>
     </div>
   );
