@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import { Home, BookOpen, Layout, Terminal, Settings, PanelLeftClose, PanelLeftOpen, LogIn, LogOut, FlaskConical } from 'lucide-react';
+import { Home, BookOpen, Briefcase, Layout, Terminal, Settings, PanelLeftClose, PanelLeftOpen, LogIn, LogOut, FlaskConical, HelpCircle, Trophy, Swords } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { useLang } from '@/hooks/useLang';
@@ -24,8 +24,12 @@ export default function Sidebar({
   const menuItems = [
     { icon: Home, label: lang === 'ru' ? 'Панель управления' : 'Dashboard', href: `/${lang}` },
     { icon: BookOpen, label: lang === 'ru' ? 'Пути обучения' : 'Learning Paths', href: `/${lang}/paths` },
+    { icon: Briefcase, label: lang === 'ru' ? 'Профессии AI' : 'AI Professions', href: `/${lang}/professions` },
     { icon: Layout, label: lang === 'ru' ? 'Все комнаты' : 'All Rooms', href: `/${lang}/rooms` },
     { icon: FlaskConical, label: lang === 'ru' ? 'Лаборатории' : 'Labs', href: `/${lang}/labs` },
+    { icon: Swords, label: lang === 'ru' ? 'Соревнования' : 'Compete', href: `/${lang}/compete` },
+    { icon: Trophy, label: lang === 'ru' ? 'Таблица лидеров' : 'Leaderboard', href: `/${lang}/leaderboard` },
+    { icon: HelpCircle, label: lang === 'ru' ? 'FAQ' : 'FAQ', href: `/${lang}/faq` },
     { icon: Settings, label: lang === 'ru' ? 'Профиль' : 'Profile', href: `/${lang}/settings` },
   ];
 

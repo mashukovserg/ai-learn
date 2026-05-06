@@ -81,20 +81,21 @@ Implemented top-level frontend sections:
 2. `/${lang}/rooms`
 3. `/${lang}/rooms/[id]` (primary dynamic room page)
 4. `/${lang}/paths` and path detail pages
-5. `/${lang}/login`
-6. `/${lang}/skills`
-7. `/${lang}/settings`
+5. `/${lang}/professions`
+6. `/${lang}/login`
+7. `/${lang}/skills`
+8. `/${lang}/settings`
 
 Known absent routes (do not assume they exist):
 
 1. `/${lang}/compete`
 2. `/${lang}/leaderboard`
 
-### Room inventory (24 rooms in `ROOMS_METADATA`)
+### Room inventory (36 rooms in `ROOMS_METADATA`)
 
-Rooms with theory + tasks fully wired (24): `agent-coding-foundations`, `llm-landscape`, `llm-mechanics`, `ai-history`, `prompting-101`, `chatgpt-moment`, `post-chatgpt-history`, `scaling-hypothesis`, `ai-singularity`, `prompt-evals`, `ai-image-creation`, `research-grounding`, `ai-alignment`, `native-multimodality`, `ai-agents` (Enriched), `deep-search-agents`, `ai-rag` (Enriched), `ai-security` (Enriched), `ai-research` (Enriched), `fine-tuning-101`, `embeddings-101`, `llm-guardrails`, `ai-regulation-ru`, `ai-regulation-eu`.
+Rooms with theory + tasks fully wired (36): all current `ROOMS_METADATA` entries are wired in the dynamic room route, including `ai-career-trajectories`, `prompt-contracts`, `mcp-tool-ecosystems`, `agentic-swarm-management`, `frontier-evals-logic`, `claude-code-agentic-loop`, and `claude-code-pro-workflow`.
 
-Theory components mapped in `THEORY_COMPONENTS` (24 total) inside `src/app/[lang]/rooms/[id]/page.tsx`. Rooms without a mapping show a fallback placeholder.
+Theory components mapped in `THEORY_COMPONENTS` (36 total) inside `src/app/[lang]/rooms/[id]/page.tsx`. Rooms without a mapping show a fallback placeholder.
 
 ### Source of truth files (use these first)
 

@@ -10,6 +10,8 @@
   - *Topics:* Tokens, Context Windows, Next-Token Prediction, Temperature.
 - [x] **Room 103: Prompting 101 (Основы промптинга)** — 6 tasks
   - *Topics:* System Prompts, Few-shot/Zero-shot, Hallucination mitigation, Prompt iteration.
+- [x] **AI Career Trajectories (`ai-career-trajectories`)** — 6 tasks (includes sorting, categorize, mentor, scenario)
+  - *Topics:* IC vs research vs management paths, branch points after senior level, skills focus by stage, realistic first-year transition plan into AI.
 
 ### Module 2: Multimodality
 - [x] **Room 201: Native Multimodality** — 6 tasks
@@ -59,13 +61,15 @@
 
 ### Module A: Agent Coding Foundations
 - [x] **AC-101: Agent Coding Foundations** (`agent-coding-foundations`) — 10 tasks; framing, loop speed, acceptance criteria, guardrails, rollback.
-- [ ] **AC-102: Prompt Contracts for Coding Agents** — feature specs, constraints, output contracts.
-- [ ] **AC-103: Multi-Agent Collaboration Patterns** — decomposition, context hygiene, branch strategy.
+- [x] **AC-102: Agentic Coding Tools** (`agentic-coding-tools`) — 10 tasks; tool-layer architecture, contracts, role split, release controls, rollback discipline.
+- [x] **AC-103: Prompt Contracts for Coding Agents** (`prompt-contracts`) — 10 tasks; feature specs, constraints, output contracts.
+- [x] **AC-104: Multi-Agent Collaboration Patterns** (`multi-agent-collaboration`) — 10 tasks; decomposition, context hygiene, branch strategy.
 
 ### Module B: Build Loops and Quality
-- [ ] **AC-201: Repo Navigation with Coding Agents** — semantic exploration and safe refactor planning.
-- [ ] **AC-202: Agentic Testing Loop** — test-first prompting, regression safety, failure triage.
-- [ ] **AC-203: Agentic UI Delivery** — responsive implementation, accessibility checks, component consistency.
+- [x] **AC-201: CLI Tools for Agent Coding** (`agentic-cli-tools`) — terminal workflow discipline, discovery/change/verify loop, quality gates, and rollback routines.
+  - *2026-04-05 update:* theory delivery was restructured into shorter practical blocks with explicit CLI loop model, concrete command examples, verify matrix, role split, and execution checklist.
+- [x] **AC-202: Agentic Testing Loop** (`agentic-testing-loop`) — 10 tasks; test-first prompting, regression safety, failure triage.
+- [x] **AC-203: Agentic UI Delivery** (`agentic-ui-delivery`) — 10 tasks; responsive implementation, accessibility checks, component consistency.
 
 ### Module C: Shipping and Team Operations
 - [ ] **AC-301: Shipping Agentic Features with Guardrails** — policy checks, red-team prompts, release gates.

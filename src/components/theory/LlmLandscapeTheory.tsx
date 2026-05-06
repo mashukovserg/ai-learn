@@ -369,9 +369,32 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-6">
           {lang === 'ru'
-            ? 'Геополитика ИИ определяется концентрацией вычислений, уязвимостями полупроводниковых цепочек и экспортными ограничениями. Выбор модели становится инфраструктурным решением.'
-            : 'AI geopolitics is shaped by compute concentration, semiconductor supply-chain fragility, and export-control regimes. Model choice becomes an infrastructure decision.'}
+            ? 'Геополитика ИИ в 2026 году определяется не только алгоритмами, но и концентрацией физических ресурсов. Выбор модели — это стратегическое решение, зависящее от доступа к чипам и контроля над данными.'
+            : 'AI geopolitics in 2026 is shaped not only by algorithms but by the concentration of physical resources. Model choice is a strategic decision depending on chip access and data control.'}
         </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div className="bg-card border border-border-subtle p-6 rounded-xl">
+            <h3 className="text-lg font-semibold text-emerald-400 mb-3">
+              {lang === 'ru' ? 'Суверенитет данных (Data Sovereignty)' : 'Data Sovereignty'}
+            </h3>
+            <p className="text-sm text-neutral-400 leading-relaxed">
+              {lang === 'ru'
+                ? 'Открытый интернет (Common Crawl) почти исчерпан. Главным сокровищем становятся проприетарные данные наций и корпораций: медицинские записи, юридические архивы, данные сенсоров и уникальные культурные пласты. Суверенитет — это способность защищать и эффективно использовать эти данные для обучения своих моделей.'
+                : 'The open internet (Common Crawl) is nearly exhausted. Proprietary data from nations and corporations — medical records, legal archives, sensor data, and unique cultural layers — is becoming the primary treasure. Sovereignty is the ability to protect and effectively use this data to train one\'s own models.'}
+            </p>
+          </div>
+          <div className="bg-card border border-border-subtle p-6 rounded-xl">
+            <h3 className="text-lg font-semibold text-emerald-400 mb-3">
+              {lang === 'ru' ? 'Вычислительный разрыв (The Compute Gap)' : 'The Compute Gap'}
+            </h3>
+            <p className="text-sm text-neutral-400 leading-relaxed">
+              {lang === 'ru'
+                ? 'Доступ к GPU-кластерам и дешевой энергии становится фактором национальной безопасности. Страны с избытком энергии и доступом к передовым чипам получают преимущество в скорости обучения "фронтирных" моделей, в то время как остальные вынуждены полагаться на более эффективные, но менее мощные системы.'
+                : 'Access to GPU clusters and cheap energy is becoming a national security factor. Nations with energy surpluses and access to advanced chips gain an advantage in the training speed of "frontier" models, while others are forced to rely on more efficient but less powerful systems.'}
+            </p>
+          </div>
+        </div>
 
         <div className="space-y-4 mb-6">
           <div className="bg-card border border-border-subtle rounded-xl overflow-x-auto">

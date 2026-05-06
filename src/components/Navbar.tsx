@@ -1,15 +1,50 @@
 "use client";
 
+import { useState, useRef, useEffect, useMemo } from 'react';
 import { Search, Zap } from 'lucide-react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { useLang } from '@/hooks/useLang';
+import { ROOMS_METADATA } from '@/data/rooms/metadata';
 
 export default function Navbar() {
   const lang = useLang();
   const pathname = usePathname();
+  const router = useRouter();
   const { user } = useAuth();
+  const [query, setQuery] = useState('');
+  const [open, setOpen] = useState(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  const results = useMemo(() => {
+    const q = query.toLowerCase().trim();
+    if (!q) return [];
+    const l = lang as 'ru' | 'en';
+    return ROOMS_METADATA.filter((r) => {
+      const title = r.title[l].toLowerCase();
+      const desc = r.description[l].toLowerCase();
+      const cat = r.category[l].toLowerCase();
+      return title.includes(q) || desc.includes(q) || cat.includes(q) || r.id.includes(q);
+    }).slice(0, 8);
+  }, [query, lang]);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
+
+  /* eslint-disable react-hooks/set-state-in-effect -- intentional: reset search UI on route change */
+  useEffect(() => {
+    setOpen(false);
+    setQuery('');
+  }, [pathname]);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   const redirectedPathname = (locale: string) => {
     if (!pathname) return `/${locale}`;
@@ -19,15 +54,58 @@ export default function Navbar() {
     return segments.join('/') || `/${locale}`;
   };
 
+  const difficultyColor = (d: string) =>
+    d === 'Beginner' ? 'text-emerald-400' : d === 'Intermediate' ? 'text-yellow-400' : 'text-red-400';
+
   return (
     <header className="h-16 border-b border-border-card bg-card/90 backdrop-blur-sm sticky top-0 z-10 flex items-center justify-between px-4 md:px-6 lg:px-10">
-      <div className="flex items-center gap-3 bg-base px-3.5 py-2 rounded-lg border border-border-card w-[min(26rem,60vw)]">
-        <Search size={15} className="text-neutral-600" />
-        <input
-          type="text"
-          placeholder={lang === 'ru' ? "Поиск комнат..." : "Search rooms..."}
-          className="bg-transparent border-none outline-none text-sm w-full text-neutral-300 placeholder:text-neutral-600"
-        />
+      <div ref={wrapperRef} className="relative w-[min(26rem,60vw)]">
+        <div className="flex items-center gap-3 bg-base px-3.5 py-2 rounded-lg border border-border-card">
+          <Search size={15} className="text-neutral-600" />
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
+            onFocus={() => query.trim() && setOpen(true)}
+            onKeyDown={(e) => {
+              if (e.key === 'Escape') { setOpen(false); }
+              if (e.key === 'Enter' && results.length > 0) {
+                router.push(`/${lang}/rooms/${results[0].id}`);
+                setOpen(false);
+                setQuery('');
+              }
+            }}
+            placeholder={lang === 'ru' ? "Поиск комнат..." : "Search rooms..."}
+            className="bg-transparent border-none outline-none text-sm w-full text-neutral-300 placeholder:text-neutral-600"
+          />
+        </div>
+
+        {open && query.trim() && (
+          <div className="absolute top-full left-0 right-0 mt-1.5 bg-card border border-border-card rounded-lg shadow-xl overflow-hidden z-50">
+            {results.length === 0 ? (
+              <div className="px-4 py-3 text-sm text-neutral-500">
+                {lang === 'ru' ? 'Ничего не найдено' : 'No results found'}
+              </div>
+            ) : (
+              results.map((room) => (
+                <Link
+                  key={room.id}
+                  href={`/${lang}/rooms/${room.id}`}
+                  onClick={() => { setOpen(false); setQuery(''); }}
+                  className="flex items-center gap-3 px-4 py-2.5 hover:bg-white/[0.04] transition-colors"
+                >
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-neutral-200 truncate">{room.title[lang as 'ru' | 'en']}</p>
+                    <p className="text-xs text-neutral-500 truncate">{room.category[lang as 'ru' | 'en']}</p>
+                  </div>
+                  <span className={`text-xs font-medium shrink-0 ${difficultyColor(room.difficulty)}`}>
+                    {room.difficulty}
+                  </span>
+                </Link>
+              ))
+            )}
+          </div>
+        )}
       </div>
 
       <div className="flex items-center gap-4 md:gap-5">

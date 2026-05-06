@@ -2,6 +2,7 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.api.agent.router import agent_router
 from app.api.auth.router import auth_router
 from app.api.labs.router import labs_router
 from app.api.progress.router import progress_router
@@ -20,6 +21,7 @@ app.include_router(auth_router, tags=['Authentication'])
 app.include_router(users_router, tags=['Users'])
 app.include_router(progress_router, tags=['Progress'])
 app.include_router(labs_router, tags=['Labs'])
+app.include_router(agent_router, tags=['Agent Ops'])
 
 app.add_middleware(
     CORSMiddleware,

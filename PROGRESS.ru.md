@@ -1,6 +1,6 @@
 # Снимок прогресса проекта
 
-Последняя синхронизация с кодовой базой: **2026-03-28**
+Последняя синхронизация с кодовой базой: **2026-04-26**
 
 ## Статус реализации
 - **Основная оболочка:** Готово (`AppShell`, `Sidebar`, `Navbar`).
@@ -9,12 +9,15 @@
 - **Сохранение прогресса:** Готово (хук `useProgress` — API при авторизации, localStorage для гостей и синхронизация гостевого прогресса с сервером при регистрации).
 - **Бэкенд:** Готово (FastAPI + PostgreSQL, JWT-авторизация, аккаунты пользователей, серверное сохранение прогресса, отслеживание очков/серии).
 - **Авторизация:** Готово (регистрация/вход/выход, JWT в httpOnly cookies, страница входа `/${lang}/login`).
-- **Реализовано страниц комнат:** 24
-  - `/${lang}/rooms/[id]` полностью подключен для: `agent-coding-foundations`, `llm-landscape`, `llm-mechanics`, `prompting-101`, `chatgpt-moment`, `post-chatgpt-history`, `ai-history`, `scaling-hypothesis`, `ai-singularity`, `prompt-evals`, `ai-image-creation`, `research-grounding`, `ai-agents`, `deep-search-agents`, `ai-rag`, `ai-security`, `ai-research`, `ai-alignment`, `native-multimodality`, `fine-tuning-101`, `embeddings-101`, `llm-guardrails`, `ai-regulation-ru`, `ai-regulation-eu`.
-  - Добавлена AC-101 комната: `agent-coding-foundations` (10 заданий всех поддерживаемых типов, EN/RU).
+- **Реализовано страниц комнат:** 36
+  - `/${lang}/rooms/[id]` полностью подключен для: `agent-coding-foundations`, `agentic-coding-tools`, `agentic-cli-tools`, `prompt-contracts`, `multi-agent-collaboration`, `agentic-testing-loop`, `agentic-ui-delivery`, `llm-landscape`, `llm-mechanics`, `prompting-101`, `ai-career-trajectories`, `chatgpt-moment`, `post-chatgpt-history`, `ai-history`, `scaling-hypothesis`, `ai-singularity`, `prompt-evals`, `ai-image-creation`, `research-grounding`, `ai-agents`, `deep-search-agents`, `ai-rag`, `ai-security`, `ai-research`, `ai-alignment`, `native-multimodality`, `fine-tuning-101`, `embeddings-101`, `llm-guardrails`, `ai-regulation-ru`, `ai-regulation-eu`, `mcp-tool-ecosystems`, `agentic-swarm-management`, `frontier-evals-logic`, `claude-code-agentic-loop`, `claude-code-pro-workflow`.
+  - Добавлены комнаты Agent Coding: `agent-coding-foundations`, `agentic-coding-tools`, `agentic-cli-tools`, `prompt-contracts`, `multi-agent-collaboration`, `agentic-testing-loop`, `agentic-ui-delivery` (по 10 заданий, EN/RU).
 - **UI учебных путей:** Готово (`/${lang}/paths`, `/${lang}/paths/beginner`, `/${lang}/paths/ideas-history`, `/${lang}/paths/agentic-systems`, `/${lang}/paths/agent-coding`).
+- **Страница AI-профессий:** Готово (`/${lang}/professions`) с поиском, фильтрами сложности/типа роли, featured-карточкой и отдельным grid-каталогом профессий.
+- **Labs:** Prompt Compare работает, добавлен Agent Ops MVP на `/${lang}/labs/agent-ops` (очередь задач, запуск цикла, лента запусков, лента базы знаний).
 - **Страница профиля (`/${lang}/settings`):** Готово (настройка языка, сброс прогресса по комнате, встроенная матрица навыков).
-- **Список комнат:** Показывает реальный статус прогресса (Завершено / В процессе / Не начато) и компактную мета-разметку сложности/статуса в контентной части карточки (без оверлеев на баннере).
+- **Список комнат:** Показывает реальный статус прогресса (Завершено / В процессе / Не начато), поддерживает фильтр тематического фокуса (пресеты `Agent Coding`, `Философия AI` + все категории комнат) и теперь использует professions-style illustrated-cover шапки с иконкой комнаты и реальным progress badge.
+- **Список комнат:** На десктопе фильтры сложности/фокуса/статуса вынесены в отдельную боковую панель с компактным summary по количеству результатов; на мобильных сохраняется вертикальный стек фильтров над каталогом.
 - **Дашборд:** Показывает реальное количество пройденных комнат и прогресс-бар. Приветственная строка показывает имя пользователя при авторизации.
 - **Деплой:** На Vercel — [ai-learning-platform-murex.vercel.app](https://ai-learning-platform-murex.vercel.app).
 - **Единообразие UI:** Зелёный акцент теперь единообразен во всех основных потоках (дашборд, пути, комнаты, активные маршруты в сайдбаре).
@@ -22,6 +25,18 @@
 ## Вехи платформы
 | Дата | Веха |
 |------|------|
+| 2026-04-26 | Фильтры на `/${lang}/rooms` перенесены в отдельную desktop-side panel со sticky-позицией и компактным summary по результатам; на мобильных сохранен вертикальный режим. |
+| 2026-04-26 | Увеличена плотность `/${lang}/rooms` на больших экранах: контейнер шире, колонок больше, внутренние отступы карточек плотнее, чтобы на экране помещалось больше комнат. |
+| 2026-04-26 | На `/${lang}/rooms` уменьшена visual-cover зона: блоки с символами комнат стали меньше, шапки карточек ниже, верхняя композиция плотнее. |
+| 2026-04-26 | Карточки `/${lang}/rooms` переведены на professions-style cover treatment: программные gradient-обложки, иконки комнат и реальные progress badge. |
+| 2026-04-26 | Добавлен `/${lang}/professions`: отдельный каталог AI-профессий с поиском, фильтрами, ссылкой в sidebar и карточным режимом выбора ролей в обеих локалях. |
+| 2026-04-26 | Добавлена комната `ai-career-trajectories`: двуязычная карта карьерных путей в AI с кастомным темным timeline-лейаутом, переключением между IC/research/management, карточками развилок и 6 валидными заданиями. |
+| 2026-04-05 | Реализованы 4 новые комнаты Agent Coding: AC-103 (Промпт-контракты), AC-104 (Паттерны многоагентного взаимодействия), AC-202 (Агентный цикл тестирования) и AC-203 (Агентная UI-доставка). Каждая комната включает 5 глав теории и 10 локализованных заданий. |
+| 2026-04-05 | Переработана теория AC-201 (`agentic-cli-tools`) в более учебный формат... |
+| 2026-04-05 | Добавлен фильтр тематического фокуса на `/${lang}/rooms` с пресетами `Agent Coding` и `Философия AI`, а также динамическими опциями всех категорий комнат; объединён с текущими фильтрами сложности/статуса. |
+| 2026-04-04 | Реализован Agent Ops MVP: добавлены `/${lang}/labs/agent-ops`, backend API `/agent/*`, таблицы очереди/запусков/базы знаний и endpoint запуска цикла с дедупликацией по fingerprint. |
+| 2026-03-29 | Реализована комната AC-201 `agentic-cli-tools` (5 глав теории + 10 локализованных заданий), выполнено подключение метаданных/заданий/теории в динамический движок комнат и добавление в путь Agent Coding. |
+| 2026-03-29 | Реализована комната AC-102 `agentic-coding-tools` (5 глав теории + 10 локализованных заданий), выполнено подключение задач/теории/метаданных в динамический движок комнат и добавление в путь Agent Coding. |
 | 2026-03-28 | Реализована комната AC-101 `agent-coding-foundations` (5 глав теории + 10 локализованных заданий), добавлен путь Agent Coding `/${lang}/paths/agent-coding` и термины глоссария `guardrails` + `context-window`. |
 | 2026-03-28 | Реализована миграция гостевого прогресса при регистрации: записи localStorage `progress:*` отправляются в `/api/progress/{roomId}` после создания аккаунта, затем профиль обновляется с актуальными очками и серией. |
 | 2026-03-28 | Добавлен tooltip для термина "Красный код" / "Code Red" в главе 1 комнаты Post-ChatGPT Era (EN/RU). |
@@ -81,11 +96,11 @@
 - В сайдбаре есть ссылки на `compete`, `leaderboard`, но страницы не реализованы.
 
 ## Текущее покрытие учебной программы
-- **Модуль «Основы AI»:** Комнаты 101 (Ландшафт LLM), 102 (Как мыслят LLM), 103 (Промптинг 101).
+- **Модуль «Основы AI»:** Комнаты 101 (Ландшафт LLM), 102 (Как мыслят LLM), 103 (Промптинг 101) и AI Career Trajectories.
 - **Модуль «Мультимодальность»:** Комната 201 (Нативная мультимодальность), Комната 202 (Research & Grounding).
 - **Модуль «Архитектура и адаптация»:** Файн-тюнинг и адаптация.
 - **Модуль «Практика»:** Prompt Evals, AI для создания изображений.
 - **Модуль «Идеи»:** ChatGPT Moment, Гипотеза масштабирования, Сингулярность, История AI.
 - **Продвинутый модуль:** AI-агенты, Deep Search Agents, AI RAG, AI Security, AI Research, AI Alignment.
-- **Модуль Agent Coding:** AC-101 Agent Coding Foundations.
-- **Следующий планируемый контент:** AC-102 Prompt-контракты, AC-103 Паттерны multi-agent разработки, EvalOps Basics.
+- **Модуль Agent Coding:** AC-101 Agent Coding Foundations, AC-102 Agentic Coding Tools, AC-103 Prompt-контракты, AC-104 Паттерны multi-agent разработки, AC-201 CLI Tools for Agent Coding, AC-202 Agentic тестовый цикл, AC-203 Агентная UI-доставка.
+- **Следующий планируемый контент:** AC-301 Релиз агентных фич с Guardrails, AC-302 Контроль стоимости и задержки.

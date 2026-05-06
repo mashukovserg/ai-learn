@@ -25,6 +25,7 @@ import ChatgptMomentTheory from '@/components/theory/ChatgptMomentTheory';
 import PostChatgptHistoryTheory from '@/components/theory/PostChatgptHistoryTheory';
 import AiImageCreationTheory from '@/components/theory/AiImageCreationTheory';
 import Prompting101Theory from '@/components/theory/Prompting101Theory';
+import AiCareerTrajectoriesTheory from '@/components/theory/AiCareerTrajectoriesTheory';
 import ScalingHypothesisTheory from '@/components/theory/ScalingHypothesisTheory';
 import ResearchGroundingTheory from '@/components/theory/ResearchGroundingTheory';
 import AiAlignmentTheory from '@/components/theory/AiAlignmentTheory';
@@ -42,11 +43,25 @@ import LlmGuardrailsTheory from "@/components/theory/LlmGuardrailsTheory";
 import AiRegulationRuTheory from "@/components/theory/AiRegulationRuTheory";
 import AiRegulationEuTheory from "@/components/theory/AiRegulationEuTheory";
 import AgentCodingFoundationsTheory from '@/components/theory/AgentCodingFoundationsTheory';
+import AgenticCodingToolsTheory from '@/components/theory/AgenticCodingToolsTheory';
+import AgenticCliToolsTheory from '@/components/theory/AgenticCliToolsTheory';
+import PromptContractsTheory from '@/components/theory/PromptContractsTheory';
+import MultiAgentCollaborationTheory from '@/components/theory/MultiAgentCollaborationTheory';
+import AgenticTestingLoopTheory from '@/components/theory/AgenticTestingLoopTheory';
+import AgenticUiDeliveryTheory from '@/components/theory/AgenticUiDeliveryTheory';
+import McpToolEcosystemsTheory from '@/components/theory/McpToolEcosystemsTheory';
+import AgenticSwarmTheory from '@/components/theory/AgenticSwarmTheory';
+import FrontierEvalsTheory from '@/components/theory/FrontierEvalsTheory';
+import ClaudeCodeAgenticLoopTheory from '@/components/theory/ClaudeCodeAgenticLoopTheory';
+import ClaudeCodeProWorkflowTheory from '@/components/theory/ClaudeCodeProWorkflowTheory';
+import PromptPlayground from '@/components/PromptPlayground';
+import { PLAYGROUND_CONFIGS } from '@/data/rooms/playgroundConfigs';
 
 const THEORY_COMPONENTS: Record<string, React.ComponentType<{ lang: string }>> = {
   'llm-mechanics': LlmMechanicsTheory,
   'llm-landscape': LlmLandscapeTheory,
   'ai-history': AiHistoryTheory,
+  'ai-career-trajectories': AiCareerTrajectoriesTheory,
   'chatgpt-moment': ChatgptMomentTheory,
   'post-chatgpt-history': PostChatgptHistoryTheory,
   'ai-image-creation': AiImageCreationTheory,
@@ -68,6 +83,17 @@ const THEORY_COMPONENTS: Record<string, React.ComponentType<{ lang: string }>> =
   'ai-regulation-ru': AiRegulationRuTheory,
   'ai-regulation-eu': AiRegulationEuTheory,
   'agent-coding-foundations': AgentCodingFoundationsTheory,
+  'agentic-coding-tools': AgenticCodingToolsTheory,
+  'agentic-cli-tools': AgenticCliToolsTheory,
+  'prompt-contracts': PromptContractsTheory,
+  'multi-agent-collaboration': MultiAgentCollaborationTheory,
+  'agentic-testing-loop': AgenticTestingLoopTheory,
+  'agentic-ui-delivery': AgenticUiDeliveryTheory,
+  'mcp-tool-ecosystems': McpToolEcosystemsTheory,
+  'agentic-swarm-management': AgenticSwarmTheory,
+  'frontier-evals-logic': FrontierEvalsTheory,
+  'claude-code-agentic-loop': ClaudeCodeAgenticLoopTheory,
+  'claude-code-pro-workflow': ClaudeCodeProWorkflowTheory,
 };
 
 const DefaultTheory = () => <div className="p-8 text-neutral-500">Theory content coming soon...</div>;
@@ -275,6 +301,11 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
           <div className="prose prose-invert max-w-none reading-prose">
              <TheoryComponent lang={lang} />
           </div>
+
+          {/* Prompt Playground — shown only for rooms that have a config */}
+          {PLAYGROUND_CONFIGS[id] && (
+            <PromptPlayground lang={lang} config={PLAYGROUND_CONFIGS[id]} />
+          )}
         </div>
 
         {/* Task Sidebar */}

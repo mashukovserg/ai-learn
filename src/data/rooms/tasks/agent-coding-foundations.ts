@@ -14,8 +14,8 @@ export const agentCodingFoundationsTasks: LocalizedTask[] = [
         en: 'Send one prompt once and ship the first answer to production immediately.',
       },
       {
-        ru: 'Работать итеративным циклом: цель -> план -> действие -> проверка -> доработка.',
-        en: 'Use an iterative loop: goal -> plan -> act -> verify -> refine.',
+        ru: 'Работать итеративным циклом: цель → план → действие → проверка → доработка.',
+        en: 'Use an iterative loop: goal → plan → act → verify → refine.',
       },
       {
         ru: 'Увеличивать размер модели и не менять инженерный процесс.',
@@ -23,12 +23,12 @@ export const agentCodingFoundationsTasks: LocalizedTask[] = [
       },
     ],
     answer: {
-      ru: 'Работать итеративным циклом: цель -> план -> действие -> проверка -> доработка.',
-      en: 'Use an iterative loop: goal -> plan -> act -> verify -> refine.',
+      ru: 'Работать итеративным циклом: цель → план → действие → проверка → доработка.',
+      en: 'Use an iterative loop: goal → plan → act → verify → refine.',
     },
     explanation: {
-      ru: 'Верно. Ключевая идея агентной разработки — управляемый цикл с проверками между шагами, а не попытка получить идеальный результат одним ответом.',
-      en: 'Correct. The core idea of agent coding is a controlled loop with checks between steps, not trying to get a perfect result in one response.',
+      ru: 'Верно. Agent Coding — это управляемый процесс с проверками между шагами, а не попытка получить идеальный результат одним ответом.',
+      en: 'Correct. Agent Coding is a controlled process with checks between steps, not trying to get a perfect result in one response.',
     },
   },
   {
@@ -44,79 +44,87 @@ export const agentCodingFoundationsTasks: LocalizedTask[] = [
       en: 'Two words: the first is Function.',
     },
     explanation: {
-      ru: 'Точно. Function Calling позволяет связать ответ модели с конкретным инструментом и его параметрами.',
-      en: 'Exactly. Function Calling connects model output to a concrete tool and its arguments.',
+      ru: 'Точно. Function Calling позволяет связать ответ модели с конкретным инструментом и его параметрами. Чем строже JSON-схема — тем предсказуемее поведение агента.',
+      en: 'Exactly. Function Calling connects model output to a concrete tool and its arguments. The stricter the JSON schema, the more predictable agent behavior becomes.',
     },
   },
   {
     id: 3,
     type: 'multiple-select',
     question: {
-      ru: 'Выберите признаки качественных критериев приемки для задачи coding-агента.',
-      en: 'Select the traits of high-quality acceptance criteria for a coding-agent task.',
+      ru: 'Выберите обязательные компоненты контракта задачи (Task Contract) для coding-агента.',
+      en: 'Select the mandatory components of a Task Contract for a coding agent.',
     },
     options: [
       {
-        ru: 'Измеримый ожидаемый результат (что именно должно работать).',
-        en: 'A measurable expected outcome (what exactly should work).',
+        ru: 'Цель (goal) — что именно нужно сделать.',
+        en: 'Goal — what exactly needs to be done.',
       },
       {
-        ru: 'Явные ограничения и границы (что делать нельзя).',
-        en: 'Explicit constraints and boundaries (what must not be done).',
+        ru: 'Ограничения (constraints) — что нельзя нарушать.',
+        en: 'Constraints — what must not be violated.',
       },
       {
         ru: 'Формулировка "сделай лучше", без теста и метрик.',
-        en: 'A vague request like “make it better” without tests or metrics.',
+        en: 'A vague request like "make it better" without tests or metrics.',
       },
       {
-        ru: 'Проверка готовности через тесты, eval-набор или шаги верификации.',
-        en: 'A done-check via tests, an eval set, or explicit verification steps.',
+        ru: 'Критерии приёмки (acceptance_criteria) — как проверить завершение.',
+        en: 'Acceptance criteria — how to verify completion.',
+      },
+      {
+        ru: 'Правила эскалации (escalation) — когда передать задачу человеку.',
+        en: 'Escalation rules — when to hand off to a human.',
       },
     ],
     answer: [
       {
-        ru: 'Измеримый ожидаемый результат (что именно должно работать).',
-        en: 'A measurable expected outcome (what exactly should work).',
+        ru: 'Цель (goal) — что именно нужно сделать.',
+        en: 'Goal — what exactly needs to be done.',
       },
       {
-        ru: 'Явные ограничения и границы (что делать нельзя).',
-        en: 'Explicit constraints and boundaries (what must not be done).',
+        ru: 'Ограничения (constraints) — что нельзя нарушать.',
+        en: 'Constraints — what must not be violated.',
       },
       {
-        ru: 'Проверка готовности через тесты, eval-набор или шаги верификации.',
-        en: 'A done-check via tests, an eval set, or explicit verification steps.',
+        ru: 'Критерии приёмки (acceptance_criteria) — как проверить завершение.',
+        en: 'Acceptance criteria — how to verify completion.',
+      },
+      {
+        ru: 'Правила эскалации (escalation) — когда передать задачу человеку.',
+        en: 'Escalation rules — when to hand off to a human.',
       },
     ],
     explanation: {
-      ru: 'Верно. Хорошие критерии приемки всегда проверяемы, ограничены и связаны с конкретным способом валидации.',
-      en: 'Correct. Good acceptance criteria are always testable, bounded, and tied to a concrete validation method.',
+      ru: 'Верно. Schema-first контракт включает goal, constraints, tools_allowed, escalation и acceptance_criteria. Формулировка "сделай лучше" не подходит, потому что не дает формального определения завершения.',
+      en: 'Correct. A schema-first contract includes goal, constraints, tools_allowed, escalation, and acceptance_criteria. "Make it better" does not work because it provides no formal definition of done.',
     },
   },
   {
     id: 4,
     type: 'sorting',
+    answer: '',
     question: {
-      ru: 'Расположите шаги базового агентного цикла в правильном порядке.',
-      en: 'Order the steps of the basic agent loop correctly.',
+      ru: 'Расположите пять состояний замкнутого агентного цикла (closed-loop) в правильном порядке.',
+      en: 'Order the five states of the closed-loop agent cycle correctly.',
     },
     initialItems: [
-      { ru: 'План', en: 'Plan' },
-      { ru: 'Уточнение и доработка', en: 'Refine' },
-      { ru: 'Цель', en: 'Goal' },
-      { ru: 'Наблюдение/тест', en: 'Observe/Test' },
-      { ru: 'Действие', en: 'Act' },
+      { ru: 'Decide (продолжить / перепланировать / остановить)', en: 'Decide (continue / replan / stop)' },
+      { ru: 'Execute (выполнить действие)', en: 'Execute (perform action)' },
+      { ru: 'Plan (разбить задачу)', en: 'Plan (break down task)' },
+      { ru: 'Validate (проверить против критериев)', en: 'Validate (check against criteria)' },
+      { ru: 'Observe (зафиксировать результат)', en: 'Observe (record result)' },
     ],
     correctOrder: [
-      { ru: 'Цель', en: 'Goal' },
-      { ru: 'План', en: 'Plan' },
-      { ru: 'Действие', en: 'Act' },
-      { ru: 'Наблюдение/тест', en: 'Observe/Test' },
-      { ru: 'Уточнение и доработка', en: 'Refine' },
+      { ru: 'Plan (разбить задачу)', en: 'Plan (break down task)' },
+      { ru: 'Execute (выполнить действие)', en: 'Execute (perform action)' },
+      { ru: 'Observe (зафиксировать результат)', en: 'Observe (record result)' },
+      { ru: 'Validate (проверить против критериев)', en: 'Validate (check against criteria)' },
+      { ru: 'Decide (продолжить / перепланировать / остановить)', en: 'Decide (continue / replan / stop)' },
     ],
-    answer: '',
     explanation: {
-      ru: 'Да. Такой порядок снижает риск хаотичных изменений: сначала рамка задачи, затем исполнение и контроль качества.',
-      en: 'Yes. This order reduces chaotic changes: first frame the task, then execute and control quality.',
+      ru: 'Правильно. Замкнутый цикл: Plan → Execute → Observe → Validate → Decide. Ключевое отличие от линейного pipeline — агент может вернуться к Plan на основе наблюдений.',
+      en: 'Correct. The closed loop: Plan → Execute → Observe → Validate → Decide. Unlike a linear pipeline, the agent can return to Plan based on observations.',
     },
   },
   {
@@ -154,12 +162,12 @@ export const agentCodingFoundationsTasks: LocalizedTask[] = [
             en: 'Run tests and eval checks, require human confirmation for risky actions, then release.',
           },
           reaction: {
-            ru: 'Это правильная стратегия: вы сохраняете скорость, но добавляете контроль качества и безопасность.',
-            en: 'This is the right strategy: you keep speed while adding quality control and safety.',
+            ru: 'Правильная стратегия: вы сохраняете скорость, но добавляете контроль качества и безопасность.',
+            en: 'The right strategy: you keep speed while adding quality control and safety.',
           },
           deepening: {
-            ru: 'Практический стандарт для agent coding: автоматические проверки на каждом шаге и ручное подтверждение действий с высоким ущербом.',
-            en: 'A practical standard for agent coding: automated checks on each step and manual confirmation for high-impact actions.',
+            ru: 'Стандарт: автоматические проверки на каждом шаге и ручное подтверждение действий с высоким ущербом.',
+            en: 'Standard: automated checks on each step and manual confirmation for high-impact actions.',
           },
           isCorrect: true,
         },
@@ -169,8 +177,8 @@ export const agentCodingFoundationsTasks: LocalizedTask[] = [
             en: 'Disable logs and checks to gain latency.',
           },
           reaction: {
-            ru: 'Без логов и проверок вы теряете наблюдаемость и возможность быстро локализовать проблему.',
-            en: 'Without logs and checks, you lose observability and the ability to localize failures quickly.',
+            ru: 'Без логов и проверок вы теряете наблюдаемость и возможность локализовать проблему.',
+            en: 'Without logs and checks, you lose observability and the ability to localize failures.',
           },
           isCorrect: false,
         },
@@ -186,8 +194,8 @@ export const agentCodingFoundationsTasks: LocalizedTask[] = [
     },
     answer: '',
     explanation: {
-      ru: 'Верно. Разделение ролей помогает не смешивать планирование, выполнение и контроль в одном непрозрачном шаге.',
-      en: 'Correct. Role separation keeps planning, execution, and validation from collapsing into one opaque step.',
+      ru: 'Верно. Разделение ролей устраняет self-bias: Planner не видит деталей исполнения, Executor не определяет критерии успеха, Validator проверяет формально.',
+      en: 'Correct. Role separation eliminates self-bias: Planner does not see execution details, Executor does not define success criteria, Validator checks formally.',
     },
     categorize: {
       buckets: [
@@ -227,6 +235,85 @@ export const agentCodingFoundationsTasks: LocalizedTask[] = [
   },
   {
     id: 7,
+    type: 'categorize',
+    question: {
+      ru: 'Распределите действия по этапам recovery: Retry / Fallback / Rollback / Escalate.',
+      en: 'Map each action to a recovery stage: Retry / Fallback / Rollback / Escalate.',
+    },
+    answer: '',
+    explanation: {
+      ru: 'Верно. Порядок recovery: сначала retry (повторить), затем fallback (альтернативный путь), затем rollback (откат), и только потом escalate (человеку).',
+      en: 'Correct. Recovery order: first retry (repeat), then fallback (alternative path), then rollback (revert), and only then escalate (to human).',
+    },
+    categorize: {
+      buckets: [
+        { ru: 'Retry', en: 'Retry' },
+        { ru: 'Fallback', en: 'Fallback' },
+        { ru: 'Rollback', en: 'Rollback' },
+        { ru: 'Escalate', en: 'Escalate' },
+      ],
+      items: [
+        {
+          ru: 'Повторить тот же шаг ещё раз (транзиентная ошибка).',
+          en: 'Repeat the same step again (transient error).',
+        },
+        {
+          ru: 'Переключиться на альтернативный инструмент.',
+          en: 'Switch to an alternative tool.',
+        },
+        {
+          ru: 'Откатить изменения к последнему стабильному состоянию.',
+          en: 'Revert changes to the last stable state.',
+        },
+        {
+          ru: 'Передать задачу человеку с полным контекстом проблемы.',
+          en: 'Hand off to a human with full problem context.',
+        },
+      ],
+      correctMapping: {
+        'Повторить тот же шаг ещё раз (транзиентная ошибка).': 'Retry',
+        'Repeat the same step again (transient error).': 'Retry',
+        'Переключиться на альтернативный инструмент.': 'Fallback',
+        'Switch to an alternative tool.': 'Fallback',
+        'Откатить изменения к последнему стабильному состоянию.': 'Rollback',
+        'Revert changes to the last stable state.': 'Rollback',
+        'Передать задачу человеку с полным контекстом проблемы.': 'Escalate',
+        'Hand off to a human with full problem context.': 'Escalate',
+      },
+    },
+  },
+  {
+    id: 8,
+    type: 'multiple-choice',
+    question: {
+      ru: 'Зачем на каждом шаге агентного цикла фиксировать структурированный step_result?',
+      en: 'Why record a structured step_result at each step of the agent loop?',
+    },
+    options: [
+      {
+        ru: 'Для красивого отчета руководству.',
+        en: 'To produce a nice report for management.',
+      },
+      {
+        ru: 'Для дебага (почему упал шаг), аналитики (где тратятся ресурсы) и улучшения (какие паттерны ошибок повторяются).',
+        en: 'For debugging (why a step failed), analytics (where resources are spent), and improvement (which error patterns recur).',
+      },
+      {
+        ru: 'Наблюдаемость не нужна — достаточно финального результата.',
+        en: 'Observability is not needed — the final result is enough.',
+      },
+    ],
+    answer: {
+      ru: 'Для дебага (почему упал шаг), аналитики (где тратятся ресурсы) и улучшения (какие паттерны ошибок повторяются).',
+      en: 'For debugging (why a step failed), analytics (where resources are spent), and improvement (which error patterns recur).',
+    },
+    explanation: {
+      ru: 'Да. Без наблюдаемости агент — "чёрный ящик". Структурированные логи шагов позволяют строить дашборды, находить узкие места и системно улучшать агента.',
+      en: 'Yes. Without observability, the agent is a "black box." Structured step logs enable dashboards, bottleneck detection, and systematic agent improvement.',
+    },
+  },
+  {
+    id: 9,
     type: 'timeline',
     question: {
       ru: 'Упорядочите контрольные точки жизненного цикла от спецификации до релиза.',
@@ -234,15 +321,15 @@ export const agentCodingFoundationsTasks: LocalizedTask[] = [
     },
     answer: '',
     explanation: {
-      ru: 'Отлично. Сначала спецификация и критерии, потом реализация и проверки, и только затем контролируемый релиз.',
-      en: 'Great. First define the spec and criteria, then implementation and checks, and only then controlled release.',
+      ru: 'Правильно. Сначала спецификация и критерии, потом реализация через агентный цикл, затем проверки, и только потом контролируемый релиз.',
+      en: 'Correct. First define the spec and criteria, then implement via agent loop, then run checks, and only then staged rollout.',
     },
     timeline: {
       events: [
         {
           label: {
-            ru: 'Подготовить спецификацию и ограничения',
-            en: 'Prepare specification and constraints',
+            ru: 'Подготовить спецификацию и ограничения (Task Contract)',
+            en: 'Prepare specification and constraints (Task Contract)',
           },
           year: 'Step 1',
         },
@@ -255,8 +342,8 @@ export const agentCodingFoundationsTasks: LocalizedTask[] = [
         },
         {
           label: {
-            ru: 'Выполнить изменения через агентный цикл',
-            en: 'Implement changes via agent loop',
+            ru: 'Выполнить изменения через агентный цикл (Plan → Execute → Observe → Validate → Decide)',
+            en: 'Implement changes via agent loop (Plan → Execute → Observe → Validate → Decide)',
           },
           year: 'Step 3',
         },
@@ -269,97 +356,97 @@ export const agentCodingFoundationsTasks: LocalizedTask[] = [
         },
         {
           label: {
-            ru: 'Сделать поэтапный rollout и мониторинг',
-            en: 'Execute staged rollout and monitoring',
+            ru: 'Сделать поэтапный rollout с мониторингом и готовым rollback',
+            en: 'Execute staged rollout with monitoring and ready rollback',
           },
           year: 'Step 5',
         },
       ],
       correctOrder: [
         {
-          ru: 'Подготовить спецификацию и ограничения',
-          en: 'Prepare specification and constraints',
+          ru: 'Подготовить спецификацию и ограничения (Task Contract)',
+          en: 'Prepare specification and constraints (Task Contract)',
         },
         {
           ru: 'Сформировать acceptance-тесты и eval-набор',
           en: 'Define acceptance tests and eval set',
         },
         {
-          ru: 'Выполнить изменения через агентный цикл',
-          en: 'Implement changes via agent loop',
+          ru: 'Выполнить изменения через агентный цикл (Plan → Execute → Observe → Validate → Decide)',
+          en: 'Implement changes via agent loop (Plan → Execute → Observe → Validate → Decide)',
         },
         {
           ru: 'Запустить регрессионные и safety-проверки',
           en: 'Run regression and safety checks',
         },
         {
-          ru: 'Сделать поэтапный rollout и мониторинг',
-          en: 'Execute staged rollout and monitoring',
+          ru: 'Сделать поэтапный rollout с мониторингом и готовым rollback',
+          en: 'Execute staged rollout with monitoring and ready rollback',
         },
       ],
     },
   },
   {
-    id: 8,
+    id: 10,
     type: 'scenario',
     question: {
-      ru: 'Миссия: выбрать стратегию релиза agent-coding фичи',
-      en: 'Mission: choose a release strategy for an agent-coding feature',
+      ru: 'Миссия: выбрать стратегию при ошибке агента в production',
+      en: 'Mission: choose a strategy when the agent fails in production',
     },
     answer: '',
     explanation: {
-      ru: 'Лучшая стратегия сочетает canary-выкатку, автоматические quality gates и быстрый rollback-план. Это снижает ущерб при ошибке и сохраняет темп поставки.',
-      en: 'The best strategy combines canary rollout, automated quality gates, and a fast rollback plan. It limits blast radius while preserving delivery speed.',
+      ru: 'Правильная цепочка: retry → fallback → rollback → escalate. Canary-выкатка с автоматическими quality gates и быстрым rollback-планом ограничивает ущерб.',
+      en: 'The correct chain: retry → fallback → rollback → escalate. Canary rollout with automated quality gates and a fast rollback plan limits blast radius.',
     },
     scenario: {
       brief: {
-        ru: 'Команда готовит релиз функции, где coding-агент меняет код по входным спецификациям. Нужно выпустить обновление без деградации качества и с контролем риска.',
-        en: 'The team is preparing a release where a coding agent modifies code from input specs. You must ship without quality degradation and with controlled risk.',
+        ru: 'Coding-агент выкатил изменения на 10% трафика (canary). Мониторинг показывает рост ошибок 5xx. Тесты агента проходили локально. Что делать?',
+        en: 'A coding agent deployed changes to 10% of traffic (canary). Monitoring shows a spike in 5xx errors. Agent tests passed locally. What should you do?',
       },
       constraints: [
         { ru: 'Время отката: не более 10 минут', en: 'Rollback time must stay under 10 minutes' },
-        { ru: 'Критичные регрессии недопустимы', en: 'Critical regressions are not acceptable' },
+        { ru: 'Нельзя потерять данные пользователей', en: 'User data must not be lost' },
       ],
       choices: [
         {
           text: {
-            ru: 'Выкатить на 100% трафика сразу, без eval-гейта и ручного подтверждения.',
-            en: 'Roll out to 100% traffic immediately without eval gate or human confirmation.',
+            ru: 'Немедленный rollback на предыдущую стабильную версию, затем расследование причин.',
+            en: 'Immediate rollback to the previous stable version, then investigate root causes.',
           },
           outcome: {
-            ru: 'Риск инцидента высокий: нет контрольной точки перед полным воздействием на пользователей.',
-            en: 'Incident risk is high: there is no control point before full user impact.',
-          },
-          score: 15,
-        },
-        {
-          text: {
-            ru: 'Canary 10% + eval/тест-гейт + ручное подтверждение рискованных шагов + авто-rollback по метрикам.',
-            en: 'Canary 10% + eval/test gate + human approval for risky actions + auto-rollback on metric breach.',
-          },
-          outcome: {
-            ru: 'Сбалансированная стратегия: вы ограничиваете радиус ошибки и сохраняете управляемую скорость релиза.',
-            en: 'Balanced strategy: you limit blast radius while keeping release speed under control.',
+            ru: 'Правильно. Rollback ограничивает ущерб и даёт команде время для спокойного анализа.',
+            en: 'Correct. Rollback limits damage and gives the team time for calm analysis.',
           },
           score: 95,
         },
         {
           text: {
-            ru: 'Отложить релиз на неопределенный срок, пока не будет идеального результата.',
-            en: 'Postpone release indefinitely until results are perfect.',
+            ru: 'Увеличить canary до 50% — возможно, ошибки уйдут при бОльшей выборке.',
+            en: 'Increase canary to 50% — maybe errors will disappear with a larger sample.',
           },
           outcome: {
-            ru: 'Риск инцидента ниже, но команда теряет темп и не получает производственную обратную связь.',
-            en: 'Incident risk is lower, but the team loses momentum and misses production feedback.',
+            ru: 'Опасно. Вы масштабируете проблему вместо того, чтобы её остановить.',
+            en: 'Dangerous. You are scaling the problem instead of stopping it.',
           },
-          score: 45,
+          score: 5,
+        },
+        {
+          text: {
+            ru: 'Подождать 30 минут — возможно, это транзиентная проблема.',
+            en: 'Wait 30 minutes — maybe it is a transient issue.',
+          },
+          outcome: {
+            ru: 'При росте 5xx на canary ожидание увеличивает ущерб пользователям.',
+            en: 'With rising 5xx on canary, waiting increases user impact.',
+          },
+          score: 20,
         },
       ],
       passingScore: 70,
     },
   },
   {
-    id: 9,
+    id: 11,
     type: 'multiple-choice',
     question: {
       ru: 'Какой первый рычаг обычно лучше всего снижает стоимость и задержку в агентном цикле?',
@@ -384,12 +471,12 @@ export const agentCodingFoundationsTasks: LocalizedTask[] = [
       en: 'Introduce tool-call budget and explicit stop criteria before model tuning.',
     },
     explanation: {
-      ru: 'Да. Самый быстрый практический эффект чаще дает контроль количества шагов и вызовов, а не дорогая смена модели.',
-      en: 'Yes. The fastest practical win usually comes from controlling step and tool-call volume, not expensive model changes.',
+      ru: 'Да. Самый быстрый эффект дает контроль количества шагов и вызовов, а не дорогая смена модели. Это часть контракта задачи.',
+      en: 'Yes. The fastest win comes from controlling step and tool-call volume, not expensive model changes. This is part of the task contract.',
     },
   },
   {
-    id: 10,
+    id: 12,
     type: 'input',
     question: {
       ru: 'Введите действие, которое первым ограничивает ущерб при инциденте после релиза agent-coding фичи.',
@@ -401,8 +488,60 @@ export const agentCodingFoundationsTasks: LocalizedTask[] = [
       en: 'It is the fast return to a previously stable version.',
     },
     explanation: {
-      ru: 'Верно. Rollback сокращает время воздействия проблемы и дает команде пространство для спокойного разбора причин.',
-      en: 'Correct. Rollback reduces user impact time and gives the team room to investigate root causes safely.',
+      ru: 'Верно. Rollback — стандартная операция локализации инцидента, а не признак провала. Он сокращает время воздействия и даёт пространство для анализа.',
+      en: 'Correct. Rollback is a standard incident-containment operation, not a failure signal. It reduces user impact and gives room for analysis.',
+    },
+  },
+  {
+    id: 13,
+    type: 'multiple-select',
+    question: {
+      ru: 'Выберите антипаттерны, которые делают агентную систему нестабильной.',
+      en: 'Select the antipatterns that make an agent system unstable.',
+    },
+    options: [
+      {
+        ru: 'Один агент делает всё (нет разделения ролей).',
+        en: 'One agent does everything (no role separation).',
+      },
+      {
+        ru: 'Нет явных критериев завершения задачи.',
+        en: 'No explicit task completion criteria.',
+      },
+      {
+        ru: 'Строгая JSON-схема для каждого инструмента.',
+        en: 'Strict JSON schema for each tool.',
+      },
+      {
+        ru: 'Нет логирования шагов агента.',
+        en: 'No step logging for the agent.',
+      },
+      {
+        ru: 'Нет стратегии recovery (retry/fallback/rollback).',
+        en: 'No recovery strategy (retry/fallback/rollback).',
+      },
+    ],
+    answer: [
+      {
+        ru: 'Один агент делает всё (нет разделения ролей).',
+        en: 'One agent does everything (no role separation).',
+      },
+      {
+        ru: 'Нет явных критериев завершения задачи.',
+        en: 'No explicit task completion criteria.',
+      },
+      {
+        ru: 'Нет логирования шагов агента.',
+        en: 'No step logging for the agent.',
+      },
+      {
+        ru: 'Нет стратегии recovery (retry/fallback/rollback).',
+        en: 'No recovery strategy (retry/fallback/rollback).',
+      },
+    ],
+    explanation: {
+      ru: 'Верно. Строгая JSON-схема — это хорошая практика, а не антипаттерн. Остальные четыре пункта делают систему непредсказуемой и невоспроизводимой.',
+      en: 'Correct. A strict JSON schema is a good practice, not an antipattern. The other four points make the system unpredictable and non-reproducible.',
     },
   },
 ];

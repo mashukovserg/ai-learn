@@ -1,6 +1,6 @@
 # Project Progress Snapshot
 
-Last synced with codebase: **2026-03-28**
+Last synced with codebase: **2026-04-26**
 
 ## Implementation status
 - **Core app shell:** Done (`AppShell`, `Sidebar`, `Navbar`).
@@ -9,12 +9,15 @@ Last synced with codebase: **2026-03-28**
 - **Progress persistence:** Done (`useProgress` hook — API-backed when authenticated, localStorage fallback for guests, and signup-time guest progress sync to server).
 - **Backend:** Done (FastAPI + PostgreSQL, JWT auth, user accounts, server-side progress, points/streak tracking).
 - **Authentication:** Done (signup/login/logout, JWT in httpOnly cookies, login page at `/${lang}/login`).
-- **Room pages implemented:** 24
-  - `/${lang}/rooms/[id]` is fully wired for: `agent-coding-foundations`, `llm-landscape`, `llm-mechanics`, `prompting-101`, `chatgpt-moment`, `post-chatgpt-history`, `ai-history`, `scaling-hypothesis`, `ai-singularity`, `prompt-evals`, `ai-image-creation`, `research-grounding`, `ai-agents`, `deep-search-agents`, `ai-rag`, `ai-security`, `ai-research`, `ai-alignment`, `native-multimodality`, `fine-tuning-101`, `embeddings-101`, `llm-guardrails`, `ai-regulation-ru`, `ai-regulation-eu`.
-  - Newly added AC-101 room: `agent-coding-foundations` (10 tasks across all supported task types, EN/RU).
+- **Room pages implemented:** 36
+  - `/${lang}/rooms/[id]` is fully wired for: `agent-coding-foundations`, `agentic-coding-tools`, `agentic-cli-tools`, `prompt-contracts`, `multi-agent-collaboration`, `agentic-testing-loop`, `agentic-ui-delivery`, `llm-landscape`, `llm-mechanics`, `prompting-101`, `ai-career-trajectories`, `chatgpt-moment`, `post-chatgpt-history`, `ai-history`, `scaling-hypothesis`, `ai-singularity`, `prompt-evals`, `ai-image-creation`, `research-grounding`, `ai-agents`, `deep-search-agents`, `ai-rag`, `ai-security`, `ai-research`, `ai-alignment`, `native-multimodality`, `fine-tuning-101`, `embeddings-101`, `llm-guardrails`, `ai-regulation-ru`, `ai-regulation-eu`, `mcp-tool-ecosystems`, `agentic-swarm-management`, `frontier-evals-logic`, `claude-code-agentic-loop`, `claude-code-pro-workflow`.
+  - Newly added Agent Coding rooms: `agent-coding-foundations`, `agentic-coding-tools`, `agentic-cli-tools`, `prompt-contracts`, `multi-agent-collaboration`, `agentic-testing-loop`, `agentic-ui-delivery` (10 tasks each, EN/RU).
 - **Learning paths UI:** Done (`/${lang}/paths`, `/${lang}/paths/beginner`, `/${lang}/paths/ideas-history`, `/${lang}/paths/agentic-systems`, `/${lang}/paths/agent-coding`).
+- **AI professions page:** Done (`/${lang}/professions`) with search, difficulty/status filters, featured role card, and profession-specific card grid.
+- **Labs:** Prompt Compare is live and Agent Ops MVP is added at `/${lang}/labs/agent-ops` (task queue, cycle trigger, runs feed, knowledge feed).
 - **Profile page (`/${lang}/settings`):** Done (language preference, per-room progress reset, embedded Skills Matrix).
-- **Rooms list page:** Shows real progress status (Completed / In Progress / Not Started) with compact difficulty/status metadata in card content (image overlays removed).
+- **Rooms list page:** Shows real progress status (Completed / In Progress / Not Started), supports thematic focus filtering (presets `Agent Coding`, `AI Philosophy`, plus all room categories), and now uses professions-style illustrated covers with room icons and real progress badges.
+- **Rooms list page:** On desktop, difficulty/focus/status controls now live in a dedicated side filter rail with a compact result summary, while mobile keeps a stacked filter flow above the catalog.
 - **Dashboard:** Shows real completed room count and progress bar. Welcome line shows actual username when logged in.
 - **Deployment:** Live on Vercel at [ai-learning-platform-murex.vercel.app](https://ai-learning-platform-murex.vercel.app).
 - **UI consistency:** Green accent styling is now consistent across primary flows (Dashboard, Paths, Rooms, active sidebar routes).
@@ -22,6 +25,18 @@ Last synced with codebase: **2026-03-28**
 ## Platform milestones
 | Date | Milestone |
 |------|-----------|
+| 2026-04-26 | Moved `/${lang}/rooms` filters into a dedicated desktop sidebar rail with sticky placement and a compact result summary; mobile keeps the stacked filter layout. |
+| 2026-04-26 | Increased `/${lang}/rooms` density on large screens: wider container, more columns, and tighter room-card spacing so more rooms fit on screen. |
+| 2026-04-26 | Reduced the visual cover size on `/${lang}/rooms`: smaller room-symbol blocks, shorter card headers, and denser top-card composition. |
+| 2026-04-26 | Reworked `/${lang}/rooms` cards to match the professions-style cover treatment: programmatic gradient headers, room icons, and real progress badges. |
+| 2026-04-26 | Added `/${lang}/professions`: a dedicated AI professions catalog with search, filters, sidebar navigation, and card-first role discovery in both locales. |
+| 2026-04-26 | Added `ai-career-trajectories`: a bilingual AI career roadmap room with a custom dark timeline layout, IC/research/management track switching, branch-point cards, and 6 validated tasks. |
+| 2026-04-05 | Implemented 4 new Agent Coding rooms: AC-103 (Prompt Contracts), AC-104 (Multi-Agent Collaboration), AC-202 (Agentic Testing Loop), and AC-203 (Agentic UI Delivery). Each room includes 5 theory chapters and 10 localized tasks. |
+| 2026-04-05 | Reworked AC-201 (`agentic-cli-tools`) theory... |
+| 2026-04-05 | Added thematic focus filter to `/${lang}/rooms` with presets `Agent Coding` and `AI Philosophy`, plus dynamic options for all room categories; combined with existing difficulty/status filters. |
+| 2026-04-04 | Implemented Agent Ops MVP: added `/${lang}/labs/agent-ops`, backend `/agent/*` API, queue/run/knowledge tables, and cycle execution endpoint with dedupe-by-fingerprint storage. |
+| 2026-03-29 | Implemented AC-201 room `agentic-cli-tools` (5 theory chapters + 10 localized tasks), wired metadata/tasks/theory into the dynamic room engine, and attached the room to the Agent Coding path flow. |
+| 2026-03-29 | Implemented AC-102 room `agentic-coding-tools` (5 theory chapters + 10 localized tasks), wired tasks/theory/metadata into dynamic room engine, and added it to Agent Coding path progression. |
 | 2026-03-28 | Implemented AC-101 room `agent-coding-foundations` (5 theory chapters + 10 localized tasks), wired new Agent Coding path route `/${lang}/paths/agent-coding`, and added glossary terms `guardrails` + `context-window`. |
 | 2026-03-28 | Implemented guest progress migration on signup: localStorage `progress:*` entries are replayed to `/api/progress/{roomId}` after account creation, then user profile is refreshed to reflect migrated points/streak. |
 | 2026-03-28 | Added a glossary tooltip for "Code Red" / "Красный код" in Post-ChatGPT Era Chapter 1 (EN/RU). |
@@ -99,11 +114,11 @@ Last synced with codebase: **2026-03-28**
 - Sidebar has links to `compete`, `leaderboard`, but pages are not implemented.
 
 ## Current curriculum coverage
-- **AI Foundations module:** Rooms 101 (LLM Landscape), 102 (LLM Mechanics), 103 (Prompting 101).
+- **AI Foundations module:** Rooms 101 (LLM Landscape), 102 (LLM Mechanics), 103 (Prompting 101), and AI Career Trajectories.
 - **Multimodality module:** Room 201 (Native Multimodality), Room 202 (Research & Grounding).
 - **Architecture & Adaptation module:** Fine-Tuning & Adaptation.
 - **Practice module:** Prompt Evals, AI Image Creation.
 - **Ideas module:** ChatGPT Moment, Scaling Hypothesis, AI Singularity debates, AI History.
 - **Advanced module:** AI Agents, Deep Search Agents, AI RAG, AI Security, AI Research, AI Alignment.
-- **Agent Coding module:** AC-101 Agent Coding Foundations.
-- **Next planned content:** AC-102 Prompt Contracts, AC-103 Multi-Agent Collaboration Patterns, EvalOps Basics.
+- **Agent Coding module:** AC-101 Agent Coding Foundations, AC-102 Agentic Coding Tools, AC-103 Prompt Contracts, AC-104 Multi-Agent Collaboration Patterns, AC-201 CLI Tools for Agent Coding, AC-202 Agentic Testing Loop, AC-203 Agentic UI Delivery.
+- **Next planned content:** AC-301 Shipping Agentic Features with Guardrails, AC-302 Cost & Latency Control for Agents.

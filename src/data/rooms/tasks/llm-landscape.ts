@@ -368,5 +368,47 @@ export const llmLandscapeTasks: LocalizedTask[] = [
         ],
         passingScore: 60,
       }
+    },
+    {
+      id: 14,
+      type: 'multiple-choice',
+      question: {
+        ru: 'Что Александр Ванг называет "Compute Gap" (вычислительный разрыв)?',
+        en: 'What does Alexandr Wang call the "Compute Gap"?'
+      },
+      options: [
+        { ru: 'Разрыв в доступных мощностях GPU и дешевой энергии между странами', en: 'Gap in available GPU capacity and cheap energy between nations' },
+        { ru: 'Разница в скорости интернета у пользователей', en: 'Difference in user internet speeds' },
+        { ru: 'Задержка при ответе бесплатной версии ChatGPT', en: 'Latency in the free version of ChatGPT' }
+      ],
+      answer: {
+        ru: 'Разрыв в доступных мощностях GPU и дешевой энергии между странами',
+        en: 'Gap in available GPU capacity and cheap energy between nations'
+      },
+      explanation: {
+        ru: 'Верно. Доступ к чипам и электричеству становится фактором национальной безопасности.',
+        en: 'Correct. Access to chips and electricity is becoming a national security factor.'
+      }
+    },
+    {
+      id: 15,
+      type: 'multiple-choice',
+      question: {
+        ru: 'Почему "Суверенитет данных" (Data Sovereignty) критичен в 2026 году?',
+        en: 'Why is "Data Sovereignty" critical in 2026?'
+      },
+      options: [
+        { ru: 'Данные интернета почти исчерпаны; преимущество дают уникальные закрытые данные компаний и наций', en: 'Internet data is nearly exhausted; unique proprietary data from companies and nations provides the edge' },
+        { ru: 'Все данные в интернете скоро станут платными', en: 'All internet data will soon require payment' },
+        { ru: 'ИИ-модели начали удалять свои старые знания', en: 'AI models have started deleting their old knowledge' }
+      ],
+      answer: {
+        ru: 'Данные интернета почти исчерпаны; преимущество дают уникальные закрытые данные компаний и наций',
+        en: 'Internet data is nearly exhausted; unique proprietary data from companies and nations provides the edge'
+      },
+      explanation: {
+        ru: 'Точно. Проприетарные данные — это "новое топливо", которое нельзя просто скачать.',
+        en: 'Exactly. Proprietary data is the "new fuel" that cannot be simply downloaded.'
+      }
     }
   ];

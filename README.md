@@ -13,6 +13,8 @@ AI learning platform with interactive theory + tasks, built with Next.js App Rou
   - `/${lang}/paths/ideas-history` (Ideas and Debates in AI)
   - `/${lang}/paths/agentic-systems`
   - `/${lang}/paths/agent-coding` (Agent Coding)
+- AI professions catalog page:
+  - `/${lang}/professions`
 - Consistent green accent styling across primary product flows:
   - active sidebar route states
   - dashboard CTAs
@@ -37,15 +39,20 @@ AI learning platform with interactive theory + tasks, built with Next.js App Rou
 - Post-ChatGPT Era room now uses a dedicated cover image (`/images/post-chatgpt-era.webp`) on room cards and room header.
 - Singularity in AI Debates room now uses a dedicated cover image (`/images/ai-singularity.avif`) on room cards and room header.
 - Implemented AC-101 room `agent-coding-foundations` with full theory + 10 localized tasks and added Agent Coding path wiring (`/${lang}/paths/agent-coding`).
+- Implemented AC-102 room `agentic-coding-tools` with full theory + 10 localized tasks and wired it into the Agent Coding path (`/${lang}/paths/agent-coding`).
+- Implemented AC-201 room `agentic-cli-tools` with full theory + 10 localized tasks focused on CLI discovery/change/verify loops and safe rollback routines.
+- Refined AC-201 theory presentation for learning flow: reduced paragraph density, added a clear loop model, concrete CLI command examples per phase, verify tooling matrix, role split (agent vs engineer), and a practical checklist/exercise in EN/RU.
 - Added glossary terms for `guardrails` and `context-window` for AC-101 theory tooltips in EN/RU.
-- Rooms catalog (`/${lang}/rooms`) now uses a responsive tile grid layout (3 columns from `1200px`, 2 from `768px`, 1 on mobile) with equal-height cards, image-first composition, filter controls for difficulty/progress status, and a compact meta row for difficulty + status above each title (image overlays removed).
+- Added a new Labs tool: `/${lang}/labs/agent-ops` (Agent Ops MVP) with task queue management, manual cycle execution, run logs, and a knowledge feed.
+- Rooms catalog (`/${lang}/rooms`) now uses a responsive tile grid layout (3 columns from `1200px`, 2 from `768px`, 1 on mobile) with equal-height cards, professions-style illustrated covers (gradient + room icon + real progress badge), filter controls for difficulty/focus/progress status (focus supports thematic presets like `Agent Coding` and `AI Philosophy` plus all room categories), and a compact meta row for difficulty + status above each title.
+- The rooms catalog cover area was tightened further: smaller visual headers, smaller room-symbol blocks, and denser top spacing for more content-first cards.
+- The rooms catalog density was increased on large screens: a wider container, more columns at high viewport widths, and slightly tighter card spacing so more rooms fit on screen.
+- The rooms catalog now places difficulty/focus/status controls in a dedicated side filter rail on desktop, keeping the room grid visible higher on the page while preserving a stacked mobile filter layout.
 - Fixed `/${lang}/rooms` hydration mismatch by deferring localStorage-based progress status reads to post-mount client sync.
 - Moved Skills Matrix to the Profile page (`/${lang}/settings`) and wired `/${lang}/skills` to redirect to `/${lang}/settings#skills-matrix` for backward compatibility.
-- Rooms pages (24 rooms):
-  - `/${lang}/rooms` (listing page with live progress states and compact difficulty/status metadata)
-  - `/${lang}/rooms/[id]` — Dynamic room renderer for 24 topics, including:
-    - `agent-coding-foundations`, `llm-landscape`, `llm-mechanics`, `prompting-101`, `chatgpt-moment`, `post-chatgpt-history`, `ai-history`, `scaling-hypothesis`, `ai-singularity`, `prompt-evals`, `ai-image-creation`, `research-grounding`
-    - `ai-agents`, `deep-search-agents`, `ai-rag`, `ai-security`, `ai-research`, `ai-alignment`, `native-multimodality`, `fine-tuning-101`, `embeddings-101`, `llm-guardrails`, `ai-regulation-ru`, `ai-regulation-eu`
+- Rooms pages (36 rooms):
+  - `/${lang}/rooms` (listing page with live progress states, thematic focus filter, and compact difficulty/status metadata)
+  - `/${lang}/rooms/[id]` — Dynamic room renderer for 36 topics across foundations, debates, advanced systems, and agent coding, including the new `ai-career-trajectories` room with a dedicated career-roadmap theory layout.
 - Interactive task components:
   - `TaskQuestion` — input, multiple-choice, multiple-select
   - `TaskSorting` — drag-to-reorder with Framer Motion
@@ -59,6 +66,7 @@ AI learning platform with interactive theory + tasks, built with Next.js App Rou
   - User authentication (signup/login/logout) with JWT in httpOnly cookies.
   - Server-side progress persistence (completed task IDs per room).
   - User profile/stats: real points (+10 per task), streak tracking, level calculation.
+  - Agent Ops API (`/agent/tasks`, `/agent/cycle/run`, `/agent/runs`, `/agent/knowledge`) with queue-based execution and deduplicated knowledge storage.
   - Login/signup page at `/${lang}/login`.
   - Docker Compose setup (PostgreSQL + app).
 
@@ -79,11 +87,12 @@ AI learning platform with interactive theory + tasks, built with Next.js App Rou
 ### Backend (FastAPI)
 - `backend/app/main.py` — FastAPI app with CORS and routers.
 - `backend/app/database.py` — Async SQLAlchemy engine + session.
-- `backend/app/db/models/` — ORM models: `UserORM`, `AuthSessionORM`, `UserProgressORM`.
+- `backend/app/db/models/` — ORM models: `UserORM`, `AuthSessionORM`, `UserProgressORM`, `AgentTaskORM`, `AgentRunORM`, `AgentKnowledgeItemORM`.
 - `backend/app/db/repositories/` — Repository pattern (collections + per-object repos).
 - `backend/app/api/auth/` — Signup, login, logout with bcrypt + JWT cookies.
 - `backend/app/api/progress/` — GET/POST progress per room, streak/points logic.
 - `backend/app/api/users/` — GET `/me` for user profile + stats.
+- `backend/app/api/agent/` — Agent Ops queue API (task CRUD-lite, cycle run, runs feed, knowledge feed).
 - `backend/app/api/dependencies/` — `DBSessionDep`, `CurrentUserIDDep` (cookie → session → user_id).
 - `backend/alembic/` — Async Alembic migrations for PostgreSQL.
 
@@ -109,6 +118,7 @@ AI learning platform with interactive theory + tasks, built with Next.js App Rou
 ## Known limitations
 - Sidebar links `/${lang}/compete` and `/${lang}/leaderboard` are present in UI but routes are not implemented yet.
 - Room metadata is duplicated across pages (dashboard/rooms/path each define their own room arrays).
+- Agent Ops cycle scheduling is manual in this MVP (`POST /api/agent/cycle/run`); a periodic scheduler is not wired yet.
 
 ## Content rules
 - **Style rule (Pragmatic Instructional Narrative):** use conceptual analogies (scaffolding), maintain a conversational tone to reduce "tech anxiety," provide contextual justification for why the topic matters, and keep a clear roadmap-oriented structure.
@@ -150,4 +160,5 @@ All docs are available in English and Russian (`.ru.md`):
 - `BACKLOG.md` / `BACKLOG.ru.md`: active engineering backlog
 - `CURRICULUM.md` / `CURRICULUM.ru.md`: learning-path curriculum status
 - `ROOMS_IDEAS.md` / `ROOMS_IDEAS.ru.md`: content ideas and room/task design notes
+- `ROADMAP_VIEW_MODE.md` / `ROADMAP_VIEW_MODE.ru.md`: reference for roadmap-style trajectory screens and progression layouts
 - `DEVELOPER_GUIDE.md` / `DEVELOPER_GUIDE.ru.md`: codebase walkthrough for newcomers

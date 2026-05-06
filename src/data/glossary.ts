@@ -421,6 +421,46 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
       en: 'An experimental legal regime that allows testing new technologies (e.g., self-driving cars) in a limited environment without complying with all general laws.',
     }
   },
+  'mcp': {
+    id: 'mcp',
+    term: { ru: 'MCP', en: 'MCP' },
+    definition: {
+      ru: 'Model Context Protocol — открытый стандарт для подключения AI-моделей к внешним инструментам и данным через единый протокол. Часто сравнивают с «USB-C для AI».',
+      en: 'Model Context Protocol — an open standard for connecting AI models to external tools and data through a unified protocol. Often called "USB-C for AI".'
+    }
+  },
+  'mcp-server': {
+    id: 'mcp-server',
+    term: { ru: 'MCP Server', en: 'MCP Server' },
+    definition: {
+      ru: 'Серверный компонент MCP, который предоставляет инструменты (tools), ресурсы (resources) и шаблоны промптов (prompts) для AI-модели через стандартизированный интерфейс.',
+      en: 'The server-side MCP component that exposes tools, resources, and prompt templates to an AI model through a standardized interface.'
+    }
+  },
+  'json-rpc': {
+    id: 'json-rpc',
+    term: { ru: 'JSON-RPC', en: 'JSON-RPC' },
+    definition: {
+      ru: 'JSON-RPC 2.0 — легковесный протокол удалённого вызова процедур поверх JSON. Поддерживает запросы, ответы и уведомления. Используется в MCP и LSP.',
+      en: 'JSON-RPC 2.0 — a lightweight remote procedure call protocol over JSON. Supports requests, responses, and notifications. Used in MCP and LSP.'
+    }
+  },
+  'lsp': {
+    id: 'lsp',
+    term: { ru: 'LSP', en: 'LSP' },
+    definition: {
+      ru: 'Language Server Protocol — протокол между IDE и языковым сервером для подсветки, автодополнения и диагностики кода. MCP заимствует ту же идею «один протокол — много клиентов».',
+      en: 'Language Server Protocol — a protocol between an IDE and a language server for highlighting, autocompletion, and code diagnostics. MCP borrows the same "one protocol — many clients" idea.'
+    }
+  },
+  'mcp-inspector': {
+    id: 'mcp-inspector',
+    term: { ru: 'MCP Inspector', en: 'MCP Inspector' },
+    definition: {
+      ru: 'Интерактивный инструмент для отладки MCP-серверов прямо в браузере: позволяет вызывать tools, читать resources и проверять prompts без написания клиентского кода.',
+      en: 'An interactive tool for debugging MCP servers in the browser: lets you call tools, read resources, and verify prompts without writing client code.'
+    }
+  },
   'brussels-effect': {
     id: 'brussels-effect',
     term: { ru: 'Эффект Брюсселя', en: 'Brussels Effect' },

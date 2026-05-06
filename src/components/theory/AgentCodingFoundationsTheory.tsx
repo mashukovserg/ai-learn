@@ -4,152 +4,366 @@ import React from 'react';
 import Term from '@/components/Term';
 
 export default function AgentCodingFoundationsTheory({ lang }: { lang: string }) {
+  const ru = lang === 'ru';
+
   return (
     <div className="space-y-8">
+      {/* Chapter 1 */}
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
         <h2 className="text-2xl font-bold mb-5 text-emerald-400">
-          {lang === 'ru' ? 'Глава 1: Что такое Agent Coding в инженерной практике' : 'Chapter 1: What Agent Coding Means in Engineering Practice'}
+          {ru ? 'Глава 1: Что такое Agent Coding в инженерной практике' : 'Chapter 1: What Agent Coding Means in Engineering Practice'}
         </h2>
         <div className="space-y-4">
           <p className="text-neutral-300 leading-relaxed">
-            {lang === 'ru' ? (
+            {ru ? (
               <>
-                В классическом режиме команда пишет один промпт и ждет удачного ответа. В режиме <Term id="agent" lang={lang}>agent coding</Term> подход другой: цель разбивается на шаги, на каждом шаге есть проверка, и только после проверки система двигается дальше. Такой процесс снижает долю случайных решений, которые трудно повторить. Мы управляем не только финальным ответом, но и тем, как система приходит к нему. Это делает разработку предсказуемой: можно объяснить результат, отследить причину ошибки и быстро повторить рабочий путь для следующей задачи.
+                Agent Coding — это не &quot;умный промпт&quot;, а <strong>управляемый процесс выполнения задачи</strong>. В классическом режиме инженер пишет один запрос и надеется на удачный ответ. В режиме <Term id="agent" lang={lang}>agent coding</Term> подход иной: задача разбивается на шаги, каждый шаг проверяется, и система движется дальше только при успешной проверке. Это превращает LLM из &quot;генератора ответов&quot; в <strong>исполнителя workflow</strong>. Мы управляем не только финальным результатом, но и тем, как система к нему приходит. Результат — предсказуемая инженерия: можно объяснить любой исход, отследить причину ошибки и воспроизвести рабочий путь для следующей задачи.
               </>
             ) : (
               <>
-                In a classic flow, a team writes one prompt and hopes the first answer is good enough. In <Term id="agent" lang={lang}>agent coding</Term>, the approach is different: the goal is decomposed into steps, each step has verification, and the system moves forward only after that verification passes. This reduces random outcomes that are hard to reproduce. We control not only the final answer but also the path to that answer. The result is predictable engineering: you can explain outcomes, trace root causes, and replay successful execution patterns for the next task.
+                Agent Coding is not a &quot;smart prompt&quot; — it is a <strong>controlled task execution process</strong>. In a classic flow, an engineer writes one request and hopes for a good answer. In <Term id="agent" lang={lang}>agent coding</Term>, the approach is different: the task is broken into steps, each step is verified, and the system advances only after verification passes. This turns an LLM from an &quot;answer generator&quot; into a <strong>workflow executor</strong>. We control not just the final output, but the path to it. The result is predictable engineering: you can explain any outcome, trace root causes, and reproduce working execution patterns for the next task.
               </>
             )}
           </p>
           <p className="text-neutral-300 leading-relaxed">
-            {lang === 'ru' ? (
+            {ru ? (
               <>
-                Важная деталь: модель на этапе <Term id="inference" lang={lang}>inference</Term> работает в ограниченном контексте. Она видит только то, что помещается в <Term id="context-window" lang={lang}>контекстное окно</Term>, и принимает решения на основе входных <Term id="token" lang={lang}>токенов</Term>. Если команда не задает структуру цикла, модель может пропустить ограничение или неправильно понять приоритет. Поэтому инженерная дисциплина начинается с формулировки цели, ограничений и критериев приемки до первого вызова инструмента. Такой старт повышает скорость итераций и уменьшает число дорогих пересборок после неудачного релиза.
+                Ключевое ограничение простое: на этапе <Term id="inference" lang={lang}>inference</Term> модель не видит весь проект. Она работает только с тем, что вошло в <Term id="context-window" lang={lang}>контекстное окно</Term>, и делает выводы по текущим <Term id="token" lang={lang}>токенам</Term>. Без явной структуры модель теряет ограничения, путает приоритеты и совершает лишние действия. Поэтому до первого вызова инструмента команда фиксирует три вещи: <strong>цель</strong>, <strong>границы изменений</strong> и <strong>проверяемые критерии приемки</strong>. Именно эта тройка отличает агентный подход от одноразового промпта.
               </>
             ) : (
               <>
-                A critical detail is that during <Term id="inference" lang={lang}>inference</Term> the model operates with constrained context. It sees only what fits in the <Term id="context-window" lang={lang}>context window</Term> and makes decisions from the incoming <Term id="token" lang={lang}>tokens</Term>. Without a structured loop, the model can miss constraints or misread priorities. That is why engineering discipline starts before the first tool call: define objective, boundaries, and acceptance criteria up front. This foundation improves iteration speed and reduces expensive rebuilds after failed releases.
+                The core constraint is simple: during <Term id="inference" lang={lang}>inference</Term>, the model does not see the whole project. It works only with what fits in the <Term id="context-window" lang={lang}>context window</Term> and reasons from the current <Term id="token" lang={lang}>tokens</Term>. Without explicit structure, the model loses constraints, confuses priorities, and takes unnecessary actions. That is why teams lock in three items before the first tool call: <strong>goal</strong>, <strong>change boundaries</strong>, and <strong>verifiable acceptance criteria</strong>. This triad is what separates agent coding from a one-shot prompt.
+              </>
+            )}
+          </p>
+
+          {/* Comparison table */}
+          <div className="overflow-x-auto mt-4">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border-subtle">
+                  <th className="text-left py-2 pr-4 text-neutral-400 font-medium">{ru ? 'Prompt-подход' : 'Prompt approach'}</th>
+                  <th className="text-left py-2 text-neutral-400 font-medium">{ru ? 'Agent-подход' : 'Agent approach'}</th>
+                </tr>
+              </thead>
+              <tbody className="text-neutral-300">
+                <tr className="border-b border-border-subtle">
+                  <td className="py-2 pr-4">{ru ? 'Один запрос' : 'Single request'}</td>
+                  <td className="py-2">{ru ? 'Цикл шагов' : 'Loop of steps'}</td>
+                </tr>
+                <tr className="border-b border-border-subtle">
+                  <td className="py-2 pr-4">{ru ? 'Нет контроля процесса' : 'No process control'}</td>
+                  <td className="py-2">{ru ? 'Контроль на каждом этапе' : 'Control at each stage'}</td>
+                </tr>
+                <tr className="border-b border-border-subtle">
+                  <td className="py-2 pr-4">{ru ? 'Невоспроизводимость' : 'Not reproducible'}</td>
+                  <td className="py-2">{ru ? 'Повторяемость' : 'Repeatable'}</td>
+                </tr>
+                <tr>
+                  <td className="py-2 pr-4">{ru ? 'Нет дебага' : 'No debugging'}</td>
+                  <td className="py-2">{ru ? 'Трассируемость' : 'Traceable'}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Chapter 2 */}
+      <section className="bg-card-dark border border-border-card rounded-xl p-8">
+        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+          {ru ? 'Глава 2: Контракт задачи (Task Contract)' : 'Chapter 2: Task Contract'}
+        </h2>
+        <div className="space-y-4">
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Контракт — это <strong>формальное описание задачи для агента</strong>. Когда агент вызывает инструменты через <Term id="function-calling" lang={lang}>Function Calling</Term>, он использует схему параметров, заданную инженером. Если схема расплывчата, появляется шум: лишние действия, неверные аргументы, повторные попытки. Если схема строгая, агент выбирает меньший набор действий и реже делает опасные шаги. Контракт задачи всегда включает: что нужно сделать (<strong>goal</strong>), какие ограничения нельзя нарушать (<strong>constraints</strong>), какие инструменты разрешены (<strong>tools_allowed</strong>), когда эскалировать человеку (<strong>escalation</strong>), и как проверить завершение (<strong>acceptance_criteria</strong>).
+              </>
+            ) : (
+              <>
+                A contract is the <strong>formal task description for an agent</strong>. When the agent invokes tools via <Term id="function-calling" lang={lang}>Function Calling</Term>, it follows parameter schemas defined by engineers. If schemas are vague, noise increases: extra actions, wrong arguments, repeated retries. If schemas are strict, the agent takes fewer unnecessary actions and is less likely to perform risky operations. A task contract always includes: what to deliver (<strong>goal</strong>), which constraints are non-negotiable (<strong>constraints</strong>), which tools are allowed (<strong>tools_allowed</strong>), when to escalate to a human (<strong>escalation</strong>), and how to verify completion (<strong>acceptance_criteria</strong>).
+              </>
+            )}
+          </p>
+
+          {/* YAML contract example */}
+          <div className="bg-deep border border-border-subtle rounded-lg p-4 my-4">
+            <p className="text-xs text-neutral-500 font-medium mb-2 uppercase tracking-wider">
+              {ru ? 'Пример контракта (YAML)' : 'Contract example (YAML)'}
+            </p>
+            <pre className="text-sm text-emerald-300/90 leading-relaxed overflow-x-auto whitespace-pre">
+{`task:
+  goal: "Add endpoint /users"
+  constraints:
+    - "Do not modify existing API"
+    - "Use current ORM"
+  tools_allowed:
+    - "code_editor"
+    - "test_runner"
+  escalation:
+    - "If tests fail > 3 times"
+  acceptance_criteria:
+    - "Endpoint returns 200"
+    - "Test coverage > 80%"`}
+            </pre>
+          </div>
+
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Второй элемент контракта — способ проверки. Команда заранее определяет набор тестов и <Term id="evals" lang={lang}>evals</Term>, которые подтверждают качество по функциональности, стабильности и безопасности. Строгие контракты со schema-first подходом резко снижают количество ошибок агентов, потому что каждое действие проверяется против формальной спецификации, а не против расплывчатого &quot;сделай лучше&quot;.
+              </>
+            ) : (
+              <>
+                The second part of the contract is verification. The team predefines tests and <Term id="evals" lang={lang}>evals</Term> that confirm quality across functionality, stability, and safety. Strict contracts with a schema-first approach dramatically reduce agent errors because every action is validated against a formal specification, not a vague &quot;make it better.&quot;
               </>
             )}
           </p>
         </div>
       </section>
 
+      {/* Chapter 3 */}
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
         <h2 className="text-2xl font-bold mb-5 text-emerald-400">
-          {lang === 'ru' ? 'Глава 2: Контракт задачи и проверяемые критерии' : 'Chapter 2: Task Contract and Verifiable Criteria'}
+          {ru ? 'Глава 3: Архитектура ролей (Planner / Executor / Validator)' : 'Chapter 3: Role Architecture (Planner / Executor / Validator)'}
         </h2>
         <div className="space-y-4">
           <p className="text-neutral-300 leading-relaxed">
-            {lang === 'ru' ? (
+            {ru ? (
               <>
-                У задачи для coding-агента должен быть контракт: что нужно сделать, какие ограничения нельзя нарушать, и как именно команда поймет, что работа завершена. Когда агент вызывает инструменты через <Term id="function-calling" lang={lang}>Function Calling</Term>, он использует схему параметров, заданную инженером. Если схема расплывчата, появляется шум: лишние действия, неверные аргументы, повторные попытки. Если схема строгая, агент выбирает меньший набор действий и реже делает опасные шаги. Контракт задачи всегда включает диапазон допустимых изменений и явные признаки того, что требуется эскалация человеку.
+                Базовый production-паттерн строится на трех ролях. <strong>Planner</strong> декомпозирует цель в этапы, задает критерии приемки и определяет порядок действий. <strong>Executor</strong> выполняет изменения: редактирует код, вызывает инструменты, обновляет конфигурацию в рамках контракта. <strong>Validator</strong> проверяет результат через тесты, статический анализ и контрольные сценарии. Такое разделение убирает типичную ошибку, когда одна и та же сущность одновременно планирует, исполняет и оценивает собственную работу.
               </>
             ) : (
               <>
-                A coding-agent task must have an explicit contract: what to deliver, which constraints are non-negotiable, and how the team will determine completion. When the agent invokes tools via <Term id="function-calling" lang={lang}>Function Calling</Term>, it follows parameter schemas defined by engineers. If schemas are vague, noise increases: extra actions, wrong arguments, repeated retries. If schemas are strict, the agent takes fewer unnecessary actions and is less likely to perform risky operations. A proper contract always defines allowed change scope and clear escalation triggers for human intervention.
+                The baseline production pattern is built on three roles. <strong>Planner</strong> decomposes goals into stages, sets acceptance criteria, and determines action order. <strong>Executor</strong> applies changes: edits code, invokes tools, and updates configuration within contract boundaries. <strong>Validator</strong> checks outcomes with tests, static analysis, and control scenarios. This separation removes a common failure mode where one entity plans, executes, and judges its own work at the same time.
               </>
             )}
           </p>
+
+          {/* Role diagram */}
+          <div className="bg-deep border border-border-subtle rounded-lg p-4 my-4">
+            <pre className="text-sm text-emerald-300/90 leading-relaxed text-center">
+{`Planner → Executor → Validator
+   ↑                      ↓
+   └──────────────────────┘`}
+            </pre>
+          </div>
+
           <p className="text-neutral-300 leading-relaxed">
-            {lang === 'ru' ? (
+            {ru ? (
               <>
-                Второй элемент контракта — способ проверки. Команда заранее определяет набор тестов и <Term id="evals" lang={lang}>evals</Term>, которые подтверждают качество по функциональности, стабильности и безопасности. В практической работе полезно фиксировать и технический контур: какой <Term id="sdk" lang={lang}>SDK</Term> используется, какие версии зависимостей разрешены, какие лимиты на вызовы инструментов допустимы. Тогда любой участник может воспроизвести результат, а аналитика инцидентов становится точной. Критерий «сделай лучше» без метрик не подходит для production-команд, потому что он не дает однозначного определения готовности.
+                Когда роли смешаны, растет риск <strong>self-bias</strong> — ложной уверенности агента в собственном результате. Planner не видит деталей исполнения и судит по критериям. Executor не определяет, что считать успехом. Validator не знает контекста планирования и проверяет чисто формально. Именно эта независимость позволяет ловить ошибки, которые одиночный агент пропустит. В мультиагентных системах каждая роль может быть отдельным вызовом модели с собственным системным промптом и набором инструментов.
               </>
             ) : (
               <>
-                The second part of the contract is verification. The team predefines tests and <Term id="evals" lang={lang}>evals</Term> that confirm quality across functionality, stability, and safety. In production work, it also helps to pin execution context: which <Term id="sdk" lang={lang}>SDK</Term> is used, which dependency versions are allowed, and what tool-call limits apply. This makes outcomes reproducible and incident analysis precise. A vague request like “make it better” is not enough for production teams because it provides no unambiguous definition of done.
+                When roles collapse, <strong>self-bias</strong> risk grows — the agent becomes falsely confident in its own output. Planner does not see execution details and judges by criteria alone. Executor does not decide what counts as success. Validator has no planning context and checks purely formally. This independence is what catches errors a single agent would miss. In multi-agent systems, each role can be a separate model call with its own system prompt and tool set.
               </>
             )}
           </p>
         </div>
       </section>
 
+      {/* Chapter 4 */}
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
         <h2 className="text-2xl font-bold mb-5 text-emerald-400">
-          {lang === 'ru' ? 'Глава 3: Роли Planner, Executor, Validator и порядок цикла' : 'Chapter 3: Planner, Executor, Validator Roles and Loop Order'}
+          {ru ? 'Глава 4: Цикл выполнения (Agent Loop)' : 'Chapter 4: The Agent Loop'}
         </h2>
         <div className="space-y-4">
           <p className="text-neutral-300 leading-relaxed">
-            {lang === 'ru' ? (
+            {ru ? (
               <>
-                На практике удобен трехролевой контур. Planner декомпозирует цель в этапы и задает критерии приемки. Executor выполняет изменения: редактирует код, вызывает инструменты, обновляет конфигурацию в рамках контракта. Validator проверяет результат через тесты, статический анализ и контрольные сценарии. Такое разделение убирает типичную ошибку, когда одна и та же сущность одновременно планирует, исполняет и оценивает собственную работу. Если роли смешаны, растет риск ложной уверенности и необнаруженных дефектов.
+                Агентный цикл — это не линейный процесс, а <strong>замкнутая система управления</strong> (closed-loop). На каждой итерации агент проходит пять состояний: <strong>plan</strong> (разбить задачу), <strong>execute</strong> (выполнить действие), <strong>observe</strong> (зафиксировать результат), <strong>validate</strong> (проверить против критериев) и <strong>decide</strong> (выбрать: продолжить, перепланировать или остановиться). Ключевое отличие от линейного pipeline — агент может <strong>корректировать план</strong> на основе наблюдений, а ошибки не ломают весь процесс.
               </>
             ) : (
               <>
-                In practice, a three-role loop works well. Planner decomposes goals into stages and sets acceptance criteria. Executor applies changes: edits code, invokes tools, and updates configuration within contract boundaries. Validator checks outcomes with tests, static analysis, and control scenarios. This separation removes a common failure mode where one entity plans, executes, and judges its own work at the same time. When roles collapse, false confidence increases and defects are more likely to remain undetected.
+                The agent loop is not a linear process — it is a <strong>closed-loop control system</strong>. On each iteration, the agent passes through five states: <strong>plan</strong> (break down the task), <strong>execute</strong> (perform the action), <strong>observe</strong> (record the result), <strong>validate</strong> (check against criteria), and <strong>decide</strong> (choose: continue, replan, or stop). The key difference from a linear pipeline is that the agent can <strong>adjust the plan</strong> based on observations, and errors do not break the entire process.
               </>
             )}
           </p>
+
+          {/* Loop state machine */}
+          <div className="bg-deep border border-border-subtle rounded-lg p-4 my-4">
+            <p className="text-xs text-neutral-500 font-medium mb-2 uppercase tracking-wider">
+              {ru ? 'Состояния цикла' : 'Loop states'}
+            </p>
+            <pre className="text-sm text-emerald-300/90 leading-relaxed overflow-x-auto whitespace-pre">
+{`loop:
+  - plan       # decompose task into steps
+  - execute    # call tools, apply changes
+  - observe    # record what happened
+  - validate   # check against criteria
+  - decide:    # choose next action
+      - continue   # proceed to next step
+      - replan     # adjust the plan
+      - stop       # task complete or blocked`}
+            </pre>
+          </div>
+
           <p className="text-neutral-300 leading-relaxed">
-            {lang === 'ru' ? (
+            {ru ? (
               <>
-                Базовый порядок цикла обычно выглядит так: цель, план, действие, наблюдение и доработка. На шаге наблюдения команда фиксирует факты: что прошло, что упало, где нарушены ограничения. Для контекстных задач с внешними данными часто подключают <Term id="rag" lang={lang}>RAG</Term>, чтобы агент опирался на актуальные артефакты проекта, а не на случайные предположения из старого контекста. После наблюдения loop возвращается к плану и уточняет следующий шаг. Именно эта итеративность дает прирост качества без потери управляемости.
+                Для контекстных задач с внешними данными на этапе observe часто подключают <Term id="rag" lang={lang}>RAG</Term>, чтобы агент опирался на актуальные артефакты проекта, а не на случайные предположения. На этапе decide система принимает решение на основе валидации: если тесты прошли — переходим к следующему шагу; если упали — возвращаемся к plan с новой информацией; если количество retry исчерпано — эскалируем человеку. Именно этот замкнутый цикл, а не количество промптов, делает агентную систему надежной.
               </>
             ) : (
               <>
-                The baseline loop order is usually goal, plan, act, observe, then refine. In the observe step, the team records facts: what passed, what failed, and which constraints were violated. For context-heavy tasks with external project data, teams often add <Term id="rag" lang={lang}>RAG</Term> so the agent grounds decisions in current artifacts rather than stale assumptions. After observation, the loop returns to planning and adjusts the next step. This iterative rhythm is what improves quality without sacrificing control.
+                For context-heavy tasks with external data, the observe step often includes <Term id="rag" lang={lang}>RAG</Term> so the agent grounds decisions in current project artifacts rather than stale assumptions. At the decide step, the system acts on validation results: if tests pass, move to the next step; if they fail, return to plan with new information; if retry budget is exhausted, escalate to a human. It is this closed loop — not the number of prompts — that makes an agent system reliable.
               </>
             )}
           </p>
         </div>
       </section>
 
+      {/* Chapter 5 */}
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
         <h2 className="text-2xl font-bold mb-5 text-emerald-400">
-          {lang === 'ru' ? 'Глава 4: Риски и guardrails при агентной разработке' : 'Chapter 4: Risks and Guardrails in Agent Coding'}
+          {ru ? 'Глава 5: Наблюдаемость и состояние (Observability)' : 'Chapter 5: Observability and State'}
         </h2>
         <div className="space-y-4">
           <p className="text-neutral-300 leading-relaxed">
-            {lang === 'ru' ? (
+            {ru ? (
               <>
-                Главный риск в agent coding связан не только с ошибками логики, но и с ошибками контекста. Агент может получить вредоносную инструкцию через внешние данные, включая сценарии типа <Term id="prompt-injection" lang={lang}>prompt injection</Term>. Если pipeline доверяет любому входу, модель может выполнить действие, которое противоречит политике продукта. Поэтому в production-контуре всегда нужны барьеры до и после выполнения: фильтрация входа, проверка параметров вызова, ограничение прав и контроль финального ответа перед релизом.
+                Без наблюдаемости агент превращается в &quot;черный ящик&quot;. На каждом шаге цикла система должна фиксировать структурированный результат: успех или неуспех, список ошибок, внесенные изменения и метрики (задержка, количество вызовов инструментов, потраченные токены). Этот лог — не просто отладочная информация. Он нужен для трех вещей: <strong>дебаг</strong> (почему упал конкретный шаг), <strong>аналитика</strong> (где система тратит больше всего ресурсов) и <strong>улучшение</strong> (какие паттерны ошибок повторяются и требуют изменения контракта).
               </>
             ) : (
               <>
-                The main risk in agent coding is not only logic mistakes but also context mistakes. An agent can ingest hostile instructions through external data, including <Term id="prompt-injection" lang={lang}>prompt injection</Term> scenarios. If the pipeline trusts every input, the model may execute an action that violates product policy. That is why production loops need barriers both before and after execution: input filtering, argument validation, permission boundaries, and final-output checks before release.
+                Without observability, an agent becomes a &quot;black box.&quot; At each loop step, the system must record a structured result: success or failure, error list, changes made, and metrics (latency, tool call count, tokens spent). This log is not just debug info. It serves three purposes: <strong>debugging</strong> (why a specific step failed), <strong>analytics</strong> (where the system spends the most resources), and <strong>improvement</strong> (which error patterns recur and require contract changes).
               </>
             )}
           </p>
+
+          {/* Step result schema */}
+          <div className="bg-deep border border-border-subtle rounded-lg p-4 my-4">
+            <p className="text-xs text-neutral-500 font-medium mb-2 uppercase tracking-wider">
+              {ru ? 'Структура записи шага' : 'Step result structure'}
+            </p>
+            <pre className="text-sm text-emerald-300/90 leading-relaxed overflow-x-auto whitespace-pre">
+{`step_result:
+  step_id: 3
+  success: false
+  errors:
+    - "test_api_users: 404 Not Found"
+  changes:
+    - "src/routes/users.ts: added"
+  metrics:
+    latency_ms: 2340
+    tool_calls: 5
+    tokens_used: 12800`}
+            </pre>
+          </div>
+
           <p className="text-neutral-300 leading-relaxed">
-            {lang === 'ru' ? (
+            {ru ? (
               <>
-                Такие барьеры объединяют в слой <Term id="guardrails" lang={lang}>guardrails</Term>. Он задает допустимые операции, лимиты воздействия и обязательные точки подтверждения. Для командной работы важно формализовать, какие действия агент выполняет автономно, а какие требуют ручного approve. Тогда скорость остается высокой, а риск ущерба остается ограниченным. Guardrails эффективны только вместе с наблюдаемостью: логи шагов, метрики качества и явные причины отказа позволяют быстро понять, где процесс вышел за рамки и как вернуть его в норму.
+                В production-системах эти записи отправляются в систему мониторинга, где можно строить дашборды по успешности шагов, среднему количеству retry и стоимости на задачу. Без структурированной наблюдаемости невозможно понять, почему агент &quot;застрял&quot;, тратит бюджет впустую или систематически выбирает неоптимальные инструменты. Наблюдаемость — не роскошь и не дополнение. Это <strong>обязательный слой</strong>, без которого любая оптимизация агентной системы превращается в угадывание.
               </>
             ) : (
               <>
-                These barriers are grouped into a <Term id="guardrails" lang={lang}>guardrails</Term> layer. It defines allowed operations, impact limits, and mandatory confirmation points. For team workflows, it is critical to formalize which actions are autonomous and which require manual approval. That keeps delivery speed high while keeping risk bounded. Guardrails work only when paired with observability: step logs, quality metrics, and explicit rejection reasons let teams quickly identify where execution drifted and how to bring it back to a safe path.
+                In production systems, these records are sent to a monitoring system where teams build dashboards for step success rates, average retry counts, and per-task cost. Without structured observability, it is impossible to understand why an agent is &quot;stuck,&quot; wasting budget, or systematically choosing suboptimal tools. Observability is not a luxury or an add-on. It is a <strong>required layer</strong> — without it, any optimization of an agent system becomes guesswork.
               </>
             )}
           </p>
         </div>
       </section>
 
+      {/* Chapter 6 */}
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
         <h2 className="text-2xl font-bold mb-5 text-emerald-400">
-          {lang === 'ru' ? 'Глава 5: Релиз, стоимость, задержка и rollback-план' : 'Chapter 5: Release, Cost, Latency, and Rollback Plan'}
+          {ru ? 'Глава 6: Ошибки и Recovery' : 'Chapter 6: Errors and Recovery'}
         </h2>
         <div className="space-y-4">
           <p className="text-neutral-300 leading-relaxed">
-            {lang === 'ru' ? (
+            {ru ? (
               <>
-                Надежный релиз agent-coding фичи строится через этапность: сначала canary на малой доле трафика, затем расширение после прохождения quality-gate. На gate обычно проверяют тесты, ключевые метрики и целевые <Term id="evals" lang={lang}>evals</Term>. Если пороги не пройдены, релиз не продолжают. Такой подход не замедляет команду, потому что проблемы выявляются до полного воздействия на пользователей. Важно заранее определить, кто принимает решение на каждом этапе и какие сигналы считаются блокирующими.
+                В агентных системах ошибки — это <strong>нормальный режим работы</strong>, а не исключительная ситуация. Мультиагентные системы ломаются по умолчанию без стратегии recovery. Каждый агент должен уметь четыре вещи: <strong>retry</strong> (повторить шаг, до N раз), <strong>fallback</strong> (переключиться на альтернативный инструмент или стратегию), <strong>rollback</strong> (откатить внесенные изменения к стабильному состоянию) и <strong>escalate</strong> (передать задачу человеку, когда автоматическое восстановление исчерпано).
               </>
             ) : (
               <>
-                A reliable agent-coding release uses staged rollout: start with canary traffic and expand only after passing a quality gate. Gates typically check tests, key metrics, and target <Term id="evals" lang={lang}>evals</Term>. If thresholds fail, rollout does not continue. This does not slow teams down because issues are detected before full user impact. It is important to predefine who decides at each stage and which signals are considered release blockers.
+                In agent systems, errors are a <strong>normal operating mode</strong>, not an exceptional situation. Multi-agent systems break by default without a recovery strategy. Every agent must be able to do four things: <strong>retry</strong> (repeat a step, up to N times), <strong>fallback</strong> (switch to an alternative tool or strategy), <strong>rollback</strong> (revert changes to a stable state), and <strong>escalate</strong> (hand off to a human when automated recovery is exhausted).
               </>
             )}
           </p>
+
+          {/* Recovery schema */}
+          <div className="bg-deep border border-border-subtle rounded-lg p-4 my-4">
+            <p className="text-xs text-neutral-500 font-medium mb-2 uppercase tracking-wider">
+              {ru ? 'Стратегия recovery' : 'Recovery strategy'}
+            </p>
+            <pre className="text-sm text-emerald-300/90 leading-relaxed overflow-x-auto whitespace-pre">
+{`recovery:
+  retry:
+    max_attempts: 3
+    backoff: exponential
+  fallback:
+    tool: "alternative_test_runner"
+  rollback:
+    method: "git reset --hard HEAD~1"
+  escalate:
+    trigger: "retry exhausted OR critical error"
+    channel: "human-in-the-loop"`}
+            </pre>
+          </div>
+
           <p className="text-neutral-300 leading-relaxed">
-            {lang === 'ru' ? (
+            {ru ? (
               <>
-                Для контроля стоимости и latency первым шагом обычно вводят лимиты на количество вызовов инструментов и четкие stop-критерии цикла. Это дешевле и быстрее, чем немедленная смена модели или расширение контекста без границ. Параллельно команда должна держать готовый rollback-сценарий: как вернуть предыдущую стабильную версию за минуты и как восстановить сервис после отката. Rollback рассматривается как стандартная операция локализации инцидента, а не как признак провала. Такой подход защищает пользователей и сохраняет устойчивый темп разработки.
+                Порядок recovery принципиален. Сначала retry — быстрое повторение того же действия (часто помогает при транзиентных ошибках). Затем fallback — попытка решить задачу другим путем. Если и это не помогло — rollback: возврат к последнему стабильному состоянию, чтобы не копить поломки. И только когда автоматика исчерпана — escalate: человек получает контекст проблемы и принимает решение. Без этой цепочки одна ошибка может каскадно разрушить весь pipeline. Агент без recovery — это бомба замедленного действия в production.
               </>
             ) : (
               <>
-                For cost and latency control, the first practical lever is usually limiting tool-call counts and defining explicit stop criteria for the loop. This is cheaper and faster than immediately changing models or expanding context without limits. In parallel, teams need a ready rollback procedure: how to restore the previous stable version within minutes and recover service state after rollback. Rollback is treated as a standard incident-containment operation, not a failure signal. This protects users while keeping development cadence stable.
+                The recovery order matters. First retry — a quick repeat of the same action (often helps with transient errors). Then fallback — try solving the task a different way. If that fails too — rollback: return to the last stable state to avoid accumulating breakage. Only when automation is exhausted — escalate: a human receives problem context and makes the decision. Without this chain, one error can cascade and destroy the entire pipeline. An agent without recovery is a ticking time bomb in production.
+              </>
+            )}
+          </p>
+        </div>
+      </section>
+
+      {/* Chapter 7 */}
+      <section className="bg-card-dark border border-border-card rounded-xl p-8">
+        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+          {ru ? 'Глава 7: Guardrails, инструменты и антипаттерны' : 'Chapter 7: Guardrails, Tools, and Antipatterns'}
+        </h2>
+        <div className="space-y-4">
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Главный риск в agent coding связан не только с ошибками логики, но и с ошибками контекста. Агент может получить вредоносную инструкцию через внешние данные (<Term id="prompt-injection" lang={lang}>prompt injection</Term>). Слой <Term id="guardrails" lang={lang}>guardrails</Term> задает допустимые операции, лимиты воздействия и обязательные точки подтверждения. Для работы с инструментами действует правило: <strong>чем строже схема, тем лучше поведение агента</strong>. Строгая JSON-схема с обязательными полями и ограничением типов делает вызовы предсказуемыми и уменьшает количество &quot;мусорных&quot; tool calls.
+              </>
+            ) : (
+              <>
+                The main risk in agent coding is not only logic mistakes but also context mistakes. An agent can ingest hostile instructions through external data (<Term id="prompt-injection" lang={lang}>prompt injection</Term>). A <Term id="guardrails" lang={lang}>guardrails</Term> layer defines allowed operations, impact limits, and mandatory confirmation points. For tool usage, the rule is: <strong>the stricter the schema, the better the agent behavior</strong>. A strict JSON schema with required fields and type constraints makes tool calls predictable and reduces &quot;junk&quot; tool calls.
+              </>
+            )}
+          </p>
+
+          {/* Tool schema example */}
+          <div className="bg-deep border border-border-subtle rounded-lg p-4 my-4">
+            <p className="text-xs text-neutral-500 font-medium mb-2 uppercase tracking-wider">
+              {ru ? 'Пример схемы инструмента' : 'Tool schema example'}
+            </p>
+            <pre className="text-sm text-emerald-300/90 leading-relaxed overflow-x-auto whitespace-pre">
+{`{
+  "name": "run_tests",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "path": { "type": "string" },
+      "timeout_ms": { "type": "integer", "maximum": 30000 }
+    },
+    "required": ["path"]
+  }
+}`}
+            </pre>
+          </div>
+
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Guardrails эффективны только вместе с наблюдаемостью: логи шагов, метрики качества и явные причины отказа позволяют быстро понять, где процесс вышел за рамки. При этом важно избегать пяти антипаттернов, которые делают агентную систему нестабильной: один агент делает всё (нет разделения ролей), нет явных критериев завершения, нет логирования шагов, нет ограничений на инструменты, нет стратегии recovery. Если убрать хотя бы один элемент — архитектуру, процесс или контроль — система теряет предсказуемость, и результаты перестают быть воспроизводимыми.
+              </>
+            ) : (
+              <>
+                Guardrails work only when paired with observability: step logs, quality metrics, and explicit rejection reasons let teams quickly find where execution drifted. It is also critical to avoid five antipatterns that make agent systems unstable: one agent does everything (no role separation), no explicit completion criteria, no step logging, no tool constraints, and no recovery strategy. Remove any single element — architecture, process, or control — and the system loses predictability, making outcomes non-reproducible.
               </>
             )}
           </p>

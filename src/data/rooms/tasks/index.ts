@@ -3,6 +3,7 @@ import { llmLandscapeTasks } from './llm-landscape';
 import { llmMechanicsTasks } from './llm-mechanics';
 import { aiHistoryTasks } from './ai-history';
 import { prompting101Tasks } from './prompting-101';
+import { aiCareerTrajectoriesTasks } from './ai-career-trajectories';
 import { chatgptMomentTasks } from './chatgpt-moment';
 import { scalingHypothesisTasks } from './scaling-hypothesis';
 import { aiRagTasks } from './ai-rag';
@@ -22,12 +23,25 @@ import { llmGuardrailsTasks } from './llm-guardrails';
 import { aiRegulationRuTasks } from './ai-regulation-ru';
 import { aiRegulationEuTasks } from './ai-regulation-eu';
 import { agentCodingFoundationsTasks } from './agent-coding-foundations';
+import { agenticCodingToolsTasks } from './agentic-coding-tools';
+import { agenticCliToolsTasks } from './agentic-cli-tools';
+import { mcpToolEcosystemsTasks } from './mcp-tool-ecosystems';
+import { agenticSwarmManagementTasks } from './agentic-swarm-management';
+import { frontierEvalsLogicTasks } from './frontier-evals-logic';
+import { claudeCodeAgenticLoopTasks } from './claude-code-agentic-loop';
+import { claudeCodeProWorkflowTasks } from './claude-code-pro-workflow';
+
+import { promptContractsTasks } from './prompt-contracts';
+import { multiAgentCollaborationTasks } from './multi-agent-collaboration';
+import { agenticTestingLoopTasks } from './agentic-testing-loop';
+import { agenticUiDeliveryTasks } from './agentic-ui-delivery';
 
 export const ROOM_TASKS: Record<string, LocalizedTask[]> = {
   'llm-landscape': llmLandscapeTasks,
   'llm-mechanics': llmMechanicsTasks,
   'ai-history': aiHistoryTasks,
   'prompting-101': prompting101Tasks,
+  'ai-career-trajectories': aiCareerTrajectoriesTasks,
   'chatgpt-moment': chatgptMomentTasks,
   'scaling-hypothesis': scalingHypothesisTasks,
   'ai-rag': aiRagTasks,
@@ -47,4 +61,15 @@ export const ROOM_TASKS: Record<string, LocalizedTask[]> = {
   'ai-regulation-ru': aiRegulationRuTasks,
   'ai-regulation-eu': aiRegulationEuTasks,
   'agent-coding-foundations': agentCodingFoundationsTasks,
+  'agentic-coding-tools': agenticCodingToolsTasks,
+  'agentic-cli-tools': agenticCliToolsTasks,
+  'prompt-contracts': promptContractsTasks,
+  'multi-agent-collaboration': multiAgentCollaborationTasks,
+  'agentic-testing-loop': agenticTestingLoopTasks,
+  'agentic-ui-delivery': agenticUiDeliveryTasks,
+  'mcp-tool-ecosystems': mcpToolEcosystemsTasks,
+  'agentic-swarm-management': agenticSwarmManagementTasks,
+  'frontier-evals-logic': frontierEvalsLogicTasks,
+  'claude-code-agentic-loop': claudeCodeAgenticLoopTasks,
+  'claude-code-pro-workflow': claudeCodeProWorkflowTasks,
 };

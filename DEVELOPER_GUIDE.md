@@ -81,7 +81,7 @@ The backend is a separate Python project inside the same repo.
 - **FastAPI** handles HTTP requests (signup, login, save progress, fetch profile).
 - **PostgreSQL** stores user accounts and progress permanently.
 - **SQLAlchemy** is the "translator" between Python objects and database rows.
-- **Alembic** manages database schema changes (migrations).
+- **Alembic** manages database schema changes (migrations). In production, the Dockerfile runs `alembic upgrade head` automatically on every container start — this applies any pending migrations before the server accepts traffic. Alembic is idempotent, so re-running it on an already up-to-date database is a safe no-op.
 - **How auth works:** When you sign up or log in, the backend creates a JWT token and stores it in an httpOnly cookie. Every subsequent request includes this cookie, so the backend knows who you are.
 - **Instruction:** Look at `backend/app/api/auth/router.py` to see the signup/login endpoints, and `backend/app/api/progress/router.py` to see how task completion is saved.
 

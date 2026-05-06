@@ -14,7 +14,7 @@
 /coverage
 
 # next.js
-/.next/
+.next/
 /out/
 
 # production
@@ -46,3 +46,7 @@ next-env.d.ts
 /obsidian-lessons/
 /правила/
 *.bak
+
+# python
+__pycache__/
+*.pyc

@@ -1,6 +1,13 @@
 # AI-Learn Backlog
 
 ## Completed
+- [x] Moved `/${lang}/rooms` difficulty/focus/status filters into a dedicated desktop sidebar rail with sticky placement and a compact result summary. (by Codex)
+- [x] Increased `/${lang}/rooms` density on large screens with a wider container, more columns, and tighter card spacing. (by Codex)
+- [x] Reduced the `/${lang}/rooms` cover area: smaller room-symbol blocks, shorter headers, and tighter top-card composition. (by Codex)
+- [x] Reworked `/${lang}/rooms` cards to use professions-style illustrated covers with room icons and real progress badges. (by Codex)
+- [x] Added the `/${lang}/professions` page with search, filters, profession cards, and sidebar navigation for AI role discovery. (by Codex)
+- [x] Added `ROADMAP_VIEW_MODE.md` and `ROADMAP_VIEW_MODE.ru.md` to capture the roadmap-style viewing mode for future AI Learn trajectory and progression screens. (by Codex)
+- [x] Added the `ai-career-trajectories` room with a custom roadmap-style theory layout, bilingual IC/research/management track content, and 6 validated tasks. (by Codex)
 - [x] Enriched theory content (1000+ words each) for rooms: ai-history, research-grounding, ai-research, prompting-101, ai-image-creation.
 - [x] Create "Post-ChatGPT Era" room page and tasks (6 tasks).
 - [x] Scaffold Next.js 16 project with TypeScript/Tailwind.
@@ -36,6 +43,20 @@
 - [x] Implement `/${lang}/settings` page with language preference + per-room progress reset.
 - [x] Refresh "LLM Landscape" room question set to a concise structured quiz (10 tasks).
 
+## Completed (2026-04-05 session — by Codex)
+- [x] Implemented 4 new Agent Coding rooms: AC-103 (Prompt Contracts), AC-104 (Multi-Agent Collaboration), AC-202 (Agentic Testing Loop), and AC-203 (Agentic UI Delivery). Each room includes 5 theory chapters and 10 localized tasks. (by Codex)
+- [x] Refined the AC-101 (`agent-coding-foundations`) Chapter 1...
+- [x] Added `DEC-002-EXPLAINED.md` with a concise Russian walkthrough of the accepted DEC-002 autonomous pipeline: autonomy levels, safety model, rollout stages, review/UAT loops, and Digital Twin operating model. (by Codex)
+- [x] Added a new in-progress backlog task to implement DEC-002 ideas in AI Learn Platform through an autonomous terminal-session pipeline track. (by Codex)
+- [x] Fixed corrupted UTF-8 symbols in AC-101 theory text (`agent-coding-foundations`) so Russian words render correctly in the room UI. (by Codex)
+- [x] Added a thematic focus filter on `/${lang}/rooms` with presets (`Agent Coding`, `AI Philosophy`) and dynamic options for all room categories; wired into room listing logic alongside difficulty/status filters. (by Codex)
+- [x] Reworked AC-201 (`agentic-cli-tools`) theory into a more practical lesson format with explicit loop model, concrete CLI examples by phase, verify tooling matrix, role split, and final checklist/exercise in RU/EN. (by Codex)
+
+## Completed (2026-04-04 session — by Codex)
+- [x] Implemented Agent Ops MVP in Labs: added `/${lang}/labs/agent-ops` with bilingual UI for task queue, cycle trigger, runs feed, and knowledge feed. (by Codex)
+- [x] Added backend Agent Ops API (`/agent/tasks`, `/agent/tasks/{task_id}/status`, `/agent/cycle/run`, `/agent/runs`, `/agent/knowledge`) with queue processing and dedupe-by-fingerprint knowledge storage. (by Codex)
+- [x] Added database schema for Agent Ops (`agent_tasks`, `agent_runs`, `agent_knowledge_items`) with Alembic migration and synced docs in `README(.ru).md` and `PROGRESS(.ru).md`. (by Codex)
+
 ## Completed (2026-03-28 session — by Codex)
 - [x] Implemented guest progress sync on signup in `useAuth`: reads valid `localStorage` `progress:*` entries and replays tasks to `/api/progress/{roomId}` after successful account creation. (by Codex)
 - [x] Synced docs and status tracking for this behavior in `README(.ru).md`, `PROGRESS(.ru).md`, and `BACKLOG(.ru).md`; marked the engineering backlog item as done. (by Codex)
@@ -48,6 +69,12 @@
 - [x] Fixed hydration mismatch on `/${lang}/rooms` by making initial progress status SSR-safe and syncing localStorage progress only after client mount. (by Codex)
 - [x] Created a new grand-task epic for a multi-room `agent-coding` learning path and synced planning docs (`BACKLOG(.ru).md`, `CURRICULUM(.ru).md`). (by Codex)
 - [x] Implemented AC-101 room `agent-coding-foundations` (5 theory chapters, 10 localized tasks), wired new path route `/${lang}/paths/agent-coding`, and added glossary terms `guardrails` + `context-window`. (by Codex)
+
+## Completed (2026-03-29 session — by Codex)
+- [x] Implemented AC-102 room `agentic-coding-tools` (5 theory chapters + 10 localized tasks), including metadata/task wiring, dynamic theory mapping, and path inclusion under `agent-coding`. (by Codex)
+- [x] Synced room inventory/status docs for the new room in `README(.ru).md`, `PROGRESS(.ru).md`, `CURRICULUM(.ru).md`, `BACKLOG(.ru).md`, and `AGENTS.md`. (by Codex)
+- [x] Implemented AC-201 room `agentic-cli-tools` (5 theory chapters + 10 localized tasks) and wired it into the Agent Coding path with dynamic room routing. (by Codex)
+- [x] Updated Agent Coding planning/docs for AC-201 in `README(.ru).md`, `PROGRESS(.ru).md`, `CURRICULUM(.ru).md`, `BACKLOG(.ru).md`, and `AGENTS.md`. (by Codex)
 
 ## Completed (2026-03-24 session — by Codex)
 - [x] Migrated Next.js locale request handler from `src/middleware.ts` to `src/proxy.ts` (`export function proxy`) to match Next.js 16 file conventions and remove the deprecation warning. (by Codex)
@@ -108,6 +135,7 @@
 
 ## In Progress
 - [ ] Add missing pages for sidebar routes: `/${lang}/compete`, `/${lang}/leaderboard`.
+- [ ] Launch DEC-002 implementation track for AI Learn Platform (`dec-002-platform-pipeline`): adapt Agent Ops into a terminal-session autonomous loop with 3 autonomy levels, Telegram approval gates, tiered review loop, quiet hours, and 4-hour digest cadence.
 
 ## Future Content (Room Pipeline)
 - [ ] **Room 203: EvalOps Basics** — Build eval sets, score prompts/models, regression checks.
@@ -120,11 +148,12 @@
 ## Grand Path Epic: Agent Coding
 - [ ] **Grand Task: Agent Coding Path** (`agent-coding`) — launch a full end-to-end path with 12 rooms, practical labs, and capstone delivery.
 - [x] **AC-101: Agent Coding Foundations** — problem framing, fast iteration loops, acceptance criteria.
-- [ ] **AC-102: Prompt Contracts for Coding Agents** — translating product intent into prompt specs and failure boundaries.
-- [ ] **AC-103: Multi-Agent Collaboration Patterns** — decomposition, context windows, branch-per-task discipline.
-- [ ] **AC-201: Repo Navigation with Coding Agents** — semantic search, codebase mapping, safe refactor planning.
-- [ ] **AC-202: Agentic Testing Loop** — test-first prompts, regression harnesses, flaky-test control.
-- [ ] **AC-203: Agentic UI Delivery** — design-to-code workflows, responsive constraints, accessibility checks.
+- [x] **AC-102: Agentic Coding Tools** — tool-layer architecture, contracts, safety boundaries, release controls.
+- [x] **AC-103: Prompt Contracts for Coding Agents** — translating product intent into prompt specs and failure boundaries.
+- [x] **AC-104: Multi-Agent Collaboration Patterns** — decomposition, context windows, branch-per-task discipline.
+- [x] **AC-201: CLI Tools for Agent Coding** — terminal discovery/change/verify loop, quality gates, rollback discipline.
+- [x] **AC-202: Agentic Testing Loop** — test-first prompts, regression harnesses, flaky-test control.
+- [x] **AC-203: Agentic UI Delivery** — design-to-code workflows, responsive constraints, accessibility checks.
 - [ ] **AC-301: Shipping Agentic Features with Guardrails** — policy checks, red-team prompts, deployment gates.
 - [ ] **AC-302: Cost & Latency Control for Agents** — model routing, caching, budget limits, observability.
 - [ ] **AC-303: Team Protocols for Agent Coding** — PR templates, review rubrics, handoff standards.
@@ -135,6 +164,7 @@
 - [ ] Create FAQ page (`/${lang}/faq`) with sections: platform basics, auth, progress/streak, troubleshooting, privacy.
 - [ ] Add adaptive learning flow: repeat weak topics + personalized next-room recommendations.
 - [ ] Add spaced repetition mode (daily short review from previously failed tasks).
+- [ ] Implement a reusable roadmap-style view mode for trajectory, path-selection, and progression screens using the `ROADMAP_VIEW_MODE.md` reference.
 - [ ] Add Prompt Playground lab (system prompt, temperature, output comparison).
 - [ ] Add Mini RAG lab with user-provided documents.
 - [ ] Add motivation loops: weekly challenges, badges, shareable completion certificates.

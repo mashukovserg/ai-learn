@@ -31,29 +31,43 @@ The atomic unit is a **room** — a self-contained module covering one topic. Ea
 Rooms are grouped into **paths** (curated sequences):
 - **AI Foundations** — LLM landscape, mechanics, prompting, multimodality, fine-tuning, embeddings, agents, RAG, security, research.
 - **Ideas and Debates in AI** — ChatGPT moment, scaling hypothesis, singularity debates, AI history, post-ChatGPT era.
+- **Agentic Systems** — AI agents, deep search agents, MCP tool ecosystems, agentic swarm management.
+- **Agent Coding** — Agent coding foundations, agentic coding tools, agentic CLI tools, Claude Code agentic loop, Claude Code pro workflow.
 
-### Current room inventory (19 rooms)
-| Room | Tasks | Notes |
-|---|---|---|
-| LLM Landscape | 13 | Geopolitics, model selection |
-| How LLMs Think (LLM Mechanics) | 8 | Tokens, context, temperature |
-| Prompting 101 | 10 | System prompts, few-shot, hallucinations |
-| ChatGPT Moment | 10 | Mass adoption, ecosystem effects |
-| AI Singularity | 6 | Pro/contra, risk framing |
-| AI History | 10 | Timeline, milestones |
-| Prompt Evals | 6 | Eval sets, metrics, release gates |
-| AI Image Creation | 6 | Prompts, negative prompts, seed control |
-| Research & Grounding | 6 | RAG basics, retrieval, citations — Enriched |
-| AI Agents | 6 | ReAct loop, MAS, tool-use — Enriched |
-| AI RAG | 6 | Chunking, vector search, reranking — Enriched |
-| AI Security | 6 | Prompt injection, jailbreaking, defense — Enriched |
-| AI Research | 5 | Automated search, synthesis — Enriched |
-| AI Alignment | 6 | RLHF, alignment debates |
-| Native Multimodality | 6 | Vision, audio, real-time — Enriched |
-| Fine-Tuning 101 | 12 | LoRA, QLoRA, decision framework |
-| Post-ChatGPT Era | 6 | Open vs closed, reasoning models, geopolitics |
-| Embeddings 101 | 10 | Word2Vec → transformers, cosine sim, vector DBs |
-| Scaling Hypothesis | 4 | Compute/data pillars, emergent abilities |
+### Current room inventory (31 rooms)
+| Room | Notes |
+|---|---|
+| LLM Landscape | Geopolitics, model selection |
+| How LLMs Think (LLM Mechanics) | Tokens, context, temperature |
+| Prompting 101 | System prompts, few-shot, hallucinations |
+| ChatGPT Moment | Mass adoption, ecosystem effects |
+| AI Singularity | Pro/contra, risk framing |
+| AI History | Timeline, milestones |
+| Prompt Evals | Eval sets, metrics, release gates |
+| AI Image Creation | Prompts, negative prompts, seed control |
+| Research & Grounding | RAG basics, retrieval, citations |
+| AI Agents | ReAct loop, MAS, tool-use |
+| AI RAG | Chunking, vector search, reranking |
+| AI Security | Prompt injection, jailbreaking, defense |
+| AI Research | Automated search, synthesis |
+| AI Alignment | RLHF, alignment debates |
+| Native Multimodality | Vision, audio, real-time |
+| Fine-Tuning 101 | LoRA, QLoRA, decision framework |
+| Post-ChatGPT Era | Open vs closed, reasoning models, geopolitics |
+| Embeddings 101 | Word2Vec → transformers, cosine sim, vector DBs |
+| Scaling Hypothesis | Compute/data pillars, emergent abilities |
+| Agent Coding Foundations | AC-101, agentic coding intro |
+| Agentic Coding Tools | AC-102, tools for agent coding |
+| Agentic CLI Tools | AC-201, CLI tools for agents |
+| LLM Guardrails | Safeguarding AI outputs |
+| AI Regulation (Russia) | Russian AI regulation 2026 |
+| AI Regulation (EU) | EU AI Act |
+| Deep Search Agents | Multi-step search workflows |
+| MCP Tool Ecosystems | Model Context Protocol |
+| Agentic Swarm Management | Scale AI swarm concepts |
+| Frontier Evals Logic | Benchmark design & test-time compute |
+| Claude Code Agentic Loop | Agent loop internals |
+| Claude Code Pro Workflow | Advanced Claude Code usage |
 
 ---
 
@@ -124,11 +138,11 @@ All tasks are bilingual — `en` and `ru` fields required for every visible stri
 
 ---
 
-## 7. Current state (as of March 2026)
+## 7. Current state (as of April 2026)
 
 ### Implemented
-- 19 rooms fully wired with theory + tasks.
-- 2 learning paths with room sequences.
+- 31 rooms fully wired with theory + tasks.
+- 4 learning paths with room sequences.
 - All 8 task types implemented and in use.
 - Backend auth (signup/login/logout), progress persistence, points/streak.
 - Bilingual UI and content (RU/EN).
@@ -143,7 +157,7 @@ All tasks are bilingual — `en` and `ru` fields required for every visible stri
 - Adaptive learning (repeat weak topics, spaced repetition).
 - Mistake Notebook (failed tasks → adaptive retry).
 - AI mentor feedback on free-text answers.
-- Guest → auth progress sync.
+- ~~Guest → auth progress sync.~~ Done (signup-time migration).
 - Analytics instrumentation.
 - Badges / shareable certificates.
 - Community mission sharing.
@@ -186,5 +200,6 @@ The platform occupies a specific niche:
 | Backlog | `BACKLOG.md` |
 | Progress log | `PROGRESS.md` |
 | Rooms content ideas | `ROOMS_IDEAS.md` |
+| Roadmap view mode reference | `ROADMAP_VIEW_MODE.md` |
 | Developer guide | `DEVELOPER_GUIDE.md` |
 | Agent runtime policy | `AGENTS.md` |

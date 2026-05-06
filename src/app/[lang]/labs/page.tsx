@@ -2,7 +2,7 @@
 
 import { use } from 'react';
 import Link from 'next/link';
-import { ChevronRight, FlaskConical } from 'lucide-react';
+import { ChevronRight, FlaskConical, Workflow } from 'lucide-react';
 
 export default function LabsPage(props: { params: Promise<{ lang: string }> }) {
   const { lang } = use(props.params);
@@ -28,32 +28,61 @@ export default function LabsPage(props: { params: Promise<{ lang: string }> }) {
         </p>
       </div>
 
-      <Link
-        href={`/${lang}/labs/prompt-compare`}
-        className="block bg-input border border-border-subtle rounded-xl p-6 hover:border-emerald-500/30 transition-colors group"
-      >
-        <div className="flex items-start gap-4">
-          <div className="p-2.5 rounded-lg bg-emerald-500/10 text-emerald-400">
-            <FlaskConical size={22} />
-          </div>
-          <div>
-            <h2 className="text-lg font-semibold text-neutral-200 group-hover:text-emerald-300 transition-colors">
-              {lang === 'ru' ? 'Сравнение промптов' : 'Prompt Compare'}
-            </h2>
-            <p className="text-sm text-neutral-500 mt-1">
-              {lang === 'ru'
-                ? 'Отправьте один промпт двум моделям и сравните ответы бок о бок.'
-                : 'Send the same prompt to two models and compare responses side by side.'}
-            </p>
-            <div className="flex items-center gap-2 mt-3 text-xs text-neutral-600">
-              <span className="px-2 py-0.5 bg-card rounded border border-border-emphasis">Groq</span>
-              <span className="px-2 py-0.5 bg-card rounded border border-border-emphasis">Llama 3.3</span>
-              <span className="px-2 py-0.5 bg-card rounded border border-border-emphasis">Llama 4 Scout</span>
-              <span className="px-2 py-0.5 bg-card rounded border border-border-emphasis">Qwen 3</span>
+      <div className="grid grid-cols-1 gap-4">
+        <Link
+          href={`/${lang}/labs/prompt-compare`}
+          className="block bg-input border border-border-subtle rounded-xl p-6 hover:border-emerald-500/30 transition-colors group"
+        >
+          <div className="flex items-start gap-4">
+            <div className="p-2.5 rounded-lg bg-emerald-500/10 text-emerald-400">
+              <FlaskConical size={22} />
+            </div>
+            <div>
+              <h2 className="text-lg font-semibold text-neutral-200 group-hover:text-emerald-300 transition-colors">
+                {lang === 'ru' ? 'Сравнение промптов' : 'Prompt Compare'}
+              </h2>
+              <p className="text-sm text-neutral-500 mt-1">
+                {lang === 'ru'
+                  ? 'Отправьте один промпт двум моделям и сравните ответы бок о бок.'
+                  : 'Send the same prompt to two models and compare responses side by side.'}
+              </p>
+              <div className="flex items-center gap-2 mt-3 text-xs text-neutral-600">
+                <span className="px-2 py-0.5 bg-card rounded border border-border-emphasis">Groq</span>
+                <span className="px-2 py-0.5 bg-card rounded border border-border-emphasis">Llama 3.3</span>
+                <span className="px-2 py-0.5 bg-card rounded border border-border-emphasis">Llama 4 Scout</span>
+                <span className="px-2 py-0.5 bg-card rounded border border-border-emphasis">Qwen 3</span>
+              </div>
             </div>
           </div>
-        </div>
-      </Link>
+        </Link>
+
+        <Link
+          href={`/${lang}/labs/agent-ops`}
+          className="block bg-input border border-border-subtle rounded-xl p-6 hover:border-emerald-500/30 transition-colors group"
+        >
+          <div className="flex items-start gap-4">
+            <div className="p-2.5 rounded-lg bg-emerald-500/10 text-emerald-400">
+              <Workflow size={22} />
+            </div>
+            <div>
+              <h2 className="text-lg font-semibold text-neutral-200 group-hover:text-emerald-300 transition-colors">
+                {lang === 'ru' ? 'Agent Ops' : 'Agent Ops'}
+              </h2>
+              <p className="text-sm text-neutral-500 mt-1">
+                {lang === 'ru'
+                  ? 'MVP-панель для циклов AI-агентов: очередь задач, запуск цикла, логи и база знаний.'
+                  : 'MVP console for AI agent cycles: task queue, cycle execution, logs, and knowledge base.'}
+              </p>
+              <div className="flex items-center gap-2 mt-3 text-xs text-neutral-600">
+                <span className="px-2 py-0.5 bg-card rounded border border-border-emphasis">Queue</span>
+                <span className="px-2 py-0.5 bg-card rounded border border-border-emphasis">Cycle</span>
+                <span className="px-2 py-0.5 bg-card rounded border border-border-emphasis">Runs</span>
+                <span className="px-2 py-0.5 bg-card rounded border border-border-emphasis">Knowledge</span>
+              </div>
+            </div>
+          </div>
+        </Link>
+      </div>
     </div>
   );
 }
