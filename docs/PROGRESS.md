@@ -1,6 +1,6 @@
 # Project Progress Snapshot
 
-Last synced with codebase: **2026-04-26**
+Last synced with codebase: **2026-05-16**
 
 ## Implementation status
 - **Core app shell:** Done (`AppShell`, `Sidebar`, `Navbar`).
@@ -9,8 +9,9 @@ Last synced with codebase: **2026-04-26**
 - **Progress persistence:** Done (`useProgress` hook — API-backed when authenticated, localStorage fallback for guests, and signup-time guest progress sync to server).
 - **Backend:** Done (FastAPI + PostgreSQL, JWT auth, user accounts, server-side progress, points/streak tracking).
 - **Authentication:** Done (signup/login/logout, JWT in httpOnly cookies, login page at `/${lang}/login`).
-- **Room pages implemented:** 36
-  - `/${lang}/rooms/[id]` is fully wired for: `agent-coding-foundations`, `agentic-coding-tools`, `agentic-cli-tools`, `prompt-contracts`, `multi-agent-collaboration`, `agentic-testing-loop`, `agentic-ui-delivery`, `llm-landscape`, `llm-mechanics`, `prompting-101`, `ai-career-trajectories`, `chatgpt-moment`, `post-chatgpt-history`, `ai-history`, `scaling-hypothesis`, `ai-singularity`, `prompt-evals`, `ai-image-creation`, `research-grounding`, `ai-agents`, `deep-search-agents`, `ai-rag`, `ai-security`, `ai-research`, `ai-alignment`, `native-multimodality`, `fine-tuning-101`, `embeddings-101`, `llm-guardrails`, `ai-regulation-ru`, `ai-regulation-eu`, `mcp-tool-ecosystems`, `agentic-swarm-management`, `frontier-evals-logic`, `claude-code-agentic-loop`, `claude-code-pro-workflow`.
+- **Room pages implemented:** 38 in `ROOMS_METADATA` (37 fully wired; `prompt-evals` has metadata + theory but no task file — see `BACKLOG.md`)
+  - `/${lang}/rooms/[id]` is fully wired for: `agent-coding-foundations`, `agentic-coding-tools`, `agentic-cli-tools`, `prompt-contracts`, `multi-agent-collaboration`, `agentic-testing-loop`, `agentic-ui-delivery`, `llm-landscape`, `llm-mechanics`, `prompting-101`, `ai-career-trajectories`, `chatgpt-moment`, `post-chatgpt-history`, `ai-history`, `scaling-hypothesis`, `ai-singularity`, `ai-image-creation`, `research-grounding`, `ai-agents`, `deep-search-agents`, `ai-rag`, `ai-security`, `ai-research`, `ai-alignment`, `native-multimodality`, `fine-tuning-101`, `embeddings-101`, `llm-guardrails`, `ai-regulation-ru`, `ai-regulation-eu`, `mcp-tool-ecosystems`, `agentic-swarm-management`, `frontier-evals-logic`, `claude-code-agentic-loop`, `claude-code-pro-workflow`, `local-models-101`, `llama-3-1-8b`.
+  - Open Models category (2 rooms): `local-models-101` (Beginner intro: open weights, why local, model landscape, first run) and `llama-3-1-8b` (Intermediate deep dive into one model).
   - Newly added Agent Coding rooms: `agent-coding-foundations`, `agentic-coding-tools`, `agentic-cli-tools`, `prompt-contracts`, `multi-agent-collaboration`, `agentic-testing-loop`, `agentic-ui-delivery` (10 tasks each, EN/RU).
 - **Learning paths UI:** Done (`/${lang}/paths`, `/${lang}/paths/beginner`, `/${lang}/paths/ideas-history`, `/${lang}/paths/agentic-systems`, `/${lang}/paths/agent-coding`).
 - **AI professions page:** Done (`/${lang}/professions`) with search, difficulty/status filters, featured role card, and profession-specific card grid.
@@ -25,6 +26,8 @@ Last synced with codebase: **2026-04-26**
 ## Platform milestones
 | Date | Milestone |
 |------|-----------|
+| 2026-05-16 | Shipped the `local-models-101` room (Beginner, «Открытые модели / Open Models», 5 theory chapters, 10 tasks across 8 task types, 3 new glossary terms: open-weights, quantization, vram + reused inference). The room is the category entry point; `llama-3-1-8b` remains the model-specific deep dive. Also published `ROADMAP_3M.md` (3-month agent roadmap). |
+| 2026-05-11 | Stood up the first test layer (Vitest, two suites under `src/data/rooms/__tests__/`, 1527 assertions) and authored `TESTING.md` with the strategy plus a triage list of 47 pre-existing data defects the initial run uncovered. `npm run test` is kept out of `check-all` until those are cleared. |
 | 2026-04-26 | Moved `/${lang}/rooms` filters into a dedicated desktop sidebar rail with sticky placement and a compact result summary; mobile keeps the stacked filter layout. |
 | 2026-04-26 | Increased `/${lang}/rooms` density on large screens: wider container, more columns, and tighter room-card spacing so more rooms fit on screen. |
 | 2026-04-26 | Reduced the visual cover size on `/${lang}/rooms`: smaller room-symbol blocks, shorter card headers, and denser top-card composition. |
@@ -111,7 +114,8 @@ Last synced with codebase: **2026-04-26**
 
 
 ## Gaps remaining
-- Sidebar has links to `compete`, `leaderboard`, but pages are not implemented.
+- 47 data defects across 36 rooms are now visible via `npm run test`. Triage list and fix path in `TESTING.md` → "Known data issues" and `BACKLOG.md` → "Engineering follow-ups uncovered by tests".
+- `prompt-evals` is in `ROOMS_METADATA` but has no entry in `ROOM_TASKS` — the room is effectively broken on production until the task file is restored or the metadata is removed.
 
 ## Current curriculum coverage
 - **AI Foundations module:** Rooms 101 (LLM Landscape), 102 (LLM Mechanics), 103 (Prompting 101), and AI Career Trajectories.

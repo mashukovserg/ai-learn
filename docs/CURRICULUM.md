@@ -41,6 +41,12 @@
 - [x] **AI for Image Creation** — 6 tasks
   - *Topics:* Prompts, composition, negative prompts, seed control, commercial use.
 
+### Module 6: Open Models
+- [x] **Local Models 101 (Локальные модели 101)** — 10 tasks (includes categorize, sorting, scenario, mentor, timeline)
+  - *Topics:* Open weights vs open source, privacy/offline/cost tradeoffs, model landscape (Llama, Qwen, Mistral, Gemma, Phi, DeepSeek), first run with Ollama/LM Studio, quantization and VRAM basics, limits and hybrid local+cloud strategy.
+- [x] **Llama 3.1 8B (Llama 3.1 8B: открытая модель)** — 7 tasks (includes categorize, scenario, mentor)
+  - *Topics:* One-model deep dive: GQA, RoPE scaling, 128K context, Llama Community License, running via Ollama/vLLM/Transformers, VRAM budgets.
+
 ## Path: Ideas and Debates in AI (Идеи и споры об ИИ)
 **Goal:** Understand major conceptual debates in AI communities and translate them into practical product decisions.
 

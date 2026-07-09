@@ -1,5 +1,90 @@
 # AI-Learn Backlog
 
+> **Active roadmap:** [`ROADMAP_3M.md`](ROADMAP_3M.md) (2026-05-16 → 2026-08-15) — agents pick work from there first; this file keeps the detailed punch lists and the work log.
+
+## Completed (2026-05-16 session — by Claude Code)
+- [x] Full project review (docs + codebase) and a 3-month agent roadmap: `ROADMAP_3M.md` + `ROADMAP_3M.ru.md`. Month 1 — fix 47 data defects, restore `prompt-evals`, arm the test gate, task-image infrastructure, pilot screenshots, GROK task pack; Month 2 — complete Agent Coding path (AC-301…AC-402), screenshot rollout, backend pytest smoke tests; Month 3 — leaderboard, spaced repetition, analytics, stretch items. (by Claude Code)
+- [x] Shipped `local-models-101` room — Beginner entry point of the «Открытые модели / Open Models» category (5 theory chapters with `<Term>` tooltips, 10 tasks across 8 task types, all passing the Vitest gate in both locales; 3 new glossary terms: `open-weights`, `quantization`, `vram`). `llama-3-1-8b` stays the model-specific deep dive; docs synced (README, PROGRESS, CURRICULUM, AGENTS, CLAUDE). (by Claude Code)
+
+## Completed (2026-05-11 session — by Claude Code)
+- [x] Stood up the first test layer: Vitest + `vite-tsconfig-paths`, `vitest.config.ts`, npm scripts (`test`, `test:watch`, `test:coverage`), and two suites under `src/data/rooms/__tests__/` (data integrity + per-task-type validation, 1527 assertions total) codifying the rules from `AGENTS.md` → "Task data validation gate" and "Task ID sequencing". (by Claude Code)
+- [x] Added `TESTING.md` capturing the layered strategy, what is and isn't covered, and a triage list of 47 real data defects the initial run surfaced (22 broken `categorize` mappings, 6 unsolvable `scenario` tasks, 17 empty `explanation` fields, 1 unregistered room — see Engineering follow-ups below). (by Claude Code)
+
+## Engineering follow-ups uncovered by tests (2026-05-11)
+
+Captured here as a self-contained punch list. Re-run `npm run test` after each fix to confirm the item drops off. When the list is empty, re-add `npm run test` to `check-all` in `package.json`.
+
+### 🔴 Critical — `prompt-evals` room is broken in production (1)
+Present in `ROOMS_METADATA` but absent from `ROOM_TASKS` and from `src/data/rooms/tasks/` — clicking the room lands on an empty/broken page. `PROGRESS.md` 2026-02-17 milestone says the room once had 6 tasks; either restore the task file or remove the metadata entry.
+- [ ] `prompt-evals` — restore `src/data/rooms/tasks/prompt-evals.ts` and add the import to `tasks/index.ts`, **or** remove from `ROOMS_METADATA` and from any path that references it.
+
+### 🔴 Critical — `categorize` tasks unsolvable due to non-English `correctMapping` keys (22)
+The room renderer at `src/app/[lang]/rooms/[id]/page.tsx:138-144` matches `correctMapping` keys/values against `items[i].en` and `buckets[j].en`. Non-English or mismatched keys produce an empty resolved mapping, so **no drop ever registers as correct** for either locale. Fix: rewrite each `correctMapping` so every key exactly equals some `items[i].en` and every value exactly equals some `buckets[j].en`.
+- [ ] `agent-coding-foundations#6`
+- [ ] `agent-coding-foundations#7`
+- [ ] `agentic-swarm-management#6`
+- [ ] `agentic-testing-loop#3`
+- [ ] `agentic-ui-delivery#3`
+- [ ] `ai-agents#4`
+- [ ] `ai-history#8`
+- [ ] `ai-image-creation#5`
+- [ ] `ai-rag#3`
+- [ ] `ai-regulation-eu#2`
+- [ ] `ai-regulation-ru#3`
+- [ ] `ai-security#4`
+- [ ] `chatgpt-moment#8`
+- [ ] `claude-code-agentic-loop#2`
+- [ ] `frontier-evals-logic#6`
+- [ ] `llm-guardrails#2`
+- [ ] `llm-mechanics#11`
+- [ ] `multi-agent-collaboration#4`
+- [ ] `native-multimodality#5`
+- [ ] `prompt-contracts#4`
+- [ ] `prompting-101#9`
+- [ ] `scaling-hypothesis#6`
+
+### 🔴 Critical — `scenario` tasks unsolvable (6)
+Either no choice meets `passingScore` (default `60`), or a choice has a score outside `[0, 100]`. The user cannot complete the scenario. Fix: review the scoring rubric, ensure at least one choice meets `passingScore`, and clamp every `score` to `[0, 100]`.
+- [ ] `prompt-contracts#5` — no choice meets `passingScore=60`
+- [ ] `multi-agent-collaboration#5` — no choice meets `passingScore=60`
+- [ ] `agentic-testing-loop#4` — no choice meets `passingScore=60`
+- [ ] `agentic-ui-delivery#5` — no choice meets `passingScore=60`
+- [ ] `agentic-swarm-management#4` — negative score (`-5`)
+- [ ] `frontier-evals-logic#8` — negative score (`-5`)
+
+### 🟡 Low severity — Empty `explanation` fields (18)
+`explanation` is contract-required `LocalizedString`, but several tasks ship `{ en: '', ru: '' }`. UI renders an empty feedback block — the task still completes, but post-task feedback is missing. Fix: write a 1–2 sentence explanation per task, in both locales.
+- [ ] `agentic-swarm-management#9`
+- [ ] `ai-alignment#6`
+- [ ] `ai-history#6`
+- [ ] `ai-regulation-eu#5`
+- [ ] `ai-regulation-ru#5`
+- [ ] `ai-research#6`
+- [ ] `ai-singularity#6`
+- [ ] `chatgpt-moment#5`
+- [ ] `claude-code-agentic-loop#9`
+- [ ] `deep-search-agents#6`
+- [ ] `fine-tuning-101#8`
+- [ ] `llm-guardrails#5`
+- [ ] `llm-landscape#11`
+- [ ] `llm-mechanics#8`
+- [ ] `post-chatgpt-history#6`
+- [ ] `prompting-101#6`
+- [ ] `research-grounding#6`
+- [ ] `scaling-hypothesis#5`
+- [ ] `llama-3-1-8b#7` — found 2026-05-16 after the initial triage (room shipped after `TESTING.md`); test suite now reports 48 failures total, all tracked here
+
+### 🟢 Gate — Fold tests into `check-all`
+- [ ] Re-add `npm run test` to `check-all` in `package.json` once all items above are green. Until then, `check-all` stays at `lint && tsc --noEmit` so unrelated work isn't blocked by pre-existing red.
+
+## Completed (2026-05-07 session — by Claude Code)
+- [x] Shipped production deploy `1b6588e` to Vercel (`ai-learning-platform-murex.vercel.app`): 151 files, +12331/-481, including all backlog items below. (by Claude Code)
+- [x] Added `/${lang}/compete` and `/${lang}/leaderboard` pages to back the existing sidebar routes. (by Claude Code)
+- [x] Added `/${lang}/faq` page covering platform basics, auth, progress/streak, troubleshooting, and privacy. (by Claude Code)
+- [x] Added 5 new Agent Coding rooms with theory components + task files: `agentic-swarm-management`, `claude-code-agentic-loop`, `claude-code-pro-workflow`, `mcp-tool-ecosystems`, `frontier-evals-logic`. (by Claude Code)
+- [x] Added `PromptPlayground` and `AIProfessionCard` components plus `src/data/rooms/playgroundConfigs.ts` data. (by Claude Code)
+- [x] Repo hygiene: normalized `.gitignore` (`.next/`, `__pycache__/`, `*.pyc`), untracked previously-tracked Python cache files, removed stray `backend/=1.40.0` pip artifact. (by Claude Code)
+
 ## Completed
 - [x] Moved `/${lang}/rooms` difficulty/focus/status filters into a dedicated desktop sidebar rail with sticky placement and a compact result summary. (by Codex)
 - [x] Increased `/${lang}/rooms` density on large screens with a wider container, more columns, and tighter card spacing. (by Codex)
@@ -95,7 +180,7 @@
 
 ## Completed (2026-03-17 session — by Codex)
 - [x] Updated AI History theory Chapter 1 event cards from desktop two-column layout to single-column flow per UI request. (by Codex)
-- [x] Synced docs for this UI behavior update in `README.md`, `README.ru.md`, `PROGRESS.md`, and `PROGRESS.ru.md`. (by Codex)
+- [x] Synced docs for this UI behavior update in `../README.md`, `../README.ru.md`, `PROGRESS.md`, and `PROGRESS.ru.md`. (by Codex)
 - [x] Removed italic styling from the AI History Chapter 1 reflective paragraph per UI request and synced docs updates. (by Codex)
 - [x] Enriched ChatGPT Moment theory Chapter 3 and Chapter 4 "Code Red" section in both locales, then synced `README`, `PROGRESS`, and `CURRICULUM` mirrors. (by Codex)
 - [x] Updated Singularity in AI Debates Chapter 2 comparison cards from two columns to a single-column flow and synced EN/RU docs. (by Codex)
@@ -134,7 +219,6 @@
 - [x] Added mandatory agent rules to AGENTS.md: chapter text depth gate, chapter heading typography lock (by Claude Code).
 
 ## In Progress
-- [ ] Add missing pages for sidebar routes: `/${lang}/compete`, `/${lang}/leaderboard`.
 - [ ] Launch DEC-002 implementation track for AI Learn Platform (`dec-002-platform-pipeline`): adapt Agent Ops into a terminal-session autonomous loop with 3 autonomy levels, Telegram approval gates, tiered review loop, quiet hours, and 4-hour digest cadence.
 
 ## Future Content (Room Pipeline)
@@ -161,7 +245,6 @@
 - [ ] **AC-402: Agent Coding Capstone** — ship a feature from brief to production-grade release with eval evidence.
 
 ## Future Product & Learning
-- [ ] Create FAQ page (`/${lang}/faq`) with sections: platform basics, auth, progress/streak, troubleshooting, privacy.
 - [ ] Add adaptive learning flow: repeat weak topics + personalized next-room recommendations.
 - [ ] Add spaced repetition mode (daily short review from previously failed tasks).
 - [ ] Implement a reusable roadmap-style view mode for trajectory, path-selection, and progression screens using the `ROADMAP_VIEW_MODE.md` reference.

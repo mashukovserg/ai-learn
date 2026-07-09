@@ -477,4 +477,44 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
       en: 'A mandatory process of demonstrating that a high-risk AI system meets all safety, transparency, and quality requirements before being placed on the market.',
     }
   },
+  'rope': {
+    id: 'rope',
+    term: { ru: 'RoPE', en: 'RoPE' },
+    definition: {
+      ru: 'Rotary Position Embeddings — способ закодировать позицию токена через поворот его вектора. Главное преимущество: RoPE можно «растянуть» постфактум, продолжая обучение на длинных последовательностях — именно так Llama 3.1 достигла окна контекста в 128K токенов.',
+      en: 'Rotary Position Embeddings — a way to encode a token\'s position by rotating its vector. Key advantage: RoPE can be "stretched" after the fact by continuing training on longer sequences — this is how Llama 3.1 reached a 128K-token context window.',
+    },
+  },
+  'gqa': {
+    id: 'gqa',
+    term: { ru: 'GQA', en: 'GQA' },
+    definition: {
+      ru: 'Grouped-Query Attention — механизм внимания, в котором несколько query-голов делят одну пару ключ/значение (Key/Value). Качество почти не страдает по сравнению с обычным multi-head attention, но KV-кэш в разы меньше — это критично для длинных контекстов и инференса на скромном железе.',
+      en: 'Grouped-Query Attention — an attention mechanism where several query heads share a single Key/Value pair. Quality is nearly identical to standard multi-head attention, but the KV cache is several times smaller — critical for long contexts and inference on modest hardware.',
+    },
+  },
+  'open-weights': {
+    id: 'open-weights',
+    term: { ru: 'Открытые веса', en: 'Open Weights' },
+    definition: {
+      ru: 'Открытые веса (open weights) — модель, чьи обученные параметры можно скачать и запустить на своём железе. Важно: это не то же самое, что open source — обучающие данные и пайплайн обучения обычно не публикуются, а лицензия может ограничивать коммерческое использование.',
+      en: 'Open weights — a model whose trained parameters can be downloaded and run on your own hardware. Important: this is not the same as open source — the training data and training pipeline are usually not published, and the license may restrict commercial use.',
+    },
+  },
+  'quantization': {
+    id: 'quantization',
+    term: { ru: 'Квантизация', en: 'Quantization' },
+    definition: {
+      ru: 'Квантизация — сжатие весов модели за счёт снижения точности чисел (например, с 16 бит до 4–8 бит на параметр). Модель занимает в 2–4 раза меньше памяти и работает быстрее ценой небольшой потери качества. Популярные уровни: Q8 (почти без потерь) и Q4 (заметная экономия, лёгкая деградация).',
+      en: 'Quantization — compressing model weights by lowering numeric precision (for example, from 16 bits down to 4–8 bits per parameter). The model takes 2–4x less memory and runs faster at the cost of a small quality loss. Common levels: Q8 (nearly lossless) and Q4 (big savings, slight degradation).',
+    },
+  },
+  'vram': {
+    id: 'vram',
+    term: { ru: 'VRAM', en: 'VRAM' },
+    definition: {
+      ru: 'VRAM (видеопамять) — память видеокарты, в которую при локальном запуске загружаются веса модели и KV-кэш. Именно объём VRAM определяет, какая модель поместится: 8 ГБ хватает на 7–8B в Q4, 16 ГБ — на 8B без сжатия. На Mac с Apple Silicon роль VRAM играет объединённая память.',
+      en: 'VRAM (video memory) — the GPU memory that holds the model weights and KV cache when running locally. VRAM capacity determines which model fits: 8 GB handles a 7–8B model in Q4, 16 GB fits an 8B model uncompressed. On Apple Silicon Macs, unified memory plays the role of VRAM.',
+    },
+  },
 };

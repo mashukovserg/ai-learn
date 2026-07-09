@@ -36,6 +36,8 @@ import AiRagTheory from '@/components/theory/AiRagTheory';
 import AiSecurityTheory from '@/components/theory/AiSecurityTheory';
 import AiResearchTheory from '@/components/theory/AiResearchTheory';
 import FineTuning101Theory from '@/components/theory/FineTuning101Theory';
+import LocalModels101Theory from '@/components/theory/LocalModels101Theory';
+import Llama318bTheory from '@/components/theory/Llama318bTheory';
 import AiSingularityTheory from "@/components/theory/AiSingularityTheory";
 import PromptEvalsTheory from "@/components/theory/PromptEvalsTheory";
 import Embeddings101Theory from "@/components/theory/Embeddings101Theory";
@@ -76,6 +78,8 @@ const THEORY_COMPONENTS: Record<string, React.ComponentType<{ lang: string }>> =
   'ai-security': AiSecurityTheory,
   'ai-research': AiResearchTheory,
   'fine-tuning-101': FineTuning101Theory,
+  'local-models-101': LocalModels101Theory,
+  'llama-3-1-8b': Llama318bTheory,
   'prompt-evals': PromptEvalsTheory,
   'ai-singularity': AiSingularityTheory,
   'embeddings-101': Embeddings101Theory,

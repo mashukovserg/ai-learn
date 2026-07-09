@@ -15,6 +15,7 @@ class AgentTaskORM(ModelBase):
     updated_at: Mapped[UpdatedAtColumn]
 
     user_id: Mapped[int] = mapped_column(ForeignKey('users.id'))
+    role: Mapped[str] = mapped_column(default='generalist', server_default='generalist')
     title: Mapped[str]
     objective: Mapped[str]
     priority: Mapped[int] = mapped_column(default=100, server_default='100')

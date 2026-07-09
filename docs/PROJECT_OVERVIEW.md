@@ -132,6 +132,7 @@ All tasks are bilingual — `en` and `ru` fields required for every visible stri
 ## 6. Content philosophy
 
 - **Pragmatic Instructional Narrative style:** conceptual analogies (scaffolding), conversational tone, contextual justification for why each topic matters, roadmap-oriented structure.
+- **High Interactivity:** every room must include at least one "sorting" (drag-to-reorder) or "mentor" (dialogue-based) task to move beyond simple multiple-choice questions and ensure deep engagement.
 - **Solvability guarantee:** every task must be answerable from the theory text in both languages. No external lookup required.
 - **Terminology system:** `src/data/glossary.ts` + `<Term>` hover tooltip component for technical terms, used inline in theory text.
 - **Depth gate:** minimum 120 words / 2 paragraphs per theory chapter.

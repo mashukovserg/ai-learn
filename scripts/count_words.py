@@ -65,7 +65,7 @@ def extract_from_ts():
     return metadata_results, task_results
 
 def get_markdown_counts():
-    obsidian_dir = os.path.join(PROJECT_ROOT, 'obsidian-lessons')
+    obsidian_dir = os.path.join(PROJECT_ROOT, 'docs/lessons')
     if not os.path.exists(obsidian_dir):
         print(f"Warning: {obsidian_dir} not found")
         return {}

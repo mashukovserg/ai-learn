@@ -50,9 +50,9 @@ AI learning platform with interactive theory + tasks, built with Next.js App Rou
 - The rooms catalog now places difficulty/focus/status controls in a dedicated side filter rail on desktop, keeping the room grid visible higher on the page while preserving a stacked mobile filter layout.
 - Fixed `/${lang}/rooms` hydration mismatch by deferring localStorage-based progress status reads to post-mount client sync.
 - Moved Skills Matrix to the Profile page (`/${lang}/settings`) and wired `/${lang}/skills` to redirect to `/${lang}/settings#skills-matrix` for backward compatibility.
-- Rooms pages (36 rooms):
+- Rooms pages (38 rooms):
   - `/${lang}/rooms` (listing page with live progress states, thematic focus filter, and compact difficulty/status metadata)
-  - `/${lang}/rooms/[id]` — Dynamic room renderer for 36 topics across foundations, debates, advanced systems, and agent coding, including the new `ai-career-trajectories` room with a dedicated career-roadmap theory layout.
+  - `/${lang}/rooms/[id]` — Dynamic room renderer for 38 topics across foundations, debates, advanced systems, agent coding, and open models, including the Open Models pair (`local-models-101`, `llama-3-1-8b`) and the `ai-career-trajectories` room with a dedicated career-roadmap theory layout.
 - Interactive task components:
   - `TaskQuestion` — input, multiple-choice, multiple-select
   - `TaskSorting` — drag-to-reorder with Framer Motion
@@ -122,6 +122,7 @@ AI learning platform with interactive theory + tasks, built with Next.js App Rou
 
 ## Content rules
 - **Style rule (Pragmatic Instructional Narrative):** use conceptual analogies (scaffolding), maintain a conversational tone to reduce "tech anxiety," provide contextual justification for why the topic matters, and keep a clear roadmap-oriented structure.
+- **High Interactivity rule:** every room must include at least one "sorting" (drag-to-reorder) or "mentor" (dialogue-based) task to ensure high interactivity and deep engagement.
 - **Localization rule:** all user-facing lesson content and tasks must be available in both English and Russian (no EN-only or RU-only blocks).
 - **Task coverage rule:** every task must be solvable from the lesson content in both languages.
 - **Explicit mapping rule:** if a task asks for classification (for example, "Select models that do NOT belong to US companies"), the lesson must explicitly provide that mapping in the theory text.
@@ -154,11 +155,20 @@ npm run dev
 ```
 Backend runs at `:8000`, frontend proxies `/api/*` to it automatically.
 
+### Tests
+```bash
+npm run test           # one-shot data-integrity + task-shape suite (Vitest)
+npm run test:watch     # watch mode
+npm run test:coverage  # v8 coverage report
+```
+The suite codifies the rules from `docs/AGENTS.md` → "Task data validation gate" and "Task ID sequencing" against `ROOMS_METADATA`, `PATHS_METADATA`, and `ROOM_TASKS`. The initial run surfaced 47 pre-existing data defects — see `docs/TESTING.md` for the strategy and triage list. `npm run test` is intentionally **not** part of `check-all` until that triage is cleared.
+
 ## Project docs
 All docs are available in English and Russian (`.ru.md`):
-- `PROGRESS.md` / `PROGRESS.ru.md`: implementation status and milestones
-- `BACKLOG.md` / `BACKLOG.ru.md`: active engineering backlog
-- `CURRICULUM.md` / `CURRICULUM.ru.md`: learning-path curriculum status
-- `ROOMS_IDEAS.md` / `ROOMS_IDEAS.ru.md`: content ideas and room/task design notes
-- `ROADMAP_VIEW_MODE.md` / `ROADMAP_VIEW_MODE.ru.md`: reference for roadmap-style trajectory screens and progression layouts
-- `DEVELOPER_GUIDE.md` / `DEVELOPER_GUIDE.ru.md`: codebase walkthrough for newcomers
+- `docs/PROGRESS.md` / `docs/PROGRESS.ru.md`: implementation status and milestones
+- `docs/BACKLOG.md` / `docs/BACKLOG.ru.md`: active engineering backlog
+- `docs/CURRICULUM.md` / `docs/CURRICULUM.ru.md`: learning-path curriculum status
+- `docs/ROOMS_IDEAS.md` / `docs/ROOMS_IDEAS.ru.md`: content ideas and room/task design notes
+- `docs/ROADMAP_VIEW_MODE.md` / `docs/ROADMAP_VIEW_MODE.ru.md`: reference for roadmap-style trajectory screens and progression layouts
+- `docs/DEVELOPER_GUIDE.md` / `docs/DEVELOPER_GUIDE.ru.md`: codebase walkthrough for newcomers
+- `docs/TESTING.md`: test strategy, coverage map, and triage list of known data issues

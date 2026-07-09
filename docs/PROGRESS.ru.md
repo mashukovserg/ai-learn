@@ -1,6 +1,6 @@
 # Снимок прогресса проекта
 
-Последняя синхронизация с кодовой базой: **2026-04-26**
+Последняя синхронизация с кодовой базой: **2026-05-16**
 
 ## Статус реализации
 - **Основная оболочка:** Готово (`AppShell`, `Sidebar`, `Navbar`).
@@ -9,8 +9,9 @@
 - **Сохранение прогресса:** Готово (хук `useProgress` — API при авторизации, localStorage для гостей и синхронизация гостевого прогресса с сервером при регистрации).
 - **Бэкенд:** Готово (FastAPI + PostgreSQL, JWT-авторизация, аккаунты пользователей, серверное сохранение прогресса, отслеживание очков/серии).
 - **Авторизация:** Готово (регистрация/вход/выход, JWT в httpOnly cookies, страница входа `/${lang}/login`).
-- **Реализовано страниц комнат:** 36
-  - `/${lang}/rooms/[id]` полностью подключен для: `agent-coding-foundations`, `agentic-coding-tools`, `agentic-cli-tools`, `prompt-contracts`, `multi-agent-collaboration`, `agentic-testing-loop`, `agentic-ui-delivery`, `llm-landscape`, `llm-mechanics`, `prompting-101`, `ai-career-trajectories`, `chatgpt-moment`, `post-chatgpt-history`, `ai-history`, `scaling-hypothesis`, `ai-singularity`, `prompt-evals`, `ai-image-creation`, `research-grounding`, `ai-agents`, `deep-search-agents`, `ai-rag`, `ai-security`, `ai-research`, `ai-alignment`, `native-multimodality`, `fine-tuning-101`, `embeddings-101`, `llm-guardrails`, `ai-regulation-ru`, `ai-regulation-eu`, `mcp-tool-ecosystems`, `agentic-swarm-management`, `frontier-evals-logic`, `claude-code-agentic-loop`, `claude-code-pro-workflow`.
+- **Реализовано страниц комнат:** 38 в `ROOMS_METADATA` (полностью подключено 37; у `prompt-evals` есть метаданные и теория, но нет файла заданий — см. `BACKLOG.md`)
+  - `/${lang}/rooms/[id]` полностью подключен для: `agent-coding-foundations`, `agentic-coding-tools`, `agentic-cli-tools`, `prompt-contracts`, `multi-agent-collaboration`, `agentic-testing-loop`, `agentic-ui-delivery`, `llm-landscape`, `llm-mechanics`, `prompting-101`, `ai-career-trajectories`, `chatgpt-moment`, `post-chatgpt-history`, `ai-history`, `scaling-hypothesis`, `ai-singularity`, `ai-image-creation`, `research-grounding`, `ai-agents`, `deep-search-agents`, `ai-rag`, `ai-security`, `ai-research`, `ai-alignment`, `native-multimodality`, `fine-tuning-101`, `embeddings-101`, `llm-guardrails`, `ai-regulation-ru`, `ai-regulation-eu`, `mcp-tool-ecosystems`, `agentic-swarm-management`, `frontier-evals-logic`, `claude-code-agentic-loop`, `claude-code-pro-workflow`, `local-models-101`, `llama-3-1-8b`.
+  - Категория «Открытые модели» (2 комнаты): `local-models-101` (Beginner-введение: открытые веса, зачем локально, ландшафт моделей, первый запуск) и `llama-3-1-8b` (Intermediate-разбор одной модели).
   - Добавлены комнаты Agent Coding: `agent-coding-foundations`, `agentic-coding-tools`, `agentic-cli-tools`, `prompt-contracts`, `multi-agent-collaboration`, `agentic-testing-loop`, `agentic-ui-delivery` (по 10 заданий, EN/RU).
 - **UI учебных путей:** Готово (`/${lang}/paths`, `/${lang}/paths/beginner`, `/${lang}/paths/ideas-history`, `/${lang}/paths/agentic-systems`, `/${lang}/paths/agent-coding`).
 - **Страница AI-профессий:** Готово (`/${lang}/professions`) с поиском, фильтрами сложности/типа роли, featured-карточкой и отдельным grid-каталогом профессий.
@@ -25,6 +26,8 @@
 ## Вехи платформы
 | Дата | Веха |
 |------|------|
+| 2026-05-16 | Выпущена комната `local-models-101` (Beginner, «Открытые модели / Open Models», 5 глав теории, 10 заданий 8 типов, 3 новых термина глоссария: open-weights, quantization, vram + переиспользован inference). Комната — вход в категорию; `llama-3-1-8b` остаётся углублённым разбором одной модели. Также опубликован `ROADMAP_3M.md` (роадмап агентов на 3 месяца). |
+| 2026-05-11 | Развёрнут первый слой тестов (Vitest, два набора в `src/data/rooms/__tests__/`, 1527 assertion'ов) и подготовлен `TESTING.md` со стратегией и тристаж-листом из 47 заранее существовавших дефектов данных, которые первый прогон выявил. `npm run test` пока не включён в `check-all` до разгребания этого списка. |
 | 2026-04-26 | Фильтры на `/${lang}/rooms` перенесены в отдельную desktop-side panel со sticky-позицией и компактным summary по результатам; на мобильных сохранен вертикальный режим. |
 | 2026-04-26 | Увеличена плотность `/${lang}/rooms` на больших экранах: контейнер шире, колонок больше, внутренние отступы карточек плотнее, чтобы на экране помещалось больше комнат. |
 | 2026-04-26 | На `/${lang}/rooms` уменьшена visual-cover зона: блоки с символами комнат стали меньше, шапки карточек ниже, верхняя композиция плотнее. |
@@ -93,7 +96,8 @@
 | 2026-03-22 | Вынесены 9 дизайн-токенов в `@theme`-блок Tailwind v4, заменено ~680 захардкоженных hex-значений в 40+ файлах на семантические классы цветов (Claude Code) |
 
 ## Оставшиеся пробелы
-- В сайдбаре есть ссылки на `compete`, `leaderboard`, но страницы не реализованы.
+- 47 дефектов данных по 36 комнатам теперь видны через `npm run test`. Тристаж и план починки — в `TESTING.md` → «Known data issues» и в `BACKLOG.md` → «Engineering follow-ups uncovered by tests».
+- `prompt-evals` присутствует в `ROOMS_METADATA`, но не зарегистрирован в `ROOM_TASKS` — комната фактически сломана на проде, пока не восстановлен файл заданий или не удалены метаданные.
 
 ## Текущее покрытие учебной программы
 - **Модуль «Основы AI»:** Комнаты 101 (Ландшафт LLM), 102 (Как мыслят LLM), 103 (Промптинг 101) и AI Career Trajectories.

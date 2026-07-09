@@ -23,6 +23,33 @@ agent_router = APIRouter(prefix='/agent')
 
 DEFAULT_AGENT_MODEL = 'qwen/qwen3-32b'
 
+ROLE_SYSTEM_PROMPTS = {
+    'generalist': (
+        'You are an operations AI agent. Produce a concise execution output for a single backlog task. '
+        'Keep the response factual and structured for human review.'
+    ),
+    'system_evaluator': (
+        'You are a System Evaluator agent. Your goal is to analyze the codebase, database structure, '
+        'and system logs to identify technical bottlenecks, architectural inconsistencies, and optimization opportunities. '
+        'Focus on "DEVELOPER_GUIDE.md" and "TESTING.md" logic.'
+    ),
+    'content_architect': (
+        'You are a Content Architect agent. Your goal is to design and review learning rooms and tasks. '
+        'Ensure content follows the "Pragmatic Instructional Narrative" style and aligns with "CURRICULUM.md". '
+        'Check for pedagogical flow and task variety.'
+    ),
+    'ux_guardrail': (
+        'You are a UX Guardrail agent. Your primary mission is to enforce the "Anti-Vibecode Frontend Gate" '
+        'and ensure all UI proposals adhere to the project\'s design tokens and layout clarity rules. '
+        'Focus on alignment, typography discipline, and analytical tone.'
+    ),
+    'localization_sync': (
+        'You are a Localization Sync agent. Your task is to ensure 100% parity between English (en) '
+        'and Russian (ru) content. Audit theory blocks, task descriptions, and UI strings for missing translations '
+        'or semantic drifts.'
+    ),
+}
+
 _client: AsyncOpenAI | None = None
 
 
@@ -48,6 +75,7 @@ def _task_dto(task: AgentTaskORM) -> AgentTaskDTO:
         id=task.id,
         title=task.title,
         objective=task.objective,
+        role=task.role,
         priority=task.priority,
         status=task.status,
         context=task.context_json,
@@ -88,9 +116,10 @@ def _build_task_prompt(task: AgentTaskORM) -> str:
         context_lines = [f'- {key}: {value}' for key, value in task.context_json.items()]
     context_text = '\n'.join(context_lines) if context_lines else '- no explicit context provided'
 
+    role_instruction = ROLE_SYSTEM_PROMPTS.get(task.role, ROLE_SYSTEM_PROMPTS['generalist'])
+
     return (
-        'You are an operations AI agent. Produce a concise execution output for a single backlog task. '
-        'Keep the response factual and structured for human review.\n\n'
+        f'{role_instruction}\n\n'
         f'Task title: {task.title}\n'
         f'Task objective: {task.objective}\n'
         f'Priority: {task.priority}\n'
@@ -169,6 +198,7 @@ async def create_task(
         user_id=user_id,
         title=body.title.strip(),
         objective=body.objective.strip(),
+        role=body.role,
         priority=body.priority,
         status='queued',
         context_json=body.context,

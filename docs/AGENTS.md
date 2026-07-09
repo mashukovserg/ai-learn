@@ -54,7 +54,7 @@ Do not ship user-facing text changes in only one locale unless the user explicit
 
 When behavior or setup changes, update both docs in the same task:
 
-1. `README.md`
+1. `../README.md`
 2. `PROGRESS.md`
 
 This includes (non-exhaustive):
@@ -91,11 +91,11 @@ Known absent routes (do not assume they exist):
 1. `/${lang}/compete`
 2. `/${lang}/leaderboard`
 
-### Room inventory (36 rooms in `ROOMS_METADATA`)
+### Room inventory (38 rooms in `ROOMS_METADATA`)
 
-Rooms with theory + tasks fully wired (36): all current `ROOMS_METADATA` entries are wired in the dynamic room route, including `ai-career-trajectories`, `prompt-contracts`, `mcp-tool-ecosystems`, `agentic-swarm-management`, `frontier-evals-logic`, `claude-code-agentic-loop`, and `claude-code-pro-workflow`.
+Rooms with theory + tasks fully wired (37): all current `ROOMS_METADATA` entries except `prompt-evals` (metadata + theory exist, task file missing — tracked in `BACKLOG.md`) are wired in the dynamic room route, including `ai-career-trajectories`, `prompt-contracts`, `mcp-tool-ecosystems`, `agentic-swarm-management`, `frontier-evals-logic`, `claude-code-agentic-loop`, `claude-code-pro-workflow`, and the Open Models pair `local-models-101` + `llama-3-1-8b`.
 
-Theory components mapped in `THEORY_COMPONENTS` (36 total) inside `src/app/[lang]/rooms/[id]/page.tsx`. Rooms without a mapping show a fallback placeholder.
+Theory components mapped in `THEORY_COMPONENTS` (38 total) inside `src/app/[lang]/rooms/[id]/page.tsx`. Rooms without a mapping show a fallback placeholder.
 
 ### Source of truth files (use these first)
 
@@ -151,11 +151,19 @@ Six components render tasks inside rooms (dispatched by `TaskType`):
 
 For coding tasks, agents should:
 
-1. Read `README.md` and this file before substantial edits.
+1. Read `../README.md` and this file before substantial edits.
 2. Prefer updating canonical sources over duplicating data in pages.
 3. Preserve bilingual behavior and update both `en` and `ru` where required.
 4. Run relevant checks after edits (`npm run check-all` at minimum for frontend changes).
 5. Report what was changed, what was verified, and any unresolved warnings/limitations.
+
+### Task mix and interactivity rule (Mandatory)
+
+To ensure high interactivity and engagement, every room must follow the "Task Mix Rule":
+
+1. Every room must include at least one "sorting" (drag-to-reorder) or "mentor" (dialogue-based) task.
+2. Relying exclusively on multiple-choice or input tasks is forbidden.
+3. Aim for a diverse mix of task types within each room to maintain learner momentum.
 
 ### Task data validation gate (Mandatory)
 
@@ -286,7 +294,7 @@ When a new room, feature, or backlog item is finished, the agent must in the sam
 2. Add a milestone row (date + description) to `PROGRESS.md`.
 3. Update room counts/lists in `PROGRESS.md` and `AGENTS.md` (Room inventory section) if a room was added or wired up.
 4. Update `CURRICULUM.md` if the change affects path/module/room coverage.
-5. Update `README.md` if the change affects routes, architecture, or user-visible behavior.
+5. Update `../README.md` if the change affects routes, architecture, or user-visible behavior.
 
 ### Agent work log (Mandatory)
 
@@ -301,7 +309,7 @@ When an agent completes work in a session, it must explicitly log what it did in
 
 When behavior/setup/content changes, update docs in the same task:
 
-1. `README.md`: setup, architecture, route/status overview.
+1. `../README.md`: setup, architecture, route/status overview.
 2. `PROGRESS.md`: implementation status and milestones.
 3. `CURRICULUM.md`: path/module/room coverage changes.
 4. `BACKLOG.md`: newly identified follow-up engineering/content work.

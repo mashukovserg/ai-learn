@@ -11,6 +11,7 @@ type AgentTask = {
   id: number;
   title: string;
   objective: string;
+  role: string;
   priority: number;
   status: TaskStatus;
   context: Record<string, string> | null;
@@ -47,6 +48,14 @@ type CycleRunResult = {
 
 const TASK_STATUSES: TaskStatus[] = ['queued', 'in_progress', 'review', 'done', 'blocked'];
 
+const AGENT_ROLES = [
+  'generalist',
+  'system_evaluator',
+  'content_architect',
+  'ux_guardrail',
+  'localization_sync',
+];
+
 async function fetchJson<T>(url: string, init?: RequestInit): Promise<T> {
   const res = await fetch(url, {
     credentials: 'include',
@@ -79,6 +88,7 @@ export default function AgentOpsPage(props: { params: Promise<{ lang: string }> 
 
   const [title, setTitle] = useState('');
   const [objective, setObjective] = useState('');
+  const [role, setRole] = useState('generalist');
   const [priority, setPriority] = useState(100);
   const [creating, setCreating] = useState(false);
 
@@ -92,6 +102,12 @@ export default function AgentOpsPage(props: { params: Promise<{ lang: string }> 
         createTask: 'Создать задачу',
         taskTitle: 'Заголовок задачи',
         taskObjective: 'Цель задачи',
+        taskRole: 'Роль агента',
+        roleGeneralist: 'Универсал',
+        roleEvaluator: 'Диагност',
+        roleArchitect: 'Архитектор',
+        roleUX: 'UX-страж',
+        roleLocalization: 'Локализация',
         taskPriority: 'Приоритет (меньше = выше)',
         createButton: 'Добавить в очередь',
         runCycle: 'Запустить 1 цикл',
@@ -126,6 +142,12 @@ export default function AgentOpsPage(props: { params: Promise<{ lang: string }> 
       createTask: 'Create task',
       taskTitle: 'Task title',
       taskObjective: 'Task objective',
+      taskRole: 'Agent role',
+      roleGeneralist: 'Generalist',
+      roleEvaluator: 'Evaluator',
+      roleArchitect: 'Architect',
+      roleUX: 'UX Guardrail',
+      roleLocalization: 'Localization',
       taskPriority: 'Priority (lower = higher)',
       createButton: 'Add to queue',
       runCycle: 'Run 1 cycle',
@@ -199,12 +221,14 @@ export default function AgentOpsPage(props: { params: Promise<{ lang: string }> 
         body: JSON.stringify({
           title: title.trim(),
           objective: objective.trim(),
+          role,
           priority,
         }),
       });
 
       setTitle('');
       setObjective('');
+      setRole('generalist');
       setPriority(100);
       setStatusMessage(t.createdOk);
       await loadAll(true);
@@ -323,7 +347,26 @@ export default function AgentOpsPage(props: { params: Promise<{ lang: string }> 
             />
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-4">
+            <div className="flex-1 min-w-[200px]">
+              <label className="text-xs text-neutral-500 block mb-1.5">{t.taskRole}</label>
+              <select
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+                className="w-full bg-base border border-border-subtle rounded-lg px-3 py-2.5 text-sm text-neutral-200 focus:outline-none focus:border-emerald-500/40"
+              >
+                {AGENT_ROLES.map((r) => (
+                  <option key={r} value={r}>
+                    {r === 'generalist' && t.roleGeneralist}
+                    {r === 'system_evaluator' && t.roleEvaluator}
+                    {r === 'content_architect' && t.roleArchitect}
+                    {r === 'ux_guardrail' && t.roleUX}
+                    {r === 'localization_sync' && t.roleLocalization}
+                  </option>
+                ))}
+              </select>
+            </div>
+
             <div>
               <label className="text-xs text-neutral-500 block mb-1.5">{t.taskPriority}</label>
               <input
@@ -375,7 +418,22 @@ export default function AgentOpsPage(props: { params: Promise<{ lang: string }> 
                   <article key={task.id} className="bg-base border border-border-subtle rounded-lg p-3.5">
                     <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
                       <div>
-                        <p className="text-sm font-semibold text-neutral-200">#{task.id} {task.title}</p>
+                        <div className="flex items-center gap-2">
+                          <p className="text-sm font-semibold text-neutral-200">#{task.id} {task.title}</p>
+                          <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border ${
+                            task.role === 'system_evaluator' ? 'bg-blue-500/10 text-blue-400 border-blue-500/20' :
+                            task.role === 'content_architect' ? 'bg-amber-500/10 text-amber-400 border-amber-500/20' :
+                            task.role === 'ux_guardrail' ? 'bg-purple-500/10 text-purple-400 border-purple-500/20' :
+                            task.role === 'localization_sync' ? 'bg-pink-500/10 text-pink-400 border-pink-500/20' :
+                            'bg-neutral-800 text-neutral-400 border-border-subtle'
+                          }`}>
+                            {task.role === 'generalist' && t.roleGeneralist}
+                            {task.role === 'system_evaluator' && t.roleEvaluator}
+                            {task.role === 'content_architect' && t.roleArchitect}
+                            {task.role === 'ux_guardrail' && t.roleUX}
+                            {task.role === 'localization_sync' && t.roleLocalization}
+                          </span>
+                        </div>
                         <p className="text-xs text-neutral-500 mt-1">P{task.priority} · {task.status}</p>
                       </div>
                       <select

@@ -359,6 +359,40 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     icon: 'Wrench',
   },
   {
+    id: 'local-models-101',
+    title: {
+      ru: 'Локальные модели 101: свой ИИ без облака',
+      en: 'Local Models 101: Your Own AI Without the Cloud',
+    },
+    description: {
+      ru: 'Что такое открытые веса, зачем запускать модель на своём железе, ландшафт открытых моделей (Llama, Qwen, Mistral, Gemma, Phi) и первый запуск через Ollama.',
+      en: 'What open weights are, why run a model on your own hardware, the open model landscape (Llama, Qwen, Mistral, Gemma, Phi), and your first run with Ollama.',
+    },
+    difficulty: 'Beginner',
+    time: { ru: '35 мин', en: '35m' },
+    category: { ru: 'Открытые модели', en: 'Open Models' },
+    image: '/images/llm-landscape-network.png',
+    pathIds: ['beginner', 'intermediate'],
+    icon: 'HardDrive',
+  },
+  {
+    id: 'llama-3-1-8b',
+    title: {
+      ru: 'Llama 3.1 8B: открытая модель, которая меняет правила',
+      en: 'Llama 3.1 8B: The Open Model That Changed the Rules',
+    },
+    description: {
+      ru: 'Почему Llama 3.1 8B стала символом открытого ИИ: архитектура (GQA, RoPE), окно контекста 128K и как запустить её на своём ноутбуке.',
+      en: 'Why Llama 3.1 8B became the icon of open AI: architecture (GQA, RoPE), 128K context window, and how to run it on your own laptop.',
+    },
+    difficulty: 'Intermediate',
+    time: { ru: '30 мин', en: '30m' },
+    category: { ru: 'Открытые модели', en: 'Open Models' },
+    image: '/images/llm-landscape-network.png',
+    pathIds: ['intermediate', 'beginner'],
+    icon: 'Flame',
+  },
+  {
     id: 'embeddings-101',
     title: { ru: 'Эмбеддинги и векторный поиск', en: 'Embeddings & Vector Search' },
     description: {

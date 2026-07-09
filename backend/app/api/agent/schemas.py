@@ -10,6 +10,7 @@ RunStatus = Literal['running', 'completed', 'failed']
 class AgentTaskCreateDTO(BaseModel):
     title: str = Field(..., min_length=1, max_length=180)
     objective: str = Field(..., min_length=1, max_length=4000)
+    role: str = Field(default='generalist', min_length=1, max_length=50)
     priority: int = Field(default=100, ge=1, le=1000)
     context: dict[str, str] | None = None
 
@@ -22,6 +23,7 @@ class AgentTaskDTO(BaseModel):
     id: int
     title: str
     objective: str
+    role: str
     priority: int
     status: TaskStatus
     context: dict[str, str] | None

@@ -1,5 +1,82 @@
 # AI-Learn: Бэклог
 
+> **Активный роадмап:** [`ROADMAP_3M.ru.md`](ROADMAP_3M.ru.md) (16.05.2026 → 15.08.2026) — агенты берут работу в первую очередь оттуда; здесь остаются детальные punch-list'ы и журнал работ.
+
+## Завершено (сессия 2026-05-16 — by Claude Code)
+- [x] Полное ревью проекта (документация + кодовая база) и роадмап для агентов на 3 месяца: `ROADMAP_3M.md` + `ROADMAP_3M.ru.md`. Месяц 1 — исправление 47 дефектов данных, восстановление `prompt-evals`, включение тестового гейта, инфраструктура картинок в заданиях, пилотные скриншоты, пакет GROK-заданий; месяц 2 — завершение пути Agent Coding (AC-301…AC-402), раскатка скриншотов, smoke-тесты бэкенда; месяц 3 — лидерборд, интервальное повторение, аналитика, stretch-пункты. (by Claude Code)
+- [x] Выпущена комната `local-models-101` — Beginner-вход в категорию «Открытые модели / Open Models» (5 глав теории с `<Term>`-тултипами, 10 заданий 8 типов, все проходят Vitest-гейт в обеих локалях; 3 новых термина глоссария: `open-weights`, `quantization`, `vram`). `llama-3-1-8b` остаётся углублённым разбором одной модели; документация синхронизирована (README, PROGRESS, CURRICULUM, AGENTS, CLAUDE). (by Claude Code)
+
+## Завершено (сессия 2026-05-11 — by Claude Code)
+- [x] Развёрнут первый слой тестов: Vitest + `vite-tsconfig-paths`, `vitest.config.ts`, npm-скрипты (`test`, `test:watch`, `test:coverage`) и два набора в `src/data/rooms/__tests__/` (data integrity + per-task-type валидация, 1527 assertion'ов суммарно). Тесты кодифицируют правила из `AGENTS.md` → «Task data validation gate» и «Task ID sequencing». (by Claude Code)
+- [x] Создан `TESTING.md` со стратегией, картой покрытия и тристаж-листом из 47 дефектов данных, найденных первым прогоном: 22 битых `categorize`-маппинга, 6 нерешаемых `scenario`-заданий, 17 пустых `explanation`-полей, 1 незарегистрированная комната (см. инженерные follow-ups ниже). (by Claude Code)
+
+## Инженерные follow-ups, найденные тестами (2026-05-11)
+
+Самодостаточный punch-list. Перезапускайте `npm run test` после каждой починки, чтобы пункт отвалился. Когда список пуст — верните `npm run test` в `check-all` в `package.json`.
+
+### 🔴 Critical — комната `prompt-evals` сломана на проде (1)
+Есть в `ROOMS_METADATA`, но отсутствует в `ROOM_TASKS` и в `src/data/rooms/tasks/` — клик по комнате попадает на пустую/сломанную страницу. По вехе `PROGRESS.md` от 2026-02-17 комната когда-то имела 6 заданий; нужно либо восстановить файл, либо удалить запись из метаданных.
+- [ ] `prompt-evals` — восстановить `src/data/rooms/tasks/prompt-evals.ts` и добавить import в `tasks/index.ts`, **или** удалить из `ROOMS_METADATA` и из всех путей, где она упоминается.
+
+### 🔴 Critical — `categorize`-задания нерешаемы из-за не-английских ключей в `correctMapping` (22)
+Рендер комнаты в `src/app/[lang]/rooms/[id]/page.tsx:138-144` матчит ключи/значения `correctMapping` против `items[i].en` и `buckets[j].en`. Не-английские или несовпадающие ключи дают пустой resolved-mapping, и **ни один drop не считается верным** ни для EN, ни для RU. Починка: переписать каждый `correctMapping` так, чтобы каждый ключ совпадал с некоторым `items[i].en` точно, и каждое значение — с `buckets[j].en` точно.
+- [ ] `agent-coding-foundations#6`
+- [ ] `agent-coding-foundations#7`
+- [ ] `agentic-swarm-management#6`
+- [ ] `agentic-testing-loop#3`
+- [ ] `agentic-ui-delivery#3`
+- [ ] `ai-agents#4`
+- [ ] `ai-history#8`
+- [ ] `ai-image-creation#5`
+- [ ] `ai-rag#3`
+- [ ] `ai-regulation-eu#2`
+- [ ] `ai-regulation-ru#3`
+- [ ] `ai-security#4`
+- [ ] `chatgpt-moment#8`
+- [ ] `claude-code-agentic-loop#2`
+- [ ] `frontier-evals-logic#6`
+- [ ] `llm-guardrails#2`
+- [ ] `llm-mechanics#11`
+- [ ] `multi-agent-collaboration#4`
+- [ ] `native-multimodality#5`
+- [ ] `prompt-contracts#4`
+- [ ] `prompting-101#9`
+- [ ] `scaling-hypothesis#6`
+
+### 🔴 Critical — `scenario`-задания нерешаемы (6)
+Либо ни один choice не достигает `passingScore` (по умолчанию `60`), либо score выходит за `[0, 100]`. Сценарий невозможно пройти. Починка: пересмотреть scoring-рубрику, гарантировать хотя бы один choice с `score >= passingScore`, и зажать все `score` в `[0, 100]`.
+- [ ] `prompt-contracts#5` — нет choice с `score >= passingScore=60`
+- [ ] `multi-agent-collaboration#5` — нет choice с `score >= passingScore=60`
+- [ ] `agentic-testing-loop#4` — нет choice с `score >= passingScore=60`
+- [ ] `agentic-ui-delivery#5` — нет choice с `score >= passingScore=60`
+- [ ] `agentic-swarm-management#4` — отрицательный score (`-5`)
+- [ ] `frontier-evals-logic#8` — отрицательный score (`-5`)
+
+### 🟡 Low severity — Пустые `explanation`-поля (18)
+`explanation` по контракту — обязательный `LocalizedString`, но в ряде заданий ship'ится `{ en: '', ru: '' }`. UI рендерит пустой блок обратной связи — задание всё ещё проходится, но пост-task-фидбэк теряется. Починка: написать 1–2 предложения объяснения на оба языка.
+- [ ] `agentic-swarm-management#9`
+- [ ] `ai-alignment#6`
+- [ ] `ai-history#6`
+- [ ] `ai-regulation-eu#5`
+- [ ] `ai-regulation-ru#5`
+- [ ] `ai-research#6`
+- [ ] `ai-singularity#6`
+- [ ] `chatgpt-moment#5`
+- [ ] `claude-code-agentic-loop#9`
+- [ ] `deep-search-agents#6`
+- [ ] `fine-tuning-101#8`
+- [ ] `llm-guardrails#5`
+- [ ] `llm-landscape#11`
+- [ ] `llm-mechanics#8`
+- [ ] `post-chatgpt-history#6`
+- [ ] `prompting-101#6`
+- [ ] `research-grounding#6`
+- [ ] `scaling-hypothesis#5`
+- [ ] `llama-3-1-8b#7` — найден 2026-05-16 после первичного триажа (комната появилась после `TESTING.md`); тестовый набор теперь показывает 48 падений суммарно, все учтены здесь
+
+### 🟢 Gate — Вернуть тесты в `check-all`
+- [ ] Вернуть `npm run test` в `check-all` в `package.json` после того, как все пункты выше станут зелёными. До этого `check-all` остаётся `lint && tsc --noEmit`, чтобы не блокировать несвязанную работу заранее красным состоянием.
+
 ## Завершено
 - [x] На `/${lang}/rooms` фильтры сложности/фокуса/статуса перенесены в отдельную desktop-side panel со sticky-позицией и компактным summary по результатам. (by Codex)
 - [x] Увеличена плотность `/${lang}/rooms` на больших экранах: более широкий контейнер, больше колонок и более плотные отступы карточек. (by Codex)
@@ -96,7 +173,7 @@
 
 ## Завершено (сессия 2026-03-17 — Codex)
 - [x] Карточки событий в главе 1 теории AI History переведены из desktop-двухколоночного layout в одноколоночный поток по запросу. (by Codex)
-- [x] Синхронизирована документация по этому UI-изменению: `README.md`, `README.ru.md`, `PROGRESS.md`, `PROGRESS.ru.md`. (by Codex)
+- [x] Синхронизирована документация по этому UI-изменению: `../README.md`, `../README.ru.md`, `PROGRESS.md`, `PROGRESS.ru.md`. (by Codex)
 - [x] Убран курсив у рефлексивного абзаца в главе 1 теории AI History по UI-запросу, документация синхронизирована. (by Codex)
 - [x] Расширен контент ChatGPT Moment в главе 3 и секции "Code Red" главы 4 на двух языках; синхронизированы `README`, `PROGRESS`, `CURRICULUM` и их RU-зеркала. (by Codex)
 - [x] В Singularity in AI Debates карточки сравнения лагерей в главе 2 переведены из двух колонок в одноколоночный поток и синхронизированы EN/RU-документы. (by Codex)
