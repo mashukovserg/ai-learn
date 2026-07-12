@@ -26,6 +26,7 @@ Last synced with codebase: **2026-05-16**
 ## Platform milestones
 | Date | Milestone |
 |------|-----------|
+| 2026-07-12 | Extended the `local-models-101` room with Chapter 6 «Local Models in Security Research» (EN/RU): privacy/offline/cost/reproducibility/customization/transparency motivations table, a curated defensive-security reading list, and a new task (`#11`, now 11 tasks) reinforcing the honest trade-off — local models lead on control/privacy/reproducibility, not raw capability. |
 | 2026-05-16 | Shipped the `local-models-101` room (Beginner, «Открытые модели / Open Models», 5 theory chapters, 10 tasks across 8 task types, 3 new glossary terms: open-weights, quantization, vram + reused inference). The room is the category entry point; `llama-3-1-8b` remains the model-specific deep dive. Also published `ROADMAP_3M.md` (3-month agent roadmap). |
 | 2026-05-11 | Stood up the first test layer (Vitest, two suites under `src/data/rooms/__tests__/`, 1527 assertions) and authored `TESTING.md` with the strategy plus a triage list of 47 pre-existing data defects the initial run uncovered. `npm run test` is kept out of `check-all` until those are cleared. |
 | 2026-04-26 | Moved `/${lang}/rooms` filters into a dedicated desktop sidebar rail with sticky placement and a compact result summary; mobile keeps the stacked filter layout. |

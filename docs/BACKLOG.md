@@ -2,6 +2,10 @@
 
 > **Active roadmap:** [`ROADMAP_3M.md`](ROADMAP_3M.md) (2026-05-16 → 2026-08-15) — agents pick work from there first; this file keeps the detailed punch lists and the work log.
 
+## Completed (2026-07-12 session — by Claude Code)
+- [x] Added a root `CLAUDE.md` (the file Claude Code auto-loads) as the authoritative AI-assistant entry point: architecture, dev commands, project structure, key patterns, task types, testing, and the mandatory authoring gates distilled from `AGENTS.md`. Corrected drift (compete/leaderboard are now "coming soon" stubs; labs backend router; 38 rooms / 37 wired). (by Claude Code)
+- [x] Extended the `local-models-101` room with a security-research use-case chapter (Chapter 6, EN/RU): a privacy/offline/cost/reproducibility/customization/transparency motivations table and a curated defensive-security reading list (Hackphyr, ForensicLLM, Red Teaming LMs, and more), plus a new comprehension task (`#11`, room now 11 tasks) that reinforces the honest trade-off — local models lead on control/privacy/reproducibility, not raw capability, and authorization is always required. All `local-models-101` Vitest checks pass in both locales; `check-all` clean; room verified rendering at `/en` and `/ru`. (by Claude Code)
+
 ## Completed (2026-05-16 session — by Claude Code)
 - [x] Full project review (docs + codebase) and a 3-month agent roadmap: `ROADMAP_3M.md` + `ROADMAP_3M.ru.md`. Month 1 — fix 47 data defects, restore `prompt-evals`, arm the test gate, task-image infrastructure, pilot screenshots, GROK task pack; Month 2 — complete Agent Coding path (AC-301…AC-402), screenshot rollout, backend pytest smoke tests; Month 3 — leaderboard, spaced repetition, analytics, stretch items. (by Claude Code)
 - [x] Shipped `local-models-101` room — Beginner entry point of the «Открытые модели / Open Models» category (5 theory chapters with `<Term>` tooltips, 10 tasks across 8 task types, all passing the Vitest gate in both locales; 3 new glossary terms: `open-weights`, `quantization`, `vram`). `llama-3-1-8b` stays the model-specific deep dive; docs synced (README, PROGRESS, CURRICULUM, AGENTS, CLAUDE). (by Claude Code)
