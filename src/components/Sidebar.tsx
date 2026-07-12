@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import { Home, BookOpen, Briefcase, Layout, Terminal, Settings, PanelLeftClose, PanelLeftOpen, LogIn, LogOut, FlaskConical, HelpCircle, Trophy, Swords } from 'lucide-react';
+import { Home, BookOpen, Briefcase, Layout, Terminal, Settings, PanelLeftClose, PanelLeftOpen, LogIn, LogOut, FlaskConical, HelpCircle, Trophy, Swords, X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { useLang } from '@/hooks/useLang';
@@ -9,9 +9,13 @@ import { useLang } from '@/hooks/useLang';
 export default function Sidebar({
   collapsed,
   onToggle,
+  mobileOpen = false,
+  onNavigate,
 }: {
   collapsed: boolean;
   onToggle: () => void;
+  mobileOpen?: boolean;
+  onNavigate?: () => void;
 }) {
   const lang = useLang();
   const pathname = usePathname();
@@ -35,9 +39,9 @@ export default function Sidebar({
 
   return (
     <aside
-      className={`h-screen bg-card border-r border-border-card flex flex-col sticky top-0 transition-[width] duration-300 ease-out ${
-        collapsed ? 'w-[64px]' : 'w-[208px]'
-      }`}
+      className={`h-screen bg-card border-r border-border-card flex flex-col fixed inset-y-0 left-0 z-50 w-[240px] transition-transform duration-300 ease-out md:sticky md:top-0 md:z-auto md:translate-x-0 md:transition-[width] ${
+        mobileOpen ? 'translate-x-0' : '-translate-x-full'
+      } ${collapsed ? 'md:w-[64px]' : 'md:w-[208px]'}`}
     >
       <div className={`${collapsed ? 'px-3 py-4' : 'px-4 py-4'} flex items-center ${collapsed ? 'justify-center' : 'justify-between'}`}>
         <h1 className={`text-lg font-semibold text-neutral-200 flex items-center ${collapsed ? 'justify-center' : 'gap-2.5'} tracking-tight`}>
@@ -48,7 +52,7 @@ export default function Sidebar({
           <button
             type="button"
             onClick={onToggle}
-            className="p-1.5 rounded-md text-neutral-500 hover:text-neutral-200 hover:bg-base transition-colors"
+            className="hidden md:inline-flex p-1.5 rounded-md text-neutral-500 hover:text-neutral-200 hover:bg-base transition-colors"
             aria-label="Collapse sidebar"
           >
             <PanelLeftClose size={16} />
@@ -58,12 +62,21 @@ export default function Sidebar({
           <button
             type="button"
             onClick={onToggle}
-            className="absolute top-4 right-2 p-1.5 rounded-md text-neutral-500 hover:text-neutral-200 hover:bg-base transition-colors"
+            className="hidden md:inline-flex absolute top-4 right-2 p-1.5 rounded-md text-neutral-500 hover:text-neutral-200 hover:bg-base transition-colors"
             aria-label="Expand sidebar"
           >
             <PanelLeftOpen size={16} />
           </button>
         )}
+        {/* Mobile-only close button */}
+        <button
+          type="button"
+          onClick={onNavigate}
+          className="md:hidden p-1.5 rounded-md text-neutral-500 hover:text-neutral-200 hover:bg-base transition-colors"
+          aria-label={lang === 'ru' ? 'Закрыть меню' : 'Close menu'}
+        >
+          <X size={18} />
+        </button>
       </div>
 
       <nav className={`${collapsed ? 'px-2 py-2' : 'px-3 py-2'} flex-1`}>
@@ -75,6 +88,7 @@ export default function Sidebar({
             <Link
               key={item.label}
               href={item.href}
+              onClick={onNavigate}
               className={`flex items-center ${collapsed ? 'justify-center' : 'gap-3'} px-3 py-2.5 rounded-lg transition-colors mb-1 text-sm ${
                 isActive
                   ? 'bg-emerald-500/10 text-emerald-200 border border-emerald-500/20'
@@ -104,7 +118,7 @@ export default function Sidebar({
             {!collapsed && (
               <button
                 type="button"
-                onClick={() => logout()}
+                onClick={() => { logout(); onNavigate?.(); }}
                 className="p-1.5 rounded-md text-neutral-500 hover:text-neutral-200 hover:bg-base transition-colors"
                 title={lang === 'ru' ? 'Выйти' : 'Logout'}
               >
@@ -115,6 +129,7 @@ export default function Sidebar({
         ) : (
           <Link
             href={`/${lang}/login`}
+            onClick={onNavigate}
             className={`flex items-center ${collapsed ? 'justify-center' : 'gap-3'} px-3 py-2.5 rounded-lg text-sm text-neutral-500 hover:text-neutral-200 hover:bg-base transition-colors`}
           >
             <LogIn size={18} />
