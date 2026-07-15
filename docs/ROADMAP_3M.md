@@ -14,6 +14,29 @@ Companion docs: `AGENTS.md` (mandatory gates), `BACKLOG.md` (punch lists, work l
 
 ---
 
+## Now — immediate priorities (2026-07-15 reassessment)
+
+Reality check: by the calendar this is Month 3, but execution is still on the Month 1 🔴 items — `npm run test` reports 48 failures and `prompt-evals` still has no task file. Per this roadmap's own rule, Month 2/3 stay closed until the Month 1 🔴 items clear. Two items surfaced after the original plan was written and jump the queue.
+
+### N-1 🔥 Fix touch-drag on `TaskCategorize`
+- `TaskCategorize` uses native HTML5 drag (`draggable` + `onDragStart`), which does not fire on touchscreens, so **categorize tasks are unsolvable on mobile**. Replace with a touch-capable mechanism (Framer Motion drag, matching `TaskSorting`) or a tap-to-place fallback.
+
+**Acceptance:** a categorize task is solvable at 375px (verified on a touch viewport) and unchanged on desktop; `npm run check-all` clean; task-shape tests green.
+
+### N-2 🔥 Land the responsive-shell PR (#1)
+- Merge PR #1 (root `CLAUDE.md` + `local-models-101` security-research chapter + responsive mobile shell) instead of accumulating open work.
+
+**Acceptance:** PR merged to `main`; the designated branch restarted from `main` for follow-up work.
+
+### Recommended order from here
+1. **N-1, N-2** — mobile is visibly broken and there is in-flight work to close.
+2. **M1-1 → M1-2 → M1-3** — clear the 🔴 blockers and arm the test gate, so every later PR is protected automatically.
+3. Then resume Month 1 🟡 (M1-4…M1-6) and the rest of the plan.
+
+Rationale: first remove what is already broken and user-visible (mobile), then remove the blocker that makes further work unsafe (test gate), and only then grow content/features.
+
+---
+
 ## Month 1 — Stabilization + media groundwork (2026-05-16 → 2026-06-15)
 
 Goal: green test suite gating every change; task-level images available; first GROK content live.
