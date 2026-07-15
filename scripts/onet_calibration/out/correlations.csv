@@ -1,0 +1,4 @@
+factor,spearman_expert_vs_onet,strength
+f1_accessibility,0.28,слабая
+f2_routineness,0.15,нулевая
+f3_delegability,0.29,слабая

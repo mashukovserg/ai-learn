@@ -1,0 +1,101 @@
+profession,onet_soc,onet_occupation,confidence,note
+Специалист по клиентскому сервису,43-4051.00,Customer Service Representatives,high,
+SMM-менеджер,13-1161.01,Search Marketing Strategists,medium,SMM ближе всего к digital/search-маркетингу
+Инженер-сметчик,13-1051.00,Cost Estimators,high,
+Бухгалтер,13-2011.00,Accountants and Auditors,high,
+Веб-разработчик (frontend-разработчик),15-1254.00,Web Developers,high,
+Переводчик,27-3091.00,Interpreters and Translators,high,
+Разработчик приложений,15-1252.00,Software Developers,high,
+Инженер 3d моделирования,17-3011.00,Architectural and Civil Drafters,low,3D-моделирование как CAD/чертёж; нет точного узла
+Менеджер по закупкам,13-1023.00,"Purchasing Agents, Except Wholesale, Retail, and Farm Products",medium,массовая версия — агент по закупкам
+Редактор,27-3041.00,Editors,high,
+Логист,13-1081.00,Logisticians,high,
+Программист (backend-разработчик),15-1252.00,Software Developers,high,дубль с «Разработчик приложений» — один узел O*NET
+Проектировщик интерфейсов (дизайн пользовательского интерфейса),27-1024.00,Graphic Designers,medium,в этом файле нет UI/UX-узла; ближайший — графдизайн
+Религиовед,,,none,нет узла O*NET для религиоведа-исследователя
+Художник- иллюстратор,27-1013.00,"Fine Artists, Including Painters, Sculptors, and Illustrators",high,
+Маркетолог,13-1161.00,Market Research Analysts and Marketing Specialists,high,
+Менеджер по туризму (тур-менеджер),41-3041.00,Travel Agents,high,
+Системный аналитик,15-1211.00,Computer Systems Analysts,high,
+Сценарист,27-3043.00,Writers and Authors,high,
+PR менеджер/специалист по связям с общественностью.,27-3031.00,Public Relations Specialists,high,
+Дата-сайентист (Аналитик больших данных),15-2051.01,Business Intelligence Analysts,medium,нет узла Data Scientists; ближайший — BI-аналитик
+Инженер-метролог,19-4099.01,Quality Control Analysts,low,метролог ~ измерения/контроль; нет точного узла
+Инженер-схемотехник,17-2071.00,Electrical Engineers,medium,
+Историк,19-3093.00,Historians,high,
+Менеджер по продажам (продавец),41-2031.00,Retail Salespersons,medium,массовая версия = продавец
+Политолог,19-3094.00,Political Scientists,high,
+Системный администратор,15-1244.00,Network and Computer Systems Administrators,high,
+Социолог-аналитик,19-3041.00,Sociologists,high,
+Экономист,19-3011.00,Economists,high,
+Бренд-менеджер,11-2021.00,Marketing Managers,medium,
+Гидрометеоролог,19-2021.00,Atmospheric and Space Scientists,medium,метео-часть; гидро-часть у Hydrologists
+Государственный/муниципальный служащий,43-4061.00,"Eligibility Interviewers, Government Programs",low,очень широкая категория; взят клерк-уровень
+Инженер по контролю качества,19-4099.01,Quality Control Analysts,medium,
+Инженер- технолог в области легкой промышленности,17-2112.00,Industrial Engineers,low,
+Инженер-конструктор,17-2141.00,Mechanical Engineers,medium,
+Специалист по машинному обучению,15-2051.01,Business Intelligence Analysts,low,нет узла ML/Data Scientist; прокси слабый
+Бизнес-аналитик,13-1111.00,Management Analysts,medium,
+Журналист,27-3023.00,"News Analysts, Reporters, and Journalists",high,
+Искусствовед,25-4012.00,Curators,medium,искусствовед ~ куратор/арт-историк
+Менеджер по обучению и развитию персонала,13-1151.00,Training and Development Specialists,medium,массовая версия = специалист
+Финансовый консультант,13-2052.00,Personal Financial Advisors,high,
+Event менеджер,13-1121.00,"Meeting, Convention, and Event Planners",high,
+Арт-менеджер,13-1011.00,"Agents and Business Managers of Artists, Performers, and Athletes",medium,
+Архитектор программного обеспечения,15-1299.08,Computer Systems Engineers/Architects,high,
+Инженер-радиотехник,17-2071.00,Electrical Engineers,medium,нет отдельного узла Electronics Engineers в файле
+Инженер-технолог,17-2112.00,Industrial Engineers,medium,
+Нотариус,23-2093.00,"Title Examiners, Abstractors, and Searchers",low,нет узла «нотариус»; ближайший — правовые документы
+Промышленный дизайнер,27-1021.00,Commercial and Industrial Designers,high,
+Специалист по кибербезопасности,15-1212.00,Information Security Analysts,high,
+Химик-аналитик,19-2031.00,Chemists,high,
+Юрист,23-1011.00,Lawyers,high,
+Инженер по охране труда,19-5011.00,Occupational Health and Safety Specialists,medium,
+Инженер-робототехник,17-2199.08,Robotics Engineers,high,
+Провизор,29-1051.00,Pharmacists,high,
+Специалист по экономической безопасности,,,none,нет узла O*NET; ближе всего Financial Examiners, но слабо
+Экскурсовод,39-7011.00,Tour Guides and Escorts,high,
+Генетик,19-1029.03,Geneticists,high,
+Геофизик,19-2042.00,"Geoscientists, Except Hydrologists and Geographers",high,
+Инженер композитных материалов,17-2131.00,Materials Engineers,high,
+Инженер по автоматизации,17-2071.00,Electrical Engineers,low,автоматизация ~ АСУ; нет точного узла
+Инженер-механик,17-2141.00,Mechanical Engineers,high,
+Микробиолог,19-1022.00,Microbiologists,high,
+Специалист в области гостиничного и ресторанного бизнеса,11-9081.00,Lodging Managers,medium,
+Специалист по международным отношениям,19-3094.00,Political Scientists,low,
+Телерадиоведущий,27-3011.00,Broadcast Announcers and Radio Disc Jockeys,high,
+Эпидемиолог,19-1041.00,Epidemiologists,high,
+Агроинженер,17-2021.00,Agricultural Engineers,high,
+Адвокат,23-1011.00,Lawyers,high,дубль с «Юрист» — один узел O*NET
+Актер,27-2011.00,Actors,high,
+Геодезист,17-1022.01,Geodetic Surveyors,high,
+Инженер по защите окружающей среды,17-2081.00,Environmental Engineers,high,
+Наноинженер,17-2199.09,Nanosystems Engineers,high,
+Сурдопереводчик,27-3091.00,Interpreters and Translators,medium,сурдоперевод как подвид перевода; дубль узла
+Фитнес-тренер,39-9031.00,Exercise Trainers and Group Fitness Instructors,high,
+Биоинженер,17-2031.00,Bioengineers and Biomedical Engineers,high,
+Биохимик,19-1021.00,Biochemists and Biophysicists,high,
+Врач-терапевт,29-1216.00,General Internal Medicine Physicians,high,
+Инженер по переработке нефти и газа,17-2171.00,Petroleum Engineers,high,
+Инженер-энергетик,17-2199.03,"Energy Engineers, Except Wind and Solar",high,
+Педагог,25-2031.00,"Secondary School Teachers, Except Special and Career/Technical Education",medium,обобщённый педагог
+Режиссер-постановщик,27-2012.00,Producers and Directors,high,
+Специалист по пожарной безопасности,17-2111.02,Fire-Prevention and Protection Engineers,medium,также близко Fire Inspectors 33-2021
+Специалист по социальной работе,21-1021.00,"Child, Family, and School Social Workers",medium,обобщённый соцработник
+Ветеринарный врач,29-1131.00,Veterinarians,high,
+Инженер-конструктор робототехники военного назначения,17-2199.08,Robotics Engineers,low,военная специфика; гражданский прокси
+Инженер-проектировщик оружия,17-2141.00,Mechanical Engineers,low,нет гражданского эквивалента
+Инженер-электрик,47-2111.00,Electricians,high,по экспертной оценке 2/6/2 — это электрик-монтажник, не инженер-проектировщик
+Психолог-консультант,19-3033.00,Clinical and Counseling Psychologists,high,
+Судья,23-1023.00,"Judges, Magistrate Judges, and Magistrates",high,
+Военный журналист,27-3023.00,"News Analysts, Reporters, and Journalists",medium,
+Врач-стоматолог,29-1021.00,"Dentists, General",high,
+Дефектолог,25-2056.00,"Special Education Teachers, Elementary School",medium,дефектолог ~ коррекционный педагог
+Инженер по эксплуатации систем вооружения,,,none,нет гражданского эквивалента в O*NET
+Инженер-строитель,17-2051.00,Civil Engineers,high,
+Разработчик киберпротезов и имплантов,17-2031.00,Bioengineers and Biomedical Engineers,high,
+Следователь,33-3021.00,Detectives and Criminal Investigators,high,
+Клинический психолог,19-3033.00,Clinical and Counseling Psychologists,high,дубль узла с «Психолог-консультант»
+Дипломат,,,none,нет узла O*NET для дипломата
+Реставратор архитектурных объектов,25-4013.00,Museum Technicians and Conservators,medium,реставратор ~ консерватор
+Хирург,29-1022.00,Oral and Maxillofacial Surgeons,medium,в файле нет узла общих хирургов; взят ближайший хирургический
