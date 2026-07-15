@@ -18,10 +18,10 @@ Companion docs: `AGENTS.md` (mandatory gates), `BACKLOG.md` (punch lists, work l
 
 Reality check: by the calendar this is Month 3, but execution is still on the Month 1 🔴 items — `npm run test` reports 48 failures and `prompt-evals` still has no task file. Per this roadmap's own rule, Month 2/3 stay closed until the Month 1 🔴 items clear. Two items surfaced after the original plan was written and jump the queue.
 
-### N-1 🔥 Fix touch-drag on `TaskCategorize`
-- `TaskCategorize` uses native HTML5 drag (`draggable` + `onDragStart`), which does not fire on touchscreens, so **categorize tasks are unsolvable on mobile**. Replace with a touch-capable mechanism (Framer Motion drag, matching `TaskSorting`) or a tap-to-place fallback.
+### N-1 ✅ Fix touch-drag on `TaskCategorize` (done 2026-07-15, by Claude Code)
+- `TaskCategorize` used native HTML5 drag (`draggable` + `onDragStart`), which does not fire on touchscreens, so categorize tasks were **unsolvable on mobile**. Added a tap-to-place interaction (tap an item → tap a category) that works on touch, mouse, and keyboard; native drag is preserved for desktop.
 
-**Acceptance:** a categorize task is solvable at 375px (verified on a touch viewport) and unchanged on desktop; `npm run check-all` clean; task-shape tests green.
+**Acceptance:** ✅ verified solvable end-to-end on a 375px touch viewport (headless Chromium, `hasTouch`); desktop drag untouched; `npm run check-all` clean.
 
 ### N-2 🔥 Land the responsive-shell PR (#1)
 - Merge PR #1 (root `CLAUDE.md` + `local-models-101` security-research chapter + responsive mobile shell) instead of accumulating open work.

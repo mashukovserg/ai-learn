@@ -26,6 +26,7 @@ Last synced with codebase: **2026-05-16**
 ## Platform milestones
 | Date | Milestone |
 |------|-----------|
+| 2026-07-15 | Roadmap N-1: fixed touch-drag on `TaskCategorize` (categorize tasks were unsolvable on mobile — native HTML5 drag does not fire on touch). Added tap-to-place (tap item → tap category) with keyboard/`aria-pressed` support alongside desktop drag; verified solvable end-to-end on a 375px touch viewport. |
 | 2026-07-12 | Made the app shell responsive for mobile: below `md` (768px) the sidebar becomes an off-canvas drawer toggled by a hamburger in the `Navbar`, with a tap-to-dismiss backdrop and auto-close on navigation; the grid collapses to a single full-width column so content is no longer squeezed next to a fixed desktop sidebar. Desktop layout unchanged. Verified at 375px and 1280px. |
 | 2026-07-12 | Extended the `local-models-101` room with Chapter 6 «Local Models in Security Research» (EN/RU): privacy/offline/cost/reproducibility/customization/transparency motivations table, a curated defensive-security reading list, and a new task (`#11`, now 11 tasks) reinforcing the honest trade-off — local models lead on control/privacy/reproducibility, not raw capability. |
 | 2026-05-16 | Shipped the `local-models-101` room (Beginner, «Открытые модели / Open Models», 5 theory chapters, 10 tasks across 8 task types, 3 new glossary terms: open-weights, quantization, vram + reused inference). The room is the category entry point; `llama-3-1-8b` remains the model-specific deep dive. Also published `ROADMAP_3M.md` (3-month agent roadmap). |
