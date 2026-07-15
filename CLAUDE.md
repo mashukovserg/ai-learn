@@ -64,7 +64,7 @@ src/
 │   └── ...                      # AppShell, Sidebar, Navbar, modals, charts
 ├── data/
 │   ├── rooms/                   # SINGLE SOURCE OF TRUTH for room content
-│   │   ├── metadata.ts          # ROOMS_METADATA (38 rooms)
+│   │   ├── metadata.ts          # ROOMS_METADATA (39 rooms)
 │   │   ├── paths.ts             # PATHS_METADATA
 │   │   ├── types.ts             # LocalizedString, LocalizedTask, LocalizedRoomMetadata, PathMetadata
 │   │   ├── tasks/<room-id>.ts   # per-room task arrays → assembled in tasks/index.ts as ROOM_TASKS
@@ -162,7 +162,7 @@ These are enforced conventions, not suggestions. Read `docs/AGENTS.md` for full 
 
 ## Current State & Limitations
 
-- **38 rooms** in `ROOMS_METADATA`; 37 fully wired (theory + tasks). `prompt-evals` has metadata + theory but no task file yet (tracked in `docs/BACKLOG.md`).
+- **39 rooms** in `ROOMS_METADATA`; 38 fully wired (theory + tasks). `prompt-evals` has metadata + theory but no task file yet (tracked in `docs/BACKLOG.md`).
 - `compete/` and `leaderboard/` render bilingual "coming soon" placeholder pages; no ranking/competition backend yet (the `leaderboard` backend package is a stub with no router).
 - Agent Ops cycle scheduling is **manual** (`POST /api/agent/cycle/run`); no periodic scheduler.
 

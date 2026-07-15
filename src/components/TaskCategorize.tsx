@@ -177,7 +177,12 @@ export default function TaskCategorize({
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}
-                    onClick={e => { e.stopPropagation(); handleRemove(item); }}
+                    onClick={e => {
+                      e.stopPropagation();
+                      // If an item is selected (tap-to-place), a tap on a chip means
+                      // "place it into this chip's bucket", not "remove this chip".
+                      if (selectedItem) { handleBucketTap(bucket); } else { handleRemove(item); }
+                    }}
                     className={`px-2 py-1 rounded text-xs mb-1 transition-colors ${
                       resolvedStatus === 'correct'
                         ? 'bg-neutral-800/50 text-neutral-500 cursor-default'

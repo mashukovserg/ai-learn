@@ -91,7 +91,7 @@ Known absent routes (do not assume they exist):
 1. `/${lang}/compete`
 2. `/${lang}/leaderboard`
 
-### Room inventory (38 rooms in `ROOMS_METADATA`)
+### Room inventory (39 rooms in `ROOMS_METADATA`)
 
 Rooms with theory + tasks fully wired (37): all current `ROOMS_METADATA` entries except `prompt-evals` (metadata + theory exist, task file missing — tracked in `BACKLOG.md`) are wired in the dynamic room route, including `ai-career-trajectories`, `prompt-contracts`, `mcp-tool-ecosystems`, `agentic-swarm-management`, `frontier-evals-logic`, `claude-code-agentic-loop`, `claude-code-pro-workflow`, and the Open Models pair `local-models-101` + `llama-3-1-8b`.
 
