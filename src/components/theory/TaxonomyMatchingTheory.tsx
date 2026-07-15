@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Term from '@/components/Term';
 
 export default function TaxonomyMatchingTheory({ lang }: { lang: string }) {
   return (
@@ -13,8 +14,8 @@ export default function TaxonomyMatchingTheory({ lang }: { lang: string }) {
         <div className="space-y-6">
           <p className="text-neutral-300 leading-relaxed text-lg">
             {lang === 'ru'
-              ? 'Представьте 27 тысяч вакансий, собранных с рынка труда: примерно 18 тысяч уникальных названий должностей, написанных людьми как попало — «Senior Accountant», «Accountant (Urgent Hiring!)», «Chief Accountant — Dubai». С другой стороны — кураторский справочник из 154 профессий с чистыми названиями, синонимами, списками навыков и описаниями. Задача сопоставления (matching) — приклеить к каждой вакансии идентификатор профессии из справочника либо честно отметить «совпадения нет». Это классическая задача разрешения сущностей (entity resolution): много вариантов сырого текста нужно свести к одной канонической записи.'
-              : 'Picture 27,000 job vacancies scraped from a labor market: about 18,000 unique job titles, written by humans in every possible way — "Senior Accountant", "Accountant (Urgent Hiring!)", "Chief Accountant — Dubai". On the other side sits a curated catalog of 154 professions with clean names, synonyms, skill lists, and descriptions. The matching task is to attach a profession ID from the catalog to each vacancy, or to honestly mark "no match". This is a classic entity-resolution problem: many raw text variants must collapse onto one canonical record.'}
+              ? <>{'Представьте 27 тысяч вакансий, собранных с рынка труда: примерно 18 тысяч уникальных названий должностей, написанных людьми как попало — «Senior Accountant», «Accountant (Urgent Hiring!)», «Chief Accountant — Dubai». С другой стороны — кураторский справочник из 154 профессий с чистыми названиями, синонимами, списками навыков и описаниями. Задача сопоставления (matching) — приклеить к каждой вакансии идентификатор профессии из справочника либо честно отметить «совпадения нет». Это классическая задача '}<Term id="entity-resolution" lang={lang}>разрешения сущностей (entity resolution)</Term>{': много вариантов сырого текста нужно свести к одной канонической записи.'}</>
+              : <>{'Picture 27,000 job vacancies scraped from a labor market: about 18,000 unique job titles, written by humans in every possible way — "Senior Accountant", "Accountant (Urgent Hiring!)", "Chief Accountant — Dubai". On the other side sits a curated catalog of 154 professions with clean names, synonyms, skill lists, and descriptions. The matching task is to attach a profession ID from the catalog to each vacancy, or to honestly mark "no match". This is a classic '}<Term id="entity-resolution" lang={lang}>entity-resolution</Term>{' problem: many raw text variants must collapse onto one canonical record.'}</>}
           </p>
           <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru'

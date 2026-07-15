@@ -5,6 +5,14 @@ export interface GlossaryTerm {
 }
 
 export const GLOSSARY: Record<string, GlossaryTerm> = {
+  'entity-resolution': {
+    id: 'entity-resolution',
+    term: { ru: 'Разрешение сущностей', en: 'Entity Resolution' },
+    definition: {
+      ru: 'Разрешение сущностей (entity resolution) — задача свести множество разных представлений одного объекта (например, десятки написаний одной должности) к единой канонической записи. Главная сложность — связь «многие к одному» и зашумлённые данные; решается каскадом лексических и семантических методов с явным исходом «нет совпадения».',
+      en: 'Entity resolution is the task of collapsing many different representations of the same object (for example, dozens of spellings of one job title) into a single canonical record. The core challenge is the many-to-one relationship and noisy data; it is solved with a cascade of lexical and semantic methods, with an explicit "no match" outcome.'
+    }
+  },
   'llm': {
     id: 'llm',
     term: { ru: 'LLM', en: 'LLM' },
