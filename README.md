@@ -161,7 +161,7 @@ npm run test           # one-shot data-integrity + task-shape suite (Vitest)
 npm run test:watch     # watch mode
 npm run test:coverage  # v8 coverage report
 ```
-The suite codifies the rules from `docs/AGENTS.md` → "Task data validation gate" and "Task ID sequencing" against `ROOMS_METADATA`, `PATHS_METADATA`, and `ROOM_TASKS`. The initial run surfaced 47 pre-existing data defects — see `docs/TESTING.md` for the strategy and triage list. `npm run test` is intentionally **not** part of `check-all` until that triage is cleared.
+The suite codifies the rules from `docs/AGENTS.md` → "Task data validation gate" and "Task ID sequencing" against `ROOMS_METADATA`, `PATHS_METADATA`, and `ROOM_TASKS`. The 47 pre-existing data defects surfaced by the initial run were fixed on 2026-07-15 (see `docs/TESTING.md` for history), and `npm run test` is now part of `check-all` — the suite gates every change.
 
 ## Project docs
 All docs are available in English and Russian (`.ru.md`):

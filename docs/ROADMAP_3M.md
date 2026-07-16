@@ -41,21 +41,21 @@ Rationale: first remove what is already broken and user-visible (mobile), then r
 
 Goal: green test suite gating every change; task-level images available; first GROK content live.
 
-### M1-1 🔴 Fix the 47 data defects
-- [ ] Fix 22 `categorize` tasks: every `correctMapping` key must exactly equal some `items[i].en`, every value some `buckets[j].en` (full task list in `BACKLOG.md` → "Engineering follow-ups").
-- [ ] Fix 6 `scenario` tasks: at least one choice with `score >= passingScore`, all scores clamped to `[0, 100]`.
-- [ ] Write bilingual `explanation` for the 17 tasks shipping `{ en: '', ru: '' }`.
+### M1-1 ✅ Fix the 47 data defects (done 2026-07-15, by Claude Code)
+- [x] Fix 22 `categorize` tasks: every `correctMapping` key must exactly equal some `items[i].en`, every value some `buckets[j].en` (full task list in `BACKLOG.md` → "Engineering follow-ups").
+- [x] Fix 6 `scenario` tasks: at least one choice with `score >= passingScore`, all scores clamped to `[0, 100]` (0–10 scale rescaled ×10).
+- [x] Write bilingual `explanation` for the tasks shipping `{ en: '', ru: '' }` (19 including `llama-3-1-8b#7` found post-triage).
 
 **Acceptance:** `npm run test` reports 0 failures for these categories; each fixed task manually walked through once in each locale at `http://localhost:3000`.
 
-### M1-2 🔴 Restore the `prompt-evals` room
-- [ ] Create `src/data/rooms/tasks/prompt-evals.ts` with 8–10 tasks (≥3 task types), all answerable from the existing `src/components/theory/PromptEvalsTheory.tsx`.
-- [ ] Register in `src/data/rooms/tasks/index.ts`.
+### M1-2 ✅ Restore the `prompt-evals` room (done 2026-07-15, by Claude Code)
+- [x] Create `src/data/rooms/tasks/prompt-evals.ts` with 8–10 tasks (≥3 task types), all answerable from the existing `src/components/theory/PromptEvalsTheory.tsx` (9 tasks, 7 types incl. sorting + mentor).
+- [x] Register in `src/data/rooms/tasks/index.ts`.
 
 **Acceptance:** room opens, all tasks completable in both locales, progress reaches 100%.
 
-### M1-3 🔴 Arm the test gate
-- [ ] Add `npm run test` back into `check-all` in `package.json` (blocked until M1-1 and M1-2 are done).
+### M1-3 ✅ Arm the test gate (done 2026-07-15, by Claude Code)
+- [x] Add `npm run test` back into `check-all` in `package.json` — lint + typecheck + 1700 tests, all green.
 
 **Acceptance:** `npm run check-all` runs lint + typecheck + tests and passes clean.
 

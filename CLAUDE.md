@@ -144,7 +144,7 @@ Tailwind v4 only (no CSS Modules / scoped CSS / inline `style` unless unavoidabl
 npm run test           # data-integrity + task-shape suite
 npm run test:coverage
 ```
-Tests live in `src/**/__tests__/`. They codify `docs/AGENTS.md` "Task data validation gate" + "Task ID sequencing" against `ROOMS_METADATA`, `PATHS_METADATA`, and `ROOM_TASKS`. The initial run surfaced **47 pre-existing data defects** (triage list in `docs/TESTING.md`), so `npm run test` is intentionally **not** part of `check-all` yet. Don't fix those incidentally — they are tracked.
+Tests live in `src/**/__tests__/`. They codify `docs/AGENTS.md` "Task data validation gate" + "Task ID sequencing" against `ROOMS_METADATA`, `PATHS_METADATA`, and `ROOM_TASKS`. The 47 pre-existing data defects from the initial run were fixed on 2026-07-15, and `npm run test` is now **part of `check-all`** — the suite gates every change (history in `docs/TESTING.md`).
 
 ## Mandatory Authoring Gates (from `docs/AGENTS.md`)
 
@@ -162,7 +162,7 @@ These are enforced conventions, not suggestions. Read `docs/AGENTS.md` for full 
 
 ## Current State & Limitations
 
-- **39 rooms** in `ROOMS_METADATA`; 38 fully wired (theory + tasks). `prompt-evals` has metadata + theory but no task file yet (tracked in `docs/BACKLOG.md`).
+- **39 rooms** in `ROOMS_METADATA`, all 39 fully wired (theory + tasks) — `prompt-evals` got its task file on 2026-07-15.
 - `compete/` and `leaderboard/` render bilingual "coming soon" placeholder pages; no ranking/competition backend yet (the `leaderboard` backend package is a stub with no router).
 - Agent Ops cycle scheduling is **manual** (`POST /api/agent/cycle/run`); no periodic scheduler.
 
