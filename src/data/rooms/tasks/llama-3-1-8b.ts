@@ -200,7 +200,7 @@ export const llama31_8bTasks: LocalizedTask[] = [
       en: 'Llama 3.1 8B is hallucinating on your data',
     },
     answer: '',
-    explanation: { ru: '', en: '' },
+    explanation: { ru: 'Галлюцинации о фактах лечатся RAG: модель получает ваши документы прямо в контекст и «цитирует», а не «угадывает». Файн-тюнинг — для стиля и формата; смена модели проблему отсутствующих фактов не решает.', en: 'Fact hallucinations are a RAG job: the model gets your documents in context and quotes instead of guessing. Fine-tuning is for style and format; switching models does not fix missing facts.' },
     dialogue: {
       mentorMessage: {
         ru: 'Вы развернули Llama 3.1 8B локально, но она уверенно «выдумывает» факты про вашу внутреннюю документацию: называет несуществующие пункты регламента и придумывает ссылки. Что вы будете делать?',

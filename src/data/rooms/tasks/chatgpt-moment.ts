@@ -94,7 +94,7 @@ export const chatgptMomentTasks: LocalizedTask[] = [
       type: 'mentor',
       question: { ru: 'Природа "Ага!" момента', en: 'Nature of the "Aha!" moment' },
       answer: '',
-      explanation: { ru: '', en: '' },
+      explanation: { ru: 'Чат-интерфейс плюс RLHF сделали мощь GPT доступной каждому: не нужно учить команды — достаточно сказать, что нужно. Технология существовала два года, массовой её сделал естественный способ взаимодействия.', en: 'The chat interface plus RLHF made GPT\'s power accessible to everyone: no commands to learn — you just say what you need. The technology existed for two years; the natural interaction style made it mainstream.' },
       dialogue: {
         mentorMessage: {
           ru: 'Как ты думаешь, почему именно чат-интерфейс сделал ChatGPT таким популярным, если сама технология (GPT-3) существовала уже два года?',
@@ -192,18 +192,12 @@ export const chatgptMomentTasks: LocalizedTask[] = [
           { ru: 'PPO (Оптимизация)', en: 'PPO (Optimization)' }
         ],
         correctMapping: {
-          'Написание идеальных ответов людьми': 'SFT (Примеры)',
           'Writing ideal responses by humans': 'SFT (Examples)',
-          'Ранжирование ответов от лучшего к худшему': 'Reward Model (Оценка)',
           'Ranking responses from best to worst': 'Reward Model (Scoring)',
-          'Максимизация оценки от виртуального критика': 'PPO (Оптимизация)',
           'Maximizing score from a virtual critic': 'PPO (Optimization)',
-          'Демонстрация формата "Вопрос-Ответ"': 'SFT (Примеры)',
           'Demonstrating Q&A format': 'SFT (Examples)',
-          'Тренировка нейросети-судьи': 'Reward Model (Оценка)',
           'Training a judge neural network': 'Reward Model (Scoring)',
-          'Тонкая настройка через штрафы и поощрения': 'PPO (Оптимизация)',
-          'Fine-tuning via penalties and rewards': 'PPO (Optimization)'
+          'Fine-tuning via penalties and rewards': 'PPO (Optimization)',
         }
       }
     },

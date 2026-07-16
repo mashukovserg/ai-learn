@@ -40,7 +40,7 @@ export const postChatgptHistoryTasks: LocalizedTask[] = [
           'OpenAI (GPT-4)': 'Closed API',
           'Meta (LLaMA)': 'Open-Weight',
           'Mistral AI': 'Open-Weight',
-          'Anthropic (Claude)': 'Closed API'
+          'Anthropic (Claude)': 'Closed API',
         }
       }
     },
@@ -104,7 +104,7 @@ export const postChatgptHistoryTasks: LocalizedTask[] = [
       type: 'mentor',
       question: { ru: 'Что значит "У нас нет рва"?', en: 'What does "We have no moat" mean?' },
       answer: '',
-      explanation: { ru: '', en: '' },
+      explanation: { ru: '«Отсутствие рва» — признание, что open-source сообщество развивается быстрее корпораций: бесплатные открытые модели догоняют дорогие закрытые, и монополию нельзя удержать одними вычислительными мощностями.', en: '"No moat" was an admission that the open-source community moves faster than corporations: free open models catch up to expensive closed ones, and a monopoly cannot be held by compute alone.' },
       dialogue: {
         mentorMessage: {
           ru: 'В 2023 году утек внутренний документ Google, озаглавленный "У нас нет рва (moat), и у OpenAI тоже". О какой угрозе (или "рве") для гигантов шла речь?',

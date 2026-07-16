@@ -78,7 +78,7 @@ export const scalingHypothesisTasks: LocalizedTask[] = [
       type: 'mentor',
       question: { ru: 'Природа эмерджентности', en: 'The nature of emergence' },
       answer: '',
-      explanation: { ru: '', en: '' },
+      explanation: { ru: 'Масштаб может давать фазовый переход — эмерджентность: при миллиардах параметров у модели появляются способности, которых не было на малых весах, и момент их появления мы пока не умеем предсказывать.', en: 'Scale can produce a phase transition — emergence: at billions of parameters a model shows abilities absent at smaller sizes, and we cannot yet predict when new skills will appear.' },
       dialogue: {
         mentorMessage: {
           ru: 'Представь, что мы увеличиваем модель в 100 раз. Она просто станет лучше запоминать факты или в ней может "проснуться" что-то качественно новое?',
@@ -135,18 +135,12 @@ export const scalingHypothesisTasks: LocalizedTask[] = [
           { ru: 'Вычисления (Compute)', en: 'Compute' }
         ],
         correctMapping: {
-          'Количество связей (весов)': 'Параметры (Parameters)',
           'Number of connections (weights)': 'Parameters',
-          'Общий объем терабайт текста': 'Данные (Data)',
           'Total terabytes of text': 'Data',
-          'Количество видеокарт H100': 'Вычисления (Compute)',
           'Number of H100 GPUs': 'Compute',
-          'Архитектура слоев модели': 'Параметры (Parameters)',
           'Model layer architecture': 'Parameters',
-          'Миллиарды токенов из книг': 'Данные (Data)',
           'Billions of tokens from books': 'Data',
-          'Срок аренды облачного кластера': 'Вычисления (Compute)',
-          'Cloud cluster rental duration': 'Compute'
+          'Cloud cluster rental duration': 'Compute',
         }
       }
     },

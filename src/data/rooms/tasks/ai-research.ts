@@ -103,7 +103,7 @@ export const aiResearchTasks: LocalizedTask[] = [
       type: 'mentor',
       question: { ru: 'Этика соавторства', en: 'Ethics of Co-authorship' },
       answer: '',
-      explanation: { ru: '', en: '' },
+      explanation: { ru: 'ИИ не может быть соавтором научной статьи: соавторство подразумевает ответственность за результат. Золотой стандарт — описать роль ИИ в разделе методологии.', en: 'AI cannot be a co-author of a paper: co-authorship implies responsibility for the result. The gold standard is describing the AI\'s role in the methods section.' },
       dialogue: {
         mentorMessage: {
           ru: 'Твой агент провел фантастическую работу: нашел 200 статей, проанализировал данные и написал отличный черновик обзора. Ты отправляешь статью в Nature. Укажешь ли ты агента (например, GPT-4) в качестве соавтора?',

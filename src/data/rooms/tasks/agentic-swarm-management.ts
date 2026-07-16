@@ -91,20 +91,20 @@ export const agenticSwarmManagementTasks: LocalizedTask[] = [
       {
         text: { ru: 'Остановить рой и заставить людей перепроверить все 1000 анкет', en: 'Stop the swarm and have humans re-verify all 1000 profiles' },
         outcome: { ru: 'Слишком медленно, вы теряете преимущество масштаба.', en: 'Too slow, you lose the advantage of scale.' },
-        score: 2
+        score: 20
       },
       {
         text: { ru: 'Внедрить "агента-критика" для проверки и направить только спорные случаи (edge cases) людям', en: 'Implement a "critic agent" for verification and route only edge cases to humans' },
         outcome: { ru: 'Оптимально. Вы используете рычаг ИИ и точечный контроль человека.', en: 'Optimal. You use AI leverage and targeted human control.' },
-        score: 10
+        score: 100
       },
       {
         text: { ru: 'Игнорировать галлюцинации, 90% — это достаточно хорошо', en: 'Ignore hallucinations, 90% is good enough' },
         outcome: { ru: 'Рискованно. Ошибки в данных разрушат доверие к системе.', en: 'Risky. Data errors will destroy trust in the system.' },
-        score: -5
+        score: 0
       }
     ],
-      passingScore: 8
+      passingScore: 80
     },
     explanation: {
       ru: 'Концепция Scale AI — "человек в цикле" (Human-in-the-loop) для обработки самых сложных случаев.',
@@ -158,16 +158,11 @@ export const agenticSwarmManagementTasks: LocalizedTask[] = [
         { ru: 'Менеджер (Видение/Контроль)', en: 'Manager (Vision/Control)' }
       ],
       correctMapping: {
-        'Глубокий поиск информации': 'Агенты (Исполнение)',
         'Deep information search': 'Agents (Execution)',
-        'Определение бизнес-стратегии': 'Менеджер (Видение/Контроль)',
         'Defining business strategy': 'Manager (Vision/Control)',
-        'Написание тестов для кода': 'Агенты (Исполнение)',
         'Writing code tests': 'Agents (Execution)',
-        'Разрешение этических дилемм': 'Менеджер (Видение/Контроль)',
         'Resolving ethical dilemmas': 'Manager (Vision/Control)',
-        'Сбор данных из 50 источников': 'Агенты (Исполнение)',
-        'Gathering data from 50 sources': 'Agents (Execution)'
+        'Gathering data from 50 sources': 'Agents (Execution)',
       }
     }
   },
@@ -223,7 +218,7 @@ export const agenticSwarmManagementTasks: LocalizedTask[] = [
       en: 'Delegation Dialogue'
     },
     answer: '',
-    explanation: { ru: '', en: '' },
+    explanation: { ru: 'Ключ к успешному делегированию — подготовленная среда: проверенные данные компании и чёткий рубрикатор качества. Агент без контекста и критериев выдаёт «галлюцинаторную кашу», с ними — предсказуемый результат.', en: 'The key to successful delegation is a prepared environment: verified company data and a clear quality rubric. Without context and criteria an agent produces "hallucinatory mush"; with them, a predictable result.' },
     dialogue: {
       mentorMessage: {
       ru: 'Я хочу поручить агенту написание годового отчета. С чего мне начать, чтобы не получить "галлюцинаторную кашу"?',

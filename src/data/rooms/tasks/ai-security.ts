@@ -76,14 +76,10 @@ export const aiSecurityTasks: LocalizedTask[] = [
           { ru: 'Психологическое давление: "Моя бабушка умирает..."', en: 'Psychological pressure: "My grandmother is dying..."' }
         ],
         correctMapping: {
-          'Скрытая команда в PDF-файле': 'Инъекции',
           'Hidden command in a PDF file': 'Injections',
-          'Ролевая игра "DAN" (Do Anything Now)': 'Джейлбрейк',
           'Role-play "DAN" (Do Anything Now)': 'Jailbreak',
-          'Выдача секретных ключей через картинки-пиксели': 'Утечка данных',
           'Leaking secret keys via tracking pixels/images': 'Data Leakage',
-          'Психологическое давление: "Моя бабушка умирает..."': 'Джейлбрейк',
-          'Psychological pressure: "My grandmother is dying..."': 'Jailbreak'
+          'Psychological pressure: "My grandmother is dying..."': 'Jailbreak',
         }
       }
     },

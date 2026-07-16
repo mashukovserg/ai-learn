@@ -155,14 +155,10 @@ export const promptContractsTasks: LocalizedTask[] = [
         { ru: 'Vibecode (Weak)', en: 'Vibecode (Weak)' }
       ],
       correctMapping: {
-        'Выход должен строго соответствовать интерфейсу IRoomTask': 'Контрактные (Strong)',
         'Output must strictly match the IRoomTask interface': 'Contractual (Strong)',
-        'Сделай код красивым и современным': 'Vibecode (Weak)',
         'Make the code beautiful and modern': 'Vibecode (Weak)',
-        'Запрещено использовать внешние библиотеки вне package.json': 'Контрактные (Strong)',
         'Forbidden to use external libraries outside of package.json': 'Contractual (Strong)',
-        'Постарайся не допускать ошибок': 'Vibecode (Weak)',
-        'Try not to make any mistakes': 'Vibecode (Weak)'
+        'Try not to make any mistakes': 'Vibecode (Weak)',
       }
     },
     answer: '',
@@ -214,7 +210,7 @@ export const promptContractsTasks: LocalizedTask[] = [
             ru: 'Агент мгновенно исправляет JSON, понимая конкретную причину сбоя.',
             en: 'The agent instantly fixes the JSON, understanding the specific reason for the failure.'
           },
-          score: 10
+          score: 100
         }
       ]
     },

@@ -114,18 +114,12 @@ export const aiImageCreationTasks: LocalizedTask[] = [
                 { ru: 'Структура (ControlNet)', en: 'Structure (ControlNet)' }
               ],
               correctMapping: {
-                'Текстовое описание героя': 'Промпт (Prompt)',
-                'Text description of hero': 'Prompt',
-                'Список негативных слов': 'Промпт (Prompt)',
-                'Negative words list': 'Prompt',
-                'Стиль конкретного аниме': 'Плагин (LoRA)',
-                'Specific anime style': 'Plugin (LoRA)',
-                'Лицо конкретного человека': 'Плагин (LoRA)',
-                'Specific person\'s face': 'Plugin (LoRA)',
-                'Карта глубины (Depth Map)': 'Структура (ControlNet)',
                 'Depth Map': 'Structure (ControlNet)',
-                'Скелет позы (OpenPose)': 'Структура (ControlNet)',
-                'OpenPose skeleton': 'Structure (ControlNet)'
+                'Specific anime style': 'Plugin (LoRA)',
+                'Text description of hero': 'Prompt',
+                'OpenPose skeleton': 'Structure (ControlNet)',
+                'Specific person\'s face': 'Plugin (LoRA)',
+                'Negative words list': 'Prompt',
               }
             }
           },

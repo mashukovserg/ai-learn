@@ -65,18 +65,12 @@ export const aiRegulationRuTasks: LocalizedTask[] = [
           { ru: 'Безопасность и КИИ', en: 'Security & CII' }
         ],
         correctMapping: {
-          'Машиночитаемые метки в метаданных': 'Прозрачность и контент',
           'Machine-readable tags in metadata': 'Transparency & Content',
-          'Видимая плашка на видеохостингах': 'Прозрачность и контент',
-          'Visible tag on video platforms': 'Transparency & Content',
-          'Сертификат ФСТЭК и ФСБ': 'Безопасность и КИИ',
           'FSTEC and FSB certificate': 'Security & CII',
-          'Уголовная ответственность (до 6 лет)': 'Безопасность и КИИ',
           'Criminal liability (up to 6 years)': 'Security & CII',
-          'Обязательное страхование ответственности': 'Безопасность и КИИ',
           'Mandatory liability insurance': 'Security & CII',
-          'Запрет иностранного ИИ на объектах КИИ': 'Безопасность и КИИ',
-          'Ban on foreign AI at CII sites': 'Security & CII'
+          'Visible tag on video platforms': 'Transparency & Content',
+          'Ban on foreign AI at CII sites': 'Security & CII',
         }
       }
     },
@@ -110,7 +104,7 @@ export const aiRegulationRuTasks: LocalizedTask[] = [
       type: 'mentor',
       question: { ru: 'Принцип "Традиционных ценностей"', en: 'The "Traditional Values" Principle' },
       answer: '',
-      explanation: { ru: '', en: '' },
+      explanation: { ru: 'Размытое ценностное требование закона превращается в инженерную задачу на этапе обучения и настройки guardrails: ред-тиминг модели и «ценностные» фильтры до релиза, а не PR после него.', en: 'The law\'s vague value requirement becomes an engineering task at the training and guardrails stage: red-teaming the model and value filters before release, not PR afterwards.' },
       dialogue: {
         mentorMessage: {
           ru: 'Законопроект марта 2026 года обязывает учитывать "традиционные российские духовно-нравственные ценности" при разработке ИИ. Как ты считаешь, на каком этапе жизненного цикла продукта это требование станет критичным?',

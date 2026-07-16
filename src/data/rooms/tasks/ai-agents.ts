@@ -82,14 +82,10 @@ export const aiAgentsTasks: LocalizedTask[] = [
           { ru: 'Адаптация плана на основе обратной связи от одного инструмента', en: 'Adapting the plan based on feedback from a single tool' }
         ],
         correctMapping: {
-          'Последовательный внутренний диалог (Thought -> Action -> Observation)': 'Цикл ReAct',
           'Sequential inner dialogue (Thought -> Action -> Observation)': 'ReAct Loop',
-          'Паттерн "Критик-Исполнитель": одна модель пишет, другая проверяет': 'Многоагентность (MAS)',
           '"Critic-Executor" pattern: one model writes, another checks': 'Multi-Agent (MAS)',
-          'Иерархия с оркестратором и несколькими воркерами': 'Многоагентность (MAS)',
           'Hierarchy with an orchestrator and several workers': 'Multi-Agent (MAS)',
-          'Адаптация плана на основе обратной связи от одного инструмента': 'Цикл ReAct',
-          'Adapting the plan based on feedback from a single tool': 'ReAct Loop'
+          'Adapting the plan based on feedback from a single tool': 'ReAct Loop',
         }
       }
     },

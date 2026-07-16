@@ -45,18 +45,12 @@ export const llmGuardrailsTasks: LocalizedTask[] = [
           { ru: 'Output Guardrail', en: 'Output Guardrail' }
         ],
         correctMapping: {
-          'Детекция PII (персональные данные)': 'Input Guardrail',
           'PII detection (personal data)': 'Input Guardrail',
-          'Детекция джейлбрейков': 'Input Guardrail',
-          'Jailbreak detection': 'Input Guardrail',
-          'Фильтрация токсичности в запросе': 'Input Guardrail',
-          'Toxicity filtering in the query': 'Input Guardrail',
-          'Проверка на галлюцинации': 'Output Guardrail',
           'Hallucination check': 'Output Guardrail',
-          'Проверка формата JSON': 'Output Guardrail',
+          'Jailbreak detection': 'Input Guardrail',
           'JSON format validation': 'Output Guardrail',
-          'Проверка на соответствие фактам': 'Output Guardrail',
-          'Fact-checking the output': 'Output Guardrail'
+          'Toxicity filtering in the query': 'Input Guardrail',
+          'Fact-checking the output': 'Output Guardrail',
         }
       }
     },
@@ -106,7 +100,7 @@ export const llmGuardrailsTasks: LocalizedTask[] = [
       type: 'mentor',
       question: { ru: 'Дилемма безопасности vs Латентности', en: 'Safety vs Latency Dilemma' },
       answer: '',
-      explanation: { ru: '', en: '' },
+      explanation: { ru: 'Баланс достигается каскадом фильтров: Regex → быстрый классификатор → LlamaGuard, а тяжёлая LLM-судья — только выборочно там, где риск действительно высок. Так безопасность не убивает латентность.', en: 'Balance comes from cascaded filters: Regex → fast classifier → LlamaGuard, with the heavy LLM judge applied selectively where risk is truly high. Safety without killing latency.' },
       dialogue: {
         mentorMessage: {
           ru: 'Твой заказчик хочет проверять каждый ответ LLM через другую "модель-судью" (LLM-as-a-judge) на 10 категорий безопасности. Это добавит 3-5 секунд к каждому ответу. Что посоветуешь?',

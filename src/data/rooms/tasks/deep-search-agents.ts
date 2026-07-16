@@ -120,7 +120,7 @@ export const deepSearchAgentsTasks: LocalizedTask[] = [
         en: 'Scenario Mission: Competitor Research'
       },
       answer: '',
-      explanation: { ru: '', en: '' },
+      explanation: { ru: 'Зрелый глубокий поиск — это план подзапросов, волны поиска с верификацией, явные ссылки и отдельный блок неопределённости. Скорость без проверяемости — провал для решений руководства.', en: 'Mature deep search means a sub-query plan, search waves with verification, explicit citations, and a dedicated uncertainty block. Speed without verifiability fails leadership decisions.' },
       dialogue: {
         mentorMessage: {
           ru: 'Тебе нужно подготовить обзор 5 конкурентов за 25 минут. Условия: не менее двух источников на ключевой факт, явные ссылки, отдельный блок с рисками и неопределённостью. Что ты выберешь?',

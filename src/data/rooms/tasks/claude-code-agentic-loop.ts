@@ -49,16 +49,11 @@ export const claudeCodeAgenticLoopTasks: LocalizedTask[] = [
         { ru: 'Верификация', en: 'Verify' }
       ],
       correctMapping: {
-        'Чтение файла test.py': 'Сбор контекста',
         'Reading test.py': 'Gather Context',
-        'Запуск npm test': 'Верификация',
         'Running npm test': 'Verify',
-        'Применение патча к коду': 'Действие',
         'Applying a code patch': 'Take Action',
-        'Поиск по кодовой базе': 'Сбор контекста',
         'Searching the codebase': 'Gather Context',
-        'Проверка статус-кода API': 'Верификация',
-        'Checking API status code': 'Verify'
+        'Checking API status code': 'Verify',
       }
     }
   },
@@ -223,7 +218,7 @@ export const claudeCodeAgenticLoopTasks: LocalizedTask[] = [
       en: 'Mentor on Context'
     },
     answer: '',
-    explanation: { ru: '', en: '' },
+    explanation: { ru: 'Замедление вызвано переполнением контекстного окна: чем больше файлов и истории в сессии, тем чаще нужна «упаковка» (compacting) и тем дороже каждый шаг. Дробите задачу на небольшие этапы.', en: 'The slowdown comes from context-window overflow: the more files and history in a session, the more often compacting is needed and the more each step costs. Split work into small stages.' },
     dialogue: {
       mentorMessage: {
       ru: 'Я хочу, чтобы Claude Code написал тесты для всего моего огромного проекта сразу. Почему он может начать тормозить?',

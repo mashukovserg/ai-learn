@@ -63,7 +63,7 @@ export const prompting101Tasks: LocalizedTask[] = [
           'Translating text from English to Russian': 'Zero-shot (No examples)',
           'Summarizing an article in 3 sentences': 'Zero-shot (No examples)',
           'Generating JSON with strict corporate field mapping': 'Few-shot (With examples)',
-          'Writing a customer reply in a brand\'s unique sarcastic Tone of Voice': 'Few-shot (With examples)'
+          'Writing a customer reply in a brand\'s unique sarcastic Tone of Voice': 'Few-shot (With examples)',
         }
       }
     },
@@ -111,7 +111,7 @@ export const prompting101Tasks: LocalizedTask[] = [
       type: 'mentor',
       question: { ru: 'Лекарство от галлюцинаций', en: 'Cure for Hallucinations' },
       answer: '',
-      explanation: { ru: '', en: '' },
+      explanation: { ru: 'Лучшее средство от галлюцинаций в RAG — жёсткий fallback: явно разрешить модели ответить «Документ не найден» и запретить угадывать. Расплывчатые призывы «быть точнее» не работают.', en: 'The best cure for RAG hallucinations is a strict fallback: explicitly allow the model to answer "Document not found" and forbid guessing. Vague "be accurate" phrases do not work.' },
       dialogue: {
         mentorMessage: {
           ru: 'Твой корпоративный бот отвечает на вопросы по базе знаний компании (RAG). Пользователь спросил про график отпусков, но этого документа в базе нет. Бот выдумал график. Как починить промпт?',
@@ -241,17 +241,12 @@ export const prompting101Tasks: LocalizedTask[] = [
           { ru: 'Слабые элементы (Alchemy)', en: 'Weak Elements (Alchemy)' }
         ],
         correctMapping: {
-          'Ты — Senior Java Developer': 'Сильные элементы (Production)',
           'You are a Senior Java Developer': 'Strong Elements (Production)',
-          'Пожалуйста, будь очень хорошим ИИ': 'Слабые элементы (Alchemy)',
           'Please be a very good AI': 'Weak Elements (Alchemy)',
-          '<context> ... </context>': 'Сильные элементы (Production)',
-          'Напиши что-нибудь интересное': 'Слабые элементы (Alchemy)',
+          '<context> ... </context>': 'Strong Elements (Production)',
           'Write something interesting': 'Weak Elements (Alchemy)',
-          'Верни строго JSON объект': 'Сильные элементы (Production)',
           'Return strictly a JSON object': 'Strong Elements (Production)',
-          'Попробуй подумать об этом': 'Слабые элементы (Alchemy)',
-          'Try to think about this': 'Weak Elements (Alchemy)'
+          'Try to think about this': 'Weak Elements (Alchemy)',
         }
       }
     },

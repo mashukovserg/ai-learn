@@ -139,16 +139,11 @@ export const frontierEvalsLogicTasks: LocalizedTask[] = [
         { ru: 'Фронтирные (Рассуждения/Сложность)', en: 'Frontier (Reasoning/Complexity)' }
       ],
       correctMapping: {
-        'MMLU (вопросы из интернета)': 'Традиционные (Заучивание/Факты)',
         'MMLU (internet questions)': 'Traditional (Memorization/Facts)',
-        'Humanity\'s Last Exam (новые научные задачи)': 'Фронтирные (Рассуждения/Сложность)',
         'Humanity\'s Last Exam (new scientific tasks)': 'Frontier (Reasoning/Complexity)',
-        'Тест Тьюринга (в чате)': 'Традиционные (Заучивание/Факты)',
         'Turing Test (chat-based)': 'Traditional (Memorization/Facts)',
-        'Сложное многоэтапное планирование агента': 'Фронтирные (Рассуждения/Сложность)',
         'Complex multi-step agent planning': 'Frontier (Reasoning/Complexity)',
-        'Проверка грамматики': 'Традиционные (Заучивание/Факты)',
-        'Grammar check': 'Traditional (Memorization/Facts)'
+        'Grammar check': 'Traditional (Memorization/Facts)',
       }
     }
   },
@@ -199,20 +194,20 @@ export const frontierEvalsLogicTasks: LocalizedTask[] = [
         {
           text: { ru: 'Дать ей еще больше вопросов из учебников биологии', en: 'Give it even more questions from biology textbooks' },
           outcome: { ru: 'Бесполезно. Она их уже выучила.', en: 'Useless. It has already learned them.' },
-          score: 1
+          score: 10
         },
         {
           text: { ru: 'Создать "Frontier Eval" на основе нерешенных проблем из текущих лабораторий этих биологов', en: 'Create a "Frontier Eval" based on unsolved problems from these biologists\' current labs' },
           outcome: { ru: 'Верно. Это единственный способ проверить реальную способность к инновациям.', en: 'Correct. This is the only way to verify real innovation capability.' },
-          score: 10
+          score: 100
         },
         {
           text: { ru: 'Посмотреть на размер модели в гигабайтах', en: 'Look at the model size in gigabytes' },
           outcome: { ru: 'Размер не гарантирует способность к открытиям.', en: 'Size does not guarantee discovery capability.' },
-          score: -5
+          score: 0
         }
       ],
-      passingScore: 9
+      passingScore: 90
     }
   },
   {

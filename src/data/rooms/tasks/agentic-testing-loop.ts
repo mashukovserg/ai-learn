@@ -111,14 +111,10 @@ export const agenticTestingLoopTasks: LocalizedTask[] = [
         { ru: 'Проверка надежности', en: 'Confidence Check' }
       ],
       correctMapping: {
-        'Unit-тесты (Логика функции)': 'Быстрая обратная связь',
         'Unit tests (Function logic)': 'Fast Feedback',
-        'Интеграционные (Связь модулей)': 'Быстрая обратная связь',
         'Integration tests (Module wiring)': 'Fast Feedback',
-        'Snapshot-тесты (UI компоненты)': 'Проверка надежности',
         'Snapshot tests (UI components)': 'Confidence Check',
-        'E2E-тесты (Бизнес-сценарии)': 'Проверка надежности',
-        'E2E tests (Business scenarios)': 'Confidence Check'
+        'E2E tests (Business scenarios)': 'Confidence Check',
       }
     },
     answer: '',
@@ -170,7 +166,7 @@ export const agenticTestingLoopTasks: LocalizedTask[] = [
             ru: 'Агент обнаруживает конфликт версий или нехватку памяти и запрашивает помощь или исправляет конфиг.',
             en: 'The agent discovers a version conflict or memory shortage and requests help or fixes the config.'
           },
-          score: 10
+          score: 100
         }
       ]
     },

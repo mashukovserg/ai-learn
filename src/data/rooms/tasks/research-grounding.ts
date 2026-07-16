@@ -104,7 +104,7 @@ export const researchGroundingTasks: LocalizedTask[] = [
       type: 'mentor',
       question: { ru: 'UX и доверие', en: 'UX and Trust' },
       answer: '',
-      explanation: { ru: '', en: '' },
+      explanation: { ru: 'Интерфейс должен транслировать уверенность системы: единственный устаревший источник — повод показать предупреждение «низкое доверие», а не зелёную галочку. Финальное решение остаётся за человеком.', en: 'The UI must broadcast the system\'s confidence: a single outdated source calls for a "low trust" warning, not a green checkmark. The final call stays with the human.' },
       dialogue: {
         mentorMessage: {
           ru: 'Вы проектируете интерфейс юридического ИИ. Модель нашла ответ, но только в одном, старом документе 2018 года. Как лучше отобразить этот ответ пользователю?',

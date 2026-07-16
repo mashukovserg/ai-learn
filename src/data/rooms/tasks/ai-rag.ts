@@ -63,14 +63,10 @@ export const aiRagTasks: LocalizedTask[] = [
           { ru: 'Специализация модели на написании кода на редком языке', en: 'Specializing the model for a rare programming language' }
         ],
         correctMapping: {
-          'Ответы на вопросы по базе свежих законов': 'RAG (Поиск)',
           'Answering questions based on fresh legal updates': 'RAG (Retrieval)',
-          'Изменение тона общения на "саркастичный"': 'Fine-tuning (Дообучение)',
           'Changing communication tone to "sarcastic"': 'Fine-tuning',
-          'Доступ к личным медицинским картам пациентов': 'RAG (Поиск)',
           'Accessing private patient medical records': 'RAG (Retrieval)',
-          'Специализация модели на написании кода на редком языке': 'Fine-tuning (Дообучение)',
-          'Specializing the model for a rare programming language': 'Fine-tuning'
+          'Specializing the model for a rare programming language': 'Fine-tuning',
         }
       },
       explanation: { 
