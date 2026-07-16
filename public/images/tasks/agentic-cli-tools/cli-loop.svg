@@ -1,28 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 300" font-family="ui-sans-serif, system-ui, sans-serif" role="img">
-  <rect width="640" height="300" rx="14" fill="#171715" stroke="#2b2926"/>
-  <text x="320" y="32" text-anchor="middle" fill="#8f8a82" font-size="13" letter-spacing="2">CLI LOOP FOR AGENT CODING</text>
-  <g font-size="15" font-weight="700">
-    <rect x="245" y="56" width="150" height="52" rx="10" fill="#1c1b19" stroke="#393733"/>
-    <text x="320" y="82" text-anchor="middle" fill="#e6e2da">Discover</text>
-    <text x="320" y="98" text-anchor="middle" fill="#6b675f" font-size="11" font-weight="400">ls, grep, read</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 340" font-family="ui-sans-serif, system-ui, sans-serif" role="img">
+  <rect width="660" height="340" rx="16" fill="#171715" stroke="#302e2b"/>
+  <text x="330" y="40" text-anchor="middle" fill="#b3ada3" font-size="18" font-weight="600" letter-spacing="2">CLI LOOP FOR AGENT CODING</text>
+  <g>
+    <rect x="248" y="66" width="164" height="66" rx="12" fill="#1c1b19" stroke="#4b4842" stroke-width="1.5"/>
+    <text x="330" y="98" text-anchor="middle" fill="#f2eee6" font-size="22" font-weight="700">Discover</text>
+    <text x="330" y="120" text-anchor="middle" fill="#a29d94" font-size="14">ls · grep · read</text>
 
-    <rect x="452" y="150" width="150" height="52" rx="10" fill="#1c1b19" stroke="#393733"/>
-    <text x="527" y="176" text-anchor="middle" fill="#e6e2da">Change</text>
-    <text x="527" y="192" text-anchor="middle" fill="#6b675f" font-size="11" font-weight="400">edit, write</text>
+    <rect x="466" y="166" width="164" height="66" rx="12" fill="#1c1b19" stroke="#4b4842" stroke-width="1.5"/>
+    <text x="548" y="198" text-anchor="middle" fill="#f2eee6" font-size="22" font-weight="700">Change</text>
+    <text x="548" y="220" text-anchor="middle" fill="#a29d94" font-size="14">edit · write</text>
 
-    <rect x="245" y="234" width="150" height="52" rx="10" fill="#1c1b19" stroke="#393733"/>
-    <text x="320" y="260" text-anchor="middle" fill="#e6e2da">Verify</text>
-    <text x="320" y="276" text-anchor="middle" fill="#6b675f" font-size="11" font-weight="400">build, test, lint</text>
+    <rect x="248" y="262" width="164" height="66" rx="12" fill="#1c1b19" stroke="#4b4842" stroke-width="1.5"/>
+    <text x="330" y="294" text-anchor="middle" fill="#f2eee6" font-size="22" font-weight="700">Verify</text>
+    <text x="330" y="316" text-anchor="middle" fill="#a29d94" font-size="14">build · test · lint</text>
 
-    <rect x="38" y="150" width="150" height="52" rx="10" fill="#171715" stroke="#302e2b"/>
-    <text x="113" y="176" text-anchor="middle" fill="#8f8a82">Rollback?</text>
-    <text x="113" y="192" text-anchor="middle" fill="#6b675f" font-size="11" font-weight="400">on failure</text>
+    <rect x="30" y="166" width="164" height="66" rx="12" fill="#151513" stroke="#3a3833" stroke-width="1.5"/>
+    <text x="112" y="198" text-anchor="middle" fill="#c9c3b9" font-size="22" font-weight="700">Rollback?</text>
+    <text x="112" y="220" text-anchor="middle" fill="#8f8a82" font-size="14">on failure</text>
   </g>
-  <path d="M395 90 C470 100, 520 120, 527 148" fill="none" stroke="#10b98188" stroke-width="2" marker-end="url(#b)"/>
-  <path d="M470 202 C440 232, 410 244, 397 258" fill="none" stroke="#10b98188" stroke-width="2" marker-end="url(#b)"/>
-  <path d="M245 260 C160 250, 120 226, 113 204" fill="none" stroke="#4b4842" stroke-width="2" stroke-dasharray="5 5" marker-end="url(#b)"/>
-  <path d="M188 165 C215 120, 235 105, 250 92" fill="none" stroke="#4b4842" stroke-width="2" stroke-dasharray="5 5" marker-end="url(#b)"/>
+  <path d="M412 100 C500 108, 548 130, 548 163" fill="none" stroke="#10b981" stroke-width="3" marker-end="url(#g)"/>
+  <path d="M500 232 C470 268, 430 282, 412 294" fill="none" stroke="#10b981" stroke-width="3" marker-end="url(#g)"/>
+  <path d="M248 300 C160 292, 118 262, 112 235" fill="none" stroke="#7a756c" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#a)"/>
+  <path d="M170 168 C205 122, 232 108, 250 98" fill="none" stroke="#7a756c" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#a)"/>
   <defs>
-    <marker id="b" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0 0 L7 3 L0 6 z" fill="#8f8a82"/></marker>
+    <marker id="g" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto"><path d="M0 0 L9 4 L0 8 z" fill="#10b981"/></marker>
+    <marker id="a" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto"><path d="M0 0 L9 4 L0 8 z" fill="#a8a29a"/></marker>
   </defs>
 </svg>
