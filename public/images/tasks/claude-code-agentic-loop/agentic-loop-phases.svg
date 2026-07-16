@@ -1,37 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 260" font-family="ui-sans-serif, system-ui, sans-serif" role="img">
-  <rect width="720" height="260" rx="14" fill="#171715" stroke="#2b2926"/>
-  <text x="360" y="34" text-anchor="middle" fill="#8f8a82" font-size="13" letter-spacing="2">CLAUDE CODE AGENTIC LOOP</text>
-  <!-- three phase cards -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" font-family="ui-sans-serif, system-ui, sans-serif" role="img">
+  <rect width="720" height="300" rx="16" fill="#171715" stroke="#302e2b"/>
+  <text x="360" y="42" text-anchor="middle" fill="#b3ada3" font-size="18" font-weight="600" letter-spacing="2">CLAUDE CODE AGENTIC LOOP</text>
   <g>
-    <rect x="40" y="70" width="180" height="120" rx="12" fill="#1c1b19" stroke="#393733"/>
-    <circle cx="70" cy="102" r="14" fill="#10b98122" stroke="#10b98155"/>
-    <text x="70" y="107" text-anchor="middle" fill="#34d399" font-size="14" font-weight="700">1</text>
-    <text x="96" y="107" fill="#e6e2da" font-size="17" font-weight="700">Gather</text>
-    <text x="60" y="140" fill="#8f8a82" font-size="13">Read files, search,</text>
-    <text x="60" y="160" fill="#8f8a82" font-size="13">build context</text>
+    <rect x="34" y="78" width="196" height="128" rx="14" fill="#1c1b19" stroke="#4b4842" stroke-width="1.5"/>
+    <circle cx="68" cy="116" r="17" fill="#10b98122" stroke="#10b98188" stroke-width="1.5"/>
+    <text x="68" y="122" text-anchor="middle" fill="#34d399" font-size="17" font-weight="700">1</text>
+    <text x="96" y="123" fill="#f2eee6" font-size="22" font-weight="700">Gather</text>
+    <text x="56" y="158" fill="#a29d94" font-size="15">Read files, search,</text>
+    <text x="56" y="180" fill="#a29d94" font-size="15">build context</text>
   </g>
   <g>
-    <rect x="270" y="70" width="180" height="120" rx="12" fill="#1c1b19" stroke="#393733"/>
-    <circle cx="300" cy="102" r="14" fill="#10b98122" stroke="#10b98155"/>
-    <text x="300" y="107" text-anchor="middle" fill="#34d399" font-size="14" font-weight="700">2</text>
-    <text x="326" y="107" fill="#e6e2da" font-size="17" font-weight="700">Act</text>
-    <text x="290" y="140" fill="#8f8a82" font-size="13">Edit code, run</text>
-    <text x="290" y="160" fill="#8f8a82" font-size="13">tools, apply change</text>
+    <rect x="262" y="78" width="196" height="128" rx="14" fill="#1c1b19" stroke="#4b4842" stroke-width="1.5"/>
+    <circle cx="296" cy="116" r="17" fill="#10b98122" stroke="#10b98188" stroke-width="1.5"/>
+    <text x="296" y="122" text-anchor="middle" fill="#34d399" font-size="17" font-weight="700">2</text>
+    <text x="324" y="123" fill="#f2eee6" font-size="22" font-weight="700">Act</text>
+    <text x="284" y="158" fill="#a29d94" font-size="15">Edit code, run</text>
+    <text x="284" y="180" fill="#a29d94" font-size="15">tools, apply change</text>
   </g>
   <g>
-    <rect x="500" y="70" width="180" height="120" rx="12" fill="#1c1b19" stroke="#393733"/>
-    <circle cx="530" cy="102" r="14" fill="#10b98122" stroke="#10b98155"/>
-    <text x="530" y="107" text-anchor="middle" fill="#34d399" font-size="14" font-weight="700">3</text>
-    <text x="556" y="107" fill="#e6e2da" font-size="17" font-weight="700">Verify</text>
-    <text x="520" y="140" fill="#8f8a82" font-size="13">Run tests, check</text>
-    <text x="520" y="160" fill="#8f8a82" font-size="13">result vs. goal</text>
+    <rect x="490" y="78" width="196" height="128" rx="14" fill="#1c1b19" stroke="#4b4842" stroke-width="1.5"/>
+    <circle cx="524" cy="116" r="17" fill="#10b98122" stroke="#10b98188" stroke-width="1.5"/>
+    <text x="524" y="122" text-anchor="middle" fill="#34d399" font-size="17" font-weight="700">3</text>
+    <text x="552" y="123" fill="#f2eee6" font-size="22" font-weight="700">Verify</text>
+    <text x="512" y="158" fill="#a29d94" font-size="15">Run tests, check</text>
+    <text x="512" y="180" fill="#a29d94" font-size="15">result vs. goal</text>
   </g>
-  <!-- arrows -->
-  <path d="M220 130 L268 130" stroke="#4b4842" stroke-width="2" marker-end="url(#a)"/>
-  <path d="M450 130 L498 130" stroke="#4b4842" stroke-width="2" marker-end="url(#a)"/>
-  <path d="M590 190 C590 228, 130 228, 130 192" fill="none" stroke="#4b4842" stroke-width="2" stroke-dasharray="5 5" marker-end="url(#a)"/>
-  <text x="360" y="245" text-anchor="middle" fill="#6b675f" font-size="12">loop until verified</text>
+  <path d="M230 142 L258 142" stroke="#6b675f" stroke-width="3" marker-end="url(#a)"/>
+  <path d="M458 142 L486 142" stroke="#6b675f" stroke-width="3" marker-end="url(#a)"/>
+  <path d="M588 206 C588 248, 132 248, 132 210" fill="none" stroke="#7a756c" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#a)"/>
+  <text x="360" y="278" text-anchor="middle" fill="#8f8a82" font-size="15">loop until verified</text>
   <defs>
-    <marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0 0 L7 3 L0 6 z" fill="#4b4842"/></marker>
+    <marker id="a" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto"><path d="M0 0 L9 4 L0 8 z" fill="#a8a29a"/></marker>
   </defs>
 </svg>
