@@ -18,16 +18,16 @@ export default function AgenticCliToolsTheory({ lang }: { lang: string }) {
           <p className="text-neutral-300 leading-relaxed">
             {ru ? (
               <>
-                В этой комнате CLI рассматривается как рабочий контур, а не как набор случайных команд. Когда
-                <Term id="agent" lang={lang}> агент</Term> работает через терминал, команда видит последовательность
+                В этой комнате CLI рассматривается как рабочий контур, а не как набор случайных команд. Когда{' '}
+                <Term id="agent" lang={lang}>агент</Term> работает через терминал, команда видит последовательность
                 шагов, аргументы и результат каждого шага. Это дает повторяемость: другой инженер может пройти тот же
                 путь, проверить вывод и быстро найти ошибку. Без такой трассы агентная разработка превращается в набор
                 догадок, где трудно понять причину сбоя и трудно оценить риск релиза.
               </>
             ) : (
               <>
-                In this room, CLI is treated as an operating loop, not a random command list. When an
-                <Term id="agent" lang={lang}> agent</Term> works through terminal actions, the team can see the
+                In this room, CLI is treated as an operating loop, not a random command list. When an{' '}
+                <Term id="agent" lang={lang}>agent</Term> works through terminal actions, the team can see the
                 sequence of steps, arguments, and outcomes. That creates repeatability: another engineer can replay the
                 same path, validate output, and localize failures quickly. Without that trace, agentic development turns
                 into guesswork, where root causes and release risk are hard to evaluate.
@@ -38,16 +38,16 @@ export default function AgenticCliToolsTheory({ lang }: { lang: string }) {
             {ru ? (
               <>
                 Ограничение модели на этапе <Term id="inference" lang={lang}>inference</Term> остается ключевым:
-                она мыслит только в пределах <Term id="context-window" lang={lang}>контекстного окна</Term> и текущих
-                <Term id="token" lang={lang}> токенов</Term>. Поэтому в CLI-цикле сначала фиксируют контекст и границы,
+                она мыслит только в пределах <Term id="context-window" lang={lang}>контекстного окна</Term> и текущих{' '}
+                <Term id="token" lang={lang}>токенов</Term>. Поэтому в CLI-цикле сначала фиксируют контекст и границы,
                 затем делают изменение, и только после проверки принимают решение о выпуске. Такая дисциплина снижает
                 риск широких правок и помогает держать инженерные решения в проверяемой форме.
               </>
             ) : (
               <>
                 The core model limit during <Term id="inference" lang={lang}>inference</Term> still applies: reasoning
-                is bounded by the <Term id="context-window" lang={lang}>context window</Term> and current
-                <Term id="token" lang={lang}> tokens</Term>. That is why a CLI loop fixes context and boundaries first,
+                is bounded by the <Term id="context-window" lang={lang}>context window</Term> and current{' '}
+                <Term id="token" lang={lang}>tokens</Term>. That is why a CLI loop fixes context and boundaries first,
                 then applies a change, and only after validation makes a release decision. This discipline reduces broad
                 edits and keeps engineering decisions in a verifiable form.
               </>
@@ -112,19 +112,19 @@ git grep "validateSession"
           <p className="text-neutral-300 leading-relaxed">
             {ru ? (
               <>
-                Если в задаче есть внешние спецификации, discovery лучше связывать с
-                <Term id="rag" lang={lang}> RAG</Term> и вызывать инструменты через
-                <Term id="function-calling" lang={lang}> function calling</Term> интерфейсы в
-                <Term id="sdk" lang={lang}> SDK</Term>-контуре. Это убирает хаотичный выбор команд и делает сбор
+                Если в задаче есть внешние спецификации, discovery лучше связывать с{' '}
+                <Term id="rag" lang={lang}>RAG</Term> и вызывать инструменты через{' '}
+                <Term id="function-calling" lang={lang}>function calling</Term> интерфейсы в{' '}
+                <Term id="sdk" lang={lang}>SDK</Term>-контуре. Это убирает хаотичный выбор команд и делает сбор
                 контекста воспроизводимым. Команда может проверить, откуда взят факт и почему агент предложил именно
                 этот путь изменения.
               </>
             ) : (
               <>
-                If a task depends on external specs, discovery should be connected to
-                <Term id="rag" lang={lang}> RAG</Term> and tool calls should pass through
-                <Term id="function-calling" lang={lang}> function calling</Term> interfaces in an
-                <Term id="sdk" lang={lang}> SDK</Term> flow. This removes chaotic command choices and makes context
+                If a task depends on external specs, discovery should be connected to{' '}
+                <Term id="rag" lang={lang}>RAG</Term> and tool calls should pass through{' '}
+                <Term id="function-calling" lang={lang}>function calling</Term> interfaces in an{' '}
+                <Term id="sdk" lang={lang}>SDK</Term> flow. This removes chaotic command choices and makes context
                 gathering reproducible. The team can verify where a fact came from and why the agent proposed a
                 specific change path.
               </>
@@ -190,8 +190,8 @@ git commit -m "fix: narrow auth validation path"
               </>
             ) : (
               <>
-                Risky operations need an extra gate: dry run, impact validation, and human approval. This is where
-                <Term id="guardrails" lang={lang}> guardrails</Term> become critical, constraining arguments and
+                Risky operations need an extra gate: dry run, impact validation, and human approval. This is where{' '}
+                <Term id="guardrails" lang={lang}>guardrails</Term> become critical, constraining arguments and
                 blocking high-blast-radius commands. This model keeps delivery fast while reducing the chance of a
                 production-breaking diff.
               </>
@@ -212,8 +212,8 @@ git commit -m "fix: narrow auth validation path"
               <>
                 Verify отвечает на вопрос, безопасно ли выпускать изменения. Эта фаза не должна быть абстрактной:
                 у каждой проверки есть конкретный инструмент и ожидаемый сигнал. Минимальный набор включает линт,
-                типизацию, тесты и сборку. Для агентных сценариев дополнительно проверяют поведение через
-                <Term id="evals" lang={lang}> evals</Term>, чтобы увидеть не только техническую корректность, но и
+                типизацию, тесты и сборку. Для агентных сценариев дополнительно проверяют поведение через{' '}
+                <Term id="evals" lang={lang}>evals</Term>, чтобы увидеть не только техническую корректность, но и
                 качество итогового решения.
               </>
             ) : (
@@ -271,15 +271,15 @@ npm run build
           <p className="text-neutral-300 leading-relaxed">
             {ru ? (
               <>
-                Если задача использует внешние источники, в verify-фазе важно проверить защиту от
-                <Term id="prompt-injection" lang={lang}> prompt injection</Term> и убедиться, что данные отделены от
+                Если задача использует внешние источники, в verify-фазе важно проверить защиту от{' '}
+                <Term id="prompt-injection" lang={lang}>prompt injection</Term> и убедиться, что данные отделены от
                 команд исполнения. Релизное решение принимают только после прохождения quality gates и проверки метрик
                 на canary-срезе. Это переводит релиз из режима доверия в режим доказательств.
               </>
             ) : (
               <>
-                If a task consumes external content, verify must include
-                <Term id="prompt-injection" lang={lang}> prompt injection</Term> defenses and clear separation between
+                If a task consumes external content, verify must include{' '}
+                <Term id="prompt-injection" lang={lang}>prompt injection</Term> defenses and clear separation between
                 data and executable instructions. Release decisions should happen only after quality gates pass and
                 canary metrics remain stable. This shifts release from trust-based judgment to evidence-based control.
               </>
