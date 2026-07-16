@@ -69,9 +69,9 @@ Goal: green test suite gating every change; task-level images available; first G
 
 **Acceptance:** a task with an image renders correctly in both locales; a missing file fails `npm run test`.
 
-### M1-5 🟡 Pilot screenshots in agent-coding rooms
-- [ ] Add 1–2 screenshots each to tasks in `claude-code-agentic-loop`, `agentic-cli-tools`, `claude-code-pro-workflow` (candidates: plan-mode output, permission modes, tool-call tree, CLAUDE.md example).
-- [ ] Screenshots are supplied or approved by the project creator — ask before shipping.
+### M1-5 🟡 Pilot illustrations in agent-coding rooms (diagrams shipped 2026-07-16 — awaiting creator approval, by Claude Code)
+- [x] Added a concept diagram to one task in each of `agentic-cli-tools` (#1, CLI loop), `claude-code-pro-workflow` (#5, auto-compact buffer), and `claude-code-agentic-loop` (#8, three-phase loop). Deliberately attached to context tasks, NOT to the "name the phases" MC (#1) or "order the loop" sorting (#4), which the diagram would give away. Design-token palette SVGs under `public/images/tasks/<room-id>/`, bilingual alt/caption.
+- [~] Real terminal screenshots (plan-mode output, permission modes, tool-call tree) still pending — cannot be authentically captured here; shipped clean SVG diagrams instead as the pilot. Creator to approve or swap for real screenshots.
 
 **Acceptance:** pilot tasks show images with bilingual alt/captions; tests green.
 
