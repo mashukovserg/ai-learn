@@ -181,6 +181,7 @@ After adding or editing tasks in `ROOM_TASKS`, the agent must verify every task 
 Cross-cutting checks:
 
 - All user-visible text fields (`question`, `options`, `items`, `buckets`, `mentorMessage`, `brief`, `constraints`, choice `text`, event `label`) must be `LocalizedString` with both `en` and `ru` populated.
+- **Task images (optional `image` field)** — any task may declare `image: { src, alt, caption? }` (rendered above the question for all 8 task types). Rules: `src` must start with `/` and point to an existing file under `public/` (convention: `public/images/tasks/<room-id>/`); `alt` is a required `LocalizedString` with both locales; `caption`, when present, must also be bilingual. The Vitest suite enforces file existence and locale parity — a missing file fails `npm run test`.
 - After adding tasks, mentally walk through each one: "can a user who reads the theory select the correct answer?" If the answer depends on text not in the theory, the task or theory needs updating.
 - No runtime validation exists in the components — bad data silently produces unsolvable tasks, so this gate is the only safety net.
 

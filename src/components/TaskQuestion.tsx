@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Check, ShieldQuestion, ListChecks } from 'lucide-react';
-import TaskWrapper from './TaskWrapper';
+import TaskWrapper, { TaskImage } from './TaskWrapper';
 
 export type TaskType = 'input' | 'multiple-choice' | 'multiple-select' | 'sorting' | 'categorize' | 'timeline' | 'scenario';
 
@@ -14,6 +14,7 @@ interface TaskQuestionProps {
   options?: string[];
   hint?: string;
   explanation?: string;
+  image?: TaskImage;
   onSuccess: (id: number) => void;
   initialCompleted?: boolean;
 }
@@ -26,6 +27,7 @@ export default function TaskQuestion({
   options = [],
   hint,
   explanation,
+  image,
   onSuccess,
   initialCompleted = false,
 }: TaskQuestionProps) {
@@ -96,6 +98,7 @@ export default function TaskQuestion({
       resolvedStatus={resolvedStatus}
       icon={type === 'input' ? <ShieldQuestion size={16} /> : <ListChecks size={16} />}
       question={question}
+      image={image}
       subtitle={type === 'multiple-select' ? 'Select all that apply' : undefined}
       explanation={explanation}
       incorrectMessage="Not quite. Try again or use hint."

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Calendar } from 'lucide-react';
 import { Reorder, motion } from 'framer-motion';
-import TaskWrapper from './TaskWrapper';
+import TaskWrapper, { TaskImage } from './TaskWrapper';
 import { useLang } from '@/hooks/useLang';
 
 interface TimelineEvent {
@@ -17,6 +17,7 @@ interface TaskTimelineProps {
   events: TimelineEvent[];
   correctOrder: string[]; // ordered labels
   explanation?: string;
+  image?: TaskImage;
   onSuccess: (id: number) => void;
   initialCompleted?: boolean;
 }
@@ -36,6 +37,7 @@ export default function TaskTimeline({
   events,
   correctOrder,
   explanation,
+  image,
   onSuccess,
   initialCompleted = false,
 }: TaskTimelineProps) {
@@ -66,6 +68,7 @@ export default function TaskTimeline({
       resolvedStatus={resolvedStatus}
       icon={<Calendar size={16} />}
       question={question}
+      image={image}
       subtitle={lang === 'ru' ? 'Расположите события в хронологическом порядке' : 'Arrange events in chronological order'}
       explanation={explanation}
       incorrectMessage={lang === 'ru' ? 'Неверный порядок. Попробуйте ещё раз!' : 'Incorrect order. Try again!'}

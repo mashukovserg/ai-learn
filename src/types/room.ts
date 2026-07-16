@@ -5,6 +5,12 @@ export interface Task {
   type: TaskType;
   question: string;
   answer: string | string[];
+  // Optional illustration (locale-resolved at render time)
+  image?: {
+    src: string;
+    alt: string;
+    caption?: string;
+  };
   options?: string[];
   hint?: string;
   explanation: string;

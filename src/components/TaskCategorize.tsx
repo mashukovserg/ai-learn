@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { FolderOpen } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import TaskWrapper from './TaskWrapper';
+import TaskWrapper, { TaskImage } from './TaskWrapper';
 import { useLang } from '@/hooks/useLang';
 
 interface TaskCategorizeProps {
@@ -13,6 +13,7 @@ interface TaskCategorizeProps {
   buckets: string[];
   correctMapping: Record<string, string>; // item → bucket
   explanation?: string;
+  image?: TaskImage;
   onSuccess: (id: number) => void;
   initialCompleted?: boolean;
 }
@@ -24,6 +25,7 @@ export default function TaskCategorize({
   buckets,
   correctMapping,
   explanation,
+  image,
   onSuccess,
   initialCompleted = false,
 }: TaskCategorizeProps) {
@@ -100,6 +102,7 @@ export default function TaskCategorize({
       resolvedStatus={resolvedStatus}
       icon={<FolderOpen size={16} />}
       question={question}
+      image={image}
       subtitle={lang === 'ru' ? 'Нажмите элемент, затем категорию (или перетащите)' : 'Tap an item, then a category (or drag)'}
       explanation={explanation}
       incorrectMessage={lang === 'ru' ? 'Некоторые элементы в неверных категориях. Попробуйте ещё раз!' : 'Some items are in the wrong category. Try again!'}
