@@ -36,6 +36,12 @@ export interface LocalizedTask {
   type: Task['type'];
   question: LocalizedString;
   answer: unknown;
+  // Optional illustration rendered above the question (see AGENTS.md "Task data validation gate")
+  image?: {
+    src: string; // must exist under public/
+    alt: LocalizedString;
+    caption?: LocalizedString;
+  };
   options?: LocalizedString[] | string[];
   hint?: LocalizedString;
   explanation: LocalizedString;

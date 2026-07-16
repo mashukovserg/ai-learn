@@ -94,6 +94,11 @@ export const claudeCodeProWorkflowTasks: LocalizedTask[] = [
   {
     id: 5,
     type: 'multiple-choice',
+    image: {
+      src: '/images/tasks/claude-code-pro-workflow/auto-compact-buffer.svg',
+      alt: { ru: 'Полоса контекстного окна: 78% рабочий контекст и 22% зарезервированный буфер авто-компактизации.', en: 'A context-window bar: 78% working context and a 22% reserved auto-compact buffer.' },
+      caption: { ru: 'Буфер 22% — запас, чтобы модель успела сжать историю, не потеряв задачу.', en: 'The 22% buffer is headroom so the model can compress history without losing the task.' },
+    },
     question: {
       ru: 'Что такое "auto compact buffer" (22%) в настройках контекста?',
       en: 'What is the "auto compact buffer" (22%) in context settings?'

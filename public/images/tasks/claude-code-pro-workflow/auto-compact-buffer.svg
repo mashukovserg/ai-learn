@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 200" font-family="ui-sans-serif, system-ui, sans-serif" role="img">
+  <rect width="680" height="200" rx="14" fill="#171715" stroke="#2b2926"/>
+  <text x="340" y="34" text-anchor="middle" fill="#8f8a82" font-size="13" letter-spacing="2">CONTEXT WINDOW — AUTO COMPACT BUFFER</text>
+  <!-- bar: 78% usable, 22% reserved buffer -->
+  <rect x="40" y="70" width="600" height="54" rx="8" fill="#1a1917" stroke="#393733"/>
+  <rect x="42" y="72" width="466" height="50" rx="6" fill="#10b98122"/>
+  <rect x="508" y="72" width="130" height="50" rx="6" fill="#f59e0b22"/>
+  <line x1="508" y1="66" x2="508" y2="130" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="275" y="103" text-anchor="middle" fill="#34d399" font-size="15" font-weight="700">Working context · 78%</text>
+  <text x="573" y="98" text-anchor="middle" fill="#fbbf24" font-size="13" font-weight="700">Buffer</text>
+  <text x="573" y="114" text-anchor="middle" fill="#fbbf24" font-size="13" font-weight="700">22%</text>
+  <text x="40" y="158" fill="#8f8a82" font-size="13">When usage crosses the 22% reserve line, Claude Code auto-compacts history to free room.</text>
+</svg>

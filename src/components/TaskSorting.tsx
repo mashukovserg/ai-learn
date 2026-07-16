@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Reorder } from 'framer-motion';
 import { GripVertical, ListOrdered } from 'lucide-react';
-import TaskWrapper from './TaskWrapper';
+import TaskWrapper, { TaskImage } from './TaskWrapper';
 
 interface TaskSortingProps {
   id: number;
@@ -11,6 +11,7 @@ interface TaskSortingProps {
   initialItems: string[];
   correctOrder: string[];
   explanation?: string;
+  image?: TaskImage;
   onSuccess: (id: number) => void;
   initialCompleted?: boolean;
 }
@@ -21,6 +22,7 @@ export default function TaskSorting({
   initialItems,
   correctOrder,
   explanation,
+  image,
   onSuccess,
   initialCompleted = false,
 }: TaskSortingProps) {
@@ -46,6 +48,7 @@ export default function TaskSorting({
       resolvedStatus={resolvedStatus}
       icon={<ListOrdered size={16} />}
       question={question}
+      image={image}
       subtitle="Drag to reorder"
       explanation={explanation}
       incorrectMessage="Incorrect order. Try again!"

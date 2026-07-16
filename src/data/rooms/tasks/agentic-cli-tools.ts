@@ -4,6 +4,11 @@ export const agenticCliToolsTasks: LocalizedTask[] = [
   {
     id: 1,
     type: 'multiple-choice',
+    image: {
+      src: '/images/tasks/agentic-cli-tools/cli-loop.svg',
+      alt: { ru: 'Схема CLI-цикла agent coding: Discover, Change, Verify, с ветвью Rollback при неудаче.', en: 'Diagram of the agent-coding CLI loop: Discover, Change, Verify, with a Rollback branch on failure.' },
+      caption: { ru: 'CLI даёт агенту инструменты для каждой фазы: поиск и чтение, правки, проверки.', en: 'The CLI gives the agent tools for each phase: search and read, edits, and checks.' },
+    },
     question: {
       ru: 'Какое утверждение лучше описывает роль CLI в agent coding?',
       en: 'Which statement best describes CLI in agent coding?',

@@ -23,10 +23,10 @@ Reality check: by the calendar this is Month 3, but execution is still on the Mo
 
 **Acceptance:** ✅ verified solvable end-to-end on a 375px touch viewport (headless Chromium, `hasTouch`); desktop drag untouched; `npm run check-all` clean.
 
-### N-2 🔥 Land the responsive-shell PR (#1)
-- Merge PR #1 (root `CLAUDE.md` + `local-models-101` security-research chapter + responsive mobile shell) instead of accumulating open work.
+### N-2 ✅ Land the responsive-shell PR (#1) (done 2026-07-16, by Claude Code)
+- Merged PR #1 — it had grown to include the root `CLAUDE.md`, the `local-models-101` security-research chapter, the responsive mobile shell, the `taxonomy-matching` and `prompt-evals` rooms, all 47 data-defect fixes, and the armed test gate.
 
-**Acceptance:** PR merged to `main`; the designated branch restarted from `main` for follow-up work.
+**Acceptance:** ✅ PR merged to `main` (merge commit `04da99b`); the designated branch fast-forwarded onto `main` for follow-up work.
 
 ### Recommended order from here
 1. **N-1, N-2** — mobile is visibly broken and there is in-flight work to close.
@@ -59,19 +59,19 @@ Goal: green test suite gating every change; task-level images available; first G
 
 **Acceptance:** `npm run check-all` runs lint + typecheck + tests and passes clean.
 
-### M1-4 🟡 Task-image infrastructure
-- [ ] Add optional field to `LocalizedTask` (`src/data/rooms/types.ts`) and `Task` (`src/types/room.ts`):
+### M1-4 ✅ Task-image infrastructure (done 2026-07-16, by Claude Code)
+- [x] Add optional field to `LocalizedTask` (`src/data/rooms/types.ts`) and `Task` (`src/types/room.ts`):
   `image?: { src: string; alt: LocalizedString; caption?: LocalizedString }`.
-- [ ] Render it once in `src/components/TaskWrapper.tsx` above the question so all 8 task types inherit it. Follow the design tokens rule (no arbitrary hex values).
-- [ ] Store assets under `public/images/tasks/<room-id>/`.
-- [ ] Extend `src/data/rooms/__tests__/data-integrity.test.ts`: every referenced `image.src` must exist under `public/`, `alt` must have both locales.
-- [ ] Document the field in `AGENTS.md` → "Task data validation gate".
+- [x] Render it once via a shared `TaskIllustration` (exported from `TaskWrapper.tsx`) so all 8 task types inherit it — `TaskWrapper` covers input/mc/ms/sorting/categorize/timeline; `TaskMentor` and `TaskScenario` (own card markup) render the same component at the top of their cards. Design tokens only.
+- [x] Store assets under `public/images/tasks/<room-id>/` (directory + `.gitkeep` created).
+- [x] Extend `src/data/rooms/__tests__/data-integrity.test.ts`: every referenced `image.src` must exist under `public/`, `alt` (and `caption` when present) must have both locales.
+- [x] Document the field in `AGENTS.md` → "Task data validation gate".
 
 **Acceptance:** a task with an image renders correctly in both locales; a missing file fails `npm run test`.
 
-### M1-5 🟡 Pilot screenshots in agent-coding rooms
-- [ ] Add 1–2 screenshots each to tasks in `claude-code-agentic-loop`, `agentic-cli-tools`, `claude-code-pro-workflow` (candidates: plan-mode output, permission modes, tool-call tree, CLAUDE.md example).
-- [ ] Screenshots are supplied or approved by the project creator — ask before shipping.
+### M1-5 🟡 Pilot illustrations in agent-coding rooms (diagrams shipped 2026-07-16 — awaiting creator approval, by Claude Code)
+- [x] Added a concept diagram to one task in each of `agentic-cli-tools` (#1, CLI loop), `claude-code-pro-workflow` (#5, auto-compact buffer), and `claude-code-agentic-loop` (#8, three-phase loop). Deliberately attached to context tasks, NOT to the "name the phases" MC (#1) or "order the loop" sorting (#4), which the diagram would give away. Design-token palette SVGs under `public/images/tasks/<room-id>/`, bilingual alt/caption.
+- [~] Real terminal screenshots (plan-mode output, permission modes, tool-call tree) still pending — cannot be authentically captured here; shipped clean SVG diagrams instead as the pilot. Creator to approve or swap for real screenshots.
 
 **Acceptance:** pilot tasks show images with bilingual alt/captions; tests green.
 

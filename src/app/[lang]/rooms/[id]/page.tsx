@@ -126,6 +126,11 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
       ? t.answer.map(a => typeof a === 'object' && a !== null && 'en' in a ? (a as unknown as Record<string, string>)[lang] : a)
       : (typeof t.answer === 'object' && t.answer !== null && 'en' in t.answer ? (t.answer as unknown as Record<string, string>)[lang] : t.answer),
     hint: t.hint ? t.hint[lang as 'en' | 'ru'] : undefined,
+    image: t.image ? {
+      src: t.image.src,
+      alt: t.image.alt[lang as 'en' | 'ru'],
+      caption: t.image.caption ? t.image.caption[lang as 'en' | 'ru'] : undefined,
+    } : undefined,
     options: t.options?.map(o => typeof o === 'object' ? o[lang as 'en' | 'ru'] : o),
     initialItems: t.initialItems?.map(o => typeof o === 'object' ? o[lang as 'en' | 'ru'] : o),
     correctOrder: t.correctOrder?.map(o => typeof o === 'object' ? o[lang as 'en' | 'ru'] : o),
@@ -328,6 +333,7 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
                     key={task.id}
                     id={task.id}
                     question={task.question}
+                    image={task.image}
                     initialItems={task.initialItems as string[]}
                     correctOrder={task.correctOrder as string[]}
                     explanation={task.explanation}
@@ -339,6 +345,7 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
                     key={task.id}
                     id={task.id}
                     question={task.question}
+                    image={task.image}
                     mentorMessage={task.dialogue!.mentorMessage}
                     userOptions={task.dialogue!.userOptions}
                     onSuccess={markCompleted}
@@ -349,6 +356,7 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
                     key={task.id}
                     id={task.id}
                     question={task.question}
+                    image={task.image}
                     items={task.categorize!.items}
                     buckets={task.categorize!.buckets}
                     correctMapping={task.categorize!.correctMapping}
@@ -361,6 +369,7 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
                     key={task.id}
                     id={task.id}
                     question={task.question}
+                    image={task.image}
                     events={task.timeline!.events}
                     correctOrder={task.timeline!.correctOrder}
                     explanation={task.explanation}
@@ -372,6 +381,7 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
                     key={task.id}
                     id={task.id}
                     question={task.question}
+                    image={task.image}
                     brief={task.scenario!.brief}
                     constraints={task.scenario!.constraints}
                     choices={task.scenario!.choices}
@@ -385,6 +395,7 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
                     key={task.id}
                     id={task.id}
                     question={task.question}
+                    image={task.image}
                     correctAnswer={task.answer as string | string[]}
                     options={task.options as string[]}
                     hint={task.hint}

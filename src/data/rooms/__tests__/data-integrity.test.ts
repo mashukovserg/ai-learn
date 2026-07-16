@@ -4,6 +4,8 @@
  * "Task ID sequencing". When you change a rule here, update docs/AGENTS.md too.
  */
 import { describe, it, expect } from 'vitest';
+import fs from 'node:fs';
+import path from 'node:path';
 import { ROOMS_METADATA, PATHS_METADATA, ROOM_TASKS } from '../index';
 import type { LocalizedRoomMetadata, LocalizedString } from '../types';
 
@@ -146,5 +148,35 @@ describe('Task common fields', () => {
       'timeline',
       'scenario',
     ]).toContain(task.type);
+  });
+});
+
+describe('Task images (docs/AGENTS.md → "Task data validation gate")', () => {
+  const tasksWithImages = Object.entries(ROOM_TASKS).flatMap(([roomId, tasks]) =>
+    tasks
+      .filter(t => t.image !== undefined)
+      .map(t => [`${roomId}#${t.id}`, t] as const)
+  );
+
+  // it.each on an empty list throws, so guard the whole block.
+  if (tasksWithImages.length === 0) {
+    it('no task images declared (nothing to validate)', () => {
+      expect(tasksWithImages).toEqual([]);
+    });
+    return;
+  }
+
+  it.each(tasksWithImages)('%s image.src points to an existing file under public/', (_label, task) => {
+    const src = task.image!.src;
+    expect(typeof src === 'string' && src.startsWith('/'), `src must start with "/": ${src}`).toBe(true);
+    const filePath = path.join(process.cwd(), 'public', src);
+    expect(fs.existsSync(filePath), `missing file: public${src}`).toBe(true);
+  });
+
+  it.each(tasksWithImages)('%s image.alt is bilingual (and caption too, when present)', (_label, task) => {
+    expect(isFilledLocalized(task.image!.alt), 'alt must be filled {en, ru}').toBe(true);
+    if (task.image!.caption !== undefined) {
+      expect(isFilledLocalized(task.image!.caption), 'caption must be filled {en, ru}').toBe(true);
+    }
   });
 });

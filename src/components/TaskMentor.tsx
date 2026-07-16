@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { MessageSquare, ArrowRight, CheckCircle2, RefreshCcw } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLang } from '@/hooks/useLang';
+import { TaskImage, TaskIllustration } from './TaskWrapper';
 
 interface UserOption {
   text: string;
@@ -17,6 +18,7 @@ interface TaskMentorProps {
   question: string;
   mentorMessage: string;
   userOptions: UserOption[];
+  image?: TaskImage;
   onSuccess: (id: number) => void;
   initialCompleted?: boolean;
 }
@@ -26,6 +28,7 @@ export default function TaskMentor({
   question,
   mentorMessage,
   userOptions,
+  image,
   onSuccess,
   initialCompleted = false,
 }: TaskMentorProps) {
@@ -52,6 +55,7 @@ export default function TaskMentor({
     <div className={`bg-card-dark border rounded-xl overflow-hidden mb-4 transition-all duration-500 ${
       completed ? 'border-emerald-500/30 shadow-[0_0_20px_rgba(16,185,129,0.05)]' : 'border-border-card'
     }`}>
+      {image && <div className="px-4 pt-4"><TaskIllustration image={image} /></div>}
       {/* Header */}
       <div className="bg-card px-4 py-3 border-b border-border-card flex items-center justify-between">
         <div className="flex items-center gap-2.5">

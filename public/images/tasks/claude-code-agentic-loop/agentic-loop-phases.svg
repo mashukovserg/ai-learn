@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 260" font-family="ui-sans-serif, system-ui, sans-serif" role="img">
+  <rect width="720" height="260" rx="14" fill="#171715" stroke="#2b2926"/>
+  <text x="360" y="34" text-anchor="middle" fill="#8f8a82" font-size="13" letter-spacing="2">CLAUDE CODE AGENTIC LOOP</text>
+  <!-- three phase cards -->
+  <g>
+    <rect x="40" y="70" width="180" height="120" rx="12" fill="#1c1b19" stroke="#393733"/>
+    <circle cx="70" cy="102" r="14" fill="#10b98122" stroke="#10b98155"/>
+    <text x="70" y="107" text-anchor="middle" fill="#34d399" font-size="14" font-weight="700">1</text>
+    <text x="96" y="107" fill="#e6e2da" font-size="17" font-weight="700">Gather</text>
+    <text x="60" y="140" fill="#8f8a82" font-size="13">Read files, search,</text>
+    <text x="60" y="160" fill="#8f8a82" font-size="13">build context</text>
+  </g>
+  <g>
+    <rect x="270" y="70" width="180" height="120" rx="12" fill="#1c1b19" stroke="#393733"/>
+    <circle cx="300" cy="102" r="14" fill="#10b98122" stroke="#10b98155"/>
+    <text x="300" y="107" text-anchor="middle" fill="#34d399" font-size="14" font-weight="700">2</text>
+    <text x="326" y="107" fill="#e6e2da" font-size="17" font-weight="700">Act</text>
+    <text x="290" y="140" fill="#8f8a82" font-size="13">Edit code, run</text>
+    <text x="290" y="160" fill="#8f8a82" font-size="13">tools, apply change</text>
+  </g>
+  <g>
+    <rect x="500" y="70" width="180" height="120" rx="12" fill="#1c1b19" stroke="#393733"/>
+    <circle cx="530" cy="102" r="14" fill="#10b98122" stroke="#10b98155"/>
+    <text x="530" y="107" text-anchor="middle" fill="#34d399" font-size="14" font-weight="700">3</text>
+    <text x="556" y="107" fill="#e6e2da" font-size="17" font-weight="700">Verify</text>
+    <text x="520" y="140" fill="#8f8a82" font-size="13">Run tests, check</text>
+    <text x="520" y="160" fill="#8f8a82" font-size="13">result vs. goal</text>
+  </g>
+  <!-- arrows -->
+  <path d="M220 130 L268 130" stroke="#4b4842" stroke-width="2" marker-end="url(#a)"/>
+  <path d="M450 130 L498 130" stroke="#4b4842" stroke-width="2" marker-end="url(#a)"/>
+  <path d="M590 190 C590 228, 130 228, 130 192" fill="none" stroke="#4b4842" stroke-width="2" stroke-dasharray="5 5" marker-end="url(#a)"/>
+  <text x="360" y="245" text-anchor="middle" fill="#6b675f" font-size="12">loop until verified</text>
+  <defs>
+    <marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0 0 L7 3 L0 6 z" fill="#4b4842"/></marker>
+  </defs>
+</svg>

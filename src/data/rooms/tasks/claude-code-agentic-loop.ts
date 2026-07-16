@@ -172,6 +172,11 @@ export const claudeCodeAgenticLoopTasks: LocalizedTask[] = [
   {
     id: 8,
     type: 'scenario',
+    image: {
+      src: '/images/tasks/claude-code-agentic-loop/agentic-loop-phases.svg',
+      alt: { ru: 'Схема трёхфазного агентного цикла Claude Code: Сбор контекста, Действие, Верификация, с возвратом в начало.', en: 'Diagram of the three-phase Claude Code agentic loop: Gather Context, Act, Verify, looping back to the start.' },
+      caption: { ru: 'Цикл повторяется: после провала верификации агент возвращается к сбору контекста.', en: 'The loop repeats: after a failed verification the agent returns to gathering context.' },
+    },
     question: {
       ru: 'Самокоррекция агента',
       en: 'Agent Self-Correction'
