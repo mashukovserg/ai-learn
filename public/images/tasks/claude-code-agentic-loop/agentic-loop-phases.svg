@@ -1,35 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" font-family="ui-sans-serif, system-ui, sans-serif" role="img">
-  <rect width="720" height="300" rx="16" fill="#171715" stroke="#302e2b"/>
-  <text x="360" y="42" text-anchor="middle" fill="#b3ada3" font-size="18" font-weight="600" letter-spacing="2">CLAUDE CODE AGENTIC LOOP</text>
-  <g>
-    <rect x="34" y="78" width="196" height="128" rx="14" fill="#1c1b19" stroke="#4b4842" stroke-width="1.5"/>
-    <circle cx="68" cy="116" r="17" fill="#10b98122" stroke="#10b98188" stroke-width="1.5"/>
-    <text x="68" y="122" text-anchor="middle" fill="#34d399" font-size="17" font-weight="700">1</text>
-    <text x="96" y="123" fill="#f2eee6" font-size="22" font-weight="700">Gather</text>
-    <text x="56" y="158" fill="#a29d94" font-size="15">Read files, search,</text>
-    <text x="56" y="180" fill="#a29d94" font-size="15">build context</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 300" font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace' role="img">
+  <rect x="1" y="1" width="658" height="298" rx="14" fill="#0d0d0c" stroke="#302e2b"/>
+  <circle cx="28" cy="28" r="6" fill="#cf6a63"/>
+  <circle cx="50" cy="28" r="6" fill="#cfa14a"/>
+  <circle cx="72" cy="28" r="6" fill="#4fae7a"/>
+  <text x="330" y="33" text-anchor="middle" fill="#7a756c" font-size="14">claude code · agentic loop</text>
+  <line x1="16" y1="52" x2="644" y2="52" stroke="#262523"/>
+  <g font-size="18">
+    <text x="26" y="88"><tspan fill="#4fae7a">$ </tspan><tspan fill="#d4d0c8">gather</tspan><tspan fill="#6b675f">   read files, search context</tspan></text>
+    <text x="26" y="120"><tspan fill="#4fae7a">$ </tspan><tspan fill="#d4d0c8">act</tspan><tspan fill="#6b675f">      edit code, run tools</tspan></text>
+    <text x="26" y="152"><tspan fill="#4fae7a">$ </tspan><tspan fill="#d4d0c8">verify</tspan><tspan fill="#6b675f">   run tests, check vs goal</tspan></text>
+    <text x="26" y="184"><tspan fill="#cf6a63">   ✗ 1 failing — goal not met</tspan></text>
+    <text x="26" y="222"><tspan fill="#4fae7a">↻ loop:</tspan><tspan fill="#d4d0c8"> gather → act → verify</tspan></text>
+    <text x="26" y="254"><tspan fill="#6b675f"># repeat until verified or blocked</tspan></text>
   </g>
-  <g>
-    <rect x="262" y="78" width="196" height="128" rx="14" fill="#1c1b19" stroke="#4b4842" stroke-width="1.5"/>
-    <circle cx="296" cy="116" r="17" fill="#10b98122" stroke="#10b98188" stroke-width="1.5"/>
-    <text x="296" y="122" text-anchor="middle" fill="#34d399" font-size="17" font-weight="700">2</text>
-    <text x="324" y="123" fill="#f2eee6" font-size="22" font-weight="700">Act</text>
-    <text x="284" y="158" fill="#a29d94" font-size="15">Edit code, run</text>
-    <text x="284" y="180" fill="#a29d94" font-size="15">tools, apply change</text>
-  </g>
-  <g>
-    <rect x="490" y="78" width="196" height="128" rx="14" fill="#1c1b19" stroke="#4b4842" stroke-width="1.5"/>
-    <circle cx="524" cy="116" r="17" fill="#10b98122" stroke="#10b98188" stroke-width="1.5"/>
-    <text x="524" y="122" text-anchor="middle" fill="#34d399" font-size="17" font-weight="700">3</text>
-    <text x="552" y="123" fill="#f2eee6" font-size="22" font-weight="700">Verify</text>
-    <text x="512" y="158" fill="#a29d94" font-size="15">Run tests, check</text>
-    <text x="512" y="180" fill="#a29d94" font-size="15">result vs. goal</text>
-  </g>
-  <path d="M230 142 L258 142" stroke="#6b675f" stroke-width="3" marker-end="url(#a)"/>
-  <path d="M458 142 L486 142" stroke="#6b675f" stroke-width="3" marker-end="url(#a)"/>
-  <path d="M588 206 C588 248, 132 248, 132 210" fill="none" stroke="#7a756c" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#a)"/>
-  <text x="360" y="278" text-anchor="middle" fill="#8f8a82" font-size="15">loop until verified</text>
-  <defs>
-    <marker id="a" markerWidth="11" markerHeight="11" refX="8" refY="4" orient="auto"><path d="M0 0 L9 4 L0 8 z" fill="#a8a29a"/></marker>
-  </defs>
 </svg>

@@ -1,13 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 220" font-family="ui-sans-serif, system-ui, sans-serif" role="img">
-  <rect width="700" height="220" rx="16" fill="#171715" stroke="#302e2b"/>
-  <text x="350" y="42" text-anchor="middle" fill="#b3ada3" font-size="17" font-weight="600" letter-spacing="1.5">CONTEXT WINDOW — AUTO COMPACT BUFFER</text>
-  <rect x="40" y="74" width="620" height="64" rx="10" fill="#1a1917" stroke="#4b4842" stroke-width="1.5"/>
-  <rect x="43" y="77" width="480" height="58" rx="7" fill="#10b98126"/>
-  <rect x="523" y="77" width="134" height="58" rx="7" fill="#f59e0b26"/>
-  <line x1="523" y1="68" x2="523" y2="144" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="5 4"/>
-  <text x="283" y="112" text-anchor="middle" fill="#34d399" font-size="19" font-weight="700">Working context · 78%</text>
-  <text x="590" y="104" text-anchor="middle" fill="#fbbf24" font-size="16" font-weight="700">Buffer</text>
-  <text x="590" y="124" text-anchor="middle" fill="#fbbf24" font-size="16" font-weight="700">22%</text>
-  <text x="40" y="176" fill="#a29d94" font-size="15">When usage crosses the 22% reserve line, Claude Code auto-compacts</text>
-  <text x="40" y="198" fill="#a29d94" font-size="15">history to free room.</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 240" font-family='ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace' role="img">
+  <rect x="1" y="1" width="658" height="238" rx="14" fill="#0d0d0c" stroke="#302e2b"/>
+  <circle cx="28" cy="28" r="6" fill="#cf6a63"/>
+  <circle cx="50" cy="28" r="6" fill="#cfa14a"/>
+  <circle cx="72" cy="28" r="6" fill="#4fae7a"/>
+  <text x="330" y="33" text-anchor="middle" fill="#7a756c" font-size="14">claude code · context</text>
+  <line x1="16" y1="52" x2="644" y2="52" stroke="#262523"/>
+  <g font-size="18">
+    <text x="26" y="90"><tspan fill="#4fae7a">$ </tspan><tspan fill="#d4d0c8">/context</tspan></text>
+    <text x="26" y="128"><tspan fill="#d4d0c8">window  </tspan><tspan fill="#4fae7a">████████████████</tspan><tspan fill="#cfa14a">████</tspan><tspan fill="#d4d0c8">  100%</tspan></text>
+    <text x="26" y="158"><tspan fill="#4fae7a">        working 78%          </tspan><tspan fill="#cfa14a">buffer 22%</tspan></text>
+    <text x="26" y="196"><tspan fill="#6b675f"># at the 22% reserve line, history is auto-compacted</tspan></text>
+  </g>
 </svg>
