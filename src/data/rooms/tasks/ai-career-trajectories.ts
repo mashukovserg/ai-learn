@@ -176,7 +176,7 @@ export const aiCareerTrajectoriesTasks: LocalizedTask[] = [
         'Research Scientist': 'Research depth',
         'ML Platform Engineer': 'Systems at scale',
         'AI Product Manager': 'Business and team leverage',
-        'Engineering Manager': 'Business and team leverage'
+        'Engineering Manager': 'Business and team leverage',
       }
     },
     answer: '',

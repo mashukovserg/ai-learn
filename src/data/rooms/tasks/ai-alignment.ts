@@ -104,7 +104,7 @@ export const aiAlignmentTasks: LocalizedTask[] = [
       type: 'mentor',
       question: { ru: 'Конституционный ИИ', en: 'Constitutional AI' },
       answer: '',
-      explanation: { ru: '', en: '' },
+      explanation: { ru: 'Конституционный ИИ (RLAIF) решает проблему масштаба надзора: человек один раз пишет правила, а ИИ следит за их соблюдением во всех своих версиях — без миллионов разметчиков.', en: 'Constitutional AI (RLAIF) solves the oversight-scaling problem: a human writes the rules once, and the AI enforces them across all its versions — no millions of annotators needed.' },
       dialogue: {
         mentorMessage: {
           ru: 'Как ты думаешь, почему идея "Конституционного ИИ" (RLAIF) важна для будущего, когда моделей станет слишком много?',

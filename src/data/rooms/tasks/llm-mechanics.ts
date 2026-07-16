@@ -138,7 +138,7 @@ export const llmMechanicsTasks: LocalizedTask[] = [
       type: 'mentor',
       question: { ru: 'Практика декодинга', en: 'Decoding Practice' },
       answer: '',
-      explanation: { ru: '', en: '' },
+      explanation: { ru: 'Декодинг настраивается под задачу: низкая температура — для юридической точности, повышенные temperature/top-p — для креатива. Один глобальный режим на всё проигрывает роутингу по типу запроса.', en: 'Decoding is tuned per task: low temperature for legal precision, higher temperature/top-p for creative work. One global mode for everything loses to routing by request type.' },
       dialogue: {
         mentorMessage: {
           ru: 'У тебя два типа запросов: (1) юридические ответы клиентам, (2) креативные слоганы для маркетинга. Что лучше сделать с настройками декодинга?',
@@ -276,18 +276,12 @@ export const llmMechanicsTasks: LocalizedTask[] = [
           { ru: 'Внимание (Attention)', en: 'Attention' }
         ],
         correctMapping: {
-          'BPE-фрагменты': 'Токены (Tokens)',
           'BPE fragments': 'Tokens',
-          'Словарный индекс': 'Токены (Tokens)',
-          'Vocabulary index': 'Tokens',
-          'Синусоидальные метки': 'Позиции (Positions)',
           'Sinusoidal labels': 'Positions',
-          'Порядковый номер в окне': 'Позиции (Positions)',
-          'Context window index': 'Positions',
-          'Матрица Q, K, V': 'Внимание (Attention)',
           'Q, K, V matrices': 'Attention',
-          'Веса значимости связей': 'Внимание (Attention)',
-          'Significance weights': 'Attention'
+          'Vocabulary index': 'Tokens',
+          'Context window index': 'Positions',
+          'Significance weights': 'Attention',
         }
       }
     },

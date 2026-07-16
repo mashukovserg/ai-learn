@@ -530,4 +530,20 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     pathIds: ['agent-coding'],
     icon: 'Terminal',
   },
+  {
+    id: 'taxonomy-matching',
+    title: {
+      ru: 'Сопоставление вакансий с таксономией навыков',
+      en: 'Matching Jobs to a Skill Taxonomy',
+    },
+    description: {
+      ru: 'Прикладная ML-задача: как сопоставить тысячи «грязных» названий вакансий с кураторским справочником профессий и навыков — нормализация, лексика, эмбеддинги, LLM-адъюдикация и оценка precision/recall.',
+      en: 'An applied ML task: how to match thousands of messy job titles to a curated catalog of professions and skills — normalization, lexical matching, embeddings, LLM adjudication, and precision/recall evaluation.',
+    },
+    difficulty: 'Intermediate',
+    time: { ru: '30 мин', en: '30m' },
+    category: { ru: 'Практика', en: 'Practice' },
+    image: '/images/llm-landscape-network.png',
+    icon: 'Network',
+  },
 ];

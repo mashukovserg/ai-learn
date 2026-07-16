@@ -111,14 +111,10 @@ export const agenticUiDeliveryTasks: LocalizedTask[] = [
         { ru: 'Субъективные (Weak)', en: 'Subjective (Weak)' }
       ],
       correctMapping: {
-        'Используй отступ 16px (p-4)': 'Конкретные (Strong)',
         'Use 16px padding (p-4)': 'Concrete (Strong)',
-        'Сделай кнопку "красивой"': 'Субъективные (Weak)',
         'Make the button "beautiful"': 'Subjective (Weak)',
-        'Цвет текста должен быть #262626': 'Конкретные (Strong)',
         'Text color should be #262626': 'Concrete (Strong)',
-        'Добавь немного "воздуха"': 'Субъективные (Weak)',
-        'Add some "breathing room"': 'Subjective (Weak)'
+        'Add some "breathing room"': 'Subjective (Weak)',
       }
     },
     answer: '',
@@ -203,7 +199,7 @@ export const agenticUiDeliveryTasks: LocalizedTask[] = [
             ru: 'Высокая консистентность и отсутствие лишних зависимостей.',
             en: 'High consistency and no extra dependencies.'
           },
-          score: 10
+          score: 100
         },
         {
           text: {

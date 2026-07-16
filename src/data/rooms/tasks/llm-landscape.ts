@@ -219,7 +219,7 @@ export const llmLandscapeTasks: LocalizedTask[] = [
         en: 'Scenario Mission: AI Assistant for a Bank'
       },
       answer: '',
-      explanation: { ru: '', en: '' },
+      explanation: { ru: 'Гибридный роутинг разделяет трафик по риску и экономике: PII и массовые FAQ — в open-weight модель внутри VPC, сложные non-PII кейсы — во frontier API. Так выполняются и комплаенс, и бюджет.', en: 'Hybrid routing splits traffic by risk and economics: PII and high-volume FAQ go to an open-weight model inside the VPC, complex non-PII cases to a frontier API. That satisfies both compliance and budget.' },
       dialogue: {
         mentorMessage: {
           ru: 'Ты проектируешь AI-помощника для банка. Условия: 100k запросов в день, P95 latency <= 2.5s, данные клиентов (PII) не должны выходить за пределы VPC, бюджет <= $0.02 за запрос. Какую архитектуру выберешь?',

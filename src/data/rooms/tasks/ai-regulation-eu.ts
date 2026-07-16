@@ -46,18 +46,12 @@ export const aiRegulationEuTasks: LocalizedTask[] = [
           { ru: 'Минимальный (Minimal Risk)', en: 'Minimal Risk' }
         ],
         correctMapping: {
-          'Социальный скоринг граждан': 'Неприемлемый (Prohibited)',
           'Social scoring of citizens': 'Unacceptable (Prohibited)',
-          'Удаленная биометрия в общественных местах': 'Неприемлемый (Prohibited)',
-          'Remote biometrics in public spaces': 'Unacceptable (Prohibited)',
-          'Медицинская диагностика по КТ': 'Высокий (High Risk)',
           'Medical diagnostics via CT': 'High Risk',
-          'Оценка кредитоспособности (скоринг)': 'Высокий (High Risk)',
-          'Creditworthiness assessment (scoring)': 'High Risk',
-          'Спам-фильтр в почте': 'Минимальный (Minimal Risk)',
           'Email spam filter': 'Minimal Risk',
-          'Видеоигра со встроенным ИИ': 'Минимальный (Minimal Risk)',
-          'Video game with built-in AI': 'Minimal Risk'
+          'Remote biometrics in public spaces': 'Unacceptable (Prohibited)',
+          'Creditworthiness assessment (scoring)': 'High Risk',
+          'Video game with built-in AI': 'Minimal Risk',
         }
       }
     },
@@ -105,7 +99,7 @@ export const aiRegulationEuTasks: LocalizedTask[] = [
       type: 'mentor',
       question: { ru: 'Этика против Инноваций', en: 'Ethics vs Innovation' },
       answer: '',
-      explanation: { ru: '', en: '' },
+      explanation: { ru: 'Системы найма — категория высокого риска по EU AI Act: перед запуском нужны аудит на предвзятость и техническая документация для сертификации. Прозрачность важнее скорости.', en: 'Hiring systems are high-risk under the EU AI Act: a bias audit and certification documentation must precede launch. Transparency over speed.' },
       dialogue: {
         mentorMessage: {
           ru: 'Штрафы по EU AI Act достигают €35 млн или 7% мирового оборота компании. Твоя команда хочет запустить ИИ-систему для найма сотрудников. Что ты потребуешь от них в первую очередь?',

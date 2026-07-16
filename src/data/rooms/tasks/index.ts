@@ -37,6 +37,8 @@ import { promptContractsTasks } from './prompt-contracts';
 import { multiAgentCollaborationTasks } from './multi-agent-collaboration';
 import { agenticTestingLoopTasks } from './agentic-testing-loop';
 import { agenticUiDeliveryTasks } from './agentic-ui-delivery';
+import { taxonomyMatchingTasks } from './taxonomy-matching';
+import { promptEvalsTasks } from './prompt-evals';
 
 export const ROOM_TASKS: Record<string, LocalizedTask[]> = {
   'llm-landscape': llmLandscapeTasks,
@@ -76,4 +78,6 @@ export const ROOM_TASKS: Record<string, LocalizedTask[]> = {
   'frontier-evals-logic': frontierEvalsLogicTasks,
   'claude-code-agentic-loop': claudeCodeAgenticLoopTasks,
   'claude-code-pro-workflow': claudeCodeProWorkflowTasks,
+  'taxonomy-matching': taxonomyMatchingTasks,
+  'prompt-evals': promptEvalsTasks,
 };

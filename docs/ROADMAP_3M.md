@@ -14,25 +14,48 @@ Companion docs: `AGENTS.md` (mandatory gates), `BACKLOG.md` (punch lists, work l
 
 ---
 
+## Now — immediate priorities (2026-07-15 reassessment)
+
+Reality check: by the calendar this is Month 3, but execution is still on the Month 1 🔴 items — `npm run test` reports 48 failures and `prompt-evals` still has no task file. Per this roadmap's own rule, Month 2/3 stay closed until the Month 1 🔴 items clear. Two items surfaced after the original plan was written and jump the queue.
+
+### N-1 ✅ Fix touch-drag on `TaskCategorize` (done 2026-07-15, by Claude Code)
+- `TaskCategorize` used native HTML5 drag (`draggable` + `onDragStart`), which does not fire on touchscreens, so categorize tasks were **unsolvable on mobile**. Added a tap-to-place interaction (tap an item → tap a category) that works on touch, mouse, and keyboard; native drag is preserved for desktop.
+
+**Acceptance:** ✅ verified solvable end-to-end on a 375px touch viewport (headless Chromium, `hasTouch`); desktop drag untouched; `npm run check-all` clean.
+
+### N-2 🔥 Land the responsive-shell PR (#1)
+- Merge PR #1 (root `CLAUDE.md` + `local-models-101` security-research chapter + responsive mobile shell) instead of accumulating open work.
+
+**Acceptance:** PR merged to `main`; the designated branch restarted from `main` for follow-up work.
+
+### Recommended order from here
+1. **N-1, N-2** — mobile is visibly broken and there is in-flight work to close.
+2. **M1-1 → M1-2 → M1-3** — clear the 🔴 blockers and arm the test gate, so every later PR is protected automatically.
+3. Then resume Month 1 🟡 (M1-4…M1-6) and the rest of the plan.
+
+Rationale: first remove what is already broken and user-visible (mobile), then remove the blocker that makes further work unsafe (test gate), and only then grow content/features.
+
+---
+
 ## Month 1 — Stabilization + media groundwork (2026-05-16 → 2026-06-15)
 
 Goal: green test suite gating every change; task-level images available; first GROK content live.
 
-### M1-1 🔴 Fix the 47 data defects
-- [ ] Fix 22 `categorize` tasks: every `correctMapping` key must exactly equal some `items[i].en`, every value some `buckets[j].en` (full task list in `BACKLOG.md` → "Engineering follow-ups").
-- [ ] Fix 6 `scenario` tasks: at least one choice with `score >= passingScore`, all scores clamped to `[0, 100]`.
-- [ ] Write bilingual `explanation` for the 17 tasks shipping `{ en: '', ru: '' }`.
+### M1-1 ✅ Fix the 47 data defects (done 2026-07-15, by Claude Code)
+- [x] Fix 22 `categorize` tasks: every `correctMapping` key must exactly equal some `items[i].en`, every value some `buckets[j].en` (full task list in `BACKLOG.md` → "Engineering follow-ups").
+- [x] Fix 6 `scenario` tasks: at least one choice with `score >= passingScore`, all scores clamped to `[0, 100]` (0–10 scale rescaled ×10).
+- [x] Write bilingual `explanation` for the tasks shipping `{ en: '', ru: '' }` (19 including `llama-3-1-8b#7` found post-triage).
 
 **Acceptance:** `npm run test` reports 0 failures for these categories; each fixed task manually walked through once in each locale at `http://localhost:3000`.
 
-### M1-2 🔴 Restore the `prompt-evals` room
-- [ ] Create `src/data/rooms/tasks/prompt-evals.ts` with 8–10 tasks (≥3 task types), all answerable from the existing `src/components/theory/PromptEvalsTheory.tsx`.
-- [ ] Register in `src/data/rooms/tasks/index.ts`.
+### M1-2 ✅ Restore the `prompt-evals` room (done 2026-07-15, by Claude Code)
+- [x] Create `src/data/rooms/tasks/prompt-evals.ts` with 8–10 tasks (≥3 task types), all answerable from the existing `src/components/theory/PromptEvalsTheory.tsx` (9 tasks, 7 types incl. sorting + mentor).
+- [x] Register in `src/data/rooms/tasks/index.ts`.
 
 **Acceptance:** room opens, all tasks completable in both locales, progress reaches 100%.
 
-### M1-3 🔴 Arm the test gate
-- [ ] Add `npm run test` back into `check-all` in `package.json` (blocked until M1-1 and M1-2 are done).
+### M1-3 ✅ Arm the test gate (done 2026-07-15, by Claude Code)
+- [x] Add `npm run test` back into `check-all` in `package.json` — lint + typecheck + 1700 tests, all green.
 
 **Acceptance:** `npm run check-all` runs lint + typecheck + tests and passes clean.
 

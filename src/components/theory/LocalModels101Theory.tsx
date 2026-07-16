@@ -169,6 +169,103 @@ export default function LocalModels101Theory({ lang }: { lang: string }) {
           </p>
         </div>
       </div>
+
+      {/* Chapter 6: Local Models in Security Research */}
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
+        <h2 className="text-3xl font-bold mb-6 text-emerald-400">
+          {lang === 'ru' ? 'Глава 6: Локальные модели в исследованиях по безопасности' : 'Chapter 6: Local Models in Security Research'}
+        </h2>
+        <div className="space-y-6">
+          <p className="text-neutral-300 leading-relaxed text-lg">
+            {lang === 'ru'
+              ? 'Работа по безопасности собирает вместе ровно те условия, при которых локальные модели особенно уместны. Материал, который специалист подаёт модели, — часто самые чувствительные данные организации: исходный код на ревью, сетевые логи, образцы вредоносного ПО, улики цифровой экспертизы из активного расследования. Отправка такого материала в сторонний API способна нарушить договор с клиентом, правила обращения с уликами или закон о защите данных. Запуск модели с открытыми весами на своей инфраструктуре удерживает материал внутри периметра — поэтому растущий пласт работ по защитной безопасности и цифровой криминалистике строится на локально развёрнутых моделях, а не на облачных API. Та же схема работает в изолированных лабораториях (air-gapped — машины без подключения к интернету), где доступ к облаку невозможен по замыслу.'
+              : 'Security work concentrates the exact conditions that make local models attractive. The material a practitioner feeds a model is often the most sensitive data an organization holds: source code under review, network logs, captured malware samples, or forensic evidence from an active investigation. Sending any of that to a third-party API can breach a client contract, chain-of-custody rules, or data-protection law. Running an open-weights model on your own infrastructure keeps the material inside the perimeter — which is why a growing body of defensive-security and digital-forensics research builds on locally deployed models rather than cloud APIs. The same setup runs in air-gapped labs (machines with no internet connection) where cloud access is impossible by design.'}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {lang === 'ru'
+              ? 'Помимо приватности, исследователи называют воспроизводимость и прозрачность. Облачная модель может обновиться или быть снята с обслуживания без предупреждения, поэтому эксперимент, воспроизведённый сегодня, через месяц может не повториться; зафиксированная локальная модель с неизменной конфигурацией повторяется точно, что важно, когда результаты должны быть проверяемыми. Открытые веса также позволяют глубже инспектировать модель и дообучать её под узкую задачу — например, под разбор криминалистических артефактов или генерацию более точных кандидатных путей, чем статический словарь. Через всю эту литературу проходит одна оговорка: она не утверждает, что локальные модели способнее фронтирных облачных. Компромисс — контроль, приватность и воспроизводимость в обмен на пиковое качество рассуждений, тот же баланс, что эта комната проводит для каждого сценария.'
+              : 'Beyond privacy, researchers cite reproducibility and transparency. A cloud model can be updated or retired without notice, so an experiment run today may not repeat next month; a pinned local model with a fixed configuration reproduces exactly, which matters when results must be defensible. Open weights also allow deeper inspection and fine-tuning for a narrow task — for example a model specialized for parsing forensic artifacts, or generating better candidate paths than a static wordlist. One caveat runs through this literature: it does not claim local models are more capable than frontier cloud models. The trade-off is control, privacy, and reproducibility in exchange for peak reasoning quality — the same balance this room draws for every use case.'}
+          </p>
+          <div className="bg-card border border-border-emphasis rounded-xl p-5">
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm text-neutral-400">
+                <thead>
+                  <tr className="border-b border-border-emphasis">
+                    <th className="text-left py-2 pr-4 text-neutral-500 font-medium">{lang === 'ru' ? 'Мотив' : 'Motivation'}</th>
+                    <th className="text-left py-2 text-neutral-500 font-medium">{lang === 'ru' ? 'Чем помогают локальные модели (контекст безопасности)' : 'Why local models help (security context)'}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-border-card">
+                    <td className="py-2 pr-4 text-neutral-300 font-medium">{lang === 'ru' ? 'Приватность' : 'Privacy'}</td>
+                    <td className="py-2">{lang === 'ru' ? 'Код, логи, образцы вредоносного ПО и улики остаются на своей инфраструктуре.' : 'Sensitive code, logs, malware samples, and forensic evidence stay on-premises.'}</td>
+                  </tr>
+                  <tr className="border-b border-border-card">
+                    <td className="py-2 pr-4 text-neutral-300 font-medium">{lang === 'ru' ? 'Работа офлайн' : 'Offline capability'}</td>
+                    <td className="py-2">{lang === 'ru' ? 'Модели запускаются в изолированных (air-gapped) или иначе ограниченных средах.' : 'Models run in air-gapped or otherwise restricted environments.'}</td>
+                  </tr>
+                  <tr className="border-b border-border-card">
+                    <td className="py-2 pr-4 text-neutral-300 font-medium">{lang === 'ru' ? 'Затраты' : 'Cost'}</td>
+                    <td className="py-2">{lang === 'ru' ? 'Нет постоянной оплаты API при масштабном автоматическом анализе.' : 'No recurring API fees for large-scale automated analysis.'}</td>
+                  </tr>
+                  <tr className="border-b border-border-card">
+                    <td className="py-2 pr-4 text-neutral-300 font-medium">{lang === 'ru' ? 'Воспроизводимость' : 'Reproducibility'}</td>
+                    <td className="py-2">{lang === 'ru' ? 'Исследователь фиксирует точную версию модели и конфигурацию.' : 'Researchers pin the exact model version and configuration.'}</td>
+                  </tr>
+                  <tr className="border-b border-border-card">
+                    <td className="py-2 pr-4 text-neutral-300 font-medium">{lang === 'ru' ? 'Кастомизация' : 'Customization'}</td>
+                    <td className="py-2">{lang === 'ru' ? 'Модели дообучаются под специализированные задачи безопасности.' : 'Models are fine-tuned for specialized security tasks.'}</td>
+                  </tr>
+                  <tr>
+                    <td className="py-2 pr-4 text-neutral-300 font-medium">{lang === 'ru' ? 'Прозрачность' : 'Transparency'}</td>
+                    <td className="py-2">{lang === 'ru' ? 'Открытые веса допускают более глубокую инспекцию, чем закрытые API.' : 'Open weights allow deeper inspection than closed APIs.'}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div className="bg-card border border-border-emphasis rounded-xl p-5">
+            <h4 className="font-bold text-neutral-200 mb-2">{lang === 'ru' ? 'Что почитать дальше' : 'Selected Reading'}</h4>
+            <p className="text-neutral-400 leading-relaxed mb-4">
+              {lang === 'ru'
+                ? 'Подборка сфокусирована на защитных исследованиях, безопасности ИИ и авторизованной оценке систем, а не на вредоносном применении. Любая наступательная методика в этих работах предполагает разрешение владельца системы.'
+                : 'This list focuses on defensive research, AI security, and authorized system evaluation rather than malicious use. Any offensive technique in these works assumes the system owner\'s permission.'}
+            </p>
+            <ul className="space-y-3 text-sm text-neutral-400">
+              <li>
+                <span className="text-neutral-300 font-medium">Building Adaptive and Transparent Cyber Agents with Local Language Models (2026).</span>{' '}
+                {lang === 'ru'
+                  ? 'Почему исследователи строят локальных агентов для тестирования на проникновение вместо облачных API; представляет Hackphyr — локально дообученную модель 7B для авторизованного автономного пентеста.'
+                  : 'Why researchers build local penetration-testing agents instead of relying on cloud APIs; introduces Hackphyr, a locally fine-tuned 7B model for authorized autonomous testing.'}
+              </li>
+              <li>
+                <span className="text-neutral-300 font-medium">Understanding Hackers&apos; Work: An Empirical Study of Offensive Security Practitioners (2023).</span>{' '}
+                {lang === 'ru'
+                  ? 'Как на самом деле работают профессиональные пентестеры, где помогает автоматизация и что специалисты ценят в инструментах.'
+                  : 'How professional penetration testers actually work, where automation helps, and what practitioners value in their tooling.'}
+              </li>
+              <li>
+                <span className="text-neutral-300 font-medium">Offensive AI: Enhancing Directory Brute-forcing Attack with the Use of Language Models (AISec 2024).</span>{' '}
+                {lang === 'ru'
+                  ? 'Как языковые модели генерируют более точные кандидатные пути, чем статические словари, в контролируемой исследовательской постановке.'
+                  : 'How language models generate better candidate paths than static wordlists, in a controlled research setting.'}
+              </li>
+              <li>
+                <span className="text-neutral-300 font-medium">ForensicLLM: A Local Large Language Model for Digital Forensics (2025).</span>{' '}
+                {lang === 'ru'
+                  ? 'Почему в цифровой криминалистике предпочитают локальное развёртывание: чувствительные улики, приватность, офлайн-работа и воспроизводимость.'
+                  : 'Why digital forensics prefers local deployment: sensitive evidence, privacy, offline work, and reproducibility.'}
+              </li>
+              <li>
+                <span className="text-neutral-300 font-medium">Red Teaming Language Models with Language Models (DeepMind, 2022).</span>{' '}
+                {lang === 'ru'
+                  ? 'Использование одних LLM для автоматического поиска слабостей в других — база для понимания оценки безопасности ИИ с помощью самих моделей.'
+                  : 'Using LLMs to automatically discover weaknesses in other LLMs — foundational background for AI-assisted security evaluation.'}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

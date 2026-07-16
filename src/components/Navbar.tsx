@@ -1,14 +1,14 @@
 "use client";
 
 import { useState, useRef, useEffect, useMemo } from 'react';
-import { Search, Zap } from 'lucide-react';
+import { Search, Zap, Menu } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { useLang } from '@/hooks/useLang';
 import { ROOMS_METADATA } from '@/data/rooms/metadata';
 
-export default function Navbar() {
+export default function Navbar({ onMenuClick }: { onMenuClick?: () => void }) {
   const lang = useLang();
   const pathname = usePathname();
   const router = useRouter();
@@ -58,8 +58,16 @@ export default function Navbar() {
     d === 'Beginner' ? 'text-emerald-400' : d === 'Intermediate' ? 'text-yellow-400' : 'text-red-400';
 
   return (
-    <header className="h-16 border-b border-border-card bg-card/90 backdrop-blur-sm sticky top-0 z-10 flex items-center justify-between px-4 md:px-6 lg:px-10">
-      <div ref={wrapperRef} className="relative w-[min(26rem,60vw)]">
+    <header className="h-16 border-b border-border-card bg-card/90 backdrop-blur-sm sticky top-0 z-10 flex items-center gap-3 px-4 md:px-6 lg:px-10">
+      <button
+        type="button"
+        onClick={onMenuClick}
+        className="md:hidden p-2 -ml-1 rounded-md text-neutral-400 hover:text-neutral-200 hover:bg-base transition-colors shrink-0"
+        aria-label={lang === 'ru' ? 'Открыть меню' : 'Open menu'}
+      >
+        <Menu size={20} />
+      </button>
+      <div ref={wrapperRef} className="relative flex-1 min-w-0 max-w-[26rem]">
         <div className="flex items-center gap-3 bg-base px-3.5 py-2 rounded-lg border border-border-card">
           <Search size={15} className="text-neutral-600" />
           <input
@@ -108,7 +116,7 @@ export default function Navbar() {
         )}
       </div>
 
-      <div className="flex items-center gap-4 md:gap-5">
+      <div className="flex items-center gap-2 sm:gap-4 md:gap-5 ml-auto shrink-0">
         <div className="flex items-center gap-1 bg-base p-0.5 rounded-lg border border-border-card">
           <Link
             href={redirectedPathname('ru')}

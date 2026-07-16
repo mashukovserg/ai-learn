@@ -37,6 +37,7 @@ import AiSecurityTheory from '@/components/theory/AiSecurityTheory';
 import AiResearchTheory from '@/components/theory/AiResearchTheory';
 import FineTuning101Theory from '@/components/theory/FineTuning101Theory';
 import LocalModels101Theory from '@/components/theory/LocalModels101Theory';
+import TaxonomyMatchingTheory from '@/components/theory/TaxonomyMatchingTheory';
 import Llama318bTheory from '@/components/theory/Llama318bTheory';
 import AiSingularityTheory from "@/components/theory/AiSingularityTheory";
 import PromptEvalsTheory from "@/components/theory/PromptEvalsTheory";
@@ -98,6 +99,7 @@ const THEORY_COMPONENTS: Record<string, React.ComponentType<{ lang: string }>> =
   'frontier-evals-logic': FrontierEvalsTheory,
   'claude-code-agentic-loop': ClaudeCodeAgenticLoopTheory,
   'claude-code-pro-workflow': ClaudeCodeProWorkflowTheory,
+  'taxonomy-matching': TaxonomyMatchingTheory,
 };
 
 const DefaultTheory = () => <div className="p-8 text-neutral-500">Theory content coming soon...</div>;

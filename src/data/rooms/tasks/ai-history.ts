@@ -106,7 +106,7 @@ export const aiHistoryTasks: LocalizedTask[] = [
       type: 'mentor',
       question: { ru: 'Парадигма Software 2.0', en: 'The Software 2.0 Paradigm' },
       answer: '',
-      explanation: { ru: '', en: '' },
+      explanation: { ru: 'В Software 2.0 программист не пишет алгоритм руками: он собирает качественные данные, задаёт цель и оптимизатор, а веса (сам алгоритм) находит градиентный спуск.', en: 'In Software 2.0 the programmer does not hand-write the algorithm: they collect quality data, define the goal and the optimizer, and gradient descent finds the weights (the algorithm itself).' },
       dialogue: {
         mentorMessage: {
           ru: 'Андрей Карпатый называет современные нейросети "Software 2.0". В "Software 1.0" программист пишет алгоритм решения задачи. А что делает программист в "Software 2.0"?',
@@ -185,18 +185,12 @@ export const aiHistoryTasks: LocalizedTask[] = [
           { ru: 'Глубокое обучение (Deep Learning)', en: 'Deep Learning' }
         ],
         correctMapping: {
-          'Экспертные системы': 'Символический ИИ (GOFAI)',
           'Expert Systems': 'Symbolic AI (GOFAI)',
-          'Нейронные сети': 'Глубокое обучение (Deep Learning)',
           'Neural Networks': 'Deep Learning',
-          'Жесткие правила "Если-То"': 'Символический ИИ (GOFAI)',
           'Rigid If-Then rules': 'Symbolic AI (GOFAI)',
-          'Распознавание паттернов': 'Глубокое обучение (Deep Learning)',
           'Pattern Recognition': 'Deep Learning',
-          'Логический вывод (Дедукция)': 'Символический ИИ (GOFAI)',
           'Deductive Reasoning': 'Symbolic AI (GOFAI)',
-          'Обратное распространение ошибки': 'Глубокое обучение (Deep Learning)',
-          'Backpropagation': 'Deep Learning'
+          'Backpropagation': 'Deep Learning',
         }
       }
     },

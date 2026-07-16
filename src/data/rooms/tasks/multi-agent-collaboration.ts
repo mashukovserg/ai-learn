@@ -155,14 +155,10 @@ export const multiAgentCollaborationTasks: LocalizedTask[] = [
         { ru: 'Кооперативные', en: 'Cooperative' }
       ],
       correctMapping: {
-        'Orchestrator-Workers': 'Иерархические',
-        'Orchestrator-Workers ': 'Hierarchical',
-        'Chains (Последовательные цепочки)': 'Иерархические',
+        'Orchestrator-Workers': 'Hierarchical',
         'Chains (Sequential)': 'Hierarchical',
-        'Swarm (Динамический рой)': 'Кооперативные',
         'Swarm (Dynamic)': 'Cooperative',
-        'Joint Planning (Совместное планирование)': 'Кооперативные',
-        'Joint Planning': 'Cooperative'
+        'Joint Planning': 'Cooperative',
       }
     },
     answer: '',
@@ -214,7 +210,7 @@ export const multiAgentCollaborationTasks: LocalizedTask[] = [
             ru: 'Изоляция изменений, возможность параллельной работы и контролируемое слияние.',
             en: 'Isolation of changes, parallel work capability, and controlled merging.'
           },
-          score: 10
+          score: 100
         }
       ]
     },

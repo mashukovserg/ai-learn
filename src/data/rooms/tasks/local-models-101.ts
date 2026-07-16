@@ -379,4 +379,34 @@ export const localModels101Tasks: LocalizedTask[] = [
       ],
     },
   },
+  {
+    id: 11,
+    type: 'multiple-choice',
+    question: {
+      ru: 'Согласно исследованиям по безопасности из главы 6, почему специалисты запускают модели локально для чувствительной работы?',
+      en: 'According to the security research in Chapter 6, why do practitioners run models locally for sensitive work?',
+    },
+    options: [
+      {
+        ru: 'Ради контроля, приватности и воспроизводимости: данные остаются в периметре, а версия модели зафиксирована — при том что фронтирные облачные модели всё ещё сильнее в рассуждениях.',
+        en: 'For control, privacy, and reproducibility: data stays inside the perimeter and the model version is pinned — even though frontier cloud models still lead on reasoning.',
+      },
+      {
+        ru: 'Потому что локальные модели способнее фронтирных облачных на любых задачах безопасности.',
+        en: 'Because local models are more capable than frontier cloud models on every security task.',
+      },
+      {
+        ru: 'Потому что локальный запуск снимает необходимость получать разрешение перед тестированием системы.',
+        en: 'Because running locally removes the need to get authorization before testing a system.',
+      },
+    ],
+    answer: {
+      ru: 'Ради контроля, приватности и воспроизводимости: данные остаются в периметре, а версия модели зафиксирована — при том что фронтирные облачные модели всё ещё сильнее в рассуждениях.',
+      en: 'For control, privacy, and reproducibility: data stays inside the perimeter and the model version is pinned — even though frontier cloud models still lead on reasoning.',
+    },
+    explanation: {
+      ru: 'Верно. Литература называет мотивами приватность, офлайн-работу, затраты, воспроизводимость, кастомизацию и прозрачность — и специально оговаривает, что локальные модели не способнее фронтирных. Разрешение владельца системы нужно всегда, локальный запуск его не отменяет.',
+      en: 'Correct. The literature cites privacy, offline work, cost, reproducibility, customization, and transparency — and explicitly notes local models are not more capable than frontier ones. Authorization from the system owner is always required; running locally does not remove it.',
+    },
+  },
 ];

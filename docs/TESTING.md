@@ -68,7 +68,7 @@ npm run test:watch     # watch mode for development
 npm run test:coverage  # one-shot with v8 coverage report
 ```
 
-`npm run test` is **not** part of `check-all` yet. It will be folded into the gate once the 47 pre-existing data issues uncovered by the initial run (see "Known data issues" below) are resolved or explicitly quarantined. Keeping `check-all` green during that work prevents the gate from blocking unrelated changes.
+**Status update (2026-07-15):** all 47 pre-existing data issues below were fixed (22 categorize mappings normalized to English-keyed canonical form, 6 scenario tasks rescaled to the 0–100 score range with reachable passing choices, 19 empty explanations authored in both locales, and the `prompt-evals` room got its task file). `npm run test` is now **part of `check-all`** and gates every change. The triage list below is kept for history.
 
 ## Known data issues (initial run, 2026-05-11)
 

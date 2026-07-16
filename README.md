@@ -50,7 +50,7 @@ AI learning platform with interactive theory + tasks, built with Next.js App Rou
 - The rooms catalog now places difficulty/focus/status controls in a dedicated side filter rail on desktop, keeping the room grid visible higher on the page while preserving a stacked mobile filter layout.
 - Fixed `/${lang}/rooms` hydration mismatch by deferring localStorage-based progress status reads to post-mount client sync.
 - Moved Skills Matrix to the Profile page (`/${lang}/settings`) and wired `/${lang}/skills` to redirect to `/${lang}/settings#skills-matrix` for backward compatibility.
-- Rooms pages (38 rooms):
+- Rooms pages (39 rooms):
   - `/${lang}/rooms` (listing page with live progress states, thematic focus filter, and compact difficulty/status metadata)
   - `/${lang}/rooms/[id]` — Dynamic room renderer for 38 topics across foundations, debates, advanced systems, agent coding, and open models, including the Open Models pair (`local-models-101`, `llama-3-1-8b`) and the `ai-career-trajectories` room with a dedicated career-roadmap theory layout.
 - Interactive task components:
@@ -161,7 +161,7 @@ npm run test           # one-shot data-integrity + task-shape suite (Vitest)
 npm run test:watch     # watch mode
 npm run test:coverage  # v8 coverage report
 ```
-The suite codifies the rules from `docs/AGENTS.md` → "Task data validation gate" and "Task ID sequencing" against `ROOMS_METADATA`, `PATHS_METADATA`, and `ROOM_TASKS`. The initial run surfaced 47 pre-existing data defects — see `docs/TESTING.md` for the strategy and triage list. `npm run test` is intentionally **not** part of `check-all` until that triage is cleared.
+The suite codifies the rules from `docs/AGENTS.md` → "Task data validation gate" and "Task ID sequencing" against `ROOMS_METADATA`, `PATHS_METADATA`, and `ROOM_TASKS`. The 47 pre-existing data defects surfaced by the initial run were fixed on 2026-07-15 (see `docs/TESTING.md` for history), and `npm run test` is now part of `check-all` — the suite gates every change.
 
 ## Project docs
 All docs are available in English and Russian (`.ru.md`):

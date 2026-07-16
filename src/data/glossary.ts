@@ -5,6 +5,54 @@ export interface GlossaryTerm {
 }
 
 export const GLOSSARY: Record<string, GlossaryTerm> = {
+  'entity-resolution': {
+    id: 'entity-resolution',
+    term: { ru: 'Разрешение сущностей', en: 'Entity Resolution' },
+    definition: {
+      ru: 'Разрешение сущностей (entity resolution) — задача свести множество разных представлений одного объекта (например, десятки написаний одной должности) к единой канонической записи. Главная сложность — связь «многие к одному» и зашумлённые данные; решается каскадом лексических и семантических методов с явным исходом «нет совпадения».',
+      en: 'Entity resolution is the task of collapsing many different representations of the same object (for example, dozens of spellings of one job title) into a single canonical record. The core challenge is the many-to-one relationship and noisy data; it is solved with a cascade of lexical and semantic methods, with an explicit "no match" outcome.'
+    }
+  },
+  'cosine-similarity': {
+    id: 'cosine-similarity',
+    term: { ru: 'Косинусное сходство', en: 'Cosine Similarity' },
+    definition: {
+      ru: 'Косинусное сходство — мера близости двух векторов (эмбеддингов) по углу между ними: значение около 1 означает близкий смысл, около 0 — несвязанный. В матчинге по нему оценивают, насколько название вакансии семантически близко к профилю профессии.',
+      en: 'Cosine similarity measures how close two vectors (embeddings) are by the angle between them: a value near 1 means similar meaning, near 0 means unrelated. In matching it scores how semantically close a vacancy title is to a profession profile.'
+    }
+  },
+  'fuzzy-matching': {
+    id: 'fuzzy-matching',
+    term: { ru: 'Нечёткое совпадение', en: 'Fuzzy Matching' },
+    definition: {
+      ru: 'Нечёткое совпадение (fuzzy matching) — сравнение строк, устойчивое к опечаткам и мелким различиям: оно возвращает степень похожести, а не только «равно / не равно». В лексическом слое реализуется библиотеками вроде rapidfuzz.',
+      en: 'Fuzzy matching compares strings in a way that tolerates typos and small differences: it returns a degree of similarity rather than just equal / not-equal. In the lexical layer it is implemented with libraries like rapidfuzz.'
+    }
+  },
+  'precision': {
+    id: 'precision',
+    term: { ru: 'Точность (Precision)', en: 'Precision' },
+    definition: {
+      ru: 'Точность (precision) — доля верных среди сделанных присвоений: из всех пар, которые матчер назначил, сколько правильных. Стратегия precision-first держит точность высокой ценой охвата.',
+      en: 'Precision is the share of correct assignments among those made: of all the pairs the matcher assigned, how many are right. A precision-first strategy keeps precision high at the cost of coverage.'
+    }
+  },
+  'recall': {
+    id: 'recall',
+    term: { ru: 'Полнота (Recall)', en: 'Recall' },
+    definition: {
+      ru: 'Полнота (recall) — доля найденных верных пар из всех существующих: сколько правильных совпадений матчер вообще обнаружил. Полнота и точность обычно в противофазе: рост одной снижает другую.',
+      en: 'Recall is the share of correct pairs found out of all that exist: how many of the true matches the matcher discovered at all. Recall and precision usually trade off: raising one lowers the other.'
+    }
+  },
+  'gold-set': {
+    id: 'gold-set',
+    term: { ru: 'Золотой набор', en: 'Gold Set' },
+    definition: {
+      ru: 'Золотой набор (gold set) — небольшой набор пар, размеченных вручную как эталон, на котором измеряют точность и полноту и калибруют пороги. Без него качество матчинга нельзя измерить объективно.',
+      en: 'A gold set is a small set of hand-labeled reference pairs used to measure precision and recall and calibrate thresholds. Without it, matching quality cannot be measured objectively.'
+    }
+  },
   'llm': {
     id: 'llm',
     term: { ru: 'LLM', en: 'LLM' },

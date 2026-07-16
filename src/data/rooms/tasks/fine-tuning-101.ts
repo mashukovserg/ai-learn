@@ -197,7 +197,7 @@ export const fineTuning101Tasks: LocalizedTask[] = [
       type: 'mentor',
       question: { ru: 'Промпт стал слишком длинным', en: 'The prompt has become too long' },
       answer: '',
-      explanation: { ru: '', en: '' },
+      explanation: { ru: 'Раздутый стабильный промпт — классический случай для LoRA: стиль и формат «запекаются» в веса, промпт сокращается с 3000 до ~200 токенов, а консистентность сохраняется или растёт.', en: 'A bloated, stable prompt is the classic LoRA case: style and format get baked into the weights, the prompt shrinks from 3,000 to ~200 tokens, and consistency holds or improves.' },
       dialogue: {
         mentorMessage: {
           ru: 'Ваш системный промпт вырос до 3000 токенов — он содержит формат ответа, 20 правил стиля и 15 примеров. Каждый API-вызов тратит эти токены. Что будете делать?',

@@ -98,14 +98,10 @@ export const nativeMultimodalityTasks: LocalizedTask[] = [
           { ru: 'Описание картинки словами перед анализом', en: 'Describing an image with words before analysis' }
         ],
         correctMapping: {
-          'Задержка ответа 250-300 мс': 'Нативная (GPT-4o)',
           'Response latency 250-300 ms': 'Native (GPT-4o)',
-          'Потеря интонации и тембра голоса': 'Модульная (ASR + LLM)',
           'Loss of intonation and voice timbre': 'Modular (ASR + LLM)',
-          'Прямое восприятие пикселей патчами': 'Нативная (GPT-4o)',
           'Direct perception of pixels via patches': 'Native (GPT-4o)',
-          'Описание картинки словами перед анализом': 'Модульная (ASR + LLM)',
-          'Describing an image with words before analysis': 'Modular (ASR + LLM)'
+          'Describing an image with words before analysis': 'Modular (ASR + LLM)',
         }
       }
     },
