@@ -63,6 +63,27 @@ export default function AgenticCliToolsTheory({ lang }: { lang: string }) {
             </pre>
           </div>
 
+          <p className="text-xs text-neutral-500 font-medium mb-2 uppercase tracking-wider">
+            {ru ? 'Пример: один проход цикла в терминале' : 'Example: one loop pass in the terminal'}
+          </p>
+          <div className="rounded-xl overflow-hidden border border-term-line my-4 font-mono text-[13px] leading-relaxed">
+            <div className="flex items-center gap-2 px-4 py-2.5 bg-term-head border-b border-term-line">
+              <span className="w-3 h-3 rounded-full bg-term-dim" />
+              <span className="w-3 h-3 rounded-full bg-term-dim" />
+              <span className="w-3 h-3 rounded-full bg-term-dim" />
+              <span className="ml-2 text-xs text-term-dim">agent · zsh</span>
+            </div>
+            <div className="bg-term-bg text-term-text px-4 py-4 overflow-x-auto whitespace-pre">
+              <div><span className="text-term-prompt">$</span> rg &quot;validateSession&quot; src/  <span className="text-term-dim">{ru ? '# discover: где живёт логика' : '# discover: where the logic lives'}</span></div>
+              <div className="text-term-dim">src/auth/service.ts:41:  function validateSession(token)</div>
+              <div><span className="text-term-prompt">$</span> apply_patch service.ts  <span className="text-term-dim">{ru ? '# change: минимальный патч' : '# change: a minimal patch'}</span></div>
+              <div className="text-term-dim">patched 1 file  +6 -2</div>
+              <div><span className="text-term-prompt">$</span> npm run check-all  <span className="text-term-dim">{ru ? '# verify: линт, типы, тесты' : '# verify: lint, types, tests'}</span></div>
+              <div className="text-term-dim">✓ lint · tsc · 1706 passed</div>
+              <div><span className="text-term-prompt">$</span> git commit -m &quot;fix: session ttl&quot;  <span className="text-term-dim">{ru ? '# только после зелёного' : '# only after green'}</span></div>
+            </div>
+          </div>
+
           <p className="text-neutral-300 leading-relaxed">
             {ru
               ? 'Ниже мы разбираем каждую фазу так, чтобы ею можно было пользоваться в реальной задаче на следующий рабочий день.'

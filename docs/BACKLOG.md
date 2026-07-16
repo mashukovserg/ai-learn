@@ -3,6 +3,7 @@
 > **Active roadmap:** [`ROADMAP_3M.md`](ROADMAP_3M.md) (2026-05-16 → 2026-08-15) — agents pick work from there first; this file keeps the detailed punch lists and the work log.
 
 ## Completed (2026-07-17 session — by Claude Code)
+- [x] `agentic-cli-tools` (AC-201): added a styled **black-gray terminal window** to Chapter 1 (traffic-dot header, `$` prompt, monospace) showing one concrete discover→change→verify→commit loop pass, bilingual comments. Added dedicated `--color-term-*` tokens to `globals.css` `@theme` that are **not** overridden in the `[data-theme="saas"]` block, so the terminal stays dark on both themes (a terminal should look like a terminal on light UI too). Verified in browser: bg `#0d0d0d`, emerald prompt, gray dots — dark in both Terminal and SaaS themes. `check-all` green (1706). (by Claude Code)
 - [x] `ai-history` room: added the missing **Expert Systems (1980s)** piece to Chapter 2 (a bilingual sub-block: first commercial AI success — XCON at DEC, LISP machines, expert-system shells — and how its brittleness + costly upkeep + cheap general workstations collapsed the market ~1990, causing the second AI Winter). This also closes a solvability gap: the room's `categorize` task already mapped "Expert Systems → Symbolic AI (GOFAI)" and the scenario mission referenced "expert-system algorithms" and the "second AI Winter", but the theory never introduced them. `check-all` green (1706); rendered/verified in browser; no forbidden phrases. (by Claude Code)
 
 ## Completed (2026-07-16 session — by Claude Code)

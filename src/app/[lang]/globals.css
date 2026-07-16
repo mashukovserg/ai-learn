@@ -13,6 +13,15 @@
   --color-border-card: #2b2926;
   --color-border-subtle: #302e2b;
   --color-border-emphasis: #393733;
+
+  /* Terminal block — intentionally black-gray in BOTH themes (not overridden
+     in the [data-theme="saas"] block, so a terminal stays a terminal on light UI). */
+  --color-term-bg: #0d0d0d;
+  --color-term-head: #191919;
+  --color-term-line: #2a2a2a;
+  --color-term-text: #d4d4d4;
+  --color-term-dim: #6f6f6f;
+  --color-term-prompt: #34d399;
 }
 
 :root {
