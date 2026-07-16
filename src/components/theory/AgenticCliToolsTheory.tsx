@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Term from '@/components/Term';
+import Terminal from '@/components/Terminal';
 
 export default function AgenticCliToolsTheory({ lang }: { lang: string }) {
   const ru = lang === 'ru';
@@ -66,23 +67,17 @@ export default function AgenticCliToolsTheory({ lang }: { lang: string }) {
           <p className="text-xs text-neutral-500 font-medium mb-2 uppercase tracking-wider">
             {ru ? 'Пример: один проход цикла в терминале' : 'Example: one loop pass in the terminal'}
           </p>
-          <div className="rounded-xl overflow-hidden border border-term-line my-4 font-mono text-[13px] leading-relaxed">
-            <div className="flex items-center gap-2 px-4 py-2.5 bg-term-head border-b border-term-line">
-              <span className="w-3 h-3 rounded-full bg-term-dim" />
-              <span className="w-3 h-3 rounded-full bg-term-dim" />
-              <span className="w-3 h-3 rounded-full bg-term-dim" />
-              <span className="ml-2 text-xs text-term-dim">agent · zsh</span>
-            </div>
-            <div className="bg-term-bg text-term-text px-4 py-4 overflow-x-auto whitespace-pre">
-              <div><span className="text-term-prompt">$</span> rg &quot;validateSession&quot; src/  <span className="text-term-dim">{ru ? '# discover: где живёт логика' : '# discover: where the logic lives'}</span></div>
-              <div className="text-term-dim">src/auth/service.ts:41:  function validateSession(token)</div>
-              <div><span className="text-term-prompt">$</span> apply_patch service.ts  <span className="text-term-dim">{ru ? '# change: минимальный патч' : '# change: a minimal patch'}</span></div>
-              <div className="text-term-dim">patched 1 file  +6 -2</div>
-              <div><span className="text-term-prompt">$</span> npm run check-all  <span className="text-term-dim">{ru ? '# verify: линт, типы, тесты' : '# verify: lint, types, tests'}</span></div>
-              <div className="text-term-dim">✓ lint · tsc · 1706 passed</div>
-              <div><span className="text-term-prompt">$</span> git commit -m &quot;fix: session ttl&quot;  <span className="text-term-dim">{ru ? '# только после зелёного' : '# only after green'}</span></div>
-            </div>
-          </div>
+          <Terminal
+            lines={[
+              { cmd: 'rg "validateSession" src/', comment: ru ? '# discover: где живёт логика' : '# discover: where the logic lives' },
+              { out: 'src/auth/service.ts:41:  function validateSession(token)' },
+              { cmd: 'apply_patch service.ts', comment: ru ? '# change: минимальный патч' : '# change: a minimal patch' },
+              { out: 'patched 1 file  +6 -2' },
+              { cmd: 'npm run check-all', comment: ru ? '# verify: линт, типы, тесты' : '# verify: lint, types, tests' },
+              { out: '✓ lint · tsc · 1706 passed', tone: 'ok' },
+              { cmd: 'git commit -m "fix: session ttl"', comment: ru ? '# только после зелёного' : '# only after green' },
+            ]}
+          />
 
           <p className="text-neutral-300 leading-relaxed">
             {ru
@@ -117,18 +112,15 @@ export default function AgenticCliToolsTheory({ lang }: { lang: string }) {
             )}
           </p>
 
-          <div className="bg-deep border border-border-subtle rounded-lg p-4 my-4">
-            <p className="text-xs text-neutral-500 font-medium mb-2 uppercase tracking-wider">
-              {ru ? 'CLI-команды для Discovery' : 'CLI Commands for Discovery'}
-            </p>
-            <pre className="text-sm text-emerald-300/90 leading-relaxed overflow-x-auto whitespace-pre">
-{`rg "auth" src/
-tree -L 2
-cat src/auth/service.ts
-git grep "validateSession"
-`}
-            </pre>
-          </div>
+          <Terminal
+            title="discovery · zsh"
+            lines={[
+              { cmd: 'rg "auth" src/' },
+              { cmd: 'tree -L 2' },
+              { cmd: 'cat src/auth/service.ts' },
+              { cmd: 'git grep "validateSession"' },
+            ]}
+          />
 
           <p className="text-neutral-300 leading-relaxed">
             {ru ? (
@@ -189,17 +181,14 @@ git grep "validateSession"
             </ul>
           </div>
 
-          <div className="bg-deep border border-border-subtle rounded-lg p-4 my-4">
-            <p className="text-xs text-neutral-500 font-medium mb-2 uppercase tracking-wider">
-              {ru ? 'CLI-команды для Change' : 'CLI Commands for Change'}
-            </p>
-            <pre className="text-sm text-emerald-300/90 leading-relaxed overflow-x-auto whitespace-pre">
-{`git diff
-git add src/auth/service.ts
-git commit -m "fix: narrow auth validation path"
-`}
-            </pre>
-          </div>
+          <Terminal
+            title="change · zsh"
+            lines={[
+              { cmd: 'git diff' },
+              { cmd: 'git add src/auth/service.ts' },
+              { cmd: 'git commit -m "fix: narrow auth validation path"' },
+            ]}
+          />
 
           <p className="text-neutral-300 leading-relaxed">
             {ru ? (
@@ -276,18 +265,15 @@ git commit -m "fix: narrow auth validation path"
             </table>
           </div>
 
-          <div className="bg-deep border border-border-subtle rounded-lg p-4 my-4">
-            <p className="text-xs text-neutral-500 font-medium mb-2 uppercase tracking-wider">
-              {ru ? 'CLI-команды для Verify' : 'CLI Commands for Verify'}
-            </p>
-            <pre className="text-sm text-emerald-300/90 leading-relaxed overflow-x-auto whitespace-pre">
-{`npm run lint
-npx tsc --noEmit
-npm run test
-npm run build
-`}
-            </pre>
-          </div>
+          <Terminal
+            title="verify · zsh"
+            lines={[
+              { cmd: 'npm run lint' },
+              { cmd: 'npx tsc --noEmit' },
+              { cmd: 'npm run test' },
+              { cmd: 'npm run build' },
+            ]}
+          />
 
           <p className="text-neutral-300 leading-relaxed">
             {ru ? (

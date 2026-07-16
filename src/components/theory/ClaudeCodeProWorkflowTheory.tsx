@@ -1,4 +1,5 @@
 import React from 'react';
+import Terminal from '@/components/Terminal';
 
 export default function ClaudeCodeProWorkflowTheory({ lang }: { lang: string }) {
   if (lang === 'ru') {
@@ -21,9 +22,20 @@ export default function ClaudeCodeProWorkflowTheory({ lang }: { lang: string }) 
             Вы можете обсудить этот план, внести правки и только потом нажать &quot;Execute&quot;.
           </p>
           <p>
-            <strong>Совет:</strong> Сохраняйте планы в отдельные файлы проекта. Это ваша страховка 
+            <strong>Совет:</strong> Сохраняйте планы в отдельные файлы проекта. Это ваша страховка
             и документация архитектурных решений агента.
           </p>
+          <Terminal
+            title="claude · сессия"
+            lines={[
+              { cmd: '/plan добавить rate-limit на /login', prompt: '>', comment: '# режим плана' },
+              { out: '● читаю src/auth/login.ts …' },
+              { out: '● план готов → plans/rate-limit.md  (3 шага)' },
+              { cmd: 'execute', prompt: '>', comment: '# только после ревью плана' },
+              { out: '● правка src/auth/login.ts  +18 -2' },
+              { out: '● npm test → 42 passed', tone: 'ok' },
+            ]}
+          />
         </section>
 
         <section>
@@ -41,9 +53,9 @@ export default function ClaudeCodeProWorkflowTheory({ lang }: { lang: string }) 
         <section>
           <h3>Кастомизация: Status Line</h3>
           <p>
-            Нижняя строка в терминале Claude Code — это не просто текст, это <strong>интерфейс телеметрии</strong>. 
-            Вы можете создать файл `status-line.sh` и выводить туда любые данные: стоимость текущей сессии, 
-            расход токенов или даже статус ваших тестов. 
+            Нижняя строка в терминале Claude Code — полноценный <strong>интерфейс телеметрии</strong>, а не декоративная надпись.
+            Вы можете создать файл `status-line.sh` и выводить туда любые данные: стоимость текущей сессии,
+            расход токенов или даже статус ваших тестов.
           </p>
           <p>
             Claude Code передает в ваш скрипт JSON с данными сессии через стандартный ввод (stdin), 
@@ -88,6 +100,17 @@ export default function ClaudeCodeProWorkflowTheory({ lang }: { lang: string }) 
           <strong>Tip:</strong> Save plans into separate project files. This is your insurance
           and documentation of the agent&apos;s architectural decisions.
         </p>
+        <Terminal
+          title="claude · session"
+          lines={[
+            { cmd: '/plan add rate-limiting to /login', prompt: '>', comment: '# plan mode' },
+            { out: '● reading src/auth/login.ts …' },
+            { out: '● plan written → plans/rate-limit.md  (3 steps)' },
+            { cmd: 'execute', prompt: '>', comment: '# only after reviewing the plan' },
+            { out: '● edited src/auth/login.ts  +18 -2' },
+            { out: '● npm test → 42 passed', tone: 'ok' },
+          ]}
+        />
       </section>
 
       <section>

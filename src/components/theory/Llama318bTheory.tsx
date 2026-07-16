@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Term from '@/components/Term';
+import Terminal from '@/components/Terminal';
 import { Flame, Globe, Cpu, Scale, Wrench, AlertTriangle } from 'lucide-react';
 
 export default function Llama318bTheory({ lang }: { lang: string }) {
@@ -230,12 +231,16 @@ export default function Llama318bTheory({ lang }: { lang: string }) {
                   ? 'Идеально для разработки, прототипов и личного использования. Работает на Mac (включая M1/M2/M3), Linux и Windows. Автоматически выбирает квантизацию GGUF под ваше железо.'
                   : 'Perfect for development, prototypes, and personal use. Runs on Mac (including M1/M2/M3), Linux, and Windows. Picks GGUF quantization automatically based on your hardware.'}
               </p>
-              <div className="bg-black/60 rounded-lg p-4 font-mono text-xs text-neutral-400">
-                <div className="text-neutral-500"># {lang === 'ru' ? 'Установить и запустить — три команды' : 'Install and run — three commands'}</div>
-                <div>curl -fsSL https://ollama.com/install.sh | sh</div>
-                <div>ollama pull llama3.1:8b</div>
-                <div>ollama run llama3.1:8b</div>
-              </div>
+              <Terminal
+                title="ollama · zsh"
+                lines={[
+                  { cmd: 'curl -fsSL https://ollama.com/install.sh | sh', comment: lang === 'ru' ? '# установка' : '# install' },
+                  { cmd: 'ollama pull llama3.1:8b', comment: lang === 'ru' ? '# скачать веса, ~4.7 GB' : '# download weights, ~4.7 GB' },
+                  { out: 'pulling manifest ... verifying sha256 ... success' },
+                  { cmd: 'ollama run llama3.1:8b', comment: lang === 'ru' ? '# запуск — всё локально' : '# run — fully local' },
+                  { out: '>>> ' + (lang === 'ru' ? 'готов к запросам' : 'ready for prompts'), tone: 'ok' },
+                ]}
+              />
             </div>
 
             <div className="bg-black/40 p-5 rounded-xl border border-border-card">

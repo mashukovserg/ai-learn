@@ -1,4 +1,5 @@
 import React from 'react';
+import Terminal from '@/components/Terminal';
 
 export default function ClaudeCodeAgenticLoopTheory({ lang }: { lang: string }) {
   if (lang === 'ru') {
@@ -26,10 +27,20 @@ export default function ClaudeCodeAgenticLoopTheory({ lang }: { lang: string }) 
               Он может отредактировать файл, создать новую директорию или вызвать внешнюю команду. Это его &quot;руки&quot;.
             </li>
             <li>
-              <strong>3. Верификация (Verify Results):</strong> Самый важный этап. Агент проверяет, привело ли 
+              <strong>3. Верификация (Verify Results):</strong> Самый важный этап. Агент проверяет, привело ли
               его действие к нужному результату. Он запускает тесты (`npm test`, `pytest`) или проверяет логи.
             </li>
           </ol>
+          <Terminal
+            title="claude · цикл"
+            lines={[
+              { cmd: 'почини баг в пагинации', prompt: '>' },
+              { out: '● сбор ▸ rg "paginate" src/  →  utils/page.ts:12' },
+              { out: '● действие ▸ edit utils/page.ts  +4 -1' },
+              { out: '● проверка ▸ npm test' },
+              { out: '✓ 128 passed', tone: 'ok' },
+            ]}
+          />
         </section>
 
         <section>
@@ -81,10 +92,20 @@ export default function ClaudeCodeAgenticLoopTheory({ lang }: { lang: string }) 
             It might edit a file, create a new directory, or run an external command. These are its &quot;hands.&quot;
           </li>
           <li>
-            <strong>3. Verify Results:</strong> The most critical stage. The agent checks if 
+            <strong>3. Verify Results:</strong> The most critical stage. The agent checks if
             its action led to the desired outcome. It runs tests (`npm test`, `pytest`) or checks logs.
           </li>
         </ol>
+        <Terminal
+          title="claude · loop"
+          lines={[
+            { cmd: 'fix the pagination bug', prompt: '>' },
+            { out: '● gather ▸ rg "paginate" src/  →  utils/page.ts:12' },
+            { out: '● act ▸ edit utils/page.ts  +4 -1' },
+            { out: '● verify ▸ npm test' },
+            { out: '✓ 128 passed', tone: 'ok' },
+          ]}
+        />
       </section>
 
       <section>

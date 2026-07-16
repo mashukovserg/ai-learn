@@ -22,6 +22,7 @@
   --color-term-text: #d4d4d4;
   --color-term-dim: #6f6f6f;
   --color-term-prompt: #34d399;
+  --color-term-red: #f87171;
 }
 
 :root {
