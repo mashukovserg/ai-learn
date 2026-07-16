@@ -157,6 +157,16 @@ For coding tasks, agents should:
 4. Run relevant checks after edits (`npm run check-all` at minimum for frontend changes).
 5. Report what was changed, what was verified, and any unresolved warnings/limitations.
 
+### Commit hygiene — work must be committed to survive (Mandatory)
+
+**The working tree is not durable.** Sessions re-sync to the latest merged `main`, and uncommitted edits to tracked files are silently wiped when the tree moves to a newly merged branch. Real work on this repo happens through committed branches merged as PRs (`git log` shows the merge history). Therefore:
+
+1. **Do not end a session with substantial uncommitted edits to tracked files.** They will be lost on the next branch sync. (This has bitten real work more than once — e.g. the light-theme toggle repeatedly vanished until it was committed.)
+2. **Work on a dedicated branch** (`git checkout -b <topic>`), not on a detached/uncommitted `main` working tree.
+3. When a logical unit is complete: run `npm run check-all`, then **commit** the specific files (`git add <paths>` — not `git add -A`, to avoid sweeping in unrelated untracked artifacts), and **push the branch** (`git push -u origin <branch>`) so it is durable on the remote and can become a PR.
+4. New untracked files that belong to the change (new components, hooks, task files) must be explicitly `git add`-ed — they are not part of any commit until you add them, and they will not survive on their own.
+5. Committing/pushing on the user's behalf follows the normal outward-action rule: confirm the push with the user unless already authorized in this session.
+
 ### Task mix and interactivity rule (Mandatory)
 
 To ensure high interactivity and engagement, every room must follow the "Task Mix Rule":
