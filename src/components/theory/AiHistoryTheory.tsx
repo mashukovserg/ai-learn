@@ -136,6 +136,22 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
             </ul>
           </div>
 
+          <div className="bg-card border border-border-emphasis rounded-xl p-5">
+            <h4 className="text-cyan-400 font-bold mb-3">
+              {lang === 'ru' ? 'Экспертные системы (1980-е): первый коммерческий успех — и причина второй зимы' : 'Expert Systems (1980s): the first commercial success — and the cause of the second winter'}
+            </h4>
+            <p className="text-neutral-300 text-sm leading-relaxed mb-3">
+              {lang === 'ru'
+                ? 'Между зимами символический ИИ дал первый коммерческий прорыв — экспертные системы. Знания специалиста кодировались как набор правил «если — то»: система-консультант ставила диагноз или подбирала конфигурацию не хуже эксперта в узкой области. Флагманом стала XCON в компании DEC — она собирала заказные конфигурации компьютеров VAX и экономила десятки миллионов долларов в год. Вокруг вырос целый рынок: специализированные LISP-машины, оболочки для экспертных систем, отделы ИИ в корпорациях.'
+                : 'Between the winters, symbolic AI delivered its first commercial breakthrough — expert systems. A specialist\'s knowledge was encoded as a set of "if-then" rules: a consultant system could diagnose a case or pick a configuration as well as an expert in a narrow domain. The flagship was XCON at DEC — it assembled custom VAX computer configurations and saved tens of millions of dollars a year. A whole market grew around it: dedicated LISP machines, expert-system shells, and corporate AI departments.'}
+            </p>
+            <p className="text-neutral-300 text-sm leading-relaxed">
+              {lang === 'ru'
+                ? 'Но у подхода было два врождённых изъяна. Системы были хрупкими: за пределами прописанных правил у них не было здравого смысла, и любое исключение ломало логику. А поддержка стоила дорого — знания приходилось вручную вытягивать из экспертов и постоянно обновлять. Когда дешёвые универсальные рабочие станции обошли дорогие LISP-машины, рынок схлопнулся на рубеже 1990 года. Так первый коммерческий бум ИИ сам же и запустил вторую AI-зиму — показательный урок: хайп обогнал то, что технология могла удержать.'
+                : 'But the approach had two built-in flaws. The systems were brittle: outside their hard-coded rules they had no common sense, and any exception broke the logic. And upkeep was expensive — knowledge had to be extracted from experts by hand and constantly updated. When cheap general-purpose workstations overtook the expensive LISP machines, the market collapsed around 1990. So the first commercial AI boom is what triggered the second AI winter — a telling lesson: the hype outran what the technology could sustain.'}
+            </p>
+          </div>
+
           <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru'
               ? 'Цикл повторялся с пугающей регулярностью. В 1988 году высокопоставленный чиновник DARPA заявил, что нейронные сети "важнее атомной бомбы" — и менее чем через год наступила очередная зима. Когда Джеффри Хинтон в 1990 году заканчивал аспирантуру, поле было в таком упадке, что научные руководители советовали ему убрать слово "Artificial Intelligence" из резюме при поиске работы. '
