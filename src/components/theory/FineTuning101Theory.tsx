@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Terminal from '@/components/Terminal';
 import { Info, Layers, Zap, AlertTriangle, Database, Scale, Wrench, Code, Cloud, Combine } from 'lucide-react';
 
 export default function FineTuning101Theory({ lang }: { lang: string }) {
@@ -110,6 +111,16 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
                 ? 'Параметр r (ранг) — обычно 4, 8, 16 или 32. Чем меньше — тем легче обучать, но меньше ёмкость. Бонус: можно переключаться между адаптерами — одна базовая модель и несколько "насадок".'
                 : 'The r parameter (rank) — usually 4, 8, 16, or 32. Lower = easier to train, but less capacity. Bonus: you can swap adapters — one base model and several "attachments".'}
             </p>
+            <Terminal
+              title="train · zsh"
+              lines={[
+                { cmd: 'pip install peft transformers', comment: lang === 'ru' ? '# LoRA-инструменты' : '# LoRA tooling' },
+                { cmd: 'python train_lora.py --r 16 --data faq.jsonl', comment: lang === 'ru' ? '# запуск обучения' : '# start training' },
+                { out: 'epoch 1/3  loss 1.84' },
+                { out: 'epoch 3/3  loss 0.42' },
+                { out: '✓ saved adapter_model.safetensors  (18 MB)', tone: 'ok' },
+              ]}
+            />
           </div>
 
           <div className="bg-card p-5 rounded-xl border border-border-card">

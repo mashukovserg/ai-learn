@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Terminal from '@/components/Terminal';
 import { Info, GitCompare, Ruler, Database, Scissors, Workflow, AlertTriangle } from 'lucide-react';
 
 export default function Embeddings101Theory({ lang }: { lang: string }) {
@@ -179,6 +180,17 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
               ? 'Раз у нас есть вектора, нужно уметь измерять, насколько они похожи. Это фундаментальная операция: именно она определяет, какие документы «релевантны» вашему запросу. Существует три основных метрики.'
               : 'Once we have vectors, we need to measure how similar they are. This is the fundamental operation: it determines which documents are "relevant" to your query. There are three main metrics.'}
           </p>
+
+          <Terminal
+            title="python · repl"
+            lines={[
+              { cmd: 'v = model.encode(["cat", "kitten", "car"])', prompt: '>>>' },
+              { out: lang === 'ru' ? '→ 3 вектора × 384 измерения' : '→ 3 vectors × 384 dims' },
+              { cmd: 'cosine(v[0], v[1]), cosine(v[0], v[2])', prompt: '>>>' },
+              { out: '(0.87, 0.14)', tone: 'ok' },
+              { out: lang === 'ru' ? '# cat≈kitten (близко), cat≠car (далеко)' : '# cat≈kitten (close), cat≠car (far)' },
+            ]}
+          />
 
           <div className="bg-card p-5 rounded-xl border border-border-card">
             <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Косинусное сходство (Cosine Similarity)' : 'Cosine Similarity'}</h4>

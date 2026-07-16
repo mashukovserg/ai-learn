@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Term from '@/components/Term';
+import Terminal from '@/components/Terminal';
 
 export default function AgenticCodingToolsTheory({ lang }: { lang: string }) {
   return (
@@ -59,6 +60,15 @@ export default function AgenticCodingToolsTheory({ lang }: { lang: string }) {
               </>
             )}
           </p>
+          <Terminal
+            title="agent · tools"
+            lines={[
+              { cmd: lang === 'ru' ? 'добавь валидацию email' : 'add email validation', prompt: '>' },
+              { out: '● read_file ▸ src/forms/signup.ts' },
+              { out: '● edit_file ▸ signup.ts  +7 -0' },
+              { out: '● run_tests ▸ 12 passed', tone: 'ok' },
+            ]}
+          />
         </div>
       </section>
 

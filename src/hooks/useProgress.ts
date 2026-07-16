@@ -62,7 +62,23 @@ export function useProgress(roomId: string) {
     });
   }, [roomId, isAuthed]);
 
-  return { completedIds, markCompleted };
+  const resetProgress = useCallback(() => {
+    setCompletedIds(new Set());
+
+    if (isAuthed) {
+      fetch(`/api/progress/${roomId}`, {
+        method: 'DELETE',
+        credentials: 'include',
+      }).catch(() => { /* silently fail */ });
+    }
+
+    try {
+      localStorage.removeItem(`progress:${roomId}`);
+      window.dispatchEvent(new CustomEvent('progress-updated'));
+    } catch { /* ignore */ }
+  }, [roomId, isAuthed]);
+
+  return { completedIds, markCompleted, resetProgress };
 }
 
 export function getRoomProgress(roomId: string): 'not-started' | 'in-progress' | 'completed' {

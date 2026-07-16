@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Term from '@/components/Term';
+import Terminal from '@/components/Terminal';
 
 export default function AgentCodingFoundationsTheory({ lang }: { lang: string }) {
   const ru = lang === 'ru';
@@ -108,6 +109,16 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
     - "Test coverage > 80%"`}
             </pre>
           </div>
+
+          <Terminal
+            title="agent · run"
+            lines={[
+              { cmd: 'agent run --contract task.yaml', prompt: '>' },
+              { out: '● code_editor ▸ + endpoint /users' },
+              { out: '● test_runner ▸ 8 passed · coverage 84%' },
+              { out: '✓ acceptance: 200 OK · coverage > 80%', tone: 'ok' },
+            ]}
+          />
 
           <p className="text-neutral-300 leading-relaxed">
             {ru ? (
