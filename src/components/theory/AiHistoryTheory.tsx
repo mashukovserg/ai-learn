@@ -50,9 +50,19 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
                 {lang === 'ru' ? 'Дартмутский семинар (1956): бардак, финансированный вполовину' : 'The Dartmouth Workshop (1956): half-funded, mostly chaotic'}
               </h4>
               <p className="text-sm text-neutral-400 leading-relaxed">
-                {lang === 'ru'
-                  ? 'Джон Маккарти — 28-летний математик — предложил "двухмесячное исследование ИИ" с участием десяти человек, финансируемое Фондом Рокфеллера. Фонд выделил только половину запрошенной суммы. Участники семинара разъезжались и приезжали по собственному расписанию. "У каждого была своя идея, здоровое эго и огромный энтузиазм только к своему плану." Из семинара не вышло ни одного прорыва. Вышло название: именно тогда Маккарти ввёл термин "Artificial Intelligence" — как он сам потом признавал, "надо было как-то назвать, вот и назвал".'
-                  : 'John McCarthy — a 28-year-old mathematician — proposed "a 2-month, 10-man study of artificial intelligence," funded by the Rockefeller Foundation. The Foundation gave only half of what was asked. Attendees came and went on their own schedules. "Everyone had a different idea, a hearty ego, and much enthusiasm for their own plan." No breakthrough came out of the workshop. What came out was a name: McCarthy coined the term "Artificial Intelligence" — as he later admitted, "I had to call it something, so I called it that."'}
+                {lang === 'ru' ? (
+                  <>
+                    {'Джон Маккарти — 28-летний математик — предложил "двухмесячное исследование ИИ" с участием десяти человек и запросил у Фонда Рокфеллера около $13 500. Куратор фонда Роберт Морисон счёл замысел расплывчатым и слишком амбициозным и одобрил лишь $7 500 — не бюрократическая случайность, а зафиксированный вотум недоверия: скепсис к AI оказался старше самого термина ('}
+                    <a href="https://doi.org/10.1109/MAHC.2010.44" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Kline 2011</a>
+                    {'). Участники разъезжались и приезжали по собственному расписанию: по позднейшему признанию Маккарти, у каждого была собственная исследовательская программа — "своя идея, здоровое эго и огромный энтузиазм только к своему плану". Из семинара не вышло ни одного прорыва. Вышло название — и не случайное: разочарованный тем, как мало статей в сборнике Automata Studies (1956) касались разумного поведения машин, Маккарти новым термином "Artificial Intelligence" "прибил флаг к мачте", отмежевавшись от кибернетики и тени Норберта Винера.'}
+                  </>
+                ) : (
+                  <>
+                    {'John McCarthy — a 28-year-old mathematician — proposed "a 2-month, 10-man study of artificial intelligence" and asked the Rockefeller Foundation for about $13,500. The foundation\'s officer Robert Morison found the plan vague and overly ambitious and approved only $7,500 — not a bureaucratic accident but a documented vote of no confidence: skepticism about AI is older than the term itself ('}
+                    <a href="https://doi.org/10.1109/MAHC.2010.44" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Kline 2011</a>
+                    {'). Attendees came and went on their own schedules: by McCarthy\'s own later admission, everyone had their own research agenda — "a different idea, a hearty ego, and much enthusiasm for their own plan." No breakthrough came out of the workshop. What came out was a name — and not an accidental one: disappointed by how few papers in the Automata Studies volume (1956) dealt with intelligent machine behavior, McCarthy used the new term "Artificial Intelligence" to "nail a flag to the mast," setting his program apart from cybernetics and the shadow of Norbert Wiener.'}
+                  </>
+                )}
               </p>
             </div>
             <div className="bg-deep border border-emerald-500/20 rounded-lg p-5">
@@ -61,10 +71,29 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
               </h4>
               <p className="text-sm text-neutral-400 leading-relaxed">
                 {lang === 'ru'
-                  ? 'Первая в истории программа, доказавшая 38 математических теорем, была воспринята как неопровержимое доказательство того, что "машины могут думать". Нобелевский лауреат Херберт Саймон заявил в 1958 году: "Машины смогут делать всё, что делает человек, через двадцать лет." Марвин Минский обещал, что "проблема AI будет в целом решена в течение одного поколения". Основатель Stanford AI Project Джон Маккарти ставил целью создать "полностью разумную машину за десятилетие". Ни одно из этих предсказаний не сбылось — зато все они повторяются в той или иной форме с 1956 года по сей день.'
-                  : 'The first program in history to prove 38 mathematical theorems was received as irrefutable proof that "machines can think." Nobel laureate Herbert Simon declared in 1958: "Machines will be capable of doing any work a man can do within twenty years." Marvin Minsky promised that "the problem of AI will be substantially solved within a generation." McCarthy set a goal to build "a fully intelligent machine in a decade." None of these predictions came true — yet all of them have been repeated, in one form or another, from 1956 to the present day.'}
+                  ? 'Первая в истории программа, доказавшая 38 математических теорем, была воспринята как неопровержимое доказательство того, что "машины могут думать". Создали её Аллен Ньюэлл и Херберт Саймон в RAND — до Дартмутского семинара и независимо от него, и свой подход они называли "complex information processing", а не "искусственным интеллектом". Нобелевский лауреат Саймон заявил в 1958 году: "Машины смогут делать всё, что делает человек, через двадцать лет." Марвин Минский обещал, что "проблема AI будет в целом решена в течение одного поколения". Основатель Stanford AI Project Джон Маккарти ставил целью создать "полностью разумную машину за десятилетие". Ни одно из этих предсказаний не сбылось — зато все они повторяются в той или иной форме с 1956 года по сей день.'
+                  : 'The first program in history to prove 38 mathematical theorems was received as irrefutable proof that "machines can think." It was built by Allen Newell and Herbert Simon at RAND — before and independently of the Dartmouth workshop, and they called their approach "complex information processing," not "artificial intelligence." Nobel laureate Simon declared in 1958: "Machines will be capable of doing any work a man can do within twenty years." Marvin Minsky promised that "the problem of AI will be substantially solved within a generation." McCarthy set a goal to build "a fully intelligent machine in a decade." None of these predictions came true — yet all of them have been repeated, in one form or another, from 1956 to the present day.'}
               </p>
             </div>
+          </div>
+
+          <div className="bg-card border border-border-emphasis rounded-xl p-5">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block shrink-0" />
+              <span className="font-bold text-emerald-400 uppercase tracking-widest text-sm">
+                {lang === 'ru' ? '"Место рождения AI": миф, собранный задним числом' : '"The birthplace of AI": a myth assembled after the fact'}
+              </span>
+            </div>
+            <p className="text-neutral-300 text-sm leading-relaxed mb-3">
+              {lang === 'ru'
+                ? 'Само событие было вялым и малорезультативным — но в учебниках Дартмут 1956 значится "местом рождения AI". Каноничность собрана позже: юбилейными конференциями (AI@50, 2006), учебниками и мемуарами самих участников. Канонический нарратив при этом вытеснил из генеалогии кибернетику — область, из которой AI на деле вырос и от которой основатели сознательно отмежёвывались.'
+                : 'The event itself was sluggish and produced little — yet textbooks list Dartmouth 1956 as "the birthplace of AI." Its canonical status was assembled later: by anniversary conferences (AI@50, 2006), by textbooks, and by the participants\' own memoirs. Along the way, the canonical narrative pushed cybernetics — the field AI actually grew out of, and deliberately set itself apart from — out of the genealogy.'}
+            </p>
+            <p className="text-neutral-300 text-sm leading-relaxed">
+              {lang === 'ru'
+                ? 'Показателен и главный источник легенды: книга Памелы Маккордак "Machines Who Think" (1979) написана по интервью с самими основателями — это не нейтральное свидетельство, а документ, участвующий в мифотворчестве. Историю AI пишут заинтересованные победители, и читать её стоит так же критически, как обещания "AGI через десять лет".'
+                : 'The legend\'s main source is telling too: Pamela McCorduck\'s "Machines Who Think" (1979) was written from interviews with the founders themselves — not a neutral witness but a document that takes part in the myth-making. The history of AI is written by invested winners, and it deserves the same critical reading as promises of "AGI in ten years."'}
+            </p>
           </div>
 
           <p className="text-neutral-300 leading-relaxed">
