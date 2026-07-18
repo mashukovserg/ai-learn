@@ -210,6 +210,22 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
               : ' — and it scored 85%. The gap over second place was larger than all progress accumulated over the previous five years of the competition.'}
           </p>
 
+          <p className="text-neutral-300 leading-relaxed">
+            {lang === 'ru' ? (
+              <>
+                {'Историки науки видят в этом споре больше, чем техническую дискуссию: ставка коннекционизма на обучение вместо явных правил перекликалась с более широким интеллектуальным поворотом XX века против веры в то, что сложные системы можно исчислить и спланировать сверху ('}
+                <a href="https://doi.org/10.1086/717313" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Халперн 2022: 6</a>
+                {').'}
+              </>
+            ) : (
+              <>
+                {"Historians of science see more than a technical dispute here: connectionism's bet on learning over explicit rules echoed a broader twentieth-century turn against the belief that complex systems can be calculated and planned from above ("}
+                <a href="https://doi.org/10.1086/717313" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Halpern 2022: 6</a>
+                {').'}
+              </>
+            )}
+          </p>
+
           <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-6">
             <h4 className="text-blue-400 font-bold mb-4 flex items-center gap-2">
               <Zap size={18} />

@@ -269,5 +269,26 @@ export const aiHistoryTasks: LocalizedTask[] = [
         ru: 'Именно прогресс в работе с контекстом позволил перейти от простых фраз к написанию целых книг и сложных программ.',
         en: 'It was the progress in context handling that allowed the shift from simple phrases to writing entire books and complex programs.'
       }
+    },
+    {
+      id: 11,
+      type: 'multiple-choice',
+      question: {
+        ru: 'С чем, по мнению историков науки (Халперн 2022), перекликалась ставка коннекционизма на обучение вместо явных правил?',
+        en: "According to historians of science (Halpern 2022), what did connectionism's bet on learning instead of explicit rules echo?"
+      },
+      options: [
+        { ru: 'С верой в то, что интеллект сводится к строгой дедуктивной логике', en: 'The belief that intelligence reduces to strict deductive logic' },
+        { ru: 'С широким интеллектуальным поворотом XX века против веры в то, что сложные системы можно исчислить и спланировать сверху', en: 'A broader twentieth-century turn against the belief that complex systems can be calculated and planned from above' },
+        { ru: 'С появлением интернета и больших размеченных наборов данных', en: 'The arrival of the internet and large labeled datasets' }
+      ],
+      answer: {
+        ru: 'С широким интеллектуальным поворотом XX века против веры в то, что сложные системы можно исчислить и спланировать сверху',
+        en: 'A broader twentieth-century turn against the belief that complex systems can be calculated and planned from above'
+      },
+      explanation: {
+        ru: 'Верно. Спор GOFAI и коннекционизма — часть более широкой истории идей: расчёт и планирование сверху против распределённых систем, которые учатся сами.',
+        en: 'Correct. The GOFAI-vs-connectionism dispute is part of a wider history of ideas: top-down calculation and planning versus distributed systems that learn on their own.'
+      }
     }
   ];
