@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Term from '@/components/Term';
+import Terminal from '@/components/Terminal';
 
 export default function LocalModels101Theory({ lang }: { lang: string }) {
   return (
@@ -140,6 +141,16 @@ export default function LocalModels101Theory({ lang }: { lang: string }) {
               ? <>{'Ключевое понятие при выборе версии модели — '} <Term id="quantization" lang={lang}>квантизация</Term>{': сжатие весов за счёт снижения точности чисел. Версия Q8 почти не теряет качества и занимает вдвое меньше памяти, чем несжатая; Q4 экономит ещё больше ценой лёгкой деградации ответов. Сколько именно нужно памяти — определяет '} <Term id="vram" lang={lang}>VRAM</Term> {' вашей видеокарты (на Mac — объединённая память): 8 ГБ хватает на модель 7–8B в Q4, 16 ГБ — на 8B без сжатия, а модели классов 30B+ требуют 24 ГБ и больше даже в Q4.'}</>
               : <>{'The key concept when picking a model version is '} <Term id="quantization" lang={lang}>quantization</Term>{': compressing weights by lowering numeric precision. A Q8 version loses almost no quality and takes half the memory of the uncompressed one; Q4 saves even more at the cost of slight answer degradation. How much memory you need is set by your GPU\'s '} <Term id="vram" lang={lang}>VRAM</Term> {' (unified memory on a Mac): 8 GB fits a 7–8B model in Q4, 16 GB fits an 8B uncompressed, and 30B+ class models need 24 GB or more even in Q4.'}</>}
           </p>
+          <Terminal
+            title="ollama · zsh"
+            lines={[
+              { cmd: 'ollama pull llama3.1:8b', comment: lang === 'ru' ? '# скачать веса, ~4.7 GB' : '# download weights, ~4.7 GB' },
+              { out: 'pulling manifest ... verifying sha256 ... success' },
+              { cmd: 'ollama run llama3.1:8b', comment: lang === 'ru' ? '# запуск — всё локально' : '# run — fully local' },
+              { cmd: lang === 'ru' ? 'Столица Франции?' : 'Capital of France?', prompt: '>>>', comment: lang === 'ru' ? '# проверка' : '# verify' },
+              { out: lang === 'ru' ? 'Париж.' : 'Paris.', tone: 'ok' },
+            ]}
+          />
           <div className="bg-emerald-500/5 border-l-4 border-emerald-500 p-6 my-6">
             <h4 className="font-bold text-emerald-400 mb-2">{lang === 'ru' ? 'Куда дальше' : 'Where to Go Next'}</h4>
             <p className="text-neutral-400 leading-relaxed">

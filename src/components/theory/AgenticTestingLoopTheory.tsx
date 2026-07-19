@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Terminal from '@/components/Terminal';
 
 export default function AgenticTestingLoopTheory({ lang }: { lang: string }) {
   return (
@@ -62,6 +63,17 @@ export default function AgenticTestingLoopTheory({ lang }: { lang: string }) {
               </>
             )}
           </p>
+          <Terminal
+            title="test · zsh"
+            lines={[
+              { cmd: 'npm test', comment: lang === 'ru' ? '# Red — прогон до правки' : '# Red — run before the fix' },
+              { out: '✕ formatPrice › adds currency symbol', tone: 'bad' },
+              { out: '  expected "$9.99" · received "9.99"' },
+              { cmd: 'edit src/format.ts  +1 -1', comment: lang === 'ru' ? '# Act — минимальный код' : '# Act — minimal code' },
+              { cmd: 'npm test', comment: lang === 'ru' ? '# Green — снова прогон' : '# Green — run again' },
+              { out: '✓ formatPrice · 1 passed', tone: 'ok' },
+            ]}
+          />
         </div>
       </section>
 

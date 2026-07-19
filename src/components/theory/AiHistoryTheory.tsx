@@ -50,9 +50,19 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
                 {lang === 'ru' ? 'Дартмутский семинар (1956): бардак, финансированный вполовину' : 'The Dartmouth Workshop (1956): half-funded, mostly chaotic'}
               </h4>
               <p className="text-sm text-neutral-400 leading-relaxed">
-                {lang === 'ru'
-                  ? 'Джон Маккарти — 28-летний математик — предложил "двухмесячное исследование ИИ" с участием десяти человек, финансируемое Фондом Рокфеллера. Фонд выделил только половину запрошенной суммы. Участники семинара разъезжались и приезжали по собственному расписанию. "У каждого была своя идея, здоровое эго и огромный энтузиазм только к своему плану." Из семинара не вышло ни одного прорыва. Вышло название: именно тогда Маккарти ввёл термин "Artificial Intelligence" — как он сам потом признавал, "надо было как-то назвать, вот и назвал".'
-                  : 'John McCarthy — a 28-year-old mathematician — proposed "a 2-month, 10-man study of artificial intelligence," funded by the Rockefeller Foundation. The Foundation gave only half of what was asked. Attendees came and went on their own schedules. "Everyone had a different idea, a hearty ego, and much enthusiasm for their own plan." No breakthrough came out of the workshop. What came out was a name: McCarthy coined the term "Artificial Intelligence" — as he later admitted, "I had to call it something, so I called it that."'}
+                {lang === 'ru' ? (
+                  <>
+                    {'Джон Маккарти — 28-летний математик — предложил "двухмесячное исследование ИИ" с участием десяти человек и запросил у Фонда Рокфеллера около $13 500. Куратор фонда Роберт Морисон счёл замысел расплывчатым и слишком амбициозным и одобрил лишь $7 500 — не бюрократическая случайность, а зафиксированный вотум недоверия: скепсис к AI оказался старше самого термина ('}
+                    <a href="https://doi.org/10.1109/MAHC.2010.44" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Kline 2011</a>
+                    {'). Участники разъезжались и приезжали по собственному расписанию: по позднейшему признанию Маккарти, у каждого была собственная исследовательская программа — "своя идея, здоровое эго и огромный энтузиазм только к своему плану". Из семинара не вышло ни одного прорыва. Вышло название — и не случайное: разочарованный тем, как мало статей в сборнике Automata Studies (1956) касались разумного поведения машин, Маккарти новым термином "Artificial Intelligence" "прибил флаг к мачте", отмежевавшись от кибернетики и тени Норберта Винера.'}
+                  </>
+                ) : (
+                  <>
+                    {'John McCarthy — a 28-year-old mathematician — proposed "a 2-month, 10-man study of artificial intelligence" and asked the Rockefeller Foundation for about $13,500. The foundation\'s officer Robert Morison found the plan vague and overly ambitious and approved only $7,500 — not a bureaucratic accident but a documented vote of no confidence: skepticism about AI is older than the term itself ('}
+                    <a href="https://doi.org/10.1109/MAHC.2010.44" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Kline 2011</a>
+                    {'). Attendees came and went on their own schedules: by McCarthy\'s own later admission, everyone had their own research agenda — "a different idea, a hearty ego, and much enthusiasm for their own plan." No breakthrough came out of the workshop. What came out was a name — and not an accidental one: disappointed by how few papers in the Automata Studies volume (1956) dealt with intelligent machine behavior, McCarthy used the new term "Artificial Intelligence" to "nail a flag to the mast," setting his program apart from cybernetics and the shadow of Norbert Wiener.'}
+                  </>
+                )}
               </p>
             </div>
             <div className="bg-deep border border-emerald-500/20 rounded-lg p-5">
@@ -61,10 +71,29 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
               </h4>
               <p className="text-sm text-neutral-400 leading-relaxed">
                 {lang === 'ru'
-                  ? 'Первая в истории программа, доказавшая 38 математических теорем, была воспринята как неопровержимое доказательство того, что "машины могут думать". Нобелевский лауреат Херберт Саймон заявил в 1958 году: "Машины смогут делать всё, что делает человек, через двадцать лет." Марвин Минский обещал, что "проблема AI будет в целом решена в течение одного поколения". Основатель Stanford AI Project Джон Маккарти ставил целью создать "полностью разумную машину за десятилетие". Ни одно из этих предсказаний не сбылось — зато все они повторяются в той или иной форме с 1956 года по сей день.'
-                  : 'The first program in history to prove 38 mathematical theorems was received as irrefutable proof that "machines can think." Nobel laureate Herbert Simon declared in 1958: "Machines will be capable of doing any work a man can do within twenty years." Marvin Minsky promised that "the problem of AI will be substantially solved within a generation." McCarthy set a goal to build "a fully intelligent machine in a decade." None of these predictions came true — yet all of them have been repeated, in one form or another, from 1956 to the present day.'}
+                  ? 'Первая в истории программа, доказавшая 38 математических теорем, была воспринята как неопровержимое доказательство того, что "машины могут думать". Создали её Аллен Ньюэлл и Херберт Саймон в RAND — до Дартмутского семинара и независимо от него, и свой подход они называли "complex information processing", а не "искусственным интеллектом". Нобелевский лауреат Саймон заявил в 1958 году: "Машины смогут делать всё, что делает человек, через двадцать лет." Марвин Минский обещал, что "проблема AI будет в целом решена в течение одного поколения". Основатель Stanford AI Project Джон Маккарти ставил целью создать "полностью разумную машину за десятилетие". Ни одно из этих предсказаний не сбылось — зато все они повторяются в той или иной форме с 1956 года по сей день.'
+                  : 'The first program in history to prove 38 mathematical theorems was received as irrefutable proof that "machines can think." It was built by Allen Newell and Herbert Simon at RAND — before and independently of the Dartmouth workshop, and they called their approach "complex information processing," not "artificial intelligence." Nobel laureate Simon declared in 1958: "Machines will be capable of doing any work a man can do within twenty years." Marvin Minsky promised that "the problem of AI will be substantially solved within a generation." McCarthy set a goal to build "a fully intelligent machine in a decade." None of these predictions came true — yet all of them have been repeated, in one form or another, from 1956 to the present day.'}
               </p>
             </div>
+          </div>
+
+          <div className="bg-card border border-border-emphasis rounded-xl p-5">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block shrink-0" />
+              <span className="font-bold text-emerald-400 uppercase tracking-widest text-sm">
+                {lang === 'ru' ? '"Место рождения AI": миф, собранный задним числом' : '"The birthplace of AI": a myth assembled after the fact'}
+              </span>
+            </div>
+            <p className="text-neutral-300 text-sm leading-relaxed mb-3">
+              {lang === 'ru'
+                ? 'Само событие было вялым и малорезультативным — но в учебниках Дартмут 1956 значится "местом рождения AI". Каноничность собрана позже: юбилейными конференциями (AI@50, 2006), учебниками и мемуарами самих участников. Канонический нарратив при этом вытеснил из генеалогии кибернетику — область, из которой AI на деле вырос и от которой основатели сознательно отмежёвывались.'
+                : 'The event itself was sluggish and produced little — yet textbooks list Dartmouth 1956 as "the birthplace of AI." Its canonical status was assembled later: by anniversary conferences (AI@50, 2006), by textbooks, and by the participants\' own memoirs. Along the way, the canonical narrative pushed cybernetics — the field AI actually grew out of, and deliberately set itself apart from — out of the genealogy.'}
+            </p>
+            <p className="text-neutral-300 text-sm leading-relaxed">
+              {lang === 'ru'
+                ? 'Показателен и главный источник легенды: книга Памелы Маккордак "Machines Who Think" (1979) написана по интервью с самими основателями — это не нейтральное свидетельство, а документ, участвующий в мифотворчестве. Историю AI пишут заинтересованные победители, и читать её стоит так же критически, как обещания "AGI через десять лет".'
+                : 'The legend\'s main source is telling too: Pamela McCorduck\'s "Machines Who Think" (1979) was written from interviews with the founders themselves — not a neutral witness but a document that takes part in the myth-making. The history of AI is written by invested winners, and it deserves the same critical reading as promises of "AGI in ten years."'}
+            </p>
           </div>
 
           <p className="text-neutral-300 leading-relaxed">
@@ -136,6 +165,22 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
             </ul>
           </div>
 
+          <div className="bg-card border border-border-emphasis rounded-xl p-5">
+            <h4 className="text-cyan-400 font-bold mb-3">
+              {lang === 'ru' ? 'Экспертные системы (1980-е): первый коммерческий успех — и причина второй зимы' : 'Expert Systems (1980s): the first commercial success — and the cause of the second winter'}
+            </h4>
+            <p className="text-neutral-300 text-sm leading-relaxed mb-3">
+              {lang === 'ru'
+                ? 'Между зимами символический ИИ дал первый коммерческий прорыв — экспертные системы. Знания специалиста кодировались как набор правил «если — то»: система-консультант ставила диагноз или подбирала конфигурацию не хуже эксперта в узкой области. Флагманом стала XCON в компании DEC — она собирала заказные конфигурации компьютеров VAX и экономила десятки миллионов долларов в год. Вокруг вырос целый рынок: специализированные LISP-машины, оболочки для экспертных систем, отделы ИИ в корпорациях.'
+                : 'Between the winters, symbolic AI delivered its first commercial breakthrough — expert systems. A specialist\'s knowledge was encoded as a set of "if-then" rules: a consultant system could diagnose a case or pick a configuration as well as an expert in a narrow domain. The flagship was XCON at DEC — it assembled custom VAX computer configurations and saved tens of millions of dollars a year. A whole market grew around it: dedicated LISP machines, expert-system shells, and corporate AI departments.'}
+            </p>
+            <p className="text-neutral-300 text-sm leading-relaxed">
+              {lang === 'ru'
+                ? 'Но у подхода было два врождённых изъяна. Системы были хрупкими: за пределами прописанных правил у них не было здравого смысла, и любое исключение ломало логику. А поддержка стоила дорого — знания приходилось вручную вытягивать из экспертов и постоянно обновлять. Когда дешёвые универсальные рабочие станции обошли дорогие LISP-машины, рынок схлопнулся на рубеже 1990 года. Так первый коммерческий бум ИИ сам же и запустил вторую AI-зиму — показательный урок: хайп обогнал то, что технология могла удержать.'
+                : 'But the approach had two built-in flaws. The systems were brittle: outside their hard-coded rules they had no common sense, and any exception broke the logic. And upkeep was expensive — knowledge had to be extracted from experts by hand and constantly updated. When cheap general-purpose workstations overtook the expensive LISP machines, the market collapsed around 1990. So the first commercial AI boom is what triggered the second AI winter — a telling lesson: the hype outran what the technology could sustain.'}
+            </p>
+          </div>
+
           <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru'
               ? 'Цикл повторялся с пугающей регулярностью. В 1988 году высокопоставленный чиновник DARPA заявил, что нейронные сети "важнее атомной бомбы" — и менее чем через год наступила очередная зима. Когда Джеффри Хинтон в 1990 году заканчивал аспирантуру, поле было в таком упадке, что научные руководители советовали ему убрать слово "Artificial Intelligence" из резюме при поиске работы. '
@@ -192,6 +237,22 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
             {lang === 'ru'
               ? ' — и показала 85%. Отрыв от второго места был больше, чем весь прогресс за предыдущие пять лет соревнований.'
               : ' — and it scored 85%. The gap over second place was larger than all progress accumulated over the previous five years of the competition.'}
+          </p>
+
+          <p className="text-neutral-300 leading-relaxed">
+            {lang === 'ru' ? (
+              <>
+                {'Историки науки видят в этом споре больше, чем техническую дискуссию: ставка коннекционизма на обучение вместо явных правил перекликалась с более широким интеллектуальным поворотом XX века против веры в то, что сложные системы можно исчислить и спланировать сверху ('}
+                <a href="https://doi.org/10.1086/717313" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Халперн 2022: 6</a>
+                {').'}
+              </>
+            ) : (
+              <>
+                {"Historians of science see more than a technical dispute here: connectionism's bet on learning over explicit rules echoed a broader twentieth-century turn against the belief that complex systems can be calculated and planned from above ("}
+                <a href="https://doi.org/10.1086/717313" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Halpern 2022: 6</a>
+                {').'}
+              </>
+            )}
           </p>
 
           <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-6">

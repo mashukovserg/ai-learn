@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useRef, useEffect, useMemo } from 'react';
-import { Search, Zap, Menu } from 'lucide-react';
+import { Search, Zap, Menu, Terminal, Sun } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { useLang } from '@/hooks/useLang';
+import { useTheme } from '@/hooks/useTheme';
 import { ROOMS_METADATA } from '@/data/rooms/metadata';
 
 export default function Navbar({ onMenuClick }: { onMenuClick?: () => void }) {
@@ -13,6 +14,7 @@ export default function Navbar({ onMenuClick }: { onMenuClick?: () => void }) {
   const pathname = usePathname();
   const router = useRouter();
   const { user } = useAuth();
+  const { theme, setTheme } = useTheme();
   const [query, setQuery] = useState('');
   const [open, setOpen] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -117,6 +119,25 @@ export default function Navbar({ onMenuClick }: { onMenuClick?: () => void }) {
       </div>
 
       <div className="flex items-center gap-2 sm:gap-4 md:gap-5 ml-auto shrink-0">
+        <div className="flex items-center gap-1 bg-base p-0.5 rounded-lg border border-border-card">
+          <button
+            type="button"
+            onClick={() => setTheme('terminal')}
+            title={lang === 'ru' ? 'Тема «Терминал»' : 'Terminal theme'}
+            className={`px-2 py-1 rounded-md transition-colors ${theme === 'terminal' ? 'bg-white/10 text-neutral-200' : 'text-neutral-500 hover:text-neutral-300'}`}
+          >
+            <Terminal size={14} />
+          </button>
+          <button
+            type="button"
+            onClick={() => setTheme('saas')}
+            title={lang === 'ru' ? 'Тема «SaaS»' : 'SaaS theme'}
+            className={`px-2 py-1 rounded-md transition-colors ${theme === 'saas' ? 'bg-white/10 text-neutral-200' : 'text-neutral-500 hover:text-neutral-300'}`}
+          >
+            <Sun size={14} />
+          </button>
+        </div>
+
         <div className="flex items-center gap-1 bg-base p-0.5 rounded-lg border border-border-card">
           <Link
             href={redirectedPathname('ru')}

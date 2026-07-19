@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Term from '@/components/Term';
+import Terminal from '@/components/Terminal';
 
 export default function McpToolEcosystemsTheory({ lang }: { lang: string }) {
   return (
@@ -110,6 +111,16 @@ export default function McpToolEcosystemsTheory({ lang }: { lang: string }) {
               </>
             )}
           </p>
+          <Terminal
+            title="mcp · zsh"
+            lines={[
+              { cmd: 'claude mcp add filesystem npx @modelcontextprotocol/server-filesystem ~/repo', comment: lang === 'ru' ? '# подключить сервер' : '# register a server' },
+              { out: 'added "filesystem" (stdio) · 3 tools' },
+              { cmd: lang === 'ru' ? 'покажи README' : 'show the README', prompt: '>' },
+              { out: '● filesystem ▸ read_file(README.md) → 1.2 kB' },
+              { out: lang === 'ru' ? '✓ ответ на основе файла' : '✓ answered from the file', tone: 'ok' },
+            ]}
+          />
         </div>
       </section>
 
