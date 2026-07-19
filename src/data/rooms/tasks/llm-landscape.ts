@@ -410,5 +410,24 @@ export const llmLandscapeTasks: LocalizedTask[] = [
         ru: 'Точно. Проприетарные данные — это "новое топливо", которое нельзя просто скачать.',
         en: 'Exactly. Proprietary data is the "new fuel" that cannot be simply downloaded.'
       }
+    },
+    {
+      id: 16,
+      type: 'multiple-choice',
+      question: {
+        ru: 'Чем по теории комнаты выделяется стратегия xAI (модель Grok) среди игроков рынка?',
+        en: 'By the room\'s theory, what distinguishes xAI\'s strategy (the Grok model) among the market players?'
+      },
+      options: [
+        { ru: 'Agentic API с оплатой за вызовы инструментов (tool-priced).', en: 'An agentic API priced by tool calls (tool-priced).' },
+        { ru: 'Ставка на самые компактные модели для телефонов.', en: 'A bet on the most compact phone-sized models.' },
+        { ru: 'Enterprise-RAG как основной продукт.', en: 'Enterprise RAG as the flagship product.' },
+        { ru: 'Полностью закрытая система без публичного API.', en: 'A fully closed system with no public API.' }
+      ],
+      answer: { ru: 'Agentic API с оплатой за вызовы инструментов (tool-priced).', en: 'An agentic API priced by tool calls (tool-priced).' },
+      explanation: {
+        ru: 'Верно. В комнате xAI (Grok) отнесён к стратегии agentic-API с оплатой инструментов, тогда как компактные модели — это Phi (Microsoft), а enterprise-RAG — Command R (Cohere).',
+        en: 'Correct. The room places xAI (Grok) in the tool-priced agentic-API strategy, while compact models are Phi (Microsoft) and enterprise RAG is Command R (Cohere).'
+      }
     }
   ];

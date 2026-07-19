@@ -307,5 +307,23 @@ export const frontierEvalsLogicTasks: LocalizedTask[] = [
       ru: 'Проприетарные данные — это "новое топливо", которое невозможно просто скачать из сети.',
       en: 'Proprietary data is the "new fuel" that cannot be simply downloaded from the web.'
     }
+  },
+  {
+    id: 13,
+    type: 'multiple-choice',
+    question: {
+      ru: 'Компания заявляет: «Grok — №1 на бенчмарке рассуждений». Как по принципам этой комнаты стоит трактовать такое заявление?',
+      en: 'A company claims: "Grok is #1 on a reasoning benchmark." Per this room\'s principles, how should you interpret that claim?'
+    },
+    options: [
+      { ru: 'Проверить условия: одинаковый режим и число попыток, отсутствие утечки данных теста, честное сравнение конфигураций — заявление поставщика требует независимой проверки.', en: 'Check the conditions: same mode and number of attempts, no test-data leakage, fair comparison of configurations — a vendor claim needs independent verification.' },
+      { ru: 'Раз заявлено поставщиком — можно считать модель лучшей во всех задачах.', en: 'Since the vendor claims it, the model can be considered best at every task.' },
+      { ru: 'Один бенчмарк полностью определяет качество модели на любых задачах.', en: 'A single benchmark fully determines a model\'s quality on all tasks.' }
+    ],
+    answer: { ru: 'Проверить условия: одинаковый режим и число попыток, отсутствие утечки данных теста, честное сравнение конфигураций — заявление поставщика требует независимой проверки.', en: 'Check the conditions: same mode and number of attempts, no test-data leakage, fair comparison of configurations — a vendor claim needs independent verification.' },
+    explanation: {
+      ru: 'Верно. Заявление поставщика — не доказательство: важны условия замера (режим, попытки, отсутствие контаминации, честные конфигурации), а один бенчмарк не покрывает все задачи.',
+      en: 'Correct. A vendor claim is not proof: the measurement conditions matter (mode, attempts, no contamination, fair configurations), and one benchmark does not cover every task.'
+    }
   }
 ];

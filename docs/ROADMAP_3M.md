@@ -69,18 +69,20 @@ Goal: green test suite gating every change; task-level images available; first G
 
 **Acceptance:** a task with an image renders correctly in both locales; a missing file fails `npm run test`.
 
-### M1-5 🟡 Pilot illustrations in agent-coding rooms (diagrams shipped 2026-07-16 — awaiting creator approval, by Claude Code)
+### M1-5 ✅ Pilot illustrations in agent-coding rooms (approved 2026-07-19, by Claude Code)
 - [x] Added a concept diagram to one task in each of `agentic-cli-tools` (#1, CLI loop), `claude-code-pro-workflow` (#5, auto-compact buffer), and `claude-code-agentic-loop` (#8, three-phase loop). Deliberately attached to context tasks, NOT to the "name the phases" MC (#1) or "order the loop" sorting (#4), which the diagram would give away. Design-token palette SVGs under `public/images/tasks/<room-id>/`, bilingual alt/caption.
 - [~] Real terminal screenshots (plan-mode output, permission modes, tool-call tree) still pending — cannot be authentically captured here; shipped clean SVG diagrams instead as the pilot. Creator to approve or swap for real screenshots.
 
 **Acceptance:** pilot tasks show images with bilingual alt/captions; tests green.
 
-### M1-6 🟡 GROK task pack (5–6 tasks across existing rooms)
-- [ ] `llm-landscape` — model-comparison task including Grok (tradeoffs, context, pricing).
-- [ ] `research-grounding` or `deep-search-agents` — realtime X-feed grounding: where it helps, where it is an antipattern.
-- [ ] `native-multimodality` — Grok Vision reading a chart screenshot (uses M1-4 infrastructure).
-- [ ] `prompting-101` — system prompt that overrides the default persona style.
-- [ ] `frontier-evals-logic` — interpreting Grok benchmark results (ARC/SimpleBench-style).
+### M1-6 ✅ GROK task pack (done 2026-07-19, by Claude Code)
+- [x] `llm-landscape#16` — MC on xAI/Grok's tool-priced agentic-API strategy (solvable from the existing landscape theory).
+- [x] `deep-search-agents#7` — multiple-select on realtime X-feed grounding: useful for fresh topics, but not authoritative — verify and cite primary sources.
+- [x] `native-multimodality#7` — MC with a bar-chart image (M1-4 infra): a multimodal model like Grok Vision reads the image directly vs the old captioner chain.
+- [x] `prompting-101#11` — MC: override Grok's playful default persona with a system prompt (tone ≠ temperature; no fine-tuning needed).
+- [x] `frontier-evals-logic#13` — MC: interpret a "Grok is #1" vendor benchmark claim critically (conditions, contamination, fair configs).
+
+Facts kept to stable, verifiable framings (xAI, realtime X integration, vision, default persona) with Grok as the concrete example; no fragile numbers.
 
 **Acceptance:** each task appended with correct sequential ID, answerable from (possibly extended) theory, both locales, tests green. Theory extensions must respect the Chapter Text Depth Gate.
 

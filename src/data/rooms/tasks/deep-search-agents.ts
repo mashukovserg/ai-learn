@@ -166,5 +166,28 @@ export const deepSearchAgentsTasks: LocalizedTask[] = [
           }
         ]
       }
+    },
+    {
+      id: 7,
+      type: 'multiple-select',
+      question: {
+        ru: 'Grok умеет подтягивать посты из X (Twitter) в реальном времени. Выберите верные утверждения о таком грандинге по принципам комнаты.',
+        en: 'Grok can pull posts from X (Twitter) in real time. Select the correct statements about this grounding, per the room\'s principles.'
+      },
+      options: [
+        { ru: 'Полезно для свежих, быстро меняющихся тем: ломающиеся новости, живые настроения.', en: 'Useful for fresh, fast-moving topics: breaking news, live sentiment.' },
+        { ru: 'Каждый факт из ленты нужно верифицировать — соцлента не авторитетный источник.', en: 'Every fact from the feed must be verified — a social feed is not an authoritative source.' },
+        { ru: 'Для проверяемости к утверждениям нужны ссылки на первоисточники.', en: 'For verifiability, claims need links to primary sources.' },
+        { ru: 'Пост из ленты можно считать проверенным фактом без дополнительной проверки.', en: 'A post from the feed can be treated as a verified fact without any further checking.' }
+      ],
+      answer: [
+        { ru: 'Полезно для свежих, быстро меняющихся тем: ломающиеся новости, живые настроения.', en: 'Useful for fresh, fast-moving topics: breaking news, live sentiment.' },
+        { ru: 'Каждый факт из ленты нужно верифицировать — соцлента не авторитетный источник.', en: 'Every fact from the feed must be verified — a social feed is not an authoritative source.' },
+        { ru: 'Для проверяемости к утверждениям нужны ссылки на первоисточники.', en: 'For verifiability, claims need links to primary sources.' }
+      ],
+      explanation: {
+        ru: 'Верно. Realtime-лента ценна для свежести, но это не авторитетный источник: факты проверяют и подкрепляют ссылками на первоисточники, а не принимают пост как истину.',
+        en: 'Correct. A realtime feed is valuable for freshness, but it is not authoritative: facts are verified and backed by links to primary sources, not taken as truth from a post.'
+      }
     }
   ];
