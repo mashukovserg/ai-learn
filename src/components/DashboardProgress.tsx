@@ -23,7 +23,7 @@ export default function DashboardProgress({ totalRooms }: { totalRooms: number }
             <span>{lang === 'ru' ? 'Прогресс пути' : 'Path progress'}</span>
             <span>{progressPercent}%</span>
           </div>
-          <div className="h-1.5 bg-[#202a23] rounded-full overflow-hidden">
+          <div className="h-1.5 bg-muted rounded-full overflow-hidden">
             <div
               className="h-full bg-gradient-to-r from-emerald-400 to-lime-300 rounded-full transition-all duration-500"
               style={{ width: `${progressPercent}%` }}

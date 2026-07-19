@@ -159,6 +159,7 @@ These are enforced conventions, not suggestions. Read `docs/AGENTS.md` for full 
 - **Forbidden phrasing** — never use `это не просто` or the word `вендор` (any case form) in authored text, docs, or replies; use concrete alternatives (`поставщик модели`, `платформа`, etc.).
 - **Docs sync / completion checklist** — when behavior, setup, or content changes, update in the same task: `README.md`, `docs/PROGRESS.md`, `docs/BACKLOG.md` (log completed work with a `(by <agent>)` tag), and `docs/CURRICULUM.md` / `docs/DEPLOYMENT.md` where relevant. Update Russian mirrors (`*.ru.md`) when they exist.
 - **Frontend auto-start** — for coding tasks, ensure `http://localhost:3000` is up (reuse if already running; start `npm run dev` if not) and state its status in your report.
+- **Commit hygiene (work must be committed to survive)** — the working tree is **not durable**: it re-syncs to the latest merged `main`, and uncommitted edits to tracked files get wiped on the next branch sync. Work on a dedicated branch, and when a unit is done run `check-all`, `git add` the specific files (incl. any new untracked ones), commit, and push the branch. Never end a session with substantial uncommitted changes. See `docs/AGENTS.md` → "Commit hygiene".
 
 ## Current State & Limitations
 

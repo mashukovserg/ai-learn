@@ -269,5 +269,47 @@ export const aiHistoryTasks: LocalizedTask[] = [
         ru: 'Именно прогресс в работе с контекстом позволил перейти от простых фраз к написанию целых книг и сложных программ.',
         en: 'It was the progress in context handling that allowed the shift from simple phrases to writing entire books and complex programs.'
       }
+    },
+    {
+      id: 11,
+      type: 'multiple-choice',
+      question: {
+        ru: 'С чем, по мнению историков науки (Халперн 2022), перекликалась ставка коннекционизма на обучение вместо явных правил?',
+        en: "According to historians of science (Halpern 2022), what did connectionism's bet on learning instead of explicit rules echo?"
+      },
+      options: [
+        { ru: 'С верой в то, что интеллект сводится к строгой дедуктивной логике', en: 'The belief that intelligence reduces to strict deductive logic' },
+        { ru: 'С широким интеллектуальным поворотом XX века против веры в то, что сложные системы можно исчислить и спланировать сверху', en: 'A broader twentieth-century turn against the belief that complex systems can be calculated and planned from above' },
+        { ru: 'С появлением интернета и больших размеченных наборов данных', en: 'The arrival of the internet and large labeled datasets' }
+      ],
+      answer: {
+        ru: 'С широким интеллектуальным поворотом XX века против веры в то, что сложные системы можно исчислить и спланировать сверху',
+        en: 'A broader twentieth-century turn against the belief that complex systems can be calculated and planned from above'
+      },
+      explanation: {
+        ru: 'Верно. Спор GOFAI и коннекционизма — часть более широкой истории идей: расчёт и планирование сверху против распределённых систем, которые учатся сами.',
+        en: 'Correct. The GOFAI-vs-connectionism dispute is part of a wider history of ideas: top-down calculation and planning versus distributed systems that learn on their own.'
+      }
+    },
+    {
+      id: 12,
+      type: 'multiple-choice',
+      question: {
+        ru: 'Почему историки называют статус Дартмута 1956 как "места рождения AI" ретроспективным мифом?',
+        en: 'Why do historians call Dartmouth 1956\'s status as "the birthplace of AI" a retrospective myth?'
+      },
+      options: [
+        { ru: 'Потому что семинар на самом деле не состоялся', en: 'Because the workshop never actually took place' },
+        { ru: 'Само событие дало мало результатов, а каноничность собрали позже юбилеи, учебники и мемуары участников, вытеснив кибернетику из генеалогии AI', en: 'The event itself produced little; its canonical status was assembled later by anniversaries, textbooks, and participants\' memoirs, pushing cybernetics out of AI\'s genealogy' },
+        { ru: 'Потому что термин "Artificial Intelligence" на самом деле придумал Норберт Винер', en: 'Because the term "Artificial Intelligence" was actually coined by Norbert Wiener' }
+      ],
+      answer: {
+        ru: 'Само событие дало мало результатов, а каноничность собрали позже юбилеи, учебники и мемуары участников, вытеснив кибернетику из генеалогии AI',
+        en: 'The event itself produced little; its canonical status was assembled later by anniversaries, textbooks, and participants\' memoirs, pushing cybernetics out of AI\'s genealogy'
+      },
+      explanation: {
+        ru: 'Верно. "Место рождения" — конструкция задним числом: сам семинар был вялым, а его каноничность собрали AI@50, учебники и книги вроде "Machines Who Think", написанной по интервью с самими основателями.',
+        en: 'Correct. The "birthplace" is an after-the-fact construction: the workshop itself was sluggish, and its canonical status was built by AI@50, textbooks, and books like "Machines Who Think," written from interviews with the founders themselves.'
+      }
     }
   ];

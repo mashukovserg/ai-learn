@@ -3,7 +3,7 @@
 import React, { use, useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ChevronRight, HelpCircle, Clock } from 'lucide-react';
+import { ChevronRight, HelpCircle, Clock, RotateCcw } from 'lucide-react';
 import { motion } from 'framer-motion';
 import TaskQuestion from '@/components/TaskQuestion';
 import TaskSorting from '@/components/TaskSorting';
@@ -115,7 +115,7 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
   const metadata = ROOMS_METADATA.find(r => r.id === id);
   const localizedTasks = ROOM_TASKS[id];
 
-  const { completedIds, markCompleted: persistCompleted } = useProgress(id);
+  const { completedIds, markCompleted: persistCompleted, resetProgress } = useProgress(id);
 
   // Initialize tasks with completion status from progress
   const [tasks, setTasks] = useState(localizedTasks ? localizedTasks.map(t => ({
@@ -183,6 +183,11 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   // Guard: only trigger modal when user completes a task, not on initial load
   const modalTriggered = useRef(false);
+  // Reset-progress UI: confirm step + a nonce that remounts task cards so their
+  // internal solved/answer state is cleared (initialCompleted alone can't undo
+  // a task solved in the current session).
+  const [confirmReset, setConfirmReset] = useState(false);
+  const [resetNonce, setResetNonce] = useState(0);
   const audioContextRef = useRef<AudioContext | null>(null);
 
   // Update tasks completion status only when completedIds actually changes
@@ -258,6 +263,15 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
     persistCompleted(taskId);
   };
 
+  const handleReset = () => {
+    resetProgress();
+    setTasks(prev => prev.map(t => ({ ...t, completed: false })));
+    modalTriggered.current = false;
+    setShowSuccessModal(false);
+    setConfirmReset(false);
+    setResetNonce(n => n + 1);
+  };
+
   const TheoryComponent = THEORY_COMPONENTS[id] || DefaultTheory;
 
   // Logic to find the next room
@@ -330,7 +344,7 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
               {tasks.map((task) => (
                 task.type === 'sorting' ? (
                   <TaskSorting
-                    key={task.id}
+                    key={`${task.id}-${resetNonce}`}
                     id={task.id}
                     question={task.question}
                     image={task.image}
@@ -342,7 +356,7 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
                   />
                 ) : task.type === 'mentor' ? (
                   <TaskMentor
-                    key={task.id}
+                    key={`${task.id}-${resetNonce}`}
                     id={task.id}
                     question={task.question}
                     image={task.image}
@@ -353,7 +367,7 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
                   />
                 ) : task.type === 'categorize' ? (
                   <TaskCategorize
-                    key={task.id}
+                    key={`${task.id}-${resetNonce}`}
                     id={task.id}
                     question={task.question}
                     image={task.image}
@@ -366,7 +380,7 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
                   />
                 ) : task.type === 'timeline' ? (
                   <TaskTimeline
-                    key={task.id}
+                    key={`${task.id}-${resetNonce}`}
                     id={task.id}
                     question={task.question}
                     image={task.image}
@@ -378,7 +392,7 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
                   />
                 ) : task.type === 'scenario' ? (
                   <TaskScenario
-                    key={task.id}
+                    key={`${task.id}-${resetNonce}`}
                     id={task.id}
                     question={task.question}
                     image={task.image}
@@ -392,7 +406,7 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
                   />
                 ) : (
                   <TaskQuestion
-                    key={task.id}
+                    key={`${task.id}-${resetNonce}`}
                     id={task.id}
                     question={task.question}
                     image={task.image}
@@ -425,6 +439,40 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
                 animate={{ width: `${(tasks.filter(t => t.completed).length / tasks.length) * 100}%` }}
               />
             </div>
+
+            {tasks.some(t => t.completed) && (
+              <div className="mt-4 pt-4 border-t border-border-card">
+                {confirmReset ? (
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-xs text-neutral-400">
+                      {lang === 'ru' ? 'Сбросить прогресс?' : 'Reset progress?'}
+                    </span>
+                    <div className="flex items-center gap-3">
+                      <button
+                        onClick={handleReset}
+                        className="text-xs font-semibold text-red-400 hover:text-red-300 transition-colors"
+                      >
+                        {lang === 'ru' ? 'Да' : 'Yes'}
+                      </button>
+                      <button
+                        onClick={() => setConfirmReset(false)}
+                        className="text-xs font-medium text-neutral-500 hover:text-neutral-300 transition-colors"
+                      >
+                        {lang === 'ru' ? 'Отмена' : 'Cancel'}
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => setConfirmReset(true)}
+                    className="flex items-center gap-1.5 text-xs font-medium text-neutral-500 hover:text-neutral-300 transition-colors"
+                  >
+                    <RotateCcw size={13} />
+                    {lang === 'ru' ? 'Сбросить прогресс' : 'Reset progress'}
+                  </button>
+                )}
+              </div>
+            )}
           </div>
         </aside>
       </div>

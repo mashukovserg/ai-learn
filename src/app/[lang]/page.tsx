@@ -25,7 +25,7 @@ export default async function Home(props: {
       <WelcomeLine welcomeText={dict.dashboard.welcome} />
 
       {/* Continue learning — primary CTA */}
-      <section className="bg-gradient-to-br from-input via-[#151d18] to-input border border-emerald-500/25 rounded-xl p-5 mb-9">
+      <section className="bg-gradient-to-br from-card to-card-dark border border-emerald-500/25 rounded-xl p-5 mb-9">
         <div className="flex items-center justify-between gap-6">
           <div className="flex-1 min-w-0">
             <p className="text-xs text-emerald-300/80 mb-1.5">

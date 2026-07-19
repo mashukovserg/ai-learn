@@ -128,6 +128,37 @@ Surface and border colors are defined as Tailwind v4 theme tokens in `src/app/[l
 - Use `border-border-card`, `border-border-subtle`, `border-border-emphasis` for borders.
 - **Never** introduce new arbitrary hex background or border values (e.g. `bg-[#1a1a1a]`, `border-[#262626]`). Use the existing tokens or propose a new token in `globals.css`.
 
+### Terminal component — a core design element (use it)
+
+`src/components/Terminal.tsx` is a first-class part of the visual language, not a one-off. It renders a black-gray terminal window (traffic-dot header, monospace, `$`/`>`/`>>>` prompts) that stays intentionally dark in **both** themes — its `--color-term-*` tokens in `@theme` are deliberately **not** overridden in the `[data-theme="saas"]` block, so a terminal looks like a terminal on light UI too. Reach for it whenever a chapter shows a real command or interactive session — it is the preferred way to render such content, and terminals should recur across the platform rather than appear in one or two rooms.
+
+- **Import + use** (lang-agnostic — resolve bilingual strings at the call site):
+  ```tsx
+  import Terminal from '@/components/Terminal';
+  <Terminal title="ollama · zsh" lines={[
+    { cmd: 'ollama pull llama3.1:8b', comment: lang === 'ru' ? '# скачать' : '# download' },
+    { out: 'pulling manifest ... success' },
+    { out: '✓ ready', tone: 'ok' },   // tone: 'dim' (default) | 'ok' (green) | 'bad' (red)
+  ]} />
+  ```
+  Line kinds: `{ cmd, comment?, prompt? }` (a prompt line, default prompt `$`) and `{ out, tone? }` (an output line).
+- **Use it for:** CLI command sequences, agent/tool-call sessions (`● tool ▸ …`), REPL interactions, install→run→verify flows, red→green test loops, API-call sessions.
+- **Do NOT use it for:** static JSON/YAML/schema/config display or math notation — those stay as plain code blocks (`bg-deep` + `<pre>`). The terminal means *a session* (command → output); misusing it as a decorative frame for static data cheapens the element.
+- **Solvability:** never let a terminal hand a learner a task's answer (e.g. don't show the exact ordering a `sorting` task asks them to produce). Terminals illustrate; they don't spoil.
+- Prefer this component over hand-rolling terminal markup, and over converting a real command block to a bespoke `<pre>`. If it exists, reuse it.
+
+### Product screenshots — a core design element (use them)
+
+The GUI counterpart of the Terminal rule (reference pattern: TryHackMe's task pages, e.g. an annotated VirusTotal screenshot framed between two paragraphs of explanation). When a chapter discusses a product with a graphical interface — a web console, dashboard, chat UI, settings screen — show a **real screenshot** of that product instead of describing the UI in prose. CLI/session content → `<Terminal>`; GUI content → screenshot.
+
+- **The sandwich structure (mandatory):** a screenshot never floats alone. Text above introduces what the tool is and what the reader is about to see; the screenshot shows it; text below tells the reader how to interpret what's shown and its caveats. A screenshot with no interpretive text after it is decoration, not teaching.
+- **Authenticity:** only genuine captures of the real product. No mocked-up UI, no AI-generated fake interfaces, no doctored numbers — a learner must be able to open the product and see the same thing. Crop to the relevant region; blur or avoid personal data (emails, tokens, account names).
+- **Framing:** wrap in a rounded container with a visible accent border so the screenshot reads as a deliberate exhibit, not a pasted image: `rounded-xl border-2 border-cyan-400/60 overflow-hidden` (reuse an accent already present in the chapter; border tokens stay for surfaces, the accent border marks "this is an exhibit"). Render via `next/image` with explicit `width`/`height`.
+- **Dark captures preferred:** when the product has a dark theme, capture in dark — it sits naturally on both platform themes, same logic as the Terminal staying dark on light UI.
+- **Assets:** `public/images/rooms/<room-id>/` for theory screenshots (task illustrations keep their existing `public/images/tasks/<room-id>/` convention). Prefer `.webp`/`.png`, keep files reasonably sized; name descriptively (`virustotal-detection-tab.webp`, not `screen1.png`).
+- **Localization:** `alt` is mandatory and bilingual (resolve `ru`/`en` at the call site, like Terminal strings); an optional caption must also be bilingual. The screenshot itself may show an English UI — that's authentic — but everything the platform renders around it ships in both locales.
+- **Solvability:** same guard as terminals — a screenshot must never hand a learner a task's answer (don't show the filled-in value an `input` task asks for). Screenshots illustrate; they don't spoil.
+
 ### Available task components
 
 Six components render tasks inside rooms (dispatched by `TaskType`):
@@ -156,6 +187,16 @@ For coding tasks, agents should:
 3. Preserve bilingual behavior and update both `en` and `ru` where required.
 4. Run relevant checks after edits (`npm run check-all` at minimum for frontend changes).
 5. Report what was changed, what was verified, and any unresolved warnings/limitations.
+
+### Commit hygiene — work must be committed to survive (Mandatory)
+
+**The working tree is not durable.** Sessions re-sync to the latest merged `main`, and uncommitted edits to tracked files are silently wiped when the tree moves to a newly merged branch. Real work on this repo happens through committed branches merged as PRs (`git log` shows the merge history). Therefore:
+
+1. **Do not end a session with substantial uncommitted edits to tracked files.** They will be lost on the next branch sync. (This has bitten real work more than once — e.g. the light-theme toggle repeatedly vanished until it was committed.)
+2. **Work on a dedicated branch** (`git checkout -b <topic>`), not on a detached/uncommitted `main` working tree.
+3. When a logical unit is complete: run `npm run check-all`, then **commit** the specific files (`git add <paths>` — not `git add -A`, to avoid sweeping in unrelated untracked artifacts), and **push the branch** (`git push -u origin <branch>`) so it is durable on the remote and can become a PR.
+4. New untracked files that belong to the change (new components, hooks, task files) must be explicitly `git add`-ed — they are not part of any commit until you add them, and they will not survive on their own.
+5. Committing/pushing on the user's behalf follows the normal outward-action rule: confirm the push with the user unless already authorized in this session.
 
 ### Task mix and interactivity rule (Mandatory)
 
