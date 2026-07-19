@@ -274,5 +274,24 @@ export const prompting101Tasks: LocalizedTask[] = [
         ru: 'Этот цикл позволяет постепенно повышать точность модели, переходя к более сложным техникам только тогда, когда простые уже не справляются.',
         en: 'This cycle allows you to gradually increase model precision, moving to more complex techniques only when simple ones are no longer enough.'
       }
+    },
+    {
+      id: 11,
+      type: 'multiple-choice',
+      question: {
+        ru: 'Модель Grok по умолчанию отвечает в дерзко-шутливом стиле. Как по принципам этой комнаты заставить её отвечать строго и нейтрально?',
+        en: 'The Grok model answers in a cheeky, playful style by default. Using this room\'s principles, how do you make it respond formally and neutrally?'
+      },
+      options: [
+        { ru: 'Задать системный промпт, явно переопределяющий персону и тон («отвечай формально, без шуток»).', en: 'Set a system prompt that explicitly overrides the persona and tone ("answer formally, no jokes").' },
+        { ru: 'Многократно повторять один и тот же вопрос, пока тон не изменится.', en: 'Repeat the same question many times until the tone changes.' },
+        { ru: 'Понизить температуру до 0 — это уберёт стиль.', en: 'Lower the temperature to 0 — that removes the style.' },
+        { ru: 'Стиль модели нельзя изменить без полного дообучения.', en: 'The model\'s style cannot be changed without full fine-tuning.' }
+      ],
+      answer: { ru: 'Задать системный промпт, явно переопределяющий персону и тон («отвечай формально, без шуток»).', en: 'Set a system prompt that explicitly overrides the persona and tone ("answer formally, no jokes").' },
+      explanation: {
+        ru: 'Верно. Системный промпт задаёт роль и тон и переопределяет поведение по умолчанию. Температура управляет случайностью, а не стилем, и дообучение для смены тона не требуется.',
+        en: 'Correct. A system prompt sets the role and tone and overrides default behavior. Temperature controls randomness, not style, and fine-tuning is not needed to change tone.'
+      }
     }
   ];

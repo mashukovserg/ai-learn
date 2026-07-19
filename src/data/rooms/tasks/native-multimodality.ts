@@ -145,5 +145,34 @@ export const nativeMultimodalityTasks: LocalizedTask[] = [
         ],
         passingScore: 50
       }
+    },
+    {
+      id: 7,
+      type: 'multiple-choice',
+      image: {
+        src: '/images/tasks/native-multimodality/quarterly-chart.svg',
+        alt: {
+          ru: 'Столбчатая диаграмма выручки по кварталам 2025 года: Q1 12, Q2 20, Q3 26, Q4 32 млн USD.',
+          en: 'A bar chart of 2025 revenue by quarter: Q1 12, Q2 20, Q3 26, Q4 32 million USD.'
+        },
+        caption: {
+          ru: 'Скриншот графика, который подают на вход мультимодальной модели.',
+          en: 'A screenshot of a chart fed to a multimodal model.'
+        }
+      },
+      question: {
+        ru: 'Мультимодальной модели (например, Grok Vision) подают этот скриншот графика. Как она обрабатывает изображение по теории комнаты?',
+        en: 'A multimodal model (for example, Grok Vision) is given this chart screenshot. How does it process the image, per the room\'s theory?'
+      },
+      options: [
+        { ru: 'Читает изображение напрямую, в общем представлении вместе с текстом — отдельный «описатель» не нужен.', en: 'It reads the image directly, in a shared representation with text — no separate "captioner" is needed.' },
+        { ru: 'Сначала отдельная модель описывает картинку словами, а затем текст подаётся в основную модель.', en: 'A separate model first describes the picture in words, then that text is passed to the main model.' },
+        { ru: 'Модель не может обрабатывать изображения — только текст.', en: 'The model cannot process images at all — only text.' }
+      ],
+      answer: { ru: 'Читает изображение напрямую, в общем представлении вместе с текстом — отдельный «описатель» не нужен.', en: 'It reads the image directly, in a shared representation with text — no separate "captioner" is needed.' },
+      explanation: {
+        ru: 'Верно. Нативная мультимодальность означает, что модель воспринимает изображение напрямую в едином представлении с текстом. Промежуточная модель-«описатель» — это старая схема до нативной мультимодальности, при которой терялась информация.',
+        en: 'Correct. Native multimodality means the model perceives the image directly in a shared representation with text. An intermediate "captioner" model is the older, pre-native chain, where information was lost.'
+      }
     }
     ];

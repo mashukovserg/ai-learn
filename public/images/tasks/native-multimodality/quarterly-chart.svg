@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300" font-family="ui-sans-serif, system-ui, sans-serif" role="img">
+  <rect width="560" height="300" rx="14" fill="#171715" stroke="#302e2b"/>
+  <text x="280" y="38" text-anchor="middle" fill="#e6e2da" font-size="17" font-weight="700">Revenue by quarter, 2025 (USD, millions)</text>
+  <line x1="70" y1="250" x2="530" y2="250" stroke="#4b4842" stroke-width="1.5"/>
+  <line x1="70" y1="70" x2="70" y2="250" stroke="#4b4842" stroke-width="1.5"/>
+  <g fill="#34d399">
+    <rect x="110" y="190" width="60" height="60" rx="4"/>
+    <rect x="220" y="150" width="60" height="100" rx="4"/>
+    <rect x="330" y="120" width="60" height="130" rx="4"/>
+    <rect x="440" y="90" width="60" height="160" rx="4"/>
+  </g>
+  <g fill="#a29d94" font-size="14" text-anchor="middle">
+    <text x="140" y="270">Q1</text>
+    <text x="250" y="270">Q2</text>
+    <text x="360" y="270">Q3</text>
+    <text x="470" y="270">Q4</text>
+  </g>
+  <g fill="#e6e2da" font-size="13" text-anchor="middle" font-weight="600">
+    <text x="140" y="182">12</text>
+    <text x="250" y="142">20</text>
+    <text x="360" y="112">26</text>
+    <text x="470" y="82">32</text>
+  </g>
+</svg>
