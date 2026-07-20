@@ -147,6 +147,11 @@ Surface and border colors are defined as Tailwind v4 theme tokens in `src/app/[l
 - **Do NOT use it for:** static JSON/YAML/schema/config display or math notation — those stay as plain code blocks (`bg-deep` + `<pre>`). The terminal means *a session* (command → output); misusing it as a decorative frame for static data cheapens the element.
 - **Solvability:** never let a terminal hand a learner a task's answer (e.g. don't show the exact ordering a `sorting` task asks them to produce). Terminals illustrate; they don't spoil.
 - Prefer this component over hand-rolling terminal markup, and over converting a real command block to a bespoke `<pre>`. If it exists, reuse it.
+- **The terminal's visual style is an open fork, not a settled choice** — the project is still searching for its optimal design. The Ubuntu look above is *what is wired up today*. Alternatives (neutral black-gray, Tango-on-black, Solarized, Dracula) are kept paste-ready in [`DESIGN_FORKS.md`](DESIGN_FORKS.md). The whole look is token-driven, so switching is a one-block swap in `globals.css` — never a component or per-room edit. If you change the pick, update `DESIGN_FORKS.md` in the same task and do not delete the losing option.
+
+### Design forks — do not silently collapse them (Mandatory)
+
+Several design decisions are deliberately **open**: terminal styling, site and terminal typefaces, and the accent green. They are recorded in [`DESIGN_FORKS.md`](DESIGN_FORKS.md) (+ `.ru`) with paste-ready values for every option. Before "fixing" a design inconsistency in these areas, check that file — the inconsistency may be a live fork rather than a defect. When you move a fork, record the move (new pick, demoted option, date, one line of rationale) in the same commit.
 
 ### Product screenshots — a core design element (use them)
 
