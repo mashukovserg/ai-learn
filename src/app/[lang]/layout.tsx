@@ -4,7 +4,7 @@
 */
 
 import type { Metadata } from "next"; //
-import { IBM_Plex_Sans } from "next/font/google";
+import { IBM_Plex_Sans, Ubuntu_Mono } from "next/font/google";
 import "./globals.css";
 import AppShell from "@/components/AppShell";
 import { LangProvider } from "@/hooks/useLang";
@@ -16,6 +16,16 @@ const plexSans = IBM_Plex_Sans({
   subsets: ["latin", "cyrillic"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-plex-sans",
+  display: "swap",
+});
+
+// Terminal typeface: Ubuntu Mono — the font GNOME Terminal ships with on Ubuntu.
+// cyrillic subset is required: terminal comments are authored in RU too.
+// globals.css maps this variable onto the --font-term theme token.
+const ubuntuMono = Ubuntu_Mono({
+  subsets: ["latin", "cyrillic"],
+  weight: ["400", "700"],
+  variable: "--font-ubuntu-mono",
   display: "swap",
 });
 
@@ -36,7 +46,7 @@ export default async function RootLayout(props: {
   const { lang } = params;
 
   return (
-    <html lang={lang} className={plexSans.variable} suppressHydrationWarning>
+    <html lang={lang} className={`${plexSans.variable} ${ubuntuMono.variable}`} suppressHydrationWarning>
       <body>
         {/* Apply persisted UI theme before hydration to avoid a flash of the wrong theme */}
         <script

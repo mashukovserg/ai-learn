@@ -14,15 +14,24 @@
   --color-border-subtle: #302e2b;
   --color-border-emphasis: #393733;
 
-  /* Terminal block — intentionally black-gray in BOTH themes (not overridden
-     in the [data-theme="saas"] block, so a terminal stays a terminal on light UI). */
-  --color-term-bg: #0d0d0d;
-  --color-term-head: #191919;
-  --color-term-line: #2a2a2a;
-  --color-term-text: #d4d4d4;
-  --color-term-dim: #6f6f6f;
-  --color-term-prompt: #34d399;
-  --color-term-red: #f87171;
+  /* Terminal block — Ubuntu GNOME Terminal look: the signature aubergine
+     background (#300A24) with the Tango ANSI palette, set in Ubuntu Mono
+     (--font-term). Intentionally dark in BOTH themes — these tokens are NOT
+     overridden in the [data-theme="saas"] block, so a terminal stays a
+     terminal on light UI. */
+  --color-term-bg: #300a24;
+  --color-term-head: #26071c;
+  --color-term-line: #4a1839;
+  --color-term-text: #eeeeec;
+  --color-term-dim: #a1889b;
+  --color-term-prompt: #8ae234;
+  --color-term-red: #ef2929;
+  --color-term-blue: #729fcf;
+  --color-term-cyan: #34e2e2;
+  --color-term-yellow: #fce94f;
+
+  /* Terminal typeface — Ubuntu Mono, loaded via next/font in layout.tsx. */
+  --font-term: var(--font-ubuntu-mono), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 
 :root {

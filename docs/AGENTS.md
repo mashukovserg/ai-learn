@@ -130,7 +130,7 @@ Surface and border colors are defined as Tailwind v4 theme tokens in `src/app/[l
 
 ### Terminal component — a core design element (use it)
 
-`src/components/Terminal.tsx` is a first-class part of the visual language, not a one-off. It renders a black-gray terminal window (traffic-dot header, monospace, `$`/`>`/`>>>` prompts) that stays intentionally dark in **both** themes — its `--color-term-*` tokens in `@theme` are deliberately **not** overridden in the `[data-theme="saas"]` block, so a terminal looks like a terminal on light UI too. Reach for it whenever a chapter shows a real command or interactive session — it is the preferred way to render such content, and terminals should recur across the platform rather than appear in one or two rooms.
+`src/components/Terminal.tsx` is a first-class part of the visual language, not a one-off. It renders a terminal window styled after **GNOME Terminal on Ubuntu**: the signature aubergine background (`#300A24`), the **Tango** ANSI palette, and **Ubuntu Mono** (loaded via `next/font` in `layout.tsx`, exposed as the `--font-term` token → `font-term` utility). It stays intentionally dark in **both** themes — its `--color-term-*` tokens in `@theme` are deliberately **not** overridden in the `[data-theme="saas"]` block, so a terminal looks like a terminal on light UI too. Reach for it whenever a chapter shows a real command or interactive session — it is the preferred way to render such content, and terminals should recur across the platform rather than appear in one or two rooms.
 
 - **Import + use** (lang-agnostic — resolve bilingual strings at the call site):
   ```tsx
@@ -138,9 +138,10 @@ Surface and border colors are defined as Tailwind v4 theme tokens in `src/app/[l
   <Terminal title="ollama · zsh" lines={[
     { cmd: 'ollama pull llama3.1:8b', comment: lang === 'ru' ? '# скачать' : '# download' },
     { out: 'pulling manifest ... success' },
-    { out: '✓ ready', tone: 'ok' },   // tone: 'dim' (default) | 'ok' (green) | 'bad' (red)
+    { out: '✓ ready', tone: 'ok' },
   ]} />
   ```
+  Output tones map to the Tango palette: `'dim'` (default) · `'ok'` green · `'bad'` red · `'dir'` blue · `'link'` cyan · `'warn'` yellow — the same colors Ubuntu's `LS_COLORS` uses, so `ls`-style output can be rendered faithfully.
   Line kinds: `{ cmd, comment?, prompt? }` (a prompt line, default prompt `$`) and `{ out, tone? }` (an output line).
 - **Use it for:** CLI command sequences, agent/tool-call sessions (`● tool ▸ …`), REPL interactions, install→run→verify flows, red→green test loops, API-call sessions.
 - **Do NOT use it for:** static JSON/YAML/schema/config display or math notation — those stay as plain code blocks (`bg-deep` + `<pre>`). The terminal means *a session* (command → output); misusing it as a decorative frame for static data cheapens the element.
