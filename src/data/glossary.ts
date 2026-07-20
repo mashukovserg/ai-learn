@@ -5,6 +5,14 @@ export interface GlossaryTerm {
 }
 
 export const GLOSSARY: Record<string, GlossaryTerm> = {
+  'ripgrep': {
+    id: 'ripgrep',
+    term: { ru: 'ripgrep (rg)', en: 'ripgrep (rg)' },
+    definition: {
+      ru: 'ripgrep — консольная утилита рекурсивного поиска по коду, вызывается командой `rg`. На больших репозиториях заметно быстрее `grep`, по умолчанию уважает `.gitignore` и пропускает бинарные файлы, поэтому выдаёт меньше мусора и берётся как базовый инструмент discovery-фазы. В систему не входит: ставится отдельно (`brew install ripgrep`, `sudo apt install ripgrep`). Если установить нельзя, тот же результат дают `grep -r` и `git grep`.',
+      en: 'ripgrep is a command-line recursive code search tool, invoked as `rg`. On large repositories it is noticeably faster than `grep`, respects `.gitignore` by default, and skips binary files, so it returns less noise — which is why it is the baseline discovery tool. It does not ship with the OS: install it separately (`brew install ripgrep`, `sudo apt install ripgrep`). If you cannot install it, `grep -r` and `git grep` give the same result.'
+    }
+  },
   'entity-resolution': {
     id: 'entity-resolution',
     term: { ru: 'Разрешение сущностей', en: 'Entity Resolution' },

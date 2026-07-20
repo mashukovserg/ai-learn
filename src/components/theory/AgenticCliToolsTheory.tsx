@@ -80,6 +80,22 @@ export default function AgenticCliToolsTheory({ lang }: { lang: string }) {
           />
 
           <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Одно пояснение к первой строке примера: <Term id="ripgrep" lang={lang}>rg</Term> — это ripgrep,
+                утилита поиска по коду. Она не входит в стандартную поставку системы и ставится отдельно;
+                подробный разбор инструментов discovery и команды установки — в главе 2.
+              </>
+            ) : (
+              <>
+                One note on the first line of the example: <Term id="ripgrep" lang={lang}>rg</Term> is ripgrep, a
+                code-search tool. It does not ship with the operating system and has to be installed separately;
+                Chapter 2 covers the discovery tools and the install commands in detail.
+              </>
+            )}
+          </p>
+
+          <p className="text-neutral-300 leading-relaxed">
             {ru
               ? 'Ниже мы разбираем каждую фазу так, чтобы ею можно было пользоваться в реальной задаче на следующий рабочий день.'
               : 'Below, each phase is explained in a way that can be applied in a real task on the next workday.'}
@@ -119,6 +135,61 @@ export default function AgenticCliToolsTheory({ lang }: { lang: string }) {
               { cmd: 'tree -L 2' },
               { cmd: 'cat src/auth/service.ts' },
               { cmd: 'git grep "validateSession"' },
+            ]}
+          />
+
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Разберём эти четыре команды, потому что две из них незнакомы по умолчанию.
+                {' '}<Term id="ripgrep" lang={lang}>rg</Term> — это ripgrep, утилита рекурсивного поиска по коду:
+                именно её здесь рекомендуют вместо <code>grep</code> для быстрого поиска. На больших репозиториях
+                она заметно быстрее, по умолчанию уважает <code>.gitignore</code> и пропускает бинарные файлы,
+                поэтому в выдаче меньше мусора. <code>tree</code> печатает дерево каталогов, а флаг{' '}
+                <code>-L 2</code> ограничивает глубину двумя уровнями, чтобы увидеть структуру проекта без полного
+                обхода. Оставшиеся две — <code>cat</code> (вывести файл) и <code>git grep</code> (поиск по
+                отслеживаемым в Git файлам) — есть в системе изначально.
+              </>
+            ) : (
+              <>
+                These four commands are worth unpacking, because two of them are not available by default.
+                {' '}<Term id="ripgrep" lang={lang}>rg</Term> is ripgrep, a recursive code search tool — the one
+                recommended here instead of <code>grep</code> for fast search. On large repositories it is
+                noticeably faster, respects <code>.gitignore</code> by default, and skips binary files, so the
+                output carries less noise. <code>tree</code> prints a directory tree, and the <code>-L 2</code>{' '}
+                flag caps the depth at two levels so you see the project structure without walking all of it. The
+                other two — <code>cat</code> (print a file) and <code>git grep</code> (search Git-tracked files) —
+                ship with the system.
+              </>
+            )}
+          </p>
+
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Ни ripgrep, ни <code>tree</code> не входят в стандартную поставку macOS и большинства
+                дистрибутивов Linux, поэтому их ставят отдельно. Если поставить нельзя (например, на чужом
+                сервере или в закрытом контуре), тот же результат дадут <code>grep -r</code> и{' '}
+                <code>git grep</code>: медленнее на больших репозиториях, но доступны всегда и никакой установки
+                не требуют.
+              </>
+            ) : (
+              <>
+                Neither ripgrep nor <code>tree</code> ships with macOS or most Linux distributions, so they are
+                installed separately. When you cannot install anything — on someone else&apos;s server or in a
+                locked-down environment — <code>grep -r</code> and <code>git grep</code> produce the same result:
+                slower on large repositories, but always available and requiring no setup.
+              </>
+            )}
+          </p>
+
+          <Terminal
+            title="setup · zsh"
+            lines={[
+              { cmd: 'brew install ripgrep tree', comment: '# macOS (Homebrew)' },
+              { cmd: 'sudo apt install ripgrep tree', comment: '# Debian / Ubuntu' },
+              { cmd: 'rg --version', comment: ru ? '# проверить, что команда доступна' : '# check the command is available' },
+              { out: ru ? 'ripgrep установлен' : 'ripgrep installed', tone: 'ok' },
             ]}
           />
 
