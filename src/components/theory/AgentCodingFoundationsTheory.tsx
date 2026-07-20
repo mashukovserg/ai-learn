@@ -326,6 +326,122 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
               </>
             )}
           </p>
+
+          <h3 className="text-lg font-bold text-emerald-400 pt-2">
+            {ru ? 'Связь с классической инженерией' : 'The Link to Classical Engineering'}
+          </h3>
+
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Цепочка retry → fallback → rollback → escalate — не изобретение LLM-инженеров и не особенность AI. Это дистиллят многолетних практик Software Engineering, Distributed Systems, DevOps и SRE — дисциплин, которые десятилетиями строят системы, где сетевые вызовы обрываются, диски умирают, а деплои ломаются. Агент с точки зрения надежности — это просто еще одна распределенная система: он вызывает внешние инструменты по сети, держит состояние и обязан переживать отказ любой из своих зависимостей.
+              </>
+            ) : (
+              <>
+                The retry → fallback → rollback → escalate chain is not an invention of LLM engineers and not an AI-specific trick. It is distilled from decades of Software Engineering, Distributed Systems, DevOps, and SRE practice — disciplines that have spent years building systems where network calls drop, disks die, and deploys break. From a reliability standpoint, an agent is just another distributed system: it calls external tools over the network, holds state, and must survive the failure of any of its dependencies.
+              </>
+            )}
+          </p>
+
+          <div className="space-y-3">
+            <div className="bg-deep border border-border-subtle rounded-lg p-4">
+              <p className="text-sm text-neutral-300 leading-relaxed">
+                <strong className="text-emerald-300">retry</strong>{' — '}
+                {ru
+                  ? 'классическая обработка transient failures: таймаут сети, rate limit API, флаки-тест. Стандарт индустрии — повтор с exponential backoff (пауза растет с каждой попыткой) и жестким лимитом попыток. Ограничение количества принципиально: неограниченные повторы превращаются в retry storm — шквал запросов, который добивает и без того перегруженный сервис. Ровно поэтому в YAML-схеме выше стоит max_attempts: 3, а не «повторяй до победы».'
+                  : 'classic transient-failure handling: a network timeout, an API rate limit, a flaky test. The industry standard is retrying with exponential backoff (the pause grows with each attempt) and a hard cap on attempts. The cap is essential: unbounded retries turn into a retry storm — a flood of requests that finishes off an already overloaded service. That is exactly why the YAML schema above says max_attempts: 3 instead of «retry until victory».'}
+              </p>
+            </div>
+            <div className="bg-deep border border-border-subtle rounded-lg p-4">
+              <p className="text-sm text-neutral-300 leading-relaxed">
+                <strong className="text-emerald-300">fallback</strong>{' — '}
+                {ru
+                  ? 'резервный путь: альтернативный инструмент, запасной сервис, degraded mode (отдать кэш, когда живой поиск лежит). В распределенных системах этому соответствует паттерн Circuit Breaker: после серии отказов зависимость временно «отключается», и трафик идет в обход, вместо того чтобы молотить в мертвый сервис. Агент, который после трех неудач переключается на alternative_test_runner, делает ровно этот ход.'
+                  : 'the backup path: an alternative tool, a reserve service, degraded mode (serve the cache when live search is down). In distributed systems this maps to the Circuit Breaker pattern: after a series of failures the dependency is temporarily «switched off» and traffic routes around it instead of hammering a dead service. An agent that switches to alternative_test_runner after three failures is making exactly this move.'}
+              </p>
+            </div>
+            <div className="bg-deep border border-border-subtle rounded-lg p-4">
+              <p className="text-sm text-neutral-300 leading-relaxed">
+                <strong className="text-emerald-300">rollback</strong>{' — '}
+                {ru
+                  ? 'возврат системы к последнему консистентному состоянию. Это транзакции БД (все или ничего), git reset / git revert в разработке и откат деплоя (blue-green, canary) в эксплуатации. Строка git reset --hard HEAD~1 в схеме — буквально та же практика: не чинить поверх поломанного, а сначала вернуться в состояние, которому доверяешь.'
+                  : 'returning the system to its last consistent state. This is database transactions (all or nothing), git reset / git revert in development, and deploy rollback (blue-green, canary) in operations. The git reset --hard HEAD~1 line in the schema is literally the same practice: do not patch on top of breakage — first return to a state you trust.'}
+              </p>
+            </div>
+            <div className="bg-deep border border-border-subtle rounded-lg p-4">
+              <p className="text-sm text-neutral-300 leading-relaxed">
+                <strong className="text-emerald-300">escalate</strong>{' — '}
+                {ru
+                  ? 'Human-in-the-Loop, прямой наследник incident response и on-call в SRE: когда автоматика исчерпана, система будит человека. Качество эскалации решает скорость восстановления: хороший агент, как хороший алерт, передает полный контекст ошибки — что пробовал, что упало, какие логи, — а не голое «что-то сломалось».'
+                  : 'Human-in-the-Loop, the direct heir of incident response and SRE on-call: when automation is exhausted, the system wakes a human. The quality of the escalation decides recovery speed: a good agent, like a good alert, hands over the full error context — what it tried, what failed, which logs — not a bare «something broke».'}
+              </p>
+            </div>
+          </div>
+
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Порядок цепочки — это лестница стоимости восстановления. Retry стоит секунды и ничего не меняет в системе. Fallback дороже: другой путь, возможно, ухудшенный результат. Rollback жертвует уже сделанным прогрессом ради консистентности. Escalate — самый дорогой шаг: минуты или часы человеческого времени плюс переключение контекста. Пробуя дешевое раньше дорогого, система минимизирует ожидаемую цену восстановления. А жесткие лимиты на каждой ступени (max_attempts, триггеры эскалации) не дают отказу каскадировать: без них повторы и обходные пути сами становятся источником нагрузки, которая роняет соседние компоненты — классический сценарий каскадного сбоя из практики SRE.
+              </>
+            ) : (
+              <>
+                The order of the chain is a ladder of recovery cost. Retry costs seconds and changes nothing in the system. Fallback is pricier: a different path, possibly a degraded result. Rollback sacrifices progress already made for the sake of consistency. Escalate is the most expensive step: minutes or hours of human time plus a context switch. By trying cheap before expensive, the system minimizes the expected cost of recovery. And the hard limits at every rung (max_attempts, escalation triggers) keep a failure from cascading: without them, retries and detours themselves become a source of load that takes down neighboring components — the classic cascading-failure scenario from SRE practice.
+              </>
+            )}
+          </p>
+
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                У этой логики есть устоявшиеся имена. <strong>Graceful Degradation</strong> — система при отказе теряет качество, а не падает целиком. <strong>Fault Tolerance</strong> — архитектура, которая продолжает работу при отказе компонентов. <strong>Resilience Engineering</strong> — проектирование исходя из того, что отказы неизбежны, и главное — скорость восстановления. <strong>Self-Healing Systems</strong> — системы, которые обнаруживают и чинят сбои без человека. Агентный recovery — это применение всех четырех идей к системе, в которой «компонентом» стала LLM.
+              </>
+            ) : (
+              <>
+                This logic has established names. <strong>Graceful Degradation</strong> — under failure, the system loses quality instead of collapsing entirely. <strong>Fault Tolerance</strong> — an architecture that keeps working when components fail. <strong>Resilience Engineering</strong> — designing on the assumption that failures are inevitable and recovery speed is what matters. <strong>Self-Healing Systems</strong> — systems that detect and repair faults without a human. Agent recovery is all four ideas applied to a system where the LLM became a «component».
+              </>
+            )}
+          </p>
+
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Вывод: агентные системы не изобрели новую отказоустойчивость — они переиспользуют принципы, на которых стоят современные микросервисные архитектуры. Агент — это автономный программный компонент, и контракт у него тот же, что у хорошо спроектированного сервиса: самостоятельно обнаружить ошибку, локализовать ее, восстановиться — и только в крайнем случае передать задачу человеку, вместе с полным контекстом произошедшего.
+              </>
+            ) : (
+              <>
+                The takeaway: agent systems did not invent a new kind of fault tolerance — they reuse the principles modern microservice architectures stand on. An agent is an autonomous software component, and its contract is the same as a well-designed service: detect the error on its own, contain it, recover — and only as a last resort hand the task to a human, together with the full context of what happened.
+              </>
+            )}
+          </p>
+
+          <div className="bg-deep border border-border-subtle rounded-lg p-4">
+            <p className="text-xs text-neutral-500 font-medium mb-2 uppercase tracking-wider">
+              {ru ? 'Источники' : 'Sources'}
+            </p>
+            <ul className="text-sm text-neutral-400 space-y-1.5">
+              <li>
+                {'Microsoft Azure Architecture Center — '}
+                <a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/retry" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Retry pattern</a>
+                {', '}
+                <a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Circuit Breaker</a>
+                {', '}
+                <a href="https://learn.microsoft.com/en-us/azure/architecture/best-practices/transient-faults" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Transient fault handling</a>
+              </li>
+              <li>
+                {'Google — '}
+                <a href="https://sre.google/sre-book/table-of-contents/" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Site Reliability Engineering</a>
+                {ru ? ' (особенно глава про каскадные сбои)' : ' (see the cascading-failures chapter)'}
+              </li>
+              <li>
+                {'Martin Fowler — '}
+                <a href="https://martinfowler.com/bliki/CircuitBreaker.html" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Circuit Breaker</a>
+              </li>
+              <li>
+                {'AWS Well-Architected Framework — '}
+                <a href="https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Reliability Pillar</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
 
