@@ -565,4 +565,44 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
       en: 'VRAM (video memory) — the GPU memory that holds the model weights and KV cache when running locally. VRAM capacity determines which model fits: 8 GB handles a 7–8B model in Q4, 16 GB fits an 8B model uncompressed. On Apple Silicon Macs, unified memory plays the role of VRAM.',
     },
   },
+  'transient-failure': {
+    id: 'transient-failure',
+    term: { ru: 'Транзиентный сбой', en: 'Transient Failure' },
+    definition: {
+      ru: 'Транзиентный сбой — временная ошибка, которая проходит сама: сеть на секунду пропала, сервис был перегружен, API ответил слишком поздно. Такие сбои не чинят, а пережидают: повтор через небольшую паузу часто оказывается успешным. Противоположность — постоянный сбой, при котором повторять бесполезно и нужна другая стратегия восстановления.',
+      en: 'A transient failure is a temporary error that goes away on its own: the network dropped for a second, a service was overloaded, an API answered too late. Such failures are not fixed but waited out: a retry after a short pause often succeeds. The opposite is a permanent failure, where retrying is pointless and a different recovery strategy is needed.',
+    },
+  },
+  'circuit-breaker': {
+    id: 'circuit-breaker',
+    term: { ru: 'Circuit Breaker', en: 'Circuit Breaker' },
+    definition: {
+      ru: 'Circuit Breaker («предохранитель») — паттерн отказоустойчивости: после серии отказов зависимость временно помечается как нерабочая, и запросы сразу идут в обход, не тратя время на заведомо мёртвое соединение. Через паузу система осторожно проверяет, ожил ли сервис. Название — от электрического автомата, который размыкает цепь при перегрузке.',
+      en: 'Circuit Breaker is a fault-tolerance pattern: after a series of failures, a dependency is temporarily marked as broken and requests immediately route around it instead of wasting time on a connection known to be dead. After a pause, the system carefully probes whether the service has recovered. The name comes from the electrical breaker that opens a circuit on overload.',
+    },
+  },
+  'graceful-degradation': {
+    id: 'graceful-degradation',
+    term: { ru: 'Плавная деградация', en: 'Graceful Degradation' },
+    definition: {
+      ru: 'Плавная деградация (graceful degradation) — свойство системы при отказе части компонентов терять качество, а не падать целиком: показать сохранённую копию вместо живого поиска, отдать упрощённый ответ вместо ошибки. Пользователь получает худший, но рабочий результат — и часто вообще не замечает сбоя.',
+      en: 'Graceful degradation is a system property: when some components fail, the system loses quality instead of collapsing entirely — it shows a saved copy instead of live search, or a simplified answer instead of an error. The user gets a worse but working result, and often does not notice the failure at all.',
+    },
+  },
+  'fault-tolerance': {
+    id: 'fault-tolerance',
+    term: { ru: 'Отказоустойчивость', en: 'Fault Tolerance' },
+    definition: {
+      ru: 'Отказоустойчивость (fault tolerance) — способность системы продолжать работу, когда отдельные её компоненты отказывают. Достигается избыточностью (дублирование сервисов, резервные копии) и стратегиями восстановления вроде retry, fallback и rollback. Проектируется из допущения, что отказы неизбежны: вопрос не «если», а «когда».',
+      en: 'Fault tolerance is a system\'s ability to keep working when individual components fail. It is achieved through redundancy (duplicated services, backups) and recovery strategies like retry, fallback, and rollback. It is designed on the assumption that failures are inevitable: the question is not "if" but "when."',
+    },
+  },
+  'human-in-the-loop': {
+    id: 'human-in-the-loop',
+    term: { ru: 'Human-in-the-Loop', en: 'Human-in-the-Loop' },
+    definition: {
+      ru: 'Human-in-the-Loop («человек в контуре») — принцип, при котором автоматическая система в определённых точках передаёт решение человеку: когда автоматическое восстановление исчерпано, действие необратимо или уверенность низкая. Качество передачи решает всё: вместе с задачей человек должен получить полный контекст — что система пыталась сделать и что именно пошло не так.',
+      en: 'Human-in-the-Loop is the principle of an automated system handing the decision to a human at defined points: when automated recovery is exhausted, an action is irreversible, or confidence is low. The quality of the handoff decides everything: along with the task, the human must receive the full context — what the system was trying to do and what exactly went wrong.',
+    },
+  },
 };

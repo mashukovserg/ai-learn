@@ -318,11 +318,11 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
           <p className="text-neutral-300 leading-relaxed">
             {ru ? (
               <>
-                Порядок recovery принципиален. Сначала retry — быстрое повторение того же действия (часто помогает при транзиентных ошибках). Затем fallback — попытка решить задачу другим путем. Если и это не помогло — rollback: возврат к последнему стабильному состоянию, чтобы не копить поломки. И только когда автоматика исчерпана — escalate: человек получает контекст проблемы и принимает решение. Без этой цепочки одна ошибка может каскадно разрушить весь pipeline. Агент без recovery — это бомба замедленного действия в production.
+                Порядок recovery принципиален. Сначала retry — быстрое повторение того же действия (часто помогает при <Term id="transient-failure" lang={lang}>транзиентных ошибках</Term>). Затем fallback — попытка решить задачу другим путем. Если и это не помогло — rollback: возврат к последнему стабильному состоянию, чтобы не копить поломки. И только когда автоматика исчерпана — escalate: человек получает контекст проблемы и принимает решение. Без этой цепочки одна ошибка может каскадно разрушить весь pipeline. Агент без recovery — это бомба замедленного действия в production.
               </>
             ) : (
               <>
-                The recovery order matters. First retry — a quick repeat of the same action (often helps with transient errors). Then fallback — try solving the task a different way. If that fails too — rollback: return to the last stable state to avoid accumulating breakage. Only when automation is exhausted — escalate: a human receives problem context and makes the decision. Without this chain, one error can cascade and destroy the entire pipeline. An agent without recovery is a ticking time bomb in production.
+                The recovery order matters. First retry — a quick repeat of the same action (often helps with <Term id="transient-failure" lang={lang}>transient errors</Term>). Then fallback — try solving the task a different way. If that fails too — rollback: return to the last stable state to avoid accumulating breakage. Only when automation is exhausted — escalate: a human receives problem context and makes the decision. Without this chain, one error can cascade and destroy the entire pipeline. An agent without recovery is a ticking time bomb in production.
               </>
             )}
           </p>
@@ -355,9 +355,19 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
             <div className="bg-deep border border-border-subtle rounded-lg p-4">
               <p className="text-sm text-neutral-300 leading-relaxed">
                 <strong className="text-emerald-300">fallback</strong>{' — '}
-                {ru
-                  ? 'это запасной план. Если действие не удалось даже после повторов, система не ломится дальше в ту же дверь, а пробует другой путь: другой инструмент, запасной сервис или упрощенный режим работы — например, показать сохраненную копию данных, пока живой поиск недоступен. В классической инженерии этот прием доведен до автоматизма паттерном Circuit Breaker («предохранитель»): после серии отказов сервис временно помечается как нерабочий, и запросы сразу идут в обход — никто не тратит время на заведомо мертвое соединение. Агент, который после трех неудач переключается на alternative_test_runner из схемы выше, делает ровно то же самое.'
-                  : 'the backup plan. If an action failed even after retries, the system does not keep pushing on the same door — it tries a different path: another tool, a reserve service, or a simplified mode of operation, such as showing a saved copy of the data while live search is down. Classical engineering automates this move with the Circuit Breaker pattern: after a series of failures, the service is temporarily marked as broken and requests immediately route around it — nobody wastes time on a connection that is known to be dead. An agent that switches to the alternative_test_runner from the schema above after three failures is doing exactly the same thing.'}
+                {ru ? (
+                  <>
+                    {'это запасной план. Если действие не удалось даже после повторов, система не ломится дальше в ту же дверь, а пробует другой путь: другой инструмент, запасной сервис или упрощенный режим работы — например, показать сохраненную копию данных, пока живой поиск недоступен. В классической инженерии этот прием доведен до автоматизма паттерном '}
+                    <Term id="circuit-breaker" lang={lang}>Circuit Breaker</Term>
+                    {' («предохранитель»): после серии отказов сервис временно помечается как нерабочий, и запросы сразу идут в обход — никто не тратит время на заведомо мертвое соединение. Агент, который после трех неудач переключается на alternative_test_runner из схемы выше, делает ровно то же самое.'}
+                  </>
+                ) : (
+                  <>
+                    {'the backup plan. If an action failed even after retries, the system does not keep pushing on the same door — it tries a different path: another tool, a reserve service, or a simplified mode of operation, such as showing a saved copy of the data while live search is down. Classical engineering automates this move with the '}
+                    <Term id="circuit-breaker" lang={lang}>Circuit Breaker</Term>
+                    {' pattern: after a series of failures, the service is temporarily marked as broken and requests immediately route around it — nobody wastes time on a connection that is known to be dead. An agent that switches to the alternative_test_runner from the schema above after three failures is doing exactly the same thing.'}
+                  </>
+                )}
               </p>
             </div>
             <div className="bg-deep border border-border-subtle rounded-lg p-4">
@@ -371,9 +381,19 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
             <div className="bg-deep border border-border-subtle rounded-lg p-4">
               <p className="text-sm text-neutral-300 leading-relaxed">
                 <strong className="text-emerald-300">escalate</strong>{' — '}
-                {ru
-                  ? 'это честное признание, что автоматика исчерпана, и передача задачи человеку. В классической эксплуатации это называется incident response: когда система не может починить себя сама, она будит дежурного инженера. Важно, как именно она это делает. Плохой сигнал — голое «что-то сломалось». Хороший — полный контекст: что агент пытался сделать, какие попытки предпринял, что именно упало и что показывают логи. Чем полнее переданный контекст, тем быстрее человек примет решение — поэтому качество эскалации напрямую определяет скорость восстановления. В агентных системах этот же принцип называют Human-in-the-Loop.'
-                  : 'an honest admission that automation is exhausted, and a handoff of the task to a human. In classical operations this is called incident response: when a system cannot fix itself, it wakes the on-call engineer. How it does so matters. A bad signal is a bare «something broke». A good one carries the full context: what the agent was trying to do, which attempts it made, what exactly failed, and what the logs show. The fuller the handed-over context, the faster the human can decide — which is why the quality of escalation directly determines recovery speed. In agent systems the same principle is called Human-in-the-Loop.'}
+                {ru ? (
+                  <>
+                    {'это честное признание, что автоматика исчерпана, и передача задачи человеку. В классической эксплуатации это называется incident response: когда система не может починить себя сама, она будит дежурного инженера. Важно, как именно она это делает. Плохой сигнал — голое «что-то сломалось». Хороший — полный контекст: что агент пытался сделать, какие попытки предпринял, что именно упало и что показывают логи. Чем полнее переданный контекст, тем быстрее человек примет решение — поэтому качество эскалации напрямую определяет скорость восстановления. В агентных системах этот же принцип называют '}
+                    <Term id="human-in-the-loop" lang={lang}>Human-in-the-Loop</Term>
+                    {'.'}
+                  </>
+                ) : (
+                  <>
+                    {'an honest admission that automation is exhausted, and a handoff of the task to a human. In classical operations this is called incident response: when a system cannot fix itself, it wakes the on-call engineer. How it does so matters. A bad signal is a bare «something broke». A good one carries the full context: what the agent was trying to do, which attempts it made, what exactly failed, and what the logs show. The fuller the handed-over context, the faster the human can decide — which is why the quality of escalation directly determines recovery speed. In agent systems the same principle is called '}
+                    <Term id="human-in-the-loop" lang={lang}>Human-in-the-Loop</Term>
+                    {'.'}
+                  </>
+                )}
               </p>
             </div>
           </div>
@@ -393,11 +413,11 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
           <p className="text-neutral-300 leading-relaxed">
             {ru ? (
               <>
-                У этой логики есть устоявшиеся имена. <strong>Graceful Degradation</strong> — система при отказе теряет качество, а не падает целиком. <strong>Fault Tolerance</strong> — архитектура, которая продолжает работу при отказе компонентов. <strong>Resilience Engineering</strong> — проектирование исходя из того, что отказы неизбежны, и главное — скорость восстановления. <strong>Self-Healing Systems</strong> — системы, которые обнаруживают и чинят сбои без человека. Агентный recovery — это применение всех четырех идей к системе, в которой «компонентом» стала LLM.
+                У этой логики есть устоявшиеся имена. <strong><Term id="graceful-degradation" lang={lang}>Graceful Degradation</Term></strong> — система при отказе теряет качество, а не падает целиком. <strong><Term id="fault-tolerance" lang={lang}>Fault Tolerance</Term></strong> — архитектура, которая продолжает работу при отказе компонентов. <strong>Resilience Engineering</strong> — проектирование исходя из того, что отказы неизбежны, и главное — скорость восстановления. <strong>Self-Healing Systems</strong> — системы, которые обнаруживают и чинят сбои без человека. Агентный recovery — это применение всех четырех идей к системе, в которой «компонентом» стала LLM.
               </>
             ) : (
               <>
-                This logic has established names. <strong>Graceful Degradation</strong> — under failure, the system loses quality instead of collapsing entirely. <strong>Fault Tolerance</strong> — an architecture that keeps working when components fail. <strong>Resilience Engineering</strong> — designing on the assumption that failures are inevitable and recovery speed is what matters. <strong>Self-Healing Systems</strong> — systems that detect and repair faults without a human. Agent recovery is all four ideas applied to a system where the LLM became a «component».
+                This logic has established names. <strong><Term id="graceful-degradation" lang={lang}>Graceful Degradation</Term></strong> — under failure, the system loses quality instead of collapsing entirely. <strong><Term id="fault-tolerance" lang={lang}>Fault Tolerance</Term></strong> — an architecture that keeps working when components fail. <strong>Resilience Engineering</strong> — designing on the assumption that failures are inevitable and recovery speed is what matters. <strong>Self-Healing Systems</strong> — systems that detect and repair faults without a human. Agent recovery is all four ideas applied to a system where the LLM became a «component».
               </>
             )}
           </p>
