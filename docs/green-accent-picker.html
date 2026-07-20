@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI-Learn · Подбор акцента и шрифта</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Spectral:wght@400;500;600;700&display=swap');
+  :root{
+    /* Reading font — overwritten by font presets. Applies to title/chapter/body. */
+    --read-font:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+    /* Accent ramp — overwritten by presets (mirrors Tailwind --color-emerald-200…600) */
+    --e2:#a7f3d0; --e3:#6ee7b7; --e4:#34d399; --e5:#10b981; --e6:#059669;
+    /* Dark theme surfaces (from globals.css @theme) */
+    --bg:#121211; --deep:#0e0e0d; --card:#1c1b19; --card-dark:#171715;
+    --border:#2b2926; --border-emph:#393733;
+    --fg:#e6e2da; --n300:#c9c4ba; --n400:#9a948a; --n500:#726d64;
+    --sans:"Avenir Next","Segoe UI","Inter","Helvetica Neue",Arial,sans-serif;
+    --serif:"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+  }
+  /* Light (SaaS) surfaces — used when .light is on the preview */
+  .preview.light{
+    --bg:#fafafa; --deep:#f2f2f2; --card:#ffffff; --card-dark:#ffffff;
+    --border:#e4e4e4; --border-emph:#cfcfcf;
+    --fg:#0f0f0f; --n300:#333; --n400:#4d4d4d; --n500:#6f6f6f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);background:#0b0b0a;color:#e6e2da;line-height:1.5;-webkit-font-smoothing:antialiased}
+
+  /* ===== Control panel ===== */
+  .controls{position:sticky;top:0;z-index:50;background:#161615;border-bottom:1px solid #2b2926;padding:14px 20px;display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+  .controls h1{font-size:14px;font-weight:600;letter-spacing:.01em;margin-right:6px}
+  .controls h1 .muted{color:#8f8a82;font-weight:400}
+  .swatches{display:flex;gap:8px;flex-wrap:wrap}
+  .swatch{cursor:pointer;border:1px solid #302e2b;background:#1c1b19;border-radius:10px;padding:7px 9px 8px;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:74px;transition:border-color .15s,transform .1s}
+  .swatch:hover{transform:translateY(-1px)}
+  .swatch.active{border-color:var(--sw)}
+  .swatch .dot{width:100%;height:22px;border-radius:6px;background:linear-gradient(90deg,var(--sw3),var(--sw4),var(--sw5))}
+  .swatch .nm{font-size:11px;color:#c9c4ba;letter-spacing:.02em}
+  .swatch.active .nm{color:#fff}
+  .ctl-group{display:flex;align-items:center;gap:10px}
+  .ctl-group label{font-size:12px;color:#9a948a}
+  input[type=color]{width:34px;height:30px;border:1px solid #302e2b;border-radius:8px;background:#1c1b19;cursor:pointer;padding:2px}
+  .toggle{display:flex;border:1px solid #302e2b;border-radius:9px;overflow:hidden}
+  .toggle button{background:transparent;color:#8f8a82;border:0;font:inherit;font-size:12px;padding:6px 12px;cursor:pointer}
+  .toggle button.on{background:rgba(255,255,255,.08);color:#e6e2da}
+  .fontbtns{display:flex;gap:6px;flex-wrap:wrap}
+  .fontbtns button{background:#1c1b19;border:1px solid #302e2b;color:#c9c4ba;border-radius:8px;padding:6px 11px;font-size:14px;cursor:pointer;transition:border-color .15s,color .15s;line-height:1.1}
+  .fontbtns button small{display:block;font-family:var(--sans);font-size:9px;letter-spacing:.03em;color:#6b665e;margin-top:2px}
+  .fontbtns button:hover{border-color:#4a4640}
+  .fontbtns button.on{border-color:var(--e4);color:#fff}
+  .fontbtns button.on small{color:#9a948a}
+  .readout{margin-left:auto;display:flex;gap:16px;align-items:center;font-size:12px;color:#9a948a}
+  .ramp{display:flex;gap:3px}
+  .ramp i{width:26px;height:22px;border-radius:4px;display:block;position:relative}
+  .ramp i span{position:absolute;bottom:-15px;left:50%;transform:translateX(-50%);font-size:8px;color:#6b665e;white-space:nowrap}
+  .contrast{font-variant-numeric:tabular-nums}
+  .contrast b{color:#e6e2da;font-weight:600}
+  .contrast .pass{color:#34d399}
+  .contrast .warn{color:#fbbf24}
+  .hint{font-size:11px;color:#6b665e;flex-basis:100%;margin-top:2px}
+
+  /* ===== Site mockup ===== */
+  .stage{padding:26px;display:flex;justify-content:center}
+  .preview{width:1150px;max-width:100%;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--bg);color:var(--fg);box-shadow:0 30px 80px rgba(0,0,0,.5)}
+  .topbar{height:56px;border-bottom:1px solid var(--border);background:color-mix(in srgb,var(--card) 90%,transparent);display:flex;align-items:center;gap:16px;padding:0 18px}
+  .logo{font-weight:700;font-size:15px;display:flex;align-items:center;gap:8px}
+  .logo .term{color:var(--e4);font-family:var(--serif)}
+  .search{flex:0 1 380px;height:34px;border:1px solid var(--border);border-radius:9px;background:var(--card-dark);display:flex;align-items:center;padding:0 12px;color:var(--n500);font-size:13px;gap:8px}
+  .topright{margin-left:auto;display:flex;align-items:center;gap:18px}
+  .lang{display:flex;gap:2px;background:var(--card-dark);border:1px solid var(--border);border-radius:9px;padding:2px}
+  .lang span{font-size:12px;padding:4px 9px;border-radius:6px;color:var(--n500)}
+  .lang span.on{background:rgba(255,255,255,.10);color:var(--fg)}
+  .preview.light .lang span.on{background:rgba(0,0,0,.06)}
+  .pts{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--n400)}
+  .pts b{color:var(--e4);font-weight:600}
+
+  .body{display:flex;min-height:520px}
+  .side{width:216px;border-right:1px solid var(--border);padding:16px 12px;flex-shrink:0}
+  .navi{display:flex;align-items:center;gap:11px;padding:9px 11px;border-radius:9px;font-size:13.5px;color:var(--n400);margin-bottom:2px}
+  .navi .ic{width:16px;height:16px;border:1.6px solid currentColor;border-radius:4px;opacity:.75}
+  .navi.on{background:color-mix(in srgb,var(--e5) 14%,transparent);color:var(--e4)}
+  .navi.on .ic{border-color:var(--e4);opacity:1}
+
+  .content{flex:1;display:flex;min-width:0}
+  .main{flex:1;padding:26px 30px;min-width:0}
+  .crumb{font-size:12.5px;color:var(--n500);margin-bottom:18px}
+  .crumb b{color:var(--e4);font-weight:500}
+  .title{font-family:var(--read-font);font-size:30px;line-height:1.15;font-weight:700;letter-spacing:-.01em;margin-bottom:14px}
+  .meta{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+  .badge{font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--e4);background:color-mix(in srgb,var(--e5) 12%,transparent);border:1px solid color-mix(in srgb,var(--e5) 26%,transparent);padding:5px 10px;border-radius:6px}
+  .time{font-size:13px;color:var(--n500)}
+  .cover{height:150px;border-radius:12px;margin-bottom:24px;border:1px solid var(--border);background:radial-gradient(circle at 30% 30%,color-mix(in srgb,var(--e5) 30%,transparent),transparent 60%),radial-gradient(circle at 75% 70%,color-mix(in srgb,var(--e4) 22%,transparent),transparent 55%),var(--card-dark);position:relative;overflow:hidden}
+  .cover::after{content:"";position:absolute;inset:0;background-image:radial-gradient(var(--e4) 1px,transparent 1.4px);background-size:26px 26px;opacity:.32;mask:radial-gradient(circle at 55% 45%,#000,transparent 70%)}
+  .chapter{font-family:var(--read-font);font-size:26px;font-weight:700;color:var(--e4);letter-spacing:-.01em;margin:8px 0 18px}
+  .reading{font-family:var(--read-font);font-size:17px;line-height:1.8;color:var(--n300)}
+  .reading p{margin-bottom:16px}
+  .trm{color:var(--e3);text-decoration:underline;text-decoration-color:color-mix(in srgb,var(--e5) 55%,transparent);text-underline-offset:3px;cursor:help}
+
+  .tasks{width:320px;border-left:1px solid var(--border);padding:22px 18px;flex-shrink:0;background:var(--deep)}
+  .tasks h3{font-size:15px;font-weight:700;display:flex;align-items:center;gap:9px;margin-bottom:18px}
+  .tasks h3 .ic{width:18px;height:18px;border:2px solid var(--e4);border-radius:5px}
+  .tcard{border:1px solid var(--border);border-radius:11px;background:var(--card);padding:14px;margin-bottom:14px}
+  .tcard .q{font-size:13.5px;color:var(--fg);margin-bottom:12px;line-height:1.5}
+  .opt{font-size:12.5px;color:var(--n400);border:1px solid var(--border);border-radius:8px;padding:9px 11px;margin-bottom:8px;display:flex;gap:9px;align-items:flex-start}
+  .opt .rd{width:14px;height:14px;border:1.6px solid var(--n500);border-radius:50%;flex-shrink:0;margin-top:1px}
+  .opt.sel{border-color:var(--e5)}
+  .opt.sel .rd{border-color:var(--e4);background:radial-gradient(circle,var(--e4) 42%,transparent 46%)}
+  .submit{width:100%;background:var(--e5);color:#08130d;font-weight:700;font-size:13px;border:0;border-radius:9px;padding:10px;cursor:pointer;letter-spacing:.01em}
+  .preview.light .submit{color:#fff}
+  .prog{display:flex;justify-content:space-between;align-items:center;font-size:12px;letter-spacing:.06em;color:var(--n500);text-transform:uppercase;margin:20px 4px 8px}
+  .prog b{color:var(--e4);font-size:14px}
+  .bar{height:6px;border-radius:4px;background:var(--card);overflow:hidden;margin:0 2px}
+  .bar i{display:block;height:100%;width:8%;background:var(--e5);border-radius:4px}
+
+  /* room switcher */
+  .roomtabs{width:1150px;max-width:100%;margin:0 auto 14px;display:flex;gap:8px;flex-wrap:wrap}
+  .roomtabs button{background:#161615;border:1px solid #2b2926;color:#c9c4ba;border-radius:9px;padding:8px 14px;font:inherit;font-size:13px;cursor:pointer;transition:border-color .15s,color .15s;text-align:left}
+  .roomtabs button small{display:block;font-size:10px;color:#6b665e;margin-top:2px}
+  .roomtabs button:hover{border-color:#4a4640}
+  .roomtabs button.on{border-color:var(--e4);color:#fff}
+  .roomtabs button.on small{color:#9a948a}
+
+  /* rich theory blocks */
+  .callout{margin:18px 0;border-left:3px solid var(--e5);background:color-mix(in srgb,var(--e5) 8%,transparent);border-radius:0 10px 10px 0;padding:14px 16px}
+  .callout b{display:block;color:var(--e4);font-family:var(--sans);font-size:12px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px}
+  .callout p{font-family:var(--read-font);color:var(--n300);margin:0}
+  .rtable{width:100%;border-collapse:collapse;margin:18px 0;font-family:var(--sans);font-size:13.5px}
+  .rtable th,.rtable td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--border)}
+  .rtable th{color:var(--n500);font-weight:500;font-size:11px;letter-spacing:.04em;text-transform:uppercase}
+  .rtable td{color:var(--n300)}
+  .rtable td b{color:var(--fg)}
+  .chip{display:inline-block;padding:5px 13px;border-radius:999px;font-size:13px;font-weight:500;margin:0 6px 8px 0;font-family:var(--sans)}
+  .chip.amber{background:#fdf1d6;color:#8a5a12;border:1px solid #f0dcae}
+  .chip.stone{background:#ececec;color:#4a4a4a;border:1px solid #dcdcdc}
+  .chip.violet{background:#ede9fe;color:#5b21b6;border:1px solid #ddd6fe}
+  .chip.mint{background:color-mix(in srgb,var(--e4) 20%,#ffffff);color:var(--e6);border:1px solid color-mix(in srgb,var(--e4) 38%,#ffffff)}
+  .rnode{border:1px solid var(--border);border-radius:12px;padding:18px 20px;margin:18px 0;background:var(--card-dark)}
+  .rnode .nt{font-family:var(--read-font);font-size:22px;font-weight:700;color:var(--fg)}
+  .rnode .lvl{font-family:var(--sans);font-size:11px;letter-spacing:.12em;color:var(--n500);text-transform:uppercase;margin:5px 0 14px}
+  .rnode .desc{font-family:var(--read-font);font-size:15px;color:var(--n300);margin:12px 0 0}
+  /* categorize task visual */
+  .catrow{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+  .catitem{font-size:12px;background:var(--card);border:1px solid var(--border);border-radius:7px;padding:6px 10px;color:var(--n300)}
+  .catbucket{font-size:11px;border:1px dashed color-mix(in srgb,var(--e5) 40%,var(--border));border-radius:8px;padding:8px 10px;margin-bottom:6px;color:var(--n400)}
+  .catbucket b{color:var(--e4);font-family:var(--sans);text-transform:uppercase;font-size:10px;letter-spacing:.05em}
+
+  @media(max-width:1000px){.tasks{display:none}.side{display:none}}
+</style>
+</head>
+<body>
+
+<div class="controls">
+  <h1>Акцент и шрифт <span class="muted">· AI-Learn</span></h1>
+  <div class="swatches" id="swatches"></div>
+  <div class="ctl-group">
+    <label>Свой</label>
+    <input type="color" id="custom" value="#34d399" title="Задать базовый акцент вручную">
+  </div>
+  <div class="ctl-group">
+    <div class="toggle" id="theme">
+      <button data-t="dark" class="on">Тёмная</button>
+      <button data-t="light">Светлая</button>
+    </div>
+  </div>
+  <div class="ctl-group fonts">
+    <label>Шрифт теории</label>
+    <div class="fontbtns" id="fontbtns"></div>
+  </div>
+  <div class="readout">
+    <div class="ramp" id="ramp"></div>
+    <div class="contrast" id="contrast"></div>
+  </div>
+  <div class="hint">Акцент: каждый вариант — целая рампа (200–600), как в Tailwind; меняя его, вы переопределяете <code>--color-emerald-*</code> — ровно так же, как это делает тема сайта. Контраст считается для основного акцента (слот 400). Шрифт применяется к заголовку и тексту теории (UI-чром остаётся системным). Веб-шрифты грузятся с Google Fonts — нужен интернет; без него откат на системные serif/sans.</div>
+</div>
+
+<div class="stage" style="flex-direction:column;align-items:center">
+  <div class="roomtabs" id="roomtabs"></div>
+  <div class="preview" id="preview">
+    <div class="topbar">
+      <div class="logo"><span class="term">&gt;_</span> AI-Learn</div>
+      <div class="search">⌕ Поиск комнат…</div>
+      <div class="topright">
+        <div class="lang"><span class="on">RU</span><span>EN</span></div>
+        <div class="pts">⚡ <b>0 очков</b></div>
+      </div>
+    </div>
+    <div class="body">
+      <nav class="side">
+        <div class="navi"><span class="ic"></span>Панель управления</div>
+        <div class="navi"><span class="ic"></span>Пути обучения</div>
+        <div class="navi"><span class="ic"></span>Профессии AI</div>
+        <div class="navi on"><span class="ic"></span>Все комнаты</div>
+        <div class="navi"><span class="ic"></span>Лаборатории</div>
+        <div class="navi"><span class="ic"></span>Соревнования</div>
+        <div class="navi"><span class="ic"></span>Таблица лидеров</div>
+        <div class="navi"><span class="ic"></span>FAQ</div>
+        <div class="navi"><span class="ic"></span>Профиль</div>
+      </nav>
+      <div class="content" id="content"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Each preset is a full emerald-style ramp {200,300,400,500,600}.
+const PRESETS = [
+  {id:'emerald', nm:'Emerald', note:'текущий', ramp:['#a7f3d0','#6ee7b7','#34d399','#10b981','#059669']},
+  {id:'sage',    nm:'Sage',    note:'приглушённый, спокойный — рекомендация для тёмной темы', star:true, ramp:['#cfe0d4','#a7c4b0','#84a98c','#6b8f76','#52735e']},
+  // приглушённое семейство рядом с Sage
+  {id:'eucalyptus',nm:'Eucalyptus',note:'холодный серо-зелёный', ramp:['#d3e2da','#aecabb','#83a894','#668c79','#4e7060']},
+  {id:'moss',    nm:'Moss',    note:'землистый, желтее', ramp:['#d7e0c9','#b3c39a','#8aa06a','#6e8452','#566a3f']},
+  {id:'fern',    nm:'Fern',    note:'свежее, чуть ярче Sage', ramp:['#c3e6c9','#93d3a0','#5fb974','#479a5b','#367a46']},
+  {id:'pine',    nm:'Pine',    note:'глубокий холодный', ramp:['#b6d9c2','#86bd9a','#4f9d72','#3a7d59','#2b6044']},
+  {id:'olive',   nm:'Olive',   note:'жёлто-приглушённый', ramp:['#dbe0b0','#c2cb84','#a3b055','#849040','#66722f']},
+  {id:'seafoam', nm:'Seafoam', note:'светлый мятно-бирюзовый', ramp:['#c9ece0','#97dcc5','#5fc9a8','#45ab8c','#338a6f']},
+  // более насыщенные / яркие
+  {id:'jade',    nm:'Jade',    note:'глубже, менее «неон»', ramp:['#6ee7b7','#34d399','#10b981','#059669','#047857']},
+  {id:'green',   nm:'Green',   note:'настоящий зелёный', ramp:['#86efac','#4ade80','#22c55e','#16a34a','#15803d']},
+  {id:'mint',    nm:'Mint',    note:'мягкий', ramp:['#b7f0da','#8fe6c4','#5fd6a8','#37b98c','#268a68']},
+  {id:'lime',    nm:'Lime',    note:'фосфор-терминал', ramp:['#d9f99d','#bef264','#a3e635','#84cc16','#65a30d']},
+];
+
+const root = document.documentElement;
+const preview = document.getElementById('preview');
+let currentTheme = 'dark';
+
+function applyRamp(r){
+  root.style.setProperty('--e2', r[0]);
+  root.style.setProperty('--e3', r[1]);
+  root.style.setProperty('--e4', r[2]);
+  root.style.setProperty('--e5', r[3]);
+  root.style.setProperty('--e6', r[4]);
+  drawRamp(r);
+}
+
+// ---- WCAG contrast ----
+function lum(hex){
+  const c = hex.replace('#','');
+  const v = [0,2,4].map(i=>{
+    let s = parseInt(c.substr(i,2),16)/255;
+    return s<=.03928 ? s/12.92 : Math.pow((s+.055)/1.055,2.4);
+  });
+  return .2126*v[0]+.7152*v[1]+.0722*v[2];
+}
+function ratio(a,b){const L1=lum(a),L2=lum(b);const hi=Math.max(L1,L2),lo=Math.min(L1,L2);return (hi+.05)/(lo+.05);}
+
+function drawRamp(r){
+  const shades=[200,300,400,500,600];
+  document.getElementById('ramp').innerHTML = r.map((h,i)=>`<i style="background:${h}"><span>${shades[i]}</span></i>`).join('');
+  // contrast of slot 400 (main accent) on the dark card bg #1c1b19, and on light card #ffffff
+  const onDark = ratio(r[2], '#1c1b19');
+  const onLight = ratio(r[4], '#ffffff'); // light theme uses the darker end as text
+  const tag = (v)=> v>=4.5 ? `<span class="pass">${v.toFixed(1)}:1 ✓ AA</span>` : v>=3 ? `<span class="warn">${v.toFixed(1)}:1 · только крупный текст</span>` : `<span class="warn">${v.toFixed(1)}:1 ✕</span>`;
+  document.getElementById('contrast').innerHTML =
+    `<b>тёмная</b> ${tag(onDark)} &nbsp; <b>светлая</b> ${tag(onLight)}`;
+}
+
+// build swatches
+const box = document.getElementById('swatches');
+PRESETS.forEach((p,idx)=>{
+  const el = document.createElement('div');
+  el.className='swatch'+(idx===0?' active':'');
+  el.style.setProperty('--sw', p.ramp[2]);
+  el.style.setProperty('--sw3', p.ramp[1]);
+  el.style.setProperty('--sw4', p.ramp[2]);
+  el.style.setProperty('--sw5', p.ramp[3]);
+  el.innerHTML = `<span class="dot"></span><span class="nm">${p.star?'★ ':''}${p.nm}</span>`;
+  el.title = p.nm+' — '+p.note;
+  el.onclick=()=>{
+    document.querySelectorAll('.swatch').forEach(s=>s.classList.remove('active'));
+    el.classList.add('active');
+    applyRamp(p.ramp);
+    document.getElementById('custom').value = p.ramp[2];
+  };
+  box.appendChild(el);
+});
+
+// custom color → derive a ramp by scaling lightness around the base
+function hexToHsl(hex){const c=hex.replace('#','');let r=parseInt(c.substr(0,2),16)/255,g=parseInt(c.substr(2,2),16)/255,b=parseInt(c.substr(4,2),16)/255;const mx=Math.max(r,g,b),mn=Math.min(r,g,b);let h,s,l=(mx+mn)/2;if(mx===mn){h=s=0}else{const d=mx-mn;s=l>.5?d/(2-mx-mn):d/(mx+mn);switch(mx){case r:h=(g-b)/d+(g<b?6:0);break;case g:h=(b-r)/d+2;break;default:h=(r-g)/d+4}h/=6}return[h*360,s,l]}
+function hslToHex(h,s,l){h/=360;let r,g,b;if(s===0){r=g=b=l}else{const q=l<.5?l*(1+s):l+s-l*s,p=2*l-q;const hk=(t)=>{if(t<0)t+=1;if(t>1)t-=1;if(t<1/6)return p+(q-p)*6*t;if(t<1/2)return q;if(t<2/3)return p+(q-p)*(2/3-t)*6;return p};r=hk(h+1/3);g=hk(h);b=hk(h-1/3)}const to=(x)=>('0'+Math.round(x*255).toString(16)).slice(-2);return '#'+to(r)+to(g)+to(b)}
+function rampFromBase(hex){const [h,s,l]=hexToHsl(hex);// slot 400 = base; lighter for 200/300, darker for 500/600
+  return [hslToHex(h,Math.min(1,s*.7),Math.min(.92,l+.20)),hslToHex(h,Math.min(1,s*.85),Math.min(.85,l+.11)),hex,hslToHex(h,Math.min(1,s*1.05),Math.max(.06,l-.10)),hslToHex(h,Math.min(1,s*1.1),Math.max(.05,l-.19))];}
+document.getElementById('custom').addEventListener('input',e=>{
+  document.querySelectorAll('.swatch').forEach(s=>s.classList.remove('active'));
+  applyRamp(rampFromBase(e.target.value));
+});
+
+// theme toggle
+document.getElementById('theme').addEventListener('click',e=>{
+  const btn = e.target.closest('button'); if(!btn) return;
+  currentTheme = btn.dataset.t;
+  document.querySelectorAll('#theme button').forEach(b=>b.classList.toggle('on', b===btn));
+  preview.classList.toggle('light', currentTheme==='light');
+});
+
+// ---- Fonts (applied to title/chapter/reading via --read-font) ----
+const FONTS = [
+  {nm:'Iowan',        note:'serif · сейчас', stack:'"Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif'},
+  {nm:'Source Serif', note:'serif · экранный', stack:'"Source Serif 4","Iowan Old Style",Georgia,serif'},
+  {nm:'Lora',         note:'serif · тёплый',  stack:'"Lora",Georgia,serif'},
+  {nm:'Spectral',     note:'serif · строгий', stack:'"Spectral",Georgia,serif'},
+  {nm:'Inter',        note:'sans · модерн',   stack:'"Inter","SF Pro Text",system-ui,sans-serif'},
+  {nm:'IBM Plex',     note:'sans · технич.',  stack:'"IBM Plex Sans",system-ui,sans-serif'},
+  {nm:'System',       note:'sans · нативный', stack:'-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif'},
+];
+const fbox = document.getElementById('fontbtns');
+FONTS.forEach((f,idx)=>{
+  const b=document.createElement('button');
+  b.className=(idx===0?'on':'');
+  b.style.fontFamily=f.stack;
+  b.innerHTML=`${f.nm}<small>${f.note}</small>`;
+  b.onclick=()=>{
+    document.querySelectorAll('#fontbtns button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    root.style.setProperty('--read-font', f.stack);
+  };
+  fbox.appendChild(b);
+});
+
+// ---- Rooms (3 full previews to click through) ----
+const ROOMS = [
+  {
+    tab:'Как мыслят LLM', tabnote:'проза · Term · аналогия',
+    crumb:'Основы', badge:'BEGINNER', time:'25 мин', title:'Как мыслят LLM',
+    main:`
+      <div class="chapter">Глава 1: Токены — атомы языка</div>
+      <div class="reading">
+        <p>Нейросети не понимают слов. Они живут в мире чисел. Чтобы модель могла прочитать текст, его разбивают на фрагменты, называемые <span class="trm">токенами</span> — это не всегда целое слово: корень, суффикс или даже один символ, если слово редкое.</p>
+        <p>Современные модели используют алгоритм <span class="trm">BPE</span>: он начинает с отдельных букв и постепенно объединяет самые частые пары в один токен. Чем экономнее токенизация, тем дешевле <span class="trm">инференс</span> и тем больше текста помещается в контекст.</p>
+        <div class="callout"><b>Аналогия</b><p>Токены — как детали конструктора. Из одного набора кубиков собирают и замок, и корабль: модель тоже комбинирует ограниченный словарь токенов в бесконечное разнообразие текстов.</p></div>
+      </div>
+      <div class="chapter">Глава 2: Игра в предсказание</div>
+      <div class="reading">
+        <p>По сути модель делает одно: предсказывает следующий токен по предыдущим. Она не «думает» наперёд — она выбирает наиболее вероятное продолжение, токен за токеном. Температура управляет тем, насколько смелым будет этот выбор.</p>
+      </div>
+      <div class="callout" style="border-left-color:var(--e5)"><b>Что дальше?</b><p>Теперь примените идею на уровне архитектуры: как контекст, цена и задержка влияют на выбор модели под реальную задачу. → Перейти в «Ландшафт LLM»</p></div>`,
+    tasks:`
+      <div class="tcard">
+        <div class="q">Что такое токен в контексте LLM?</div>
+        <div class="opt sel"><span class="rd"></span>Фрагмент текста — часть слова, слово или символ — базовая единица, которую читает модель.</div>
+        <div class="opt"><span class="rd"></span>Один параметр нейросети.</div>
+        <div class="opt"><span class="rd"></span>Готовый ответ модели целиком.</div>
+        <button class="submit">Submit Answer</button>
+      </div>
+      <div class="tcard">
+        <div class="q">Что делает высокая температура при генерации?</div>
+        <div class="opt"><span class="rd"></span>Делает ответ строго детерминированным.</div>
+        <div class="opt sel"><span class="rd"></span>Повышает разнообразие и «смелость» выбора следующего токена.</div>
+      </div>`,
+  },
+  {
+    tab:'Локальные модели 101', tabnote:'таблица · categorize',
+    crumb:'Открытые модели', badge:'BEGINNER', time:'35 мин', title:'Локальные модели 101: свой ИИ без облака',
+    main:`
+      <div class="chapter">Глава 1: Что такое открытые веса</div>
+      <div class="reading">
+        <p>Локальные модели — те, чьи <span class="trm">открытые веса</span> можно скачать как обычный файл и запустить на своём железе. Запрос никуда не отправляется — весь <span class="trm">инференс</span> идёт на вашем компьютере: это снимает целый класс вопросов о приватности данных.</p>
+        <p>Экосистема выросла вокруг нескольких семейств. Кто их выпускает:</p>
+        <table class="rtable">
+          <thead><tr><th>Семейство</th><th>Компания</th><th>Чем известно</th></tr></thead>
+          <tbody>
+            <tr><td><b>Llama</b></td><td>Meta</td><td>Ориентир открытой экосистемы</td></tr>
+            <tr><td><b>Qwen</b></td><td>Alibaba</td><td>Сильная многоязычность</td></tr>
+            <tr><td><b>Gemma</b></td><td>Google</td><td>Открытая линейка на Gemini</td></tr>
+            <tr><td><b>Phi</b></td><td>Microsoft</td><td>Компактные модели</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="chapter">Глава 2: Квантизация и память</div>
+      <div class="reading">
+        <p><span class="trm">Квантизация</span> сжимает веса, снижая точность чисел: модель занимает меньше памяти ценой лёгкой потери качества. Сколько нужно — определяет <span class="trm">VRAM</span>: 8 ГБ хватает на 7–8B в Q4, 16 ГБ — на 8B без сжатия.</p>
+      </div>`,
+    tasks:`
+      <div class="tcard">
+        <div class="q">Распределите семейства моделей по компаниям.</div>
+        <div class="catrow"><span class="catitem">Llama</span><span class="catitem">Qwen</span><span class="catitem">Gemma</span><span class="catitem">Phi</span></div>
+        <div class="catbucket"><b>Meta</b> · перетащите сюда</div>
+        <div class="catbucket"><b>Alibaba</b> · перетащите сюда</div>
+        <div class="catbucket"><b>Google</b> · перетащите сюда</div>
+        <button class="submit">Submit Answer</button>
+      </div>
+      <div class="tcard">
+        <div class="q">Что делает квантизация?</div>
+        <div class="opt sel"><span class="rd"></span>Снижает точность весов: меньше памяти, немного ниже качество.</div>
+        <div class="opt"><span class="rd"></span>Увеличивает число параметров.</div>
+      </div>`,
+  },
+  {
+    tab:'Карьерные траектории', tabnote:'цветные чипы · roadmap',
+    crumb:'Основы', badge:'BEGINNER', time:'20 мин', title:'Карьерные траектории в AI',
+    main:`
+      <div class="chapter">Уровни и развилки</div>
+      <div class="reading">
+        <p>Основной IC-трек — про владение реальными системами, а не про коллекцию изолированных демо. Прогресс обычно идёт от реализации к продуктовой ответственности и техническому влиянию на всё более широкую область.</p>
+      </div>
+      <div class="rnode">
+        <div class="nt">Junior AI Builder</div>
+        <div class="lvl">L3–L4 · Foundations · 0–2 года</div>
+        <div style="margin-top:4px">
+          <span class="chip amber">Python fluency</span><span class="chip stone">Data cleaning</span><span class="chip amber">Prompt iteration</span><span class="chip mint">Basic evals</span>
+        </div>
+        <p class="desc">Вы учите Python, работу с данными, дисциплину промптинга, основы оценки и умение доводить узкие фичи до результата под руководством.</p>
+      </div>
+      <div class="reading">
+        <p>Цель — не стать исследователем за одну ночь, а научиться надёжно превращать размытый запрос в маленькую работающую систему.</p>
+      </div>`,
+    tasks:`
+      <div class="tcard">
+        <div class="q">Ментор: «На джуниор-уровне важнее собрать 20 pet-проектов или довести один до продакшена?»</div>
+        <div class="opt"><span class="rd"></span>Собрать как можно больше демо для портфолио.</div>
+        <div class="opt sel"><span class="rd"></span>Довести один до надёжного результата — это показывает владение системой.</div>
+        <button class="submit">Ответить</button>
+      </div>`,
+  },
+];
+
+const content = document.getElementById('content');
+function renderRoom(r){
+  content.innerHTML =
+    `<div class="main">
+       <div class="crumb">Комнаты › ${r.crumb} › <b>${r.title}</b></div>
+       <div class="title">${r.title}</div>
+       <div class="meta"><span class="badge">${r.badge}</span><span class="time">🕒 ${r.time}</span></div>
+       <div class="cover"></div>
+       ${r.main}
+     </div>
+     <aside class="tasks">
+       <h3><span class="ic"></span>Задания комнаты</h3>
+       ${r.tasks}
+       <div class="prog">Прогресс <b>0%</b></div>
+       <div class="bar"><i></i></div>
+     </aside>`;
+}
+const rtabs = document.getElementById('roomtabs');
+ROOMS.forEach((r,idx)=>{
+  const b=document.createElement('button');
+  b.className=(idx===0?'on':'');
+  b.innerHTML=`${r.tab}<small>${r.tabnote}</small>`;
+  b.onclick=()=>{
+    document.querySelectorAll('#roomtabs button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on');
+    renderRoom(r);
+  };
+  rtabs.appendChild(b);
+});
+renderRoom(ROOMS[0]);
+
+applyRamp(PRESETS[0].ramp);
+</script>
+</body>
+</html>

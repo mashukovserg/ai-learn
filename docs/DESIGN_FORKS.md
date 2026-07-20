@@ -38,6 +38,13 @@ terminal on light UI too. Any new preset must preserve this.
 `cyan`, `yellow` (+ `--font-term`). Tone names in the API map as: `ok`→prompt, `bad`→red,
 `dir`→blue, `link`→cyan, `warn`→yellow, `dim`→dim.
 
+> **Compare the options visually: [`terminal-picker.html`](terminal-picker.html)** — open it in a
+> browser. It switches every preset below, the terminal font (Fork 2b) and its size, and the page
+> background between the site's dark and light themes, so the "stays dark in both themes" invariant
+> can be checked by eye. It renders the real AC-201 session (Cyrillic included — worth watching when
+> judging a font) plus a palette terminal that exercises `dir`/`link`/`warn`, and emits a
+> paste-ready token block. Judge a preset on real output, not on hex values.
+
 ### Current pick — Ubuntu GNOME Terminal (since 2026-07-17)
 
 Adopted from an owner-supplied reference screenshot: GNOME Terminal on Ubuntu, Unity-era.
