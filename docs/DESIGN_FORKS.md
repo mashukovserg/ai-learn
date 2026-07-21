@@ -45,20 +45,20 @@ terminal on light UI too. Any new preset must preserve this.
 > judging a font) plus a palette terminal that exercises `dir`/`link`/`warn`, and emits a
 > paste-ready token block. Judge a preset on real output, not on hex values.
 
-### Current pick — "Tango on gray" (since 2026-07-21)
+### Current pick — Ubuntu GNOME Terminal, aubergine (2026-07-17; restored 2026-07-21)
 
-Neutral graphite container carrying the Ubuntu character through the **Tango ANSI palette** and
-**Ubuntu Mono**. Chosen after the aubergine background (previous pick, below) was judged to clash
-with the site's emerald blocks — the open question from 2026-07-17 was resolved by the owner:
-the purple *does* compete with the green. Verified in the picker with emerald context blocks:
-the gray body separates cleanly from the page background in both themes.
+Adopted from an owner-supplied reference screenshot: GNOME Terminal on Ubuntu, Unity-era.
+Aubergine background + Tango ANSI palette + Ubuntu Mono. **History note:** on 2026-07-21 the
+terminal was briefly swapped to a gray body — a misread of the owner's intent. The owner's actual
+call: keep the Ubuntu preset; resolve the emerald-vs-aubergine clash by re-coloring the
+**headings** (see Fork 3 below), not the terminal.
 
 ```css
---color-term-bg: #1e1e1e;      /* neutral graphite */
---color-term-head: #282828;
---color-term-line: #3a3a3a;
+--color-term-bg: #300a24;      /* Ubuntu signature aubergine */
+--color-term-head: #26071c;
+--color-term-line: #4a1839;
 --color-term-text: #eeeeec;
---color-term-dim: #8f8f8f;
+--color-term-dim: #a1889b;
 --color-term-prompt: #8ae234;  /* Tango bright green */
 --color-term-red: #ef2929;
 --color-term-blue: #729fcf;
@@ -67,23 +67,24 @@ the gray body separates cleanly from the page background in both themes.
 --font-term: var(--font-ubuntu-mono), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 ```
 
-- **For:** does not fight the emerald accent; the terminal reads as a distinct surface on the
-  dark page (unlike near-black); Ubuntu identity survives via font + ANSI colors.
-- **Against:** less instantly "Ubuntu" than the aubergine; graphite is a common terminal look.
+- **For:** instantly recognizable, authentic, has real character; the Tango values are exactly
+  Ubuntu's `LS_COLORS`, so `ls`-style output can be rendered faithfully.
+- **Against:** the purple sits near-complementary to the site's emerald accent — the clash is
+  real, and is being resolved on the heading side (Fork 3).
 
-### Alternative A — Ubuntu aubergine (2026-07-17 → 2026-07-21)
+### Alternative A — "Tango on gray" (built, briefly live on 2026-07-21)
 
-The full GNOME-Terminal-on-Ubuntu look from the owner's reference screenshot. Lost because the
-high-chroma purple background clashed with the site's emerald blocks (near-complementary hues
-fighting side by side). Same Tango accents and font as the current pick — only the container
-tokens differ:
+Neutral graphite container (`#1e1e1e`), same Tango accents + Ubuntu Mono. Built and applied for a
+few hours when the emerald clash was (mistakenly) read as a request to change the terminal.
+Verified working: separates cleanly from the page background in both themes. Kept fully
+paste-ready — it is the strongest fallback if the aubergine ever falls for real:
 
 ```css
---color-term-bg: #300a24;      /* Ubuntu signature aubergine */
---color-term-head: #26071c;
---color-term-line: #4a1839;
+--color-term-bg: #1e1e1e;      /* neutral graphite */
+--color-term-head: #282828;
+--color-term-line: #3a3a3a;
 --color-term-text: #eeeeec;
---color-term-dim: #a1889b;
+--color-term-dim: #8f8f8f;
 --color-term-prompt: #8ae234;
 --color-term-red: #ef2929;
 --color-term-blue: #729fcf;
@@ -186,6 +187,32 @@ bumped `13px → 14px` for optical parity. **Any terminal-font switch must re-ch
 text will look mis-scaled.
 
 ---
+
+## Fork 3 — Theory heading color (OPEN, exploring)
+
+**Context.** Opened 2026-07-21 by the owner: the emerald-vs-aubergine clash (Fork 1) is to be
+resolved by re-coloring the **headings and similar accents**, not the terminal. Today theory
+chapter headings are emerald (`text-emerald-400`).
+
+**Measured scope (2026-07-21):** `text-emerald-400` appears 289× in `src/components/theory/`,
+of which ~250 are on `h2`/`h3`/`h4` headings (chapter titles + callout titles). Glossary `<Term>`
+links use their own emerald classes and are NOT part of this fork — they stay interactive-green.
+
+**Implementation plan (when a pick lands):** add a `--color-heading` token in `@theme` (+ a
+`[data-theme="saas"]` override), then a regex sweep limited to heading tags in theory files:
+`(<h[234][^>]*)text-emerald-400` → `$1text-heading`. One token, no per-room decisions,
+`<Term>`/buttons/progress untouched.
+
+**Candidates (gray tones, dark theme / light theme):**
+
+| Candidate | Dark | Light | Character |
+|---|---|---|---|
+| Light gray | `#d4d4d4` | `#3f3f46` | headings slightly dimmer than body text; size+weight carry hierarchy |
+| Body-color | `#e6e2da` | `#0f0f0f` | classic typography — headings are just bold text |
+| Muted gray | `#9e9e9e` | `#6f6f6f` | quiet, "terminal minimalism"; risks reading as disabled |
+
+**Open questions:** exact tone; whether callout titles (`h4`) follow the chapter headings or keep
+emerald; whether non-theory pages (dashboard, rooms catalog) follow later.
 
 ## Related forks tracked elsewhere
 

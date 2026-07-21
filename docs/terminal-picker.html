@@ -104,6 +104,7 @@ pre.css .c{color:#6b665e}
     <div class="row"><span class="lbl">Шрифт</span><span id="fonts" class="row"></span></div>
     <div class="row"><span class="lbl">Размер</span><span id="sizes" class="row"></span></div>
     <div class="row"><span class="lbl">Фон страницы</span><span id="pages" class="row"></span></div>
+    <div class="row"><span class="lbl">Заголовки</span><span id="headings" class="row"></span></div>
   </div>
 
   <div class="stage" id="stage" data-page="dark">
@@ -148,7 +149,7 @@ pre.css .c{color:#6b665e}
 <script>
 const PRESETS = {
   ubuntu: {
-    label: 'Ubuntu / Tango', note: 'прежний — клэш с зелёным',
+    label: 'Ubuntu / Tango', note: 'текущий',
     bg:'#300a24', head:'#26071c', line:'#4a1839', text:'#eeeeec', dim:'#a1889b',
     prompt:'#8ae234', red:'#ef2929', blue:'#729fcf', cyan:'#34e2e2', yellow:'#fce94f'
   },
@@ -158,7 +159,7 @@ const PRESETS = {
     prompt:'#34d399', red:'#f87171', blue:'#60a5fa', cyan:'#22d3ee', yellow:'#fbbf24'
   },
   tangogray: {
-    label: 'Tango на сером', note: 'текущий',
+    label: 'Tango на сером', note: 'запасной',
     bg:'#1e1e1e', head:'#282828', line:'#3a3a3a', text:'#eeeeec', dim:'#8f8f8f',
     prompt:'#8ae234', red:'#ef2929', blue:'#729fcf', cyan:'#34e2e2', yellow:'#fce94f'
   },
@@ -205,7 +206,14 @@ const FONTS = {
 
 const SIZES = ['13px','14px','15px'];
 
-let cur = { preset:'tangogray', font:'ubuntu', size:'14px', page:'dark' };
+const HEADINGS = {
+  emerald:   { label:'Изумруд',       note:'текущий',  dark:'#34d399', light:'#047857' },
+  lightgray: { label:'Светло-серый',  note:'#d4d4d4',  dark:'#d4d4d4', light:'#3f3f46' },
+  body:      { label:'Цвет текста',   note:'#e6e2da',  dark:'#e6e2da', light:'#0f0f0f' },
+  muted:     { label:'Приглушённый',  note:'#9e9e9e',  dark:'#9e9e9e', light:'#6f6f6f' },
+};
+
+let cur = { preset:'ubuntu', font:'ubuntu', size:'14px', page:'dark', heading:'emerald' };
 
 const stage = document.getElementById('stage');
 const cssout = document.getElementById('cssout');
@@ -249,6 +257,11 @@ function render(){
   const gc = document.getElementById('pages'); gc.innerHTML = '';
   [['dark','Тёмная (terminal)'],['light','Светлая (saas)']].forEach(([k,l]) =>
     mkBtn(gc, l, '', k===cur.page, () => { cur.page=k; render(); }));
+  const hc = document.getElementById('headings'); hc.innerHTML = '';
+  Object.entries(HEADINGS).forEach(([k,v]) =>
+    mkBtn(hc, v.label, v.note, k===cur.heading, () => { cur.heading=k; render(); }, v.dark));
+  const hcol = HEADINGS[cur.heading][cur.page];
+  document.querySelectorAll('.chap, .callout b').forEach(e => { e.style.color = hcol; });
 
   // paste-ready CSS
   const fontLine = f.cssvar
