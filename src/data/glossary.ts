@@ -5,6 +5,22 @@ export interface GlossaryTerm {
 }
 
 export const GLOSSARY: Record<string, GlossaryTerm> = {
+  'context-engineering': {
+    id: 'context-engineering',
+    term: { ru: 'Контекст-инжиниринг', en: 'Context Engineering' },
+    definition: {
+      ru: 'Контекст-инжиниринг — дисциплина управления всем информационным окружением агента: что и когда попадает в контекстное окно (инструкции, память, инструменты, подгружаемые знания, история диалога). Главный принцип — минимальный объём максимально полезной информации. Промпт-инжиниринг сегодня рассматривается как её часть.',
+      en: 'Context engineering is the discipline of managing an agent\'s entire information environment: what enters the context window and when (instructions, memory, tools, retrieved knowledge, dialogue history). The core principle is the minimal volume of maximally useful information. Prompt engineering is now viewed as a subset of it.'
+    }
+  },
+  'context-rot': {
+    id: 'context-rot',
+    term: { ru: 'Context rot', en: 'Context rot' },
+    definition: {
+      ru: 'Context rot («гниение контекста») — деградация качества ответов агента по мере того, как контекст распухает и устаревает: мёртвые ссылки, дубли и шум конкурируют с задачей за внимание модели. Лечится регулярной гигиеной: аудит, чистка, вынос деталей в файлы, подгружаемые по требованию.',
+      en: 'Context rot is the degradation of an agent\'s output quality as its context bloats and goes stale: dead references, duplicates, and noise compete with the actual task for the model\'s attention. The cure is regular hygiene: audits, cleanup, and moving details into files loaded on demand.'
+    }
+  },
   'ripgrep': {
     id: 'ripgrep',
     term: { ru: 'ripgrep (rg)', en: 'ripgrep (rg)' },

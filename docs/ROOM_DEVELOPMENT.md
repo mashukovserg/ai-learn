@@ -100,6 +100,7 @@ Format: one row per idea. Rationale and risks stay short; design happens when th
 
 | Date | Room | Notes |
 |---|---|---|
+| 2026-07-21 | `context-engineering-101` | AC-204, Module B: context layers, window economics, artifacts (skill/agent), hygiene cycle. Sourced from the owner's course notes; theory written original (course listings not copied), tool-specific numbers in a dated callout per the fact-decay rule |
 | 2026-07-11 | `research-ai-era`, `ai-literature-reviews` | Research cluster (method + tools), ideas-history path |
 | 2026-05-16 | `local-models-101` | Opened «Открытые модели» category as intro to `llama-3-1-8b` |
 

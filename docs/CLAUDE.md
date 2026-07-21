@@ -1,6 +1,6 @@
 # CLAUDE.md — AI Learning Platform
 
-TryHackMe-style interactive AI education platform with 38 rooms, 3 learning paths, and full bilingual (RU/EN) support. Guest mode works out of the box; authenticated users get persistent progress synced to PostgreSQL.
+TryHackMe-style interactive AI education platform with 40 rooms, 3 learning paths, and full bilingual (RU/EN) support. Guest mode works out of the box; authenticated users get persistent progress synced to PostgreSQL.
 
 ## Architecture
 
@@ -15,7 +15,7 @@ Next.js proxies all `/api/*` requests to the backend (`next.config.ts`). When th
 
 ### Why these choices
 
-**Next.js App Router** — App Router's folder-based routing maps cleanly to URLs and makes the `[lang]` dynamic segment the natural mechanism for bilingual routing. All 38 rooms share a single `rooms/[id]/page.tsx` renderer instead of 38 files — room data is looked up at runtime from `src/data/rooms/`.
+**Next.js App Router** — App Router's folder-based routing maps cleanly to URLs and makes the `[lang]` dynamic segment the natural mechanism for bilingual routing. All 40 rooms share a single `rooms/[id]/page.tsx` renderer instead of 40 files — room data is looked up at runtime from `src/data/rooms/`.
 
 **`[lang]` locale segment instead of middleware i18n** — Embedding locale in the URL (`/ru/rooms/...`, `/en/rooms/...`) makes language visible, bookmarkable, and shareable. Russian is the default because the primary audience is Russian-speaking (redirect in `src/proxy.ts`). Every page gets `lang` from route params; never hard-code a locale.
 
@@ -79,7 +79,7 @@ src/
 │   └── ...                  # Navigation, modals, shared UI
 │
 ├── data/rooms/              # Single source of truth for all room content
-│   ├── metadata.ts          # Room catalog (38 rooms: title, desc, difficulty, paths)
+│   ├── metadata.ts          # Room catalog (40 rooms: title, desc, difficulty, paths)
 │   ├── tasks/               # Per-room task files (one file per room ID)
 │   ├── types.ts             # TypeScript interfaces for rooms and tasks
 │   ├── paths.ts             # Learning path definitions
