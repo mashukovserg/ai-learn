@@ -86,6 +86,20 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     icon: 'Sparkles',
   },
   {
+    id: 'ai-existential-risk',
+    title: { ru: 'Экзистенциальный риск: анатомия аргумента', en: 'Existential Risk: Anatomy of the Argument' },
+    description: {
+      ru: 'Что такое экзистенциальный риск по Бострому, правило maxipok и разбор базового аргумента об AI-риске по посылкам — вместе с контраргументами.',
+      en: 'What existential risk means for Bostrom, the maxipok rule, and the basic AI risk case broken into premises — together with the counterarguments.',
+    },
+    difficulty: 'Intermediate',
+    time: { ru: '30 мин', en: '30m' },
+    category: { ru: 'Идеи и споры', en: 'Ideas and Debates' },
+    image: '/images/ai-singularity.png',
+    pathIds: ['ideas-history'],
+    icon: 'Scale',
+  },
+  {
     id: 'prompting-101',
     title: { ru: 'Основы промптинга', en: 'Prompting 101' },
     description: {

@@ -58,6 +58,7 @@ import FrontierEvalsTheory from '@/components/theory/FrontierEvalsTheory';
 import ClaudeCodeAgenticLoopTheory from '@/components/theory/ClaudeCodeAgenticLoopTheory';
 import ClaudeCodeProWorkflowTheory from '@/components/theory/ClaudeCodeProWorkflowTheory';
 import ContextEngineering101Theory from '@/components/theory/ContextEngineering101Theory';
+import AiExistentialRiskTheory from '@/components/theory/AiExistentialRiskTheory';
 import PromptPlayground from '@/components/PromptPlayground';
 import { PLAYGROUND_CONFIGS } from '@/data/rooms/playgroundConfigs';
 
@@ -101,6 +102,7 @@ const THEORY_COMPONENTS: Record<string, React.ComponentType<{ lang: string }>> =
   'claude-code-agentic-loop': ClaudeCodeAgenticLoopTheory,
   'claude-code-pro-workflow': ClaudeCodeProWorkflowTheory,
   'context-engineering-101': ContextEngineering101Theory,
+  'ai-existential-risk': AiExistentialRiskTheory,
   'taxonomy-matching': TaxonomyMatchingTheory,
 };
 

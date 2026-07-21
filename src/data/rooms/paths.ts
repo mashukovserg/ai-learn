@@ -47,6 +47,7 @@ export const PATHS_METADATA: PathMetadata[] = [
       'post-chatgpt-history',
       'scaling-hypothesis',
       'ai-singularity',
+      'ai-existential-risk',
     ],
   },
   {

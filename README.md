@@ -50,7 +50,7 @@ AI learning platform with interactive theory + tasks, built with Next.js App Rou
 - The rooms catalog now places difficulty/focus/status controls in a dedicated side filter rail on desktop, keeping the room grid visible higher on the page while preserving a stacked mobile filter layout.
 - Fixed `/${lang}/rooms` hydration mismatch by deferring localStorage-based progress status reads to post-mount client sync.
 - Moved Skills Matrix to the Profile page (`/${lang}/settings`) and wired `/${lang}/skills` to redirect to `/${lang}/settings#skills-matrix` for backward compatibility.
-- Rooms pages (40 rooms):
+- Rooms pages (41 rooms):
   - `/${lang}/rooms` (listing page with live progress states, thematic focus filter, and compact difficulty/status metadata)
   - `/${lang}/rooms/[id]` — Dynamic room renderer for 38 topics across foundations, debates, advanced systems, agent coding, and open models, including the Open Models pair (`local-models-101`, `llama-3-1-8b`) and the `ai-career-trajectories` room with a dedicated career-roadmap theory layout.
 - Interactive task components:

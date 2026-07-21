@@ -91,11 +91,11 @@ Known absent routes (do not assume they exist):
 1. `/${lang}/compete`
 2. `/${lang}/leaderboard`
 
-### Room inventory (40 rooms in `ROOMS_METADATA`)
+### Room inventory (41 rooms in `ROOMS_METADATA`)
 
-Rooms with theory + tasks fully wired (40): **all** current `ROOMS_METADATA` entries are wired in the dynamic room route — `context-engineering-101` (AC-204) landed 2026-07-21. The inventory includes `ai-career-trajectories`, `prompt-contracts`, `mcp-tool-ecosystems`, `agentic-swarm-management`, `frontier-evals-logic`, `claude-code-agentic-loop`, `claude-code-pro-workflow`, `context-engineering-101`, `taxonomy-matching`, and the Open Models pair `local-models-101` + `llama-3-1-8b`.
+Rooms with theory + tasks fully wired (41): **all** current `ROOMS_METADATA` entries are wired in the dynamic room route — `context-engineering-101` (AC-204) landed 2026-07-21. The inventory includes `ai-career-trajectories`, `prompt-contracts`, `mcp-tool-ecosystems`, `agentic-swarm-management`, `frontier-evals-logic`, `claude-code-agentic-loop`, `claude-code-pro-workflow`, `context-engineering-101`, `taxonomy-matching`, and the Open Models pair `local-models-101` + `llama-3-1-8b`.
 
-Theory components mapped in `THEORY_COMPONENTS` (40 total) inside `src/app/[lang]/rooms/[id]/page.tsx`. Rooms without a mapping show a fallback placeholder.
+Theory components mapped in `THEORY_COMPONENTS` (41 total) inside `src/app/[lang]/rooms/[id]/page.tsx`. Rooms without a mapping show a fallback placeholder.
 
 ### Source of truth files (use these first)
 

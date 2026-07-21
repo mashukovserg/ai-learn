@@ -62,6 +62,9 @@
 - [x] **Post-ChatGPT Era (Пост-ChatGPT эпоха)** — 6 tasks
   - *Topics:* API-access model tradeoffs, open-weight ecosystem dynamics, reasoning models (o1), geopolitics of compute.
 
+### Ideas and Debates additions
+- [x] **Existential Risk: Anatomy of the Argument** (`ai-existential-risk`) — 12 tasks; Bostrom's four risk classes + maxipok, the basic AI x-risk case as three premises (Grace/AI Impacts), counterarguments by premise, the "proves too much" test. Teaches argument decomposition, not a verdict.
+
 ## Path in Rollout: Agent Coding (Агентная разработка)
 **Goal:** Train learners to deliver production-grade software with coding-agent loops, engineering discipline, and measurable quality gates.
 
