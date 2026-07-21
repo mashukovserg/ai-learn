@@ -9,7 +9,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
     <>
       {/* 1. Why this room exists */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Зачем нужна карта LLM-ландшафта' : 'Why You Need an LLM Landscape Map'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-4">
@@ -26,7 +26,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
           {lang === 'ru' ? (
             <>
               По состоянию на 2026, зрелые команды редко ставят всё на одну модель. Типичный подход: портфель из нескольких моделей и роутинг по типу задачи. Это хорошо сочетается с мульти-модельными каталогами вроде{' '}
-              <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">
+              <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
                 AWS Bedrock
               </a>{' '}
               и облачными model hubs.
@@ -34,7 +34,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
           ) : (
             <>
               As of 2026, mature teams rarely bet on a single model. The typical pattern is a multi-model portfolio with routing by workload type. This fits multi-model catalogs such as{' '}
-              <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">
+              <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
                 AWS Bedrock
               </a>{' '}
               and similar cloud model hubs.
@@ -50,7 +50,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
       {/* 2. What is a model */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Что такое «модель»?' : 'What Is a "Model"?'}
         </h2>
         <div className="space-y-5 text-neutral-300 leading-relaxed">
@@ -60,7 +60,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
                 Модель — это не программа с жёсткими правилами вроде «если А, то Б»
                 <Link
                   href={`/${lang}/rooms/ai-history`}
-                  className="align-super text-[11px] font-medium text-emerald-300/90 hover:text-emerald-200 no-underline"
+                  className="align-super text-[11px] font-medium text-accent-300/90 hover:text-accent-200 no-underline"
                   aria-label="Сноска: переход от rule-based AI к ML"
                 >
                   [1]
@@ -72,7 +72,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
                 A model is not a rigid rule-based program like &quot;if A, then B&quot;
                 <Link
                   href={`/${lang}/rooms/ai-history`}
-                  className="align-super text-[11px] font-medium text-emerald-300/90 hover:text-emerald-200 no-underline"
+                  className="align-super text-[11px] font-medium text-accent-300/90 hover:text-accent-200 no-underline"
                   aria-label="Footnote: transition from rule-based AI to ML"
                 >
                   [1]
@@ -106,7 +106,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
               {lang === 'ru' ? (
                 <>
                   Подробнее о переходе от rule-based подхода к ML: комната{' '}
-                  <Link href={`/${lang}/rooms/ai-history`} className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">
+                  <Link href={`/${lang}/rooms/ai-history`} className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
                     «История ИИ»
                   </Link>
                   .
@@ -114,7 +114,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
               ) : (
                 <>
                   More on the shift from rule-based AI to ML in the{' '}
-                  <Link href={`/${lang}/rooms/ai-history`} className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">
+                  <Link href={`/${lang}/rooms/ai-history`} className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
                     History of AI
                   </Link>{' '}
                   room.
@@ -127,7 +127,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
       {/* 3. Category map */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-3 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-3 text-heading">
           {lang === 'ru' ? 'Карта LLM-ландшафта' : 'LLM Landscape Map'}
         </h2>
         <p className="text-neutral-400 leading-relaxed mb-5">
@@ -142,7 +142,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
               <tr className="border-b border-border-subtle bg-input">
                 <th className="px-4 py-3 text-xs uppercase tracking-wider text-neutral-500">{lang === 'ru' ? 'Категория' : 'Category'}</th>
                 <th className="px-4 py-3 text-xs uppercase tracking-wider text-neutral-300 border-l border-border-subtle">{lang === 'ru' ? 'Примеры' : 'Examples'}</th>
-                <th className="px-4 py-3 text-xs uppercase tracking-wider text-emerald-300 border-l border-border-subtle">{lang === 'ru' ? 'Когда использовать' : 'When to use'}</th>
+                <th className="px-4 py-3 text-xs uppercase tracking-wider text-accent-300 border-l border-border-subtle">{lang === 'ru' ? 'Когда использовать' : 'When to use'}</th>
               </tr>
             </thead>
             <tbody className="text-sm">
@@ -188,7 +188,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
       {/* 4. API vs open-weight */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Закрытый API vs Open-weight: базовый выбор' : 'Closed API vs Open-weight: First Decision'}
         </h2>
         <div className="space-y-5">
@@ -200,7 +200,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
           <div className="space-y-4">
             <div className="rounded-xl border border-border-subtle bg-gradient-to-br from-[#161a18] via-card-dark to-card-dark p-5">
-              <div className="inline-flex items-center px-2.5 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-[11px] font-semibold text-emerald-300 uppercase tracking-wider mb-3">
+              <div className="inline-flex items-center px-2.5 py-1 rounded-md bg-accent-500/10 border border-accent-500/30 text-[11px] font-semibold text-accent-300 uppercase tracking-wider mb-3">
                 {lang === 'ru' ? 'КОНЦЕПТ' : 'CONCEPT'}
               </div>
               <h3 className="text-xl font-semibold text-neutral-100 mb-2">Endpoint</h3>
@@ -215,7 +215,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
             </div>
 
             <div className="rounded-xl border border-border-subtle bg-card p-5">
-              <div className="text-[11px] uppercase tracking-wider text-emerald-300/90 mb-3">
+              <div className="text-[11px] uppercase tracking-wider text-accent-300/90 mb-3">
                 {lang === 'ru' ? 'Закрытый API' : 'Closed API'}
               </div>
               <ul className="space-y-2 text-neutral-300 leading-relaxed mb-4">
@@ -229,7 +229,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
             </div>
 
             <div className="rounded-xl border border-border-subtle bg-card p-5">
-              <div className="text-[11px] uppercase tracking-wider text-emerald-300/90 mb-3">Open-weight</div>
+              <div className="text-[11px] uppercase tracking-wider text-accent-300/90 mb-3">Open-weight</div>
               <ul className="space-y-2 text-neutral-300 leading-relaxed mb-4">
                 <li>• {lang === 'ru' ? 'Больше контроля и приватности.' : 'More control and privacy.'}</li>
                 <li>• {lang === 'ru' ? 'Гибкая кастомизация под домен.' : 'Flexible domain customization.'}</li>
@@ -247,15 +247,15 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
             </h4>
             <ol className="space-y-3 text-sm text-neutral-400">
               <li className="rounded-lg border border-border-subtle bg-card-dark px-3 py-2">
-                <span className="text-emerald-300 mr-1">1.</span>
+                <span className="text-accent-300 mr-1">1.</span>
                 {lang === 'ru' ? 'Определите workload.' : 'Define the workload.'}
               </li>
               <li className="rounded-lg border border-border-subtle bg-card-dark px-3 py-2">
-                <span className="text-emerald-300 mr-1">2.</span>
+                <span className="text-accent-300 mr-1">2.</span>
                 {lang === 'ru' ? 'Выберите класс модели.' : 'Pick the model class.'}
               </li>
               <li className="rounded-lg border border-border-subtle bg-card-dark px-3 py-2">
-                <span className="text-emerald-300 mr-1">3.</span>
+                <span className="text-accent-300 mr-1">3.</span>
                 {lang === 'ru' ? 'Выберите провайдера/endpoint.' : 'Choose provider/endpoint.'}
               </li>
             </ol>
@@ -265,7 +265,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
       {/* 5. Workload-first choice */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Как выбирать по задаче (workload-first)' : 'How to Choose by Workload (Workload-First)'}
         </h2>
         <p className="text-neutral-400 leading-relaxed mb-5">
@@ -277,7 +277,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
           <div className="bg-card border border-border-subtle rounded-lg p-4">
             <h4 className="text-neutral-200 font-semibold mb-1">{lang === 'ru' ? 'Качество критично' : 'Quality-critical tasks'}</h4>
             <p className="text-neutral-400 text-sm">{lang === 'ru' ? 'Reasoning, сложные агентные цепочки, многошаговый анализ.' : 'Reasoning-heavy workflows, complex agentic chains, multi-step analysis.'}</p>
-            <p className="text-emerald-300 text-sm mt-2">{lang === 'ru' ? 'Обычно: Frontier + eval-gates' : 'Typical: Frontier + evaluation gates'}</p>
+            <p className="text-accent-300 text-sm mt-2">{lang === 'ru' ? 'Обычно: Frontier + eval-gates' : 'Typical: Frontier + evaluation gates'}</p>
             <p className="text-neutral-500 text-sm mt-2">
               {lang === 'ru'
                 ? 'Пример: юридический copilot готовит черновик позиции по сложному спору на основе десятков документов. Затем он проверяет рассуждение на логические противоречия и отмечает слабые аргументы. После этого юрист получает структурированный драфт с рисками и может быстро принять финальное решение.'
@@ -287,7 +287,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
           <div className="bg-card border border-border-subtle rounded-lg p-4">
             <h4 className="text-neutral-200 font-semibold mb-1">{lang === 'ru' ? 'Цена и масштаб' : 'Cost and scale-sensitive tasks'}</h4>
             <p className="text-neutral-400 text-sm">{lang === 'ru' ? 'Массовые FAQ, классификация, шаблонные ответы.' : 'High-volume FAQ, classification, templated responses.'}</p>
-            <p className="text-emerald-300 text-sm mt-2">{lang === 'ru' ? 'Обычно: эффективные модели' : 'Typical: Efficient models'}</p>
+            <p className="text-accent-300 text-sm mt-2">{lang === 'ru' ? 'Обычно: эффективные модели' : 'Typical: Efficient models'}</p>
             <p className="text-neutral-500 text-sm mt-2">
               {lang === 'ru'
                 ? 'Пример: e-commerce поддержка обрабатывает до 200k однотипных вопросов в день о доставке и возвратах. Пользователи ожидают быстрый ответ за секунды, а маржа не позволяет дорогой инференс на каждый тикет. Поэтому команда выбирает эффективную модель, держит строгий лимит cost/query и масштабирует сервис без скачка бюджета.'
@@ -297,7 +297,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
           <div className="bg-card border border-border-subtle rounded-lg p-4">
             <h4 className="text-neutral-200 font-semibold mb-1">{lang === 'ru' ? 'Большой контекст' : 'Long-context analysis'}</h4>
             <p className="text-neutral-400 text-sm">{lang === 'ru' ? 'Контракты, отчеты, многостраничные документы.' : 'Contracts, reports, and long multi-document analysis.'}</p>
-            <p className="text-emerald-300 text-sm mt-2">{lang === 'ru' ? 'Обычно: модели длинного контекста' : 'Typical: Long-context class'}</p>
+            <p className="text-accent-300 text-sm mt-2">{lang === 'ru' ? 'Обычно: модели длинного контекста' : 'Typical: Long-context class'}</p>
             <p className="text-neutral-500 text-sm mt-2">
               {lang === 'ru'
                 ? 'Пример: инвестиционная команда загружает 300-страничный annual report и набор приложений к нему. Модель должна извлечь ключевые KPI, собрать риски и найти расхождения между разделами, которые люди часто пропускают. В итоге аналитик получает не пересказ, а карту сигналов с привязкой к конкретным страницам и цитатам.'
@@ -307,7 +307,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
           <div className="bg-card border border-border-subtle rounded-lg p-4">
             <h4 className="text-neutral-200 font-semibold mb-1">{lang === 'ru' ? 'Мультимодальные потоки' : 'Multimodal pipelines'}</h4>
             <p className="text-neutral-400 text-sm">{lang === 'ru' ? 'Изображения, видео, аудио + текст в одном workflow.' : 'Image, video, audio, and text in one workflow.'}</p>
-            <p className="text-emerald-300 text-sm mt-2">{lang === 'ru' ? 'Обычно: мультимодальные модели' : 'Typical: Multimodal class'}</p>
+            <p className="text-accent-300 text-sm mt-2">{lang === 'ru' ? 'Обычно: мультимодальные модели' : 'Typical: Multimodal class'}</p>
             <p className="text-neutral-500 text-sm mt-2">
               {lang === 'ru'
                 ? 'Пример: служба контроля качества на производстве анализирует фото дефекта, голосовой комментарий инспектора и техкарту в одном процессе. Модель сопоставляет визуальный паттерн с текстовым описанием и формирует предварительный диагноз поломки. Затем система автоматически предлагает чек-лист действий для сменного инженера и сохраняет инцидент в журнал.'
@@ -319,7 +319,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
       {/* 6. Open-weight details */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Open-Weight экосистема: владение и контроль' : 'Open-Weight Ecosystem: Ownership and Control'}
         </h2>
 
@@ -328,7 +328,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
             <div className="grid grid-cols-[180px_1fr_1fr] text-xs uppercase tracking-wider">
               <div className="px-4 py-3 text-neutral-500 border-b border-border-subtle">{lang === 'ru' ? 'Критерий' : 'Criteria'}</div>
               <div className="px-4 py-3 text-neutral-300 border-l border-b border-border-subtle">{lang === 'ru' ? 'Закрытый API' : 'Closed API'}</div>
-              <div className="px-4 py-3 text-emerald-300 border-l border-b border-border-subtle">Open-weight</div>
+              <div className="px-4 py-3 text-accent-300 border-l border-b border-border-subtle">Open-weight</div>
             </div>
             <div className="grid grid-cols-[180px_1fr_1fr] text-sm">
               <div className="px-4 py-3 text-neutral-500 border-b border-border-subtle">{lang === 'ru' ? 'Запуск' : 'Launch speed'}</div>
@@ -337,11 +337,11 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
               <div className="px-4 py-3 text-neutral-500 border-b border-border-subtle">{lang === 'ru' ? 'Контроль' : 'Control'}</div>
               <div className="px-4 py-3 text-neutral-400 border-l border-b border-border-subtle">{lang === 'ru' ? 'Ограниченный' : 'Limited'}</div>
-              <div className="px-4 py-3 text-emerald-300 border-l border-b border-border-subtle">{lang === 'ru' ? 'Максимальный' : 'Maximum'}</div>
+              <div className="px-4 py-3 text-accent-300 border-l border-b border-border-subtle">{lang === 'ru' ? 'Максимальный' : 'Maximum'}</div>
 
               <div className="px-4 py-3 text-neutral-500 border-b border-border-subtle">{lang === 'ru' ? 'Приватность' : 'Privacy'}</div>
               <div className="px-4 py-3 text-neutral-400 border-l border-b border-border-subtle">{lang === 'ru' ? 'Провайдер обрабатывает данные' : 'Provider handles data'}</div>
-              <div className="px-4 py-3 text-emerald-300 border-l border-b border-border-subtle">{lang === 'ru' ? 'Данные остаются у вас' : 'Data stays with you'}</div>
+              <div className="px-4 py-3 text-accent-300 border-l border-b border-border-subtle">{lang === 'ru' ? 'Данные остаются у вас' : 'Data stays with you'}</div>
 
               <div className="px-4 py-3 text-neutral-500">{lang === 'ru' ? 'DevOps-нагрузка' : 'Ops burden'}</div>
               <div className="px-4 py-3 text-neutral-300 border-l">{lang === 'ru' ? 'Низкая' : 'Low'}</div>
@@ -364,7 +364,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
       {/* 7. Geopolitics and sovereignty */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Геополитика ИИ и технологический суверенитет' : 'AI Geopolitics and Technological Sovereignty'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-6">
@@ -375,7 +375,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           <div className="bg-card border border-border-subtle p-6 rounded-xl">
-            <h3 className="text-lg font-semibold text-emerald-400 mb-3">
+            <h3 className="text-lg font-semibold text-heading mb-3">
               {lang === 'ru' ? 'Суверенитет данных (Data Sovereignty)' : 'Data Sovereignty'}
             </h3>
             <p className="text-sm text-neutral-400 leading-relaxed">
@@ -385,7 +385,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
             </p>
           </div>
           <div className="bg-card border border-border-subtle p-6 rounded-xl">
-            <h3 className="text-lg font-semibold text-emerald-400 mb-3">
+            <h3 className="text-lg font-semibold text-heading mb-3">
               {lang === 'ru' ? 'Вычислительный разрыв (The Compute Gap)' : 'The Compute Gap'}
             </h3>
             <p className="text-sm text-neutral-400 leading-relaxed">
@@ -403,23 +403,23 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
                 <div className="px-3 py-2.5 text-neutral-500 border-b border-border-subtle">{lang === 'ru' ? 'Регион' : 'Region'}</div>
                 <div className="px-3 py-2.5 text-neutral-300 border-l border-b border-border-subtle">{lang === 'ru' ? 'Сильная сторона' : 'Strength'}</div>
                 <div className="px-3 py-2.5 text-neutral-400 border-l border-b border-border-subtle">{lang === 'ru' ? 'Ограничение' : 'Constraint'}</div>
-                <div className="px-3 py-2.5 text-emerald-300 border-l border-b border-border-subtle">{lang === 'ru' ? 'Типичная стратегия' : 'Typical strategy'}</div>
+                <div className="px-3 py-2.5 text-accent-300 border-l border-b border-border-subtle">{lang === 'ru' ? 'Типичная стратегия' : 'Typical strategy'}</div>
               </div>
               <div className="grid grid-cols-[110px_1fr_1fr_1.25fr] text-sm">
                 <div className="px-3 py-3 text-neutral-300 border-b border-border-subtle">{lang === 'ru' ? 'США' : 'USA'}</div>
                 <div className="px-3 py-3 text-neutral-300 border-l border-b border-border-subtle">{lang === 'ru' ? 'Frontier-вычисления и сильная платформа дистрибуции' : 'Frontier compute and strong distribution platform'}</div>
                 <div className="px-3 py-3 text-neutral-500 border-l border-b border-border-subtle">{lang === 'ru' ? 'Высокая цена и влияние экспортных ограничений' : 'Higher cost and export-control exposure'}</div>
-                <div className="px-3 py-3 text-emerald-300 border-l border-b border-border-subtle">{lang === 'ru' ? 'Премиальные кейсы и tool-heavy copilot-продукты' : 'Premium workloads and tool-heavy copilot products'}</div>
+                <div className="px-3 py-3 text-accent-300 border-l border-b border-border-subtle">{lang === 'ru' ? 'Премиальные кейсы и tool-heavy copilot-продукты' : 'Premium workloads and tool-heavy copilot products'}</div>
 
                 <div className="px-3 py-3 text-neutral-300 border-b border-border-subtle">{lang === 'ru' ? 'Китай' : 'China'}</div>
                 <div className="px-3 py-3 text-neutral-300 border-l border-b border-border-subtle">{lang === 'ru' ? 'Эффективный инференс и массовый rollout' : 'Efficient inference and fast mass rollout'}</div>
                 <div className="px-3 py-3 text-neutral-500 border-l border-b border-border-subtle">{lang === 'ru' ? 'Более сложный трансграничный комплаенс' : 'More complex cross-border compliance'}</div>
-                <div className="px-3 py-3 text-emerald-300 border-l border-b border-border-subtle">{lang === 'ru' ? 'Высокий объем трафика при жестком контроле cost/query' : 'High-volume traffic with strict cost/query focus'}</div>
+                <div className="px-3 py-3 text-accent-300 border-l border-b border-border-subtle">{lang === 'ru' ? 'Высокий объем трафика при жестком контроле cost/query' : 'High-volume traffic with strict cost/query focus'}</div>
 
                 <div className="px-3 py-3 text-neutral-300">{lang === 'ru' ? 'Европа' : 'Europe'}</div>
                 <div className="px-3 py-3 text-neutral-300 border-l">{lang === 'ru' ? 'Регуляторное лидерство и фокус на суверенитете' : 'Regulatory leadership and sovereignty focus'}</div>
                 <div className="px-3 py-3 text-neutral-500 border-l">{lang === 'ru' ? 'Меньшая концентрация frontier-GPU мощностей' : 'Lower concentration of frontier GPU capacity'}</div>
-                <div className="px-3 py-3 text-emerald-300 border-l">{lang === 'ru' ? 'Compliance-first on-prem/hybrid архитектуры' : 'Compliance-first on-prem/hybrid architectures'}</div>
+                <div className="px-3 py-3 text-accent-300 border-l">{lang === 'ru' ? 'Compliance-first on-prem/hybrid архитектуры' : 'Compliance-first on-prem/hybrid architectures'}</div>
               </div>
             </div>
           </div>
@@ -438,32 +438,32 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
       {/* 8. Practical team playbook */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Enterprise-чеклист 2.0' : 'Enterprise Checklist 2.0'}
         </h2>
         <div className="grid grid-cols-1 gap-3 text-sm">
           <div className="flex items-start gap-2.5">
-            <span className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-300 text-xs flex items-center justify-center mt-0.5">1</span>
+            <span className="w-5 h-5 rounded-full bg-accent-500/20 text-accent-300 text-xs flex items-center justify-center mt-0.5">1</span>
             <p className="text-neutral-300">{lang === 'ru' ? 'Классифицируйте workload по целям: качество, latency, цена.' : 'Classify workloads by objective: quality, latency, and cost.'}</p>
           </div>
           <div className="flex items-start gap-2.5">
-            <span className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-300 text-xs flex items-center justify-center mt-0.5">2</span>
+            <span className="w-5 h-5 rounded-full bg-accent-500/20 text-accent-300 text-xs flex items-center justify-center mt-0.5">2</span>
             <p className="text-neutral-300">{lang === 'ru' ? 'Опишите классы данных и требования к data residency.' : 'Map data classes and residency requirements.'}</p>
           </div>
           <div className="flex items-start gap-2.5">
-            <span className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-300 text-xs flex items-center justify-center mt-0.5">3</span>
+            <span className="w-5 h-5 rounded-full bg-accent-500/20 text-accent-300 text-xs flex items-center justify-center mt-0.5">3</span>
             <p className="text-neutral-300">{lang === 'ru' ? 'Выберите топологию: API, VPC, On-prem или гибрид.' : 'Choose topology: API, VPC, on-prem, or hybrid.'}</p>
           </div>
           <div className="flex items-start gap-2.5">
-            <span className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-300 text-xs flex items-center justify-center mt-0.5">4</span>
+            <span className="w-5 h-5 rounded-full bg-accent-500/20 text-accent-300 text-xs flex items-center justify-center mt-0.5">4</span>
             <p className="text-neutral-300">{lang === 'ru' ? 'Заранее задайте fallback-модели и план vendor exit.' : 'Define fallback models and a vendor-exit plan in advance.'}</p>
           </div>
           <div className="flex items-start gap-2.5">
-            <span className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-300 text-xs flex items-center justify-center mt-0.5">5</span>
+            <span className="w-5 h-5 rounded-full bg-accent-500/20 text-accent-300 text-xs flex items-center justify-center mt-0.5">5</span>
             <p className="text-neutral-300">{lang === 'ru' ? 'Поставьте eval-gates: качество, безопасность, комплаенс.' : 'Set evaluation gates for quality, safety, and compliance.'}</p>
           </div>
           <div className="flex items-start gap-2.5">
-            <span className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-300 text-xs flex items-center justify-center mt-0.5">6</span>
+            <span className="w-5 h-5 rounded-full bg-accent-500/20 text-accent-300 text-xs flex items-center justify-center mt-0.5">6</span>
             <p className="text-neutral-300">{lang === 'ru' ? 'Считайте полный TCO ежемесячно: инференс + DevOps + комплаенс.' : 'Track full monthly TCO: inference, operations, and compliance.'}</p>
           </div>
         </div>
@@ -471,7 +471,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
       {/* 9. Scenario mission intro */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Сценарная миссия: применяем карту на практике' : 'Scenario Mission: Apply the Map in Practice'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-4">
@@ -497,7 +497,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
       {/* 10. Major builders map */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Кто формирует рынок в 2026' : 'Who Shapes the Market in 2026'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-5">
@@ -514,7 +514,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
                 ? 'Сильная сквозная позиция: фронтир-модели + reasoning + API для инструментальных и агентных сценариев.'
                 : 'Strong full-stack positioning: frontier + reasoning + APIs for tool/agent workflows.'}
             </p>
-            <a href="https://developers.openai.com/api/docs/models" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">{lang === 'ru' ? 'Каталог моделей' : 'Models Catalog'}</a>
+            <a href="https://developers.openai.com/api/docs/models" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{lang === 'ru' ? 'Каталог моделей' : 'Models Catalog'}</a>
           </div>
 
           <div className="bg-card border border-border-subtle rounded-lg p-4">
@@ -524,7 +524,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
                 ? 'Фокус на hybrid reasoning и прозрачности через system cards.'
                 : 'Focus on hybrid reasoning and transparency via system cards.'}
             </p>
-            <a href="https://www.anthropic.com/system-cards" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">{lang === 'ru' ? 'Системные карточки' : 'System Cards'}</a>
+            <a href="https://www.anthropic.com/system-cards" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{lang === 'ru' ? 'Системные карточки' : 'System Cards'}</a>
           </div>
 
           <div className="bg-card border border-border-subtle rounded-lg p-4">
@@ -534,7 +534,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
                 ? 'Широкая линейка: модели высокой мощности, Flash/Flash-Lite, длинный контекст, Live voice/video и открытая линия Gemma.'
                 : 'Wide lineup: high-capability, Flash/Flash-Lite, long-context, Live voice/video, and the open Gemma family.'}
             </p>
-            <a href="https://ai.google.dev/gemini-api/docs/models" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">{lang === 'ru' ? 'Модели Gemini' : 'Gemini Models'}</a>
+            <a href="https://ai.google.dev/gemini-api/docs/models" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{lang === 'ru' ? 'Модели Gemini' : 'Gemini Models'}</a>
           </div>
 
           <div className="bg-card border border-border-subtle rounded-lg p-4">
@@ -544,7 +544,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
                 ? 'Центр open-weight экосистемы: массовое распространение весов + мультимодальные модели.'
                 : 'Core open-weight ecosystem: broad weight distribution plus multimodal model lines.'}
             </p>
-            <a href="https://ai.meta.com/blog/llama-4-multimodal-intelligence/" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">{lang === 'ru' ? 'Обзор Llama 4' : 'Llama 4 Overview'}</a>
+            <a href="https://ai.meta.com/blog/llama-4-multimodal-intelligence/" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{lang === 'ru' ? 'Обзор Llama 4' : 'Llama 4 Overview'}</a>
           </div>
 
           <div className="bg-card border border-border-subtle rounded-lg p-4">
@@ -554,7 +554,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
                 ? 'Ключевые драйверы волны open-weight и цена/качество, включая MoE и reasoning-ориентированные линии.'
                 : 'Key drivers of the open-weight and cost/performance wave, including MoE and reasoning-focused lines.'}
             </p>
-            <a href="https://api-docs.deepseek.com/" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">{lang === 'ru' ? 'Документация DeepSeek' : 'DeepSeek Docs'}</a>
+            <a href="https://api-docs.deepseek.com/" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{lang === 'ru' ? 'Документация DeepSeek' : 'DeepSeek Docs'}</a>
           </div>
 
           <div className="bg-card border border-border-subtle rounded-lg p-4">
@@ -564,14 +564,14 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
                 ? 'Разные стратегии: эффективные малые модели (Phi), enterprise RAG (Command R), agentic API с оплатой инструментов (Grok).'
                 : 'Different strategies: efficient SLMs (Phi), enterprise RAG (Command R), and tool-priced agentic APIs (Grok).'}
             </p>
-            <a href="https://docs.x.ai/developers/models" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">{lang === 'ru' ? 'Модели xAI' : 'xAI Models'}</a>
+            <a href="https://docs.x.ai/developers/models" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{lang === 'ru' ? 'Модели xAI' : 'xAI Models'}</a>
           </div>
         </div>
       </div>
 
       {/* 11. LLM infrastructure stack */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'LLM как инфраструктурный стек' : 'LLMs as an Infrastructure Stack'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-5">
@@ -610,7 +610,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
       {/* 12. Snapshot 2026 + links */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Снимок рынка 2026 + ссылки на источники' : '2026 Market Snapshot + Source Links'}
         </h2>
         <p className="text-neutral-400 text-sm mb-3">
@@ -671,14 +671,14 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
           </div>
         </div>
 
-        <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-5">
-          <h4 className="font-bold text-emerald-400 uppercase mb-3">{lang === 'ru' ? 'Рыночный паттерн 2026' : '2026 Market Pattern'}</h4>
+        <div className="bg-accent-500/5 border border-accent-500/20 rounded-xl p-5">
+          <h4 className="font-bold text-heading uppercase mb-3">{lang === 'ru' ? 'Рыночный паттерн 2026' : '2026 Market Pattern'}</h4>
           <div className="grid grid-cols-1 gap-y-2 text-neutral-300 text-sm">
             <div><span className="text-neutral-500">{lang === 'ru' ? 'Лучший универсал:' : 'Best Generalist:'}</span> OpenAI</div>
             <div><span className="text-neutral-500">{lang === 'ru' ? 'Длинные тексты:' : 'Long-form writing:'}</span> Claude</div>
             <div><span className="text-neutral-500">{lang === 'ru' ? 'Мультимодальность:' : 'Multimodal:'}</span> Gemini</div>
             <div><span className="text-neutral-500">{lang === 'ru' ? 'Цена/качество:' : 'Cost/Performance:'}</span> DeepSeek</div>
-            <div className="col-span-2 mt-2 pt-2 border-t border-emerald-500/10"><span className="text-neutral-500">{lang === 'ru' ? 'Европа + On-prem:' : 'EU + On-prem:'}</span> Mistral</div>
+            <div className="col-span-2 mt-2 pt-2 border-t border-accent-500/10"><span className="text-neutral-500">{lang === 'ru' ? 'Европа + On-prem:' : 'EU + On-prem:'}</span> Mistral</div>
           </div>
         </div>
 
@@ -687,23 +687,23 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
             {lang === 'ru' ? 'Основные ссылки из документа' : 'Primary links from the document'}
           </h4>
           <div className="grid grid-cols-1 gap-x-6 gap-y-2 text-sm">
-            <a href="https://developers.openai.com/api/docs/models" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">{lang === 'ru' ? 'Модели OpenAI' : 'OpenAI Models'}</a>
-            <a href="https://developers.openai.com/api/docs/guides/reasoning/" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">{lang === 'ru' ? 'Гайд OpenAI по reasoning' : 'OpenAI Reasoning Guide'}</a>
-            <a href="https://www.anthropic.com/claude-4-system-card" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">{lang === 'ru' ? 'System Card Claude 4' : 'Anthropic Claude 4 System Card'}</a>
-            <a href="https://ai.google.dev/gemini-api/docs/models" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">{lang === 'ru' ? 'Модели Gemini API' : 'Gemini API Models'}</a>
-            <a href="https://ai.google.dev/gemini-api/docs/long-context" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">{lang === 'ru' ? 'Long-context в Gemini' : 'Gemini Long Context'}</a>
-            <a href="https://ai.meta.com/blog/llama-4-multimodal-intelligence/" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">{lang === 'ru' ? 'Llama 4 от Meta' : 'Meta Llama 4'}</a>
-            <a href="https://api-docs.deepseek.com/" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">{lang === 'ru' ? 'API-документация DeepSeek' : 'DeepSeek API Docs'}</a>
-            <a href="https://docs.mistral.ai/getting-started/models" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">{lang === 'ru' ? 'Документация моделей Mistral' : 'Mistral Models Docs'}</a>
-            <a href="https://www.alibabacloud.com/help/en/model-studio/models" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">{lang === 'ru' ? 'Модели Alibaba Model Studio' : 'Alibaba Model Studio Models'}</a>
-            <a href="https://opensource.org/ai/open-source-ai-definition" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">{lang === 'ru' ? 'Определение Open Source AI (OSI)' : 'OSI Open Source AI Definition'}</a>
+            <a href="https://developers.openai.com/api/docs/models" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{lang === 'ru' ? 'Модели OpenAI' : 'OpenAI Models'}</a>
+            <a href="https://developers.openai.com/api/docs/guides/reasoning/" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{lang === 'ru' ? 'Гайд OpenAI по reasoning' : 'OpenAI Reasoning Guide'}</a>
+            <a href="https://www.anthropic.com/claude-4-system-card" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{lang === 'ru' ? 'System Card Claude 4' : 'Anthropic Claude 4 System Card'}</a>
+            <a href="https://ai.google.dev/gemini-api/docs/models" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{lang === 'ru' ? 'Модели Gemini API' : 'Gemini API Models'}</a>
+            <a href="https://ai.google.dev/gemini-api/docs/long-context" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{lang === 'ru' ? 'Long-context в Gemini' : 'Gemini Long Context'}</a>
+            <a href="https://ai.meta.com/blog/llama-4-multimodal-intelligence/" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{lang === 'ru' ? 'Llama 4 от Meta' : 'Meta Llama 4'}</a>
+            <a href="https://api-docs.deepseek.com/" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{lang === 'ru' ? 'API-документация DeepSeek' : 'DeepSeek API Docs'}</a>
+            <a href="https://docs.mistral.ai/getting-started/models" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{lang === 'ru' ? 'Документация моделей Mistral' : 'Mistral Models Docs'}</a>
+            <a href="https://www.alibabacloud.com/help/en/model-studio/models" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{lang === 'ru' ? 'Модели Alibaba Model Studio' : 'Alibaba Model Studio Models'}</a>
+            <a href="https://opensource.org/ai/open-source-ai-definition" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{lang === 'ru' ? 'Определение Open Source AI (OSI)' : 'OSI Open Source AI Definition'}</a>
           </div>
         </div>
       </div>
 
       {/* 13. Structural trends */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Структурные тренды 2026' : 'Structural Trends in 2026'}
         </h2>
         <div className="space-y-4 text-sm">
@@ -744,7 +744,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
       {/* 14. Summary */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Итог: 5 правил выбора модели' : 'Summary: 5 Rules for Model Selection'}
         </h2>
         <ul className="space-y-2 text-neutral-300 text-sm">

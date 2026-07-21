@@ -9,8 +9,8 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
       {/* Introduction */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-3xl font-bold mb-4 flex items-center gap-3 text-emerald-400">
-            <Info className="text-emerald-500" />
+          <h2 className="text-3xl font-bold mb-4 flex items-center gap-3 text-heading">
+            <Info className="text-accent-500" />
             {lang === 'ru' ? 'Искусство управления вниманием ИИ' : 'The Art of Attention Control'}
           </h2>
           <div className="prose prose-invert max-w-none">
@@ -31,8 +31,8 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
       {/* Components Deep Dive */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
-            <Target className="text-emerald-500" />
+          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
+            <Target className="text-accent-500" />
             {lang === 'ru' ? 'Анатомия идеального запроса (CRISPE Framework)' : 'Anatomy of an Ideal Prompt (CRISPE Framework)'}
           </h2>
           <div className="space-y-6">
@@ -43,7 +43,7 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-card p-5 rounded-lg border border-border-card">
-                <h4 className="text-emerald-400 font-bold mb-2 uppercase tracking-widest">{lang === 'ru' ? '1. Роль (Role)' : '1. Role (Persona)'}</h4>
+                <h4 className="text-heading font-bold mb-2 uppercase tracking-widest">{lang === 'ru' ? '1. Роль (Role)' : '1. Role (Persona)'}</h4>
                 <p className="text-neutral-300 leading-relaxed">
                   {lang === 'ru' 
                     ? 'Задает стартовые веса модели. "Ты — Senior Python Developer, эксперт по безопасности". Это заставляет модель активировать ту часть своей нейросети, где лежат знания высокого уровня, а не ответы для новичков.' 
@@ -51,7 +51,7 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
                 </p>
               </div>
               <div className="bg-card p-5 rounded-lg border border-border-card">
-                <h4 className="text-emerald-400 font-bold mb-2 uppercase tracking-widest">{lang === 'ru' ? '2. Инструкция (Task)' : '2. Instruction (Task)'}</h4>
+                <h4 className="text-heading font-bold mb-2 uppercase tracking-widest">{lang === 'ru' ? '2. Инструкция (Task)' : '2. Instruction (Task)'}</h4>
                 <p className="text-neutral-300 leading-relaxed">
                   {lang === 'ru' 
                     ? 'Четкое описание того, что модель должна сделать. Используйте сильные глаголы действия: "проанализируй", "классифицируй", "извлеки". Избегайте слабых слов вроде "подумай о" или "может быть напишешь".' 
@@ -59,7 +59,7 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
                 </p>
               </div>
               <div className="bg-card p-5 rounded-lg border border-border-card">
-                <h4 className="text-emerald-400 font-bold mb-2 uppercase tracking-widest">{lang === 'ru' ? '3. Контекст (Context)' : '3. Context & Constraints'}</h4>
+                <h4 className="text-heading font-bold mb-2 uppercase tracking-widest">{lang === 'ru' ? '3. Контекст (Context)' : '3. Context & Constraints'}</h4>
                 <p className="text-neutral-300 leading-relaxed">
                   {lang === 'ru' 
                     ? 'Внешние данные, правила и жесткие ограничения. "Используй только предоставленный текст. Ограничение длины — строго 50 слов. Не используй пассивный залог."' 
@@ -67,7 +67,7 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
                 </p>
               </div>
               <div className="bg-card p-5 rounded-lg border border-border-card">
-                <h4 className="text-emerald-400 font-bold mb-2 uppercase tracking-widest">{lang === 'ru' ? '4. Формат (Output Format)' : '4. Output Format'}</h4>
+                <h4 className="text-heading font-bold mb-2 uppercase tracking-widest">{lang === 'ru' ? '4. Формат (Output Format)' : '4. Output Format'}</h4>
                 <p className="text-neutral-300 leading-relaxed">
                   {lang === 'ru' 
                     ? 'Абсолютно критично для API интеграций. Описание желаемого формата: "Верни результат строго в виде JSON массива, без вступительного или заключительного текста. Ключи: title, date, score".' 
@@ -82,8 +82,8 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
       {/* System Prompt vs User Prompt */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-3xl font-bold mb-4 flex items-center gap-3 text-emerald-400">
-            <MessageSquare className="text-emerald-500" />
+          <h2 className="text-3xl font-bold mb-4 flex items-center gap-3 text-heading">
+            <MessageSquare className="text-accent-500" />
             {lang === 'ru' ? 'Системный промпт (System Prompt)' : 'The System Prompt'}
           </h2>
           <div className="prose prose-invert max-w-none">
@@ -97,7 +97,7 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
               <h4 className="font-bold text-neutral-200 uppercase mb-3 tracking-widest">{lang === 'ru' ? 'Разделение ответственности:' : 'Separation of Responsibilities:'}</h4>
               <ul className="text-neutral-400 space-y-4">
                 <li className="flex gap-4 items-start">
-                  <Terminal className="text-emerald-500 shrink-0 mt-1" size={20} />
+                  <Terminal className="text-accent-500 shrink-0 mt-1" size={20} />
                   <div>
                     <strong className="text-white block mb-1">System Prompt:</strong>
                     {lang === 'ru' ? 'Содержит Роль, Глобальные Инструкции, Формат вывода и Ограничения. Он статичен.' : 'Contains Persona, Global Instructions, Output Format, and Constraints. It is static.'}
@@ -119,8 +119,8 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
       {/* Few-shot vs Zero-shot */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-3xl font-bold mb-4 flex items-center gap-3 text-emerald-400">
-            <Zap className="text-emerald-500" />
+          <h2 className="text-3xl font-bold mb-4 flex items-center gap-3 text-heading">
+            <Zap className="text-accent-500" />
             {lang === 'ru' ? 'Zero-shot, Few-shot и Edge Cases' : 'Zero-shot, Few-shot and Edge Cases'}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
@@ -158,8 +158,8 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
       {/* Reasoning (CoT) */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-3xl font-bold mb-4 flex items-center gap-3 text-emerald-400">
-            <ListTree className="text-emerald-500" />
+          <h2 className="text-3xl font-bold mb-4 flex items-center gap-3 text-heading">
+            <ListTree className="text-accent-500" />
             {lang === 'ru' ? 'Chain of Thought (CoT): Заставьте модель "думать"' : 'Chain of Thought (CoT): Make the Model "Think"'}
           </h2>
           <div className="prose prose-invert max-w-none">
@@ -169,8 +169,8 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
                 : 'Language models "think" at the speed of token generation. If you ask a model to solve a complex math problem or logic puzzle and demand the final answer immediately, it will almost certainly fail. Why? Because it had no "time" (tokens) to compute.'}
             </p>
             <div className="bg-deep border border-border-subtle rounded-lg p-6 font-mono mb-6">
-              <p className="text-emerald-500 mb-4">{`// ${lang === 'ru' ? 'Магия одной фразы (Zero-Shot CoT)' : 'The Magic of One Phrase (Zero-Shot CoT)'}`}</p>
-              <p className="text-neutral-300 leading-relaxed text-lg border-l-4 border-emerald-500 pl-4 py-1">
+              <p className="text-accent-500 mb-4">{`// ${lang === 'ru' ? 'Магия одной фразы (Zero-Shot CoT)' : 'The Magic of One Phrase (Zero-Shot CoT)'}`}</p>
+              <p className="text-neutral-300 leading-relaxed text-lg border-l-4 border-accent-500 pl-4 py-1">
                 {lang === 'ru' 
                   ? '«Давай рассуждать пошагово»' 
                   : '«Let\'s think step by step»'}
@@ -193,8 +193,8 @@ export default function Prompting101Theory({ lang }: { lang: string }) {
       {/* Formatting & Delimiters */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-3xl font-bold mb-4 flex items-center gap-3 text-emerald-400">
-            <Code className="text-emerald-500" />
+          <h2 className="text-3xl font-bold mb-4 flex items-center gap-3 text-heading">
+            <Code className="text-accent-500" />
             {lang === 'ru' ? 'Разделители и строгий парсинг' : 'Delimiters & Strict Parsing'}
           </h2>
           <div className="prose prose-invert max-w-none">

@@ -72,12 +72,12 @@ export default function TaskWrapper({
       {children}
 
       {resolvedStatus === 'correct' && (
-        <div className="mt-3 p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-md">
-          <p className="text-xs font-bold text-emerald-400 flex items-center gap-1.5 mb-1">
+        <div className="mt-3 p-3 bg-accent-500/10 border border-accent-500/20 rounded-md">
+          <p className="text-xs font-bold text-accent-400 flex items-center gap-1.5 mb-1">
             <Check size={14} /> {successLabel}
           </p>
           {explanation && (
-            <p className="text-xs text-emerald-200/80 leading-relaxed">
+            <p className="text-xs text-accent-200/80 leading-relaxed">
               {explanation}
             </p>
           )}

@@ -149,8 +149,8 @@ export default function AiSecurityTheory({ lang }: { lang: string }) {
 
       {/* Chapter 5: Defense Strategies — Building the Firewall */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
-          <ShieldCheck className="text-emerald-500" />
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
+          <ShieldCheck className="text-accent-500" />
           {lang === 'ru' ? 'Глава 5: Стратегии защиты — Как построить ИИ-фаервол' : 'Chapter 5: Defense Strategies — Building an AI Firewall'}
         </h2>
         <div className="space-y-6">
@@ -160,10 +160,10 @@ export default function AiSecurityTheory({ lang }: { lang: string }) {
               : 'There is no "one-button" universal solution against AI attacks. Defense must be multi-layered (Defense in Depth), combining technical filters and architectural solutions.'}
           </p>
           <div className="grid grid-cols-1 gap-4">
-            <motion.div whileHover={{ scale: 1.01 }} className="p-6 rounded-xl border border-emerald-500/20 bg-emerald-500/5 flex gap-4">
-              <div className="p-3 bg-emerald-500/10 rounded-lg h-fit"><Lock size={20} className="text-emerald-500" /></div>
+            <motion.div whileHover={{ scale: 1.01 }} className="p-6 rounded-xl border border-accent-500/20 bg-accent-500/5 flex gap-4">
+              <div className="p-3 bg-accent-500/10 rounded-lg h-fit"><Lock size={20} className="text-accent-500" /></div>
               <div>
-                <h4 className="text-emerald-400 font-bold mb-2">Dual-LLM Architecture</h4>
+                <h4 className="text-heading font-bold mb-2">Dual-LLM Architecture</h4>
                 <p className=" text-neutral-400 text-sm leading-relaxed">
                   {lang === 'ru' 
                     ? 'Использование одной маленькой и строгой модели (Privileged Model) только для проверки входящих данных и фильтрации инъекций до того, как они попадут к основной мощной модели.' 

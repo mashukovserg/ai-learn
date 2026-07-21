@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI-Learn · Подбор дизайна терминала</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Ubuntu+Mono:wght@400;700&family=IBM+Plex+Mono:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Fira+Code:wght@400;500;600&family=Source+Code+Pro:wght@400;500;600&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans',system-ui,sans-serif;background:#0b0b0a;color:#e6e2da;line-height:1.5;-webkit-font-smoothing:antialiased;padding:28px 22px 60px}
+.wrap{max-width:1120px;margin:0 auto}
+
+h1{font-size:24px;font-weight:600;letter-spacing:-.02em;margin-bottom:6px}
+h1 .muted{color:#6b665e;font-weight:400}
+.lede{color:#8f8a82;font-size:13.5px;max-width:74ch;margin-bottom:6px}
+.lede a{color:#8ae234;text-decoration:none;border-bottom:1px solid rgba(138,226,52,.35)}
+.warn{color:#c9a227;font-size:12.5px;margin:10px 0 24px;padding:9px 12px;border:1px solid #3a3320;background:#191713;border-radius:8px;max-width:74ch}
+
+.controls{display:flex;flex-direction:column;gap:14px;margin-bottom:26px}
+.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.row > .lbl{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#6b665e;min-width:118px}
+
+button{font:inherit;cursor:pointer;transition:border-color .15s,color .15s,background .15s}
+.opt{background:#161615;border:1px solid #2b2926;color:#c9c4ba;border-radius:9px;padding:7px 13px;font-size:13px;text-align:left;line-height:1.15}
+.opt small{display:block;font-size:9.5px;letter-spacing:.03em;color:#6b665e;margin-top:3px}
+.opt:hover{border-color:#4a4640}
+.opt.on{border-color:#8ae234;color:#fff;background:#1b1c17}
+.opt.on small{color:#93a888}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:baseline;border:1px solid rgba(255,255,255,.14)}
+
+/* ---- preview stage: emulates the site page background ---- */
+.stage{border:1px solid #2b2926;border-radius:14px;padding:26px;transition:background .2s}
+.stage[data-page="dark"]{background:#121211}
+.stage[data-page="light"]{background:#fafafa}
+.stagenote{font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
+.stage[data-page="dark"] .stagenote{color:#57534e}
+.stage[data-page="light"] .stagenote{color:#a3a3a3}
+.proseline{font-size:14.5px;margin:0 0 16px;max-width:70ch}
+.stage[data-page="dark"] .proseline{color:#d4d0c8}
+.stage[data-page="light"] .proseline{color:#3f3f46}
+
+/* emerald site blocks — the elements the terminal must live next to */
+.chap{font-size:20px;font-weight:700;letter-spacing:-.01em;margin:0 0 14px}
+.stage[data-page="dark"] .chap{color:#34d399}
+.stage[data-page="light"] .chap{color:#047857}
+.callout{border-left:4px solid #10b981;padding:14px 18px;margin:16px 0;border-radius:0 8px 8px 0}
+.stage[data-page="dark"] .callout{background:rgba(52,211,153,.05)}
+.stage[data-page="light"] .callout{background:rgba(4,120,87,.06)}
+.callout b{display:block;font-size:13.5px;margin-bottom:5px}
+.stage[data-page="dark"] .callout b{color:#34d399}
+.stage[data-page="light"] .callout b{color:#047857}
+.callout p{font-size:13.5px;margin:0}
+.stage[data-page="dark"] .callout p{color:#a8a29e}
+.stage[data-page="light"] .callout p{color:#57534e}
+
+/* ---- the terminal element itself (mirrors src/components/Terminal.tsx) ---- */
+.term{border-radius:12px;overflow:hidden;border:1px solid var(--t-line);margin:16px 0;
+      font-family:var(--t-font);font-size:var(--t-size);line-height:1.6}
+.term-head{display:flex;align-items:center;gap:8px;padding:10px 16px;background:var(--t-head);border-bottom:1px solid var(--t-line)}
+.term-head i{width:12px;height:12px;border-radius:50%;background:var(--t-dim);display:block}
+.term-head span{margin-left:8px;font-size:12px;color:var(--t-dim)}
+.term-body{background:var(--t-bg);color:var(--t-text);padding:16px;overflow-x:auto;white-space:pre}
+.p{color:var(--t-prompt)}
+.dim{color:var(--t-dim)}
+.ok{color:var(--t-prompt)}
+.bad{color:var(--t-red)}
+.dir{color:var(--t-blue)}
+.link{color:var(--t-cyan)}
+.warnc{color:var(--t-yellow)}
+.tw{background:var(--t-prompt);color:var(--t-bg);padding:0 2px}
+
+/* ---- output ---- */
+.out{margin-top:26px}
+.outhead{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.outhead h2{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8f8a82;font-weight:600}
+.copy{background:#1b1c17;border:1px solid #3d5227;color:#8ae234;border-radius:7px;padding:5px 11px;font-size:12px}
+.copy:hover{border-color:#8ae234}
+pre.css{background:#131312;border:1px solid #2b2926;border-radius:10px;padding:16px;overflow-x:auto;
+        font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12.5px;line-height:1.7;color:#c9c4ba;user-select:all}
+pre.css .k{color:#729fcf}
+pre.css .c{color:#6b665e}
+.foot{margin-top:22px;color:#6b665e;font-size:12.5px;max-width:74ch}
+.foot code{font-family:'IBM Plex Mono',monospace;color:#c9c4ba;background:#1a1a18;padding:1px 5px;border-radius:4px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Дизайн терминала <span class="muted">· AI-Learn</span></h1>
+  <p class="lede">
+    Развилка 1 из <a href="DESIGN_FORKS.ru.md">DESIGN_FORKS.ru.md</a>. Дизайн терминала — открытое
+    решение: элемент отрисовывается в 11 комнатах, и весь его вид задаётся одним блоком токенов.
+    Здесь варианты можно сравнить глазами, а не по хексам, и забрать готовый блок для
+    <code>globals.css</code>.
+  </p>
+  <div class="warn">
+    Проверяйте оба фона страницы. Инвариант проекта: терминал остаётся тёмным <b>и в светлой теме</b> —
+    токены <code>--color-term-*</code> не переопределяются в блоке <code>[data-theme="saas"]</code>.
+  </div>
+
+  <div class="controls">
+    <div class="row"><span class="lbl">Пресет</span><span id="presets" class="row"></span></div>
+    <div class="row"><span class="lbl">Шрифт</span><span id="fonts" class="row"></span></div>
+    <div class="row"><span class="lbl">Размер</span><span id="sizes" class="row"></span></div>
+    <div class="row"><span class="lbl">Фон страницы</span><span id="pages" class="row"></span></div>
+    <div class="row"><span class="lbl">Заголовки</span><span id="headings" class="row"></span></div>
+  </div>
+
+  <div class="stage" id="stage" data-page="dark">
+    <div class="stagenote">Превью в контексте страницы комнаты — рядом зелёные блоки сайта</div>
+    <h3 class="chap">Глава 1: CLI как контур управления агентной разработкой</h3>
+    <p class="proseline">Ниже — один проход цикла discover → change → verify → commit.</p>
+
+    <div class="term">
+      <div class="term-head"><i></i><i></i><i></i><span>agent · zsh</span></div>
+      <div class="term-body"><div><span class="p">$</span> rg "validateSession" src/  <span class="dim"># discover: где живёт логика</span></div><div class="dim">src/auth/service.ts:41:  function validateSession(token)</div><div><span class="p">$</span> apply_patch service.ts  <span class="dim"># change: минимальный патч</span></div><div class="dim">patched 1 file  +6 -2</div><div><span class="p">$</span> npm run check-all  <span class="dim"># verify: линт, типы, тесты</span></div><div class="ok">✓ lint · tsc · 1706 passed</div><div><span class="p">$</span> git commit -m "fix: session ttl"  <span class="dim"># только после зелёного</span></div></div>
+    </div>
+
+    <div class="callout">
+      <b>Куда дальше</b>
+      <p>Персистентность и настройки инструмента — в комнате «Claude Code: Профессиональный воркфлоу». Это тот самый emerald-блок, рядом с которым живёт терминал.</p>
+    </div>
+
+    <p class="proseline">Проверка всей палитры: каталоги, симлинки, предупреждение и падение теста.</p>
+
+    <div class="term">
+      <div class="term-head"><i></i><i></i><i></i><span>palette · zsh</span></div>
+      <div class="term-body"><div><span class="p">$</span> ls /</div><div><span class="dir">bin   boot  etc   home  lib   opt   root  sbin  usr   var</span>  <span class="tw">tmp</span>  <span class="link">vmlinuz</span></div><div><span class="p">$</span> npm test  <span class="dim"># red → green</span></div><div class="bad">✕ formatPrice › adds currency symbol</div><div class="dim">  expected "$9.99" · received "9.99"</div><div class="warnc">! 2 flaky tests skipped</div><div class="ok">✓ 128 passed</div></div>
+    </div>
+  </div>
+
+  <div class="out">
+    <div class="outhead">
+      <h2>Блок для globals.css</h2>
+      <button class="copy" id="copy">Скопировать</button>
+    </div>
+    <pre class="css" id="cssout"></pre>
+    <p class="foot">
+      Вставьте блок в <code>@theme</code> в <code>src/app/[lang]/globals.css</code>, затем
+      <code>rm -rf .next</code> и перезапустите dev — Turbopack кэширует CSS-переменные, без чистки
+      правки тихо не применятся. Меняете выбор — обновите <code>DESIGN_FORKS.md</code> тем же коммитом
+      и не удаляйте проигравший вариант.
+    </p>
+  </div>
+
+</div>
+
+<script>
+const PRESETS = {
+  ubuntu: {
+    label: 'Ubuntu / Tango', note: 'текущий',
+    bg:'#300a24', head:'#26071c', line:'#4a1839', text:'#eeeeec', dim:'#a1889b',
+    prompt:'#8ae234', red:'#ef2929', blue:'#729fcf', cyan:'#34e2e2', yellow:'#fce94f'
+  },
+  neutral: {
+    label: 'Чёрно-серый', note: 'прежний',
+    bg:'#0d0d0d', head:'#191919', line:'#2a2a2a', text:'#d4d4d4', dim:'#6f6f6f',
+    prompt:'#34d399', red:'#f87171', blue:'#60a5fa', cyan:'#22d3ee', yellow:'#fbbf24'
+  },
+  tangogray: {
+    label: 'Tango на сером', note: 'запасной',
+    bg:'#1e1e1e', head:'#282828', line:'#3a3a3a', text:'#eeeeec', dim:'#8f8f8f',
+    prompt:'#8ae234', red:'#ef2929', blue:'#729fcf', cyan:'#34e2e2', yellow:'#fce94f'
+  },
+  tangoblack: {
+    label: 'Tango на чёрном', note: 'почти чёрный #0d0d0d',
+    bg:'#0d0d0d', head:'#191919', line:'#2a2a2a', text:'#eeeeec', dim:'#6f6f6f',
+    prompt:'#8ae234', red:'#ef2929', blue:'#729fcf', cyan:'#34e2e2', yellow:'#fce94f'
+  },
+  tangowarm: {
+    label: 'Tango на тёплом графите', note: 'в гамме сайта',
+    bg:'#1b1a18', head:'#242320', line:'#383632', text:'#eeeeec', dim:'#8a857c',
+    prompt:'#8ae234', red:'#ef2929', blue:'#729fcf', cyan:'#34e2e2', yellow:'#fce94f'
+  },
+  solarized: {
+    label: 'Solarized Dark', note: 'кандидат',
+    bg:'#002b36', head:'#01212b', line:'#073642', text:'#93a1a1', dim:'#586e75',
+    prompt:'#859900', red:'#dc322f', blue:'#268bd2', cyan:'#2aa198', yellow:'#b58900'
+  },
+  dracula: {
+    label: 'Dracula', note: 'кандидат',
+    bg:'#282a36', head:'#21222c', line:'#44475a', text:'#f8f8f2', dim:'#6272a4',
+    prompt:'#50fa7b', red:'#ff5555', blue:'#bd93f9', cyan:'#8be9fd', yellow:'#f1fa8c'
+  },
+  nord: {
+    label: 'Nord', note: 'кандидат',
+    bg:'#2e3440', head:'#272c36', line:'#3b4252', text:'#d8dee9', dim:'#7b88a1',
+    prompt:'#a3be8c', red:'#bf616a', blue:'#81a1c1', cyan:'#88c0d0', yellow:'#ebcb8b'
+  },
+  onedark: {
+    label: 'One Dark', note: 'кандидат',
+    bg:'#282c34', head:'#21252b', line:'#3e4451', text:'#abb2bf', dim:'#5c6370',
+    prompt:'#98c379', red:'#e06c75', blue:'#61afef', cyan:'#56b6c2', yellow:'#e5c07b'
+  },
+};
+
+const FONTS = {
+  ubuntu:  { label:'Ubuntu Mono',   note:'текущий', stack:"'Ubuntu Mono', ui-monospace, monospace", cssvar:'var(--font-ubuntu-mono)' },
+  plex:    { label:'IBM Plex Mono', note:'единая семья с сайтом', stack:"'IBM Plex Mono', ui-monospace, monospace", cssvar:'var(--font-plex-mono)' },
+  jetbrains:{ label:'JetBrains Mono', note:'шире, «IDE»', stack:"'JetBrains Mono', ui-monospace, monospace", cssvar:'var(--font-jetbrains-mono)' },
+  fira:    { label:'Fira Code',     note:'лигатуры',  stack:"'Fira Code', ui-monospace, monospace", cssvar:'var(--font-fira-code)' },
+  source:  { label:'Source Code Pro', note:'нейтральный', stack:"'Source Code Pro', ui-monospace, monospace", cssvar:'var(--font-source-code-pro)' },
+  system:  { label:'Системный',     note:'без загрузки', stack:"ui-monospace, 'SF Mono', Menlo, Consolas, monospace", cssvar:null },
+};
+
+const SIZES = ['13px','14px','15px'];
+
+const HEADINGS = {
+  emerald:   { label:'Изумруд',       note:'текущий',  dark:'#34d399', light:'#047857' },
+  lightgray: { label:'Светло-серый',  note:'#d4d4d4',  dark:'#d4d4d4', light:'#3f3f46' },
+  body:      { label:'Цвет текста',   note:'#e6e2da',  dark:'#e6e2da', light:'#0f0f0f' },
+  muted:     { label:'Приглушённый',  note:'#9e9e9e',  dark:'#9e9e9e', light:'#6f6f6f' },
+};
+
+let cur = { preset:'ubuntu', font:'ubuntu', size:'14px', page:'dark', heading:'emerald' };
+
+const stage = document.getElementById('stage');
+const cssout = document.getElementById('cssout');
+
+function mkBtn(container, label, note, active, onClick, swatch){
+  const b = document.createElement('button');
+  b.className = 'opt' + (active ? ' on' : '');
+  b.innerHTML = (swatch ? `<span class="dot" style="background:${swatch}"></span>` : '') +
+                label + (note ? `<small>${note}</small>` : '');
+  b.onclick = onClick;
+  container.appendChild(b);
+}
+
+function render(){
+  const p = PRESETS[cur.preset];
+  const f = FONTS[cur.font];
+
+  stage.style.setProperty('--t-bg', p.bg);
+  stage.style.setProperty('--t-head', p.head);
+  stage.style.setProperty('--t-line', p.line);
+  stage.style.setProperty('--t-text', p.text);
+  stage.style.setProperty('--t-dim', p.dim);
+  stage.style.setProperty('--t-prompt', p.prompt);
+  stage.style.setProperty('--t-red', p.red);
+  stage.style.setProperty('--t-blue', p.blue);
+  stage.style.setProperty('--t-cyan', p.cyan);
+  stage.style.setProperty('--t-yellow', p.yellow);
+  stage.style.setProperty('--t-font', f.stack);
+  stage.style.setProperty('--t-size', cur.size);
+  stage.dataset.page = cur.page;
+
+  // controls
+  const pc = document.getElementById('presets'); pc.innerHTML = '';
+  Object.entries(PRESETS).forEach(([k,v]) =>
+    mkBtn(pc, v.label, v.note, k===cur.preset, () => { cur.preset=k; render(); }, v.bg));
+  const fc = document.getElementById('fonts'); fc.innerHTML = '';
+  Object.entries(FONTS).forEach(([k,v]) =>
+    mkBtn(fc, v.label, v.note, k===cur.font, () => { cur.font=k; render(); }));
+  const sc = document.getElementById('sizes'); sc.innerHTML = '';
+  SIZES.forEach(s => mkBtn(sc, s, '', s===cur.size, () => { cur.size=s; render(); }));
+  const gc = document.getElementById('pages'); gc.innerHTML = '';
+  [['dark','Тёмная (terminal)'],['light','Светлая (saas)']].forEach(([k,l]) =>
+    mkBtn(gc, l, '', k===cur.page, () => { cur.page=k; render(); }));
+  const hc = document.getElementById('headings'); hc.innerHTML = '';
+  Object.entries(HEADINGS).forEach(([k,v]) =>
+    mkBtn(hc, v.label, v.note, k===cur.heading, () => { cur.heading=k; render(); }, v.dark));
+  const hcol = HEADINGS[cur.heading][cur.page];
+  document.querySelectorAll('.chap, .callout b').forEach(e => { e.style.color = hcol; });
+
+  // paste-ready CSS
+  const fontLine = f.cssvar
+    ? `--font-term: ${f.cssvar}, ui-monospace, "SF Mono", Menlo, Consolas, monospace;`
+    : `--font-term: ui-monospace, "SF Mono", Menlo, Consolas, monospace;`;
+  const note = f.cssvar
+    ? `\n<span class="c">/* ${f.label} подключить в layout.tsx через next/font/google,\n   сабсеты latin+cyrillic — в терминалах есть русские комментарии,\n   variable: "${f.cssvar.slice(4,-1)}" */</span>`
+    : '';
+  cssout.innerHTML =
+`<span class="c">/* Terminal — ${p.label}. Размер в компоненте: ${cur.size}.
+   НЕ переопределять в блоке [data-theme="saas"] — терминал остаётся тёмным в обеих темах. */</span>
+<span class="k">--color-term-bg</span>: ${p.bg};
+<span class="k">--color-term-head</span>: ${p.head};
+<span class="k">--color-term-line</span>: ${p.line};
+<span class="k">--color-term-text</span>: ${p.text};
+<span class="k">--color-term-dim</span>: ${p.dim};
+<span class="k">--color-term-prompt</span>: ${p.prompt};
+<span class="k">--color-term-red</span>: ${p.red};
+<span class="k">--color-term-blue</span>: ${p.blue};
+<span class="k">--color-term-cyan</span>: ${p.cyan};
+<span class="k">--color-term-yellow</span>: ${p.yellow};
+<span class="k">${fontLine.split(':')[0]}</span>:${fontLine.split(':').slice(1).join(':')}${note}`;
+}
+
+document.getElementById('copy').onclick = async () => {
+  const btn = document.getElementById('copy');
+  try {
+    await navigator.clipboard.writeText(cssout.innerText);
+    btn.textContent = 'Скопировано';
+  } catch {
+    const r = document.createRange(); r.selectNodeContents(cssout);
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    btn.textContent = 'Выделено — Cmd+C';
+  }
+  setTimeout(() => { btn.textContent = 'Скопировать'; }, 1800);
+};
+
+render();
+</script>
+</body>
+</html>

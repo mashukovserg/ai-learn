@@ -18,8 +18,8 @@ export default function FrontierEvalsTheory({ lang }: { lang: string }) {
           </p>
         </section>
 
-        <section className="bg-emerald-500/5 border border-emerald-500/20 p-6 rounded-xl my-8">
-          <h3 className="text-emerald-500 mt-0">Ключевая аналогия: Школьный экзамен vs Научное открытие</h3>
+        <section className="bg-accent-500/5 border border-accent-500/20 p-6 rounded-xl my-8">
+          <h3 className="text-heading mt-0">Ключевая аналогия: Школьный экзамен vs Научное открытие</h3>
           <p className="mb-0">
             <strong>Обычный бенчмарк:</strong> Это школьный тест по истории. Ответы известны, нужно просто их вспомнить.<br />
             <strong>Frontier Eval:</strong> Это научная лаборатория, где вам нужно решить проблему, с которой еще не сталкивался никто в мире. Здесь нечего вспоминать — нужно <em>думать</em>.
@@ -72,8 +72,8 @@ export default function FrontierEvalsTheory({ lang }: { lang: string }) {
         </p>
       </section>
 
-      <section className="bg-emerald-500/5 border border-emerald-500/20 p-6 rounded-xl my-8">
-        <h3 className="text-emerald-500 mt-0">Key Analogy: School Exam vs. Scientific Discovery</h3>
+      <section className="bg-accent-500/5 border border-accent-500/20 p-6 rounded-xl my-8">
+        <h3 className="text-heading mt-0">Key Analogy: School Exam vs. Scientific Discovery</h3>
         <p className="mb-0">
           <strong>Regular Benchmark:</strong> This is a school history test. The answers are known; you just need to recall them.<br />
           <strong>Frontier Eval:</strong> This is a scientific lab where you need to solve a problem that no one in the world has encountered yet. There is nothing to recall — you have to <em>think</em>.

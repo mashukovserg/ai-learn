@@ -76,6 +76,7 @@
   - *2026-04-05 update:* theory delivery was restructured into shorter practical blocks with explicit CLI loop model, concrete command examples, verify matrix, role split, and execution checklist.
 - [x] **AC-202: Agentic Testing Loop** (`agentic-testing-loop`) — 10 tasks; test-first prompting, regression safety, failure triage.
 - [x] **AC-203: Agentic UI Delivery** (`agentic-ui-delivery`) — 10 tasks; responsive implementation, accessibility checks, component consistency.
+- [x] **AC-204: Context Engineering 101** (`context-engineering-101`) — 12 tasks; context layers, window economics (ROI test, context rot), knowledge artifacts (rule/fact/procedure/role → constitution/index/skill/agent), hygiene cycle, compaction.
 
 ### Module C: Shipping and Team Operations
 - [ ] **AC-301: Shipping Agentic Features with Guardrails** — policy checks, red-team prompts, release gates.

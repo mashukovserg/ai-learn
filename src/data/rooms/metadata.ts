@@ -531,6 +531,20 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     icon: 'Terminal',
   },
   {
+    id: 'context-engineering-101',
+    title: { ru: 'Контекст-инжиниринг 101', en: 'Context Engineering 101' },
+    description: {
+      ru: 'Слои контекста, экономика окна, скиллы и агенты как артефакты, гигиена памяти проекта.',
+      en: 'Context layers, window economics, skills and agents as artifacts, project-memory hygiene.',
+    },
+    difficulty: 'Intermediate',
+    time: { ru: '35 мин', en: '35m' },
+    category: { ru: 'Агентная разработка', en: 'Agent Coding' },
+    image: '/images/how-llm-think-progress.png',
+    pathIds: ['agent-coding'],
+    icon: 'Layers',
+  },
+  {
     id: 'taxonomy-matching',
     title: {
       ru: 'Сопоставление вакансий с таксономией навыков',

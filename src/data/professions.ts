@@ -68,8 +68,8 @@ export const PROFESSIONS: ProfessionCard[] = [
     status: 'Core',
     progress: 12,
     icon: Brain,
-    iconColorClass: 'text-emerald-200',
-    visualClassName: 'from-emerald-500/25 via-lime-500/10 to-card',
+    iconColorClass: 'text-accent-200',
+    visualClassName: 'from-accent-500/25 via-lime-500/10 to-card',
     href: '/rooms/fine-tuning-101',
     relatedLabel: { en: 'Model adaptation', ru: 'Адаптация моделей' },
     highlights: [
@@ -174,7 +174,7 @@ export const PROFESSIONS: ProfessionCard[] = [
     progress: 7,
     icon: LineChart,
     iconColorClass: 'text-lime-200',
-    visualClassName: 'from-lime-500/25 via-emerald-500/10 to-card',
+    visualClassName: 'from-lime-500/25 via-accent-500/10 to-card',
     href: '/rooms/embeddings-101',
     relatedLabel: { en: 'Data and vectors', ru: 'Данные и векторы' },
     highlights: [

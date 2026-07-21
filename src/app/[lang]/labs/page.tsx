@@ -31,14 +31,14 @@ export default function LabsPage(props: { params: Promise<{ lang: string }> }) {
       <div className="grid grid-cols-1 gap-4">
         <Link
           href={`/${lang}/labs/prompt-compare`}
-          className="block bg-input border border-border-subtle rounded-xl p-6 hover:border-emerald-500/30 transition-colors group"
+          className="block bg-input border border-border-subtle rounded-xl p-6 hover:border-accent-500/30 transition-colors group"
         >
           <div className="flex items-start gap-4">
-            <div className="p-2.5 rounded-lg bg-emerald-500/10 text-emerald-400">
+            <div className="p-2.5 rounded-lg bg-accent-500/10 text-accent-400">
               <FlaskConical size={22} />
             </div>
             <div>
-              <h2 className="text-lg font-semibold text-neutral-200 group-hover:text-emerald-300 transition-colors">
+              <h2 className="text-lg font-semibold text-neutral-200 group-hover:text-accent-300 transition-colors">
                 {lang === 'ru' ? 'Сравнение промптов' : 'Prompt Compare'}
               </h2>
               <p className="text-sm text-neutral-500 mt-1">
@@ -58,14 +58,14 @@ export default function LabsPage(props: { params: Promise<{ lang: string }> }) {
 
         <Link
           href={`/${lang}/labs/agent-ops`}
-          className="block bg-input border border-border-subtle rounded-xl p-6 hover:border-emerald-500/30 transition-colors group"
+          className="block bg-input border border-border-subtle rounded-xl p-6 hover:border-accent-500/30 transition-colors group"
         >
           <div className="flex items-start gap-4">
-            <div className="p-2.5 rounded-lg bg-emerald-500/10 text-emerald-400">
+            <div className="p-2.5 rounded-lg bg-accent-500/10 text-accent-400">
               <Workflow size={22} />
             </div>
             <div>
-              <h2 className="text-lg font-semibold text-neutral-200 group-hover:text-emerald-300 transition-colors">
+              <h2 className="text-lg font-semibold text-neutral-200 group-hover:text-accent-300 transition-colors">
                 {lang === 'ru' ? 'Agent Ops' : 'Agent Ops'}
               </h2>
               <p className="text-sm text-neutral-500 mt-1">

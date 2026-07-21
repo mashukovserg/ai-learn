@@ -189,7 +189,7 @@ function FaqAccordion({ item, lang }: { item: FaqItem; lang: 'ru' | 'en' }) {
       {open && (
         <div className="px-5 pb-5 pt-0">
           <div className="text-sm text-neutral-400 leading-relaxed whitespace-pre-line prose prose-invert prose-sm max-w-none
-            [&_strong]:text-neutral-200 [&_code]:text-emerald-300 [&_code]:bg-emerald-500/10 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded
+            [&_strong]:text-neutral-200 [&_code]:text-accent-300 [&_code]:bg-accent-500/10 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded
             [&_table]:border-collapse [&_th]:text-left [&_th]:text-neutral-300 [&_th]:pb-2 [&_th]:pr-6 [&_td]:pr-6 [&_td]:py-1 [&_td]:text-neutral-400
             [&_h2]:text-neutral-200 [&_h2]:text-base [&_h2]:mt-0">
             <FormattedMarkdown text={item.answer[lang]} />
@@ -280,7 +280,7 @@ function FormattedMarkdown({ text }: { text: string }) {
     } else if (line.startsWith('- ')) {
       elements.push(
         <div key={i} className="flex gap-2 ml-1">
-          <span className="text-emerald-400/60 shrink-0">-</span>
+          <span className="text-accent-400/60 shrink-0">-</span>
           <span>{processInline(line.slice(2))}</span>
         </div>
       );

@@ -9,8 +9,8 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
     <>
       {/* Chapter 1: What Are Embeddings? */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
-          <Info className="text-emerald-500" />
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
+          <Info className="text-accent-500" />
           {lang === 'ru' ? 'Глава 1: Что такое эмбеддинги?' : 'Chapter 1: What Are Embeddings?'}
         </h2>
         <div className="space-y-6">
@@ -66,8 +66,8 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </div>
           </div>
 
-          <div className="bg-emerald-500/5 border-l-4 border-emerald-500 p-6 my-6">
-            <h4 className="font-bold text-emerald-400 mb-2">{lang === 'ru' ? 'Ключевая аналогия' : 'Key Analogy'}</h4>
+          <div className="bg-accent-500/5 border-l-4 border-accent-500 p-6 my-6">
+            <h4 className="font-bold text-heading mb-2">{lang === 'ru' ? 'Ключевая аналогия' : 'Key Analogy'}</h4>
             <p className="text-neutral-400 leading-relaxed">
               {lang === 'ru'
                 ? 'Эмбеддинг — это GPS-координаты для смысла. Как GPS превращает адрес «Москва, Красная площадь» в числа (55.7539, 37.6208), так эмбеддинг превращает текст в координаты в пространстве значений. Близкие по смыслу тексты — близкие точки на карте.'
@@ -79,13 +79,13 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
 
       {/* Chapter 2: From TF-IDF to Transformers */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
-          <GitCompare className="text-emerald-500" />
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
+          <GitCompare className="text-accent-500" />
           {lang === 'ru' ? 'Глава 2: От TF-IDF до трансформеров' : 'Chapter 2: From TF-IDF to Transformers'}
         </h2>
         <div className="space-y-6">
           <div className="bg-card p-5 rounded-xl border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">TF-IDF</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">TF-IDF</h4>
             <p className="text-neutral-400 leading-relaxed text-sm">
               {lang === 'ru'
                 ? 'Самый простой подход: представить документ как «мешок слов» и посчитать, какие слова встречаются часто в этом документе, но редко в корпусе. Проблема: TF-IDF не понимает семантику. «Собака» и «щенок» — абсолютно разные слова. «Автомобиль» и «машина» — тоже. Совпадение считается только по точному тексту.'
@@ -94,7 +94,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
           </div>
 
           <div className="bg-card p-5 rounded-xl border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">Word2Vec / GloVe</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">Word2Vec / GloVe</h4>
             <p className="text-neutral-400 leading-relaxed text-sm">
               {lang === 'ru'
                 ? 'Прорыв 2013-2014: каждое слово получает плотный вектор (обычно 100-300 измерений), обученный на контекстах слова в огромном корпусе. Теперь «собака» и «щенок» действительно близки в векторном пространстве. Но есть ограничение: один вектор на слово. «Банк» всегда один и тот же — что у реки, что финансовый.'
@@ -103,7 +103,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
           </div>
 
           <div className="bg-card p-5 rounded-xl border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">BERT / {lang === 'ru' ? 'Трансформерные эмбеддинги' : 'Transformer Embeddings'}</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">BERT / {lang === 'ru' ? 'Трансформерные эмбеддинги' : 'Transformer Embeddings'}</h4>
             <p className="text-neutral-400 leading-relaxed text-sm">
               {lang === 'ru'
                 ? 'С 2018 года трансформеры генерируют контекстуальные эмбеддинги: одно и то же слово получает разный вектор в зависимости от окружения. Модель «читает» всё предложение целиком через механизм внимания (attention) и формирует вектор для каждого токена с учётом всех остальных. Это радикально улучшило качество поиска и понимания текста.'
@@ -112,7 +112,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
           </div>
 
           <div className="bg-card p-5 rounded-xl border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Современные модели эмбеддингов' : 'Modern Embedding Models'}</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Современные модели эмбеддингов' : 'Modern Embedding Models'}</h4>
             <div className="space-y-2 text-sm text-neutral-400">
               <div><span className="text-neutral-300 font-medium">text-embedding-3-small (OpenAI)</span> — {lang === 'ru' ? '1536 измерений, отличное качество, платная API ($0.02/1M токенов)' : '1536 dimensions, excellent quality, paid API ($0.02/1M tokens)'}</div>
               <div><span className="text-neutral-300 font-medium">all-MiniLM-L6-v2 (sentence-transformers)</span> — {lang === 'ru' ? '384 измерения, бесплатная, можно запускать локально' : '384 dimensions, free, can run locally'}</div>
@@ -123,7 +123,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
 
           {/* Comparison table */}
           <div className="bg-card border border-border-emphasis rounded-xl p-5">
-            <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-3 block">
+            <span className="text-xs font-bold text-accent-400 uppercase tracking-widest mb-3 block">
               {lang === 'ru' ? 'Сравнение подходов' : 'Approach Comparison'}
             </span>
             <div className="overflow-x-auto">
@@ -170,8 +170,8 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
 
       {/* Chapter 3: Similarity & Distance */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
-          <Ruler className="text-emerald-500" />
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
+          <Ruler className="text-accent-500" />
           {lang === 'ru' ? 'Глава 3: Сходство и расстояние' : 'Chapter 3: Similarity & Distance'}
         </h2>
         <div className="space-y-6">
@@ -193,7 +193,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
           />
 
           <div className="bg-card p-5 rounded-xl border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Косинусное сходство (Cosine Similarity)' : 'Cosine Similarity'}</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Косинусное сходство (Cosine Similarity)' : 'Cosine Similarity'}</h4>
             <p className="text-neutral-400 leading-relaxed text-sm mb-3">
               {lang === 'ru'
                 ? 'Самая популярная метрика. Измеряет угол между двумя векторами, игнорируя их длину. Значения от -1 (противоположные) через 0 (ортогональные, не связаны) до 1 (идентичные по направлению). На практике для текстовых эмбеддингов значения обычно от 0 до 1.'
@@ -201,12 +201,12 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </p>
             <div className="bg-black/40 rounded-lg p-4 font-mono text-xs text-neutral-400">
               <div className="text-neutral-500 mb-2">cosine_similarity(A, B) = (A · B) / (||A|| × ||B||)</div>
-              <div className="text-emerald-400 mt-2">{lang === 'ru' ? '// Результат: от -1 до 1. Чем ближе к 1, тем более похожи.' : '// Result: -1 to 1. Closer to 1 = more similar.'}</div>
+              <div className="text-accent-400 mt-2">{lang === 'ru' ? '// Результат: от -1 до 1. Чем ближе к 1, тем более похожи.' : '// Result: -1 to 1. Closer to 1 = more similar.'}</div>
             </div>
           </div>
 
           <div className="bg-card p-5 rounded-xl border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Скалярное произведение (Dot Product)' : 'Dot Product'}</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Скалярное произведение (Dot Product)' : 'Dot Product'}</h4>
             <p className="text-neutral-400 leading-relaxed text-sm mb-3">
               {lang === 'ru'
                 ? 'Похоже на косинусное сходство, но учитывает длину (магнитуду) векторов. Если вектора нормализованы (длина = 1), скалярное произведение и косинусное сходство дают одинаковый результат. Используется, когда длина вектора несёт информацию (например, популярность документа).'
@@ -214,12 +214,12 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </p>
             <div className="bg-black/40 rounded-lg p-4 font-mono text-xs text-neutral-400">
               <div className="text-neutral-500 mb-2">dot_product(A, B) = Σ(Ai × Bi)</div>
-              <div className="text-emerald-400 mt-2">{lang === 'ru' ? '// Результат: не ограничен. Чем больше, тем более похожи.' : '// Result: unbounded. Higher = more similar.'}</div>
+              <div className="text-accent-400 mt-2">{lang === 'ru' ? '// Результат: не ограничен. Чем больше, тем более похожи.' : '// Result: unbounded. Higher = more similar.'}</div>
             </div>
           </div>
 
           <div className="bg-card p-5 rounded-xl border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Евклидово расстояние (L2)' : 'Euclidean Distance (L2)'}</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Евклидово расстояние (L2)' : 'Euclidean Distance (L2)'}</h4>
             <p className="text-neutral-400 leading-relaxed text-sm mb-3">
               {lang === 'ru'
                 ? 'Прямолинейное расстояние между двумя точками в векторном пространстве. Интуитивно понятно, но чувствительно к масштабу. Чем меньше расстояние, тем ближе вектора (обратная логика по сравнению с cosine similarity).'
@@ -227,13 +227,13 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </p>
             <div className="bg-black/40 rounded-lg p-4 font-mono text-xs text-neutral-400">
               <div className="text-neutral-500 mb-2">euclidean(A, B) = √(Σ(Ai - Bi)²)</div>
-              <div className="text-emerald-400 mt-2">{lang === 'ru' ? '// Результат: от 0 до ∞. Чем ближе к 0, тем более похожи.' : '// Result: 0 to ∞. Closer to 0 = more similar.'}</div>
+              <div className="text-accent-400 mt-2">{lang === 'ru' ? '// Результат: от 0 до ∞. Чем ближе к 0, тем более похожи.' : '// Result: 0 to ∞. Closer to 0 = more similar.'}</div>
             </div>
           </div>
 
           {/* When to use which */}
           <div className="bg-card border border-border-emphasis rounded-xl p-5">
-            <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-3 block">
+            <span className="text-xs font-bold text-accent-400 uppercase tracking-widest mb-3 block">
               {lang === 'ru' ? 'Когда использовать какую метрику' : 'When to Use Which Metric'}
             </span>
             <div className="overflow-x-auto">
@@ -262,8 +262,8 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </div>
           </div>
 
-          <div className="bg-emerald-500/5 border-l-4 border-emerald-500 p-6 my-6">
-            <h4 className="font-bold text-emerald-400 mb-2">{lang === 'ru' ? 'Визуальная интуиция' : 'Visual Intuition'}</h4>
+          <div className="bg-accent-500/5 border-l-4 border-accent-500 p-6 my-6">
+            <h4 className="font-bold text-heading mb-2">{lang === 'ru' ? 'Визуальная интуиция' : 'Visual Intuition'}</h4>
             <p className="text-neutral-400 leading-relaxed">
               {lang === 'ru'
                 ? 'Два документа о «машинном обучении» будут близки в векторном пространстве, даже если не делят ни одного общего слова. Один может говорить о «нейросетевых архитектурах и обратном распространении», другой — о «deep learning pipelines and gradient descent». TF-IDF скажет: 0% совпадений. Эмбеддинги скажут: это практически одна тема.'
@@ -275,8 +275,8 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
 
       {/* Chapter 4: Vector Databases */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
-          <Database className="text-emerald-500" />
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
+          <Database className="text-accent-500" />
           {lang === 'ru' ? 'Глава 4: Векторные базы данных' : 'Chapter 4: Vector Databases'}
         </h2>
         <div className="space-y-6">
@@ -287,7 +287,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
           </p>
 
           <div className="bg-card p-5 rounded-xl border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Алгоритмы приближённого поиска (ANN)' : 'Approximate Nearest Neighbor (ANN) Algorithms'}</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Алгоритмы приближённого поиска (ANN)' : 'Approximate Nearest Neighbor (ANN) Algorithms'}</h4>
             <p className="text-neutral-400 leading-relaxed text-sm mb-4">
               {lang === 'ru'
                 ? 'Точный поиск ближайшего соседа (brute force) — O(n) по каждому запросу. При миллионах документов это слишком медленно. ANN-алгоритмы жертвуют немного точностью ради скорости: вместо гарантированно ближайшего возвращают «почти наверняка ближайший» за O(log n).'
@@ -301,7 +301,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
 
           {/* Vector DB comparison */}
           <div className="bg-card border border-border-emphasis rounded-xl p-5">
-            <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-3 block">
+            <span className="text-xs font-bold text-accent-400 uppercase tracking-widest mb-3 block">
               {lang === 'ru' ? 'Сравнение векторных баз данных' : 'Vector Database Comparison'}
             </span>
             <div className="overflow-x-auto">
@@ -363,8 +363,8 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
 
       {/* Chapter 5: Chunking Strategies */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
-          <Scissors className="text-emerald-500" />
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
+          <Scissors className="text-accent-500" />
           {lang === 'ru' ? 'Глава 5: Стратегии чанкинга' : 'Chapter 5: Chunking Strategies'}
         </h2>
         <div className="space-y-6">
@@ -375,7 +375,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
           </p>
 
           <div className="bg-card p-5 rounded-xl border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Фиксированный размер' : 'Fixed-Size Chunking'}</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Фиксированный размер' : 'Fixed-Size Chunking'}</h4>
             <p className="text-neutral-400 leading-relaxed text-sm mb-3">
               {lang === 'ru'
                 ? 'Простейший подход: разрезать текст каждые N символов или токенов. Плюс — предсказуемо и просто. Минус — разрез может прийтись на середину предложения или абзаца, ломая контекст.'
@@ -389,7 +389,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
           </div>
 
           <div className="bg-card p-5 rounded-xl border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Семантический чанкинг' : 'Semantic Chunking'}</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Семантический чанкинг' : 'Semantic Chunking'}</h4>
             <p className="text-neutral-400 leading-relaxed text-sm">
               {lang === 'ru'
                 ? 'Разрезать по естественным границам: абзацы, заголовки, секции. Markdown-документы разбиваются по заголовкам (## Section). HTML — по тегам. Результат лучше, но требует понимания структуры документа.'
@@ -398,7 +398,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
           </div>
 
           <div className="bg-card p-5 rounded-xl border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Перекрывающиеся чанки (Sliding Window)' : 'Overlapping Chunks (Sliding Window)'}</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Перекрывающиеся чанки (Sliding Window)' : 'Overlapping Chunks (Sliding Window)'}</h4>
             <p className="text-neutral-400 leading-relaxed text-sm mb-3">
               {lang === 'ru'
                 ? 'Компромисс: чанки фиксированного размера, но с перекрытием. Например, чанк 512 токенов с перекрытием 50 — каждый следующий чанк начинается на 50 токенов раньше, чем закончился предыдущий. Так информация на границах не теряется.'
@@ -407,14 +407,14 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             <div className="bg-black/40 rounded-lg p-4 font-mono text-xs text-neutral-400">
               <div className="text-neutral-500 mb-2">{lang === 'ru' ? '// Sliding window: размер=512, перекрытие=50' : '// Sliding window: size=512, overlap=50'}</div>
               <div>Chunk 1: tokens[0:512]</div>
-              <div>Chunk 2: tokens[462:974]   <span className="text-emerald-400">{lang === 'ru' ? '← 50 токенов перекрытия' : '← 50 tokens overlap'}</span></div>
+              <div>Chunk 2: tokens[462:974]   <span className="text-accent-400">{lang === 'ru' ? '← 50 токенов перекрытия' : '← 50 tokens overlap'}</span></div>
               <div>Chunk 3: tokens[924:1436]</div>
             </div>
           </div>
 
           {/* Chunk size tradeoffs */}
           <div className="bg-card border border-border-emphasis rounded-xl p-5">
-            <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-3 block">
+            <span className="text-xs font-bold text-accent-400 uppercase tracking-widest mb-3 block">
               {lang === 'ru' ? 'Размер чанков по типу задачи' : 'Chunk Sizes by Use Case'}
             </span>
             <div className="overflow-x-auto">
@@ -452,8 +452,8 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </div>
           </div>
 
-          <div className="bg-emerald-500/5 border-l-4 border-emerald-500 p-6 my-6">
-            <h4 className="font-bold text-emerald-400 mb-2">{lang === 'ru' ? 'Главный трейдофф' : 'The Core Tradeoff'}</h4>
+          <div className="bg-accent-500/5 border-l-4 border-accent-500 p-6 my-6">
+            <h4 className="font-bold text-heading mb-2">{lang === 'ru' ? 'Главный трейдофф' : 'The Core Tradeoff'}</h4>
             <p className="text-neutral-400 leading-relaxed">
               {lang === 'ru'
                 ? 'Маленькие чанки = точный поиск, но теряется контекст. Большие чанки = больше контекста, но «размывается» релевантность (один абзац про тему, три абзаца нет — а эмбеддинг усреднён по всему чанку). Золотой середины не существует — нужно тестировать на ваших данных.'
@@ -465,8 +465,8 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
 
       {/* Chapter 6: Building a RAG Pipeline with Embeddings */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
-          <Workflow className="text-emerald-500" />
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
+          <Workflow className="text-accent-500" />
           {lang === 'ru' ? 'Глава 6: RAG-пайплайн на эмбеддингах' : 'Chapter 6: Building a RAG Pipeline with Embeddings'}
         </h2>
         <div className="space-y-6">
@@ -477,17 +477,17 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
           </p>
 
           <div className="bg-card p-5 rounded-xl border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Полный поток данных' : 'The Full Data Flow'}</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Полный поток данных' : 'The Full Data Flow'}</h4>
             <div className="bg-black/40 rounded-lg p-4 font-mono text-xs text-neutral-400">
               <div className="text-neutral-500 mb-3">{lang === 'ru' ? '// Фаза индексации (один раз)' : '// Indexing phase (once)'}</div>
-              <div>Document → <span className="text-emerald-400">Chunk</span> → <span className="text-emerald-400">Embed</span> → <span className="text-emerald-400">Store</span> {lang === 'ru' ? 'в векторную БД' : 'in vector DB'}</div>
+              <div>Document → <span className="text-accent-400">Chunk</span> → <span className="text-accent-400">Embed</span> → <span className="text-accent-400">Store</span> {lang === 'ru' ? 'в векторную БД' : 'in vector DB'}</div>
               <div className="mt-4 text-neutral-500 mb-3">{lang === 'ru' ? '// Фаза запроса (каждый раз)' : '// Query phase (every time)'}</div>
-              <div>User Query → <span className="text-emerald-400">Embed</span> → <span className="text-emerald-400">Search</span> vector DB → <span className="text-emerald-400">Retrieve</span> top-K → <span className="text-emerald-400">Inject</span> {lang === 'ru' ? 'в промпт' : 'into prompt'} → <span className="text-emerald-400">LLM</span> → Answer</div>
+              <div>User Query → <span className="text-accent-400">Embed</span> → <span className="text-accent-400">Search</span> vector DB → <span className="text-accent-400">Retrieve</span> top-K → <span className="text-accent-400">Inject</span> {lang === 'ru' ? 'в промпт' : 'into prompt'} → <span className="text-accent-400">LLM</span> → Answer</div>
             </div>
           </div>
 
           <div className="bg-card p-5 rounded-xl border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Ре-ранкинг: от top-100 к top-5' : 'Re-ranking: From Top-100 to Top-5'}</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Ре-ранкинг: от top-100 к top-5' : 'Re-ranking: From Top-100 to Top-5'}</h4>
             <p className="text-neutral-400 leading-relaxed text-sm mb-3">
               {lang === 'ru'
                 ? 'Bi-encoder (модель эмбеддингов) быстр, но неточен: он кодирует запрос и документы отдельно. Cross-encoder медленный, но точный: он видит запрос и документ вместе и выдаёт скор релевантности. Стратегия — достать 100 результатов быстрым bi-encoder, затем пере-ранжировать их точным cross-encoder и взять top-5.'
@@ -502,7 +502,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
           </div>
 
           <div className="bg-card p-5 rounded-xl border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Гибридный поиск: BM25 + эмбеддинги' : 'Hybrid Search: BM25 + Embeddings'}</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Гибридный поиск: BM25 + эмбеддинги' : 'Hybrid Search: BM25 + Embeddings'}</h4>
             <p className="text-neutral-400 leading-relaxed text-sm mb-3">
               {lang === 'ru'
                 ? 'Семантический поиск отлично находит смысловые совпадения, но может пропустить точные термины (названия продуктов, коды ошибок, имена). Keyword-поиск (BM25) находит точные совпадения, но не понимает синонимы. Лучший результат — комбинация обоих: сначала ищем по обоим каналам, потом объединяем результаты с весами.'
@@ -512,14 +512,14 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
               <div className="text-neutral-500 mb-2">{lang === 'ru' ? '// Гибридный поиск' : '// Hybrid search'}</div>
               <div>semantic_results = vector_db.search(query_embedding, top_k=50)</div>
               <div>keyword_results = bm25_index.search(query_text, top_k=50)</div>
-              <div className="mt-2 text-emerald-400">{lang === 'ru' ? '// Reciprocal Rank Fusion для объединения' : '// Reciprocal Rank Fusion to merge'}</div>
+              <div className="mt-2 text-accent-400">{lang === 'ru' ? '// Reciprocal Rank Fusion для объединения' : '// Reciprocal Rank Fusion to merge'}</div>
               <div>final_results = rrf_merge(semantic_results, keyword_results)</div>
             </div>
           </div>
 
           {/* Practical pseudocode */}
           <div className="bg-card p-5 rounded-xl border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Полный пример (псевдокод)' : 'Full Example (Pseudocode)'}</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Полный пример (псевдокод)' : 'Full Example (Pseudocode)'}</h4>
             <div className="bg-black/40 rounded-lg p-4 font-mono text-xs text-neutral-400 overflow-x-auto">
               <div className="text-neutral-500 mb-2">{lang === 'ru' ? '// 1. Пользователь задаёт вопрос' : '// 1. User asks a question'}</div>
               <div>query = &quot;{lang === 'ru' ? 'Как настроить автоскейлинг в Kubernetes?' : 'How to configure autoscaling in Kubernetes?'}&quot;</div>
@@ -539,8 +539,8 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
 
       {/* Chapter 7: Pitfalls and Best Practices */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
-          <AlertTriangle className="text-emerald-500" />
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
+          <AlertTriangle className="text-accent-500" />
           {lang === 'ru' ? 'Глава 7: Ошибки и лучшие практики' : 'Chapter 7: Pitfalls and Best Practices'}
         </h2>
         <div className="space-y-6">
@@ -552,7 +552,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
 
           <div className="space-y-3">
             <div className="bg-card p-5 rounded-xl border border-border-card">
-              <h4 className="text-emerald-400 font-bold mb-2">{lang === 'ru' ? 'Выбор модели важнее выбора базы данных' : 'Model Choice Matters More Than DB Choice'}</h4>
+              <h4 className="text-heading font-bold mb-2">{lang === 'ru' ? 'Выбор модели важнее выбора базы данных' : 'Model Choice Matters More Than DB Choice'}</h4>
               <p className="text-neutral-400 text-sm leading-relaxed">
                 {lang === 'ru'
                   ? 'Команды часто тратят недели на выбор между Pinecone и Qdrant, но используют первый попавшийся embedding model. Это ошибка. Разница между хорошей и плохой моделью эмбеддингов — это 20-30% качества поиска. Разница между векторными БД — обычно 1-2% при прочих равных. Сначала выбирайте модель, потом БД.'
@@ -561,7 +561,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </div>
 
             <div className="bg-card p-5 rounded-xl border border-border-card">
-              <h4 className="text-emerald-400 font-bold mb-2">{lang === 'ru' ? 'Нормализуйте эмбеддинги' : 'Normalize Your Embeddings'}</h4>
+              <h4 className="text-heading font-bold mb-2">{lang === 'ru' ? 'Нормализуйте эмбеддинги' : 'Normalize Your Embeddings'}</h4>
               <p className="text-neutral-400 text-sm leading-relaxed">
                 {lang === 'ru'
                   ? 'Если используете cosine similarity — нормализуйте вектора до единичной длины перед сохранением. Тогда cosine similarity = dot product, а dot product считается быстрее. Большинство моделей уже возвращают нормализованные вектора, но проверяйте.'
@@ -570,7 +570,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </div>
 
             <div className="bg-card p-5 rounded-xl border border-border-card">
-              <h4 className="text-emerald-400 font-bold mb-2">{lang === 'ru' ? 'Не смешивайте модели эмбеддингов' : 'Don\'t Mix Embedding Models'}</h4>
+              <h4 className="text-heading font-bold mb-2">{lang === 'ru' ? 'Не смешивайте модели эмбеддингов' : 'Don\'t Mix Embedding Models'}</h4>
               <p className="text-neutral-400 text-sm leading-relaxed">
                 {lang === 'ru'
                   ? 'Запрос и документы ДОЛЖНЫ быть закодированы одной и той же моделью. Если вы проиндексировали документы через text-embedding-ada-002, а запрос кодируете через all-MiniLM — результаты будут бессмысленными. Вектора из разных моделей живут в разных пространствах.'
@@ -579,7 +579,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </div>
 
             <div className="bg-card p-5 rounded-xl border border-border-card">
-              <h4 className="text-emerald-400 font-bold mb-2">{lang === 'ru' ? 'Фильтрация по метаданным' : 'Metadata Filtering'}</h4>
+              <h4 className="text-heading font-bold mb-2">{lang === 'ru' ? 'Фильтрация по метаданным' : 'Metadata Filtering'}</h4>
               <p className="text-neutral-400 text-sm leading-relaxed">
                 {lang === 'ru'
                   ? 'Не полагайтесь только на векторное сходство. Добавляйте метаданные (дата, категория, автор, язык) и фильтруйте до векторного поиска. Пример: если пользователь спрашивает про документацию v3, отфильтруйте чанки по version=3 перед поиском, иначе модель может найти релевантный, но устаревший ответ из v1.'
@@ -588,7 +588,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </div>
 
             <div className="bg-card p-5 rounded-xl border border-border-card">
-              <h4 className="text-emerald-400 font-bold mb-2">{lang === 'ru' ? 'Мониторинг качества поиска' : 'Monitor Retrieval Quality'}</h4>
+              <h4 className="text-heading font-bold mb-2">{lang === 'ru' ? 'Мониторинг качества поиска' : 'Monitor Retrieval Quality'}</h4>
               <p className="text-neutral-400 text-sm leading-relaxed">
                 {lang === 'ru'
                   ? 'Без метрик вы летите вслепую. Ключевые метрики: Precision@K (какая доля из top-K результатов релевантна), Recall@K (какую долю всех релевантных документов мы нашли в top-K), MRR (Mean Reciprocal Rank — насколько высоко в выдаче первый релевантный результат). Собирайте эталонный набор вопрос-ответ и тестируйте регулярно.'
@@ -597,7 +597,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </div>
 
             <div className="bg-card p-5 rounded-xl border border-border-card">
-              <h4 className="text-emerald-400 font-bold mb-2">{lang === 'ru' ? 'Стоимость на масштабе' : 'Cost at Scale'}</h4>
+              <h4 className="text-heading font-bold mb-2">{lang === 'ru' ? 'Стоимость на масштабе' : 'Cost at Scale'}</h4>
               <p className="text-neutral-400 text-sm leading-relaxed">
                 {lang === 'ru'
                   ? 'Вызовы embedding API складываются. OpenAI text-embedding-3-small стоит $0.02 за 1M токенов — звучит дёшево. Но если у вас 10M документов по 500 токенов, индексация стоит ~$100. А если данные обновляются и нужна переиндексация раз в неделю — $5000/год только на эмбеддинги. Для крупных корпусов рассмотрите self-hosted модели (sentence-transformers, fastembed) — начальные затраты на GPU, но нулевая стоимость за вызов.'

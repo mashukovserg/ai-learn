@@ -25,10 +25,10 @@ export default async function Home(props: {
       <WelcomeLine welcomeText={dict.dashboard.welcome} />
 
       {/* Continue learning — primary CTA */}
-      <section className="bg-gradient-to-br from-card to-card-dark border border-emerald-500/25 rounded-xl p-5 mb-9">
+      <section className="bg-gradient-to-br from-card to-card-dark border border-accent-500/25 rounded-xl p-5 mb-9">
         <div className="flex items-center justify-between gap-6">
           <div className="flex-1 min-w-0">
-            <p className="text-xs text-emerald-300/80 mb-1.5">
+            <p className="text-xs text-accent-300/80 mb-1.5">
               {lang === 'ru' ? 'Текущий путь' : 'Current path'}
             </p>
             <h2 className="text-base font-semibold text-neutral-200 mb-1">
@@ -43,7 +43,7 @@ export default async function Home(props: {
           <div className="flex items-center gap-3">
             <Link
               href={`/${lang}/rooms/llm-mechanics`}
-              className="px-5 py-2.5 bg-emerald-300 text-emerald-950 text-sm font-semibold rounded-md hover:bg-emerald-200 transition-colors shadow-[0_0_0_1px_rgba(16,185,129,0.35),0_10px_24px_-12px_rgba(52,211,153,0.45)] flex items-center gap-1.5 shrink-0"
+              className="px-5 py-2.5 bg-accent-300 text-accent-950 text-sm font-semibold rounded-md hover:bg-accent-200 transition-colors shadow-[0_0_0_1px_rgba(16,185,129,0.35),0_10px_24px_-12px_rgba(52,211,153,0.45)] flex items-center gap-1.5 shrink-0"
             >
               {dict.dashboard.continue} <ArrowRight size={14} />
             </Link>
@@ -70,8 +70,8 @@ export default async function Home(props: {
             const time = room.time[lang as 'en' | 'ru'];
 
             return (
-              <Link key={room.id} href={`/${lang}/rooms/${room.id}`} className="flex items-center gap-3 bg-input border border-border-subtle rounded-lg px-3.5 py-3 hover:border-emerald-500/35 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-16px_rgba(16,185,129,0.55)] transition-all group">
-                <div className="w-9 h-9 rounded-md bg-emerald-500/10 border border-emerald-500/25 text-emerald-300 flex items-center justify-center shrink-0">
+              <Link key={room.id} href={`/${lang}/rooms/${room.id}`} className="flex items-center gap-3 bg-input border border-border-subtle rounded-lg px-3.5 py-3 hover:border-accent-500/35 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-16px_rgba(16,185,129,0.55)] transition-all group">
+                <div className="w-9 h-9 rounded-md bg-accent-500/10 border border-accent-500/25 text-accent-300 flex items-center justify-center shrink-0">
                   <Icon size={16} />
                 </div>
                 <div className="flex-1 min-w-0">
@@ -101,7 +101,7 @@ export default async function Home(props: {
       {/* Curriculum link — compact */}
       <Link
         href={`/${lang}/paths`}
-        className="flex items-center justify-between bg-input border border-border-subtle rounded-lg px-4 py-2.5 hover:border-emerald-500/35 transition-colors group"
+        className="flex items-center justify-between bg-input border border-border-subtle rounded-lg px-4 py-2.5 hover:border-accent-500/35 transition-colors group"
       >
         <div>
           <h3 className="text-sm font-medium text-neutral-300 group-hover:text-neutral-100 transition-colors">

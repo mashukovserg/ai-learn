@@ -9,7 +9,7 @@ export default function LocalModels101Theory({ lang }: { lang: string }) {
     <>
       {/* Chapter 1: What Are Open Weights? */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 1: Что такое открытые веса' : 'Chapter 1: What Are Open Weights'}
         </h2>
         <div className="space-y-6">
@@ -23,8 +23,8 @@ export default function LocalModels101Theory({ lang }: { lang: string }) {
               ? 'Важно не путать открытые веса с open source. Скачивая модель, вы получаете готовые параметры — результат обучения. Но сами обучающие данные, код пайплайна и рецепты обучения компании, как правило, не публикуют. Кроме того, у каждой модели своя лицензия: одни разрешают почти всё, другие ограничивают коммерческое использование или требуют указывать происхождение модели. Перед использованием в продукте лицензию стоит прочитать — детали лицензий разобраны в комнате про Llama 3.1 8B.'
               : 'It is important not to confuse open weights with open source. When you download a model, you get the finished parameters — the result of training. The training data, pipeline code, and training recipes are usually not published. Each model also carries its own license: some allow almost anything, others restrict commercial use or require attribution. Read the license before shipping a product — the licensing details are covered in the Llama 3.1 8B room.'}
           </p>
-          <div className="bg-emerald-500/5 border-l-4 border-emerald-500 p-6 my-6">
-            <h4 className="font-bold text-emerald-400 mb-2">{lang === 'ru' ? 'Аналогия' : 'Analogy'}</h4>
+          <div className="bg-accent-500/5 border-l-4 border-accent-500 p-6 my-6">
+            <h4 className="font-bold text-heading mb-2">{lang === 'ru' ? 'Аналогия' : 'Analogy'}</h4>
             <p className="text-neutral-400 leading-relaxed">
               {lang === 'ru'
                 ? 'Облачная модель — как ресторан: вы получаете готовое блюдо, но не рецепт и не кухню. Открытые веса — как замороженный полуфабрикат из магазина: готовите дома, на своей плите, и никто не знает, что вы ели на ужин. Но рецепт (обучающие данные) производитель всё равно держит в секрете.'
@@ -36,7 +36,7 @@ export default function LocalModels101Theory({ lang }: { lang: string }) {
 
       {/* Chapter 2: Why Run Locally */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 2: Зачем запускать локально' : 'Chapter 2: Why Run Locally'}
         </h2>
         <div className="space-y-6">
@@ -63,7 +63,7 @@ export default function LocalModels101Theory({ lang }: { lang: string }) {
 
       {/* Chapter 3: The Open Model Landscape */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 3: Ландшафт открытых моделей' : 'Chapter 3: The Open Model Landscape'}
         </h2>
         <div className="space-y-6">
@@ -127,7 +127,7 @@ export default function LocalModels101Theory({ lang }: { lang: string }) {
 
       {/* Chapter 4: Your First Local Run */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 4: Первый запуск' : 'Chapter 4: Your First Local Run'}
         </h2>
         <div className="space-y-6">
@@ -151,8 +151,8 @@ export default function LocalModels101Theory({ lang }: { lang: string }) {
               { out: lang === 'ru' ? 'Париж.' : 'Paris.', tone: 'ok' },
             ]}
           />
-          <div className="bg-emerald-500/5 border-l-4 border-emerald-500 p-6 my-6">
-            <h4 className="font-bold text-emerald-400 mb-2">{lang === 'ru' ? 'Куда дальше' : 'Where to Go Next'}</h4>
+          <div className="bg-accent-500/5 border-l-4 border-accent-500 p-6 my-6">
+            <h4 className="font-bold text-heading mb-2">{lang === 'ru' ? 'Куда дальше' : 'Where to Go Next'}</h4>
             <p className="text-neutral-400 leading-relaxed">
               {lang === 'ru'
                 ? 'Подробный разбор одного конкретного запуска — с командами, сравнением Ollama, vLLM и Hugging Face Transformers и точными бюджетами памяти — ждёт в комнате «Llama 3.1 8B». Эта глава даёт общую карту; та комната — маршрут по одной дороге.'
@@ -164,7 +164,7 @@ export default function LocalModels101Theory({ lang }: { lang: string }) {
 
       {/* Chapter 5: Limits and Expectations */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 5: Пределы и ожидания' : 'Chapter 5: Limits and Expectations'}
         </h2>
         <div className="space-y-6">
@@ -183,7 +183,7 @@ export default function LocalModels101Theory({ lang }: { lang: string }) {
 
       {/* Chapter 6: Local Models in Security Research */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 6: Локальные модели в исследованиях по безопасности' : 'Chapter 6: Local Models in Security Research'}
         </h2>
         <div className="space-y-6">

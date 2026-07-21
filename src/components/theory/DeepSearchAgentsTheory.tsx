@@ -142,7 +142,7 @@ Final output format:
   return (
     <>
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Что такое «глубокий поиск» в агенте' : 'What Deep Search Means in an Agent'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-4">
@@ -159,11 +159,11 @@ Final output format:
           {lang === 'ru' ? (
             <>
               Если нужно освежить базу, вернитесь в{' '}
-              <Link href={`/${lang}/rooms/ai-agents`} className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">
+              <Link href={`/${lang}/rooms/ai-agents`} className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
                 комнату про AI-агентов
               </Link>{' '}
               и в{' '}
-              <Link href={`/${lang}/rooms/research-grounding`} className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">
+              <Link href={`/${lang}/rooms/research-grounding`} className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
                 комнату про заземление и источники
               </Link>
               .
@@ -171,11 +171,11 @@ Final output format:
           ) : (
             <>
               If you need a refresher, return to the{' '}
-              <Link href={`/${lang}/rooms/ai-agents`} className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">
+              <Link href={`/${lang}/rooms/ai-agents`} className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
                 AI Agents room
               </Link>{' '}
               and the{' '}
-              <Link href={`/${lang}/rooms/research-grounding`} className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">
+              <Link href={`/${lang}/rooms/research-grounding`} className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
                 Research & Grounding room
               </Link>
               .
@@ -185,7 +185,7 @@ Final output format:
       </div>
 
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Базовый цикл глубокого поиска' : 'Core Deep-Search Loop'}
         </h2>
         <ol className="list-decimal ml-5 space-y-3 text-neutral-300 leading-relaxed">
@@ -229,7 +229,7 @@ Final output format:
       </div>
 
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Задержка (latency) и стоимость в глубоком поиске' : 'Latency and Cost in Deep Search'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-4">
@@ -254,7 +254,7 @@ Final output format:
       </div>
 
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Критерии качества перед публикацией ответа' : 'Quality Gates Before Shipping the Answer'}
         </h2>
         <ul className="list-disc ml-5 space-y-2 text-neutral-300 leading-relaxed">
@@ -287,7 +287,7 @@ Final output format:
       </div>
 
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Мини-шаблон архитектуры' : 'Mini Architecture Template'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-4">
@@ -313,7 +313,7 @@ Final output format:
         <button
           type="button"
           onClick={handleCopyTemplate}
-          className="mt-3 inline-flex items-center px-4 py-2 rounded-md text-sm font-medium bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/20 transition-colors"
+          className="mt-3 inline-flex items-center px-4 py-2 rounded-md text-sm font-medium bg-accent-500/15 text-accent-300 border border-accent-500/30 hover:bg-accent-500/20 transition-colors"
         >
           {copyButtonLabel}
         </button>

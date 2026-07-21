@@ -7,7 +7,7 @@ export default function AgenticTestingLoopTheory({ lang }: { lang: string }) {
   return (
     <div className="space-y-8 reading-prose">
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru' ? 'Глава 1: Тесты как единственный источник истины' : 'Chapter 1: Tests as the Single Source of Truth'}
         </h2>
         <div className="space-y-4">
@@ -37,7 +37,7 @@ export default function AgenticTestingLoopTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru' ? 'Глава 2: Агентный TDD цикл (Plan-Observe-Act)' : 'Chapter 2: The Agentic TDD Loop (Plan-Observe-Act)'}
         </h2>
         <div className="space-y-4">
@@ -78,7 +78,7 @@ export default function AgenticTestingLoopTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru' ? 'Глава 3: Триаж ошибок и самоисцеление' : 'Chapter 3: Error Triage and Self-Healing'}
         </h2>
         <div className="space-y-4">
@@ -108,7 +108,7 @@ export default function AgenticTestingLoopTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru' ? 'Глава 4: Проблема Flaky-тестов и регрессии' : 'Chapter 4: The Flaky Test Problem and Regression'}
         </h2>
         <div className="space-y-4">
@@ -138,7 +138,7 @@ export default function AgenticTestingLoopTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru' ? 'Глава 5: Лимиты и эскалация' : 'Chapter 5: Limits and Escalation'}
         </h2>
         <div className="space-y-4">

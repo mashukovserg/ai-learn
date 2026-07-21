@@ -9,20 +9,53 @@
   --color-input: #1a1917;
   --color-muted: #2d2b28;
 
+  /* ============================================================
+     ACCENT RAMP — the semantic brand color. Components must use
+     `accent-*` utilities, never a literal palette name; the Vitest
+     guard in src/__tests__/design-tokens.test.ts enforces this.
+     Swapping the whole site accent = editing the values below
+     (+ the [data-theme="saas"] overrides). See docs/DESIGN_FORKS.md.
+     Shades mirror Tailwind's emerald so the migration was a no-op.
+     ============================================================ */
+  --color-accent-100: #d1fae5;
+  --color-accent-200: #a7f3d0;
+  --color-accent-300: #6ee7b7;
+  --color-accent-400: #34d399;
+  --color-accent-500: #10b981;
+  --color-accent-600: #059669;
+  --color-accent-950: #022c22;
+
+  /* Theory heading color (Fork 3, docs/DESIGN_FORKS.md) — deliberately NOT the
+     accent: chapter headings sat too close to the aubergine terminal.
+     Hierarchy is carried by size and weight; the accent stays for interactive
+     things (<Term> links, buttons, progress). Flipped for light UI below. */
+  --color-heading: #d4d4d4;
+
   /* Borders */
   --color-border-card: #2b2926;
   --color-border-subtle: #302e2b;
   --color-border-emphasis: #393733;
 
-  /* Terminal block — intentionally black-gray in BOTH themes (not overridden
-     in the [data-theme="saas"] block, so a terminal stays a terminal on light UI). */
-  --color-term-bg: #0d0d0d;
-  --color-term-head: #191919;
-  --color-term-line: #2a2a2a;
-  --color-term-text: #d4d4d4;
-  --color-term-dim: #6f6f6f;
-  --color-term-prompt: #34d399;
-  --color-term-red: #f87171;
+  /* Terminal block — Ubuntu GNOME Terminal look: the signature aubergine
+     background (#300A24) with the Tango ANSI palette, set in Ubuntu Mono
+     (--font-term). Restored 2026-07-21: the earlier gray swap was a misread of
+     the owner's intent — the clash with emerald is being solved by re-coloring
+     the HEADINGS, not the terminal (docs/DESIGN_FORKS.md, Forks 1 & 3).
+     Intentionally dark in BOTH themes — these tokens are NOT overridden in the
+     [data-theme="saas"] block, so a terminal stays a terminal on light UI. */
+  --color-term-bg: #300a24;
+  --color-term-head: #26071c;
+  --color-term-line: #4a1839;
+  --color-term-text: #eeeeec;
+  --color-term-dim: #a1889b;
+  --color-term-prompt: #8ae234;
+  --color-term-red: #ef2929;
+  --color-term-blue: #729fcf;
+  --color-term-cyan: #34e2e2;
+  --color-term-yellow: #fce94f;
+
+  /* Terminal typeface — Ubuntu Mono, loaded via next/font in layout.tsx. */
+  --font-term: var(--font-ubuntu-mono), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 
 :root {
@@ -117,6 +150,19 @@ li {
   --color-card: #ffffff;
   --color-input: #ffffff;
   --color-muted: #efefef;
+
+  /* Accent ramp darkened for contrast on light backgrounds.
+     Keep in sync with the @theme ramp above when swapping the accent. */
+  --color-accent-100: #d1fae5;
+  --color-accent-200: #064e3b;
+  --color-accent-300: #065f46;
+  --color-accent-400: #047857;
+  --color-accent-500: #059669;
+  --color-accent-600: #047857;
+  --color-accent-950: #ecfdf5;
+
+  /* Theory headings on light UI (Fork 3) */
+  --color-heading: #3f3f46;
 
   /* Hairline borders */
   --color-border-card: #e4e4e4;

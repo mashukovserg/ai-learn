@@ -11,7 +11,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
     <div className="space-y-8">
       {/* Chapter 1 */}
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru ? 'Глава 1: Что такое Agent Coding в инженерной практике' : 'Chapter 1: What Agent Coding Means in Engineering Practice'}
         </h2>
         <div className="space-y-4">
@@ -72,7 +72,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
 
       {/* Chapter 2 */}
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru ? 'Глава 2: Контракт задачи (Task Contract)' : 'Chapter 2: Task Contract'}
         </h2>
         <div className="space-y-4">
@@ -93,7 +93,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
             <p className="text-xs text-neutral-500 font-medium mb-2 uppercase tracking-wider">
               {ru ? 'Пример контракта (YAML)' : 'Contract example (YAML)'}
             </p>
-            <pre className="text-sm text-emerald-300/90 leading-relaxed overflow-x-auto whitespace-pre">
+            <pre className="text-sm text-accent-300/90 leading-relaxed overflow-x-auto whitespace-pre">
 {`task:
   goal: "Add endpoint /users"
   constraints:
@@ -136,7 +136,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
 
       {/* Chapter 3 */}
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru ? 'Глава 3: Архитектура ролей (Planner / Executor / Validator)' : 'Chapter 3: Role Architecture (Planner / Executor / Validator)'}
         </h2>
         <div className="space-y-4">
@@ -154,7 +154,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
 
           {/* Role diagram */}
           <div className="bg-deep border border-border-subtle rounded-lg p-4 my-4">
-            <pre className="text-sm text-emerald-300/90 leading-relaxed text-center">
+            <pre className="text-sm text-accent-300/90 leading-relaxed text-center">
 {`Planner → Executor → Validator
    ↑                      ↓
    └──────────────────────┘`}
@@ -177,7 +177,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
 
       {/* Chapter 4 */}
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru ? 'Глава 4: Цикл выполнения (Agent Loop)' : 'Chapter 4: The Agent Loop'}
         </h2>
         <div className="space-y-4">
@@ -198,7 +198,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
             <p className="text-xs text-neutral-500 font-medium mb-2 uppercase tracking-wider">
               {ru ? 'Состояния цикла' : 'Loop states'}
             </p>
-            <pre className="text-sm text-emerald-300/90 leading-relaxed overflow-x-auto whitespace-pre">
+            <pre className="text-sm text-accent-300/90 leading-relaxed overflow-x-auto whitespace-pre">
 {`loop:
   - plan       # decompose task into steps
   - execute    # call tools, apply changes
@@ -227,7 +227,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
 
       {/* Chapter 5 */}
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru ? 'Глава 5: Наблюдаемость и состояние (Observability)' : 'Chapter 5: Observability and State'}
         </h2>
         <div className="space-y-4">
@@ -248,7 +248,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
             <p className="text-xs text-neutral-500 font-medium mb-2 uppercase tracking-wider">
               {ru ? 'Структура записи шага' : 'Step result structure'}
             </p>
-            <pre className="text-sm text-emerald-300/90 leading-relaxed overflow-x-auto whitespace-pre">
+            <pre className="text-sm text-accent-300/90 leading-relaxed overflow-x-auto whitespace-pre">
 {`step_result:
   step_id: 3
   success: false
@@ -279,7 +279,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
 
       {/* Chapter 6 */}
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru ? 'Глава 6: Ошибки и Recovery' : 'Chapter 6: Errors and Recovery'}
         </h2>
         <div className="space-y-4">
@@ -300,7 +300,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
             <p className="text-xs text-neutral-500 font-medium mb-2 uppercase tracking-wider">
               {ru ? 'Стратегия recovery' : 'Recovery strategy'}
             </p>
-            <pre className="text-sm text-emerald-300/90 leading-relaxed overflow-x-auto whitespace-pre">
+            <pre className="text-sm text-accent-300/90 leading-relaxed overflow-x-auto whitespace-pre">
 {`recovery:
   retry:
     max_attempts: 3
@@ -318,20 +318,156 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
           <p className="text-neutral-300 leading-relaxed">
             {ru ? (
               <>
-                Порядок recovery принципиален. Сначала retry — быстрое повторение того же действия (часто помогает при транзиентных ошибках). Затем fallback — попытка решить задачу другим путем. Если и это не помогло — rollback: возврат к последнему стабильному состоянию, чтобы не копить поломки. И только когда автоматика исчерпана — escalate: человек получает контекст проблемы и принимает решение. Без этой цепочки одна ошибка может каскадно разрушить весь pipeline. Агент без recovery — это бомба замедленного действия в production.
+                Порядок recovery принципиален. Сначала retry — быстрое повторение того же действия (часто помогает при <Term id="transient-failure" lang={lang}>транзиентных ошибках</Term>). Затем fallback — попытка решить задачу другим путем. Если и это не помогло — rollback: возврат к последнему стабильному состоянию, чтобы не копить поломки. И только когда автоматика исчерпана — escalate: человек получает контекст проблемы и принимает решение. Без этой цепочки одна ошибка может каскадно разрушить весь pipeline. Агент без recovery — это бомба замедленного действия в production.
               </>
             ) : (
               <>
-                The recovery order matters. First retry — a quick repeat of the same action (often helps with transient errors). Then fallback — try solving the task a different way. If that fails too — rollback: return to the last stable state to avoid accumulating breakage. Only when automation is exhausted — escalate: a human receives problem context and makes the decision. Without this chain, one error can cascade and destroy the entire pipeline. An agent without recovery is a ticking time bomb in production.
+                The recovery order matters. First retry — a quick repeat of the same action (often helps with <Term id="transient-failure" lang={lang}>transient errors</Term>). Then fallback — try solving the task a different way. If that fails too — rollback: return to the last stable state to avoid accumulating breakage. Only when automation is exhausted — escalate: a human receives problem context and makes the decision. Without this chain, one error can cascade and destroy the entire pipeline. An agent without recovery is a ticking time bomb in production.
               </>
             )}
           </p>
+
+          <h3 className="text-lg font-bold text-heading pt-2">
+            {ru ? 'Связь с классической инженерией' : 'The Link to Classical Engineering'}
+          </h3>
+
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Цепочка retry → fallback → rollback → escalate — не изобретение LLM-инженеров и не особенность AI. Это дистиллят многолетних практик Software Engineering, Distributed Systems, DevOps и SRE — дисциплин, которые десятилетиями строят системы, где сетевые вызовы обрываются, диски умирают, а деплои ломаются. Агент с точки зрения надежности — это просто еще одна распределенная система: он вызывает внешние инструменты по сети, держит состояние и обязан переживать отказ любой из своих зависимостей.
+              </>
+            ) : (
+              <>
+                The retry → fallback → rollback → escalate chain is not an invention of LLM engineers and not an AI-specific trick. It is distilled from decades of Software Engineering, Distributed Systems, DevOps, and SRE practice — disciplines that have spent years building systems where network calls drop, disks die, and deploys break. From a reliability standpoint, an agent is just another distributed system: it calls external tools over the network, holds state, and must survive the failure of any of its dependencies.
+              </>
+            )}
+          </p>
+
+          <div className="space-y-3">
+            <div className="bg-deep border border-border-subtle rounded-lg p-4">
+              <p className="text-sm text-neutral-300 leading-relaxed">
+                <strong className="text-accent-300">retry</strong>{' — '}
+                {ru
+                  ? 'это самая простая стратегия восстановления: если действие не удалось, система не считает, что все сломалось, а просто пробует еще раз. Это помогает, когда проблема временная: сеть на секунду пропала, внешний сервис был перегружен или API ответил слишком поздно. Часто уже вторая или третья попытка оказывается успешной. Но повторять бесконечно нельзя. Поэтому между попытками делают небольшую паузу, которая с каждым разом увеличивается, а общее количество попыток заранее ограничивают (например, тремя). Иначе система может сама усугубить проблему: тысячи агентов начнут одновременно повторять запросы и еще сильнее перегрузят сервис, который и так пытается восстановиться. Именно поэтому в схеме выше указано max_attempts: 3, а не «повторять до тех пор, пока не получится».'
+                  : 'the simplest recovery strategy: if an action fails, the system does not conclude that everything is broken — it just tries again. This helps when the problem is temporary: the network dropped for a second, an external service was overloaded, or an API answered too late. Often the second or third attempt already succeeds. But you cannot retry forever. So the system waits a little between attempts, makes the pause longer each time, and caps the total number of attempts in advance (say, at three). Otherwise the system can make the problem worse: thousands of agents start retrying at once and overload a service that is already struggling to recover. That is exactly why the schema above says max_attempts: 3, not «retry until it works».'}
+              </p>
+            </div>
+            <div className="bg-deep border border-border-subtle rounded-lg p-4">
+              <p className="text-sm text-neutral-300 leading-relaxed">
+                <strong className="text-accent-300">fallback</strong>{' — '}
+                {ru ? (
+                  <>
+                    {'это запасной план. Если действие не удалось даже после повторов, система не ломится дальше в ту же дверь, а пробует другой путь: другой инструмент, запасной сервис или упрощенный режим работы — например, показать сохраненную копию данных, пока живой поиск недоступен. В классической инженерии этот прием доведен до автоматизма паттерном '}
+                    <Term id="circuit-breaker" lang={lang}>Circuit Breaker</Term>
+                    {' («предохранитель»): после серии отказов сервис временно помечается как нерабочий, и запросы сразу идут в обход — никто не тратит время на заведомо мертвое соединение. Агент, который после трех неудач переключается на alternative_test_runner из схемы выше, делает ровно то же самое.'}
+                  </>
+                ) : (
+                  <>
+                    {'the backup plan. If an action failed even after retries, the system does not keep pushing on the same door — it tries a different path: another tool, a reserve service, or a simplified mode of operation, such as showing a saved copy of the data while live search is down. Classical engineering automates this move with the '}
+                    <Term id="circuit-breaker" lang={lang}>Circuit Breaker</Term>
+                    {' pattern: after a series of failures, the service is temporarily marked as broken and requests immediately route around it — nobody wastes time on a connection that is known to be dead. An agent that switches to the alternative_test_runner from the schema above after three failures is doing exactly the same thing.'}
+                  </>
+                )}
+              </p>
+            </div>
+            <div className="bg-deep border border-border-subtle rounded-lg p-4">
+              <p className="text-sm text-neutral-300 leading-relaxed">
+                <strong className="text-accent-300">rollback</strong>{' — '}
+                {ru
+                  ? 'это возврат к последнему состоянию, которому можно доверять. Если ни повторы, ни запасной путь не помогли, худшее, что можно сделать, — продолжать работать поверх поломки: каждое следующее действие будет опираться на испорченное состояние и умножать ущерб. Поэтому система сначала откатывается назад. Так работают транзакции в базе данных (изменение либо применяется целиком, либо отменяется целиком), так разработчик возвращает код командой git reset или git revert, и так же при неудачном деплое трафик переводят обратно на предыдущую версию. Строка git reset --hard HEAD~1 в схеме — ровно это: сначала вернуться в чистое состояние, и только потом решать, что делать дальше.'
+                  : 'returning to the last state you can trust. If neither retries nor the backup path helped, the worst thing to do is to keep working on top of the breakage: every next action would build on a corrupted state and multiply the damage. So the system first rolls back. This is how database transactions work (a change either applies fully or is undone fully), how a developer reverts code with git reset or git revert, and how a failed deploy is handled by routing traffic back to the previous version. The git reset --hard HEAD~1 line in the schema is exactly that: first return to a clean state, and only then decide what to do next.'}
+              </p>
+            </div>
+            <div className="bg-deep border border-border-subtle rounded-lg p-4">
+              <p className="text-sm text-neutral-300 leading-relaxed">
+                <strong className="text-accent-300">escalate</strong>{' — '}
+                {ru ? (
+                  <>
+                    {'это честное признание, что автоматика исчерпана, и передача задачи человеку. В классической эксплуатации это называется incident response: когда система не может починить себя сама, она будит дежурного инженера. Важно, как именно она это делает. Плохой сигнал — голое «что-то сломалось». Хороший — полный контекст: что агент пытался сделать, какие попытки предпринял, что именно упало и что показывают логи. Чем полнее переданный контекст, тем быстрее человек примет решение — поэтому качество эскалации напрямую определяет скорость восстановления. В агентных системах этот же принцип называют '}
+                    <Term id="human-in-the-loop" lang={lang}>Human-in-the-Loop</Term>
+                    {'.'}
+                  </>
+                ) : (
+                  <>
+                    {'an honest admission that automation is exhausted, and a handoff of the task to a human. In classical operations this is called incident response: when a system cannot fix itself, it wakes the on-call engineer. How it does so matters. A bad signal is a bare «something broke». A good one carries the full context: what the agent was trying to do, which attempts it made, what exactly failed, and what the logs show. The fuller the handed-over context, the faster the human can decide — which is why the quality of escalation directly determines recovery speed. In agent systems the same principle is called '}
+                    <Term id="human-in-the-loop" lang={lang}>Human-in-the-Loop</Term>
+                    {'.'}
+                  </>
+                )}
+              </p>
+            </div>
+          </div>
+
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Порядок цепочки — это лестница стоимости восстановления. Retry стоит секунды и ничего не меняет в системе. Fallback дороже: другой путь, возможно, ухудшенный результат. Rollback жертвует уже сделанным прогрессом ради консистентности. Escalate — самый дорогой шаг: минуты или часы человеческого времени плюс переключение контекста. Пробуя дешевое раньше дорогого, система минимизирует ожидаемую цену восстановления. А жесткие лимиты на каждой ступени (max_attempts, триггеры эскалации) не дают отказу каскадировать: без них повторы и обходные пути сами становятся источником нагрузки, которая роняет соседние компоненты — классический сценарий каскадного сбоя из практики SRE.
+              </>
+            ) : (
+              <>
+                The order of the chain is a ladder of recovery cost. Retry costs seconds and changes nothing in the system. Fallback is pricier: a different path, possibly a degraded result. Rollback sacrifices progress already made for the sake of consistency. Escalate is the most expensive step: minutes or hours of human time plus a context switch. By trying cheap before expensive, the system minimizes the expected cost of recovery. And the hard limits at every rung (max_attempts, escalation triggers) keep a failure from cascading: without them, retries and detours themselves become a source of load that takes down neighboring components — the classic cascading-failure scenario from SRE practice.
+              </>
+            )}
+          </p>
+
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                У этой логики есть устоявшиеся имена. <strong><Term id="graceful-degradation" lang={lang}>Graceful Degradation</Term></strong> — система при отказе теряет качество, а не падает целиком. <strong><Term id="fault-tolerance" lang={lang}>Fault Tolerance</Term></strong> — архитектура, которая продолжает работу при отказе компонентов. <strong>Resilience Engineering</strong> — проектирование исходя из того, что отказы неизбежны, и главное — скорость восстановления. <strong>Self-Healing Systems</strong> — системы, которые обнаруживают и чинят сбои без человека. Агентный recovery — это применение всех четырех идей к системе, в которой «компонентом» стала LLM.
+              </>
+            ) : (
+              <>
+                This logic has established names. <strong><Term id="graceful-degradation" lang={lang}>Graceful Degradation</Term></strong> — under failure, the system loses quality instead of collapsing entirely. <strong><Term id="fault-tolerance" lang={lang}>Fault Tolerance</Term></strong> — an architecture that keeps working when components fail. <strong>Resilience Engineering</strong> — designing on the assumption that failures are inevitable and recovery speed is what matters. <strong>Self-Healing Systems</strong> — systems that detect and repair faults without a human. Agent recovery is all four ideas applied to a system where the LLM became a «component».
+              </>
+            )}
+          </p>
+
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Вывод: агентные системы не изобрели новую отказоустойчивость — они переиспользуют принципы, на которых стоят современные микросервисные архитектуры. Агент — это автономный программный компонент, и контракт у него тот же, что у хорошо спроектированного сервиса: самостоятельно обнаружить ошибку, локализовать ее, восстановиться — и только в крайнем случае передать задачу человеку, вместе с полным контекстом произошедшего.
+              </>
+            ) : (
+              <>
+                The takeaway: agent systems did not invent a new kind of fault tolerance — they reuse the principles modern microservice architectures stand on. An agent is an autonomous software component, and its contract is the same as a well-designed service: detect the error on its own, contain it, recover — and only as a last resort hand the task to a human, together with the full context of what happened.
+              </>
+            )}
+          </p>
+
+          <div className="bg-deep border border-border-subtle rounded-lg p-4">
+            <p className="text-xs text-neutral-500 font-medium mb-2 uppercase tracking-wider">
+              {ru ? 'Источники' : 'Sources'}
+            </p>
+            <ul className="text-sm text-neutral-400 space-y-1.5">
+              <li>
+                {'Microsoft Azure Architecture Center — '}
+                <a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/retry" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Retry pattern</a>
+                {', '}
+                <a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Circuit Breaker</a>
+                {', '}
+                <a href="https://learn.microsoft.com/en-us/azure/architecture/best-practices/transient-faults" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Transient fault handling</a>
+              </li>
+              <li>
+                {'Google — '}
+                <a href="https://sre.google/sre-book/table-of-contents/" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Site Reliability Engineering</a>
+                {ru ? ' (особенно глава про каскадные сбои)' : ' (see the cascading-failures chapter)'}
+              </li>
+              <li>
+                {'Martin Fowler — '}
+                <a href="https://martinfowler.com/bliki/CircuitBreaker.html" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Circuit Breaker</a>
+              </li>
+              <li>
+                {'AWS Well-Architected Framework — '}
+                <a href="https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Reliability Pillar</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
 
       {/* Chapter 7 */}
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru ? 'Глава 7: Guardrails, инструменты и антипаттерны' : 'Chapter 7: Guardrails, Tools, and Antipatterns'}
         </h2>
         <div className="space-y-4">
@@ -352,7 +488,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
             <p className="text-xs text-neutral-500 font-medium mb-2 uppercase tracking-wider">
               {ru ? 'Пример схемы инструмента' : 'Tool schema example'}
             </p>
-            <pre className="text-sm text-emerald-300/90 leading-relaxed overflow-x-auto whitespace-pre">
+            <pre className="text-sm text-accent-300/90 leading-relaxed overflow-x-auto whitespace-pre">
 {`{
   "name": "run_tests",
   "parameters": {

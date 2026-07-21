@@ -130,8 +130,8 @@ function getCoverTone(category: string) {
   }
   if (category === 'Architecture') {
     return {
-      visualClassName: 'from-emerald-500/25 via-lime-500/10 to-card',
-      iconColorClass: 'text-emerald-200',
+      visualClassName: 'from-accent-500/25 via-lime-500/10 to-card',
+      iconColorClass: 'text-accent-200',
     };
   }
   return {
@@ -141,7 +141,7 @@ function getCoverTone(category: string) {
 }
 
 function progressTone(percent: number) {
-  if (percent >= 100) return 'text-emerald-200 border-emerald-300/50 bg-emerald-500/10';
+  if (percent >= 100) return 'text-accent-200 border-accent-300/50 bg-accent-500/10';
   if (percent >= 10) return 'text-cyan-200 border-cyan-300/50 bg-cyan-500/10';
   return 'text-neutral-200 border-white/35 bg-white/5';
 }
@@ -359,7 +359,7 @@ export default function RoomsPage(props: {
                 key={room.id}
                 className={`bg-card-dark border rounded-xl overflow-hidden h-full flex flex-col transition-all duration-300 ${
                   isCompleted
-                    ? 'border-emerald-500/50 bg-emerald-500/[0.03]'
+                    ? 'border-accent-500/50 bg-accent-500/[0.03]'
                     : 'border-border-card'
                 } ${isLocked ? 'opacity-40 pointer-events-none' : 'group hover:-translate-y-1 hover:border-cyan-400/60 hover:shadow-xl'}`}
               >
@@ -397,14 +397,14 @@ export default function RoomsPage(props: {
                     ) : progressStatus !== 'not-started' ? (
                       <>
                         <span className="text-neutral-700">•</span>
-                        <span className={progressStatus === 'completed' ? 'text-emerald-300' : 'text-cyan-300'}>
+                        <span className={progressStatus === 'completed' ? 'text-accent-300' : 'text-cyan-300'}>
                           {statusLabel}
                         </span>
                       </>
                     ) : null}
                   </div>
 
-                  <h3 className={`text-[15px] font-semibold transition-colors mb-2 ${isCompleted ? 'text-emerald-300' : 'text-neutral-100 group-hover:text-white'}`}>
+                  <h3 className={`text-[15px] font-semibold transition-colors mb-2 ${isCompleted ? 'text-accent-300' : 'text-neutral-100 group-hover:text-white'}`}>
                     {title}
                   </h3>
 

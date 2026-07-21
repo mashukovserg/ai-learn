@@ -63,20 +63,20 @@ export default function TaskScenario({
   };
 
   const getScoreColor = (score: number) => {
-    if (score >= 80) return 'text-emerald-400';
+    if (score >= 80) return 'text-accent-400';
     if (score >= passingScore) return 'text-yellow-400';
     return 'text-red-400';
   };
 
   const getScoreBarColor = (score: number) => {
-    if (score >= 80) return 'bg-emerald-500';
+    if (score >= 80) return 'bg-accent-500';
     if (score >= passingScore) return 'bg-yellow-500';
     return 'bg-red-500';
   };
 
   return (
     <div className={`bg-card-dark border rounded-xl overflow-hidden mb-4 transition-all duration-500 ${
-      completed ? 'border-emerald-500/30 shadow-[0_0_20px_rgba(16,185,129,0.05)]' : 'border-border-card'
+      completed ? 'border-accent-500/30 shadow-[0_0_20px_rgba(16,185,129,0.05)]' : 'border-border-card'
     }`}>
       {image && <div className="px-4 pt-4"><TaskIllustration image={image} /></div>}
       {/* Header */}
@@ -92,7 +92,7 @@ export default function TaskScenario({
             <span className="text-xs font-medium text-neutral-300">{question}</span>
           </div>
         </div>
-        {completed && <CheckCircle2 size={16} className="text-emerald-500" />}
+        {completed && <CheckCircle2 size={16} className="text-accent-500" />}
       </div>
 
       <div className="p-5">
@@ -202,7 +202,7 @@ export default function TaskScenario({
               {/* Outcome text */}
               <div className={`rounded-lg p-4 border ${
                 selected.score >= passingScore
-                  ? 'bg-emerald-500/5 border-emerald-500/20'
+                  ? 'bg-accent-500/5 border-accent-500/20'
                   : 'bg-red-500/5 border-red-500/20'
               }`}>
                 <p className="text-sm text-neutral-300 leading-relaxed">
@@ -223,10 +223,10 @@ export default function TaskScenario({
 
               {/* Explanation (shown when completed) */}
               {completed && explanation && (
-                <div className="bg-emerald-500/[0.03] border border-emerald-500/10 rounded-lg p-4">
+                <div className="bg-accent-500/[0.03] border border-accent-500/10 rounded-lg p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
-                    <span className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">
+                    <div className="w-1.5 h-1.5 rounded-full bg-accent-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
+                    <span className="text-[10px] font-bold text-accent-500 uppercase tracking-widest">
                       {lang === 'ru' ? 'Разбор' : 'Analysis'}
                     </span>
                   </div>

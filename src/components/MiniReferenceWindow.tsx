@@ -37,7 +37,7 @@ export default function MiniReferenceWindow({
             href={linkHref}
             target="_blank"
             rel="noreferrer noopener"
-            className="inline-block mt-4 text-sm text-emerald-300 hover:text-emerald-200 underline underline-offset-4"
+            className="inline-block mt-4 text-sm text-accent-300 hover:text-accent-200 underline underline-offset-4"
           >
             {linkText}
           </a>

@@ -10,7 +10,7 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
 
       {/* Introduction */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-6 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'AI: От мечты к инфраструктуре' : 'AI: From Dream to Infrastructure'}
         </h2>
         <div className="space-y-4">
@@ -34,7 +34,7 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
 
       {/* Chapter 1 */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-6 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 1: Эра символов и правил (1950-е — 1980-е)' : 'Chapter 1: The Era of Symbols and Rules (1950s – 1980s)'}
         </h2>
         <div className="space-y-4">
@@ -45,28 +45,28 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
           </p>
 
           <div className="grid grid-cols-1 gap-4 my-6">
-            <div className="bg-deep border border-emerald-500/20 rounded-lg p-5">
-              <h4 className="text-emerald-400 font-bold mb-2">
+            <div className="bg-deep border border-accent-500/20 rounded-lg p-5">
+              <h4 className="text-heading font-bold mb-2">
                 {lang === 'ru' ? 'Дартмутский семинар (1956): бардак, финансированный вполовину' : 'The Dartmouth Workshop (1956): half-funded, mostly chaotic'}
               </h4>
               <p className="text-sm text-neutral-400 leading-relaxed">
                 {lang === 'ru' ? (
                   <>
                     {'Джон Маккарти — 28-летний математик — предложил "двухмесячное исследование ИИ" с участием десяти человек и запросил у Фонда Рокфеллера около $13 500. Куратор фонда Роберт Морисон счёл замысел расплывчатым и слишком амбициозным и одобрил лишь $7 500 — не бюрократическая случайность, а зафиксированный вотум недоверия: скепсис к AI оказался старше самого термина ('}
-                    <a href="https://doi.org/10.1109/MAHC.2010.44" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Kline 2011</a>
+                    <a href="https://doi.org/10.1109/MAHC.2010.44" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Kline 2011</a>
                     {'). Участники разъезжались и приезжали по собственному расписанию: по позднейшему признанию Маккарти, у каждого была собственная исследовательская программа — "своя идея, здоровое эго и огромный энтузиазм только к своему плану". Из семинара не вышло ни одного прорыва. Вышло название — и не случайное: разочарованный тем, как мало статей в сборнике Automata Studies (1956) касались разумного поведения машин, Маккарти новым термином "Artificial Intelligence" "прибил флаг к мачте", отмежевавшись от кибернетики и тени Норберта Винера.'}
                   </>
                 ) : (
                   <>
                     {'John McCarthy — a 28-year-old mathematician — proposed "a 2-month, 10-man study of artificial intelligence" and asked the Rockefeller Foundation for about $13,500. The foundation\'s officer Robert Morison found the plan vague and overly ambitious and approved only $7,500 — not a bureaucratic accident but a documented vote of no confidence: skepticism about AI is older than the term itself ('}
-                    <a href="https://doi.org/10.1109/MAHC.2010.44" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Kline 2011</a>
+                    <a href="https://doi.org/10.1109/MAHC.2010.44" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Kline 2011</a>
                     {'). Attendees came and went on their own schedules: by McCarthy\'s own later admission, everyone had their own research agenda — "a different idea, a hearty ego, and much enthusiasm for their own plan." No breakthrough came out of the workshop. What came out was a name — and not an accidental one: disappointed by how few papers in the Automata Studies volume (1956) dealt with intelligent machine behavior, McCarthy used the new term "Artificial Intelligence" to "nail a flag to the mast," setting his program apart from cybernetics and the shadow of Norbert Wiener.'}
                   </>
                 )}
               </p>
             </div>
-            <div className="bg-deep border border-emerald-500/20 rounded-lg p-5">
-              <h4 className="text-emerald-400 font-bold mb-2">
+            <div className="bg-deep border border-accent-500/20 rounded-lg p-5">
+              <h4 className="text-heading font-bold mb-2">
                 {lang === 'ru' ? 'Logic Theorist (1955) и волна невыполненных обещаний' : 'Logic Theorist (1955) and the wave of broken promises'}
               </h4>
               <p className="text-sm text-neutral-400 leading-relaxed">
@@ -79,8 +79,8 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
 
           <div className="bg-card border border-border-emphasis rounded-xl p-5">
             <div className="flex items-center gap-2 mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block shrink-0" />
-              <span className="font-bold text-emerald-400 uppercase tracking-widest text-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent-400 inline-block shrink-0" />
+              <span className="font-bold text-accent-400 uppercase tracking-widest text-sm">
                 {lang === 'ru' ? '"Место рождения AI": миф, собранный задним числом' : '"The birthplace of AI": a myth assembled after the fact'}
               </span>
             </div>
@@ -243,13 +243,13 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
             {lang === 'ru' ? (
               <>
                 {'Историки науки видят в этом споре больше, чем техническую дискуссию: ставка коннекционизма на обучение вместо явных правил перекликалась с более широким интеллектуальным поворотом XX века против веры в то, что сложные системы можно исчислить и спланировать сверху ('}
-                <a href="https://doi.org/10.1086/717313" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Халперн 2022: 6</a>
+                <a href="https://doi.org/10.1086/717313" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Халперн 2022: 6</a>
                 {').'}
               </>
             ) : (
               <>
                 {"Historians of science see more than a technical dispute here: connectionism's bet on learning over explicit rules echoed a broader twentieth-century turn against the belief that complex systems can be calculated and planned from above ("}
-                <a href="https://doi.org/10.1086/717313" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Halpern 2022: 6</a>
+                <a href="https://doi.org/10.1086/717313" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Halpern 2022: 6</a>
                 {').'}
               </>
             )}
@@ -428,7 +428,7 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
       </div>
 
       {/* Final Summary */}
-      <div className="bg-gradient-to-br from-emerald-500/10 to-blue-500/10 border border-emerald-500/20 rounded-xl p-8">
+      <div className="bg-gradient-to-br from-accent-500/10 to-blue-500/10 border border-accent-500/20 rounded-xl p-8">
         <h3 className="text-xl font-bold mb-3 text-white">
           {lang === 'ru' ? 'Зачем инженеру учить историю AI?' : 'Why Should an Engineer Study AI History?'}
         </h3>

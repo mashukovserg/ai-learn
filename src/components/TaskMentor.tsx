@@ -53,14 +53,14 @@ export default function TaskMentor({
 
   return (
     <div className={`bg-card-dark border rounded-xl overflow-hidden mb-4 transition-all duration-500 ${
-      completed ? 'border-emerald-500/30 shadow-[0_0_20px_rgba(16,185,129,0.05)]' : 'border-border-card'
+      completed ? 'border-accent-500/30 shadow-[0_0_20px_rgba(16,185,129,0.05)]' : 'border-border-card'
     }`}>
       {image && <div className="px-4 pt-4"><TaskIllustration image={image} /></div>}
       {/* Header */}
       <div className="bg-card px-4 py-3 border-b border-border-card flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
-            <MessageSquare size={14} className="text-emerald-500" />
+          <div className="w-8 h-8 rounded-full bg-accent-500/10 flex items-center justify-center border border-accent-500/20">
+            <MessageSquare size={14} className="text-accent-500" />
           </div>
           <div>
             <span className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest block leading-none mb-1">
@@ -71,7 +71,7 @@ export default function TaskMentor({
             </span>
           </div>
         </div>
-        {completed && <CheckCircle2 size={16} className="text-emerald-500" />}
+        {completed && <CheckCircle2 size={16} className="text-accent-500" />}
       </div>
 
       <div className="p-5">
@@ -98,13 +98,13 @@ export default function TaskMentor({
                   <button
                     key={idx}
                     onClick={() => handleSelect(option)}
-                    className="text-left p-3.5 rounded-xl border border-border-card bg-base hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all group relative overflow-hidden"
+                    className="text-left p-3.5 rounded-xl border border-border-card bg-base hover:border-accent-500/40 hover:bg-accent-500/5 transition-all group relative overflow-hidden"
                   >
                     <div className="relative z-10 flex items-center justify-between gap-3">
                       <span className="text-sm text-neutral-400 group-hover:text-neutral-200 transition-colors">
                         {option.text}
                       </span>
-                      <ArrowRight size={14} className="text-neutral-700 group-hover:text-emerald-500 transition-colors shrink-0" />
+                      <ArrowRight size={14} className="text-neutral-700 group-hover:text-accent-500 transition-colors shrink-0" />
                     </div>
                   </button>
                 ))}
@@ -121,10 +121,10 @@ export default function TaskMentor({
             >
               {/* User message */}
               <div className="flex gap-4 items-start justify-end">
-                <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-2xl rounded-tr-none p-4 text-sm text-emerald-100 leading-relaxed max-w-[85%]">
+                <div className="bg-accent-500/10 border border-accent-500/20 rounded-2xl rounded-tr-none p-4 text-sm text-accent-100 leading-relaxed max-w-[85%]">
                   {selectedOption.text}
                 </div>
-                <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex-shrink-0 flex items-center justify-center text-xs font-bold text-emerald-400 border border-emerald-500/30">
+                <div className="w-8 h-8 rounded-full bg-accent-500/20 flex-shrink-0 flex items-center justify-center text-xs font-bold text-accent-400 border border-accent-500/30">
                   U
                 </div>
               </div>
@@ -141,7 +141,7 @@ export default function TaskMentor({
                     {selectedOption.isCorrect ? (
                       <button
                         onClick={() => setStep('deepening')}
-                        className="px-4 py-1.5 bg-emerald-500 text-black text-xs font-bold rounded-lg hover:bg-emerald-400 transition-colors flex items-center gap-1.5"
+                        className="px-4 py-1.5 bg-accent-500 text-black text-xs font-bold rounded-lg hover:bg-accent-400 transition-colors flex items-center gap-1.5"
                       >
                         {lang === 'ru' ? 'Углубиться' : 'Go deeper'} <ArrowRight size={14} />
                       </button>
@@ -164,11 +164,11 @@ export default function TaskMentor({
               key="deepening"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="bg-emerald-500/[0.03] border border-emerald-500/10 rounded-xl p-5"
+              className="bg-accent-500/[0.03] border border-accent-500/10 rounded-xl p-5"
             >
               <div className="flex items-center gap-2 mb-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
-                <span className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">
+                <div className="w-1.5 h-1.5 rounded-full bg-accent-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
+                <span className="text-[10px] font-bold text-accent-500 uppercase tracking-widest">
                   {lang === 'ru' ? 'Инсайт' : 'Insight'}
                 </span>
               </div>

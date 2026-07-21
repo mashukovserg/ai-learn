@@ -63,7 +63,7 @@ export default function LoginPage() {
             value={email}
             onChange={e => setEmail(e.target.value)}
             required
-            className="w-full px-3 py-2 bg-input border border-border-subtle rounded-md text-sm text-neutral-300 placeholder:text-neutral-600 outline-none focus:border-emerald-500/50"
+            className="w-full px-3 py-2 bg-input border border-border-subtle rounded-md text-sm text-neutral-300 placeholder:text-neutral-600 outline-none focus:border-accent-500/50"
           />
         )}
         <input
@@ -72,7 +72,7 @@ export default function LoginPage() {
           value={loginVal}
           onChange={e => setLoginVal(e.target.value)}
           required
-          className="w-full px-3 py-2 bg-input border border-border-subtle rounded-md text-sm text-neutral-300 placeholder:text-neutral-600 outline-none focus:border-emerald-500/50"
+          className="w-full px-3 py-2 bg-input border border-border-subtle rounded-md text-sm text-neutral-300 placeholder:text-neutral-600 outline-none focus:border-accent-500/50"
         />
         <input
           type="password"
@@ -80,7 +80,7 @@ export default function LoginPage() {
           value={password}
           onChange={e => setPassword(e.target.value)}
           required
-          className="w-full px-3 py-2 bg-input border border-border-subtle rounded-md text-sm text-neutral-300 placeholder:text-neutral-600 outline-none focus:border-emerald-500/50"
+          className="w-full px-3 py-2 bg-input border border-border-subtle rounded-md text-sm text-neutral-300 placeholder:text-neutral-600 outline-none focus:border-accent-500/50"
         />
 
         {error && (
@@ -90,7 +90,7 @@ export default function LoginPage() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full py-2.5 bg-emerald-300 text-emerald-950 text-sm font-semibold rounded-md hover:bg-emerald-200 transition-colors disabled:opacity-50"
+          className="w-full py-2.5 bg-accent-300 text-accent-950 text-sm font-semibold rounded-md hover:bg-accent-200 transition-colors disabled:opacity-50"
         >
           {loading ? '...' : t.submit}
         </button>
@@ -101,7 +101,7 @@ export default function LoginPage() {
         <button
           type="button"
           onClick={() => { setIsSignup(!isSignup); setError(''); }}
-          className="text-emerald-300 hover:text-emerald-200 transition-colors"
+          className="text-accent-300 hover:text-accent-200 transition-colors"
         >
           {t.switchAction}
         </button>

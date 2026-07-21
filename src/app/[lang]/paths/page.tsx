@@ -33,10 +33,10 @@ export default async function PathsPage(props: {
           return (
             <div
               key={path.id}
-              className={`group bg-input border rounded-lg p-6 flex flex-col md:flex-row items-center gap-6 transition-colors ${path.unlocked ? 'border-border-subtle hover:border-emerald-500/35' : 'border-border-subtle opacity-50 cursor-not-allowed'}`}
+              className={`group bg-input border rounded-lg p-6 flex flex-col md:flex-row items-center gap-6 transition-colors ${path.unlocked ? 'border-border-subtle hover:border-accent-500/35' : 'border-border-subtle opacity-50 cursor-not-allowed'}`}
             >
               <div className={`w-14 h-14 rounded-lg flex items-center justify-center ${
-                path.unlocked ? 'bg-emerald-500/10 text-emerald-300 border border-emerald-500/25' : 'bg-white/5 text-neutral-400'
+                path.unlocked ? 'bg-accent-500/10 text-accent-300 border border-accent-500/25' : 'bg-white/5 text-neutral-400'
               }`}>
                 <Icon size={28} />
               </div>
@@ -56,7 +56,7 @@ export default async function PathsPage(props: {
                 {path.unlocked ? (
                   <Link
                     href={`/${lang}/paths/${path.id}`}
-                    className="px-5 py-2 bg-emerald-300 text-emerald-950 text-sm font-semibold rounded-md flex items-center gap-2 hover:bg-emerald-200 transition-colors shadow-[0_0_0_1px_rgba(16,185,129,0.35),0_10px_24px_-12px_rgba(52,211,153,0.45)]"
+                    className="px-5 py-2 bg-accent-300 text-accent-950 text-sm font-semibold rounded-md flex items-center gap-2 hover:bg-accent-200 transition-colors shadow-[0_0_0_1px_rgba(16,185,129,0.35),0_10px_24px_-12px_rgba(52,211,153,0.45)]"
                   >
                     {lang === 'ru' ? 'Начать путь' : 'Start Path'} <ArrowRight size={16} />
                   </Link>

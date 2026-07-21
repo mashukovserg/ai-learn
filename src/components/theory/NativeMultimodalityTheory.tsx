@@ -9,8 +9,8 @@ export default function NativeMultimodalityTheory({ lang }: { lang: string }) {
     <>
       {/* Chapter 1: Beyond Text */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
-          <Share2 className="text-emerald-500" />
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
+          <Share2 className="text-accent-500" />
           {lang === 'ru' ? 'Глава 1: От "текстоцентризма" к единому восприятию' : 'Chapter 1: From Text-Centrism to Unified Perception'}
         </h2>
         <div className="space-y-6">
@@ -24,8 +24,8 @@ export default function NativeMultimodalityTheory({ lang }: { lang: string }) {
               ? <><Term id="multimodality">Нативная мультимодальность</Term> {' (Native Multimodality) — это архитектурная революция. Это означает, что модель изначально, с первого дня обучения, видит разные типы данных одновременно. В её нейронной сети нет отдельного "глаза" или "уха". Для такой системы пиксели изображения, звуковые волны и буквы текста — это равноправные сигналы, которые превращаются в единую математическую систему координат (Latent Space). Модель не переводит картинку в текст, она воспринимает её напрямую.'}</>
               : <><Term id="multimodality">Native Multimodality</Term> {' is an architectural revolution. It means the model, from day one of training, sees different types of data simultaneously. There is no separate "eye" or "ear" in its neural network. For such a system, image pixels, sound waves, and text characters are equal signals that are transformed into a single mathematical coordinate system (Latent Space). The model does not translate an image into text; it perceives it directly.'}</>}
           </p>
-          <div className="bg-card border border-emerald-500/20 rounded-2xl p-6 my-8">
-            <h4 className="text-emerald-400 font-bold mb-3 flex items-center gap-2">
+          <div className="bg-card border border-accent-500/20 rounded-2xl p-6 my-8">
+            <h4 className="text-heading font-bold mb-3 flex items-center gap-2">
               <Zap size={18} /> {lang === 'ru' ? 'В чем разница для пользователя?' : 'What is the difference for the user?'}
             </h4>
             <p className="text-neutral-400 leading-relaxed">
@@ -39,8 +39,8 @@ export default function NativeMultimodalityTheory({ lang }: { lang: string }) {
 
       {/* Chapter 2: How Vision Works — Image Patches */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
-          <Camera className="text-emerald-500" />
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
+          <Camera className="text-accent-500" />
           {lang === 'ru' ? 'Глава 2: Анатомия зрения — ИИ видит мир патчами' : 'Chapter 2: Anatomy of Vision — AI Sees the World in Patches'}
         </h2>
         <div className="space-y-6">
@@ -52,7 +52,7 @@ export default function NativeMultimodalityTheory({ lang }: { lang: string }) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
             <div className="bg-deep p-6 rounded-xl border border-border-card relative overflow-hidden">
                <div className="absolute top-0 right-0 p-4 opacity-5"><Layers size={48} /></div>
-               <h4 className="font-bold text-emerald-500 mb-3 uppercase tracking-tighter">{lang === 'ru' ? 'Визуальные токены' : 'Visual Tokens'}</h4>
+               <h4 className="font-bold text-heading mb-3 uppercase tracking-tighter">{lang === 'ru' ? 'Визуальные токены' : 'Visual Tokens'}</h4>
                <p className=" text-neutral-400 text-sm leading-relaxed">
                  {lang === 'ru'
                    ? 'Каждый квадрат (патч) проходит через линейный слой, который "схлопывает" его в длинный список чисел — вектор. Эти векторы подаются в модель точно так же, как текстовые токены. Для трансформера нет разницы: пришло ли к нему слово "кошка" или патч, содержащий край кошачьего уха. Оба являются точками в пространстве смыслов.'
@@ -61,7 +61,7 @@ export default function NativeMultimodalityTheory({ lang }: { lang: string }) {
             </div>
             <div className="bg-deep p-6 rounded-xl border border-border-card relative overflow-hidden">
                <div className="absolute top-0 right-0 p-4 opacity-5"><Cpu size={48} /></div>
-               <h4 className="font-bold text-emerald-500 mb-3 uppercase tracking-tighter">{lang === 'ru' ? 'Пространственное внимание' : 'Spatial Attention'}</h4>
+               <h4 className="font-bold text-heading mb-3 uppercase tracking-tighter">{lang === 'ru' ? 'Пространственное внимание' : 'Spatial Attention'}</h4>
                <p className=" text-neutral-400 text-sm leading-relaxed">
                  {lang === 'ru'
                    ? 'Поскольку модель обрабатывает все патчи одновременно, она может вычислять зависимости между ними. Она понимает, что патч с глазом находится над патчем с носом. Это дает ИИ глубокое понимание геометрии и пространства. Вы можете спросить: "Что находится слева от красной чашки?", и модель, анализируя связи патчей, даст точный ответ.'
@@ -79,8 +79,8 @@ export default function NativeMultimodalityTheory({ lang }: { lang: string }) {
 
       {/* Chapter 3: Native Audio — The Spectrum of Sound */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
-          <Waves className="text-emerald-500" />
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
+          <Waves className="text-accent-500" />
           {lang === 'ru' ? 'Глава 3: Звук как смысл — Магия нативного аудио' : 'Chapter 3: Sound as Meaning — The Magic of Native Audio'}
         </h2>
         <div className="space-y-6">
@@ -107,7 +107,7 @@ export default function NativeMultimodalityTheory({ lang }: { lang: string }) {
                 </div>
               </div>
               <div className="flex gap-4">
-                <div className="w-10 h-10 rounded bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20"><AudioLines size={18} className="text-emerald-500" /></div>
+                <div className="w-10 h-10 rounded bg-accent-500/10 flex items-center justify-center shrink-0 border border-accent-500/20"><AudioLines size={18} className="text-accent-500" /></div>
                 <div>
                   <p className="text-white font-bold mb-1">{lang === 'ru' ? 'Контекст окружения' : 'Environmental Context'}</p>
                   <p className="text-neutral-500 text-sm leading-relaxed">{lang === 'ru' ? 'ИИ слышит то же, что и вы: лай собаки, шум дождя за окном или музыку в кафе. Это позволяет ему быть по-настоящему контекстным: "О, я слышу, у тебя идет дождь, не забудь зонт!"' : 'The AI hears what you hear: a dog barking, the sound of rain outside, or music in a cafe. This allows it to be truly contextual: "Oh, I hear it\'s raining where you are, don\'t forget an umbrella!"'}</p>
@@ -120,8 +120,8 @@ export default function NativeMultimodalityTheory({ lang }: { lang: string }) {
 
       {/* Chapter 4: Interleaving — The Magic of Mixing */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
-          <Workflow className="text-emerald-500" />
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
+          <Workflow className="text-accent-500" />
           {lang === 'ru' ? 'Глава 4: Interleaving — Искусство смешивания данных' : 'Chapter 4: Interleaving — The Art of Data Mixing'}
         </h2>
         <div className="space-y-6">
@@ -134,7 +134,7 @@ export default function NativeMultimodalityTheory({ lang }: { lang: string }) {
              <h4 className="text-sm font-bold text-neutral-500 uppercase mb-4">{lang === 'ru' ? 'Пример мультимодального промпта:' : 'Example of a multimodal prompt:'}</h4>
              <div className="flex flex-wrap gap-3 items-center">
                 <span className="px-3 py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-xs flex items-center gap-2"><MessageSquare size={12} /> {lang === 'ru' ? 'Текст: Посмотри на этот график' : 'Text: Look at this chart'}</span>
-                <span className="px-3 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 text-xs flex items-center gap-2"><ImageIcon size={12} /> {lang === 'ru' ? 'Картинка: sales_2024.png' : 'Image: sales_2024.png'}</span>
+                <span className="px-3 py-1.5 bg-accent-500/10 border border-accent-500/20 rounded-full text-accent-400 text-xs flex items-center gap-2"><ImageIcon size={12} /> {lang === 'ru' ? 'Картинка: sales_2024.png' : 'Image: sales_2024.png'}</span>
                 <span className="px-3 py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-xs flex items-center gap-2"><MessageSquare size={12} /> {lang === 'ru' ? 'Текст: И послушай мои комментарии' : 'Text: And listen to my comments'}</span>
                 <span className="px-3 py-1.5 bg-purple-500/10 border border-purple-500/20 rounded-full text-purple-400 text-xs flex items-center gap-2"><Music size={12} /> {lang === 'ru' ? 'Аудио: voice_note.mp3' : 'Audio: voice_note.mp3'}</span>
              </div>
@@ -154,8 +154,8 @@ export default function NativeMultimodalityTheory({ lang }: { lang: string }) {
 
       {/* Chapter 5: Challenges — The Cost of Senses */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
-          <Layers className="text-emerald-500" />
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
+          <Layers className="text-accent-500" />
           {lang === 'ru' ? 'Глава 5: Вызовы и будущее — Цена восприятия' : 'Chapter 5: Challenges and the Future — The Cost of Perception'}
         </h2>
         <div className="space-y-6">
@@ -180,7 +180,7 @@ export default function NativeMultimodalityTheory({ lang }: { lang: string }) {
               ? 'В будущем границы между текстом, зрением и звуком окончательно сотрутся. Модели станут "цифровыми существами", которые воспринимают мир целостно. Мы увидим роботов, которые обучаются, просто "наблюдая" за действиями людей через видеокамеры, и ассистентов, которые станут нашими глазами и ушами в цифровом и физическом мирах.'
               : 'In the future, the boundaries between text, vision, and sound will finally blur. Models will become "digital beings" that perceive the world holistically. We will see robots that learn simply by "observing" human actions through video cameras, and assistants that will become our eyes and ears in both the digital and physical worlds.'}
           </p>
-          <div className="bg-emerald-500/10 p-8 rounded-2xl border border-emerald-500/20 text-center mt-8">
+          <div className="bg-accent-500/10 p-8 rounded-2xl border border-accent-500/20 text-center mt-8">
              <h3 className="text-2xl font-bold text-white mb-4">{lang === 'ru' ? 'Вы освоили мир мультимодальности' : 'You have Mastered the Multimodal World'}</h3>
              <p className="text-neutral-300 leading-relaxed italic">
                {lang === 'ru'

@@ -91,11 +91,11 @@ Known absent routes (do not assume they exist):
 1. `/${lang}/compete`
 2. `/${lang}/leaderboard`
 
-### Room inventory (39 rooms in `ROOMS_METADATA`)
+### Room inventory (40 rooms in `ROOMS_METADATA`)
 
-Rooms with theory + tasks fully wired (39): **all** current `ROOMS_METADATA` entries are wired in the dynamic room route — `prompt-evals` received its task file on 2026-07-15, closing the last gap. The inventory includes `ai-career-trajectories`, `prompt-contracts`, `mcp-tool-ecosystems`, `agentic-swarm-management`, `frontier-evals-logic`, `claude-code-agentic-loop`, `claude-code-pro-workflow`, `taxonomy-matching`, and the Open Models pair `local-models-101` + `llama-3-1-8b`.
+Rooms with theory + tasks fully wired (40): **all** current `ROOMS_METADATA` entries are wired in the dynamic room route — `context-engineering-101` (AC-204) landed 2026-07-21. The inventory includes `ai-career-trajectories`, `prompt-contracts`, `mcp-tool-ecosystems`, `agentic-swarm-management`, `frontier-evals-logic`, `claude-code-agentic-loop`, `claude-code-pro-workflow`, `context-engineering-101`, `taxonomy-matching`, and the Open Models pair `local-models-101` + `llama-3-1-8b`.
 
-Theory components mapped in `THEORY_COMPONENTS` (39 total) inside `src/app/[lang]/rooms/[id]/page.tsx`. Rooms without a mapping show a fallback placeholder.
+Theory components mapped in `THEORY_COMPONENTS` (40 total) inside `src/app/[lang]/rooms/[id]/page.tsx`. Rooms without a mapping show a fallback placeholder.
 
 ### Source of truth files (use these first)
 
@@ -128,9 +128,23 @@ Surface and border colors are defined as Tailwind v4 theme tokens in `src/app/[l
 - Use `border-border-card`, `border-border-subtle`, `border-border-emphasis` for borders.
 - **Never** introduce new arbitrary hex background or border values (e.g. `bg-[#1a1a1a]`, `border-[#262626]`). Use the existing tokens or propose a new token in `globals.css`.
 
+**Address color by role, not by palette name (Mandatory).** The point is that a design change must never cost a repo-wide sweep. Evidence from this repo: swapping the terminal look took minutes (11 `--color-term-*` tokens), while recoloring theory headings cost 250 replacements across 34 files — because the accent was hardcoded as `emerald-*` everywhere.
+
+| Role | Use | Never |
+|---|---|---|
+| Brand / interactive accent | `text-accent-500`, `bg-accent-500/10`, `border-accent-500/20` | `emerald-*` |
+| Theory chapter headings | `text-heading` | `text-accent-*` (Fork 3 — the accent means *interactive*) |
+| Terminal | `bg-term-bg`, `text-term-prompt`, … | literal hex |
+
+The accent ramp (`--color-accent-100…950`) mirrors the shade scale, so alpha modifiers work normally (`bg-accent-500/10`). **Swapping the whole site accent = editing the ramp in `@theme` plus its `[data-theme="saas"]` override — 7 lines, no component edits.**
+
+This is enforced by `src/__tests__/design-tokens.test.ts` (part of `check-all`): it fails on any literal `emerald-*` in components and on any theory heading painted with the accent, naming the offending files. Status palettes (`amber`, `red`, `blue`, `cyan`, …) are **not yet migrated** — that debt is tracked by the same test; when they move to `success`/`warning`/`danger`/`info` tokens, add them to `RETIRED_PALETTES` there.
+
+**Known boundary:** raster assets (`public/images/**`) are not tokenized. A room cover PNG keeps its baked-in colors through an accent swap; re-export or prefer SVG when a visual must follow the accent.
+
 ### Terminal component — a core design element (use it)
 
-`src/components/Terminal.tsx` is a first-class part of the visual language, not a one-off. It renders a black-gray terminal window (traffic-dot header, monospace, `$`/`>`/`>>>` prompts) that stays intentionally dark in **both** themes — its `--color-term-*` tokens in `@theme` are deliberately **not** overridden in the `[data-theme="saas"]` block, so a terminal looks like a terminal on light UI too. Reach for it whenever a chapter shows a real command or interactive session — it is the preferred way to render such content, and terminals should recur across the platform rather than appear in one or two rooms.
+`src/components/Terminal.tsx` is a first-class part of the visual language, not a one-off. It renders a terminal window styled after **GNOME Terminal on Ubuntu**: the signature aubergine background (`#300A24`), the **Tango** ANSI palette, and **Ubuntu Mono** (loaded via `next/font` in `layout.tsx`, exposed as the `--font-term` token → `font-term` utility). The emerald-vs-aubergine tension is being resolved on the *heading* side, not the terminal side (fork history in `DESIGN_FORKS.md`, Forks 1 & 3). It stays intentionally dark in **both** themes — its `--color-term-*` tokens in `@theme` are deliberately **not** overridden in the `[data-theme="saas"]` block, so a terminal looks like a terminal on light UI too. Reach for it whenever a chapter shows a real command or interactive session — it is the preferred way to render such content, and terminals should recur across the platform rather than appear in one or two rooms.
 
 - **Import + use** (lang-agnostic — resolve bilingual strings at the call site):
   ```tsx
@@ -138,14 +152,20 @@ Surface and border colors are defined as Tailwind v4 theme tokens in `src/app/[l
   <Terminal title="ollama · zsh" lines={[
     { cmd: 'ollama pull llama3.1:8b', comment: lang === 'ru' ? '# скачать' : '# download' },
     { out: 'pulling manifest ... success' },
-    { out: '✓ ready', tone: 'ok' },   // tone: 'dim' (default) | 'ok' (green) | 'bad' (red)
+    { out: '✓ ready', tone: 'ok' },
   ]} />
   ```
+  Output tones map to the Tango palette: `'dim'` (default) · `'ok'` green · `'bad'` red · `'dir'` blue · `'link'` cyan · `'warn'` yellow — the same colors Ubuntu's `LS_COLORS` uses, so `ls`-style output can be rendered faithfully.
   Line kinds: `{ cmd, comment?, prompt? }` (a prompt line, default prompt `$`) and `{ out, tone? }` (an output line).
 - **Use it for:** CLI command sequences, agent/tool-call sessions (`● tool ▸ …`), REPL interactions, install→run→verify flows, red→green test loops, API-call sessions.
 - **Do NOT use it for:** static JSON/YAML/schema/config display or math notation — those stay as plain code blocks (`bg-deep` + `<pre>`). The terminal means *a session* (command → output); misusing it as a decorative frame for static data cheapens the element.
 - **Solvability:** never let a terminal hand a learner a task's answer (e.g. don't show the exact ordering a `sorting` task asks them to produce). Terminals illustrate; they don't spoil.
 - Prefer this component over hand-rolling terminal markup, and over converting a real command block to a bespoke `<pre>`. If it exists, reuse it.
+- **The terminal's visual style is an open fork, not a settled choice** — the project is still searching for its optimal design. The Ubuntu look above is *what is wired up today*. Alternatives (neutral black-gray, Tango-on-black, Solarized, Dracula) are kept paste-ready in [`DESIGN_FORKS.md`](DESIGN_FORKS.md). The whole look is token-driven, so switching is a one-block swap in `globals.css` — never a component or per-room edit. If you change the pick, update `DESIGN_FORKS.md` in the same task and do not delete the losing option.
+
+### Design forks — do not silently collapse them (Mandatory)
+
+Several design decisions are deliberately **open**: terminal styling, site and terminal typefaces, and the accent green. They are recorded in [`DESIGN_FORKS.md`](DESIGN_FORKS.md) (+ `.ru`) with paste-ready values for every option. Before "fixing" a design inconsistency in these areas, check that file — the inconsistency may be a live fork rather than a defect. When you move a fork, record the move (new pick, demoted option, date, one line of rationale) in the same commit.
 
 ### Product screenshots — a core design element (use them)
 

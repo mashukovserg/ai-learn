@@ -69,8 +69,8 @@ export default function RoomSuccessModal({
 
               {/* Icon */}
               <div className="flex justify-center mb-6">
-                <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
-                  <CheckCircle size={32} className="text-emerald-400" />
+                <div className="w-16 h-16 rounded-full bg-accent-500/10 border border-accent-500/20 flex items-center justify-center">
+                  <CheckCircle size={32} className="text-accent-400" />
                 </div>
               </div>
 
@@ -85,14 +85,14 @@ export default function RoomSuccessModal({
               {/* Stats row */}
               <div className="flex justify-center gap-6 mb-8">
                 <div className="text-center">
-                  <p className="text-2xl font-bold text-emerald-400">{taskCount}</p>
+                  <p className="text-2xl font-bold text-accent-400">{taskCount}</p>
                   <p className="text-xs text-neutral-500 uppercase tracking-wider mt-1">
                     {lang === 'ru' ? 'Заданий' : 'Tasks'}
                   </p>
                 </div>
                 <div className="w-px bg-[#262626]" />
                 <div className="text-center">
-                  <p className="text-2xl font-bold text-emerald-400">+{pointsEarned}</p>
+                  <p className="text-2xl font-bold text-accent-400">+{pointsEarned}</p>
                   <p className="text-xs text-neutral-500 uppercase tracking-wider mt-1">
                     {lang === 'ru' ? 'Очков' : 'Points'}
                   </p>
@@ -103,7 +103,7 @@ export default function RoomSuccessModal({
               <div className="flex flex-col gap-3">
                 <Link
                   href={`/${lang}/rooms`}
-                  className="flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-black font-semibold text-sm py-3 px-5 rounded-xl transition-colors"
+                  className="flex items-center justify-center gap-2 bg-accent-500 hover:bg-accent-400 text-black font-semibold text-sm py-3 px-5 rounded-xl transition-colors"
                   onClick={onClose}
                 >
                   {lang === 'ru' ? 'К другим комнатам' : 'Explore More Rooms'}

@@ -9,8 +9,8 @@ export default function LeaderboardPage() {
 
   return (
     <div className="max-w-2xl mx-auto text-center py-20">
-      <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mx-auto mb-6">
-        <Trophy size={28} className="text-emerald-400" />
+      <div className="w-16 h-16 rounded-2xl bg-accent-500/10 border border-accent-500/20 flex items-center justify-center mx-auto mb-6">
+        <Trophy size={28} className="text-accent-400" />
       </div>
       <h1 className="text-2xl font-semibold mb-3 text-neutral-200">
         {lang === 'ru' ? 'Таблица лидеров' : 'Leaderboard'}
@@ -22,7 +22,7 @@ export default function LeaderboardPage() {
       </p>
       <Link
         href={`/${lang}/rooms`}
-        className="inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 rounded-lg text-sm font-medium hover:bg-emerald-500/20 transition-colors"
+        className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent-500/10 text-accent-300 border border-accent-500/20 rounded-lg text-sm font-medium hover:bg-accent-500/20 transition-colors"
       >
         {lang === 'ru' ? 'Перейти к комнатам' : 'Browse Rooms'}
       </Link>

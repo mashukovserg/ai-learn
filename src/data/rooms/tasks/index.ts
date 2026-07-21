@@ -32,6 +32,7 @@ import { agenticSwarmManagementTasks } from './agentic-swarm-management';
 import { frontierEvalsLogicTasks } from './frontier-evals-logic';
 import { claudeCodeAgenticLoopTasks } from './claude-code-agentic-loop';
 import { claudeCodeProWorkflowTasks } from './claude-code-pro-workflow';
+import { contextEngineering101Tasks } from './context-engineering-101';
 
 import { promptContractsTasks } from './prompt-contracts';
 import { multiAgentCollaborationTasks } from './multi-agent-collaboration';
@@ -78,6 +79,7 @@ export const ROOM_TASKS: Record<string, LocalizedTask[]> = {
   'frontier-evals-logic': frontierEvalsLogicTasks,
   'claude-code-agentic-loop': claudeCodeAgenticLoopTasks,
   'claude-code-pro-workflow': claudeCodeProWorkflowTasks,
+  'context-engineering-101': contextEngineering101Tasks,
   'taxonomy-matching': taxonomyMatchingTasks,
   'prompt-evals': promptEvalsTasks,
 };

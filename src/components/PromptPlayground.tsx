@@ -115,7 +115,7 @@ export default function PromptPlayground({ lang, config }: PromptPlaygroundProps
         onClick={() => setExpanded(!expanded)}
         className="w-full flex items-center gap-3 group"
       >
-        <div className="flex items-center gap-2 text-emerald-400">
+        <div className="flex items-center gap-2 text-accent-400">
           <Sparkles size={20} />
           <h2 className="text-lg font-bold">
             Prompt Playground
@@ -153,7 +153,7 @@ export default function PromptPlayground({ lang, config }: PromptPlaygroundProps
                         key={i}
                         type="button"
                         onClick={() => applySuggestion(s.prompt[lang as 'en' | 'ru'])}
-                        className="text-xs px-3 py-1.5 rounded-full border border-emerald-500/25 text-emerald-400 hover:bg-emerald-500/10 hover:border-emerald-500/40 transition-colors"
+                        className="text-xs px-3 py-1.5 rounded-full border border-accent-500/25 text-accent-400 hover:bg-accent-500/10 hover:border-accent-500/40 transition-colors"
                       >
                         {s.label[lang as 'en' | 'ru']}
                       </button>
@@ -178,7 +178,7 @@ export default function PromptPlayground({ lang, config }: PromptPlaygroundProps
                     value={systemPrompt}
                     onChange={(e) => setSystemPrompt(e.target.value)}
                     placeholder={isRu ? 'Системный промпт...' : 'System prompt...'}
-                    className="w-full mt-2 bg-base border border-border-subtle rounded-lg px-4 py-2.5 text-sm text-neutral-200 placeholder-neutral-600 resize-none focus:outline-none focus:border-emerald-500/40 transition-colors"
+                    className="w-full mt-2 bg-base border border-border-subtle rounded-lg px-4 py-2.5 text-sm text-neutral-200 placeholder-neutral-600 resize-none focus:outline-none focus:border-accent-500/40 transition-colors"
                     rows={2}
                   />
                 )}
@@ -189,7 +189,7 @@ export default function PromptPlayground({ lang, config }: PromptPlaygroundProps
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 placeholder={isRu ? 'Введите промпт...' : 'Enter your prompt...'}
-                className="w-full bg-base border border-border-subtle rounded-lg px-4 py-3 text-sm text-neutral-200 placeholder-neutral-600 resize-none focus:outline-none focus:border-emerald-500/40 transition-colors"
+                className="w-full bg-base border border-border-subtle rounded-lg px-4 py-3 text-sm text-neutral-200 placeholder-neutral-600 resize-none focus:outline-none focus:border-accent-500/40 transition-colors"
                 rows={3}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' && (e.metaKey || e.ctrlKey) && canSubmit) {
@@ -244,7 +244,7 @@ export default function PromptPlayground({ lang, config }: PromptPlaygroundProps
                     type="button"
                     onClick={onCompare}
                     disabled={!canSubmit}
-                    className="px-4 py-2 rounded-md text-sm font-semibold bg-emerald-300 text-emerald-950 hover:bg-emerald-200 disabled:opacity-40 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
+                    className="px-4 py-2 rounded-md text-sm font-semibold bg-accent-300 text-accent-950 hover:bg-accent-200 disabled:opacity-40 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
                   >
                     {loading ? (
                       <>

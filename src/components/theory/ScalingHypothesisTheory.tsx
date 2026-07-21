@@ -8,7 +8,7 @@ export default function ScalingHypothesisTheory({ lang }: { lang: string }) {
 
       {/* Chapter 1 */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-6 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 1: Суть гипотезы' : 'Chapter 1: The Core Idea'}
         </h2>
         <div className="space-y-4">
@@ -22,7 +22,7 @@ export default function ScalingHypothesisTheory({ lang }: { lang: string }) {
               ? 'Исторически ИИ-исследователи тратили годы на разработку умных алгоритмов вручную: правил, эвристик, деревьев решений. Гипотеза масштабирования предложила радикальную альтернативу: вместо изощрённой инженерии — просто больше ресурсов. Огромные нейросети, обученные на огромном количестве текста с огромными вычислительными мощностями, начинают решать задачи, которым их никто не учил. Этот сдвиг произвёл революцию в отрасли и привёл к созданию GPT-3, GPT-4 и всех современных больших языковых моделей.'
               : 'Historically, AI researchers spent years manually crafting clever algorithms: rules, heuristics, decision trees. The Scaling Hypothesis offered a radical alternative: instead of sophisticated engineering, simply add more resources. Massive neural networks trained on massive amounts of text with massive compute begin solving problems no one explicitly taught them. This shift triggered a revolution in the field and led to GPT-3, GPT-4, and all modern large language models.'}
           </p>
-          <div className="bg-card border-l-4 border-emerald-500 p-5 rounded-r-lg">
+          <div className="bg-card border-l-4 border-accent-500 p-5 rounded-r-lg">
             <p className="text-neutral-300 text-sm leading-relaxed italic">
               {lang === 'ru'
                 ? '"Мы не делаем алгоритм умнее — мы делаем его больше." Этот принцип оказался настолько плодотворным, что за несколько лет вычислительные затраты на обучение флагманских моделей выросли в десятки тысяч раз.'
@@ -34,7 +34,7 @@ export default function ScalingHypothesisTheory({ lang }: { lang: string }) {
 
       {/* Chapter 2 */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-6 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 2: Три столпа масштабирования' : 'Chapter 2: The Three Pillars'}
         </h2>
         <div className="space-y-4">
@@ -51,15 +51,15 @@ export default function ScalingHypothesisTheory({ lang }: { lang: string }) {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
           <div className="bg-card p-4 rounded-lg border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-2 uppercase text-sm tracking-widest">{lang === 'ru' ? 'Вычисления' : 'Compute'}</h4>
+            <h4 className="text-heading font-bold mb-2 uppercase text-sm tracking-widest">{lang === 'ru' ? 'Вычисления' : 'Compute'}</h4>
             <p className="text-neutral-400 text-sm">{lang === 'ru' ? 'FLOPs при обучении. Связан с GPU, временем и бюджетом.' : 'FLOPs during training. Tied to GPUs, time, and budget.'}</p>
           </div>
           <div className="bg-card p-4 rounded-lg border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-2 uppercase text-sm tracking-widest">{lang === 'ru' ? 'Данные' : 'Data'}</h4>
+            <h4 className="text-heading font-bold mb-2 uppercase text-sm tracking-widest">{lang === 'ru' ? 'Данные' : 'Data'}</h4>
             <p className="text-neutral-400 text-sm">{lang === 'ru' ? 'Токены обучающей выборки. Качество важно не меньше количества.' : 'Tokens in the training set. Quality matters as much as quantity.'}</p>
           </div>
           <div className="bg-card p-4 rounded-lg border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-2 uppercase text-sm tracking-widest">{lang === 'ru' ? 'Параметры' : 'Parameters'}</h4>
+            <h4 className="text-heading font-bold mb-2 uppercase text-sm tracking-widest">{lang === 'ru' ? 'Параметры' : 'Parameters'}</h4>
             <p className="text-neutral-400 text-sm">{lang === 'ru' ? 'Веса нейросети. Определяют ёмкость и сложность модели.' : 'Neural network weights. Define capacity and model complexity.'}</p>
           </div>
         </div>
@@ -67,7 +67,7 @@ export default function ScalingHypothesisTheory({ lang }: { lang: string }) {
 
       {/* Chapter 3 */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-6 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 3: Эмерджентные способности' : 'Chapter 3: Emergent Abilities'}
         </h2>
         <div className="space-y-4">
@@ -83,8 +83,8 @@ export default function ScalingHypothesisTheory({ lang }: { lang: string }) {
           </p>
           <div className="bg-card border border-border-emphasis rounded-xl p-5">
             <div className="flex items-center gap-2 mb-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block shrink-0" />
-              <span className="font-bold text-emerald-400 uppercase tracking-widest text-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent-400 inline-block shrink-0" />
+              <span className="font-bold text-accent-400 uppercase tracking-widest text-sm">
                 {lang === 'ru' ? 'Аналогия' : 'Analogy'}
               </span>
             </div>
@@ -99,7 +99,7 @@ export default function ScalingHypothesisTheory({ lang }: { lang: string }) {
 
       {/* Chapter 4 */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-6 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 4: Законы Chinchilla' : 'Chapter 4: The Chinchilla Scaling Laws'}
         </h2>
         <div className="space-y-4">
@@ -126,7 +126,7 @@ export default function ScalingHypothesisTheory({ lang }: { lang: string }) {
 
       {/* Chapter 5 */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-6 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 5: Критики, стены и новые горизонты' : 'Chapter 5: Critics, Walls, and New Frontiers'}
         </h2>
         <div className="space-y-4">

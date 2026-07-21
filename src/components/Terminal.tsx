@@ -4,25 +4,34 @@ import React from 'react';
 
 /**
  * A styled terminal window used inside theory chapters to show a concrete
- * command sequence. Intentionally black-gray in BOTH themes (see the
- * --color-term-* tokens in globals.css, which are NOT overridden in the
- * [data-theme="saas"] block) — a terminal stays a terminal on light UI.
+ * command sequence. Styled after GNOME Terminal on Ubuntu: aubergine
+ * background, Tango ANSI palette, Ubuntu Mono. Intentionally dark in BOTH
+ * themes (see the --color-term-* tokens in globals.css, which are NOT
+ * overridden in the [data-theme="saas"] block) — a terminal stays a terminal
+ * on light UI.
  *
  * Lang-agnostic: callers resolve bilingual strings (ru ? … : …) and pass the
  * finished text, so this component never touches locale.
  *
  * Line kinds:
  *   { cmd, comment?, prompt? } — a prompt line: `$ cmd   # comment`
- *   { out, tone? }             — an output line (tone: 'dim' default | 'ok' | 'bad')
+ *   { out, tone? }             — an output line; tone maps to the Tango palette
+ *                                ('dim' default | 'ok' green | 'bad' red |
+ *                                 'dir' blue | 'link' cyan | 'warn' yellow)
  */
+type Tone = 'dim' | 'ok' | 'bad' | 'dir' | 'link' | 'warn';
+
 export type TerminalLine =
   | { cmd: string; comment?: string; prompt?: string }
-  | { out: string; tone?: 'dim' | 'ok' | 'bad' };
+  | { out: string; tone?: Tone };
 
-const TONE_CLASS: Record<'dim' | 'ok' | 'bad', string> = {
+const TONE_CLASS: Record<Tone, string> = {
   dim: 'text-term-dim',
   ok: 'text-term-prompt',
   bad: 'text-term-red',
+  dir: 'text-term-blue',
+  link: 'text-term-cyan',
+  warn: 'text-term-yellow',
 };
 
 export default function Terminal({
@@ -36,7 +45,7 @@ export default function Terminal({
 }) {
   return (
     <div
-      className={`rounded-xl overflow-hidden border border-term-line my-4 font-mono text-[13px] leading-relaxed ${className}`}
+      className={`rounded-xl overflow-hidden border border-term-line my-4 font-term text-[14px] leading-relaxed ${className}`}
     >
       <div className="flex items-center gap-2 px-4 py-2.5 bg-term-head border-b border-term-line">
         <span className="w-3 h-3 rounded-full bg-term-dim" />

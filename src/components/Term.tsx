@@ -33,7 +33,7 @@ export default function Term({ id, children, lang: forcedLang }: TermProps) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <span className="cursor-help border-b border-dotted border-emerald-500/50 hover:border-emerald-400 text-emerald-400/90 hover:text-emerald-300 transition-colors">
+      <span className="cursor-help border-b border-dotted border-accent-500/50 hover:border-accent-400 text-accent-400/90 hover:text-accent-300 transition-colors">
         {termText}
       </span>
 
@@ -46,7 +46,7 @@ export default function Term({ id, children, lang: forcedLang }: TermProps) {
             className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-64 p-4 bg-card border border-border-emphasis rounded-xl shadow-2xl z-[100] pointer-events-none"
           >
             <span className="flex items-center gap-2 mb-2">
-              <BookOpen size={14} className="text-emerald-500" />
+              <BookOpen size={14} className="text-accent-500" />
               <span className="text-xs font-bold text-white uppercase tracking-widest">Глоссарий</span>
             </span>
             <span className="block text-sm text-neutral-200 leading-relaxed">

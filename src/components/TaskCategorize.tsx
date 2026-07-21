@@ -127,7 +127,7 @@ export default function TaskCategorize({
               }}
               className={`px-2.5 py-1.5 rounded-md border text-xs cursor-grab active:cursor-grabbing select-none transition-colors ${
                 draggedItem === item || selectedItem === item
-                  ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300'
+                  ? 'border-accent-500/40 bg-accent-500/10 text-accent-300'
                   : 'border-border-subtle bg-base text-neutral-300 hover:border-neutral-700'
               }`}
             >
@@ -166,7 +166,7 @@ export default function TaskCategorize({
                 resolvedStatus === 'correct'
                   ? 'border-neutral-800 bg-base'
                   : isHovered || isTapTarget
-                    ? 'border-emerald-500/40 bg-emerald-500/5'
+                    ? 'border-accent-500/40 bg-accent-500/5'
                     : 'border-border-subtle bg-base'
               }`}
             >

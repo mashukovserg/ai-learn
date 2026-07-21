@@ -9,8 +9,8 @@ export default function ResearchGroundingTheory({ lang }: { lang: string }) {
       {/* Introduction */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
-            <Search className="text-emerald-500" />
+          <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-heading">
+            <Search className="text-accent-500" />
             {lang === 'ru' ? 'Зачем модели нужен внешний источник' : 'Why Models Need External Evidence'}
           </h2>
           <div className="prose prose-invert max-w-none">
@@ -135,8 +135,8 @@ export default function ResearchGroundingTheory({ lang }: { lang: string }) {
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              <div className="bg-emerald-500/10 border border-emerald-500/20 rounded p-4 text-center">
-                <span className="block text-emerald-400 font-bold mb-1">{lang === 'ru' ? 'Высокое доверие' : 'High Trust'}</span>
+              <div className="bg-accent-500/10 border border-accent-500/20 rounded p-4 text-center">
+                <span className="block text-accent-400 font-bold mb-1">{lang === 'ru' ? 'Высокое доверие' : 'High Trust'}</span>
                 <span className="text-xs text-neutral-400">{lang === 'ru' ? 'Факт подтвержден 3+ независимыми источниками.' : 'Fact confirmed by 3+ independent sources.'}</span>
               </div>
               <div className="bg-amber-500/10 border border-amber-500/20 rounded p-4 text-center">
@@ -159,7 +159,7 @@ export default function ResearchGroundingTheory({ lang }: { lang: string }) {
       </section>
 
       {/* Summary */}
-      <section className="bg-gradient-to-br from-blue-500/10 to-emerald-500/10 border border-blue-500/20 rounded-xl p-8 text-center">
+      <section className="bg-gradient-to-br from-blue-500/10 to-accent-500/10 border border-blue-500/20 rounded-xl p-8 text-center">
         <h3 className="text-xl font-bold mb-2 text-white">
           {lang === 'ru' ? 'Итог: Эпоха проверяемости' : 'Summary: The Era of Verifiability'}
         </h3>
