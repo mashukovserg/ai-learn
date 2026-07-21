@@ -10,6 +10,23 @@
 
 Local development uses `npm run dev` (port 3000) + `docker-compose up` (FastAPI on 8000, Postgres on 5432). Production mirrors this split but on cloud services.
 
+## Frontend deploys (Vercel)
+
+Since **2026-07-21** the Vercel project `ai-learning-platform` is connected to the GitHub repo
+`mashukovserg/ai-learn`. **Pushing to `main` triggers a production deploy automatically**; pull
+requests get preview deployments. Before that date every deploy was a manual `vercel --prod` from
+a laptop, which is why production once sat 9 days behind `main`.
+
+Manual deploy is still available as a fallback (`vercel --prod` from the repo root) — but prefer
+merging to `main`, so that what is live always equals what is in `main`.
+
+> **Setting it up again (the non-obvious part).** Installing the Vercel GitHub App on the repo is
+> *not* sufficient. Vercel checks write access using the GitHub identity linked to your **Vercel
+> account**, so `vercel git connect` keeps failing with `You need admin or write access to the
+> repository` until that link is refreshed: Vercel → Account Settings → Sign-in Methods → GitHub
+> (re-authorize). Both pieces are required — the App grants the *app* access, the sign-in method
+> grants *your* access.
+
 ---
 
 ## What Was Changed to Enable Production Deployment
