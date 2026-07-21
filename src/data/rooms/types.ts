@@ -29,6 +29,17 @@ export interface PathMetadata {
   icon: string;
   difficulty: LocalizedString;
   unlocked: boolean;
+  /**
+   * Ordered room sequence for this path — the curriculum decision, kept here
+   * rather than inferred from ROOMS_METADATA array position (which only records
+   * when a room happened to be added). A room can sit at different positions in
+   * different paths, so order must belong to the path, not the room.
+   *
+   * Membership still lives on the room (`pathIds`); this list only orders it.
+   * The two are kept in sync by a Vitest guard — see
+   * src/data/rooms/__tests__/data-integrity.test.ts ("path room ordering").
+   */
+  roomIds: string[];
 }
 
 export interface LocalizedTask {

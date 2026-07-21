@@ -6,7 +6,7 @@
 import { describe, it, expect } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
-import { ROOMS_METADATA, PATHS_METADATA, ROOM_TASKS } from '../index';
+import { ROOMS_METADATA, PATHS_METADATA, ROOM_TASKS, getRoomsByPath, getNextRoomInPath } from '../index';
 import type { LocalizedRoomMetadata, LocalizedString } from '../types';
 
 // A LocalizedString field is "valid" only when both EN and RU are non-empty.
@@ -177,6 +177,82 @@ describe('Task images (docs/AGENTS.md → "Task data validation gate")', () => {
     expect(isFilledLocalized(task.image!.alt), 'alt must be filled {en, ru}').toBe(true);
     if (task.image!.caption !== undefined) {
       expect(isFilledLocalized(task.image!.caption), 'caption must be filled {en, ru}').toBe(true);
+    }
+  });
+});
+
+/**
+ * Path room ordering. Order is a curriculum decision owned by the PATH
+ * (`PATHS_METADATA[].roomIds`), while membership is declared on the ROOM
+ * (`pathIds`). Two sources of truth stay honest only if something checks them —
+ * without this, a new room silently lands at the end of its path (which is how
+ * `context-engineering-101` ended up after the Advanced rooms).
+ */
+describe('path room ordering', () => {
+  it.each(PATHS_METADATA.map(p => [p.id, p] as const))(
+    '%s: roomIds exactly matches the rooms declaring this path',
+    (pathId, path) => {
+      const declared = ROOMS_METADATA
+        .filter(r => r.pathIds?.includes(pathId))
+        .map(r => r.id)
+        .sort();
+      const ordered = [...path.roomIds].sort();
+
+      const missing = declared.filter(id => !ordered.includes(id));
+      const extra = ordered.filter(id => !declared.includes(id));
+
+      expect(
+        { missing, extra },
+        `\nPath "${pathId}" is out of sync.\n` +
+          (missing.length ? `  Rooms declaring pathIds but absent from roomIds (they would fall to the end): ${missing.join(', ')}\n` : '') +
+          (extra.length ? `  Ids in roomIds with no matching room: ${extra.join(', ')}\n` : '')
+      ).toEqual({ missing: [], extra: [] });
+    }
+  );
+
+  it.each(PATHS_METADATA.map(p => [p.id, p] as const))(
+    '%s: roomIds has no duplicates',
+    (_pathId, path) => {
+      expect(new Set(path.roomIds).size).toBe(path.roomIds.length);
+    }
+  );
+});
+
+/**
+ * "What's next" after finishing a room must stay inside the learning path.
+ * The previous implementation indexed into ROOMS_METADATA, so the last room of
+ * a path handed the learner an unrelated room from whatever happened to sit
+ * next in the array.
+ */
+describe('next room stays within the path', () => {
+  it.each(PATHS_METADATA.map(p => [p.id] as const))(
+    '%s: every room points to its successor, and the last one points nowhere',
+    (pathId) => {
+      const rooms = getRoomsByPath(pathId);
+      expect(rooms.length, `path ${pathId} has no rooms`).toBeGreaterThan(0);
+
+      rooms.forEach((room, i) => {
+        const next = getNextRoomInPath(room.id, pathId);
+        if (i === rooms.length - 1) {
+          expect(next, `last room of ${pathId} must not leak into another path`).toBeNull();
+        } else {
+          expect(next?.id, `${room.id} should be followed by ${rooms[i + 1].id}`).toBe(rooms[i + 1].id);
+        }
+      });
+    }
+  );
+
+  it('a next room always belongs to the same path', () => {
+    for (const path of PATHS_METADATA) {
+      for (const room of getRoomsByPath(path.id)) {
+        const next = getNextRoomInPath(room.id, path.id);
+        if (next) {
+          expect(
+            next.pathIds?.includes(path.id),
+            `${room.id} -> ${next.id} leaves path ${path.id}`
+          ).toBe(true);
+        }
+      }
     }
   });
 });

@@ -13,7 +13,7 @@ import TaskTimeline from '@/components/TaskTimeline';
 import TaskScenario from '@/components/TaskScenario';
 import CompletionModal from '@/components/CompletionModal';
 import { useProgress } from '@/hooks/useProgress';
-import { ROOMS_METADATA, ROOM_TASKS } from '@/data/rooms';
+import { ROOMS_METADATA, ROOM_TASKS, getNextRoomInPath } from '@/data/rooms';
 import { notFound } from 'next/navigation';
 
 // For now, we'll import theory components directly.
@@ -277,10 +277,10 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
   const TheoryComponent = THEORY_COMPONENTS[id] || DefaultTheory;
 
   // Logic to find the next room
-  const currentRoomIndex = ROOMS_METADATA.findIndex(r => r.id === id);
-  const nextRoom = currentRoomIndex !== -1 && currentRoomIndex < ROOMS_METADATA.length - 1 
-    ? ROOMS_METADATA[currentRoomIndex + 1] 
-    : null;
+  // Next room follows the learning path, not ROOMS_METADATA array position —
+  // index arithmetic over the global list used to hand the learner a room from
+  // an unrelated path once a path ran out.
+  const nextRoom = getNextRoomInPath(id);
 
   return (
     <>

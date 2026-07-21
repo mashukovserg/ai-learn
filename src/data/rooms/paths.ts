@@ -11,6 +11,23 @@ export const PATHS_METADATA: PathMetadata[] = [
     icon: 'GraduationCap',
     difficulty: { ru: 'Новичок', en: 'Beginner' },
     unlocked: true,
+    // Curriculum order: what an LLM is -> how it works -> where it came from ->
+    // what it means for a career; then hands-on (open models), then applied use
+    // (embeddings, grounding), with the Advanced research room last.
+    roomIds: [
+      'llm-landscape',
+      'llm-mechanics',
+      'ai-history',
+      'ai-career-trajectories',
+      'local-models-101',
+      'llama-3-1-8b',
+      'fine-tuning-101',
+      'embeddings-101',
+      'research-grounding',
+      'ai-regulation-ru',
+      'ai-regulation-eu',
+      'ai-research',
+    ],
   },
   {
     id: 'ideas-history',
@@ -22,6 +39,15 @@ export const PATHS_METADATA: PathMetadata[] = [
     icon: 'BookOpen',
     difficulty: { ru: 'Новичок', en: 'Beginner' },
     unlocked: true,
+    // Chronological: origins -> the ChatGPT break -> what followed -> the
+    // forward-looking debates (scaling, then singularity as the far horizon).
+    roomIds: [
+      'ai-history',
+      'chatgpt-moment',
+      'post-chatgpt-history',
+      'scaling-hypothesis',
+      'ai-singularity',
+    ],
   },
   {
     id: 'intermediate',
@@ -33,6 +59,12 @@ export const PATHS_METADATA: PathMetadata[] = [
     icon: 'Brain',
     difficulty: { ru: 'Средний', en: 'Intermediate' },
     unlocked: false,
+    roomIds: [
+      'local-models-101',
+      'llama-3-1-8b',
+      'fine-tuning-101',
+      'embeddings-101',
+    ],
   },
   {
     id: 'agentic-systems',
@@ -44,6 +76,14 @@ export const PATHS_METADATA: PathMetadata[] = [
     icon: 'Cpu',
     difficulty: { ru: 'Продвинутый', en: 'Advanced' },
     unlocked: true,
+    // What an agent is -> how it searches -> how it reaches tools -> how many
+    // agents are coordinated.
+    roomIds: [
+      'ai-agents',
+      'deep-search-agents',
+      'mcp-tool-ecosystems',
+      'agentic-swarm-management',
+    ],
   },
   {
     id: 'agent-coding',
@@ -55,5 +95,21 @@ export const PATHS_METADATA: PathMetadata[] = [
     icon: 'Cpu',
     difficulty: { ru: 'Новичок', en: 'Beginner' },
     unlocked: true,
+    // Module A (AC-101..104) — the foundations; then how the agent actually
+    // works in practice (Claude Code loop, CLI, context engineering); then
+    // Module B quality loops (testing, UI delivery); then the advanced tail.
+    roomIds: [
+      'agent-coding-foundations',      // AC-101
+      'agentic-coding-tools',          // AC-102
+      'prompt-contracts',              // AC-103
+      'multi-agent-collaboration',     // AC-104
+      'claude-code-agentic-loop',      // how the loop runs
+      'agentic-cli-tools',             // AC-201
+      'context-engineering-101',       // AC-204
+      'agentic-testing-loop',          // AC-202
+      'agentic-ui-delivery',           // AC-203
+      'mcp-tool-ecosystems',
+      'claude-code-pro-workflow',      // Advanced
+    ],
   },
 ];
