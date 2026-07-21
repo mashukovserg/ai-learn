@@ -290,8 +290,8 @@ export default function McpToolEcosystemsTheory({ lang }: { lang: string }) {
             {lang === 'ru' ? (
               <>
                 Каждое MCP-соединение проходит через три фазы. <strong>Initialization</strong>: Client
-                и Server обмениваются сообщениями <code className="text-emerald-300 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">initialize</code> и{' '}
-                <code className="text-emerald-300 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">initialized</code>,
+                и Server обмениваются сообщениями <code className="text-accent-300 bg-accent-500/10 px-1.5 py-0.5 rounded text-sm">initialize</code> и{' '}
+                <code className="text-accent-300 bg-accent-500/10 px-1.5 py-0.5 rounded text-sm">initialized</code>,
                 согласовывая версию протокола и список capabilities. Это критический момент: если версии
                 несовместимы, соединение не устанавливается. <strong>Operation</strong>: после инициализации
                 начинается штатный обмен — Client вызывает tools, читает resources, а Server может отправлять
@@ -302,8 +302,8 @@ export default function McpToolEcosystemsTheory({ lang }: { lang: string }) {
               <>
                 Every MCP connection goes through three phases. <strong>Initialization</strong>: the Client
                 and Server exchange{' '}
-                <code className="text-emerald-300 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">initialize</code> and{' '}
-                <code className="text-emerald-300 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">initialized</code>{' '}
+                <code className="text-accent-300 bg-accent-500/10 px-1.5 py-0.5 rounded text-sm">initialize</code> and{' '}
+                <code className="text-accent-300 bg-accent-500/10 px-1.5 py-0.5 rounded text-sm">initialized</code>{' '}
                 messages, negotiating the protocol version and capabilities list. This is critical: if versions
                 are incompatible, the connection is not established. <strong>Operation</strong>: after
                 initialization, normal exchange begins — the Client calls tools, reads resources, and the Server
@@ -322,7 +322,7 @@ export default function McpToolEcosystemsTheory({ lang }: { lang: string }) {
                 расширяемым: новые capabilities можно добавлять в будущие версии без ломающих изменений.
                 Серверы также поддерживают <strong>dynamic tool discovery</strong> — список инструментов может
                 обновляться в runtime через notification{' '}
-                <code className="text-emerald-300 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">notifications/tools/list_changed</code>.
+                <code className="text-accent-300 bg-accent-500/10 px-1.5 py-0.5 rounded text-sm">notifications/tools/list_changed</code>.
               </>
             ) : (
               <>
@@ -333,7 +333,7 @@ export default function McpToolEcosystemsTheory({ lang }: { lang: string }) {
                 the protocol extensible: new capabilities can be added in future versions without breaking
                 changes. Servers also support <strong>dynamic tool discovery</strong> — the tool list can
                 update at runtime via the{' '}
-                <code className="text-emerald-300 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">notifications/tools/list_changed</code>{' '}
+                <code className="text-accent-300 bg-accent-500/10 px-1.5 py-0.5 rounded text-sm">notifications/tools/list_changed</code>{' '}
                 notification.
               </>
             )}
@@ -357,7 +357,7 @@ export default function McpToolEcosystemsTheory({ lang }: { lang: string }) {
                 <strong>Composed tools</strong> — один сервер предоставляет несколько связанных инструментов
                 (например, GitHub-сервер: search_issues, read_pr, create_comment), но каждый tool делает ровно
                 одну операцию. <strong>Resource templates</strong> — URI ресурсов параметризуются
-                (например, <code className="text-emerald-300 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">db://tables/&#123;table_name&#125;/schema</code>),
+                (например, <code className="text-accent-300 bg-accent-500/10 px-1.5 py-0.5 rounded text-sm">db://tables/&#123;table_name&#125;/schema</code>),
                 позволяя модели запрашивать конкретные данные без перечисления всех вариантов.
               </>
             ) : (
@@ -368,7 +368,7 @@ export default function McpToolEcosystemsTheory({ lang }: { lang: string }) {
                 <strong>Composed tools</strong> — a single server exposes several related tools (e.g., a GitHub
                 server: search_issues, read_pr, create_comment), but each tool does exactly one operation.{' '}
                 <strong>Resource templates</strong> — resource URIs are parameterized
-                (e.g., <code className="text-emerald-300 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">db://tables/&#123;table_name&#125;/schema</code>),
+                (e.g., <code className="text-accent-300 bg-accent-500/10 px-1.5 py-0.5 rounded text-sm">db://tables/&#123;table_name&#125;/schema</code>),
                 letting the model request specific data without enumerating all options.
               </>
             )}
@@ -380,7 +380,7 @@ export default function McpToolEcosystemsTheory({ lang }: { lang: string }) {
                 всему: нарушает least privilege и превращает любую уязвимость в критическую.{' '}
                 <strong>Unbounded tools</strong> — инструмент без лимитов: например, SQL-запрос без timeout
                 или ограничения на количество строк. Модель может случайно запустить{' '}
-                <code className="text-emerald-300 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">SELECT * FROM logs</code>{' '}
+                <code className="text-accent-300 bg-accent-500/10 px-1.5 py-0.5 rounded text-sm">SELECT * FROM logs</code>{' '}
                 на таблице с миллиардами записей. <strong>Missing descriptions</strong> — tools без
                 человекочитаемых описаний и примеров. LLM выбирает инструменты по описанию; если оно пустое
                 или криптичное, модель будет вызывать tool некорректно или игнорировать его. Хорошая практика:
@@ -393,7 +393,7 @@ export default function McpToolEcosystemsTheory({ lang }: { lang: string }) {
                 everything: violates least privilege and turns any vulnerability into a critical one.{' '}
                 <strong>Unbounded tools</strong> — a tool with no limits: for example, an SQL query with no
                 timeout or row cap. The model may accidentally run{' '}
-                <code className="text-emerald-300 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">SELECT * FROM logs</code>{' '}
+                <code className="text-accent-300 bg-accent-500/10 px-1.5 py-0.5 rounded text-sm">SELECT * FROM logs</code>{' '}
                 on a table with billions of rows. <strong>Missing descriptions</strong> — tools without
                 human-readable descriptions and examples. The LLM picks tools by description; if it is empty
                 or cryptic, the model will call the tool incorrectly or ignore it entirely. Best practice:

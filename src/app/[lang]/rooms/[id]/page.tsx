@@ -294,14 +294,14 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
             <ChevronRight size={14} />
             <span className="text-neutral-300">{metadata.category[lang as 'en' | 'ru']}</span>
             <ChevronRight size={14} />
-            <span className="text-emerald-500 font-medium">{metadata.title[lang as 'en' | 'ru']}</span>
+            <span className="text-accent-500 font-medium">{metadata.title[lang as 'en' | 'ru']}</span>
           </nav>
 
           <div className="mb-8 flex flex-col md:flex-row md:items-start gap-5">
             <div className="flex-1 min-w-0">
               <h1 className="text-3xl md:text-4xl font-semibold mb-4">{metadata.title[lang as 'en' | 'ru']}</h1>
                           <div className="flex items-center gap-6 text-sm text-neutral-400">
-                            <span className="flex items-center gap-2 text-emerald-500 font-bold bg-emerald-500/10 px-2 py-1 rounded text-xs uppercase border border-emerald-500/20">
+                            <span className="flex items-center gap-2 text-accent-500 font-bold bg-accent-500/10 px-2 py-1 rounded text-xs uppercase border border-accent-500/20">
                               {metadata.difficulty}
                             </span>
                             <span className="flex items-center gap-2">
@@ -339,7 +339,7 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
         <aside className="w-full lg:w-[320px] lg:sticky lg:top-[100px] flex flex-col gap-4">
           <div className="bg-card-dark border border-border-card rounded-xl p-6 overflow-y-auto max-h-[calc(100vh-280px)]">
             <h3 className="text-lg font-bold mb-6 flex items-center gap-2">
-              <HelpCircle className="text-emerald-500" size={20} />
+              <HelpCircle className="text-accent-500" size={20} />
               {lang === 'ru' ? 'Задания комнаты' : 'Room Tasks'}
             </h3>
             <div className="space-y-2">
@@ -430,13 +430,13 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
               <span className="text-xs font-bold text-neutral-400 uppercase tracking-wider">
                 {lang === 'ru' ? 'Прогресс' : 'Progress'}
               </span>
-              <span className="text-sm font-bold text-emerald-500">
+              <span className="text-sm font-bold text-accent-500">
                 {Math.round((tasks.filter(t => t.completed).length / tasks.length) * 100)}%
               </span>
             </div>
             <div className="h-1.5 bg-deep rounded-full overflow-hidden border border-border-card">
               <motion.div
-                className="h-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"
+                className="h-full bg-accent-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"
                 initial={{ width: 0 }}
                 animate={{ width: `${(tasks.filter(t => t.completed).length / tasks.length) * 100}%` }}
               />

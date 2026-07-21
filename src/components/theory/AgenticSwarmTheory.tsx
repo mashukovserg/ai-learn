@@ -17,8 +17,8 @@ export default function AgenticSwarmTheory({ lang }: { lang: string }) {
           </p>
         </section>
 
-        <section className="bg-emerald-500/5 border border-emerald-500/20 p-6 rounded-xl my-8">
-          <h3 className="text-emerald-500 mt-0">Ключевая аналогия: Автопилот vs Диспетчер</h3>
+        <section className="bg-accent-500/5 border border-accent-500/20 p-6 rounded-xl my-8">
+          <h3 className="text-heading mt-0">Ключевая аналогия: Автопилот vs Диспетчер</h3>
           <p className="mb-0">
             <strong>ИИ-ассистент:</strong> Вы просите его написать письмо. Это автопилот. Он помогает вам в конкретный момент.<br />
             <strong>Агентный рой:</strong> Вы поручаете ему &quot;Провести исследование рынка 10 конкурентов, собрать их цены в таблицу и подготовить отчет&quot;. Это работа целого отдела, которым вы теперь управляете как диспетчер.
@@ -83,8 +83,8 @@ export default function AgenticSwarmTheory({ lang }: { lang: string }) {
         </p>
       </section>
 
-      <section className="bg-emerald-500/5 border border-emerald-500/20 p-6 rounded-xl my-8">
-        <h3 className="text-emerald-500 mt-0">Key Analogy: Autopilot vs. Dispatcher</h3>
+      <section className="bg-accent-500/5 border border-accent-500/20 p-6 rounded-xl my-8">
+        <h3 className="text-heading mt-0">Key Analogy: Autopilot vs. Dispatcher</h3>
         <p className="mb-0">
           <strong>AI Assistant:</strong> You ask it to write an email. It&apos;s an autopilot. It helps you in a specific moment.<br />
           <strong>Agentic Swarm:</strong> You task it to &quot;Research 10 competitors, collect their prices in a table, and prepare a report.&quot; This is the work of an entire department that you now manage as a dispatcher.

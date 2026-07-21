@@ -158,7 +158,7 @@ export default function ContextEngineering101Theory({ lang }: { lang: string }) 
               </>
             )}
           </p>
-          <div className="bg-emerald-500/5 border-l-4 border-emerald-500 p-6 my-4">
+          <div className="bg-accent-500/5 border-l-4 border-accent-500 p-6 my-4">
             <h4 className="font-bold text-heading mb-2">
               {ru ? 'Практика инструментов, 2026' : 'Tool practice, 2026'}
             </h4>
@@ -230,23 +230,23 @@ export default function ContextEngineering101Theory({ lang }: { lang: string }) 
               <tbody>
                 <tr className="border-b border-border-subtle">
                   <td className="py-2 pr-4">{ru ? 'Постоянное правило' : 'A standing rule'}</td>
-                  <td className="py-2 text-emerald-400">{ru ? 'файл-конституция' : 'constitution file'}</td>
+                  <td className="py-2 text-accent-400">{ru ? 'файл-конституция' : 'constitution file'}</td>
                 </tr>
                 <tr className="border-b border-border-subtle">
                   <td className="py-2 pr-4">{ru ? 'Проверенный факт' : 'A verified fact'}</td>
-                  <td className="py-2 text-emerald-400">{ru ? 'индекс памяти' : 'memory index'}</td>
+                  <td className="py-2 text-accent-400">{ru ? 'индекс памяти' : 'memory index'}</td>
                 </tr>
                 <tr className="border-b border-border-subtle">
                   <td className="py-2 pr-4">{ru ? 'Подробная документация' : 'Detailed documentation'}</td>
-                  <td className="py-2 text-emerald-400">{ru ? 'тематический файл' : 'topic file'}</td>
+                  <td className="py-2 text-accent-400">{ru ? 'тематический файл' : 'topic file'}</td>
                 </tr>
                 <tr className="border-b border-border-subtle">
                   <td className="py-2 pr-4">{ru ? 'Повторяемая процедура' : 'A repeatable procedure'}</td>
-                  <td className="py-2 text-emerald-400">{ru ? 'скилл' : 'skill'}</td>
+                  <td className="py-2 text-accent-400">{ru ? 'скилл' : 'skill'}</td>
                 </tr>
                 <tr>
                   <td className="py-2 pr-4">{ru ? 'Автономная роль' : 'An autonomous role'}</td>
-                  <td className="py-2 text-emerald-400">{ru ? 'агент' : 'agent'}</td>
+                  <td className="py-2 text-accent-400">{ru ? 'агент' : 'agent'}</td>
                 </tr>
               </tbody>
             </table>
@@ -394,7 +394,7 @@ export default function ContextEngineering101Theory({ lang }: { lang: string }) 
               </>
             )}
           </p>
-          <div className="bg-emerald-500/5 border-l-4 border-emerald-500 p-6 my-4">
+          <div className="bg-accent-500/5 border-l-4 border-accent-500 p-6 my-4">
             <h4 className="font-bold text-heading mb-2">
               {ru ? 'Куда дальше' : 'Where to Go Next'}
             </h4>

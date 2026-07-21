@@ -14,8 +14,8 @@ export default function ClaudeCodeAgenticLoopTheory({ lang }: { lang: string }) 
           </p>
         </section>
 
-        <section className="bg-emerald-500/5 border border-emerald-500/20 p-6 rounded-xl my-8">
-          <h3 className="text-emerald-500 mt-0">Три фазы цикла: Сбор, Действие, Проверка</h3>
+        <section className="bg-accent-500/5 border border-accent-500/20 p-6 rounded-xl my-8">
+          <h3 className="text-heading mt-0">Три фазы цикла: Сбор, Действие, Проверка</h3>
           <p>Агент работает итерациями. Каждая итерация (loop) состоит из трех этапов:</p>
           <ol className="space-y-4">
             <li>
@@ -79,8 +79,8 @@ export default function ClaudeCodeAgenticLoopTheory({ lang }: { lang: string }) 
         </p>
       </section>
 
-      <section className="bg-emerald-500/5 border border-emerald-500/20 p-6 rounded-xl my-8">
-        <h3 className="text-emerald-500 mt-0">Three Phases of the Loop: Gather, Act, Verify</h3>
+      <section className="bg-accent-500/5 border border-accent-500/20 p-6 rounded-xl my-8">
+        <h3 className="text-heading mt-0">Three Phases of the Loop: Gather, Act, Verify</h3>
         <p>The agent works in iterations. Each iteration (loop) consists of three stages:</p>
         <ol className="space-y-4">
           <li>

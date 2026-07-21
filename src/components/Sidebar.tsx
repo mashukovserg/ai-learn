@@ -91,7 +91,7 @@ export default function Sidebar({
               onClick={onNavigate}
               className={`flex items-center ${collapsed ? 'justify-center' : 'gap-3'} px-3 py-2.5 rounded-lg transition-colors mb-1 text-sm ${
                 isActive
-                  ? 'bg-emerald-500/10 text-emerald-200 border border-emerald-500/20'
+                  ? 'bg-accent-500/10 text-accent-200 border border-accent-500/20'
                   : 'text-neutral-500 hover:text-neutral-200 hover:bg-base border border-transparent'
               }`}
               title={item.label}

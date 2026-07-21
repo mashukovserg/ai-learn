@@ -11,7 +11,7 @@ export default function Llama318bTheory({ lang }: { lang: string }) {
       {/* Chapter 1: What is Llama 3.1 8B? */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Flame className="text-emerald-500" />
+          <Flame className="text-accent-500" />
           {lang === 'ru' ? 'Глава 1: Что такое Llama 3.1 8B?' : 'Chapter 1: What is Llama 3.1 8B?'}
         </h2>
         <div className="space-y-6">
@@ -26,7 +26,7 @@ export default function Llama318bTheory({ lang }: { lang: string }) {
               : 'The "8B" size is not arbitrary. It is exactly the point where the model is large enough to be useful (coherent answers, follows instructions, knows a lot of facts) and small enough to fit on a single consumer GPU. The Llama 3.1 family includes three sizes: 8B, 70B, and 405B. 8B is the most popular because it "fits into reality".'}
           </p>
 
-          <div className="bg-emerald-500/5 border-l-4 border-emerald-500 p-6 my-6">
+          <div className="bg-accent-500/5 border-l-4 border-accent-500 p-6 my-6">
             <h4 className="font-bold text-heading mb-2">{lang === 'ru' ? 'Ключевая аналогия' : 'Key Analogy'}</h4>
             <p className="text-neutral-400 leading-relaxed">
               {lang === 'ru'
@@ -40,7 +40,7 @@ export default function Llama318bTheory({ lang }: { lang: string }) {
       {/* Chapter 2: Why it mattered for the open ecosystem */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Globe className="text-emerald-500" />
+          <Globe className="text-accent-500" />
           {lang === 'ru' ? 'Глава 2: Почему она изменила открытую экосистему' : 'Chapter 2: Why it Changed the Open Ecosystem'}
         </h2>
         <div className="space-y-6">
@@ -52,7 +52,7 @@ export default function Llama318bTheory({ lang }: { lang: string }) {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
             <div className="bg-black/40 p-5 rounded-xl border border-border-card">
-              <h4 className="font-bold text-emerald-500 mb-2">{lang === 'ru' ? 'Приватность' : 'Privacy'}</h4>
+              <h4 className="font-bold text-heading mb-2">{lang === 'ru' ? 'Приватность' : 'Privacy'}</h4>
               <p className="text-neutral-400 text-sm leading-relaxed">
                 {lang === 'ru'
                   ? 'Юридические фирмы, госструктуры, медицинские стартапы — все, кому нельзя отправлять данные в чужой API, получили рабочее решение.'
@@ -60,7 +60,7 @@ export default function Llama318bTheory({ lang }: { lang: string }) {
               </p>
             </div>
             <div className="bg-black/40 p-5 rounded-xl border border-border-card">
-              <h4 className="font-bold text-emerald-500 mb-2">{lang === 'ru' ? 'Стоимость' : 'Cost'}</h4>
+              <h4 className="font-bold text-heading mb-2">{lang === 'ru' ? 'Стоимость' : 'Cost'}</h4>
               <p className="text-neutral-400 text-sm leading-relaxed">
                 {lang === 'ru'
                   ? 'Одна покупка GPU вместо ежемесячного счёта за токены. Для продукта с большим объёмом запросов экономия в десятки раз.'
@@ -68,7 +68,7 @@ export default function Llama318bTheory({ lang }: { lang: string }) {
               </p>
             </div>
             <div className="bg-black/40 p-5 rounded-xl border border-border-card">
-              <h4 className="font-bold text-emerald-500 mb-2">{lang === 'ru' ? 'Кастомизация' : 'Customization'}</h4>
+              <h4 className="font-bold text-heading mb-2">{lang === 'ru' ? 'Кастомизация' : 'Customization'}</h4>
               <p className="text-neutral-400 text-sm leading-relaxed">
                 {lang === 'ru'
                   ? 'Можно дообучать (LoRA), сжимать (квантизация), резать на части, упаковывать в свои продукты — никаких API-ограничений.'
@@ -88,7 +88,7 @@ export default function Llama318bTheory({ lang }: { lang: string }) {
       {/* Chapter 3: Architecture in plain English */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Cpu className="text-emerald-500" />
+          <Cpu className="text-accent-500" />
           {lang === 'ru' ? 'Глава 3: Архитектура простыми словами' : 'Chapter 3: Architecture in Plain English'}
         </h2>
         <div className="space-y-6">
@@ -123,22 +123,22 @@ export default function Llama318bTheory({ lang }: { lang: string }) {
                   <tr className="border-b border-border-card">
                     <td className="py-2 pr-4 text-neutral-300 font-medium">{lang === 'ru' ? 'Окно контекста' : 'Context window'}</td>
                     <td className="py-2 pr-4">4K</td>
-                    <td className="py-2 text-emerald-400">128K</td>
+                    <td className="py-2 text-accent-400">128K</td>
                   </tr>
                   <tr className="border-b border-border-card">
                     <td className="py-2 pr-4 text-neutral-300 font-medium">{lang === 'ru' ? 'Внимание' : 'Attention'}</td>
                     <td className="py-2 pr-4">MHA</td>
-                    <td className="py-2 text-emerald-400">GQA</td>
+                    <td className="py-2 text-accent-400">GQA</td>
                   </tr>
                   <tr className="border-b border-border-card">
                     <td className="py-2 pr-4 text-neutral-300 font-medium">{lang === 'ru' ? 'Размер словаря' : 'Vocabulary size'}</td>
                     <td className="py-2 pr-4">32K</td>
-                    <td className="py-2 text-emerald-400">128K</td>
+                    <td className="py-2 text-accent-400">128K</td>
                   </tr>
                   <tr>
                     <td className="py-2 pr-4 text-neutral-300 font-medium">{lang === 'ru' ? 'Данные обучения' : 'Training data'}</td>
                     <td className="py-2 pr-4">2T токенов</td>
-                    <td className="py-2 text-emerald-400">15T токенов</td>
+                    <td className="py-2 text-accent-400">15T токенов</td>
                   </tr>
                 </tbody>
               </table>
@@ -168,7 +168,7 @@ export default function Llama318bTheory({ lang }: { lang: string }) {
       {/* Chapter 4: The licence reality */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Scale className="text-emerald-500" />
+          <Scale className="text-accent-500" />
           {lang === 'ru' ? 'Глава 4: Реальность лицензии' : 'Chapter 4: The Licence Reality'}
         </h2>
         <div className="space-y-6">
@@ -213,7 +213,7 @@ export default function Llama318bTheory({ lang }: { lang: string }) {
       {/* Chapter 5: Running it yourself */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Wrench className="text-emerald-500" />
+          <Wrench className="text-accent-500" />
           {lang === 'ru' ? 'Глава 5: Как запустить у себя' : 'Chapter 5: Running it Yourself'}
         </h2>
         <div className="space-y-6">
@@ -225,7 +225,7 @@ export default function Llama318bTheory({ lang }: { lang: string }) {
 
           <div className="grid grid-cols-1 gap-4 my-6">
             <div className="bg-black/40 p-5 rounded-xl border border-border-card">
-              <h4 className="font-bold text-emerald-500 mb-2">Ollama — {lang === 'ru' ? 'самый простой путь' : 'the easiest path'}</h4>
+              <h4 className="font-bold text-heading mb-2">Ollama — {lang === 'ru' ? 'самый простой путь' : 'the easiest path'}</h4>
               <p className="text-neutral-400 text-sm leading-relaxed mb-3">
                 {lang === 'ru'
                   ? 'Идеально для разработки, прототипов и личного использования. Работает на Mac (включая M1/M2/M3), Linux и Windows. Автоматически выбирает квантизацию GGUF под ваше железо.'
@@ -244,7 +244,7 @@ export default function Llama318bTheory({ lang }: { lang: string }) {
             </div>
 
             <div className="bg-black/40 p-5 rounded-xl border border-border-card">
-              <h4 className="font-bold text-emerald-500 mb-2">vLLM — {lang === 'ru' ? 'для продакшна' : 'for production'}</h4>
+              <h4 className="font-bold text-heading mb-2">vLLM — {lang === 'ru' ? 'для продакшна' : 'for production'}</h4>
               <p className="text-neutral-400 text-sm leading-relaxed">
                 {lang === 'ru'
                   ? 'Высокопроизводительный inference-сервер с continuous batching и PagedAttention. Подходит, когда вам нужно отвечать сотням пользователей одновременно и держать высокий throughput. Совместим с OpenAI API — можно переключиться без изменения клиентского кода.'
@@ -253,7 +253,7 @@ export default function Llama318bTheory({ lang }: { lang: string }) {
             </div>
 
             <div className="bg-black/40 p-5 rounded-xl border border-border-card">
-              <h4 className="font-bold text-emerald-500 mb-2">Hugging Face Transformers — {lang === 'ru' ? 'для исследований и файн-тюнинга' : 'for research and fine-tuning'}</h4>
+              <h4 className="font-bold text-heading mb-2">Hugging Face Transformers — {lang === 'ru' ? 'для исследований и файн-тюнинга' : 'for research and fine-tuning'}</h4>
               <p className="text-neutral-400 text-sm leading-relaxed">
                 {lang === 'ru'
                   ? 'Полный контроль над моделью: можно копаться во внутренностях, делать LoRA-файн-тюнинг (через PEFT), сравнивать варианты квантизации. Скорость хуже, чем у vLLM, но гибкости — на порядок больше.'

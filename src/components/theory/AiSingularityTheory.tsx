@@ -43,7 +43,7 @@ export default function AiSingularityTheory({ lang }: { lang: string }) {
           </p>
         </div>
         <div className="grid grid-cols-1 gap-6 mt-6">
-          <div className="bg-card-dark border border-emerald-500/30 rounded-xl p-6">
+          <div className="bg-card-dark border border-accent-500/30 rounded-xl p-6">
             <h3 className="text-lg font-bold mb-3 text-heading">
               {lang === 'ru' ? 'Оптимисты (e/acc)' : 'Optimists (e/acc)'}
             </h3>
@@ -126,7 +126,7 @@ export default function AiSingularityTheory({ lang }: { lang: string }) {
               : 'For practitioners — product managers, engineers, entrepreneurs — the singularity debate provides a decision-making framework for right now. How do you formulate objective functions for AI systems so they solve the intended problem rather than an absurdly optimized proxy of it? How do you design oversight and shutdown mechanisms? How do you explain risks to stakeholders who see only short-term gain? The singularity may be far off, but the questions it raises are relevant today — when deploying any AI product into the real world.'}
           </p>
         </div>
-        <div className="bg-gradient-to-br from-amber-500/10 to-emerald-500/10 border border-amber-500/20 rounded-xl p-6 mt-6 text-center">
+        <div className="bg-gradient-to-br from-amber-500/10 to-accent-500/10 border border-amber-500/20 rounded-xl p-6 mt-6 text-center">
           <h3 className="text-lg font-bold mb-2 text-white">
             {lang === 'ru' ? 'Итоговая мысль' : 'Final Thought'}
           </h3>

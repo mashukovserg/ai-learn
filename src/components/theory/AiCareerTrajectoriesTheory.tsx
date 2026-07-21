@@ -48,7 +48,7 @@ interface Roadmap {
 
 const CHIP_STYLES: Record<ChipTone, string> = {
   amber: 'bg-amber-100 text-amber-900 border border-amber-200/80',
-  mint: 'bg-emerald-100 text-emerald-950 border border-emerald-200/80',
+  mint: 'bg-accent-100 text-accent-950 border border-accent-200/80',
   violet: 'bg-violet-100 text-violet-900 border border-violet-200/80',
   stone: 'bg-stone-100 text-stone-700 border border-stone-200/80',
 };
@@ -603,7 +603,7 @@ export default function AiCareerTrajectoriesTheory({ lang }: { lang: string }) {
               <div key={stage.id} className="grid grid-cols-1 md:grid-cols-[96px_minmax(0,1fr)] gap-4 items-start">
                 <div className="hidden md:flex flex-col items-center pt-4">
                   <div className="w-8 h-8 rounded-full border border-border-emphasis bg-card flex items-center justify-center">
-                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-300" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-accent-300" />
                   </div>
                   <div className="w-px h-full min-h-[72px] bg-border-card" />
                   <span className="text-sm font-mono text-neutral-500 mt-2">{text(stage.years, currentLang)}</span>

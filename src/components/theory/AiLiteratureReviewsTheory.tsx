@@ -17,9 +17,9 @@ export default function AiLiteratureReviewsTheory({ lang }: { lang: string }) {
           <div className="space-y-4">
             <p className="text-neutral-300 leading-relaxed">
               {lang === 'ru' ? (
-                <>Обзор литературы — идеальный полигон для ИИ: работа огромная, рутинная в средней части и критически важная по результату. Эта комната опирается на масштабный обзор инструментов этой области (<a href={PAPER_URL} target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Bolaños et al. 2024</a>): авторы проанализировали 21 систему полуавтоматизации систематических обзоров по 34 признакам и отдельно — 11 новых LLM-инструментов для поиска статей и академического письма.</>
+                <>Обзор литературы — идеальный полигон для ИИ: работа огромная, рутинная в средней части и критически важная по результату. Эта комната опирается на масштабный обзор инструментов этой области (<a href={PAPER_URL} target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Bolaños et al. 2024</a>): авторы проанализировали 21 систему полуавтоматизации систематических обзоров по 34 признакам и отдельно — 11 новых LLM-инструментов для поиска статей и академического письма.</>
               ) : (
-                <>A literature review is an ideal proving ground for AI: the work is enormous, routine in its middle stretch, and critical in its outcome. This room draws on a large survey of the field&apos;s tools (<a href={PAPER_URL} target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Bolaños et al. 2024</a>): the authors analyzed 21 systems for semi-automating systematic reviews across 34 features, plus 11 new LLM tools for finding papers and academic writing.</>
+                <>A literature review is an ideal proving ground for AI: the work is enormous, routine in its middle stretch, and critical in its outcome. This room draws on a large survey of the field&apos;s tools (<a href={PAPER_URL} target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Bolaños et al. 2024</a>): the authors analyzed 21 systems for semi-automating systematic reviews across 34 features, plus 11 new LLM tools for finding papers and academic writing.</>
               )}
             </p>
             <p className="text-neutral-300 leading-relaxed">
@@ -96,9 +96,9 @@ export default function AiLiteratureReviewsTheory({ lang }: { lang: string }) {
           <div className="space-y-4">
             <p className="text-neutral-300 leading-relaxed">
               {lang === 'ru' ? (
-                <>Авторы обзора оценили инструменты по 34 признакам: 23 общих (импорт ссылок, коллаборация, дедупликация, PRISMA-отчёты, цена) и 11 связанных с ИИ (задача, подход, представление текста, минимальные требования, пред- и пост-скрининговая поддержка). Главный вывод неожиданно отрезвляющий: внутри большинства инструментов работает ИИ прошлого поколения. Самый частый классификатор — SVM, метод 1990-х; половина систем всё ещё представляет текст как «мешок слов» (Bag of Words), и лишь новейшие перешли на эмбеддинги вроде SciBERT и Sentence-BERT (<a href={PAPER_URL} target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Bolaños et al. 2024</a>).</>
+                <>Авторы обзора оценили инструменты по 34 признакам: 23 общих (импорт ссылок, коллаборация, дедупликация, PRISMA-отчёты, цена) и 11 связанных с ИИ (задача, подход, представление текста, минимальные требования, пред- и пост-скрининговая поддержка). Главный вывод неожиданно отрезвляющий: внутри большинства инструментов работает ИИ прошлого поколения. Самый частый классификатор — SVM, метод 1990-х; половина систем всё ещё представляет текст как «мешок слов» (Bag of Words), и лишь новейшие перешли на эмбеддинги вроде SciBERT и Sentence-BERT (<a href={PAPER_URL} target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Bolaños et al. 2024</a>).</>
               ) : (
-                <>The survey&apos;s authors scored the tools on 34 features: 23 general ones (reference import, collaboration, deduplication, PRISMA reporting, price) and 11 AI-related ones (task, approach, text representation, minimum requirements, pre- and post-screening support). The headline finding is soberingly unexpected: most tools run last-generation AI inside. The most common classifier is the SVM, a 1990s method; half the systems still represent text as a Bag of Words, and only the newest have moved to embeddings like SciBERT and Sentence-BERT (<a href={PAPER_URL} target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Bolaños et al. 2024</a>).</>
+                <>The survey&apos;s authors scored the tools on 34 features: 23 general ones (reference import, collaboration, deduplication, PRISMA reporting, price) and 11 AI-related ones (task, approach, text representation, minimum requirements, pre- and post-screening support). The headline finding is soberingly unexpected: most tools run last-generation AI inside. The most common classifier is the SVM, a 1990s method; half the systems still represent text as a Bag of Words, and only the newest have moved to embeddings like SciBERT and Sentence-BERT (<a href={PAPER_URL} target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Bolaños et al. 2024</a>).</>
               )}
             </p>
             <p className="text-neutral-300 leading-relaxed">
@@ -193,7 +193,7 @@ export default function AiLiteratureReviewsTheory({ lang }: { lang: string }) {
 
       {/* Practitioner's summary */}
       <section>
-        <div className="bg-card-dark border border-emerald-500/20 rounded-xl p-8">
+        <div className="bg-card-dark border border-accent-500/20 rounded-xl p-8">
           <h3 className="text-xl font-bold mb-4 text-heading">
             {lang === 'ru' ? 'Итог для практика' : 'Practitioner’s Summary'}
           </h3>

@@ -59,7 +59,7 @@ export default function AgenticCliToolsTheory({ lang }: { lang: string }) {
             <p className="text-xs text-neutral-500 font-medium mb-2 uppercase tracking-wider">
               {ru ? 'Ментальная модель цикла' : 'Mental Model'}
             </p>
-            <pre className="text-sm text-emerald-300/90 leading-relaxed overflow-x-auto whitespace-pre">
+            <pre className="text-sm text-accent-300/90 leading-relaxed overflow-x-auto whitespace-pre">
 {`Discovery -> Plan -> Change -> Verify -> Release/Rollback`}
             </pre>
           </div>

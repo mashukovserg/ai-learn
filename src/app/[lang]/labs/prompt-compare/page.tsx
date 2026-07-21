@@ -135,7 +135,7 @@ export default function PromptComparePage(props: { params: Promise<{ lang: strin
               value={systemPrompt}
               onChange={(e) => setSystemPrompt(e.target.value)}
               placeholder={lang === 'ru' ? 'Системный промпт (опционально)...' : 'System prompt (optional)...'}
-              className="w-full mt-2 bg-base border border-border-subtle rounded-lg px-4 py-3 text-sm text-neutral-200 placeholder-neutral-600 resize-none focus:outline-none focus:border-emerald-500/40 transition-colors"
+              className="w-full mt-2 bg-base border border-border-subtle rounded-lg px-4 py-3 text-sm text-neutral-200 placeholder-neutral-600 resize-none focus:outline-none focus:border-accent-500/40 transition-colors"
               rows={2}
             />
           )}
@@ -146,7 +146,7 @@ export default function PromptComparePage(props: { params: Promise<{ lang: strin
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
           placeholder={lang === 'ru' ? 'Введите промпт...' : 'Enter your prompt...'}
-          className="w-full bg-base border border-border-subtle rounded-lg px-4 py-3 text-sm text-neutral-200 placeholder-neutral-600 resize-none focus:outline-none focus:border-emerald-500/40 transition-colors"
+          className="w-full bg-base border border-border-subtle rounded-lg px-4 py-3 text-sm text-neutral-200 placeholder-neutral-600 resize-none focus:outline-none focus:border-accent-500/40 transition-colors"
           rows={4}
         />
 
@@ -184,7 +184,7 @@ export default function PromptComparePage(props: { params: Promise<{ lang: strin
             type="button"
             onClick={onCompare}
             disabled={!canSubmit}
-            className="px-5 py-2 rounded-md text-sm font-semibold bg-emerald-300 text-emerald-950 hover:bg-emerald-200 disabled:opacity-40 disabled:cursor-not-allowed transition-colors flex items-center gap-2 sm:ml-auto"
+            className="px-5 py-2 rounded-md text-sm font-semibold bg-accent-300 text-accent-950 hover:bg-accent-200 disabled:opacity-40 disabled:cursor-not-allowed transition-colors flex items-center gap-2 sm:ml-auto"
           >
             {loading ? (
               <>

@@ -128,6 +128,20 @@ Surface and border colors are defined as Tailwind v4 theme tokens in `src/app/[l
 - Use `border-border-card`, `border-border-subtle`, `border-border-emphasis` for borders.
 - **Never** introduce new arbitrary hex background or border values (e.g. `bg-[#1a1a1a]`, `border-[#262626]`). Use the existing tokens or propose a new token in `globals.css`.
 
+**Address color by role, not by palette name (Mandatory).** The point is that a design change must never cost a repo-wide sweep. Evidence from this repo: swapping the terminal look took minutes (11 `--color-term-*` tokens), while recoloring theory headings cost 250 replacements across 34 files — because the accent was hardcoded as `emerald-*` everywhere.
+
+| Role | Use | Never |
+|---|---|---|
+| Brand / interactive accent | `text-accent-500`, `bg-accent-500/10`, `border-accent-500/20` | `emerald-*` |
+| Theory chapter headings | `text-heading` | `text-accent-*` (Fork 3 — the accent means *interactive*) |
+| Terminal | `bg-term-bg`, `text-term-prompt`, … | literal hex |
+
+The accent ramp (`--color-accent-100…950`) mirrors the shade scale, so alpha modifiers work normally (`bg-accent-500/10`). **Swapping the whole site accent = editing the ramp in `@theme` plus its `[data-theme="saas"]` override — 7 lines, no component edits.**
+
+This is enforced by `src/__tests__/design-tokens.test.ts` (part of `check-all`): it fails on any literal `emerald-*` in components and on any theory heading painted with the accent, naming the offending files. Status palettes (`amber`, `red`, `blue`, `cyan`, …) are **not yet migrated** — that debt is tracked by the same test; when they move to `success`/`warning`/`danger`/`info` tokens, add them to `RETIRED_PALETTES` there.
+
+**Known boundary:** raster assets (`public/images/**`) are not tokenized. A room cover PNG keeps its baked-in colors through an accent swap; re-export or prefer SVG when a visual must follow the accent.
+
 ### Terminal component — a core design element (use it)
 
 `src/components/Terminal.tsx` is a first-class part of the visual language, not a one-off. It renders a terminal window styled after **GNOME Terminal on Ubuntu**: the signature aubergine background (`#300A24`), the **Tango** ANSI palette, and **Ubuntu Mono** (loaded via `next/font` in `layout.tsx`, exposed as the `--font-term` token → `font-term` utility). The emerald-vs-aubergine tension is being resolved on the *heading* side, not the terminal side (fork history in `DESIGN_FORKS.md`, Forks 1 & 3). It stays intentionally dark in **both** themes — its `--color-term-*` tokens in `@theme` are deliberately **not** overridden in the `[data-theme="saas"]` block, so a terminal looks like a terminal on light UI too. Reach for it whenever a chapter shows a real command or interactive session — it is the preferred way to render such content, and terminals should recur across the platform rather than appear in one or two rooms.

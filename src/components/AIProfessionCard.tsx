@@ -6,7 +6,7 @@ import { useLang } from '@/hooks/useLang';
 import { ProfessionCard } from '@/data/professions';
 
 function progressTone(progress: number) {
-  if (progress >= 15) return 'text-emerald-200 border-emerald-300/50 bg-emerald-500/10';
+  if (progress >= 15) return 'text-accent-200 border-accent-300/50 bg-accent-500/10';
   if (progress >= 8) return 'text-cyan-200 border-cyan-300/50 bg-cyan-500/10';
   return 'text-neutral-200 border-white/35 bg-white/5';
 }
@@ -32,7 +32,7 @@ export default function AIProfessionCard({ profession }: { profession: Professio
       href={`/${lang}${profession.href}`}
       className={`group relative flex h-full flex-col overflow-hidden rounded-2xl border bg-card-dark transition-all duration-300 ${
         profession.featured
-          ? 'border-emerald-400/60 shadow-[0_0_0_1px_rgba(74,222,128,0.12)]'
+          ? 'border-accent-400/60 shadow-[0_0_0_1px_rgba(74,222,128,0.12)]'
           : 'border-border-card hover:-translate-y-1 hover:border-border-emphasis'
       }`}
     >
@@ -87,7 +87,7 @@ export default function AIProfessionCard({ profession }: { profession: Professio
 
         <div className="mt-auto flex items-center justify-between border-t border-border-subtle pt-4">
           <div className="flex items-center gap-2 text-sm text-neutral-400">
-            <SignalHigh size={14} className={profession.difficulty === 'Beginner' ? 'text-emerald-300' : profession.difficulty === 'Intermediate' ? 'text-amber-300' : 'text-rose-300'} />
+            <SignalHigh size={14} className={profession.difficulty === 'Beginner' ? 'text-accent-300' : profession.difficulty === 'Intermediate' ? 'text-amber-300' : 'text-rose-300'} />
             <span>{difficultyLabel}</span>
           </div>
           <span className="text-xs font-medium uppercase tracking-[0.12em] text-neutral-500">

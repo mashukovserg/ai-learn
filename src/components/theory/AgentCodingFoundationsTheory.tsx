@@ -93,7 +93,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
             <p className="text-xs text-neutral-500 font-medium mb-2 uppercase tracking-wider">
               {ru ? 'Пример контракта (YAML)' : 'Contract example (YAML)'}
             </p>
-            <pre className="text-sm text-emerald-300/90 leading-relaxed overflow-x-auto whitespace-pre">
+            <pre className="text-sm text-accent-300/90 leading-relaxed overflow-x-auto whitespace-pre">
 {`task:
   goal: "Add endpoint /users"
   constraints:
@@ -154,7 +154,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
 
           {/* Role diagram */}
           <div className="bg-deep border border-border-subtle rounded-lg p-4 my-4">
-            <pre className="text-sm text-emerald-300/90 leading-relaxed text-center">
+            <pre className="text-sm text-accent-300/90 leading-relaxed text-center">
 {`Planner → Executor → Validator
    ↑                      ↓
    └──────────────────────┘`}
@@ -198,7 +198,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
             <p className="text-xs text-neutral-500 font-medium mb-2 uppercase tracking-wider">
               {ru ? 'Состояния цикла' : 'Loop states'}
             </p>
-            <pre className="text-sm text-emerald-300/90 leading-relaxed overflow-x-auto whitespace-pre">
+            <pre className="text-sm text-accent-300/90 leading-relaxed overflow-x-auto whitespace-pre">
 {`loop:
   - plan       # decompose task into steps
   - execute    # call tools, apply changes
@@ -248,7 +248,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
             <p className="text-xs text-neutral-500 font-medium mb-2 uppercase tracking-wider">
               {ru ? 'Структура записи шага' : 'Step result structure'}
             </p>
-            <pre className="text-sm text-emerald-300/90 leading-relaxed overflow-x-auto whitespace-pre">
+            <pre className="text-sm text-accent-300/90 leading-relaxed overflow-x-auto whitespace-pre">
 {`step_result:
   step_id: 3
   success: false
@@ -300,7 +300,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
             <p className="text-xs text-neutral-500 font-medium mb-2 uppercase tracking-wider">
               {ru ? 'Стратегия recovery' : 'Recovery strategy'}
             </p>
-            <pre className="text-sm text-emerald-300/90 leading-relaxed overflow-x-auto whitespace-pre">
+            <pre className="text-sm text-accent-300/90 leading-relaxed overflow-x-auto whitespace-pre">
 {`recovery:
   retry:
     max_attempts: 3
@@ -346,7 +346,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
           <div className="space-y-3">
             <div className="bg-deep border border-border-subtle rounded-lg p-4">
               <p className="text-sm text-neutral-300 leading-relaxed">
-                <strong className="text-emerald-300">retry</strong>{' — '}
+                <strong className="text-accent-300">retry</strong>{' — '}
                 {ru
                   ? 'это самая простая стратегия восстановления: если действие не удалось, система не считает, что все сломалось, а просто пробует еще раз. Это помогает, когда проблема временная: сеть на секунду пропала, внешний сервис был перегружен или API ответил слишком поздно. Часто уже вторая или третья попытка оказывается успешной. Но повторять бесконечно нельзя. Поэтому между попытками делают небольшую паузу, которая с каждым разом увеличивается, а общее количество попыток заранее ограничивают (например, тремя). Иначе система может сама усугубить проблему: тысячи агентов начнут одновременно повторять запросы и еще сильнее перегрузят сервис, который и так пытается восстановиться. Именно поэтому в схеме выше указано max_attempts: 3, а не «повторять до тех пор, пока не получится».'
                   : 'the simplest recovery strategy: if an action fails, the system does not conclude that everything is broken — it just tries again. This helps when the problem is temporary: the network dropped for a second, an external service was overloaded, or an API answered too late. Often the second or third attempt already succeeds. But you cannot retry forever. So the system waits a little between attempts, makes the pause longer each time, and caps the total number of attempts in advance (say, at three). Otherwise the system can make the problem worse: thousands of agents start retrying at once and overload a service that is already struggling to recover. That is exactly why the schema above says max_attempts: 3, not «retry until it works».'}
@@ -354,7 +354,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
             </div>
             <div className="bg-deep border border-border-subtle rounded-lg p-4">
               <p className="text-sm text-neutral-300 leading-relaxed">
-                <strong className="text-emerald-300">fallback</strong>{' — '}
+                <strong className="text-accent-300">fallback</strong>{' — '}
                 {ru ? (
                   <>
                     {'это запасной план. Если действие не удалось даже после повторов, система не ломится дальше в ту же дверь, а пробует другой путь: другой инструмент, запасной сервис или упрощенный режим работы — например, показать сохраненную копию данных, пока живой поиск недоступен. В классической инженерии этот прием доведен до автоматизма паттерном '}
@@ -372,7 +372,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
             </div>
             <div className="bg-deep border border-border-subtle rounded-lg p-4">
               <p className="text-sm text-neutral-300 leading-relaxed">
-                <strong className="text-emerald-300">rollback</strong>{' — '}
+                <strong className="text-accent-300">rollback</strong>{' — '}
                 {ru
                   ? 'это возврат к последнему состоянию, которому можно доверять. Если ни повторы, ни запасной путь не помогли, худшее, что можно сделать, — продолжать работать поверх поломки: каждое следующее действие будет опираться на испорченное состояние и умножать ущерб. Поэтому система сначала откатывается назад. Так работают транзакции в базе данных (изменение либо применяется целиком, либо отменяется целиком), так разработчик возвращает код командой git reset или git revert, и так же при неудачном деплое трафик переводят обратно на предыдущую версию. Строка git reset --hard HEAD~1 в схеме — ровно это: сначала вернуться в чистое состояние, и только потом решать, что делать дальше.'
                   : 'returning to the last state you can trust. If neither retries nor the backup path helped, the worst thing to do is to keep working on top of the breakage: every next action would build on a corrupted state and multiply the damage. So the system first rolls back. This is how database transactions work (a change either applies fully or is undone fully), how a developer reverts code with git reset or git revert, and how a failed deploy is handled by routing traffic back to the previous version. The git reset --hard HEAD~1 line in the schema is exactly that: first return to a clean state, and only then decide what to do next.'}
@@ -380,7 +380,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
             </div>
             <div className="bg-deep border border-border-subtle rounded-lg p-4">
               <p className="text-sm text-neutral-300 leading-relaxed">
-                <strong className="text-emerald-300">escalate</strong>{' — '}
+                <strong className="text-accent-300">escalate</strong>{' — '}
                 {ru ? (
                   <>
                     {'это честное признание, что автоматика исчерпана, и передача задачи человеку. В классической эксплуатации это называется incident response: когда система не может починить себя сама, она будит дежурного инженера. Важно, как именно она это делает. Плохой сигнал — голое «что-то сломалось». Хороший — полный контекст: что агент пытался сделать, какие попытки предпринял, что именно упало и что показывают логи. Чем полнее переданный контекст, тем быстрее человек примет решение — поэтому качество эскалации напрямую определяет скорость восстановления. В агентных системах этот же принцип называют '}
@@ -441,24 +441,24 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
             <ul className="text-sm text-neutral-400 space-y-1.5">
               <li>
                 {'Microsoft Azure Architecture Center — '}
-                <a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/retry" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Retry pattern</a>
+                <a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/retry" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Retry pattern</a>
                 {', '}
-                <a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Circuit Breaker</a>
+                <a href="https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Circuit Breaker</a>
                 {', '}
-                <a href="https://learn.microsoft.com/en-us/azure/architecture/best-practices/transient-faults" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Transient fault handling</a>
+                <a href="https://learn.microsoft.com/en-us/azure/architecture/best-practices/transient-faults" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Transient fault handling</a>
               </li>
               <li>
                 {'Google — '}
-                <a href="https://sre.google/sre-book/table-of-contents/" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Site Reliability Engineering</a>
+                <a href="https://sre.google/sre-book/table-of-contents/" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Site Reliability Engineering</a>
                 {ru ? ' (особенно глава про каскадные сбои)' : ' (see the cascading-failures chapter)'}
               </li>
               <li>
                 {'Martin Fowler — '}
-                <a href="https://martinfowler.com/bliki/CircuitBreaker.html" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Circuit Breaker</a>
+                <a href="https://martinfowler.com/bliki/CircuitBreaker.html" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Circuit Breaker</a>
               </li>
               <li>
                 {'AWS Well-Architected Framework — '}
-                <a href="https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html" target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Reliability Pillar</a>
+                <a href="https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Reliability Pillar</a>
               </li>
             </ul>
           </div>
@@ -488,7 +488,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
             <p className="text-xs text-neutral-500 font-medium mb-2 uppercase tracking-wider">
               {ru ? 'Пример схемы инструмента' : 'Tool schema example'}
             </p>
-            <pre className="text-sm text-emerald-300/90 leading-relaxed overflow-x-auto whitespace-pre">
+            <pre className="text-sm text-accent-300/90 leading-relaxed overflow-x-auto whitespace-pre">
 {`{
   "name": "run_tests",
   "parameters": {

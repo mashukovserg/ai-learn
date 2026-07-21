@@ -10,7 +10,7 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
       {/* Chapter 1: The Agentic Revolution */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Cpu className="text-emerald-500" />
+          <Cpu className="text-accent-500" />
           {lang === 'ru' ? 'Глава 1: Агентская революция — ИИ обретает волю' : 'Chapter 1: The Agentic Revolution — AI Gains Agency'}
         </h2>
         <div className="space-y-6">
@@ -35,7 +35,7 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
                   : 'Waits for a prompt. Limited by weights knowledge. Has no feedback from reality. Result is text.'}
               </p>
             </div>
-            <div className="bg-card p-6 rounded-2xl border border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.05)]">
+            <div className="bg-card p-6 rounded-2xl border border-accent-500/30 shadow-[0_0_15px_rgba(16,185,129,0.05)]">
               <h4 className="text-heading font-bold mb-3 flex items-center gap-2">
                 <Zap size={18} /> {lang === 'ru' ? 'Активный Агент' : 'Active Agent'}
               </h4>
@@ -57,7 +57,7 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
       {/* Chapter 2: Deep Dive into <Term id="function-calling">Function Calling</Term> */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Code className="text-emerald-500" />
+          <Code className="text-accent-500" />
           {lang === 'ru' ? 'Глава 2: Анатомия <Term id="function-calling">Function Calling</Term> — Математика действий' : 'Chapter 2: Anatomy of <Term id="function-calling" lang={lang}>Function Calling</Term> — The Math of Action'}
         </h2>
         <div className="space-y-6">
@@ -98,7 +98,7 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
       {/* Chapter 3: ReAct Loop — The Logic of Iteration */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Repeat className="text-emerald-500" />
+          <Repeat className="text-accent-500" />
           {lang === 'ru' ? 'Глава 3: Цикл ReAct — Инженерия внутреннего диалога' : 'Chapter 3: The ReAct Loop — Engineering Inner Dialogue'}
         </h2>
         <div className="space-y-6">
@@ -111,9 +111,9 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
              <motion.div 
                initial={{ opacity: 0, x: -20 }}
                whileInView={{ opacity: 1, x: 0 }}
-               className="flex gap-4 p-4 rounded-lg bg-emerald-500/5 border border-emerald-500/10"
+               className="flex gap-4 p-4 rounded-lg bg-accent-500/5 border border-accent-500/10"
              >
-                <div className="w-8 h-8 rounded bg-emerald-500/20 flex items-center justify-center shrink-0 text-emerald-500 font-bold">1</div>
+                <div className="w-8 h-8 rounded bg-accent-500/20 flex items-center justify-center shrink-0 text-accent-500 font-bold">1</div>
                 <div>
                    <h5 className="text-white font-bold mb-1 flex items-center gap-2"><Search size={14} /> Thought:</h5>
                    <p className=" text-neutral-400 italic">{'"Разбиваю задачу на поиск данных А, Б и их сравнение."'}</p>
@@ -157,7 +157,7 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
       {/* Chapter 4: Multi-Agent Choreography */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Users className="text-emerald-500" />
+          <Users className="text-accent-500" />
           {lang === 'ru' ? 'Глава 4: Многоагентная хореография — Командная работа ИИ' : 'Chapter 4: Multi-Agent Choreography — AI Teamwork'}
         </h2>
         <div className="space-y-6">
@@ -192,7 +192,7 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
       {/* Chapter 5: Advanced Tool Use — Computer Use and Sandboxing */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Terminal className="text-emerald-500" />
+          <Terminal className="text-accent-500" />
           {lang === 'ru' ? 'Глава 5: Продвинутые инструменты — Computer Use и Песочницы' : 'Chapter 5: Advanced Tools — Computer Use and Sandboxing'}
         </h2>
         <div className="space-y-6">
@@ -223,7 +223,7 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
       {/* Chapter 6: Memory Architectures — <Term id="rag">RAG</Term> for Agents */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Database className="text-emerald-500" />
+          <Database className="text-accent-500" />
           {lang === 'ru' ? 'Глава 6: Архитектура памяти — Как не забыть всё' : 'Chapter 6: Memory Architecture — How Not to Forget Everything'}
         </h2>
         <div className="space-y-6">
@@ -233,12 +233,12 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
               : 'To perform long-term tasks (e.g., "study the EV market for a week and provide daily summaries"), an agent needs a complex memory system. We use the concept of semantic memory based on <Term id="rag">RAG</Term>.'}
           </p>
           <div className="grid gap-4 my-8">
-             <motion.div whileHover={{ x: 10 }} className="bg-gradient-to-r from-emerald-500/10 to-transparent p-6 rounded-xl border border-emerald-500/20 flex justify-between items-center">
+             <motion.div whileHover={{ x: 10 }} className="bg-gradient-to-r from-accent-500/10 to-transparent p-6 rounded-xl border border-accent-500/20 flex justify-between items-center">
                 <div>
-                   <h5 className="text-emerald-400 font-bold mb-1">{lang === 'ru' ? 'Эпизодическая память' : 'Episodic Memory'}</h5>
+                   <h5 className="text-accent-400 font-bold mb-1">{lang === 'ru' ? 'Эпизодическая память' : 'Episodic Memory'}</h5>
                    <p className=" text-neutral-500 text-[13px]">{lang === 'ru' ? 'Краткосрочные шаги и лог текущих действий (Scratchpad).' : 'Short-term steps and current action log (Scratchpad).'}</p>
                 </div>
-                <div className="text-emerald-500/20 font-mono text-4xl font-bold">01</div>
+                <div className="text-accent-500/20 font-mono text-4xl font-bold">01</div>
              </motion.div>
              <motion.div whileHover={{ x: 10 }} className="bg-gradient-to-r from-blue-500/10 to-transparent p-6 rounded-xl border border-blue-500/20 flex justify-between items-center">
                 <div>
@@ -292,9 +292,9 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
       </div>
 
       {/* Chapter 8: The Future — AGI and Agency */}
-      <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-8 mb-8">
+      <div className="bg-accent-500/5 border border-accent-500/20 rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Target className="text-emerald-500" />
+          <Target className="text-accent-500" />
           {lang === 'ru' ? 'Глава 8: Путь к AGI через Агентность' : 'Chapter 8: The Path to AGI via Agency'}
         </h2>
         <div className="space-y-6">
@@ -308,7 +308,7 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
               ? 'Мы вступаем в эпоху "ИИ-сотрудников". В ближайшие годы у каждого из нас будет не просто чат-бот, а целая команда агентов, которые знают наши привычки, имеют доступ к нашим инструментам и работают 24/7, пока мы спим. Умение управлять этим оркестром — это самый важный навык, который вы можете приобрести сегодня.'
               : 'We are entering the era of "AI employees." In the coming years, each of us will have not just a chatbot but an entire team of agents who know our habits, have access to our tools, and work 24/7 while we sleep. The ability to manage this orchestra is the most important skill you can acquire today.'}
           </p>
-          <div className="bg-emerald-500/10 p-8 rounded-2xl border border-emerald-500/20 mt-8">
+          <div className="bg-accent-500/10 p-8 rounded-2xl border border-accent-500/20 mt-8">
              <h3 className="text-xl font-bold text-white mb-4 text-center">{lang === 'ru' ? 'Вы стали архитектором систем' : 'You have become a Systems Architect'}</h3>
              <p className=" text-neutral-300 leading-relaxed text-center italic">
                {lang === 'ru'

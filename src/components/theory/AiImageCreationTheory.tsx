@@ -11,7 +11,7 @@ export default function AiImageCreationTheory({ lang }: { lang: string }) {
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-            <ImageIcon className="text-emerald-500" />
+            <ImageIcon className="text-accent-500" />
             {lang === 'ru' ? 'Искусство пикселей: от хаоса к шедевру' : 'The Art of Pixels: From Chaos to Masterpiece'}
           </h2>
           <div className="prose prose-invert max-w-none">
@@ -112,7 +112,7 @@ export default function AiImageCreationTheory({ lang }: { lang: string }) {
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-heading">
-            <Sliders className="text-emerald-500" />
+            <Sliders className="text-accent-500" />
             {lang === 'ru' ? 'Глава 3: Структура визуального промпта' : 'Chapter 3: The Structure of a Visual Prompt'}
           </h2>
           <div className="prose prose-invert max-w-none">
@@ -147,7 +147,7 @@ export default function AiImageCreationTheory({ lang }: { lang: string }) {
                 </p>
               </div>
             </div>
-            <div className="bg-deep border border-border-subtle rounded-lg p-4 font-mono text-sm text-emerald-400/80">
+            <div className="bg-deep border border-border-subtle rounded-lg p-4 font-mono text-sm text-accent-400/80">
               {lang === 'ru' ? 'Пример: A cyberpunk samurai drinking tea, neon glow, rainy street, cinematic lighting, 8k, highly detailed' : 'Example: A cyberpunk samurai drinking tea, neon glow, rainy street, cinematic lighting, 8k, highly detailed'}
             </div>
           </div>
@@ -220,7 +220,7 @@ export default function AiImageCreationTheory({ lang }: { lang: string }) {
       </section>
 
       {/* Summary */}
-      <section className="bg-gradient-to-br from-blue-500/10 to-emerald-500/10 border border-emerald-500/20 rounded-xl p-8 text-center">
+      <section className="bg-gradient-to-br from-blue-500/10 to-accent-500/10 border border-accent-500/20 rounded-xl p-8 text-center">
         <h3 className="text-xl font-bold mb-2 text-white">
           {lang === 'ru' ? 'Итог: ИИ как кисть, а не как художник' : 'Summary: AI as a Brush, Not an Artist'}
         </h3>

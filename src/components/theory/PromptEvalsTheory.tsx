@@ -85,7 +85,7 @@ export default function PromptEvalsTheory({ lang }: { lang: string }) {
       </section>
 
       {/* Summary */}
-      <section className="bg-gradient-to-br from-cyan-500/10 to-emerald-500/10 border border-cyan-500/20 rounded-xl p-8 text-center">
+      <section className="bg-gradient-to-br from-cyan-500/10 to-accent-500/10 border border-cyan-500/20 rounded-xl p-8 text-center">
         <h3 className="text-xl font-bold mb-2 text-white">
           {lang === 'ru' ? 'Итог для инженера' : 'Engineer\'s Summary'}
         </h3>

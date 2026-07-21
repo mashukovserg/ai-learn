@@ -66,21 +66,21 @@ export default function CompletionModal({
             initial={{ scale: 0.9, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
-            className="relative w-full max-w-md bg-card-dark border border-border-card rounded-2xl overflow-hidden shadow-2xl shadow-emerald-500/10"
+            className="relative w-full max-w-md bg-card-dark border border-border-card rounded-2xl overflow-hidden shadow-2xl shadow-accent-500/10"
           >
             {/* Header with gradient */}
-            <div className="h-32 bg-gradient-to-br from-emerald-500/20 to-blue-500/10 flex items-center justify-center relative overflow-hidden">
+            <div className="h-32 bg-gradient-to-br from-accent-500/20 to-blue-500/10 flex items-center justify-center relative overflow-hidden">
               <div className="absolute inset-0 opacity-20 pointer-events-none">
-                <Sparkles className="absolute top-4 left-10 text-emerald-400 animate-pulse" size={24} />
+                <Sparkles className="absolute top-4 left-10 text-accent-400 animate-pulse" size={24} />
                 <Sparkles className="absolute bottom-6 right-12 text-blue-400 animate-bounce" size={16} />
               </div>
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ type: 'spring', damping: 12, stiffness: 200, delay: 0.2 }}
-                className="bg-card-dark p-4 rounded-full border-4 border-emerald-500/30"
+                className="bg-card-dark p-4 rounded-full border-4 border-accent-500/30"
               >
-                <CheckCircle2 className="text-emerald-500" size={48} />
+                <CheckCircle2 className="text-accent-500" size={48} />
               </motion.div>
             </div>
 
@@ -97,7 +97,7 @@ export default function CompletionModal({
               {/* Stats Card */}
               <div className="bg-deep border border-border-card rounded-xl p-6 mb-8 flex justify-center items-center gap-8">
                 <div className="text-center">
-                  <div className="flex items-center justify-center gap-2 text-emerald-500 mb-1">
+                  <div className="flex items-center justify-center gap-2 text-accent-500 mb-1">
                     <Trophy size={18} />
                     <span className="text-2xl font-bold">+{pointsEarned}</span>
                   </div>
@@ -113,7 +113,7 @@ export default function CompletionModal({
                   <Link 
                     href={`/${lang}/rooms/${nextRoomId}`}
                     onClick={onClose}
-                    className="flex items-center justify-center gap-2 w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-black font-bold rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
+                    className="flex items-center justify-center gap-2 w-full py-4 bg-accent-500 hover:bg-accent-600 text-black font-bold rounded-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
                   >
                     {lang === 'ru' ? 'Следующая комната' : 'Next Room'}
                     <ArrowRight size={18} />
@@ -122,7 +122,7 @@ export default function CompletionModal({
                   <Link 
                     href={`/${lang}/rooms`}
                     onClick={onClose}
-                    className="flex items-center justify-center gap-2 w-full py-4 bg-emerald-500 hover:bg-emerald-600 text-black font-bold rounded-xl transition-all"
+                    className="flex items-center justify-center gap-2 w-full py-4 bg-accent-500 hover:bg-accent-600 text-black font-bold rounded-xl transition-all"
                   >
                     {lang === 'ru' ? 'Ко всем комнатам' : 'All Rooms'}
                     <ArrowRight size={18} />

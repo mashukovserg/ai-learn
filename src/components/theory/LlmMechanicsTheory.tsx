@@ -11,7 +11,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
       {/* Chapter 1: Tokens & The BPE Process */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-start gap-3 text-heading">
-          <Info className="text-emerald-500 shrink-0 mt-1" />
+          <Info className="text-accent-500 shrink-0 mt-1" />
           <span className="leading-tight text-balance">
             {lang === 'ru' ? 'Глава 1: Токены — атомы цифрового разума' : 'Chapter 1: Tokens — The Atoms of Digital Mind'}
           </span>
@@ -37,8 +37,8 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
               ? 'Почему это важно? Токены определяют границы "памяти" модели. Если у модели окно в 128к токенов, это означает, что она может "видеть" одновременно текст объемом с небольшую книгу. Всё, что выходит за эти рамки, она мгновенно забывает.'
               : 'Why does this matter? Tokens define the boundaries of the model\'s "memory." If a model has a 128k token window, it means it can "see" a book\'s worth of text simultaneously. Anything outside that frame is instantly forgotten.'}
           </p>
-          <div className="mt-6 rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-5">
-            <p className="text-sm font-semibold text-emerald-300 mb-2">
+          <div className="mt-6 rounded-xl border border-accent-500/30 bg-accent-500/5 p-5">
+            <p className="text-sm font-semibold text-accent-300 mb-2">
               {lang === 'ru' ? 'Что дальше?' : 'What next?'}
             </p>
             <p className="text-sm text-neutral-300 mb-4 leading-relaxed">
@@ -48,7 +48,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
             </p>
             <Link
               href={`/${lang}/rooms/llm-landscape`}
-              className="inline-flex items-center rounded-lg bg-emerald-400 px-4 py-2 text-sm font-semibold text-[#082018] hover:bg-emerald-300 transition-colors"
+              className="inline-flex items-center rounded-lg bg-accent-400 px-4 py-2 text-sm font-semibold text-[#082018] hover:bg-accent-300 transition-colors"
             >
               {lang === 'ru' ? 'Перейти в «Ландшафт LLM»' : 'Go to "LLM Landscape"'}
             </Link>
@@ -59,7 +59,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
       {/* Chapter 2: The Next-Token Game */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <BrainCircuit className="text-emerald-500" />
+          <BrainCircuit className="text-accent-500" />
           {lang === 'ru' ? 'Глава 2: Великая игра в предсказания' : 'Chapter 2: The Great Prediction Game'}
         </h2>
         <div className="space-y-5 text-neutral-300 leading-relaxed">
@@ -137,7 +137,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
       {/* Chapter 3: Temperature */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Thermometer className="text-emerald-500" />
+          <Thermometer className="text-accent-500" />
           {lang === 'ru' ? 'Глава 3: Температура' : 'Chapter 3: Temperature'}
         </h2>
         <div className="space-y-5 text-neutral-300 leading-relaxed">
@@ -157,16 +157,16 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
             </>
           ) : null}
           <div className="space-y-3">
-            <div className="rounded-lg border border-emerald-500/20 bg-emerald-500/5 px-4 py-3 text-sm text-neutral-200">
-              <span className="font-semibold text-emerald-300">0.0-0.2</span>
+            <div className="rounded-lg border border-accent-500/20 bg-accent-500/5 px-4 py-3 text-sm text-neutral-200">
+              <span className="font-semibold text-accent-300">0.0-0.2</span>
               <span className="text-neutral-300"> — {lang === 'ru' ? 'код, SQL, юридические формулировки (максимальная детерминированность).' : 'code, SQL, legal wording (maximum determinism).'}</span>
             </div>
-            <div className="rounded-lg border border-emerald-500/20 bg-emerald-500/5 px-4 py-3 text-sm text-neutral-200">
-              <span className="font-semibold text-emerald-300">0.3-0.7</span>
+            <div className="rounded-lg border border-accent-500/20 bg-accent-500/5 px-4 py-3 text-sm text-neutral-200">
+              <span className="font-semibold text-accent-300">0.3-0.7</span>
               <span className="text-neutral-300"> — {lang === 'ru' ? 'аналитика, суммаризация, продуктовые тексты.' : 'analysis, summarization, product copy.'}</span>
             </div>
-            <div className="rounded-lg border border-emerald-500/20 bg-emerald-500/5 px-4 py-3 text-sm text-neutral-200">
-              <span className="font-semibold text-emerald-300">0.8-1.2</span>
+            <div className="rounded-lg border border-accent-500/20 bg-accent-500/5 px-4 py-3 text-sm text-neutral-200">
+              <span className="font-semibold text-accent-300">0.8-1.2</span>
               <span className="text-neutral-300"> — {lang === 'ru' ? 'брейншторм, storytelling, генерация вариантов.' : 'brainstorming, storytelling, variant generation.'}</span>
             </div>
           </div>
@@ -176,7 +176,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
               : 'Practical rule: start conservative (usually 0.2-0.4), evaluate on real cases, and only then raise temperature where variation is truly needed. If a task is fact-sensitive, improve context and prompt structure first instead of trying to compensate with higher temperature.'}
           </p>
           <div className="rounded-xl border border-border-subtle bg-base p-5 space-y-4">
-            <h3 className="text-lg font-semibold text-emerald-300">
+            <h3 className="text-lg font-semibold text-heading">
               {lang === 'ru' ? 'Где бесплатно потренироваться с температурой' : 'Where to practice temperature for free'}
             </h3>
 
@@ -184,29 +184,29 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
               <div className="space-y-4 text-sm text-neutral-300 leading-relaxed">
                 <p>
                   <strong className="text-neutral-100">1. Free LLM Playground.</strong> Браузерный sandbox для экспериментов с LLM. Можно менять параметры генерации (включая <strong>temperature</strong>) и сравнивать ответы разных моделей. Есть бесплатный лимит — около <strong>50 чатов в день</strong>.{' '}
-                  <a href="https://playground.srclauncher.com/" target="_blank" rel="noreferrer" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">
+                  <a href="https://playground.srclauncher.com/" target="_blank" rel="noreferrer" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
                     Free LLM Playground
                   </a>
                 </p>
                 <p>
                   <strong className="text-neutral-100">2. Hugging Face Playground.</strong> Интерактивная среда, где можно отправлять промпты в разные модели и смотреть, как меняются ответы. Подходит для базовых экспериментов с генерацией текста.{' '}
-                  <a href="https://huggingface.co/chat/" target="_blank" rel="noreferrer" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">
+                  <a href="https://huggingface.co/chat/" target="_blank" rel="noreferrer" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
                     Hugging Face
                   </a>
                 </p>
                 <p>
                   <strong className="text-neutral-100">3. LM Studio.</strong> Бесплатное приложение для запуска LLM локально на компьютере. В интерфейсе можно менять параметры генерации, включая <strong>temperature</strong>.{' '}
-                  <a href="https://lmstudio.ai/" target="_blank" rel="noreferrer" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">
+                  <a href="https://lmstudio.ai/" target="_blank" rel="noreferrer" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
                     LM Studio
                   </a>
                 </p>
                 <p>
                   <strong className="text-neutral-100">4. Ollama + Open WebUI.</strong> Полностью бесплатный локальный стек: запускаете модель на своём компьютере и управляете параметрами генерации (<strong>temperature</strong>, penalties и др.) через веб-интерфейс.{' '}
-                  <a href="https://ollama.com/" target="_blank" rel="noreferrer" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">
+                  <a href="https://ollama.com/" target="_blank" rel="noreferrer" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
                     Ollama
                   </a>{' '}
                   и{' '}
-                  <a href="https://openwebui.com/" target="_blank" rel="noreferrer" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">
+                  <a href="https://openwebui.com/" target="_blank" rel="noreferrer" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
                     Open WebUI
                   </a>
                   .
@@ -222,7 +222,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
           </div>
 
           <div className="rounded-xl border border-border-subtle bg-base p-5 space-y-4">
-            <h3 className="text-lg font-semibold text-emerald-300">
+            <h3 className="text-lg font-semibold text-heading">
               {lang === 'ru' ? 'Мини-упражнение' : 'Mini exercise'}
             </h3>
             {lang === 'ru' ? (
@@ -252,7 +252,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
       {/* Chapter 4: Context Window */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Layers className="text-emerald-500" />
+          <Layers className="text-accent-500" />
           {lang === 'ru' ? 'Глава 4: Контекстное окно' : 'Chapter 4: Context Window'}
         </h2>
         <div className="space-y-5 text-neutral-300 leading-relaxed">
@@ -289,7 +289,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
       {/* Chapter 5: Why It Hallucinates */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Zap className="text-emerald-500" />
+          <Zap className="text-accent-500" />
           {lang === 'ru' ? 'Глава 5: Природа галлюцинаций' : 'Chapter 5: The Nature of Hallucinations'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-5">
@@ -325,10 +325,10 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
       </div>
 
       {/* Chapter 7: Lab — compare models */}
-      <div className="bg-card-dark border border-emerald-500/20 rounded-xl p-8 mb-8">
+      <div className="bg-card-dark border border-accent-500/20 rounded-xl p-8 mb-8">
         <div className="flex items-center gap-3 mb-6">
-          <div className="p-2 rounded-lg bg-emerald-500/10">
-            <FlaskConical size={22} className="text-emerald-400" />
+          <div className="p-2 rounded-lg bg-accent-500/10">
+            <FlaskConical size={22} className="text-accent-400" />
           </div>
           <h2 className="text-3xl font-bold text-heading">
             {lang === 'ru' ? 'Глава 7: Лаборатория' : 'Chapter 7: Lab'}
@@ -367,7 +367,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
         <Link
           href={`/${lang}/labs/prompt-compare`}
           target="_blank"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/25 hover:bg-emerald-500/25 hover:border-emerald-500/40 transition-colors"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold bg-accent-500/15 text-accent-300 border border-accent-500/25 hover:bg-accent-500/25 hover:border-accent-500/40 transition-colors"
         >
           <FlaskConical size={16} />
           {lang === 'ru' ? 'Открыть Prompt Lab' : 'Open Prompt Lab'}

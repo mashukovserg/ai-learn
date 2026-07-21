@@ -126,7 +126,7 @@ export default function PostChatgptHistoryTheory({ lang }: { lang: string }) {
       </section>
 
       {/* Summary */}
-      <section className="bg-gradient-to-br from-emerald-500/10 to-blue-500/10 border border-emerald-500/20 rounded-xl p-8 text-center">
+      <section className="bg-gradient-to-br from-accent-500/10 to-blue-500/10 border border-accent-500/20 rounded-xl p-8 text-center">
         <h3 className="text-xl font-bold mb-2 text-white">
           {lang === 'ru' ? 'Итог для инженера' : 'Engineer\'s Summary'}
         </h3>

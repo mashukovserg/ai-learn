@@ -23,7 +23,7 @@ export default function LocalModels101Theory({ lang }: { lang: string }) {
               ? 'Важно не путать открытые веса с open source. Скачивая модель, вы получаете готовые параметры — результат обучения. Но сами обучающие данные, код пайплайна и рецепты обучения компании, как правило, не публикуют. Кроме того, у каждой модели своя лицензия: одни разрешают почти всё, другие ограничивают коммерческое использование или требуют указывать происхождение модели. Перед использованием в продукте лицензию стоит прочитать — детали лицензий разобраны в комнате про Llama 3.1 8B.'
               : 'It is important not to confuse open weights with open source. When you download a model, you get the finished parameters — the result of training. The training data, pipeline code, and training recipes are usually not published. Each model also carries its own license: some allow almost anything, others restrict commercial use or require attribution. Read the license before shipping a product — the licensing details are covered in the Llama 3.1 8B room.'}
           </p>
-          <div className="bg-emerald-500/5 border-l-4 border-emerald-500 p-6 my-6">
+          <div className="bg-accent-500/5 border-l-4 border-accent-500 p-6 my-6">
             <h4 className="font-bold text-heading mb-2">{lang === 'ru' ? 'Аналогия' : 'Analogy'}</h4>
             <p className="text-neutral-400 leading-relaxed">
               {lang === 'ru'
@@ -151,7 +151,7 @@ export default function LocalModels101Theory({ lang }: { lang: string }) {
               { out: lang === 'ru' ? 'Париж.' : 'Paris.', tone: 'ok' },
             ]}
           />
-          <div className="bg-emerald-500/5 border-l-4 border-emerald-500 p-6 my-6">
+          <div className="bg-accent-500/5 border-l-4 border-accent-500 p-6 my-6">
             <h4 className="font-bold text-heading mb-2">{lang === 'ru' ? 'Куда дальше' : 'Where to Go Next'}</h4>
             <p className="text-neutral-400 leading-relaxed">
               {lang === 'ru'

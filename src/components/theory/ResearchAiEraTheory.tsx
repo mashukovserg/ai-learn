@@ -17,22 +17,22 @@ export default function ResearchAiEraTheory({ lang }: { lang: string }) {
           <div className="space-y-4">
             <p className="text-neutral-300 leading-relaxed">
               {lang === 'ru' ? (
-                <>В 2014 году социолог Эндрю Эбботт опубликовал руководство по работе с библиотечными и интернет-источниками (<a href={BOOK_URL} target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Abbott 2014</a>). Его главный тезис звучал полемично уже тогда: исследование — это конструирование ответа, а не находка готового. Источники не содержат ответа, который ждёт, пока его обнаружат; исследователь создаёт ответ, многократно перестраивая вопрос, доказательства, концепты и текст.</>
+                <>В 2014 году социолог Эндрю Эбботт опубликовал руководство по работе с библиотечными и интернет-источниками (<a href={BOOK_URL} target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Abbott 2014</a>). Его главный тезис звучал полемично уже тогда: исследование — это конструирование ответа, а не находка готового. Источники не содержат ответа, который ждёт, пока его обнаружат; исследователь создаёт ответ, многократно перестраивая вопрос, доказательства, концепты и текст.</>
               ) : (
-                <>In 2014 the sociologist Andrew Abbott published a manual on working with library and internet materials (<a href={BOOK_URL} target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Abbott 2014</a>). His central claim was polemical even then: research is the construction of an answer, not the discovery of one. Sources do not contain an answer waiting to be found; the researcher creates the answer by repeatedly reshaping the question, the evidence, the concepts, and the text.</>
+                <>In 2014 the sociologist Andrew Abbott published a manual on working with library and internet materials (<a href={BOOK_URL} target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Abbott 2014</a>). His central claim was polemical even then: research is the construction of an answer, not the discovery of one. Sources do not contain an answer waiting to be found; the researcher creates the answer by repeatedly reshaping the question, the evidence, the concepts, and the text.</>
               )}
             </p>
-            <div className="bg-card border-l-4 border-emerald-500 p-5 rounded-r-lg">
-              <p className="text-neutral-100 leading-relaxed font-medium underline decoration-emerald-500/50 decoration-2 underline-offset-4">
+            <div className="bg-card border-l-4 border-accent-500 p-5 rounded-r-lg">
+              <p className="text-neutral-100 leading-relaxed font-medium underline decoration-accent-500/50 decoration-2 underline-offset-4">
                 {lang === 'ru'
                   ? '«Поиск информации — на самом деле лишь малая часть исследования».'
                   : '"Finding things is actually a rather small part of research."'}
               </p>
               <p className="text-neutral-400 text-sm leading-relaxed mt-3">
                 {lang === 'ru' ? (
-                  <>Эта мысль открывает книгу — с неё начинается первая страница (<a href={BOOK_URL} target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Abbott 2014: 1</a>; в оригинале: &quot;finding things is actually a rather small part of research&quot;). Всё остальное руководство объясняет, из чего состоит бо́льшая часть: постановка вопроса, отбор, чтение, организация, анализ и письмо.</>
+                  <>Эта мысль открывает книгу — с неё начинается первая страница (<a href={BOOK_URL} target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Abbott 2014: 1</a>; в оригинале: &quot;finding things is actually a rather small part of research&quot;). Всё остальное руководство объясняет, из чего состоит бо́льшая часть: постановка вопроса, отбор, чтение, организация, анализ и письмо.</>
                 ) : (
-                  <>This thought opens the book — it appears on the very first page (<a href={BOOK_URL} target="_blank" rel="noreferrer noopener" className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">Abbott 2014: 1</a>). The rest of the manual explains what the larger part consists of: framing the question, selecting, reading, organizing, analyzing, and writing.</>
+                  <>This thought opens the book — it appears on the very first page (<a href={BOOK_URL} target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Abbott 2014: 1</a>). The rest of the manual explains what the larger part consists of: framing the question, selecting, reading, organizing, analyzing, and writing.</>
                 )}
               </p>
             </div>
@@ -231,7 +231,7 @@ export default function ResearchAiEraTheory({ lang }: { lang: string }) {
 
       {/* Engineer's summary */}
       <section>
-        <div className="bg-card-dark border border-emerald-500/20 rounded-xl p-8">
+        <div className="bg-card-dark border border-accent-500/20 rounded-xl p-8">
           <h3 className="text-xl font-bold mb-4 text-heading">
             {lang === 'ru' ? 'Итог для практика' : 'Practitioner’s Summary'}
           </h3>

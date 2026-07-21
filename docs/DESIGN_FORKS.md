@@ -240,6 +240,47 @@ links use their own emerald classes and are NOT part of this fork — they stay 
 **Open questions:** exact tone; whether callout titles (`h4`) follow the chapter headings or keep
 emerald; whether non-theory pages (dashboard, rooms catalog) follow later.
 
+## Fork 4 — Site accent color (OPEN, now cheap to move)
+
+**Context.** The brand accent was hardcoded as `emerald-*` in 662 places. On 2026-07-21 it was
+migrated to a semantic ramp, so this fork is now a token edit rather than a repo-wide sweep.
+
+**Cost to switch: 7 lines** — the ramp in `@theme` plus its `[data-theme="saas"]` override in
+`src/app/[lang]/globals.css`. No component edits. Guarded by
+`src/__tests__/design-tokens.test.ts`, which fails `check-all` if a literal palette name comes
+back.
+
+### Current pick — emerald (unchanged since the project start)
+
+```css
+/* @theme — dark UI */
+--color-accent-100: #d1fae5;  --color-accent-200: #a7f3d0;  --color-accent-300: #6ee7b7;
+--color-accent-400: #34d399;  --color-accent-500: #10b981;  --color-accent-600: #059669;
+--color-accent-950: #022c22;
+
+/* [data-theme="saas"] — darkened for light backgrounds */
+--color-accent-200: #064e3b;  --color-accent-300: #065f46;  --color-accent-400: #047857;
+--color-accent-500: #059669;  --color-accent-600: #047857;  --color-accent-950: #ecfdf5;
+```
+
+### Candidate — Sage (prioritized by the owner in `green-accent-picker.html`)
+
+Verified live on 2026-07-21 by overriding the ramp at runtime: the whole site followed — nav,
+breadcrumbs, difficulty chips, callouts, progress. Ready to paste:
+
+```css
+--color-accent-100: #e3ebe4;  --color-accent-200: #c3d4c6;  --color-accent-300: #9dbaa3;
+--color-accent-400: #7fa287;  --color-accent-500: #648a6d;  --color-accent-600: #4f7057;
+--color-accent-950: #14241a;
+```
+
+Light-theme values still need picking (darken 300–500 for contrast on `#fafafa`).
+
+**Boundary:** raster assets under `public/images/**` do not follow the accent — a room cover PNG
+keeps its baked-in green. Re-export or switch to SVG if a visual must track the accent.
+
+---
+
 ## Related forks tracked elsewhere
 
 - **Accent green** — `docs/green-accent-picker.html` (interactive picker with site preview; Sage

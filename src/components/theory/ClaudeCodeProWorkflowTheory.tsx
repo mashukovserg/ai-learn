@@ -14,8 +14,8 @@ export default function ClaudeCodeProWorkflowTheory({ lang }: { lang: string }) 
           </p>
         </section>
 
-        <section className="bg-emerald-500/5 border border-emerald-500/20 p-6 rounded-xl my-8">
-          <h3 className="text-emerald-500 mt-0">Планы и Разрешения</h3>
+        <section className="bg-accent-500/5 border border-accent-500/20 p-6 rounded-xl my-8">
+          <h3 className="text-heading mt-0">Планы и Разрешения</h3>
           <p>
             Прежде чем разрешить агенту менять ваш код, используйте режим <strong>/plan</strong>. 
             Это заставляет Claude сначала составить пошаговый список действий в виде Markdown-файла. 
@@ -89,8 +89,8 @@ export default function ClaudeCodeProWorkflowTheory({ lang }: { lang: string }) 
         </p>
       </section>
 
-      <section className="bg-emerald-500/5 border border-emerald-500/20 p-6 rounded-xl my-8">
-        <h3 className="text-emerald-500 mt-0">Plans and Permissions</h3>
+      <section className="bg-accent-500/5 border border-accent-500/20 p-6 rounded-xl my-8">
+        <h3 className="text-heading mt-0">Plans and Permissions</h3>
         <p>
           Before allowing the agent to change your code, use <strong>/plan</strong> mode.
           This forces Claude to first draft a step-by-step action list as a Markdown file.

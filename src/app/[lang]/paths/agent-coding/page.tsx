@@ -30,11 +30,11 @@ export default async function AgentCodingPathPage(props: {
 
         {rooms.map((room) => (
           <div key={room.id} className="flex gap-6 items-start relative">
-            <div className="mt-1 w-14 h-14 rounded-lg flex items-center justify-center shrink-0 z-10 bg-emerald-500/10 border border-emerald-500/30 text-emerald-300">
+            <div className="mt-1 w-14 h-14 rounded-lg flex items-center justify-center shrink-0 z-10 bg-accent-500/10 border border-accent-500/30 text-accent-300">
               <Play size={24} fill="currentColor" />
             </div>
 
-            <div className="flex-1 bg-input border rounded-lg p-5 transition-colors border-emerald-500/35">
+            <div className="flex-1 bg-input border rounded-lg p-5 transition-colors border-accent-500/35">
               <div className="mb-1.5">
                 <h3 className="text-base font-semibold text-neutral-200 mb-1">{room.title[l]}</h3>
                 <p className="text-neutral-500 text-sm">{room.description[l]}</p>
@@ -43,7 +43,7 @@ export default async function AgentCodingPathPage(props: {
               <div className="mt-4">
                 <Link
                   href={`/${lang}/rooms/${room.id}`}
-                  className="px-4 py-1.5 rounded-md text-sm font-medium transition-colors bg-emerald-300 text-emerald-950 hover:bg-emerald-200"
+                  className="px-4 py-1.5 rounded-md text-sm font-medium transition-colors bg-accent-300 text-accent-950 hover:bg-accent-200"
                 >
                   {lang === 'ru' ? 'Начать' : 'Start'}
                 </Link>

@@ -9,9 +9,25 @@
   --color-input: #1a1917;
   --color-muted: #2d2b28;
 
+  /* ============================================================
+     ACCENT RAMP — the semantic brand color. Components must use
+     `accent-*` utilities, never a literal palette name; the Vitest
+     guard in src/__tests__/design-tokens.test.ts enforces this.
+     Swapping the whole site accent = editing the values below
+     (+ the [data-theme="saas"] overrides). See docs/DESIGN_FORKS.md.
+     Shades mirror Tailwind's emerald so the migration was a no-op.
+     ============================================================ */
+  --color-accent-100: #d1fae5;
+  --color-accent-200: #a7f3d0;
+  --color-accent-300: #6ee7b7;
+  --color-accent-400: #34d399;
+  --color-accent-500: #10b981;
+  --color-accent-600: #059669;
+  --color-accent-950: #022c22;
+
   /* Theory heading color (Fork 3, docs/DESIGN_FORKS.md) — deliberately NOT the
-     emerald accent: chapter headings sat too close to the aubergine terminal.
-     Hierarchy is carried by size and weight; emerald stays for interactive
+     accent: chapter headings sat too close to the aubergine terminal.
+     Hierarchy is carried by size and weight; the accent stays for interactive
      things (<Term> links, buttons, progress). Flipped for light UI below. */
   --color-heading: #d4d4d4;
 
@@ -134,6 +150,16 @@ li {
   --color-card: #ffffff;
   --color-input: #ffffff;
   --color-muted: #efefef;
+
+  /* Accent ramp darkened for contrast on light backgrounds.
+     Keep in sync with the @theme ramp above when swapping the accent. */
+  --color-accent-100: #d1fae5;
+  --color-accent-200: #064e3b;
+  --color-accent-300: #065f46;
+  --color-accent-400: #047857;
+  --color-accent-500: #059669;
+  --color-accent-600: #047857;
+  --color-accent-950: #ecfdf5;
 
   /* Theory headings on light UI (Fork 3) */
   --color-heading: #3f3f46;

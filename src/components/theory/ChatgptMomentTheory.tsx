@@ -10,7 +10,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
       {/* Chapter 1: The Quiet Before the Storm */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Clock className="text-emerald-500" />
+          <Clock className="text-accent-500" />
           {lang === 'ru' ? 'Глава 1: Тишина перед бурей (До ноября 2022)' : 'Chapter 1: The Quiet Before the Storm (Pre-November 2022)'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-6 text-lg">
@@ -25,8 +25,8 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
         </p>
         <div className="bg-card border border-border-emphasis rounded-xl p-5 my-6">
           <div className="flex items-center gap-2 mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block shrink-0" />
-            <span className=" font-bold text-emerald-400 uppercase tracking-widest">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent-400 inline-block shrink-0" />
+            <span className=" font-bold text-accent-400 uppercase tracking-widest">
               {lang === 'ru' ? 'Инсайт' : 'Insight'}
             </span>
           </div>
@@ -59,7 +59,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
       {/* Chapter 2: The Secret Ingredient - <Term id="rlhf">RLHF</Term> */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Zap className="text-emerald-500" />
+          <Zap className="text-accent-500" />
           {lang === 'ru' ? (
             <>
               {'Глава 2: Секретный ингредиент — '}
@@ -101,7 +101,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
       {/* Chapter 3: The 5-Day Miracle & Interface Power */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <TrendingUp className="text-emerald-500" />
+          <TrendingUp className="text-accent-500" />
           {lang === 'ru' ? 'Глава 3: Чудо пяти дней и сила интерфейса' : 'Chapter 3: The 5-Day Miracle & Interface Power'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-6">
@@ -117,12 +117,12 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
             </div>
             <div className="w-20 text-right">3.5y</div>
           </div>
-          <div className="flex items-center gap-4 bg-emerald-500/10 p-3 rounded-lg border border-emerald-500/20">
-            <div className="w-24 text-emerald-400 font-bold font-mono">ChatGPT</div>
+          <div className="flex items-center gap-4 bg-accent-500/10 p-3 rounded-lg border border-accent-500/20">
+            <div className="w-24 text-accent-400 font-bold font-mono">ChatGPT</div>
             <div className="h-2 flex-1 bg-neutral-800 rounded-full overflow-hidden">
-              <div className="h-full bg-emerald-500" style={{ width: '2%' }} />
+              <div className="h-full bg-accent-500" style={{ width: '2%' }} />
             </div>
-            <div className="w-20 text-right text-emerald-400 font-bold">5d</div>
+            <div className="w-20 text-right text-accent-400 font-bold">5d</div>
           </div>
         </div>
         <p className="text-neutral-300 leading-relaxed">
@@ -140,7 +140,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
       {/* Chapter 4: Structural Changes & Market Reaction */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Globe className="text-emerald-500" />
+          <Globe className="text-accent-500" />
           {lang === 'ru' ? 'Глава 4: Тектонические сдвиги и реакция рынка' : 'Chapter 4: Tectonic Shifts & Market Reaction'}
         </h2>
         <div className="space-y-8">
@@ -216,7 +216,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
       {/* Chapter 5: Why it is a "Moment" */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <MessageSquare className="text-emerald-500" />
+          <MessageSquare className="text-accent-500" />
           {lang === 'ru' ? 'Глава 5: Почему это именно "Момент"?' : 'Chapter 5: Why it is a "Moment"?'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-4 text-lg">

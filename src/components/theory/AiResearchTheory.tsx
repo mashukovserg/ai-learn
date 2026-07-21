@@ -10,7 +10,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-            <Microscope className="text-emerald-500" />
+            <Microscope className="text-accent-500" />
             {lang === 'ru' ? 'Глава 1: Исследовательский тупик — Проблема объемов' : 'Chapter 1: The Research Bottleneck — The Volume Problem'}
           </h2>
           <div className="space-y-6">
@@ -45,7 +45,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-            <Search className="text-emerald-500" />
+            <Search className="text-accent-500" />
             {lang === 'ru' ? 'Глава 2: Автономный поиск и протокол PRISMA' : 'Chapter 2: Automated Search and the PRISMA Protocol'}
           </h2>
           <div className="space-y-6">
@@ -80,7 +80,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-            <Workflow className="text-emerald-500" />
+            <Workflow className="text-accent-500" />
             {lang === 'ru' ? 'Глава 3: Рекурсивный синтез — Как сжать библиотеку' : 'Chapter 3: Recursive Synthesis — Compressing a Library'}
           </h2>
           <div className="space-y-6">
@@ -91,7 +91,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
               <div className="bg-black/40 p-6 rounded-xl border border-border-card relative overflow-hidden">
-                 <h4 className="font-bold text-emerald-500 mb-3 flex items-center gap-2"><FileDigit size={16}/> {lang === 'ru' ? 'Шаг 1: Атомарное сжатие' : 'Step 1: Atomic Compression'}</h4>
+                 <h4 className="font-bold text-heading mb-3 flex items-center gap-2"><FileDigit size={16}/> {lang === 'ru' ? 'Шаг 1: Атомарное сжатие' : 'Step 1: Atomic Compression'}</h4>
                  <p className="text-neutral-400 leading-relaxed">
                    {lang === 'ru'
                      ? 'Каждая статья из топ-50 обрабатывается изолированно. LLM извлекает из 20-страничного PDF только самое важное: гипотезу, размер выборки, методологию, численные результаты и выводы. Мы убираем всё "воду", вступления и ссылки. Огромная статья превращается в плотный JSON-объект на 300 слов.'
@@ -120,7 +120,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-            <BarChart3 className="text-emerald-500" />
+            <BarChart3 className="text-accent-500" />
             {lang === 'ru' ? 'Глава 4: Проверка расчетов — ИИ как строгий лаборант' : 'Chapter 4: Verifying Calculations — AI as a Strict Lab Assistant'}
           </h2>
           <div className="space-y-6">
@@ -131,20 +131,20 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
             </p>
             <div className="bg-card p-6 rounded-xl border border-border-card my-6">
                <h4 className="font-bold text-heading mb-4 flex items-center gap-2">
-                 <FileText className="text-emerald-500" size={18} />
+                 <FileText className="text-accent-500" size={18} />
                  {lang === 'ru' ? 'Сценарий автономного аудита данных:' : 'Autonomous Data Audit Scenario:'}
                </h4>
                <ol className="space-y-4 text-neutral-400 list-decimal ml-5">
                   <li>
-                    <strong className="text-emerald-300">{lang === 'ru' ? 'Извлечение (Extraction):' : 'Extraction:'}</strong>{' '}
+                    <strong className="text-accent-300">{lang === 'ru' ? 'Извлечение (Extraction):' : 'Extraction:'}</strong>{' '}
                     {lang === 'ru' ? 'Агент использует инструменты компьютерного зрения, чтобы вытащить сырые цифры из PDF-таблицы или даже оцифровать графики.' : 'The agent uses computer vision tools to pull raw numbers from a PDF table or even digitize graphs.'}
                   </li>
                   <li>
-                    <strong className="text-emerald-300">{lang === 'ru' ? 'Программирование (Coding):' : 'Coding:'}</strong>{' '}
+                    <strong className="text-accent-300">{lang === 'ru' ? 'Программирование (Coding):' : 'Coding:'}</strong>{' '}
                     {lang === 'ru' ? 'ИИ пишет скрипт на Python (используя pandas и scipy), чтобы заново вычислить средние значения, p-value и доверительные интервалы на основе извлеченных данных.' : 'The AI writes a Python script (using pandas and scipy) to recalculate means, p-values, and confidence intervals based on the extracted data.'}
                   </li>
                   <li>
-                    <strong className="text-emerald-300">{lang === 'ru' ? 'Верификация (Verification):' : 'Verification:'}</strong>{' '}
+                    <strong className="text-accent-300">{lang === 'ru' ? 'Верификация (Verification):' : 'Verification:'}</strong>{' '}
                     {lang === 'ru' ? 'Сравнивает результат работы своего кода с тем выводом, который автор написал в статье. Если скрипт показывает p=0.08, а автор заявляет о "статистически значимом" p<0.05 — ИИ бьет тревогу и помечает статью как сомнительную.' : 'It compares the output of its code with the conclusion the author wrote in the text. If the script shows p=0.08, but the author claims a "statistically significant" p<0.05—the AI sounds the alarm and flags the paper as suspicious.'}
                   </li>
                </ol>
@@ -180,8 +180,8 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
                       : 'The model statistically "knows" that scientist X often writes about neural nets, and scientist Y about medicine. Asked about neural nets in medicine, it generates a paper "Deep Learning in Oncology" authored by X and Y, invents a year (2021) and a journal volume. It looks perfect, but the paper does not exist.'}
                   </p>
                </div>
-               <div className="p-5 rounded-xl border border-emerald-500/20 bg-emerald-500/5">
-                  <h5 className="text-emerald-400 font-bold mb-2 flex items-center gap-2"><ShieldCheck size={16} /> {lang === 'ru' ? 'Решение: DOI Verification Gate' : 'Solution: DOI Verification Gate'}</h5>
+               <div className="p-5 rounded-xl border border-accent-500/20 bg-accent-500/5">
+                  <h5 className="text-accent-400 font-bold mb-2 flex items-center gap-2"><ShieldCheck size={16} /> {lang === 'ru' ? 'Решение: DOI Verification Gate' : 'Solution: DOI Verification Gate'}</h5>
                   <p className="text-neutral-400 leading-relaxed">
                     {lang === 'ru' 
                       ? 'Чтобы победить это, в агентов встраивают жесткий "гейт": для каждого утверждения модель обязана предоставить цифровой идентификатор объекта (DOI) или прямую ссылку. Перед выдачей ответа пользователю, невидимый скрипт пингует базу CrossRef по этому DOI. Если DOI не существует или ведет на статью с другим названием — утверждение безжалостно удаляется из финального ответа.' 
@@ -197,7 +197,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
           <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-            <Scale className="text-emerald-500" />
+            <Scale className="text-accent-500" />
             {lang === 'ru' ? 'Глава 6: Этика ИИ-соавторства' : 'Chapter 6: The Ethics of AI Co-authorship'}
           </h2>
           <div className="space-y-6">
@@ -224,7 +224,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
       </section>
 
       {/* Final Thought */}
-      <section className="bg-emerald-500/10 p-10 rounded-2xl border border-emerald-500/20 text-center mt-12">
+      <section className="bg-accent-500/10 p-10 rounded-2xl border border-accent-500/20 text-center mt-12">
          <h3 className="text-3xl font-bold text-white mb-4">{lang === 'ru' ? 'Вы стали ИИ-исследователем' : 'You Have Become an AI Researcher'}</h3>
          <p className="text-neutral-300 leading-relaxed italic text-lg max-w-3xl mx-auto">
            {lang === 'ru'

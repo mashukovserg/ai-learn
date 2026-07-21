@@ -10,7 +10,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
       {/* Chapter 1: What Are Embeddings? */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Info className="text-emerald-500" />
+          <Info className="text-accent-500" />
           {lang === 'ru' ? 'Глава 1: Что такое эмбеддинги?' : 'Chapter 1: What Are Embeddings?'}
         </h2>
         <div className="space-y-6">
@@ -66,7 +66,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </div>
           </div>
 
-          <div className="bg-emerald-500/5 border-l-4 border-emerald-500 p-6 my-6">
+          <div className="bg-accent-500/5 border-l-4 border-accent-500 p-6 my-6">
             <h4 className="font-bold text-heading mb-2">{lang === 'ru' ? 'Ключевая аналогия' : 'Key Analogy'}</h4>
             <p className="text-neutral-400 leading-relaxed">
               {lang === 'ru'
@@ -80,7 +80,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
       {/* Chapter 2: From TF-IDF to Transformers */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <GitCompare className="text-emerald-500" />
+          <GitCompare className="text-accent-500" />
           {lang === 'ru' ? 'Глава 2: От TF-IDF до трансформеров' : 'Chapter 2: From TF-IDF to Transformers'}
         </h2>
         <div className="space-y-6">
@@ -123,7 +123,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
 
           {/* Comparison table */}
           <div className="bg-card border border-border-emphasis rounded-xl p-5">
-            <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-3 block">
+            <span className="text-xs font-bold text-accent-400 uppercase tracking-widest mb-3 block">
               {lang === 'ru' ? 'Сравнение подходов' : 'Approach Comparison'}
             </span>
             <div className="overflow-x-auto">
@@ -171,7 +171,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
       {/* Chapter 3: Similarity & Distance */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Ruler className="text-emerald-500" />
+          <Ruler className="text-accent-500" />
           {lang === 'ru' ? 'Глава 3: Сходство и расстояние' : 'Chapter 3: Similarity & Distance'}
         </h2>
         <div className="space-y-6">
@@ -201,7 +201,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </p>
             <div className="bg-black/40 rounded-lg p-4 font-mono text-xs text-neutral-400">
               <div className="text-neutral-500 mb-2">cosine_similarity(A, B) = (A · B) / (||A|| × ||B||)</div>
-              <div className="text-emerald-400 mt-2">{lang === 'ru' ? '// Результат: от -1 до 1. Чем ближе к 1, тем более похожи.' : '// Result: -1 to 1. Closer to 1 = more similar.'}</div>
+              <div className="text-accent-400 mt-2">{lang === 'ru' ? '// Результат: от -1 до 1. Чем ближе к 1, тем более похожи.' : '// Result: -1 to 1. Closer to 1 = more similar.'}</div>
             </div>
           </div>
 
@@ -214,7 +214,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </p>
             <div className="bg-black/40 rounded-lg p-4 font-mono text-xs text-neutral-400">
               <div className="text-neutral-500 mb-2">dot_product(A, B) = Σ(Ai × Bi)</div>
-              <div className="text-emerald-400 mt-2">{lang === 'ru' ? '// Результат: не ограничен. Чем больше, тем более похожи.' : '// Result: unbounded. Higher = more similar.'}</div>
+              <div className="text-accent-400 mt-2">{lang === 'ru' ? '// Результат: не ограничен. Чем больше, тем более похожи.' : '// Result: unbounded. Higher = more similar.'}</div>
             </div>
           </div>
 
@@ -227,13 +227,13 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </p>
             <div className="bg-black/40 rounded-lg p-4 font-mono text-xs text-neutral-400">
               <div className="text-neutral-500 mb-2">euclidean(A, B) = √(Σ(Ai - Bi)²)</div>
-              <div className="text-emerald-400 mt-2">{lang === 'ru' ? '// Результат: от 0 до ∞. Чем ближе к 0, тем более похожи.' : '// Result: 0 to ∞. Closer to 0 = more similar.'}</div>
+              <div className="text-accent-400 mt-2">{lang === 'ru' ? '// Результат: от 0 до ∞. Чем ближе к 0, тем более похожи.' : '// Result: 0 to ∞. Closer to 0 = more similar.'}</div>
             </div>
           </div>
 
           {/* When to use which */}
           <div className="bg-card border border-border-emphasis rounded-xl p-5">
-            <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-3 block">
+            <span className="text-xs font-bold text-accent-400 uppercase tracking-widest mb-3 block">
               {lang === 'ru' ? 'Когда использовать какую метрику' : 'When to Use Which Metric'}
             </span>
             <div className="overflow-x-auto">
@@ -262,7 +262,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </div>
           </div>
 
-          <div className="bg-emerald-500/5 border-l-4 border-emerald-500 p-6 my-6">
+          <div className="bg-accent-500/5 border-l-4 border-accent-500 p-6 my-6">
             <h4 className="font-bold text-heading mb-2">{lang === 'ru' ? 'Визуальная интуиция' : 'Visual Intuition'}</h4>
             <p className="text-neutral-400 leading-relaxed">
               {lang === 'ru'
@@ -276,7 +276,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
       {/* Chapter 4: Vector Databases */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Database className="text-emerald-500" />
+          <Database className="text-accent-500" />
           {lang === 'ru' ? 'Глава 4: Векторные базы данных' : 'Chapter 4: Vector Databases'}
         </h2>
         <div className="space-y-6">
@@ -301,7 +301,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
 
           {/* Vector DB comparison */}
           <div className="bg-card border border-border-emphasis rounded-xl p-5">
-            <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-3 block">
+            <span className="text-xs font-bold text-accent-400 uppercase tracking-widest mb-3 block">
               {lang === 'ru' ? 'Сравнение векторных баз данных' : 'Vector Database Comparison'}
             </span>
             <div className="overflow-x-auto">
@@ -364,7 +364,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
       {/* Chapter 5: Chunking Strategies */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Scissors className="text-emerald-500" />
+          <Scissors className="text-accent-500" />
           {lang === 'ru' ? 'Глава 5: Стратегии чанкинга' : 'Chapter 5: Chunking Strategies'}
         </h2>
         <div className="space-y-6">
@@ -407,14 +407,14 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             <div className="bg-black/40 rounded-lg p-4 font-mono text-xs text-neutral-400">
               <div className="text-neutral-500 mb-2">{lang === 'ru' ? '// Sliding window: размер=512, перекрытие=50' : '// Sliding window: size=512, overlap=50'}</div>
               <div>Chunk 1: tokens[0:512]</div>
-              <div>Chunk 2: tokens[462:974]   <span className="text-emerald-400">{lang === 'ru' ? '← 50 токенов перекрытия' : '← 50 tokens overlap'}</span></div>
+              <div>Chunk 2: tokens[462:974]   <span className="text-accent-400">{lang === 'ru' ? '← 50 токенов перекрытия' : '← 50 tokens overlap'}</span></div>
               <div>Chunk 3: tokens[924:1436]</div>
             </div>
           </div>
 
           {/* Chunk size tradeoffs */}
           <div className="bg-card border border-border-emphasis rounded-xl p-5">
-            <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-3 block">
+            <span className="text-xs font-bold text-accent-400 uppercase tracking-widest mb-3 block">
               {lang === 'ru' ? 'Размер чанков по типу задачи' : 'Chunk Sizes by Use Case'}
             </span>
             <div className="overflow-x-auto">
@@ -452,7 +452,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </div>
           </div>
 
-          <div className="bg-emerald-500/5 border-l-4 border-emerald-500 p-6 my-6">
+          <div className="bg-accent-500/5 border-l-4 border-accent-500 p-6 my-6">
             <h4 className="font-bold text-heading mb-2">{lang === 'ru' ? 'Главный трейдофф' : 'The Core Tradeoff'}</h4>
             <p className="text-neutral-400 leading-relaxed">
               {lang === 'ru'
@@ -466,7 +466,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
       {/* Chapter 6: Building a RAG Pipeline with Embeddings */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Workflow className="text-emerald-500" />
+          <Workflow className="text-accent-500" />
           {lang === 'ru' ? 'Глава 6: RAG-пайплайн на эмбеддингах' : 'Chapter 6: Building a RAG Pipeline with Embeddings'}
         </h2>
         <div className="space-y-6">
@@ -480,9 +480,9 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Полный поток данных' : 'The Full Data Flow'}</h4>
             <div className="bg-black/40 rounded-lg p-4 font-mono text-xs text-neutral-400">
               <div className="text-neutral-500 mb-3">{lang === 'ru' ? '// Фаза индексации (один раз)' : '// Indexing phase (once)'}</div>
-              <div>Document → <span className="text-emerald-400">Chunk</span> → <span className="text-emerald-400">Embed</span> → <span className="text-emerald-400">Store</span> {lang === 'ru' ? 'в векторную БД' : 'in vector DB'}</div>
+              <div>Document → <span className="text-accent-400">Chunk</span> → <span className="text-accent-400">Embed</span> → <span className="text-accent-400">Store</span> {lang === 'ru' ? 'в векторную БД' : 'in vector DB'}</div>
               <div className="mt-4 text-neutral-500 mb-3">{lang === 'ru' ? '// Фаза запроса (каждый раз)' : '// Query phase (every time)'}</div>
-              <div>User Query → <span className="text-emerald-400">Embed</span> → <span className="text-emerald-400">Search</span> vector DB → <span className="text-emerald-400">Retrieve</span> top-K → <span className="text-emerald-400">Inject</span> {lang === 'ru' ? 'в промпт' : 'into prompt'} → <span className="text-emerald-400">LLM</span> → Answer</div>
+              <div>User Query → <span className="text-accent-400">Embed</span> → <span className="text-accent-400">Search</span> vector DB → <span className="text-accent-400">Retrieve</span> top-K → <span className="text-accent-400">Inject</span> {lang === 'ru' ? 'в промпт' : 'into prompt'} → <span className="text-accent-400">LLM</span> → Answer</div>
             </div>
           </div>
 
@@ -512,7 +512,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
               <div className="text-neutral-500 mb-2">{lang === 'ru' ? '// Гибридный поиск' : '// Hybrid search'}</div>
               <div>semantic_results = vector_db.search(query_embedding, top_k=50)</div>
               <div>keyword_results = bm25_index.search(query_text, top_k=50)</div>
-              <div className="mt-2 text-emerald-400">{lang === 'ru' ? '// Reciprocal Rank Fusion для объединения' : '// Reciprocal Rank Fusion to merge'}</div>
+              <div className="mt-2 text-accent-400">{lang === 'ru' ? '// Reciprocal Rank Fusion для объединения' : '// Reciprocal Rank Fusion to merge'}</div>
               <div>final_results = rrf_merge(semantic_results, keyword_results)</div>
             </div>
           </div>
@@ -540,7 +540,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
       {/* Chapter 7: Pitfalls and Best Practices */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <AlertTriangle className="text-emerald-500" />
+          <AlertTriangle className="text-accent-500" />
           {lang === 'ru' ? 'Глава 7: Ошибки и лучшие практики' : 'Chapter 7: Pitfalls and Best Practices'}
         </h2>
         <div className="space-y-6">

@@ -25,7 +25,7 @@ export default function DashboardProgress({ totalRooms }: { totalRooms: number }
           </div>
           <div className="h-1.5 bg-muted rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-emerald-400 to-lime-300 rounded-full transition-all duration-500"
+              className="h-full bg-gradient-to-r from-accent-400 to-lime-300 rounded-full transition-all duration-500"
               style={{ width: `${progressPercent}%` }}
             />
           </div>

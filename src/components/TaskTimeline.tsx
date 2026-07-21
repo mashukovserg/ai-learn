@@ -78,7 +78,7 @@ export default function TaskTimeline({
       {resolvedStatus === 'correct' ? (
         // Completed: show final timeline with years revealed
         <div className="relative mb-4 pl-4">
-          <div className="absolute left-[7px] top-2 bottom-2 w-px bg-emerald-500/30" />
+          <div className="absolute left-[7px] top-2 bottom-2 w-px bg-accent-500/30" />
           {correctEvents.map((event, i) => (
             <motion.div
               key={event.label}
@@ -87,9 +87,9 @@ export default function TaskTimeline({
               transition={{ delay: i * 0.08 }}
               className="relative flex items-start gap-3 mb-3 last:mb-0"
             >
-              <div className="w-2 h-2 rounded-full bg-emerald-500 mt-1.5 shrink-0 shadow-[0_0_6px_rgba(16,185,129,0.6)] z-10" />
+              <div className="w-2 h-2 rounded-full bg-accent-500 mt-1.5 shrink-0 shadow-[0_0_6px_rgba(16,185,129,0.6)] z-10" />
               <div className="flex-1 flex items-baseline gap-2">
-                <span className="text-[10px] font-mono text-emerald-500 font-bold shrink-0 w-10">
+                <span className="text-[10px] font-mono text-accent-500 font-bold shrink-0 w-10">
                   {event.year}
                 </span>
                 <span className="text-xs text-neutral-400">{event.label}</span>

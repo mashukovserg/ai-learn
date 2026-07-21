@@ -159,11 +159,11 @@ Final output format:
           {lang === 'ru' ? (
             <>
               Если нужно освежить базу, вернитесь в{' '}
-              <Link href={`/${lang}/rooms/ai-agents`} className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">
+              <Link href={`/${lang}/rooms/ai-agents`} className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
                 комнату про AI-агентов
               </Link>{' '}
               и в{' '}
-              <Link href={`/${lang}/rooms/research-grounding`} className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">
+              <Link href={`/${lang}/rooms/research-grounding`} className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
                 комнату про заземление и источники
               </Link>
               .
@@ -171,11 +171,11 @@ Final output format:
           ) : (
             <>
               If you need a refresher, return to the{' '}
-              <Link href={`/${lang}/rooms/ai-agents`} className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">
+              <Link href={`/${lang}/rooms/ai-agents`} className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
                 AI Agents room
               </Link>{' '}
               and the{' '}
-              <Link href={`/${lang}/rooms/research-grounding`} className="text-emerald-300 hover:text-emerald-200 underline underline-offset-4">
+              <Link href={`/${lang}/rooms/research-grounding`} className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
                 Research & Grounding room
               </Link>
               .
@@ -313,7 +313,7 @@ Final output format:
         <button
           type="button"
           onClick={handleCopyTemplate}
-          className="mt-3 inline-flex items-center px-4 py-2 rounded-md text-sm font-medium bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/20 transition-colors"
+          className="mt-3 inline-flex items-center px-4 py-2 rounded-md text-sm font-medium bg-accent-500/15 text-accent-300 border border-accent-500/30 hover:bg-accent-500/20 transition-colors"
         >
           {copyButtonLabel}
         </button>

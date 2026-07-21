@@ -304,7 +304,7 @@ export default function AgentOpsPage(props: { params: Promise<{ lang: string }> 
               type="button"
               onClick={onRunCycle}
               disabled={cycleRunning || loading}
-              className="px-3.5 py-2 rounded-md text-sm font-semibold bg-emerald-300 text-emerald-950 hover:bg-emerald-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
+              className="px-3.5 py-2 rounded-md text-sm font-semibold bg-accent-300 text-accent-950 hover:bg-accent-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
             >
               {cycleRunning ? <Loader2 size={15} className="animate-spin" /> : <PlayCircle size={15} />}
               {t.runCycle}
@@ -330,7 +330,7 @@ export default function AgentOpsPage(props: { params: Promise<{ lang: string }> 
               required
               maxLength={180}
               placeholder={t.titlePlaceholder}
-              className="w-full bg-base border border-border-subtle rounded-lg px-3 py-2.5 text-sm text-neutral-200 placeholder-neutral-600 focus:outline-none focus:border-emerald-500/40"
+              className="w-full bg-base border border-border-subtle rounded-lg px-3 py-2.5 text-sm text-neutral-200 placeholder-neutral-600 focus:outline-none focus:border-accent-500/40"
             />
           </div>
 
@@ -343,7 +343,7 @@ export default function AgentOpsPage(props: { params: Promise<{ lang: string }> 
               maxLength={4000}
               rows={4}
               placeholder={t.objectivePlaceholder}
-              className="w-full bg-base border border-border-subtle rounded-lg px-3 py-2.5 text-sm text-neutral-200 placeholder-neutral-600 resize-none focus:outline-none focus:border-emerald-500/40"
+              className="w-full bg-base border border-border-subtle rounded-lg px-3 py-2.5 text-sm text-neutral-200 placeholder-neutral-600 resize-none focus:outline-none focus:border-accent-500/40"
             />
           </div>
 
@@ -353,7 +353,7 @@ export default function AgentOpsPage(props: { params: Promise<{ lang: string }> 
               <select
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
-                className="w-full bg-base border border-border-subtle rounded-lg px-3 py-2.5 text-sm text-neutral-200 focus:outline-none focus:border-emerald-500/40"
+                className="w-full bg-base border border-border-subtle rounded-lg px-3 py-2.5 text-sm text-neutral-200 focus:outline-none focus:border-accent-500/40"
               >
                 {AGENT_ROLES.map((r) => (
                   <option key={r} value={r}>
@@ -375,13 +375,13 @@ export default function AgentOpsPage(props: { params: Promise<{ lang: string }> 
                 max={1000}
                 value={priority}
                 onChange={(e) => setPriority(Number(e.target.value))}
-                className="w-28 bg-base border border-border-subtle rounded-lg px-3 py-2.5 text-sm text-neutral-200 focus:outline-none focus:border-emerald-500/40"
+                className="w-28 bg-base border border-border-subtle rounded-lg px-3 py-2.5 text-sm text-neutral-200 focus:outline-none focus:border-accent-500/40"
               />
             </div>
             <button
               type="submit"
               disabled={creating || !title.trim() || !objective.trim()}
-              className="mt-5 px-4 py-2 rounded-md text-sm font-semibold bg-emerald-300 text-emerald-950 hover:bg-emerald-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center min-w-32"
+              className="mt-5 px-4 py-2 rounded-md text-sm font-semibold bg-accent-300 text-accent-950 hover:bg-accent-200 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center min-w-32"
             >
               {creating ? <Loader2 size={14} className="animate-spin" /> : t.createButton}
             </button>
@@ -390,7 +390,7 @@ export default function AgentOpsPage(props: { params: Promise<{ lang: string }> 
       </div>
 
       {statusMessage && (
-        <div className="mb-4 text-sm rounded-md px-4 py-3 border bg-emerald-500/10 border-emerald-500/25 text-emerald-200">
+        <div className="mb-4 text-sm rounded-md px-4 py-3 border bg-accent-500/10 border-accent-500/25 text-accent-200">
           {statusMessage}
         </div>
       )}
