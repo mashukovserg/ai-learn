@@ -45,17 +45,20 @@ terminal on light UI too. Any new preset must preserve this.
 > judging a font) plus a palette terminal that exercises `dir`/`link`/`warn`, and emits a
 > paste-ready token block. Judge a preset on real output, not on hex values.
 
-### Current pick — Ubuntu GNOME Terminal (since 2026-07-17)
+### Current pick — "Tango on gray" (since 2026-07-21)
 
-Adopted from an owner-supplied reference screenshot: GNOME Terminal on Ubuntu, Unity-era.
-Aubergine background + Tango ANSI palette + Ubuntu Mono.
+Neutral graphite container carrying the Ubuntu character through the **Tango ANSI palette** and
+**Ubuntu Mono**. Chosen after the aubergine background (previous pick, below) was judged to clash
+with the site's emerald blocks — the open question from 2026-07-17 was resolved by the owner:
+the purple *does* compete with the green. Verified in the picker with emerald context blocks:
+the gray body separates cleanly from the page background in both themes.
 
 ```css
---color-term-bg: #300a24;      /* Ubuntu signature aubergine */
---color-term-head: #26071c;
---color-term-line: #4a1839;
+--color-term-bg: #1e1e1e;      /* neutral graphite */
+--color-term-head: #282828;
+--color-term-line: #3a3a3a;
 --color-term-text: #eeeeec;
---color-term-dim: #a1889b;
+--color-term-dim: #8f8f8f;
 --color-term-prompt: #8ae234;  /* Tango bright green */
 --color-term-red: #ef2929;
 --color-term-blue: #729fcf;
@@ -64,14 +67,32 @@ Aubergine background + Tango ANSI palette + Ubuntu Mono.
 --font-term: var(--font-ubuntu-mono), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 ```
 
-- **For:** instantly recognizable, authentic, has real character; the Tango values are exactly
-  Ubuntu's `LS_COLORS`, so `ls`-style output can be rendered faithfully.
-- **Against:** aubergine purple is a strong accent that departs from the site's
-  neutral-black + emerald gamut; it also ties the platform's visual identity to one distro.
-- **Open question:** does the purple compete with the site's green accent on pages where a
-  terminal sits next to emerald UI? Not yet judged at scale.
+- **For:** does not fight the emerald accent; the terminal reads as a distinct surface on the
+  dark page (unlike near-black); Ubuntu identity survives via font + ANSI colors.
+- **Against:** less instantly "Ubuntu" than the aubergine; graphite is a common terminal look.
 
-### Alternative A — Neutral black-gray (previous pick, 2026-07-16 → 2026-07-17)
+### Alternative A — Ubuntu aubergine (2026-07-17 → 2026-07-21)
+
+The full GNOME-Terminal-on-Ubuntu look from the owner's reference screenshot. Lost because the
+high-chroma purple background clashed with the site's emerald blocks (near-complementary hues
+fighting side by side). Same Tango accents and font as the current pick — only the container
+tokens differ:
+
+```css
+--color-term-bg: #300a24;      /* Ubuntu signature aubergine */
+--color-term-head: #26071c;
+--color-term-line: #4a1839;
+--color-term-text: #eeeeec;
+--color-term-dim: #a1889b;
+--color-term-prompt: #8ae234;
+--color-term-red: #ef2929;
+--color-term-blue: #729fcf;
+--color-term-cyan: #34e2e2;
+--color-term-yellow: #fce94f;
+--font-term: var(--font-ubuntu-mono), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+```
+
+### Alternative B — Neutral black-gray (original pick, 2026-07-16 → 2026-07-17)
 
 The original look. Deliberately palette-neutral so the terminal never competes with the site.
 
@@ -92,13 +113,14 @@ The original look. Deliberately palette-neutral so the terminal never competes w
 - **For:** blends with the site palette; the emerald prompt echoes the brand accent.
 - **Against:** generic — reads as "a code block with a header" rather than a terminal.
 
-### Alternative B — Tango palette on black (never built)
+### Alternative C — Tango palette on near-black (tried 2026-07-21, rejected)
 
-The middle road that was offered and not taken: keep `#0d0d0d`, adopt Tango colors + Ubuntu Mono.
-Use Alternative A's `bg`/`head`/`line`/`dim` with the current pick's `text`/`prompt`/`red`/`blue`/
-`cyan`/`yellow`/`--font-term`. Worth trying if the aubergine proves too loud.
+Keep `#0d0d0d`, adopt Tango colors + Ubuntu Mono (Alternative B's `bg`/`head`/`line`/`dim` with
+the current pick's accents). Tried in the picker when the aubergine fell: on the dark theme the
+near-black body melts into the page background (`#121211`) — the window is held only by its
+border. The `#1e1e1e` graphite of the current pick fixes exactly that.
 
-### Alternative C — Ubuntu + authentic Ambiance chrome (never built)
+### Alternative D — Ubuntu + authentic Ambiance chrome (never built)
 
 The current pick keeps the neutral three-dot header. Maximum fidelity to the reference would
 replace it with Ambiance chrome: window buttons on the **left**, a `user@host: /` titlebar, and a

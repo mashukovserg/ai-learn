@@ -14,16 +14,17 @@
   --color-border-subtle: #302e2b;
   --color-border-emphasis: #393733;
 
-  /* Terminal block — Ubuntu GNOME Terminal look: the signature aubergine
-     background (#300A24) with the Tango ANSI palette, set in Ubuntu Mono
-     (--font-term). Intentionally dark in BOTH themes — these tokens are NOT
-     overridden in the [data-theme="saas"] block, so a terminal stays a
-     terminal on light UI. */
-  --color-term-bg: #300a24;
-  --color-term-head: #26071c;
-  --color-term-line: #4a1839;
+  /* Terminal block — "Tango on gray": neutral graphite (#1e1e1e) carrying the
+     Ubuntu character via the Tango ANSI palette + Ubuntu Mono (--font-term).
+     The aubergine background was dropped on 2026-07-21 — it clashed with the
+     site's emerald blocks (see docs/DESIGN_FORKS.md, Fork 1). Intentionally
+     dark in BOTH themes — these tokens are NOT overridden in the
+     [data-theme="saas"] block, so a terminal stays a terminal on light UI. */
+  --color-term-bg: #1e1e1e;
+  --color-term-head: #282828;
+  --color-term-line: #3a3a3a;
   --color-term-text: #eeeeec;
-  --color-term-dim: #a1889b;
+  --color-term-dim: #8f8f8f;
   --color-term-prompt: #8ae234;
   --color-term-red: #ef2929;
   --color-term-blue: #729fcf;

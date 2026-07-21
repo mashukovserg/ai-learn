@@ -40,6 +40,20 @@ button{font:inherit;cursor:pointer;transition:border-color .15s,color .15s,backg
 .stage[data-page="dark"] .proseline{color:#d4d0c8}
 .stage[data-page="light"] .proseline{color:#3f3f46}
 
+/* emerald site blocks — the elements the terminal must live next to */
+.chap{font-size:20px;font-weight:700;letter-spacing:-.01em;margin:0 0 14px}
+.stage[data-page="dark"] .chap{color:#34d399}
+.stage[data-page="light"] .chap{color:#047857}
+.callout{border-left:4px solid #10b981;padding:14px 18px;margin:16px 0;border-radius:0 8px 8px 0}
+.stage[data-page="dark"] .callout{background:rgba(52,211,153,.05)}
+.stage[data-page="light"] .callout{background:rgba(4,120,87,.06)}
+.callout b{display:block;font-size:13.5px;margin-bottom:5px}
+.stage[data-page="dark"] .callout b{color:#34d399}
+.stage[data-page="light"] .callout b{color:#047857}
+.callout p{font-size:13.5px;margin:0}
+.stage[data-page="dark"] .callout p{color:#a8a29e}
+.stage[data-page="light"] .callout p{color:#57534e}
+
 /* ---- the terminal element itself (mirrors src/components/Terminal.tsx) ---- */
 .term{border-radius:12px;overflow:hidden;border:1px solid var(--t-line);margin:16px 0;
       font-family:var(--t-font);font-size:var(--t-size);line-height:1.6}
@@ -93,12 +107,18 @@ pre.css .c{color:#6b665e}
   </div>
 
   <div class="stage" id="stage" data-page="dark">
-    <div class="stagenote">Превью в контексте страницы комнаты</div>
+    <div class="stagenote">Превью в контексте страницы комнаты — рядом зелёные блоки сайта</div>
+    <h3 class="chap">Глава 1: CLI как контур управления агентной разработкой</h3>
     <p class="proseline">Ниже — один проход цикла discover → change → verify → commit.</p>
 
     <div class="term">
       <div class="term-head"><i></i><i></i><i></i><span>agent · zsh</span></div>
       <div class="term-body"><div><span class="p">$</span> rg "validateSession" src/  <span class="dim"># discover: где живёт логика</span></div><div class="dim">src/auth/service.ts:41:  function validateSession(token)</div><div><span class="p">$</span> apply_patch service.ts  <span class="dim"># change: минимальный патч</span></div><div class="dim">patched 1 file  +6 -2</div><div><span class="p">$</span> npm run check-all  <span class="dim"># verify: линт, типы, тесты</span></div><div class="ok">✓ lint · tsc · 1706 passed</div><div><span class="p">$</span> git commit -m "fix: session ttl"  <span class="dim"># только после зелёного</span></div></div>
+    </div>
+
+    <div class="callout">
+      <b>Куда дальше</b>
+      <p>Персистентность и настройки инструмента — в комнате «Claude Code: Профессиональный воркфлоу». Это тот самый emerald-блок, рядом с которым живёт терминал.</p>
     </div>
 
     <p class="proseline">Проверка всей палитры: каталоги, симлинки, предупреждение и падение теста.</p>
@@ -128,7 +148,7 @@ pre.css .c{color:#6b665e}
 <script>
 const PRESETS = {
   ubuntu: {
-    label: 'Ubuntu / Tango', note: 'текущий',
+    label: 'Ubuntu / Tango', note: 'прежний — клэш с зелёным',
     bg:'#300a24', head:'#26071c', line:'#4a1839', text:'#eeeeec', dim:'#a1889b',
     prompt:'#8ae234', red:'#ef2929', blue:'#729fcf', cyan:'#34e2e2', yellow:'#fce94f'
   },
@@ -137,9 +157,19 @@ const PRESETS = {
     bg:'#0d0d0d', head:'#191919', line:'#2a2a2a', text:'#d4d4d4', dim:'#6f6f6f',
     prompt:'#34d399', red:'#f87171', blue:'#60a5fa', cyan:'#22d3ee', yellow:'#fbbf24'
   },
+  tangogray: {
+    label: 'Tango на сером', note: 'текущий',
+    bg:'#1e1e1e', head:'#282828', line:'#3a3a3a', text:'#eeeeec', dim:'#8f8f8f',
+    prompt:'#8ae234', red:'#ef2929', blue:'#729fcf', cyan:'#34e2e2', yellow:'#fce94f'
+  },
   tangoblack: {
-    label: 'Tango на чёрном', note: 'средний путь',
+    label: 'Tango на чёрном', note: 'почти чёрный #0d0d0d',
     bg:'#0d0d0d', head:'#191919', line:'#2a2a2a', text:'#eeeeec', dim:'#6f6f6f',
+    prompt:'#8ae234', red:'#ef2929', blue:'#729fcf', cyan:'#34e2e2', yellow:'#fce94f'
+  },
+  tangowarm: {
+    label: 'Tango на тёплом графите', note: 'в гамме сайта',
+    bg:'#1b1a18', head:'#242320', line:'#383632', text:'#eeeeec', dim:'#8a857c',
     prompt:'#8ae234', red:'#ef2929', blue:'#729fcf', cyan:'#34e2e2', yellow:'#fce94f'
   },
   solarized: {
@@ -175,7 +205,7 @@ const FONTS = {
 
 const SIZES = ['13px','14px','15px'];
 
-let cur = { preset:'ubuntu', font:'ubuntu', size:'14px', page:'dark' };
+let cur = { preset:'tangogray', font:'ubuntu', size:'14px', page:'dark' };
 
 const stage = document.getElementById('stage');
 const cssout = document.getElementById('cssout');
