@@ -8,7 +8,7 @@ export default function AgenticCodingToolsTheory({ lang }: { lang: string }) {
   return (
     <div className="space-y-8">
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru'
             ? 'Глава 1: Зачем агентной разработке нужен инструментальный слой'
             : 'Chapter 1: Why Agentic Coding Needs a Tooling Layer'}
@@ -73,7 +73,7 @@ export default function AgenticCodingToolsTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru'
             ? 'Глава 2: Карта инструментов для coding-агента'
             : 'Chapter 2: Tool Map for a Coding Agent'}
@@ -125,7 +125,7 @@ export default function AgenticCodingToolsTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru'
             ? 'Глава 3: Контракты инструментов и проверка результата'
             : 'Chapter 3: Tool Contracts and Result Validation'}
@@ -175,7 +175,7 @@ export default function AgenticCodingToolsTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru'
             ? 'Глава 4: Безопасность инструментов и границы автономии'
             : 'Chapter 4: Tool Security and Autonomy Boundaries'}
@@ -225,7 +225,7 @@ export default function AgenticCodingToolsTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru'
             ? 'Глава 5: Эксплуатация, стоимость и надежный релиз'
             : 'Chapter 5: Operations, Cost, and Reliable Release'}

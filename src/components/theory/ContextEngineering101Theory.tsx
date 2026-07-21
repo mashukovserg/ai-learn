@@ -11,7 +11,7 @@ export default function ContextEngineering101Theory({ lang }: { lang: string }) 
     <div className="space-y-8">
       {/* Chapter 1: What context engineering is */}
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru
             ? 'Глава 1: Что такое контекст-инжиниринг'
             : 'Chapter 1: What Context Engineering Is'}
@@ -109,7 +109,7 @@ export default function ContextEngineering101Theory({ lang }: { lang: string }) 
 
       {/* Chapter 2: Window economics */}
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru
             ? 'Глава 2: Экономика контекстного окна'
             : 'Chapter 2: Context Window Economics'}
@@ -159,7 +159,7 @@ export default function ContextEngineering101Theory({ lang }: { lang: string }) 
             )}
           </p>
           <div className="bg-emerald-500/5 border-l-4 border-emerald-500 p-6 my-4">
-            <h4 className="font-bold text-emerald-400 mb-2">
+            <h4 className="font-bold text-heading mb-2">
               {ru ? 'Практика инструментов, 2026' : 'Tool practice, 2026'}
             </h4>
             <p className="text-neutral-400 leading-relaxed text-sm">
@@ -173,7 +173,7 @@ export default function ContextEngineering101Theory({ lang }: { lang: string }) 
 
       {/* Chapter 3: Artifacts — what goes where */}
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru
             ? 'Глава 3: Артефакты знаний — что куда оформлять'
             : 'Chapter 3: Knowledge Artifacts — What Goes Where'}
@@ -256,7 +256,7 @@ export default function ContextEngineering101Theory({ lang }: { lang: string }) 
 
       {/* Chapter 4: Skills and agents as artifacts */}
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru
             ? 'Глава 4: Скиллы и агенты как артефакты'
             : 'Chapter 4: Skills and Agents as Artifacts'}
@@ -330,7 +330,7 @@ export default function ContextEngineering101Theory({ lang }: { lang: string }) 
 
       {/* Chapter 5: Hygiene as a cycle */}
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru
             ? 'Глава 5: Гигиена контекста как цикл'
             : 'Chapter 5: Context Hygiene as a Cycle'}
@@ -395,7 +395,7 @@ export default function ContextEngineering101Theory({ lang }: { lang: string }) 
             )}
           </p>
           <div className="bg-emerald-500/5 border-l-4 border-emerald-500 p-6 my-4">
-            <h4 className="font-bold text-emerald-400 mb-2">
+            <h4 className="font-bold text-heading mb-2">
               {ru ? 'Куда дальше' : 'Where to Go Next'}
             </h4>
             <p className="text-neutral-400 leading-relaxed text-sm">

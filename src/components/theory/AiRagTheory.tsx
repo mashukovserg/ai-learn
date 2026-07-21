@@ -10,7 +10,7 @@ export default function AiRagTheory({ lang }: { lang: string }) {
     <>
       {/* Chapter 1: The Knowledge Gap */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Database className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 1: Проблема закрытых знаний — Почему ИИ нужен поиск' : 'Chapter 1: The Problem of Closed Knowledge — Why AI Needs Search'}
         </h2>
@@ -26,7 +26,7 @@ export default function AiRagTheory({ lang }: { lang: string }) {
               : <><Term id="rag">RAG</Term> {' (Retrieval-Augmented Generation) is an architectural pattern that gives AI an "open book." Instead of relying solely on its weights (internal memory), the model first searches for the required information in an external source, reads it, and only then provides an answer based on that. This fundamentally changes the model\'s role: it stops being a "database" and becomes a "processor" that knows how to handle facts provided to it.'}</>}
           </p>
           <div className="bg-card p-6 rounded-2xl border border-emerald-500/20 my-8">
-            <h4 className="text-emerald-400 font-bold mb-4 flex items-center gap-2">
+            <h4 className="text-heading font-bold mb-4 flex items-center gap-2">
               <Zap size={18} /> {lang === 'ru' ? 'Почему не просто дообучить (Fine-tuning)?' : 'Why not just Fine-tuning?'}
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -58,7 +58,7 @@ export default function AiRagTheory({ lang }: { lang: string }) {
 
       {/* Chapter 2: Chunking and Embeddings — The Math of Meaning */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Layers className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 2: Чанкинг и Эмбеддинги — Как компьютер понимает смысл' : 'Chapter 2: Chunking and Embeddings — How Computers Understand Meaning'}
         </h2>
@@ -71,7 +71,7 @@ export default function AiRagTheory({ lang }: { lang: string }) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
             <div className="p-6 rounded-xl border border-border-card bg-card relative overflow-hidden">
                <div className="absolute top-0 right-0 p-4 opacity-5"><Layout size={48} /></div>
-               <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest">{lang === 'ru' ? 'Чанкинг (Chunking)' : 'Chunking'}</h4>
+               <h4 className="text-heading font-bold mb-3 uppercase tracking-widest">{lang === 'ru' ? 'Чанкинг (Chunking)' : 'Chunking'}</h4>
                <p className=" text-neutral-400 leading-relaxed">
                  {lang === 'ru'
                    ? 'Огромные документы разрезаются на мелкие куски — "чанки". Если передать модели всю книгу сразу, она потеряет фокус. Идеальный чанк должен быть достаточно мал, чтобы содержать одну законченную мысль, но достаточно велик, чтобы в нем сохранялся контекст (например, 500-1000 токенов).'
@@ -98,7 +98,7 @@ export default function AiRagTheory({ lang }: { lang: string }) {
 
       {/* Chapter 3: The Search Architecture — Vector Databases */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <BookOpen className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 3: Архитектура поиска — Векторные базы данных' : 'Chapter 3: Search Architecture — Vector Databases'}
         </h2>
@@ -109,7 +109,7 @@ export default function AiRagTheory({ lang }: { lang: string }) {
               : 'Where to store these millions of vectors? Standard databases (SQL) are designed for exact matches, not for calculating "semantic proximity." For this, Vector Databases (Vector DB) were created, such as Pinecone, Weaviate, or open-source solutions like Milvus and Chroma.'}
           </p>
           <div className="bg-deep p-8 rounded-xl border border-border-card relative overflow-hidden">
-            <h4 className="text-emerald-400 font-bold mb-6 uppercase tracking-widest">{lang === 'ru' ? 'Как работает индексация?' : 'How Indexing Works?'}</h4>
+            <h4 className="text-heading font-bold mb-6 uppercase tracking-widest">{lang === 'ru' ? 'Как работает индексация?' : 'How Indexing Works?'}</h4>
             <div className="space-y-4">
               <div className="flex gap-4 items-start">
                 <div className="w-12 h-12 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20 text-emerald-500 font-bold">1</div>
@@ -144,7 +144,7 @@ export default function AiRagTheory({ lang }: { lang: string }) {
 
       {/* Chapter 4: The Augmentation Loop — How it Works Step by Step */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Workflow className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 4: Цикл генерации — От вопроса к ответу' : 'Chapter 4: The Generation Loop — From Query to Answer'}
         </h2>
@@ -186,7 +186,7 @@ export default function AiRagTheory({ lang }: { lang: string }) {
 
       {/* Chapter 5: Advanced RAG & Challenges — Lost in the Middle */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Filter className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 5: Продвинутый RAG и ловушки — Почему это сложно' : 'Chapter 5: Advanced RAG and Pitfalls — Why it is Challenging'}
         </h2>

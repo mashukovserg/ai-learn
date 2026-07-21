@@ -9,7 +9,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
       {/* Introduction */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
             <Microscope className="text-emerald-500" />
             {lang === 'ru' ? 'Глава 1: Исследовательский тупик — Проблема объемов' : 'Chapter 1: The Research Bottleneck — The Volume Problem'}
           </h2>
@@ -30,7 +30,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
                 : 'Using AI in research is not just a fast "Google." It is a transition from linear reading to parallel active synthesis. We are transforming the language model from a passive reader into a proactive "navigator" that builds complex reasoning chains, finds non-obvious connections between works from different fields of knowledge, and formulates new hypotheses based on gigantic datasets.'}
             </p>
             <div className="bg-card border border-border-emphasis rounded-xl p-6 my-6">
-               <h4 className="text-emerald-400 font-bold mb-2 flex items-center gap-2"><History size={18} /> {lang === 'ru' ? 'Эволюция ИИ в науке:' : 'Evolution of AI in Science:'}</h4>
+               <h4 className="text-heading font-bold mb-2 flex items-center gap-2"><History size={18} /> {lang === 'ru' ? 'Эволюция ИИ в науке:' : 'Evolution of AI in Science:'}</h4>
                <p className="text-neutral-400 leading-relaxed">
                  {lang === 'ru'
                    ? 'Раньше мы использовали ИИ исключительно как утилитарный инструмент: для перевода текстов, исправления грамматики или быстрого форматирования библиографии. Сегодня парадигма изменилась: агенты могут самостоятельно формулировать сложные поисковые запросы к базам (например, arXiv, Semantic Scholar, PubMed), парсить PDF-файлы, извлекать многомерные таблицы данных и даже писать код для проверки статистической значимости результатов авторов.'
@@ -44,7 +44,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
       {/* Chapter 2: Automated Literature Search */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
             <Search className="text-emerald-500" />
             {lang === 'ru' ? 'Глава 2: Автономный поиск и протокол PRISMA' : 'Chapter 2: Automated Search and the PRISMA Protocol'}
           </h2>
@@ -56,7 +56,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
             </p>
             <div className="space-y-4">
               <div className="p-6 rounded-xl border border-border-card bg-card">
-                <h4 className="text-emerald-400 font-bold mb-2 flex items-center gap-2"><Target size={16} /> Multi-step Query Expansion (Многошаговое расширение запроса)</h4>
+                <h4 className="text-heading font-bold mb-2 flex items-center gap-2"><Target size={16} /> Multi-step Query Expansion (Многошаговое расширение запроса)</h4>
                 <p className="text-neutral-400 leading-relaxed">
                   {lang === 'ru' 
                     ? 'Агент берет вашу базовую идею (например, "лечение диабета 2 типа") и программно расширяет её до 20-30 вариаций поисковых запросов. Он использует специализированные онтологии (как MeSH в медицине), чтобы учесть все возможные синонимы, аббревиатуры и смежные термины. Затем он отправляет эти запросы через API в arXiv или PubMed, скачивает метаданные тысяч статей и применяет первичные фильтры (например, отсекает работы старше 5 лет или статьи без рецензирования).' 
@@ -79,7 +79,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
       {/* Chapter 3: Recursive Summarization — Synthesizing Giants */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
             <Workflow className="text-emerald-500" />
             {lang === 'ru' ? 'Глава 3: Рекурсивный синтез — Как сжать библиотеку' : 'Chapter 3: Recursive Synthesis — Compressing a Library'}
           </h2>
@@ -119,7 +119,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
       {/* Chapter 4: Code Interpreter for Data Analysis */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
             <BarChart3 className="text-emerald-500" />
             {lang === 'ru' ? 'Глава 4: Проверка расчетов — ИИ как строгий лаборант' : 'Chapter 4: Verifying Calculations — AI as a Strict Lab Assistant'}
           </h2>
@@ -130,7 +130,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
                 : 'Real research is about working with hard numbers, not just text. Unfortunately, even in prestigious peer-reviewed journals, calculation errors, p-hacking, or outright data manipulation regularly occur. Language models alone are bad at math, but if you give them a Code Interpreter tool (the ability to write and execute code), they become ruthless auditors.'}
             </p>
             <div className="bg-card p-6 rounded-xl border border-border-card my-6">
-               <h4 className="font-bold text-emerald-400 mb-4 flex items-center gap-2">
+               <h4 className="font-bold text-heading mb-4 flex items-center gap-2">
                  <FileText className="text-emerald-500" size={18} />
                  {lang === 'ru' ? 'Сценарий автономного аудита данных:' : 'Autonomous Data Audit Scenario:'}
                </h4>
@@ -196,7 +196,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
       {/* Chapter 6: Ethics and the Future of Authorship */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
             <Scale className="text-emerald-500" />
             {lang === 'ru' ? 'Глава 6: Этика ИИ-соавторства' : 'Chapter 6: The Ethics of AI Co-authorship'}
           </h2>

@@ -7,7 +7,7 @@ export default function MultiAgentCollaborationTheory({ lang }: { lang: string }
   return (
     <div className="space-y-8 reading-prose">
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru' ? 'Глава 1: Зачем нужно много агентов?' : 'Chapter 1: Why Use Multiple Agents?'}
         </h2>
         <div className="space-y-4">
@@ -37,7 +37,7 @@ export default function MultiAgentCollaborationTheory({ lang }: { lang: string }
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru' ? 'Глава 2: Паттерн Orchestrator-Workers' : 'Chapter 2: The Orchestrator-Workers Pattern'}
         </h2>
         <div className="space-y-4">
@@ -67,7 +67,7 @@ export default function MultiAgentCollaborationTheory({ lang }: { lang: string }
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru' ? 'Глава 3: Гигиена контекста и Token Hygiene' : 'Chapter 3: Context and Token Hygiene'}
         </h2>
         <div className="space-y-4">
@@ -97,7 +97,7 @@ export default function MultiAgentCollaborationTheory({ lang }: { lang: string }
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru' ? 'Глава 4: Ветвление: Branch-per-Task' : 'Chapter 4: Branching: Branch-per-Task'}
         </h2>
         <div className="space-y-4">
@@ -127,7 +127,7 @@ export default function MultiAgentCollaborationTheory({ lang }: { lang: string }
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru' ? 'Глава 5: Динамическая передача (Handoffs)' : 'Chapter 5: Dynamic Handoffs'}
         </h2>
         <div className="space-y-4">

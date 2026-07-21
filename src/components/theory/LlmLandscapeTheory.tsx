@@ -9,7 +9,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
     <>
       {/* 1. Why this room exists */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Зачем нужна карта LLM-ландшафта' : 'Why You Need an LLM Landscape Map'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-4">
@@ -50,7 +50,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
       {/* 2. What is a model */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Что такое «модель»?' : 'What Is a "Model"?'}
         </h2>
         <div className="space-y-5 text-neutral-300 leading-relaxed">
@@ -127,7 +127,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
       {/* 3. Category map */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-3 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-3 text-heading">
           {lang === 'ru' ? 'Карта LLM-ландшафта' : 'LLM Landscape Map'}
         </h2>
         <p className="text-neutral-400 leading-relaxed mb-5">
@@ -188,7 +188,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
       {/* 4. API vs open-weight */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Закрытый API vs Open-weight: базовый выбор' : 'Closed API vs Open-weight: First Decision'}
         </h2>
         <div className="space-y-5">
@@ -265,7 +265,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
       {/* 5. Workload-first choice */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Как выбирать по задаче (workload-first)' : 'How to Choose by Workload (Workload-First)'}
         </h2>
         <p className="text-neutral-400 leading-relaxed mb-5">
@@ -319,7 +319,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
       {/* 6. Open-weight details */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Open-Weight экосистема: владение и контроль' : 'Open-Weight Ecosystem: Ownership and Control'}
         </h2>
 
@@ -364,7 +364,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
       {/* 7. Geopolitics and sovereignty */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Геополитика ИИ и технологический суверенитет' : 'AI Geopolitics and Technological Sovereignty'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-6">
@@ -375,7 +375,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           <div className="bg-card border border-border-subtle p-6 rounded-xl">
-            <h3 className="text-lg font-semibold text-emerald-400 mb-3">
+            <h3 className="text-lg font-semibold text-heading mb-3">
               {lang === 'ru' ? 'Суверенитет данных (Data Sovereignty)' : 'Data Sovereignty'}
             </h3>
             <p className="text-sm text-neutral-400 leading-relaxed">
@@ -385,7 +385,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
             </p>
           </div>
           <div className="bg-card border border-border-subtle p-6 rounded-xl">
-            <h3 className="text-lg font-semibold text-emerald-400 mb-3">
+            <h3 className="text-lg font-semibold text-heading mb-3">
               {lang === 'ru' ? 'Вычислительный разрыв (The Compute Gap)' : 'The Compute Gap'}
             </h3>
             <p className="text-sm text-neutral-400 leading-relaxed">
@@ -438,7 +438,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
       {/* 8. Practical team playbook */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Enterprise-чеклист 2.0' : 'Enterprise Checklist 2.0'}
         </h2>
         <div className="grid grid-cols-1 gap-3 text-sm">
@@ -471,7 +471,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
       {/* 9. Scenario mission intro */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Сценарная миссия: применяем карту на практике' : 'Scenario Mission: Apply the Map in Practice'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-4">
@@ -497,7 +497,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
       {/* 10. Major builders map */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Кто формирует рынок в 2026' : 'Who Shapes the Market in 2026'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-5">
@@ -571,7 +571,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
       {/* 11. LLM infrastructure stack */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'LLM как инфраструктурный стек' : 'LLMs as an Infrastructure Stack'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-5">
@@ -610,7 +610,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
       {/* 12. Snapshot 2026 + links */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Снимок рынка 2026 + ссылки на источники' : '2026 Market Snapshot + Source Links'}
         </h2>
         <p className="text-neutral-400 text-sm mb-3">
@@ -672,7 +672,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
         </div>
 
         <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-5">
-          <h4 className="font-bold text-emerald-400 uppercase mb-3">{lang === 'ru' ? 'Рыночный паттерн 2026' : '2026 Market Pattern'}</h4>
+          <h4 className="font-bold text-heading uppercase mb-3">{lang === 'ru' ? 'Рыночный паттерн 2026' : '2026 Market Pattern'}</h4>
           <div className="grid grid-cols-1 gap-y-2 text-neutral-300 text-sm">
             <div><span className="text-neutral-500">{lang === 'ru' ? 'Лучший универсал:' : 'Best Generalist:'}</span> OpenAI</div>
             <div><span className="text-neutral-500">{lang === 'ru' ? 'Длинные тексты:' : 'Long-form writing:'}</span> Claude</div>
@@ -703,7 +703,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
       {/* 13. Structural trends */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Структурные тренды 2026' : 'Structural Trends in 2026'}
         </h2>
         <div className="space-y-4 text-sm">
@@ -744,7 +744,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
 
       {/* 14. Summary */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Итог: 5 правил выбора модели' : 'Summary: 5 Rules for Model Selection'}
         </h2>
         <ul className="space-y-2 text-neutral-300 text-sm">

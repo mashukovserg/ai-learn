@@ -10,7 +10,7 @@ export default function AiImageCreationTheory({ lang }: { lang: string }) {
       {/* Introduction */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
             <ImageIcon className="text-emerald-500" />
             {lang === 'ru' ? 'Искусство пикселей: от хаоса к шедевру' : 'The Art of Pixels: From Chaos to Masterpiece'}
           </h2>
@@ -111,7 +111,7 @@ export default function AiImageCreationTheory({ lang }: { lang: string }) {
       {/* Chapter 3: The Structure of a Visual Prompt */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+          <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-heading">
             <Sliders className="text-emerald-500" />
             {lang === 'ru' ? 'Глава 3: Структура визуального промпта' : 'Chapter 3: The Structure of a Visual Prompt'}
           </h2>
@@ -123,25 +123,25 @@ export default function AiImageCreationTheory({ lang }: { lang: string }) {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               <div className="bg-card border border-border-card rounded-lg p-5">
-                <h4 className="font-bold text-emerald-400 mb-2 uppercase tracking-widest text-xs">1. {lang === 'ru' ? 'Субъект' : 'Subject'}</h4>
+                <h4 className="font-bold text-heading mb-2 uppercase tracking-widest text-xs">1. {lang === 'ru' ? 'Субъект' : 'Subject'}</h4>
                 <p className="text-sm text-neutral-400">
                   {lang === 'ru' ? 'Кто или что в кадре. (a cyberpunk samurai, close-up portrait)' : 'Who or what is in the frame. (a cyberpunk samurai, close-up portrait)'}
                 </p>
               </div>
               <div className="bg-card border border-border-card rounded-lg p-5">
-                <h4 className="font-bold text-emerald-400 mb-2 uppercase tracking-widest text-xs">2. {lang === 'ru' ? 'Медиум и Стиль' : 'Medium & Style'}</h4>
+                <h4 className="font-bold text-heading mb-2 uppercase tracking-widest text-xs">2. {lang === 'ru' ? 'Медиум и Стиль' : 'Medium & Style'}</h4>
                 <p className="text-sm text-neutral-400">
                   {lang === 'ru' ? 'Как это сделано. (oil painting, 3D render, anime, photography)' : 'How it is made. (oil painting, 3D render, anime, photography)'}
                 </p>
               </div>
               <div className="bg-card border border-border-card rounded-lg p-5">
-                <h4 className="font-bold text-emerald-400 mb-2 uppercase tracking-widest text-xs">3. {lang === 'ru' ? 'Освещение' : 'Lighting'}</h4>
+                <h4 className="font-bold text-heading mb-2 uppercase tracking-widest text-xs">3. {lang === 'ru' ? 'Освещение' : 'Lighting'}</h4>
                 <p className="text-sm text-neutral-400">
                   {lang === 'ru' ? 'Критично для реализма. (cinematic lighting, neon glow, studio light)' : 'Critical for realism. (cinematic lighting, neon glow, studio light)'}
                 </p>
               </div>
               <div className="bg-card border border-border-card rounded-lg p-5">
-                <h4 className="font-bold text-emerald-400 mb-2 uppercase tracking-widest text-xs">4. {lang === 'ru' ? 'Камера' : 'Camera'}</h4>
+                <h4 className="font-bold text-heading mb-2 uppercase tracking-widest text-xs">4. {lang === 'ru' ? 'Камера' : 'Camera'}</h4>
                 <p className="text-sm text-neutral-400">
                   {lang === 'ru' ? 'Технические детали. (shot on 35mm, wide angle, f/1.8)' : 'Technical details. (shot on 35mm, wide angle, f/1.8)'}
                 </p>

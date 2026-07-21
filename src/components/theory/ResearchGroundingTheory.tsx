@@ -9,7 +9,7 @@ export default function ResearchGroundingTheory({ lang }: { lang: string }) {
       {/* Introduction */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+          <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-heading">
             <Search className="text-emerald-500" />
             {lang === 'ru' ? 'Зачем модели нужен внешний источник' : 'Why Models Need External Evidence'}
           </h2>

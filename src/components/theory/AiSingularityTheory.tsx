@@ -44,7 +44,7 @@ export default function AiSingularityTheory({ lang }: { lang: string }) {
         </div>
         <div className="grid grid-cols-1 gap-6 mt-6">
           <div className="bg-card-dark border border-emerald-500/30 rounded-xl p-6">
-            <h3 className="text-lg font-bold mb-3 text-emerald-400">
+            <h3 className="text-lg font-bold mb-3 text-heading">
               {lang === 'ru' ? 'Оптимисты (e/acc)' : 'Optimists (e/acc)'}
             </h3>
             <p className="text-sm text-neutral-400 leading-relaxed">

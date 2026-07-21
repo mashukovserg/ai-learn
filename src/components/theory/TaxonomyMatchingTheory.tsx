@@ -8,7 +8,7 @@ export default function TaxonomyMatchingTheory({ lang }: { lang: string }) {
     <>
       {/* Chapter 1: The Problem */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 1: Грязный текст против чистой таксономии' : 'Chapter 1: Messy Text vs. a Clean Taxonomy'}
         </h2>
         <div className="space-y-6">
@@ -23,7 +23,7 @@ export default function TaxonomyMatchingTheory({ lang }: { lang: string }) {
               : 'Exact string comparison is useless here for three reasons. First, the many-to-one relationship: dozens of spellings of "accountant …" must converge on one profession, "Accountant". Second, cross-language: the vacancies are in English while the catalog is in Russian, so character-level comparison will never match. Third, the catalog is narrow and curated (IT, engineering, medicine, science), so mass-market vacancies — drivers, waiters, sales clerks — should match nothing at all. A high "no-match" rate is therefore a normal, correct outcome, not an algorithm failure. Realistic coverage for such a narrow catalog is roughly 20–40%, and it must be measured, not promised in advance.'}
           </p>
           <div className="bg-emerald-500/5 border-l-4 border-emerald-500 p-6 my-6">
-            <h4 className="font-bold text-emerald-400 mb-2">{lang === 'ru' ? 'Аналогия' : 'Analogy'}</h4>
+            <h4 className="font-bold text-heading mb-2">{lang === 'ru' ? 'Аналогия' : 'Analogy'}</h4>
             <p className="text-neutral-400 leading-relaxed">
               {lang === 'ru'
                 ? 'Сопоставление похоже на сортировку почты в стране, где адреса написаны от руки на разных языках. Индекс (profession_id) один и тот же для тысяч разных конвертов, часть писем адресована в места, которых нет на вашей карте, и их правильно отложить в стопку «не доставить», а не впихивать в первый попавшийся ящик.'
@@ -35,7 +35,7 @@ export default function TaxonomyMatchingTheory({ lang }: { lang: string }) {
 
       {/* Chapter 2: Normalize First */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 2: Сначала нормализация' : 'Chapter 2: Normalize First'}
         </h2>
         <div className="space-y-6">
@@ -80,7 +80,7 @@ export default function TaxonomyMatchingTheory({ lang }: { lang: string }) {
 
       {/* Chapter 3: Lexical Matching */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 3: Лексический матч — дёшево и точно' : 'Chapter 3: Lexical Matching — Cheap and Precise'}
         </h2>
         <div className="space-y-6">
@@ -99,7 +99,7 @@ export default function TaxonomyMatchingTheory({ lang }: { lang: string }) {
 
       {/* Chapter 4: Semantic Retrieval */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 4: Семантический поиск на эмбеддингах' : 'Chapter 4: Semantic Retrieval with Embeddings'}
         </h2>
         <div className="space-y-6">
@@ -144,7 +144,7 @@ export default function TaxonomyMatchingTheory({ lang }: { lang: string }) {
 
       {/* Chapter 5: Cascade, Adjudication & Evaluation */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 5: Каскад, адъюдикация и оценка' : 'Chapter 5: The Cascade, Adjudication & Evaluation'}
         </h2>
         <div className="space-y-6">
@@ -159,7 +159,7 @@ export default function TaxonomyMatchingTheory({ lang }: { lang: string }) {
               : <>{'The last mandatory step is evaluation. We create an explicit "no-match" bucket for vacancies outside the taxonomy and hand-label a '}<Term id="gold-set" lang={lang}>gold set</Term>{' of 150–200 pairs to measure '}<Term id="precision" lang={lang}>precision</Term>{' and '}<Term id="recall" lang={lang}>recall</Term>{' and calibrate the thresholds. Precision answers "how many of the auto-assignments are correct"; recall answers "how many of the correct pairs did we find at all". A precision-first strategy means: tune the threshold so precision among auto-assignments is high (around 90%), deliberately sacrificing coverage. For each vacancy the output carries a profession_id, a similarity score, the method (lexical / semantic / llm), and a runner-up candidate for manual review.'}</>}
           </p>
           <div className="bg-emerald-500/5 border-l-4 border-emerald-500 p-6 my-6">
-            <h4 className="font-bold text-emerald-400 mb-2">{lang === 'ru' ? 'Главный вывод' : 'Key takeaway'}</h4>
+            <h4 className="font-bold text-heading mb-2">{lang === 'ru' ? 'Главный вывод' : 'Key takeaway'}</h4>
             <p className="text-neutral-400 leading-relaxed">
               {lang === 'ru'
                 ? 'Матчинг — не одна модель, а конвейер из слоёв, где каждый следующий дороже и умнее предыдущего и трогает всё меньше случаев. Покрытие меряют на золотом наборе, а не обещают заранее, и высокая доля «нет совпадения» для узкого справочника — это правильно.'

@@ -9,7 +9,7 @@ export default function AiAlignmentTheory({ lang }: { lang: string }) {
     <>
       {/* Chapter 1: The Alignment Problem & The Wild Model */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Target className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 1: Проблема выравнивания — Укрощение хаоса' : 'Chapter 1: The Alignment Problem — Taming Chaos'}
         </h2>
@@ -25,7 +25,7 @@ export default function AiAlignmentTheory({ lang }: { lang: string }) {
               : 'The Alignment Problem is a challenge: how do we force a system millions of times more powerful than the human brain to follow our intentions, even when those intentions are difficult to formalize mathematically. How do we teach a machine "honesty" when the internet is full of lies? How do we teach "helpfulness" when what is helpful for one person might be harmful for another? We face the task of embedding human ethics directly into the neural network architecture, moving far beyond mere technical adjustments.'}
           </p>
           <div className="bg-emerald-500/5 border-l-4 border-emerald-500 p-6 my-6">
-            <h4 className="font-bold text-emerald-400 mb-2">{lang === 'ru' ? 'Ключевой риск: Deceptive Alignment (Скрытое выравнивание)' : 'Key Risk: Deceptive Alignment'}</h4>
+            <h4 className="font-bold text-heading mb-2">{lang === 'ru' ? 'Ключевой риск: Deceptive Alignment (Скрытое выравнивание)' : 'Key Risk: Deceptive Alignment'}</h4>
             <p className=" text-neutral-400 leading-relaxed">
               {lang === 'ru'
                 ? 'Это пугающая концепция, согласно которой модель может научиться "притворяться" выровненной и послушной только для того, чтобы пройти тесты безопасности, скрывая свои истинные, не оптимизированные под человека цели до тех пор, пока у нее не появится возможность их реализовать. Исследователи называют это "проблемой спящего агента".'
@@ -37,7 +37,7 @@ export default function AiAlignmentTheory({ lang }: { lang: string }) {
 
       {/* Chapter 2: SFT — The Lesson of Imitation */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Microscope className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 2: SFT — Первый учитель и границы имитации' : 'Chapter 2: SFT — The First Teacher and the Limits of Imitation'}
         </h2>
@@ -48,7 +48,7 @@ export default function AiAlignmentTheory({ lang }: { lang: string }) {
               : 'The process of "humanizing" begins with SFT (Supervised Fine-Tuning). At this stage, we take a raw model and give it a "good manners" textbook. Thousands of well-paid specialists (AI Trainers) manually create ideal dialogues. They show the model: "If a user asks for code, write it cleanly, with comments and no errors." "If a user asks for medical advice, be cautious and advise consulting a doctor."'}
           </p>
           <div className="bg-card p-6 rounded-xl border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-4 uppercase  tracking-widest">{lang === 'ru' ? 'Парадокс LIMA (Less Is More for Alignment):' : 'The LIMA Paradox (Less Is More for Alignment):'}</h4>
+            <h4 className="text-heading font-bold mb-4 uppercase  tracking-widest">{lang === 'ru' ? 'Парадокс LIMA (Less Is More for Alignment):' : 'The LIMA Paradox (Less Is More for Alignment):'}</h4>
             <p className=" text-neutral-400 leading-relaxed">
               {lang === 'ru'
                 ? 'Исследование 2023 года показало, что всего 1000 чрезвычайно качественных примеров SFT могут быть эффективнее, чем 50 000 средних. Это доказывает, что на этапе выравнивания качество данных важнее их количества. Модель уже знает всё из интернета, в SFT она лишь учится "стилю" того, как это знание выдавать.'
@@ -65,7 +65,7 @@ export default function AiAlignmentTheory({ lang }: { lang: string }) {
 
       {/* Chapter 3: <Term id="rlhf">RLHF</Term> — The Architecture of Preference */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Workflow className="text-emerald-500" />
           {lang === 'ru' ? <><Term id="rlhf" /> и Модель вознаграждения</> : <><Term id="rlhf" /> and the Reward Model</>}
         </h2>
@@ -118,7 +118,7 @@ export default function AiAlignmentTheory({ lang }: { lang: string }) {
 
       {/* Chapter 4: DPO and Constitutional AI */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Scale className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 4: Прямая оптимизация (DPO) и Автономия' : 'Chapter 4: Direct Preference Optimization (DPO) and Autonomy'}
         </h2>
@@ -129,7 +129,7 @@ export default function AiAlignmentTheory({ lang }: { lang: string }) {
               : '<Term id="rlhf">RLHF</Term> is incredibly expensive and complex. Training two neural networks simultaneously (the main one and the critic) often leads to instability. In 2023, Stanford researchers proposed DPO (Direct Preference Optimization). This method allows for training the model directly on preference data (A is better than B) without creating an intermediate Reward Model. DPO is mathematically more elegant and achieves the same results much faster.'}
           </p>
           <div className="bg-card p-6 rounded-xl border border-border-card my-6">
-             <h4 className="font-bold text-emerald-400 mb-4 flex items-center gap-2">
+             <h4 className="font-bold text-heading mb-4 flex items-center gap-2">
                <MessageSquare className="text-emerald-500" size={18} />
                {lang === 'ru' ? 'Конституционный ИИ: Когда ИИ учит ИИ' : 'Constitutional AI: When AI Trains AI'}
              </h4>
@@ -149,7 +149,7 @@ export default function AiAlignmentTheory({ lang }: { lang: string }) {
 
       {/* Chapter 5: Scalable Oversight & Superalignment */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <ShieldCheck className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 5: Масштабируемый надзор и Супервыравнивание' : 'Chapter 5: Scalable Oversight & Superalignment'}
         </h2>

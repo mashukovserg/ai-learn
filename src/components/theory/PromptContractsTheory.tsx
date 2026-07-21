@@ -7,7 +7,7 @@ export default function PromptContractsTheory({ lang }: { lang: string }) {
   return (
     <div className="space-y-8 reading-prose">
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru' ? 'Глава 1: От &quot;Вибраций&quot; к Инженерному Контракту' : 'Chapter 1: From &quot;Vibes&quot; to Engineering Contracts'}
         </h2>
         <div className="space-y-4">
@@ -37,7 +37,7 @@ export default function PromptContractsTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru' ? 'Глава 2: Анатомия надежного контракта' : 'Chapter 2: Anatomy of a Reliable Contract'}
         </h2>
         <div className="space-y-4">
@@ -67,7 +67,7 @@ export default function PromptContractsTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru' ? 'Глава 3: Борьба с дрейфом и детерминизм' : 'Chapter 3: Fighting Drift and Determinism'}
         </h2>
         <div className="space-y-4">
@@ -97,7 +97,7 @@ export default function PromptContractsTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru' ? 'Глава 4: Промпты как код (Prompts as Code)' : 'Chapter 4: Prompts as Code'}
         </h2>
         <div className="space-y-4">
@@ -127,7 +127,7 @@ export default function PromptContractsTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru' ? 'Глава 5: Контроль контекстной гигиены' : 'Chapter 5: Managing Context Hygiene'}
         </h2>
         <div className="space-y-4">

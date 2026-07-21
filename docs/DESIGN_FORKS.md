@@ -188,11 +188,37 @@ text will look mis-scaled.
 
 ---
 
-## Fork 3 — Theory heading color (OPEN, exploring)
+## Fork 3 — Theory heading color
 
-**Context.** Opened 2026-07-21 by the owner: the emerald-vs-aubergine clash (Fork 1) is to be
-resolved by re-coloring the **headings and similar accents**, not the terminal. Today theory
-chapter headings are emerald (`text-emerald-400`).
+**Context.** Opened and resolved 2026-07-21 by the owner: the emerald-vs-aubergine clash (Fork 1)
+was to be fixed by re-coloring the **headings and similar accents**, not the terminal.
+
+### Current pick — light gray (since 2026-07-21)
+
+```css
+--color-heading: #d4d4d4;   /* @theme — dark UI */
+--color-heading: #3f3f46;   /* [data-theme="saas"] — light UI */
+```
+
+Applied via the `text-heading` utility: **250 replacements across 34 theory files**, scoped to
+`h2`/`h3`/`h4` tags only. Emerald stays where it means *interactive*: `<Term>` glossary links,
+buttons, progress bars, difficulty chips. Heading hierarchy is now carried by size and weight
+rather than hue — which is why the aubergine terminal no longer competes with anything.
+
+- **For:** kills the clash at its source; headings stop shouting; the accent regains meaning
+  (green = you can click it).
+- **Against:** chapter titles are less scannable at a glance than colored ones were.
+
+### Alternatives (kept live)
+
+| Candidate | Dark | Light | Character |
+|---|---|---|---|
+| Body-color | `#e6e2da` | `#0f0f0f` | classic typography — headings are just bold text |
+| Muted gray | `#9e9e9e` | `#6f6f6f` | quiet, "terminal minimalism"; risks reading as disabled |
+| Emerald (original) | `#34d399` | `#047857` | the pre-2026-07-21 look; clashes with the aubergine terminal |
+
+**Still open:** whether non-theory surfaces (dashboard, rooms catalog, path pages) follow the same
+token — today they keep emerald headings.
 
 **Measured scope (2026-07-21):** `text-emerald-400` appears 289× in `src/components/theory/`,
 of which ~250 are on `h2`/`h3`/`h4` headings (chapter titles + callout titles). Glossary `<Term>`

@@ -9,7 +9,7 @@ export default function NativeMultimodalityTheory({ lang }: { lang: string }) {
     <>
       {/* Chapter 1: Beyond Text */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Share2 className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 1: От "текстоцентризма" к единому восприятию' : 'Chapter 1: From Text-Centrism to Unified Perception'}
         </h2>
@@ -25,7 +25,7 @@ export default function NativeMultimodalityTheory({ lang }: { lang: string }) {
               : <><Term id="multimodality">Native Multimodality</Term> {' is an architectural revolution. It means the model, from day one of training, sees different types of data simultaneously. There is no separate "eye" or "ear" in its neural network. For such a system, image pixels, sound waves, and text characters are equal signals that are transformed into a single mathematical coordinate system (Latent Space). The model does not translate an image into text; it perceives it directly.'}</>}
           </p>
           <div className="bg-card border border-emerald-500/20 rounded-2xl p-6 my-8">
-            <h4 className="text-emerald-400 font-bold mb-3 flex items-center gap-2">
+            <h4 className="text-heading font-bold mb-3 flex items-center gap-2">
               <Zap size={18} /> {lang === 'ru' ? 'В чем разница для пользователя?' : 'What is the difference for the user?'}
             </h4>
             <p className="text-neutral-400 leading-relaxed">
@@ -39,7 +39,7 @@ export default function NativeMultimodalityTheory({ lang }: { lang: string }) {
 
       {/* Chapter 2: How Vision Works — Image Patches */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Camera className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 2: Анатомия зрения — ИИ видит мир патчами' : 'Chapter 2: Anatomy of Vision — AI Sees the World in Patches'}
         </h2>
@@ -79,7 +79,7 @@ export default function NativeMultimodalityTheory({ lang }: { lang: string }) {
 
       {/* Chapter 3: Native Audio — The Spectrum of Sound */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Waves className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 3: Звук как смысл — Магия нативного аудио' : 'Chapter 3: Sound as Meaning — The Magic of Native Audio'}
         </h2>
@@ -120,7 +120,7 @@ export default function NativeMultimodalityTheory({ lang }: { lang: string }) {
 
       {/* Chapter 4: Interleaving — The Magic of Mixing */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Workflow className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 4: Interleaving — Искусство смешивания данных' : 'Chapter 4: Interleaving — The Art of Data Mixing'}
         </h2>
@@ -154,7 +154,7 @@ export default function NativeMultimodalityTheory({ lang }: { lang: string }) {
 
       {/* Chapter 5: Challenges — The Cost of Senses */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Layers className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 5: Вызовы и будущее — Цена восприятия' : 'Chapter 5: Challenges and the Future — The Cost of Perception'}
         </h2>

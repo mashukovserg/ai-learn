@@ -9,7 +9,7 @@ export default function PostChatgptHistoryTheory({ lang }: { lang: string }) {
       {/* Introduction */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-3xl font-bold mb-6 text-emerald-400">
+          <h2 className="text-3xl font-bold mb-6 text-heading">
             {lang === 'ru' ? 'Эпоха после ChatGPT: Гонка вооружений' : 'The Post-ChatGPT Era: An Arms Race'}
           </h2>
           <div className="prose prose-invert max-w-none">

@@ -11,7 +11,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
     <div className="space-y-8">
       {/* Chapter 1 */}
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru ? 'Глава 1: Что такое Agent Coding в инженерной практике' : 'Chapter 1: What Agent Coding Means in Engineering Practice'}
         </h2>
         <div className="space-y-4">
@@ -72,7 +72,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
 
       {/* Chapter 2 */}
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru ? 'Глава 2: Контракт задачи (Task Contract)' : 'Chapter 2: Task Contract'}
         </h2>
         <div className="space-y-4">
@@ -136,7 +136,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
 
       {/* Chapter 3 */}
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru ? 'Глава 3: Архитектура ролей (Planner / Executor / Validator)' : 'Chapter 3: Role Architecture (Planner / Executor / Validator)'}
         </h2>
         <div className="space-y-4">
@@ -177,7 +177,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
 
       {/* Chapter 4 */}
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru ? 'Глава 4: Цикл выполнения (Agent Loop)' : 'Chapter 4: The Agent Loop'}
         </h2>
         <div className="space-y-4">
@@ -227,7 +227,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
 
       {/* Chapter 5 */}
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru ? 'Глава 5: Наблюдаемость и состояние (Observability)' : 'Chapter 5: Observability and State'}
         </h2>
         <div className="space-y-4">
@@ -279,7 +279,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
 
       {/* Chapter 6 */}
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru ? 'Глава 6: Ошибки и Recovery' : 'Chapter 6: Errors and Recovery'}
         </h2>
         <div className="space-y-4">
@@ -327,7 +327,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
             )}
           </p>
 
-          <h3 className="text-lg font-bold text-emerald-400 pt-2">
+          <h3 className="text-lg font-bold text-heading pt-2">
             {ru ? 'Связь с классической инженерией' : 'The Link to Classical Engineering'}
           </h3>
 
@@ -467,7 +467,7 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
 
       {/* Chapter 7 */}
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru ? 'Глава 7: Guardrails, инструменты и антипаттерны' : 'Chapter 7: Guardrails, Tools, and Antipatterns'}
         </h2>
         <div className="space-y-4">

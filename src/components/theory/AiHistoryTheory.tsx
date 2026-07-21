@@ -10,7 +10,7 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
 
       {/* Introduction */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-6 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'AI: От мечты к инфраструктуре' : 'AI: From Dream to Infrastructure'}
         </h2>
         <div className="space-y-4">
@@ -34,7 +34,7 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
 
       {/* Chapter 1 */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-6 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 1: Эра символов и правил (1950-е — 1980-е)' : 'Chapter 1: The Era of Symbols and Rules (1950s – 1980s)'}
         </h2>
         <div className="space-y-4">
@@ -46,7 +46,7 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
 
           <div className="grid grid-cols-1 gap-4 my-6">
             <div className="bg-deep border border-emerald-500/20 rounded-lg p-5">
-              <h4 className="text-emerald-400 font-bold mb-2">
+              <h4 className="text-heading font-bold mb-2">
                 {lang === 'ru' ? 'Дартмутский семинар (1956): бардак, финансированный вполовину' : 'The Dartmouth Workshop (1956): half-funded, mostly chaotic'}
               </h4>
               <p className="text-sm text-neutral-400 leading-relaxed">
@@ -66,7 +66,7 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
               </p>
             </div>
             <div className="bg-deep border border-emerald-500/20 rounded-lg p-5">
-              <h4 className="text-emerald-400 font-bold mb-2">
+              <h4 className="text-heading font-bold mb-2">
                 {lang === 'ru' ? 'Logic Theorist (1955) и волна невыполненных обещаний' : 'Logic Theorist (1955) and the wave of broken promises'}
               </h4>
               <p className="text-sm text-neutral-400 leading-relaxed">

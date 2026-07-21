@@ -8,7 +8,7 @@ export default function McpToolEcosystemsTheory({ lang }: { lang: string }) {
   return (
     <div className="space-y-8">
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru'
             ? 'Глава 1: Проблема N×M интеграций'
             : 'Chapter 1: The N×M Integration Problem'}
@@ -59,7 +59,7 @@ export default function McpToolEcosystemsTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru'
             ? 'Глава 2: Архитектура MCP — Host, Client, Server'
             : 'Chapter 2: MCP Architecture — Host, Client, Server'}
@@ -125,7 +125,7 @@ export default function McpToolEcosystemsTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru'
             ? 'Глава 3: Три примитива MCP Server'
             : 'Chapter 3: Three MCP Server Primitives'}
@@ -178,7 +178,7 @@ export default function McpToolEcosystemsTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru'
             ? 'Глава 4: Транспорты — stdio и HTTP'
             : 'Chapter 4: Transports — stdio and HTTP'}
@@ -227,7 +227,7 @@ export default function McpToolEcosystemsTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru'
             ? 'Глава 5: Экосистема и безопасность'
             : 'Chapter 5: Ecosystem and Security'}
@@ -280,7 +280,7 @@ export default function McpToolEcosystemsTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru'
             ? 'Глава 6: Жизненный цикл MCP-соединения'
             : 'Chapter 6: MCP Connection Lifecycle'}
@@ -342,7 +342,7 @@ export default function McpToolEcosystemsTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru'
             ? 'Глава 7: Паттерны и антипаттерны MCP-серверов'
             : 'Chapter 7: MCP Server Patterns and Anti-Patterns'}
@@ -406,7 +406,7 @@ export default function McpToolEcosystemsTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru'
             ? 'Глава 8: MCP в реальных сценариях'
             : 'Chapter 8: MCP in Real-World Scenarios'}

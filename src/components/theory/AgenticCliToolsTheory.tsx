@@ -10,7 +10,7 @@ export default function AgenticCliToolsTheory({ lang }: { lang: string }) {
   return (
     <div className="space-y-8">
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru
             ? 'Глава 1: CLI как контур управления агентной разработкой'
             : 'Chapter 1: CLI as the Control Plane of Agent Coding'}
@@ -104,7 +104,7 @@ export default function AgenticCliToolsTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru
             ? 'Глава 2: Discovery-фаза: быстрый сбор контекста перед изменениями'
             : 'Chapter 2: Discovery Phase for Fast Context Before Changes'}
@@ -218,7 +218,7 @@ export default function AgenticCliToolsTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru
             ? 'Глава 3: Change-фаза: минимальный patch и разделение ролей'
             : 'Chapter 3: Change Phase with Minimal Patches and Clear Roles'}
@@ -282,7 +282,7 @@ export default function AgenticCliToolsTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru
             ? 'Глава 4: Verify-фаза: проверка качества в конкретных командах'
             : 'Chapter 4: Verify Phase with Concrete Quality Commands'}
@@ -367,7 +367,7 @@ export default function AgenticCliToolsTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru
             ? 'Глава 5: Операционный протокол: стоимость, rollback и рабочий чек-лист'
             : 'Chapter 5: Operational Protocol for Cost, Rollback, and Daily Checklist'}

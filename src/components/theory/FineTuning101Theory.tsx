@@ -9,7 +9,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
     <>
       {/* Chapter 1: What is Fine-Tuning? */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Info className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 1: Что такое файн-тюнинг?' : 'Chapter 1: What is Fine-Tuning?'}
         </h2>
@@ -57,7 +57,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
           </div>
 
           <div className="bg-emerald-500/5 border-l-4 border-emerald-500 p-6 my-6">
-            <h4 className="font-bold text-emerald-400 mb-2">{lang === 'ru' ? 'Ключевая аналогия' : 'Key Analogy'}</h4>
+            <h4 className="font-bold text-heading mb-2">{lang === 'ru' ? 'Ключевая аналогия' : 'Key Analogy'}</h4>
             <p className="text-neutral-400 leading-relaxed">
               {lang === 'ru'
                 ? 'Pre-training = высшее образование (общие знания). Fine-tuning = стажировка в конкретной компании (специализация). Промптинг = инструкция на совещании (временный контекст).'
@@ -69,13 +69,13 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
 
       {/* Chapter 2: Full Fine-Tuning vs LoRA */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Layers className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 2: Виды файн-тюнинга' : 'Chapter 2: Types of Fine-Tuning'}
         </h2>
         <div className="space-y-6">
           <div className="bg-card p-5 rounded-xl border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">Full Fine-Tuning</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">Full Fine-Tuning</h4>
             <p className="text-neutral-400 leading-relaxed text-sm">
               {lang === 'ru'
                 ? 'Обновляются ВСЕ веса модели. Для 7B модели — минимум 1×A100 80GB. Мощно, но дорого и рискованно: есть угроза catastrophic forgetting — модель может забыть то, что знала раньше.'
@@ -84,7 +84,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
           </div>
 
           <div className="bg-card p-5 rounded-xl border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">LoRA (Low-Rank Adaptation)</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">LoRA (Low-Rank Adaptation)</h4>
             <p className="text-neutral-400 leading-relaxed text-sm mb-4">
               {lang === 'ru'
                 ? 'Ключевая идея: не трогай основные веса, а добавь маленькие обучаемые матрицы рядом с ними. Исследования показали, что изменения весов при файн-тюнинге имеют низкий ранг — модели не нужно менять ВСЁ, достаточно подкрутить небольшое подпространство.'
@@ -124,7 +124,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
           </div>
 
           <div className="bg-card p-5 rounded-xl border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">QLoRA (Quantized LoRA)</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">QLoRA (Quantized LoRA)</h4>
             <p className="text-neutral-400 leading-relaxed text-sm">
               {lang === 'ru'
                 ? 'LoRA + квантизация базовой модели до 4-bit. Это позволяет файн-тюнить 7B модель на GPU с 6GB VRAM — на обычной игровой карте. Демократизация файн-тюнинга: то, что раньше требовало кластер из A100, теперь работает на RTX 3060.'
@@ -178,7 +178,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
 
           {/* Other methods */}
           <div className="bg-card p-5 rounded-xl border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Другие методы (кратко)' : 'Other Methods (brief)'}</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Другие методы (кратко)' : 'Other Methods (brief)'}</h4>
             <div className="space-y-2 text-sm text-neutral-400">
               <div><span className="text-neutral-300 font-medium">Prefix Tuning</span> — {lang === 'ru' ? 'обучение "виртуальных токенов", которые добавляются к началу каждого промпта' : 'training "virtual tokens" prepended to every prompt'}</div>
               <div><span className="text-neutral-300 font-medium">Adapters</span> — {lang === 'ru' ? 'маленькие обучаемые слои, вставленные между слоями трансформера' : 'small trainable layers inserted between transformer layers'}</div>
@@ -190,7 +190,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
 
       {/* Chapter 3: When to Fine-Tune */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Zap className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 3: Когда файн-тюнить, когда промптить, когда RAG?' : 'Chapter 3: When to Fine-Tune, When to Prompt, When to RAG?'}
         </h2>
@@ -203,7 +203,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
 
           <div className="space-y-3">
             <div className="bg-card p-5 rounded-xl border border-border-card">
-              <h4 className="text-emerald-400 font-bold mb-2">{lang === 'ru' ? 'Промптинг — когда:' : 'Prompting — when:'}</h4>
+              <h4 className="text-heading font-bold mb-2">{lang === 'ru' ? 'Промптинг — когда:' : 'Prompting — when:'}</h4>
               <ul className="space-y-1 text-neutral-400 text-sm">
                 <li>• {lang === 'ru' ? 'Задача хорошо описывается инструкцией на естественном языке' : 'The task is well-described by a natural-language instruction'}</li>
                 <li>• {lang === 'ru' ? 'Нужна быстрая итерация (часы, не дни)' : 'You need fast iteration (hours, not days)'}</li>
@@ -212,7 +212,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
               </ul>
             </div>
             <div className="bg-card p-5 rounded-xl border border-border-card">
-              <h4 className="text-emerald-400 font-bold mb-2">{lang === 'ru' ? 'RAG — когда:' : 'RAG — when:'}</h4>
+              <h4 className="text-heading font-bold mb-2">{lang === 'ru' ? 'RAG — когда:' : 'RAG — when:'}</h4>
               <ul className="space-y-1 text-neutral-400 text-sm">
                 <li>• {lang === 'ru' ? 'Модели нужен доступ к актуальным или внутренним данным' : 'The model needs access to fresh or internal data'}</li>
                 <li>• {lang === 'ru' ? 'Ответы должны быть подкреплены источниками (цитирование)' : 'Answers must be backed by sources (citation)'}</li>
@@ -221,7 +221,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
               </ul>
             </div>
             <div className="bg-card p-5 rounded-xl border border-border-card">
-              <h4 className="text-emerald-400 font-bold mb-2">{lang === 'ru' ? 'Файн-тюнинг — когда:' : 'Fine-Tuning — when:'}</h4>
+              <h4 className="text-heading font-bold mb-2">{lang === 'ru' ? 'Файн-тюнинг — когда:' : 'Fine-Tuning — when:'}</h4>
               <ul className="space-y-1 text-neutral-400 text-sm">
                 <li>• {lang === 'ru' ? 'Нужно изменить стиль, формат или "поведение" модели' : 'You need to change the model\'s style, format, or "behavior"'}</li>
                 <li>• {lang === 'ru' ? 'Промпт стал слишком длинным (>2000 токенов инструкций)' : 'The prompt has become too long (>2000 tokens of instructions)'}</li>
@@ -245,7 +245,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
 
       {/* Chapter 4: Dataset Preparation */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Database className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 4: Подготовка данных — 90% успеха' : 'Chapter 4: Data Preparation — 90% of Success'}
         </h2>
@@ -258,7 +258,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
 
           {/* Data format examples */}
           <div className="bg-card p-5 rounded-xl border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Формат: пары инструкция-ответ' : 'Format: instruction-response pairs'}</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Формат: пары инструкция-ответ' : 'Format: instruction-response pairs'}</h4>
             <div className="bg-black/40 rounded-lg p-4 font-mono text-xs text-neutral-400 overflow-x-auto">
               <pre>{`{
   "instruction": "${lang === 'ru' ? 'Классифицируй тип договора' : 'Classify the contract type'}",
@@ -269,7 +269,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
           </div>
 
           <div className="bg-card p-5 rounded-xl border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Формат: чат (conversations)' : 'Format: chat (conversations)'}</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Формат: чат (conversations)' : 'Format: chat (conversations)'}</h4>
             <div className="bg-black/40 rounded-lg p-4 font-mono text-xs text-neutral-400 overflow-x-auto">
               <pre>{`{
   "messages": [
@@ -283,7 +283,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
 
           {/* Dataset size table */}
           <div className="bg-card border border-border-emphasis rounded-xl p-5">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Сколько данных нужно?' : 'How much data do you need?'}</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Сколько данных нужно?' : 'How much data do you need?'}</h4>
             <div className="overflow-x-auto">
               <table className="w-full text-sm text-neutral-400">
                 <thead>
@@ -319,7 +319,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
           </div>
 
           <div className="bg-card border border-border-emphasis rounded-xl p-5">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Чек-лист качественного датасета' : 'Quality Dataset Checklist'}</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Чек-лист качественного датасета' : 'Quality Dataset Checklist'}</h4>
             <div className="space-y-2 text-sm text-neutral-400">
               <div className="flex items-start gap-2"><span className="text-emerald-500 mt-0.5">1.</span><span>{lang === 'ru' ? 'Ответы соответствуют тому, как вы ХОТИТЕ, чтобы модель отвечала' : 'Responses match how you WANT the model to respond'}</span></div>
               <div className="flex items-start gap-2"><span className="text-emerald-500 mt-0.5">2.</span><span>{lang === 'ru' ? 'Нет противоречивых примеров (одинаковый input → разный output)' : 'No contradictory examples (same input → different output)'}</span></div>
@@ -333,7 +333,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
 
       {/* Chapter 5: Practical Pipeline */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Code className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 5: Практика — пайплайн файн-тюнинга' : 'Chapter 5: Practice — Fine-Tuning Pipeline'}
         </h2>
@@ -391,7 +391,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
 
       {/* Chapter 6: Fine-Tuning via API */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Cloud className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 6: Файн-тюнинг через API (без GPU)' : 'Chapter 6: Fine-Tuning via API (no GPU needed)'}
         </h2>
@@ -415,7 +415,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
           </div>
 
           <div className="bg-card border border-border-emphasis rounded-xl p-5">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Платформы' : 'Platforms'}</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Платформы' : 'Platforms'}</h4>
             <div className="overflow-x-auto">
               <table className="w-full text-sm text-neutral-400">
                 <thead>
@@ -455,7 +455,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
 
       {/* Chapter 7: Risks */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <AlertTriangle className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 7: Риски и ловушки' : 'Chapter 7: Risks and Pitfalls'}
         </h2>
@@ -501,7 +501,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
 
           {/* How to evaluate */}
           <div className="bg-card border border-border-emphasis rounded-xl p-5">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Как понять, что файн-тюнинг сработал?' : 'How to tell if fine-tuning worked?'}</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'Как понять, что файн-тюнинг сработал?' : 'How to tell if fine-tuning worked?'}</h4>
             <div className="space-y-2 text-sm text-neutral-400">
               <div>1. <span className="text-neutral-300">Train/Eval Loss</span> — {lang === 'ru' ? 'должен снижаться, но без расхождения' : 'should decrease without divergence'}</div>
               <div>2. <span className="text-neutral-300">{lang === 'ru' ? 'Ручная проверка' : 'Manual check'}</span> — {lang === 'ru' ? '20–50 промптов, которых не было в обучении' : '20–50 prompts not seen in training'}</div>
@@ -514,7 +514,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
 
       {/* Chapter 8: Decision Tree + Combined Approaches */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Wrench className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 8: Дерево решений' : 'Chapter 8: Decision Tree'}
         </h2>
@@ -549,7 +549,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
 
       {/* Chapter 9: Combined Approaches */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Combine className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 9: Комбинированные подходы' : 'Chapter 9: Combined Approaches'}
         </h2>
@@ -561,7 +561,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-card p-5 rounded-xl border border-border-card">
-              <h4 className="text-emerald-400 font-bold mb-2 text-sm">RAG + Fine-Tuning</h4>
+              <h4 className="text-heading font-bold mb-2 text-sm">RAG + Fine-Tuning</h4>
               <p className="text-neutral-400 text-sm leading-relaxed">
                 {lang === 'ru'
                   ? 'Fine-tuning задаёт формат, стиль и задачу. RAG подключает актуальные знания. Пример: юридический чат-бот с формализованными ответами (FT) и цитированием актуальных законов (RAG).'
@@ -569,7 +569,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
               </p>
             </div>
             <div className="bg-card p-5 rounded-xl border border-border-card">
-              <h4 className="text-emerald-400 font-bold mb-2 text-sm">Fine-Tuning + Prompting</h4>
+              <h4 className="text-heading font-bold mb-2 text-sm">Fine-Tuning + Prompting</h4>
               <p className="text-neutral-400 text-sm leading-relaxed">
                 {lang === 'ru'
                   ? 'Fine-tuning задаёт базовое поведение модели. Промпт уточняет конкретный запрос. Результат: короткие промпты (экономия токенов) + стабильное поведение (из файн-тюнинга).'

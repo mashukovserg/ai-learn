@@ -10,7 +10,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
     <>
       {/* Chapter 1: Tokens & The BPE Process */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-start gap-3 text-emerald-400">
+        <h2 className="text-2xl md:text-3xl font-bold mb-6 flex items-start gap-3 text-heading">
           <Info className="text-emerald-500 shrink-0 mt-1" />
           <span className="leading-tight text-balance">
             {lang === 'ru' ? 'Глава 1: Токены — атомы цифрового разума' : 'Chapter 1: Tokens — The Atoms of Digital Mind'}
@@ -58,7 +58,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
 
       {/* Chapter 2: The Next-Token Game */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <BrainCircuit className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 2: Великая игра в предсказания' : 'Chapter 2: The Great Prediction Game'}
         </h2>
@@ -136,7 +136,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
 
       {/* Chapter 3: Temperature */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Thermometer className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 3: Температура' : 'Chapter 3: Temperature'}
         </h2>
@@ -251,7 +251,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
 
       {/* Chapter 4: Context Window */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Layers className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 4: Контекстное окно' : 'Chapter 4: Context Window'}
         </h2>
@@ -288,7 +288,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
 
       {/* Chapter 5: Why It Hallucinates */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Zap className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 5: Природа галлюцинаций' : 'Chapter 5: The Nature of Hallucinations'}
         </h2>
@@ -313,7 +313,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
 
       {/* Chapter 6: Practical decoding checklist */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 6: Быстрый чек-лист перед запуском' : 'Chapter 6: Fast Pre-Launch Checklist'}
         </h2>
         <ol className="space-y-2 text-sm text-neutral-300 list-decimal pl-5">
@@ -330,7 +330,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
           <div className="p-2 rounded-lg bg-emerald-500/10">
             <FlaskConical size={22} className="text-emerald-400" />
           </div>
-          <h2 className="text-3xl font-bold text-emerald-400">
+          <h2 className="text-3xl font-bold text-heading">
             {lang === 'ru' ? 'Глава 7: Лаборатория' : 'Chapter 7: Lab'}
           </h2>
         </div>

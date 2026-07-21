@@ -10,7 +10,7 @@ export default function Llama318bTheory({ lang }: { lang: string }) {
     <>
       {/* Chapter 1: What is Llama 3.1 8B? */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Flame className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 1: Что такое Llama 3.1 8B?' : 'Chapter 1: What is Llama 3.1 8B?'}
         </h2>
@@ -27,7 +27,7 @@ export default function Llama318bTheory({ lang }: { lang: string }) {
           </p>
 
           <div className="bg-emerald-500/5 border-l-4 border-emerald-500 p-6 my-6">
-            <h4 className="font-bold text-emerald-400 mb-2">{lang === 'ru' ? 'Ключевая аналогия' : 'Key Analogy'}</h4>
+            <h4 className="font-bold text-heading mb-2">{lang === 'ru' ? 'Ключевая аналогия' : 'Key Analogy'}</h4>
             <p className="text-neutral-400 leading-relaxed">
               {lang === 'ru'
                 ? 'GPT-4 или Claude — это «такси»: удобно, быстро, но каждая поездка стоит денег и водитель видит, куда вы едете. Llama 3.1 8B — это ваш собственный автомобиль: один раз вложились в железо, и потом ездите бесплатно и приватно. Не самый быстрый болид в мире, но для большинства задач хватает с запасом.'
@@ -39,7 +39,7 @@ export default function Llama318bTheory({ lang }: { lang: string }) {
 
       {/* Chapter 2: Why it mattered for the open ecosystem */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Globe className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 2: Почему она изменила открытую экосистему' : 'Chapter 2: Why it Changed the Open Ecosystem'}
         </h2>
@@ -87,7 +87,7 @@ export default function Llama318bTheory({ lang }: { lang: string }) {
 
       {/* Chapter 3: Architecture in plain English */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Cpu className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 3: Архитектура простыми словами' : 'Chapter 3: Architecture in Plain English'}
         </h2>
@@ -146,7 +146,7 @@ export default function Llama318bTheory({ lang }: { lang: string }) {
           </div>
 
           <div className="bg-card p-5 rounded-xl border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'GQA — почему это важно' : 'GQA — Why it Matters'}</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'GQA — почему это важно' : 'GQA — Why it Matters'}</h4>
             <p className="text-neutral-400 leading-relaxed text-sm">
               {lang === 'ru'
                 ? 'В обычном multi-head attention каждая «голова» внимания имеет свою пару (Key, Value). На длинных контекстах эти KV-матрицы съедают огромное количество памяти. GQA (Grouped-Query Attention) делает компромисс: несколько query-голов делят одну пару KV. Качество почти не страдает, а KV-кэш в разы меньше — именно это даёт возможность работать с 128K токенами на скромной GPU.'
@@ -155,7 +155,7 @@ export default function Llama318bTheory({ lang }: { lang: string }) {
           </div>
 
           <div className="bg-card p-5 rounded-xl border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'RoPE-скейлинг и 128K контекста' : 'RoPE Scaling and 128K Context'}</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase tracking-widest text-xs">{lang === 'ru' ? 'RoPE-скейлинг и 128K контекста' : 'RoPE Scaling and 128K Context'}</h4>
             <p className="text-neutral-400 leading-relaxed text-sm">
               {lang === 'ru'
                 ? 'RoPE (Rotary Position Embeddings) — это способ закодировать позицию токена через поворот вектора. Главная фишка: его можно «растянуть» постфактум, продолжая обучать модель на более длинных контекстах. Llama 3.1 обучалась сначала на 8K, потом на длинных последовательностях с растянутым RoPE — и в итоге уверенно работает на 128K токенов.'
@@ -167,7 +167,7 @@ export default function Llama318bTheory({ lang }: { lang: string }) {
 
       {/* Chapter 4: The licence reality */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Scale className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 4: Реальность лицензии' : 'Chapter 4: The Licence Reality'}
         </h2>
@@ -212,7 +212,7 @@ export default function Llama318bTheory({ lang }: { lang: string }) {
 
       {/* Chapter 5: Running it yourself */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Wrench className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 5: Как запустить у себя' : 'Chapter 5: Running it Yourself'}
         </h2>

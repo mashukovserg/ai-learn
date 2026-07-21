@@ -9,7 +9,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
     <>
       {/* Chapter 1: The Quiet Before the Storm */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Clock className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 1: Тишина перед бурей (До ноября 2022)' : 'Chapter 1: The Quiet Before the Storm (Pre-November 2022)'}
         </h2>
@@ -58,7 +58,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
 
       {/* Chapter 2: The Secret Ingredient - <Term id="rlhf">RLHF</Term> */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Zap className="text-emerald-500" />
           {lang === 'ru' ? (
             <>
@@ -82,7 +82,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
         
         <div className="grid md:grid-cols-1 gap-4 mb-8">
           <div className="bg-card p-6 rounded-lg border border-border-card">
-            <h4 className="text-emerald-400 font-bold mb-3 uppercase ">{lang === 'ru' ? 'Процесс из трех этапов:' : 'The Three-Step Process:'}</h4>
+            <h4 className="text-heading font-bold mb-3 uppercase ">{lang === 'ru' ? 'Процесс из трех этапов:' : 'The Three-Step Process:'}</h4>
             <ul className="space-y-4  text-neutral-400 list-disc ml-5">
               <li><strong>{lang === 'ru' ? 'Контролируемая настройка (SFT):' : 'Supervised Fine-Tuning (SFT):'}</strong> {lang === 'ru' ? 'Люди-тренеры прописывают тысячи идеальных диалогов, обучая модель формату полезного помощника.' : 'Human trainers write out thousands of ideal dialogues, teaching the model the format of a helpful assistant.'}</li>
               <li><strong>{lang === 'ru' ? 'Модель вознаграждения:' : 'Reward Modeling:'}</strong> {lang === 'ru' ? 'Люди ранжируют ответы модели от лучших к худшим. Так ИИ учится понимать, что именно мы считаем "хорошим" ответом.' : 'Humans rank model outputs from best to worst. This is how the AI learns to understand what exactly we consider a "good" answer.'}</li>
@@ -100,7 +100,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
 
       {/* Chapter 3: The 5-Day Miracle & Interface Power */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <TrendingUp className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 3: Чудо пяти дней и сила интерфейса' : 'Chapter 3: The 5-Day Miracle & Interface Power'}
         </h2>
@@ -139,7 +139,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
 
       {/* Chapter 4: Structural Changes & Market Reaction */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Globe className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 4: Тектонические сдвиги и реакция рынка' : 'Chapter 4: Tectonic Shifts & Market Reaction'}
         </h2>
@@ -175,7 +175,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
             </h3>
             <div className="grid grid-cols-1 gap-6">
               <div>
-                <h4 className="text-emerald-400 font-bold mb-2  uppercase">{lang === 'ru' ? 'Образование' : 'Education'}</h4>
+                <h4 className="text-heading font-bold mb-2  uppercase">{lang === 'ru' ? 'Образование' : 'Education'}</h4>
                 <p className=" text-neutral-300 leading-relaxed">
                   {lang === 'ru'
                     ? 'Традиционное эссе как мерило знаний «умерло». Когда ИИ пишет текст уровня выпускника вуза за 30 секунд, система оценки должна сместиться с продукта (результата) на процесс (мышление). Университеты начали возвращаться к устным экзаменам и написанию работ в классе, одновременно пытаясь интегрировать ИИ как тьютора, а не как инструмент для списывания.'
@@ -183,7 +183,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
                 </p>
               </div>
               <div>
-                <h4 className="text-emerald-400 font-bold mb-2  uppercase">{lang === 'ru' ? 'Программирование' : 'Programming'}</h4>
+                <h4 className="text-heading font-bold mb-2  uppercase">{lang === 'ru' ? 'Программирование' : 'Programming'}</h4>
                 <p className=" text-neutral-300 leading-relaxed">
                   {lang === 'ru'
                     ? 'Программисты получили «экзоскелет». Написание шаблонного кода, unit-тестов и документации теперь занимает минуты вместо часов. Порог входа в индустрию снизился: теперь важно не то, помните ли вы синтаксис, а то, можете ли вы правильно спроектировать систему и проверить код, написанный ИИ. Роль программиста сместилась от «писателя» к «редактору и архитектору».'
@@ -215,7 +215,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
 
       {/* Chapter 5: Why it is a "Moment" */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <MessageSquare className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 5: Почему это именно "Момент"?' : 'Chapter 5: Why it is a "Moment"?'}
         </h2>

@@ -31,7 +31,7 @@ export default function PromptEvalsTheory({ lang }: { lang: string }) {
       <section>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-card-dark border border-border-card rounded-xl p-6">
-            <h3 className="text-lg font-bold mb-4 text-emerald-400">
+            <h3 className="text-lg font-bold mb-4 text-heading">
               {lang === 'ru' ? 'Детерминированные' : 'Deterministic'}
             </h3>
             <p className="text-xs text-neutral-400 leading-relaxed">

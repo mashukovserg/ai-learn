@@ -7,7 +7,7 @@ export default function AgenticUiDeliveryTheory({ lang }: { lang: string }) {
   return (
     <div className="space-y-8 reading-prose">
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru' ? 'Глава 1: Работа &quot;вслепую&quot; и проблема Vision' : 'Chapter 1: Working Blind and the Vision Problem'}
         </h2>
         <div className="space-y-4">
@@ -37,7 +37,7 @@ export default function AgenticUiDeliveryTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru' ? 'Глава 2: Дизайн-система как API для агента' : 'Chapter 2: Design System as an Agent API'}
         </h2>
         <div className="space-y-4">
@@ -67,7 +67,7 @@ export default function AgenticUiDeliveryTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru' ? 'Глава 3: Адаптивность и Responsive Workflow' : 'Chapter 3: Responsiveness and the Responsive Workflow'}
         </h2>
         <div className="space-y-4">
@@ -97,7 +97,7 @@ export default function AgenticUiDeliveryTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru' ? 'Глава 4: Доступность (a11y) как критерий качества' : 'Chapter 4: Accessibility (a11y) as a Quality Metric'}
         </h2>
         <div className="space-y-4">
@@ -127,7 +127,7 @@ export default function AgenticUiDeliveryTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-5 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
           {lang === 'ru' ? 'Глава 5: Будущее: Visual Feedback Loop' : 'Chapter 5: The Future: Visual Feedback Loops'}
         </h2>
         <div className="space-y-4">

@@ -9,7 +9,7 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
     <>
       {/* Chapter 1: The Agentic Revolution */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Cpu className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 1: Агентская революция — ИИ обретает волю' : 'Chapter 1: The Agentic Revolution — AI Gains Agency'}
         </h2>
@@ -26,7 +26,7 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
           </p>
           <div className="grid grid-cols-1 gap-6 my-8">
             <div className="bg-card p-6 rounded-2xl border border-border-card">
-              <h4 className="text-emerald-400 font-bold mb-3 flex items-center gap-2">
+              <h4 className="text-heading font-bold mb-3 flex items-center gap-2">
                 <Lightbulb size={18} /> {lang === 'ru' ? 'Пассивная модель' : 'Passive Model'}
               </h4>
               <p className=" text-neutral-500 leading-relaxed">
@@ -36,7 +36,7 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
               </p>
             </div>
             <div className="bg-card p-6 rounded-2xl border border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.05)]">
-              <h4 className="text-emerald-400 font-bold mb-3 flex items-center gap-2">
+              <h4 className="text-heading font-bold mb-3 flex items-center gap-2">
                 <Zap size={18} /> {lang === 'ru' ? 'Активный Агент' : 'Active Agent'}
               </h4>
               <p className=" text-neutral-500 leading-relaxed">
@@ -56,7 +56,7 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
 
       {/* Chapter 2: Deep Dive into <Term id="function-calling">Function Calling</Term> */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Code className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 2: Анатомия <Term id="function-calling">Function Calling</Term> — Математика действий' : 'Chapter 2: Anatomy of <Term id="function-calling" lang={lang}>Function Calling</Term> — The Math of Action'}
         </h2>
@@ -97,7 +97,7 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
 
       {/* Chapter 3: ReAct Loop — The Logic of Iteration */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Repeat className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 3: Цикл ReAct — Инженерия внутреннего диалога' : 'Chapter 3: The ReAct Loop — Engineering Inner Dialogue'}
         </h2>
@@ -156,7 +156,7 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
 
       {/* Chapter 4: Multi-Agent Choreography */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Users className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 4: Многоагентная хореография — Командная работа ИИ' : 'Chapter 4: Multi-Agent Choreography — AI Teamwork'}
         </h2>
@@ -169,7 +169,7 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
           <div className="grid gap-4">
              <div className="p-6 rounded-xl border border-border-card bg-card relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-4 opacity-5"><Share2 size={48} /></div>
-                <h4 className="text-emerald-400 font-bold mb-2">{lang === 'ru' ? 'Паттерн "Критик-Исполнитель"' : 'The "Critic-Executor" Pattern'}</h4>
+                <h4 className="text-heading font-bold mb-2">{lang === 'ru' ? 'Паттерн "Критик-Исполнитель"' : 'The "Critic-Executor" Pattern'}</h4>
                 <p className=" text-neutral-400 leading-relaxed">
                   {lang === 'ru'
                     ? 'Один агент выполняет задачу, а второй имеет системную инструкцию: "Найди 3 причины, почему работа первого агента — это провал". Это заставляет систему итерировать до тех пор, пока даже самый строгий критик не останется доволен. Это "цифровой естественный отбор".'
@@ -178,7 +178,7 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
              </div>
              <div className="p-6 rounded-xl border border-border-card bg-card relative overflow-hidden">
                 <div className="absolute top-0 right-0 p-4 opacity-5"><Database size={48} /></div>
-                <h4 className="text-emerald-400 font-bold mb-2">{lang === 'ru' ? 'Паттерн "Оркестратор"' : 'The "Orchestrator" Pattern'}</h4>
+                <h4 className="text-heading font-bold mb-2">{lang === 'ru' ? 'Паттерн "Оркестратор"' : 'The "Orchestrator" Pattern'}</h4>
                 <p className=" text-neutral-400 leading-relaxed">
                   {lang === 'ru'
                     ? 'Центральный агент не делает никакой работы сам. Он только нанимает "воркеров" под конкретные подзадачи. Это позволяет масштабировать интеллект до бесконечности, создавая иерархии, подобные человеческим корпорациям.'
@@ -191,7 +191,7 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
 
       {/* Chapter 5: Advanced Tool Use — Computer Use and Sandboxing */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Terminal className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 5: Продвинутые инструменты — Computer Use и Песочницы' : 'Chapter 5: Advanced Tools — Computer Use and Sandboxing'}
         </h2>
@@ -222,7 +222,7 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
 
       {/* Chapter 6: Memory Architectures — <Term id="rag">RAG</Term> for Agents */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Database className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 6: Архитектура памяти — Как не забыть всё' : 'Chapter 6: Memory Architecture — How Not to Forget Everything'}
         </h2>
@@ -293,7 +293,7 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
 
       {/* Chapter 8: The Future — AGI and Agency */}
       <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-emerald-400">
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
           <Target className="text-emerald-500" />
           {lang === 'ru' ? 'Глава 8: Путь к AGI через Агентность' : 'Chapter 8: The Path to AGI via Agency'}
         </h2>

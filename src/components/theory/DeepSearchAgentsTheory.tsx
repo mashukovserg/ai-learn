@@ -142,7 +142,7 @@ Final output format:
   return (
     <>
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Что такое «глубокий поиск» в агенте' : 'What Deep Search Means in an Agent'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-4">
@@ -185,7 +185,7 @@ Final output format:
       </div>
 
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Базовый цикл глубокого поиска' : 'Core Deep-Search Loop'}
         </h2>
         <ol className="list-decimal ml-5 space-y-3 text-neutral-300 leading-relaxed">
@@ -229,7 +229,7 @@ Final output format:
       </div>
 
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Задержка (latency) и стоимость в глубоком поиске' : 'Latency and Cost in Deep Search'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-4">
@@ -254,7 +254,7 @@ Final output format:
       </div>
 
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Критерии качества перед публикацией ответа' : 'Quality Gates Before Shipping the Answer'}
         </h2>
         <ul className="list-disc ml-5 space-y-2 text-neutral-300 leading-relaxed">
@@ -287,7 +287,7 @@ Final output format:
       </div>
 
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 text-emerald-400">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {lang === 'ru' ? 'Мини-шаблон архитектуры' : 'Mini Architecture Template'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-4">
