@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Term from '@/components/Term';
+import Image from 'next/image';
 
 export default function AiHistoryTheory({ lang }: { lang: string }) {
   return (
@@ -75,6 +76,41 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
               </p>
             </div>
           </div>
+
+          <figure className="my-6">
+            <div className="rounded-xl border-2 border-accent-400/60 overflow-hidden">
+              <Image
+                src="/images/rooms/ai-history/dartmouth-proposal-stanford.png"
+                alt={lang === 'ru'
+                  ? 'Первая страница Дартмутской заявки 1955 года: Маккарти, Минский, Рочестер, Шеннон — «двухмесячное исследование ИИ с участием десяти человек»'
+                  : 'The first page of the 1955 Dartmouth proposal: McCarthy, Minsky, Rochester, Shannon — "a 2 month, 10 man study of artificial intelligence"'}
+                width={1280}
+                height={650}
+                className="w-full h-auto"
+              />
+            </div>
+            <figcaption className="text-xs text-neutral-500 mt-2">
+              {lang === 'ru'
+                ? 'Заявка на Дартмутский летний проект (31 августа 1955) — скриншот страницы стэнфордского архива Маккарти'
+                : 'The Dartmouth Summer Research Project proposal (August 31, 1955) — screenshot of the Stanford McCarthy archive page'}
+            </figcaption>
+          </figure>
+
+          <p className="text-neutral-300 leading-relaxed">
+            {lang === 'ru' ? (
+              <>
+                {'Вот сам учредительный документ — те самые "2 месяца, 10 человек" из первой строки. Обратите внимание на четыре подписи (Маккарти, Минский, Рочестер, Шеннон) и на контраст между скромностью плана и грандиозностью гипотезы: "каждый аспект обучения может быть описан настолько точно, что машина сможет его симулировать". Вся заявка — несколько страниц, и она '}
+                <a href="http://www-formal.stanford.edu/jmc/history/dartmouth/dartmouth.html" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">до сих пор лежит в открытом доступе</a>
+                {' — историю AI можно начать читать с первоисточника.'}
+              </>
+            ) : (
+              <>
+                {'Here is the founding document itself — the very "2 month, 10 man study" of its first line. Note the four signatures (McCarthy, Minsky, Rochester, Shannon) and the contrast between the modesty of the plan and the grandeur of the conjecture: "every aspect of learning can be so precisely described that a machine can be made to simulate it." The whole proposal is a few pages long, and it is '}
+                <a href="http://www-formal.stanford.edu/jmc/history/dartmouth/dartmouth.html" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">still openly available</a>
+                {' — you can start the history of AI from the primary source.'}
+              </>
+            )}
+          </p>
 
           <div className="bg-card border border-border-emphasis rounded-xl p-5">
             <div className="flex items-center gap-2 mb-3">

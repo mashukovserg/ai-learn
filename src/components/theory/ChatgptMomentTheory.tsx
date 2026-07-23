@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Term from '@/components/Term';
+import Image from 'next/image';
 import { Clock, Zap, Award, AlertCircle, MessageSquare, Globe, TrendingUp } from 'lucide-react';
 
 export default function ChatgptMomentTheory({ lang }: { lang: string }) {
@@ -39,6 +40,31 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
               : 'The launch of ChatGPT wasn&apos;t planned as a world-changing event. Inside OpenAI, the project was regarded as a "low-key research preview." The primary goal was to gather data on how people interact with a dialogue-tuned model to improve safety. There was no dedicated marketing budget. No one expected it to become the fastest-growing consumer app in history, reaching 100 million users in just two months.'}
           </p>
         </div>
+
+        <figure className="my-6">
+          <div className="rounded-xl border-2 border-accent-400/60 overflow-hidden">
+            <Image
+              src="/images/rooms/chatgpt-moment/wikipedia-pageviews-chatgpt.png"
+              alt={lang === 'ru'
+                ? 'График Wikimedia Pageviews: просмотры статьи "ChatGPT" в англоязычной Википедии — ноль до 30 ноября 2022, затем взрывной рост до сотен тысяч в день'
+                : 'Wikimedia Pageviews chart: views of the English Wikipedia article "ChatGPT" — zero before November 30, 2022, then an explosion to hundreds of thousands a day'}
+              width={1280}
+              height={650}
+              className="w-full h-auto"
+            />
+          </div>
+          <figcaption className="text-xs text-neutral-500 mt-2">
+            {lang === 'ru'
+              ? 'Просмотры статьи "ChatGPT" в англоязычной Википедии, ноябрь 2022 — декабрь 2023 (скриншот инструмента Wikimedia Pageviews)'
+              : 'Views of the English Wikipedia article "ChatGPT", November 2022 – December 2023 (screenshot of the Wikimedia Pageviews tool)'}
+          </figcaption>
+        </figure>
+
+        <p className="text-neutral-300 leading-relaxed mb-6">
+          {lang === 'ru'
+            ? 'Масштаб момента виден на одном графике. До 30 ноября 2022 года линия лежит на нуле — статьи "ChatGPT" в Википедии просто не существовало. Затем вертикальный взлет до сотен тысяч просмотров в день и больше 54 миллионов за первый год с небольшим. Это показания нейтрального прибора: не трафик продукта OpenAI и не пресс-релиз, а зафиксированное Википедией любопытство всего мира, у которого внезапно появился вопрос "что такое ChatGPT?".'
+            : 'The scale of the moment fits in one chart. Before November 30, 2022, the line sits at zero — the Wikipedia article "ChatGPT" simply did not exist. Then a vertical takeoff to hundreds of thousands of views a day, and over 54 million in the first year and change. This is a neutral instrument\'s reading: not OpenAI\'s product traffic and not a press release, but the world\'s curiosity recorded by Wikipedia — millions of people suddenly asking "what is ChatGPT?".'}
+        </p>
         <p className="text-neutral-300 leading-relaxed mt-6">
           {lang === 'ru' ? (
             <>
