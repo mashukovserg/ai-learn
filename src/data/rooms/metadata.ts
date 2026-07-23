@@ -407,6 +407,23 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     icon: 'Flame',
   },
   {
+    id: 'local-rag-docs',
+    title: {
+      ru: 'Локальный RAG: приватный поиск по своим документам',
+      en: 'Local RAG: Private Search over Your Documents',
+    },
+    description: {
+      ru: 'Конкретная задача для локальных моделей: спросить свой архив (NDA, интервью, черновики) обычным языком и получить ответ с источниками — не отдавая данные в облако.',
+      en: 'A concrete task for local models: ask your own archive (NDA files, interviews, drafts) in plain language and get sourced answers — without sending data to the cloud.',
+    },
+    difficulty: 'Intermediate',
+    time: { ru: '35 мин', en: '35m' },
+    category: { ru: 'Открытые модели', en: 'Open Models' },
+    image: '/images/llm-landscape-network.png',
+    pathIds: ['beginner', 'intermediate'],
+    icon: 'Library',
+  },
+  {
     id: 'embeddings-101',
     title: { ru: 'Эмбеддинги и векторный поиск', en: 'Embeddings & Vector Search' },
     description: {

@@ -57,6 +57,7 @@ export const THEORY_COMPONENTS: Record<string, ComponentType<{ lang: string }>> 
   'claude-code-agentic-loop': dynamic(() => import('./ClaudeCodeAgenticLoopTheory'), { loading }),
   'claude-code-pro-workflow': dynamic(() => import('./ClaudeCodeProWorkflowTheory'), { loading }),
   'context-engineering-101': dynamic(() => import('./ContextEngineering101Theory'), { loading }),
+  'local-rag-docs': dynamic(() => import('./LocalRagDocsTheory'), { loading }),
   'ai-existential-risk': dynamic(() => import('./AiExistentialRiskTheory'), { loading }),
   'taxonomy-matching': dynamic(() => import('./TaxonomyMatchingTheory'), { loading }),
 };

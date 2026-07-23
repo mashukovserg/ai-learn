@@ -46,6 +46,8 @@
   - *Topics:* Open weights vs open source, privacy/offline/cost tradeoffs, model landscape (Llama, Qwen, Mistral, Gemma, Phi, DeepSeek), first run with Ollama/LM Studio, quantization and VRAM basics, limits and hybrid local+cloud strategy.
 - [x] **Llama 3.1 8B (Llama 3.1 8B: открытая модель)** — 7 tasks (includes categorize, scenario, mentor)
   - *Topics:* One-model deep dive: GQA, RoPE scaling, 128K context, Llama Community License, running via Ollama/vLLM/Transformers, VRAM budgets.
+- [x] **Local RAG (Локальный RAG: приватный поиск по своим документам)** — 11 tasks (includes sorting, categorize, mentor, scenario)
+  - *Topics:* A concrete local-models task: private semantic search over your own archive; index vs query phases (chunking → embeddings → vector DB → retrieval → generation); multilingual embedding choice (multilingual-e5/bge-m3 vs English-only MiniLM, MTEB); same-model rule and reindexing; retrieval-first debugging; sources as the trust mechanism; honest local-vs-cloud limits.
 
 ## Path: Ideas and Debates in AI (Идеи и споры об ИИ)
 **Goal:** Understand major conceptual debates in AI communities and translate them into practical product decisions.

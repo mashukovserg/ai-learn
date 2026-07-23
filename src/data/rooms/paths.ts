@@ -27,6 +27,7 @@ export const PATHS_METADATA: PathMetadata[] = [
       'llama-3-1-8b',
       'fine-tuning-101',
       'embeddings-101',
+      'local-rag-docs',
       'research-grounding',
       'ai-regulation-ru',
       'ai-regulation-eu',
@@ -69,6 +70,7 @@ export const PATHS_METADATA: PathMetadata[] = [
       'llama-3-1-8b',
       'fine-tuning-101',
       'embeddings-101',
+      'local-rag-docs',
     ],
   },
   {
