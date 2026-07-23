@@ -270,8 +270,8 @@ export default function PromptPlayground({ lang, config }: PromptPlaygroundProps
                 <div
                   className={`mt-4 text-sm rounded-md px-4 py-3 border flex items-start gap-2 ${
                     status.kind === 'rate-limit'
-                      ? 'bg-amber-500/10 border-amber-500/25 text-amber-300'
-                      : 'bg-red-500/10 border-red-500/25 text-red-300'
+                      ? 'bg-warning-500/10 border-warning-500/25 text-warning-300'
+                      : 'bg-danger-500/10 border-danger-500/25 text-danger-300'
                   }`}
                 >
                   <AlertTriangle size={16} className="mt-0.5 shrink-0" />

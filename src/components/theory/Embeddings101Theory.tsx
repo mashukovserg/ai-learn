@@ -350,8 +350,8 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </div>
           </div>
 
-          <div className="bg-amber-500/5 border border-amber-500/15 rounded-lg p-5">
-            <h4 className="text-amber-400 font-bold mb-2 text-sm">{lang === 'ru' ? 'Когда pgvector достаточно' : 'When pgvector Is Enough'}</h4>
+          <div className="bg-warning-500/5 border border-warning-500/15 rounded-lg p-5">
+            <h4 className="text-warning-400 font-bold mb-2 text-sm">{lang === 'ru' ? 'Когда pgvector достаточно' : 'When pgvector Is Enough'}</h4>
             <p className="text-neutral-400 text-sm leading-relaxed">
               {lang === 'ru'
                 ? 'Если у вас до ~1 млн векторов и уже есть PostgreSQL — начинайте с pgvector. Не нужно поднимать отдельную инфраструктуру. Выделенная векторная БД оправдана при миллионах-миллиардах записей, строгих требованиях к latency (<10ms) или необходимости горизонтального масштабирования.'
@@ -606,8 +606,8 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
             </div>
           </div>
 
-          <div className="bg-amber-500/5 border border-amber-500/15 rounded-lg p-5">
-            <h4 className="text-amber-400 font-bold mb-2 text-sm">{lang === 'ru' ? 'Чек-лист перед запуском в прод' : 'Pre-Production Checklist'}</h4>
+          <div className="bg-warning-500/5 border border-warning-500/15 rounded-lg p-5">
+            <h4 className="text-warning-400 font-bold mb-2 text-sm">{lang === 'ru' ? 'Чек-лист перед запуском в прод' : 'Pre-Production Checklist'}</h4>
             <ul className="space-y-1 text-neutral-400 text-sm">
               <li>{'✓'} {lang === 'ru' ? 'Одна модель эмбеддингов для запросов и документов' : 'Same embedding model for queries and documents'}</li>
               <li>{'✓'} {lang === 'ru' ? 'Вектора нормализованы (если cosine similarity)' : 'Vectors normalized (if using cosine similarity)'}</li>

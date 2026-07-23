@@ -95,8 +95,8 @@ export default function AiAlignmentTheory({ lang }: { lang: string }) {
                </p>
             </div>
           </div>
-          <div className="bg-red-500/5 border border-red-500/20 p-6 rounded-xl">
-            <h4 className="text-red-400 font-bold mb-3 flex items-center gap-2">
+          <div className="bg-danger-500/5 border border-danger-500/20 p-6 rounded-xl">
+            <h4 className="text-danger-400 font-bold mb-3 flex items-center gap-2">
               <ShieldAlert size={18} />
               {lang === 'ru' ? 'Штраф KL-дивергенции: Защита от деградации' : 'KL-Divergence Penalty: Protection from Degradation'}
             </h4>
@@ -106,7 +106,7 @@ export default function AiAlignmentTheory({ lang }: { lang: string }) {
                 : 'If we simply force the model to maximize the Critic\'s score, it might start "hacking" the system (Reward Hacking)—for example, by producing a nonsensical string of words that the Critic somehow finds ideal. To prevent this, we introduce a penalty: the model must not deviate too far from its original SFT state. It must get better while remaining itself.'}
             </p>
           </div>
-          <div className="bg-card border-l-4 border-blue-500 p-6 my-8">
+          <div className="bg-card border-l-4 border-info-500 p-6 my-8">
             <p className="text-neutral-200 leading-relaxed font-medium">
               {lang === 'ru'
                 ? 'Важно понимать: <Term id="rlhf">RLHF</Term> не сделал модель «умной» в философском смысле. Он сделал её социально адаптированной. Модель научилась не только генерировать текст, но и угадывать человеческие ожидания. Это принципиально новый шаг: в вероятностную машину был встроен слой человеческой нормативности. ChatGPT не знает, что такое правда. Он знает, что люди считают хорошим ответом.'

@@ -36,8 +36,8 @@ export default function ResearchGroundingTheory({ lang }: { lang: string }) {
       {/* Chapter 1: The RAG Architecture */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-blue-400">
-            <Database className="text-blue-500" />
+          <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-info-400">
+            <Database className="text-info-500" />
             {lang === 'ru' ? 'Глава 1: Анатомия RAG' : 'Chapter 1: The Anatomy of RAG'}
           </h2>
           <div className="prose prose-invert max-w-none">
@@ -49,7 +49,7 @@ export default function ResearchGroundingTheory({ lang }: { lang: string }) {
             
             <div className="space-y-6">
               <div className="bg-deep border border-border-subtle rounded-lg p-5">
-                <h4 className="text-blue-400 font-bold mb-2">1. Поиск (Retrieve)</h4>
+                <h4 className="text-info-400 font-bold mb-2">1. Поиск (Retrieve)</h4>
                 <p className="text-sm text-neutral-400">
                   {lang === 'ru'
                     ? 'Пользователь задает вопрос. Система берет этот вопрос и идет искать релевантную информацию во внешней базе данных (база знаний компании, интернет, папки с PDF). Поиск может быть ключевым (как в Google) или семантическим (через векторные базы данных и эмбеддинги).'
@@ -57,7 +57,7 @@ export default function ResearchGroundingTheory({ lang }: { lang: string }) {
                 </p>
               </div>
               <div className="bg-deep border border-border-subtle rounded-lg p-5">
-                <h4 className="text-blue-400 font-bold mb-2">2. Дополнение (Augment)</h4>
+                <h4 className="text-info-400 font-bold mb-2">2. Дополнение (Augment)</h4>
                 <p className="text-sm text-neutral-400">
                   {lang === 'ru'
                     ? 'Найденные фрагменты текста не отдаются пользователю сразу. Они вставляются в скрытый системный промпт для LLM. Теперь промпт выглядит так: "Ответь на вопрос пользователя, используя ТОЛЬКО следующие факты: [Вставка 5 абзацев текста]. Вопрос: [Вопрос пользователя]".'
@@ -65,7 +65,7 @@ export default function ResearchGroundingTheory({ lang }: { lang: string }) {
                 </p>
               </div>
               <div className="bg-deep border border-border-subtle rounded-lg p-5">
-                <h4 className="text-blue-400 font-bold mb-2">3. Генерация (Generate)</h4>
+                <h4 className="text-info-400 font-bold mb-2">3. Генерация (Generate)</h4>
                 <p className="text-sm text-neutral-400">
                   {lang === 'ru'
                     ? 'Модель читает весь этот контекст и формулирует красивый, связный и точный ответ. Самое важное: она использует свои лингвистические навыки для синтеза текста, но факты берет из жестко заданного контекста, а не из своей "внутренней памяти".'
@@ -80,8 +80,8 @@ export default function ResearchGroundingTheory({ lang }: { lang: string }) {
       {/* Chapter 2: Where Grounding Fails */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-amber-400">
-            <AlertTriangle className="text-amber-500" />
+          <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-warning-400">
+            <AlertTriangle className="text-warning-500" />
             {lang === 'ru' ? 'Глава 2: Где ломается RAG' : 'Chapter 2: Where RAG Fails'}
           </h2>
           <div className="prose prose-invert max-w-none">
@@ -93,19 +93,19 @@ export default function ResearchGroundingTheory({ lang }: { lang: string }) {
 
             <ul className="text-neutral-400 space-y-4 mb-6">
               <li>
-                <strong className="text-amber-300">{lang === 'ru' ? 'Проблема 1: Слепой поиск (Bad Retrieval).' : 'Problem 1: Blind Retrieval.'}</strong><br />
+                <strong className="text-warning-300">{lang === 'ru' ? 'Проблема 1: Слепой поиск (Bad Retrieval).' : 'Problem 1: Blind Retrieval.'}</strong><br />
                 {lang === 'ru'
                   ? 'Если поисковая система не смогла найти нужный документ в корпоративной базе и не передала его модели, LLM либо честно скажет "Я не знаю", либо (что хуже) начнет фантазировать. Качество RAG на 80% зависит от качества поиска, а не от ума языковой модели.'
                   : 'If the search engine fails to find the right document in the database and doesn\'t pass it to the model, the LLM will either honestly say "I don\'t know" or (worse) start hallucinating. RAG quality depends 80% on search quality, not the LLM\'s intelligence.'}
               </li>
               <li>
-                <strong className="text-amber-300">{lang === 'ru' ? 'Проблема 2: Потеря в середине (Lost in the Middle).' : 'Problem 2: Lost in the Middle.'}</strong><br />
+                <strong className="text-warning-300">{lang === 'ru' ? 'Проблема 2: Потеря в середине (Lost in the Middle).' : 'Problem 2: Lost in the Middle.'}</strong><br />
                 {lang === 'ru'
                   ? 'Даже если вы нашли 20 релевантных документов и запихнули их в контекстное окно, модель может проигнорировать факты, находящиеся в середине текста. LLM склонны обращать больше внимания на начало и конец промпта.'
                   : 'Even if you find 20 relevant documents and cram them into the context window, the model might ignore facts located in the middle of the text. LLMs tend to pay more attention to the beginning and end of a prompt.'}
               </li>
               <li>
-                <strong className="text-amber-300">{lang === 'ru' ? 'Проблема 3: Ложное цитирование (Citation Hallucination).' : 'Problem 3: Citation Hallucination.'}</strong><br />
+                <strong className="text-warning-300">{lang === 'ru' ? 'Проблема 3: Ложное цитирование (Citation Hallucination).' : 'Problem 3: Citation Hallucination.'}</strong><br />
                 {lang === 'ru'
                   ? 'Модель может сгенерировать ответ и поставить красивую ссылку на документ [Source 3]. Но если пользователь перейдет по ссылке, он обнаружит, что в документе ничего подобного не написано. Это самый опасный вид сбоя, так как он создает ложное чувство надежности.'
                   : 'The model might generate an answer and add a neat citation like [Source 3]. But if the user clicks the link, they find the document says nothing of the sort. This is the most dangerous failure, as it creates a false sense of reliability.'}
@@ -139,8 +139,8 @@ export default function ResearchGroundingTheory({ lang }: { lang: string }) {
                 <span className="block text-accent-400 font-bold mb-1">{lang === 'ru' ? 'Высокое доверие' : 'High Trust'}</span>
                 <span className="text-xs text-neutral-400">{lang === 'ru' ? 'Факт подтвержден 3+ независимыми источниками.' : 'Fact confirmed by 3+ independent sources.'}</span>
               </div>
-              <div className="bg-amber-500/10 border border-amber-500/20 rounded p-4 text-center">
-                <span className="block text-amber-400 font-bold mb-1">{lang === 'ru' ? 'Низкое доверие' : 'Low Trust'}</span>
+              <div className="bg-warning-500/10 border border-warning-500/20 rounded p-4 text-center">
+                <span className="block text-warning-400 font-bold mb-1">{lang === 'ru' ? 'Низкое доверие' : 'Low Trust'}</span>
                 <span className="text-xs text-neutral-400">{lang === 'ru' ? 'Единственный или устаревший источник.' : 'Single or outdated source.'}</span>
               </div>
               <div className="bg-rose-500/10 border border-rose-500/20 rounded p-4 text-center">
@@ -159,7 +159,7 @@ export default function ResearchGroundingTheory({ lang }: { lang: string }) {
       </section>
 
       {/* Summary */}
-      <section className="bg-gradient-to-br from-blue-500/10 to-accent-500/10 border border-blue-500/20 rounded-xl p-8 text-center">
+      <section className="bg-gradient-to-br from-info-500/10 to-accent-500/10 border border-info-500/20 rounded-xl p-8 text-center">
         <h3 className="text-xl font-bold mb-2 text-white">
           {lang === 'ru' ? 'Итог: Эпоха проверяемости' : 'Summary: The Era of Verifiability'}
         </h3>

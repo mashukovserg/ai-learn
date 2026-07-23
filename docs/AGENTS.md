@@ -134,10 +134,14 @@ Surface and border colors are defined as Tailwind v4 theme tokens in `src/app/[l
 | Brand / interactive accent | `text-accent-500`, `bg-accent-500/10`, `border-accent-500/20` | `emerald-*` |
 | Theory chapter headings | `text-heading` | `text-accent-*` (Fork 3 — the accent means *interactive*) |
 | Terminal | `bg-term-bg`, `text-term-prompt`, … | literal hex |
+| Error / failure states | `text-danger-500`, `bg-danger-500/10` | `red-*` |
+| Warnings / cautions | `text-warning-400`, `border-warning-500/30` | `amber-*` |
+| Informational / neutral-highlight | `text-info-400`, `bg-info-500/10` | `blue-*` |
+| Positive / success states | `text-success-400` | `green-*` |
 
 The accent ramp (`--color-accent-100…950`) mirrors the shade scale, so alpha modifiers work normally (`bg-accent-500/10`). **Swapping the whole site accent = editing the ramp in `@theme` plus its `[data-theme="saas"]` override — 7 lines, no component edits.**
 
-This is enforced by `src/__tests__/design-tokens.test.ts` (part of `check-all`): it fails on any literal `emerald-*` in components and on any theory heading painted with the accent, naming the offending files. Status palettes (`amber`, `red`, `blue`, `cyan`, …) are **not yet migrated** — that debt is tracked by the same test; when they move to `success`/`warning`/`danger`/`info` tokens, add them to `RETIRED_PALETTES` there.
+This is enforced by `src/__tests__/design-tokens.test.ts` (part of `check-all`): it fails on any literal `emerald-*` in components and on any theory heading painted with the accent, naming the offending files. Status palettes migrated on 2026-07-23 (red→danger, amber→warning, blue→info, green→success — values copied verbatim from Tailwind's default theme, so it was a visual no-op). Categorical content hues (`cyan`, `rose`, `purple`, `violet`, `pink`, `orange`, `slate`, `yellow`) are deliberately NOT status roles and stay literal; the guard tracks them informationally.
 
 **Known boundary:** raster assets (`public/images/**`) are not tokenized. A room cover PNG keeps its baked-in colors through an accent swap; re-export or prefer SVG when a visual must follow the accent.
 

@@ -25,6 +25,10 @@ const TOKEN_DEFINITION_FILES = ['src/app/[lang]/globals.css'];
  */
 const RETIRED_PALETTES: { palette: string; useInstead: string }[] = [
   { palette: 'emerald', useInstead: 'accent-* (e.g. text-accent-500, bg-accent-500/10)' },
+  { palette: 'red', useInstead: 'danger-*' },
+  { palette: 'amber', useInstead: 'warning-*' },
+  { palette: 'blue', useInstead: 'info-*' },
+  { palette: 'green', useInstead: 'success-*' },
 ];
 
 /**
@@ -32,7 +36,7 @@ const RETIRED_PALETTES: { palette: string; useInstead: string }[] = [
  * When these move to semantic tokens (success/warning/danger/info), move the
  * entry into RETIRED_PALETTES and drop it here.
  */
-const NOT_YET_MIGRATED = ['amber', 'red', 'blue', 'cyan', 'rose', 'purple', 'violet', 'yellow', 'green', 'slate', 'pink', 'orange'];
+const NOT_YET_MIGRATED = ['cyan', 'rose', 'purple', 'violet', 'pink', 'orange', 'slate', 'yellow'];
 
 function sourceFiles(dir: string, acc: string[] = []): string[] {
   for (const name of readdirSync(dir)) {

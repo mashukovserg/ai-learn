@@ -48,7 +48,7 @@ export default function ResearchAiEraTheory({ lang }: { lang: string }) {
       {/* Chapter 1: Puzzle, not topic */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-2xl font-bold mb-6 text-blue-400">
+          <h2 className="text-2xl font-bold mb-6 text-info-400">
             {lang === 'ru' ? 'Глава 1: Загадка вместо темы' : 'Chapter 1: A Puzzle, Not a Topic'}
           </h2>
           <div className="space-y-4">
@@ -66,7 +66,7 @@ export default function ResearchAiEraTheory({ lang }: { lang: string }) {
                 <>Hence the central distinction: topic versus puzzle. &quot;Tell me about open models&quot; is a topic; it expands forever and has no completion criterion. An <Term id="empirical-puzzle" lang={lang}>empirical puzzle</Term> is a question of the form &quot;why is surprising fact X the case?&quot;: why did chip sanctions accelerate Chinese labs instead of slowing them down? A puzzle supplies a stopping rule — the project ends when the puzzle is explained — and demands at least two competing explanations. If only one explanation is allowed from the start, evidence becomes illustration and research becomes confirmation.</>
               )}
             </p>
-            <div className="bg-card border-l-4 border-blue-500 p-5 rounded-r-lg">
+            <div className="bg-card border-l-4 border-info-500 p-5 rounded-r-lg">
               <p className="text-neutral-200 leading-relaxed font-medium">
                 {lang === 'ru'
                   ? '«Расскажи про X» — не исследование.'
@@ -139,7 +139,7 @@ export default function ResearchAiEraTheory({ lang }: { lang: string }) {
       {/* Chapter 4: Three search modes */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-2xl font-bold mb-6 text-amber-400">
+          <h2 className="text-2xl font-bold mb-6 text-warning-400">
             {lang === 'ru' ? 'Глава 4: Три режима поиска и цепочки цитирований' : 'Chapter 4: Three Search Modes and Citation Chains'}
           </h2>
           <div className="space-y-4">
@@ -155,8 +155,8 @@ export default function ResearchAiEraTheory({ lang }: { lang: string }) {
                 <>In the AI era the modes have exact counterparts: scanning is quick search and filtering; browsing is a deep-research agent run over a bounded, vetted pool of sources; brute force is reading the central corpus yourself — the part that cannot be delegated. It matters why browsing cannot be fully handed to a machine: it works through <Term id="prepared-serendipity" lang={lang}>prepared serendipity</Term>. Prior reading places &quot;attractors&quot; in memory — names, disputes, terms — and when one surfaces in an unexpected place, the researcher recognizes a connection. An agent that shows only what you explicitly asked for cuts off exactly that periphery.</>
               )}
             </p>
-            <div className="bg-amber-500/10 border border-amber-500/20 rounded-lg p-6">
-              <h4 className="text-amber-400 font-bold mb-3">
+            <div className="bg-warning-500/10 border border-warning-500/20 rounded-lg p-6">
+              <h4 className="text-warning-400 font-bold mb-3">
                 {lang === 'ru' ? 'Цепочки цитирований против одиночного запроса' : 'Citation Chains Versus a Single Query'}
               </h4>
               <p className="text-neutral-300 leading-relaxed text-sm">

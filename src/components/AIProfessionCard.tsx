@@ -87,7 +87,7 @@ export default function AIProfessionCard({ profession }: { profession: Professio
 
         <div className="mt-auto flex items-center justify-between border-t border-border-subtle pt-4">
           <div className="flex items-center gap-2 text-sm text-neutral-400">
-            <SignalHigh size={14} className={profession.difficulty === 'Beginner' ? 'text-accent-300' : profession.difficulty === 'Intermediate' ? 'text-amber-300' : 'text-rose-300'} />
+            <SignalHigh size={14} className={profession.difficulty === 'Beginner' ? 'text-accent-300' : profession.difficulty === 'Intermediate' ? 'text-warning-300' : 'text-rose-300'} />
             <span>{difficultyLabel}</span>
           </div>
           <span className="text-xs font-medium uppercase tracking-[0.12em] text-neutral-500">

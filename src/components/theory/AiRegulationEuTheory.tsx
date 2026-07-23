@@ -155,7 +155,7 @@ const AiRegulationEuTheory: React.FC<AiRegulationEuTheoryProps> = ({ lang }) => 
     <div className="space-y-12 text-slate-300">
       {currentContent.chapters.map((chapter, idx) => (
         <section key={idx} className="space-y-4">
-          <h2 className="text-2xl font-semibold text-white border-l-4 border-green-500 pl-4">
+          <h2 className="text-2xl font-semibold text-white border-l-4 border-success-500 pl-4">
             {chapter.title}
           </h2>
           <div className="leading-relaxed space-y-4">

@@ -64,7 +64,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
                 </p>
               </div>
               <div className="p-6 rounded-xl border border-border-card bg-card">
-                <h4 className="text-blue-400 font-bold mb-2 flex items-center gap-2"><Layers size={16} /> Semantic Reranking (Семантическое переранжирование)</h4>
+                <h4 className="text-info-400 font-bold mb-2 flex items-center gap-2"><Layers size={16} /> Semantic Reranking (Семантическое переранжирование)</h4>
                 <p className="text-neutral-400 leading-relaxed">
                   {lang === 'ru' 
                     ? 'Ключевой поиск выдаст много "мусора", где ваши термины упоминаются вскользь. На втором этапе в дело вступает ИИ: он берет абстракты (аннотации) всех найденных 500+ статей и пропускает их через модель-векторизатор (Embedding model) или LLM-судью. Он оценивает каждую аннотацию на смысловое соответствие вашей конкретной задаче, выставляя скор от 0 до 1. Это позволяет отсеять 90% нерелевантного шума еще до того, как система начнет скачивать и читать полные тексты (PDF).' 
@@ -99,7 +99,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
                  </p>
               </div>
               <div className="bg-black/40 p-6 rounded-xl border border-border-card relative overflow-hidden">
-                 <h4 className="font-bold text-blue-500 mb-3 flex items-center gap-2"><Database size={16}/> {lang === 'ru' ? 'Шаг 2: Тематическая кластеризация' : 'Step 2: Thematic Clustering'}</h4>
+                 <h4 className="font-bold text-info-500 mb-3 flex items-center gap-2"><Database size={16}/> {lang === 'ru' ? 'Шаг 2: Тематическая кластеризация' : 'Step 2: Thematic Clustering'}</h4>
                  <p className="text-neutral-400 leading-relaxed">
                    {lang === 'ru'
                      ? 'Имея 50 плотных саммари, ИИ начинает группировать их по темам или выявленным трендам (например, "Группа статей о влиянии на экономику", "Группа об архитектурных ограничениях"). Затем отдельный LLM-вызов пишет связную сводку уже по каждой группе, ссылаясь на атомарные саммари.'
@@ -161,8 +161,8 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
       {/* Chapter 5: Citations and Citation Hallucinations */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-red-400">
-            <Zap className="text-red-500" />
+          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-danger-400">
+            <Zap className="text-danger-500" />
             {lang === 'ru' ? 'Глава 5: Дисциплина цитирования — Борьба с призраками' : 'Chapter 5: Citation Discipline — Fighting Ghosts'}
           </h2>
           <div className="space-y-6">
@@ -172,8 +172,8 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
                 : 'The main enemy of an AI researcher is Citation Hallucinations. Base models possess a terrifying ability to invent paper titles that sound absolutely plausible, combining real scientists\' names with popular terms. If such a "ghost" makes its way into a final report, the researcher\'s reputation is destroyed.'}
             </p>
             <div className="grid grid-cols-1 gap-6">
-               <div className="p-5 rounded-xl border border-red-500/20 bg-red-500/5">
-                  <h5 className="text-red-400 font-bold mb-2 flex items-center gap-2"><ShieldAlert size={16} /> {lang === 'ru' ? 'Анатомия галлюцинации' : 'Anatomy of a Hallucination'}</h5>
+               <div className="p-5 rounded-xl border border-danger-500/20 bg-danger-500/5">
+                  <h5 className="text-danger-400 font-bold mb-2 flex items-center gap-2"><ShieldAlert size={16} /> {lang === 'ru' ? 'Анатомия галлюцинации' : 'Anatomy of a Hallucination'}</h5>
                   <p className="text-neutral-400 leading-relaxed">
                     {lang === 'ru' 
                       ? 'Модель статистически "знает", что ученый X часто пишет про нейросети, а ученый Y про медицину. На вопрос о нейросетях в медицине она генерирует статью "Deep Learning in Oncology" за авторством X и Y, придумывает год (2021) и том журнала. Выглядит идеально, но статьи не существует.' 
@@ -211,7 +211,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
                 ? 'Академический консенсус таков: ИИ не может быть автором, потому что авторство подразумевает моральную и юридическую ответственность за написанное. Если в статье обнаружен плагиат или подделка данных, нельзя подать в суд на алгоритм. Однако, участие ИИ должно быть полностью прозрачно задекларировано в методологии.'
                 : 'The academic consensus is: AI cannot be an author, because authorship implies moral and legal responsibility for the text. If a paper contains plagiarism or faked data, you cannot sue an algorithm. However, AI involvement must be fully and transparently declared in the methodology section.'}
             </p>
-            <div className="bg-blue-500/5 border-l-4 border-blue-500 p-6 my-6">
+            <div className="bg-info-500/5 border-l-4 border-info-500 p-6 my-6">
                <h4 className="font-bold text-white mb-2">{lang === 'ru' ? 'Золотое правило исследователя будущего:' : 'The Golden Rule for the Researcher of the Future:'}</h4>
                <p className="text-neutral-300 leading-relaxed italic">
                  {lang === 'ru'

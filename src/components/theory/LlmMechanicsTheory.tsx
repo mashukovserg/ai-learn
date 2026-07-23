@@ -83,8 +83,8 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
 
       {/* Chapter 3: Self-Attention — The "Focus" Mechanism */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-blue-400">
-          <Layers className="text-blue-500" />
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-info-400">
+          <Layers className="text-info-500" />
           {lang === 'ru' ? 'Глава 3: Self-Attention — Механизм внимания' : 'Chapter 3: Self-Attention — The Focus Mechanism'}
         </h2>
         <div className="space-y-5 text-neutral-300 leading-relaxed">
@@ -93,8 +93,8 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
               ? <>Как модель понимает, к какому существительному относится местоимение &quot;он&quot; в длинном абзаце? Для этого используется <Term id="self-attention">Self-Attention</Term>. Это математический способ вычислить &quot;важность&quot; каждого слова относительно всех остальных слов в текущем контексте.</>
               : <>How does a model know which noun the pronoun &quot;it&quot; refers to in a long paragraph? It uses <Term id="self-attention">Self-Attention</Term>. This is a mathematical way to weigh the &quot;importance&quot; of every word relative to every other word in the current context.</>}
           </p>
-          <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-6">
-            <h4 className="text-blue-400 font-bold mb-3">{lang === 'ru' ? 'Как это работает наглядно:' : 'How it works visually:'}</h4>
+          <div className="bg-info-500/10 border border-info-500/20 rounded-lg p-6">
+            <h4 className="text-info-400 font-bold mb-3">{lang === 'ru' ? 'Как это работает наглядно:' : 'How it works visually:'}</h4>
             <p className="text-sm italic mb-4">
               {lang === 'ru' ? 'Фраза: "Банк закрыл счёт, потому что он был пуст."' : 'Phrase: "The bank closed the account because it was empty."'}
             </p>
@@ -114,8 +114,8 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
 
       {/* Chapter 4: Positional Encoding — Knowing the Order */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-amber-400">
-          <Zap className="text-amber-500" />
+        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-warning-400">
+          <Zap className="text-warning-500" />
           {lang === 'ru' ? 'Глава 4: Позиционное кодирование' : 'Chapter 4: Positional Encoding'}
         </h2>
         <div className="space-y-5 text-neutral-300 leading-relaxed">

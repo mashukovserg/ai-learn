@@ -131,8 +131,8 @@ export const PROFESSIONS: ProfessionCard[] = [
     status: 'Core',
     progress: 14,
     icon: Briefcase,
-    iconColorClass: 'text-amber-200',
-    visualClassName: 'from-amber-500/25 via-orange-500/10 to-card',
+    iconColorClass: 'text-warning-200',
+    visualClassName: 'from-warning-500/25 via-orange-500/10 to-card',
     href: '/rooms/chatgpt-moment',
     relatedLabel: { en: 'Product context', ru: 'Продуктовый контекст' },
     highlights: [
@@ -153,7 +153,7 @@ export const PROFESSIONS: ProfessionCard[] = [
     progress: 10,
     icon: ShieldCheck,
     iconColorClass: 'text-rose-200',
-    visualClassName: 'from-rose-500/25 via-red-500/10 to-card',
+    visualClassName: 'from-rose-500/25 via-danger-500/10 to-card',
     href: '/rooms/ai-security',
     relatedLabel: { en: 'Security patterns', ru: 'Паттерны безопасности' },
     highlights: [
@@ -195,7 +195,7 @@ export const PROFESSIONS: ProfessionCard[] = [
     progress: 4,
     icon: Users,
     iconColorClass: 'text-indigo-200',
-    visualClassName: 'from-indigo-500/25 via-blue-500/10 to-card',
+    visualClassName: 'from-indigo-500/25 via-info-500/10 to-card',
     href: '/rooms/ai-career-trajectories',
     relatedLabel: { en: 'Leadership branch', ru: 'Leadership-ветка' },
     highlights: [

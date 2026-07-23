@@ -90,10 +90,10 @@ export default function NativeMultimodalityTheory({ lang }: { lang: string }) {
               : 'The traditional approach to working with sound consisted of three stages: first, a speech recognition system (ASR) turned sound into text, then the LLM thought about the text, and finally, a speech synthesis system (TTS) voiced the response. This killed all the magic. We lost intonation, laughter, sighs, and emotional subtext. Native audio multimodality works differently: the sound wave is directly converted into tokens.'}
           </p>
           <div className="bg-card p-8 rounded-xl border border-border-card">
-            <h4 className="text-blue-400 font-bold mb-6 uppercase tracking-widest">{lang === 'ru' ? 'Почему это меняет всё?' : 'Why This Changes Everything?'}</h4>
+            <h4 className="text-info-400 font-bold mb-6 uppercase tracking-widest">{lang === 'ru' ? 'Почему это меняет всё?' : 'Why This Changes Everything?'}</h4>
             <div className="space-y-4">
               <div className="flex gap-4">
-                <div className="w-10 h-10 rounded bg-blue-500/10 flex items-center justify-center shrink-0 border border-blue-500/20"><Zap size={18} className="text-blue-500" /></div>
+                <div className="w-10 h-10 rounded bg-info-500/10 flex items-center justify-center shrink-0 border border-info-500/20"><Zap size={18} className="text-info-500" /></div>
                 <div>
                   <p className="text-white font-bold mb-1">{lang === 'ru' ? 'Минимальная задержка (Latency)' : 'Minimum Latency'}</p>
                   <p className="text-neutral-500 text-sm leading-relaxed">{lang === 'ru' ? 'Отсутствие этапов перевода снижает задержку ответа до 250-300 мс. Это скорость человеческой реакции в живом диалоге. Вы можете перебивать ИИ, и он мгновенно замолчит, "услышав" ваш голос.' : 'The absence of translation stages reduces response latency to 250-300 ms. This is the speed of human reaction in a live dialogue. You can interrupt the AI, and it will stop instantly upon "hearing" your voice.'}</p>
@@ -133,9 +133,9 @@ export default function NativeMultimodalityTheory({ lang }: { lang: string }) {
           <div className="p-8 bg-deep rounded-2xl border border-border-card space-y-4">
              <h4 className="text-sm font-bold text-neutral-500 uppercase mb-4">{lang === 'ru' ? 'Пример мультимодального промпта:' : 'Example of a multimodal prompt:'}</h4>
              <div className="flex flex-wrap gap-3 items-center">
-                <span className="px-3 py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-xs flex items-center gap-2"><MessageSquare size={12} /> {lang === 'ru' ? 'Текст: Посмотри на этот график' : 'Text: Look at this chart'}</span>
+                <span className="px-3 py-1.5 bg-info-500/10 border border-info-500/20 rounded-full text-info-400 text-xs flex items-center gap-2"><MessageSquare size={12} /> {lang === 'ru' ? 'Текст: Посмотри на этот график' : 'Text: Look at this chart'}</span>
                 <span className="px-3 py-1.5 bg-accent-500/10 border border-accent-500/20 rounded-full text-accent-400 text-xs flex items-center gap-2"><ImageIcon size={12} /> {lang === 'ru' ? 'Картинка: sales_2024.png' : 'Image: sales_2024.png'}</span>
-                <span className="px-3 py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-xs flex items-center gap-2"><MessageSquare size={12} /> {lang === 'ru' ? 'Текст: И послушай мои комментарии' : 'Text: And listen to my comments'}</span>
+                <span className="px-3 py-1.5 bg-info-500/10 border border-info-500/20 rounded-full text-info-400 text-xs flex items-center gap-2"><MessageSquare size={12} /> {lang === 'ru' ? 'Текст: И послушай мои комментарии' : 'Text: And listen to my comments'}</span>
                 <span className="px-3 py-1.5 bg-purple-500/10 border border-purple-500/20 rounded-full text-purple-400 text-xs flex items-center gap-2"><Music size={12} /> {lang === 'ru' ? 'Аудио: voice_note.mp3' : 'Audio: voice_note.mp3'}</span>
              </div>
              <p className="text-neutral-400 italic text-sm mt-4">
@@ -164,8 +164,8 @@ export default function NativeMultimodalityTheory({ lang }: { lang: string }) {
               ? 'Несмотря на невероятные возможности, мультимодальность не дается бесплатно. Обработка визуальных и аудио данных требует колоссальных вычислительных мощностей. Одна картинка может занимать в окне контекста столько же места, сколько 1000 слов текста. Это делает такие запросы более дорогими и медленными по сравнению с обычным чатом.'
               : 'Despite the incredible possibilities, multimodality does not come for free. Processing visual and audio data requires colossal computational power. A single image can take up as much space in the context window as 1,000 words of text. This makes such requests more expensive and slower compared to a standard chat.'}
           </p>
-          <div className="bg-red-500/5 border border-red-500/20 p-6 rounded-xl">
-             <h4 className="text-red-400 font-bold mb-2 flex items-center gap-2">
+          <div className="bg-danger-500/5 border border-danger-500/20 p-6 rounded-xl">
+             <h4 className="text-danger-400 font-bold mb-2 flex items-center gap-2">
                <Zap size={18} />
                {lang === 'ru' ? 'Проблема "Визуальных галлюцинаций":' : 'The Problem of "Visual Hallucinations":'}
              </h4>

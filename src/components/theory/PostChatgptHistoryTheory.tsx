@@ -30,7 +30,7 @@ export default function PostChatgptHistoryTheory({ lang }: { lang: string }) {
       {/* Chapter 1: Closed vs Open Source */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-2xl font-bold mb-6 text-blue-400">
+          <h2 className="text-2xl font-bold mb-6 text-info-400">
             {lang === 'ru' ? 'Глава 1: Модели по доступу — API и открытые веса' : 'Chapter 1: Access Models - API and Open Weights'}
           </h2>
           <div className="prose prose-invert max-w-none">
@@ -73,7 +73,7 @@ export default function PostChatgptHistoryTheory({ lang }: { lang: string }) {
       {/* Chapter 2: The Shift to Reasoning */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-2xl font-bold mb-6 text-amber-400">
+          <h2 className="text-2xl font-bold mb-6 text-warning-400">
             {lang === 'ru' ? 'Глава 2: Сдвиг к рассуждениям (Reasoning Models)' : 'Chapter 2: The Shift to Reasoning Models'}
           </h2>
           <div className="prose prose-invert max-w-none">
@@ -82,8 +82,8 @@ export default function PostChatgptHistoryTheory({ lang }: { lang: string }) {
                 ? 'К 2024 году простого "предсказания следующего токена" (Система 1 по Канеману) стало недостаточно. Модели писали красивые тексты, но спотыкались на сложных математических и логических задачах, требующих планирования.'
                 : 'By 2024, simple "next-token prediction" (System 1 thinking, per Kahneman) was no longer enough. Models wrote beautiful prose but stumbled on complex math and logic tasks that required planning.'}
             </p>
-            <div className="bg-amber-500/10 border border-amber-500/20 rounded-lg p-6 mb-6">
-              <h4 className="text-amber-400 font-bold mb-3">
+            <div className="bg-warning-500/10 border border-warning-500/20 rounded-lg p-6 mb-6">
+              <h4 className="text-warning-400 font-bold mb-3">
                 {lang === 'ru' ? 'Релиз OpenAI o1 (Проект Strawberry)' : 'The OpenAI o1 Release (Project Strawberry)'}
               </h4>
               <p className="text-neutral-300 leading-relaxed">
@@ -126,7 +126,7 @@ export default function PostChatgptHistoryTheory({ lang }: { lang: string }) {
       </section>
 
       {/* Summary */}
-      <section className="bg-gradient-to-br from-accent-500/10 to-blue-500/10 border border-accent-500/20 rounded-xl p-8 text-center">
+      <section className="bg-gradient-to-br from-accent-500/10 to-info-500/10 border border-accent-500/20 rounded-xl p-8 text-center">
         <h3 className="text-xl font-bold mb-2 text-white">
           {lang === 'ru' ? 'Итог для инженера' : 'Engineer\'s Summary'}
         </h3>

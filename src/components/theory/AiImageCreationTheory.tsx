@@ -32,8 +32,8 @@ export default function AiImageCreationTheory({ lang }: { lang: string }) {
       {/* Chapter 1: How Diffusion Works */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-blue-400">
-            <Sparkles className="text-blue-500" />
+          <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-info-400">
+            <Sparkles className="text-info-500" />
             {lang === 'ru' ? 'Глава 1: Как работает Диффузия (Denoising)' : 'Chapter 1: How Diffusion Works (Denoising)'}
           </h2>
           <div className="prose prose-invert max-w-none">
@@ -42,17 +42,17 @@ export default function AiImageCreationTheory({ lang }: { lang: string }) {
                 ? 'В отличие от художников, нейросеть не рисует с чистого белого холста. Процесс генерации всегда начинается с квадрата, заполненного абсолютным визуальным хаосом — случайным шумом (похожим на помехи на старом телевизоре).'
                 : 'Unlike human artists, a neural network does not draw on a blank white canvas. The generation process always starts with a square filled with absolute visual chaos—random noise (like static on an old TV).'}
             </p>
-            <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-6 mb-6">
-              <h4 className="text-blue-400 font-bold mb-3">{lang === 'ru' ? 'Два этапа обучения модели:' : 'The Two Stages of Training:'}</h4>
+            <div className="bg-info-500/10 border border-info-500/20 rounded-lg p-6 mb-6">
+              <h4 className="text-info-400 font-bold mb-3">{lang === 'ru' ? 'Два этапа обучения модели:' : 'The Two Stages of Training:'}</h4>
               <ol className="list-decimal list-inside text-neutral-300 space-y-3">
                 <li>
-                  <strong className="text-blue-300">{lang === 'ru' ? 'Прямая диффузия (Уничтожение):' : 'Forward Diffusion (Destruction):'}</strong>{' '}
+                  <strong className="text-info-300">{lang === 'ru' ? 'Прямая диффузия (Уничтожение):' : 'Forward Diffusion (Destruction):'}</strong>{' '}
                   {lang === 'ru'
                     ? 'Берется реальная фотография (например, кошка), и к ней шаг за шагом добавляется шум, пока она не превратится в неразборчивую серую рябь. Модель запоминает, как меняется структура изображения на каждом этапе.'
                     : 'A real photo (e.g., a cat) is taken, and noise is added to it step by step until it turns into an unrecognizable gray static. The model learns how the image structure changes at every step.'}
                 </li>
                 <li>
-                  <strong className="text-blue-300">{lang === 'ru' ? 'Обратная диффузия (Созидание):' : 'Reverse Diffusion (Creation):'}</strong>{' '}
+                  <strong className="text-info-300">{lang === 'ru' ? 'Обратная диффузия (Созидание):' : 'Reverse Diffusion (Creation):'}</strong>{' '}
                   {lang === 'ru'
                     ? 'Нейросеть учится убирать этот шум (denoising). Ей показывают зашумленную картинку и текст "кошка", и она пытается "вычесть" лишние пиксели так, чтобы проявилась кошка. Это итеративный процесс: за 20-50 шагов модель превращает "облако" в четкие формы.'
                     : 'The neural network learns to remove this noise (denoising). It is shown the noisy image and the text "cat," and it tries to "subtract" the extra pixels so that a cat emerges. This is an iterative process: over 20-50 steps, the model transforms a "cloud" into sharp forms.'}
@@ -157,26 +157,26 @@ export default function AiImageCreationTheory({ lang }: { lang: string }) {
       {/* Chapter 4: Control Parameters */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-amber-400">
-            <Hash className="text-amber-500" />
+          <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-warning-400">
+            <Hash className="text-warning-500" />
             {lang === 'ru' ? 'Глава 4: Управление хаосом (Negative, CFG, Seed)' : 'Chapter 4: Managing Chaos (Negative, CFG, Seed)'}
           </h2>
           <div className="prose prose-invert max-w-none">
             <ul className="space-y-6 text-neutral-300">
               <li>
-                <strong className="text-amber-400 block mb-1">{lang === 'ru' ? 'Negative Prompt (Отрицательный промпт)' : 'Negative Prompt'}</strong>
+                <strong className="text-warning-400 block mb-1">{lang === 'ru' ? 'Negative Prompt (Отрицательный промпт)' : 'Negative Prompt'}</strong>
                 {lang === 'ru'
                   ? 'Это то, чего вы НЕ хотите видеть. Модель вычитает эти концепции из шума. Хотите фотореализм? Добавьте в негативный промпт слова "illustration, painting, cartoon". Хотите избежать анатомических ошибок? Напишите "extra fingers, deformed hands".'
                   : 'This is what you do NOT want to see. The model subtracts these concepts from the noise. Want photorealism? Add "illustration, painting, cartoon" to the negative prompt. Want to avoid anatomical errors? Write "extra fingers, deformed hands".'}
               </li>
               <li>
-                <strong className="text-amber-400 block mb-1">{lang === 'ru' ? 'CFG Scale (Guidance Scale)' : 'CFG Scale (Guidance Scale)'}</strong>
+                <strong className="text-warning-400 block mb-1">{lang === 'ru' ? 'CFG Scale (Guidance Scale)' : 'CFG Scale (Guidance Scale)'}</strong>
                 {lang === 'ru'
                   ? 'Определяет, насколько жестко ИИ должен следовать вашему тексту. При низком CFG (3-5) модель креативит и фантазирует. При высоком (10-15) — строго следует каждому слову, но может "пережечь" цвета и выдать визуальный мусор.'
                   : 'Determines how strictly the AI must follow your text. At low CFG (3-5), the model is creative and fantasizes. At high CFG (10-15), it strictly follows every word but might over-saturate colors and produce visual artifacts.'}
               </li>
               <li>
-                <strong className="text-amber-400 block mb-1">{lang === 'ru' ? 'Seed (Зерно генерации)' : 'Seed'}</strong>
+                <strong className="text-warning-400 block mb-1">{lang === 'ru' ? 'Seed (Зерно генерации)' : 'Seed'}</strong>
                 {lang === 'ru'
                   ? 'Номер начального узора шума. Если вы используете одинаковый промпт, настройки и Seed, вы получите абсолютно идентичную картинку. Это единственный способ добиться согласованности персонажа в разных кадрах.'
                   : 'The number of the initial noise pattern. If you use the exact same prompt, settings, and Seed, you will get an identical image. This is the only way to maintain character consistency across different frames.'}
@@ -189,8 +189,8 @@ export default function AiImageCreationTheory({ lang }: { lang: string }) {
       {/* Chapter 5: Copyright and Ethics */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-red-400">
-            <Shield className="text-red-500" />
+          <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-danger-400">
+            <Shield className="text-danger-500" />
             {lang === 'ru' ? 'Глава 5: Авторское право и Коммерция' : 'Chapter 5: Copyright and Commerce'}
           </h2>
           <div className="prose prose-invert max-w-none">
@@ -199,8 +199,8 @@ export default function AiImageCreationTheory({ lang }: { lang: string }) {
                 ? 'Генерация изображений создала "серую зону" в юриспруденции. Модели обучаются на миллиардах картинок из интернета без согласия авторов. Это вызывает массовые протесты художников и судебные иски к компаниям-разработчикам.'
                 : 'Image generation has created a legal "gray area." Models are trained on billions of images from the internet without explicit consent. This causes massive protests and lawsuits from the artistic community.'}
             </p>
-            <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-5 mb-6">
-              <h4 className="text-red-400 font-bold mb-2">{lang === 'ru' ? 'Кому принадлежит картинка?' : 'Who Owns the Image?'}</h4>
+            <div className="bg-danger-500/10 border border-danger-500/20 rounded-lg p-5 mb-6">
+              <h4 className="text-danger-400 font-bold mb-2">{lang === 'ru' ? 'Кому принадлежит картинка?' : 'Who Owns the Image?'}</h4>
               <p className="text-sm text-neutral-300 leading-relaxed">
                 {lang === 'ru'
                   ? 'Бюро авторского права США постановило, что изображения, созданные исключительно алгоритмом на основе текстового промпта, НЕ могут быть защищены авторским правом. В них "отсутствует человеческое авторство". Любой может взять картинку, которую вы сгенерировали, и использовать её в своем проекте.'
@@ -220,7 +220,7 @@ export default function AiImageCreationTheory({ lang }: { lang: string }) {
       </section>
 
       {/* Summary */}
-      <section className="bg-gradient-to-br from-blue-500/10 to-accent-500/10 border border-accent-500/20 rounded-xl p-8 text-center">
+      <section className="bg-gradient-to-br from-info-500/10 to-accent-500/10 border border-accent-500/20 rounded-xl p-8 text-center">
         <h3 className="text-xl font-bold mb-2 text-white">
           {lang === 'ru' ? 'Итог: ИИ как кисть, а не как художник' : 'Summary: AI as a Brush, Not an Artist'}
         </h3>

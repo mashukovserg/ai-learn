@@ -170,7 +170,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
           {/* Education & Coding */}
           <div className="border-b border-border-card pb-6">
             <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <Award className="text-blue-400" size={20} />
+              <Award className="text-info-400" size={20} />
               {lang === 'ru' ? 'Образование и Код: Смена парадигмы' : 'Education and Code: A Paradigm Shift'}
             </h3>
             <div className="grid grid-cols-1 gap-6">
@@ -232,9 +232,9 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
       </div>
 
       {/* Final Warning */}
-      <div className="bg-red-500/5 border border-red-500/20 rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 flex items-center gap-3 text-red-400">
-          <AlertCircle className="text-red-500" />
+      <div className="bg-danger-500/5 border border-danger-500/20 rounded-xl p-8 mb-8">
+        <h2 className="text-2xl font-bold mb-4 flex items-center gap-3 text-danger-400">
+          <AlertCircle className="text-danger-500" />
           {lang === 'ru' ? 'Обратная сторона медали: Галлюцинации и Риски' : 'The Dark Side: Hallucinations and Risks'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-4">

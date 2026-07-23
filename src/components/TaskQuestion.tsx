@@ -118,7 +118,7 @@ export default function TaskQuestion({
               disabled={resolvedStatus === 'correct'}
               className={`w-full bg-base border rounded-md px-3 py-1.5 text-sm outline-none transition-colors ${
                 resolvedStatus === 'correct' ? 'border-neutral-600 text-neutral-400' :
-                resolvedStatus === 'incorrect' ? 'border-red-900/50' : 'border-border-subtle focus:border-neutral-600'
+                resolvedStatus === 'incorrect' ? 'border-danger-900/50' : 'border-border-subtle focus:border-neutral-600'
               }`}
             />
           </div>

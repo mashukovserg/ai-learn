@@ -34,7 +34,7 @@ export default function AiLiteratureReviewsTheory({ lang }: { lang: string }) {
       {/* Chapter 1: What an SLR is and why it is expensive */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-2xl font-bold mb-6 text-blue-400">
+          <h2 className="text-2xl font-bold mb-6 text-info-400">
             {lang === 'ru' ? 'Глава 1: Что такое систематический обзор и почему он дорогой' : 'Chapter 1: What a Systematic Review Is and Why It Is Expensive'}
           </h2>
           <div className="space-y-4">
@@ -113,7 +113,7 @@ export default function AiLiteratureReviewsTheory({ lang }: { lang: string }) {
       {/* Chapter 4: The new generation — LLM tools */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-2xl font-bold mb-6 text-amber-400">
+          <h2 className="text-2xl font-bold mb-6 text-warning-400">
             {lang === 'ru' ? 'Глава 4: Новое поколение — LLM-инструменты' : 'Chapter 4: The New Generation — LLM Tools'}
           </h2>
           <div className="space-y-4">

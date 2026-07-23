@@ -69,10 +69,10 @@ export default function CompletionModal({
             className="relative w-full max-w-md bg-card-dark border border-border-card rounded-2xl overflow-hidden shadow-2xl shadow-accent-500/10"
           >
             {/* Header with gradient */}
-            <div className="h-32 bg-gradient-to-br from-accent-500/20 to-blue-500/10 flex items-center justify-center relative overflow-hidden">
+            <div className="h-32 bg-gradient-to-br from-accent-500/20 to-info-500/10 flex items-center justify-center relative overflow-hidden">
               <div className="absolute inset-0 opacity-20 pointer-events-none">
                 <Sparkles className="absolute top-4 left-10 text-accent-400 animate-pulse" size={24} />
-                <Sparkles className="absolute bottom-6 right-12 text-blue-400 animate-bounce" size={16} />
+                <Sparkles className="absolute bottom-6 right-12 text-info-400 animate-bounce" size={16} />
               </div>
               <motion.div
                 initial={{ scale: 0 }}

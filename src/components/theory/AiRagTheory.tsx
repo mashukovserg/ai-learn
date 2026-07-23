@@ -80,7 +80,7 @@ export default function AiRagTheory({ lang }: { lang: string }) {
             </div>
             <div className="p-6 rounded-xl border border-border-card bg-card relative overflow-hidden">
                <div className="absolute top-0 right-0 p-4 opacity-5"><Cpu size={48} /></div>
-               <h4 className="text-blue-400 font-bold mb-3 uppercase tracking-widest">{lang === 'ru' ? 'Эмбеддинги (Embeddings)' : 'Embeddings'}</h4>
+               <h4 className="text-info-400 font-bold mb-3 uppercase tracking-widest">{lang === 'ru' ? 'Эмбеддинги (Embeddings)' : 'Embeddings'}</h4>
                <p className=" text-neutral-400 leading-relaxed">
                  {lang === 'ru'
                    ? 'Каждый чанк проходит через специальную нейросеть, которая превращает его в список из сотен или тысяч чисел (вектор). Похожие по смыслу тексты в этом пространстве чисел находятся рядом. Математически "король" и "королева" будут ближе друг к другу, чем "король" и "яблоко".'
@@ -119,7 +119,7 @@ export default function AiRagTheory({ lang }: { lang: string }) {
                 </div>
               </div>
               <div className="flex gap-4 items-start">
-                <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center shrink-0 border border-blue-500/20 text-blue-500 font-bold">2</div>
+                <div className="w-12 h-12 rounded-full bg-info-500/10 flex items-center justify-center shrink-0 border border-info-500/20 text-info-500 font-bold">2</div>
                 <div>
                   <p className="text-white font-semibold mb-1">{lang === 'ru' ? 'Создание индекса' : 'Index Creation'}</p>
                   <p className="text-neutral-500 text-sm">{lang === 'ru' ? 'Система организует векторы в специальные структуры (например, HNSW), которые позволяют искать "ближайших соседей" невероятно быстро.' : 'The system organizes vectors into specialized structures (e.g., HNSW) that allow searching for "nearest neighbors" incredibly fast.'}</p>
@@ -197,8 +197,8 @@ export default function AiRagTheory({ lang }: { lang: string }) {
               : 'RAG technology seems simple, but engineering challenges lie on the path to perfect results. The most famous is the "Lost in the Middle" phenomenon. Research has shown that neural networks best remember information from the beginning and end of the provided context, while facts in the middle are often ignored.'}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-red-500/5 border border-red-500/20 p-6 rounded-xl">
-               <h4 className="text-red-400 font-bold mb-2 flex items-center gap-2">
+            <div className="bg-danger-500/5 border border-danger-500/20 p-6 rounded-xl">
+               <h4 className="text-danger-400 font-bold mb-2 flex items-center gap-2">
                  <ShieldAlert size={18} />
                  {lang === 'ru' ? 'Context Noise (Шум)' : 'Context Noise'}
                </h4>
@@ -208,8 +208,8 @@ export default function AiRagTheory({ lang }: { lang: string }) {
                    : 'If retrieval finds irrelevant chunks, the model may get confused. "Garbage in, garbage out." Data cleaning is 80% of RAG success.'}
                </p>
             </div>
-            <div className="bg-blue-500/5 border border-blue-500/20 p-6 rounded-xl">
-               <h4 className="text-blue-400 font-bold mb-2 flex items-center gap-2">
+            <div className="bg-info-500/5 border border-info-500/20 p-6 rounded-xl">
+               <h4 className="text-info-400 font-bold mb-2 flex items-center gap-2">
                  <Repeat size={18} />
                  {lang === 'ru' ? 'Reranking (Переранжирование)' : 'Reranking'}
                </h4>

@@ -235,7 +235,7 @@ export default function SkillsMatrix() {
                               {rec.status === 'completed' ? (
                                 <CheckCircle2 size={14} style={{ color: styles.solid }} className="shrink-0" />
                               ) : rec.status === 'in-progress' ? (
-                                <span className="text-[10px] font-bold text-amber-400 shrink-0">{rec.completionPercent}%</span>
+                                <span className="text-[10px] font-bold text-warning-400 shrink-0">{rec.completionPercent}%</span>
                               ) : (
                                 <Clock size={12} className="text-neutral-600 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
                               )}

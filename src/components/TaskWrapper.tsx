@@ -85,7 +85,7 @@ export default function TaskWrapper({
       )}
 
       {resolvedStatus === 'incorrect' && incorrectMessage && (
-        <p className="mt-2 text-xs text-red-300">{incorrectMessage}</p>
+        <p className="mt-2 text-xs text-danger-300">{incorrectMessage}</p>
       )}
 
       {footer}

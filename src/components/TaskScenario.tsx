@@ -65,13 +65,13 @@ export default function TaskScenario({
   const getScoreColor = (score: number) => {
     if (score >= 80) return 'text-accent-400';
     if (score >= passingScore) return 'text-yellow-400';
-    return 'text-red-400';
+    return 'text-danger-400';
   };
 
   const getScoreBarColor = (score: number) => {
     if (score >= 80) return 'bg-accent-500';
     if (score >= passingScore) return 'bg-yellow-500';
-    return 'bg-red-500';
+    return 'bg-danger-500';
   };
 
   return (
@@ -82,8 +82,8 @@ export default function TaskScenario({
       {/* Header */}
       <div className="bg-card px-4 py-3 border-b border-border-card flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-full bg-amber-500/10 flex items-center justify-center border border-amber-500/20">
-            <Target size={14} className="text-amber-500" />
+          <div className="w-8 h-8 rounded-full bg-warning-500/10 flex items-center justify-center border border-warning-500/20">
+            <Target size={14} className="text-warning-500" />
           </div>
           <div>
             <span className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest block leading-none mb-1">
@@ -114,15 +114,15 @@ export default function TaskScenario({
               </div>
 
               {constraints.length > 0 && (
-                <div className="bg-amber-500/5 border border-amber-500/15 rounded-lg p-4">
-                  <p className="text-[10px] font-bold text-amber-500 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                <div className="bg-warning-500/5 border border-warning-500/15 rounded-lg p-4">
+                  <p className="text-[10px] font-bold text-warning-500 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                     <AlertTriangle size={12} />
                     {lang === 'ru' ? 'Ограничения' : 'Constraints'}
                   </p>
                   <ul className="space-y-1">
                     {constraints.map((c, i) => (
-                      <li key={i} className="text-xs text-amber-200/70 flex items-start gap-2">
-                        <span className="text-amber-500/50 mt-0.5">•</span>
+                      <li key={i} className="text-xs text-warning-200/70 flex items-start gap-2">
+                        <span className="text-warning-500/50 mt-0.5">•</span>
                         {c}
                       </li>
                     ))}
@@ -132,7 +132,7 @@ export default function TaskScenario({
 
               <button
                 onClick={() => setStep('choose')}
-                className="w-full py-2.5 bg-amber-500/10 text-amber-300 border border-amber-500/20 rounded-lg text-xs font-bold hover:bg-amber-500/15 transition-colors flex items-center justify-center gap-2"
+                className="w-full py-2.5 bg-warning-500/10 text-warning-300 border border-warning-500/20 rounded-lg text-xs font-bold hover:bg-warning-500/15 transition-colors flex items-center justify-center gap-2"
               >
                 {lang === 'ru' ? 'Принять решение' : 'Make your decision'}
                 <ChevronRight size={14} />
@@ -156,13 +156,13 @@ export default function TaskScenario({
                 <button
                   key={idx}
                   onClick={() => handleSelect(choice)}
-                  className="w-full text-left p-3.5 rounded-lg border border-border-card bg-base hover:border-amber-500/30 hover:bg-amber-500/5 transition-all group"
+                  className="w-full text-left p-3.5 rounded-lg border border-border-card bg-base hover:border-warning-500/30 hover:bg-warning-500/5 transition-all group"
                 >
                   <div className="flex items-center justify-between gap-3">
                     <span className="text-sm text-neutral-400 group-hover:text-neutral-200 transition-colors">
                       {choice.text}
                     </span>
-                    <ChevronRight size={14} className="text-neutral-700 group-hover:text-amber-500 transition-colors shrink-0" />
+                    <ChevronRight size={14} className="text-neutral-700 group-hover:text-warning-500 transition-colors shrink-0" />
                   </div>
                 </button>
               ))}
@@ -203,7 +203,7 @@ export default function TaskScenario({
               <div className={`rounded-lg p-4 border ${
                 selected.score >= passingScore
                   ? 'bg-accent-500/5 border-accent-500/20'
-                  : 'bg-red-500/5 border-red-500/20'
+                  : 'bg-danger-500/5 border-danger-500/20'
               }`}>
                 <p className="text-sm text-neutral-300 leading-relaxed">
                   {selected.outcome}

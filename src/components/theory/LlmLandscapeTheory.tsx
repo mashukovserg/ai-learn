@@ -349,8 +349,8 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
             </div>
           </div>
 
-          <div className="bg-input border border-amber-500/30 rounded-xl p-4">
-            <p className="text-[11px] uppercase tracking-wider text-amber-300 mb-2">
+          <div className="bg-input border border-warning-500/30 rounded-xl p-4">
+            <p className="text-[11px] uppercase tracking-wider text-warning-300 mb-2">
               {lang === 'ru' ? 'Важный нюанс' : 'Important nuance'}
             </p>
             <p className="text-sm text-neutral-300 leading-relaxed">

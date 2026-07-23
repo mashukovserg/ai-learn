@@ -25,6 +25,37 @@
   --color-accent-600: #059669;
   --color-accent-950: #022c22;
 
+
+  /* ============================================================
+     STATUS RAMPS — semantic roles over Tailwind literals (phase 2
+     of the token migration; phase 1 was the accent ramp above).
+     danger ← red, warning ← amber, info ← blue, success ← green.
+     Values are copied verbatim from Tailwind v4's default theme so
+     the migration is a visual no-op. Enforced by the same guard:
+     src/__tests__/design-tokens.test.ts. Categorical content hues
+     (cyan/rose/purple/violet/pink/orange/slate/yellow) are NOT
+     status colors and deliberately stay literal for now.
+     ============================================================ */
+  --color-danger-300: oklch(80.8% 0.114 19.571);
+  --color-danger-400: oklch(70.4% 0.191 22.216);
+  --color-danger-500: oklch(63.7% 0.237 25.331);
+  --color-danger-900: oklch(39.6% 0.141 25.723);
+
+  --color-warning-100: oklch(96.2% 0.059 95.617);
+  --color-warning-200: oklch(92.4% 0.12 95.746);
+  --color-warning-300: oklch(87.9% 0.169 91.605);
+  --color-warning-400: oklch(82.8% 0.189 84.429);
+  --color-warning-500: oklch(76.9% 0.188 70.08);
+  --color-warning-900: oklch(41.4% 0.112 45.904);
+  --color-warning-950: oklch(27.9% 0.077 45.635);
+
+  --color-info-300: oklch(80.9% 0.105 251.813);
+  --color-info-400: oklch(70.7% 0.165 254.624);
+  --color-info-500: oklch(62.3% 0.214 259.815);
+
+  --color-success-400: oklch(79.2% 0.209 151.711);
+  --color-success-500: oklch(72.3% 0.219 149.579);
+
   /* Theory heading color (Fork 3, docs/DESIGN_FORKS.md) — deliberately NOT the
      accent: chapter headings sat too close to the aubergine terminal.
      Hierarchy is carried by size and weight; the accent stays for interactive
@@ -207,30 +238,30 @@ li {
   --color-emerald-500: #059669;
   --color-emerald-950: #ecfdf5;
 
-  --color-red-300: #b91c1c;
-  --color-red-400: #dc2626;
-  --color-red-500: #dc2626;
-  --color-red-900: #fca5a5;
+  --color-danger-300: #b91c1c;
+  --color-danger-400: #dc2626;
+  --color-danger-500: #dc2626;
+  --color-danger-900: #fca5a5;
 
-  --color-amber-200: #92400e;
-  --color-amber-300: #b45309;
-  --color-amber-400: #d97706;
-  --color-amber-500: #d97706;
+  --color-warning-200: #92400e;
+  --color-warning-300: #b45309;
+  --color-warning-400: #d97706;
+  --color-warning-500: #d97706;
 
   --color-yellow-400: #ca8a04;
   --color-yellow-500: #ca8a04;
 
-  --color-blue-300: #1d4ed8;
-  --color-blue-400: #2563eb;
-  --color-blue-500: #2563eb;
+  --color-info-300: #1d4ed8;
+  --color-info-400: #2563eb;
+  --color-info-500: #2563eb;
 
   --color-cyan-200: #155e75;
   --color-cyan-300: #0e7490;
   --color-cyan-400: #0891b2;
   --color-cyan-500: #0891b2;
 
-  --color-green-400: #16a34a;
-  --color-green-500: #16a34a;
+  --color-success-400: #16a34a;
+  --color-success-500: #16a34a;
 
   --color-purple-400: #9333ea;
   --color-purple-500: #9333ea;

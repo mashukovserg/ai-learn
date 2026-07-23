@@ -124,8 +124,8 @@ function getCoverTone(category: string) {
   }
   if (category === 'Practice') {
     return {
-      visualClassName: 'from-amber-500/25 via-orange-500/10 to-card',
-      iconColorClass: 'text-amber-200',
+      visualClassName: 'from-warning-500/25 via-orange-500/10 to-card',
+      iconColorClass: 'text-warning-200',
     };
   }
   if (category === 'Architecture') {

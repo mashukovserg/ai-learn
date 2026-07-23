@@ -8,7 +8,7 @@ export default function AiSingularityTheory({ lang }: { lang: string }) {
 
       {/* Chapter 1 */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-6 text-amber-400">
+        <h2 className="text-2xl font-bold mb-6 text-warning-400">
           {lang === 'ru' ? 'Глава 1: Горизонт событий интеллекта' : 'Chapter 1: The Event Horizon of Intelligence'}
         </h2>
         <div className="space-y-4">
@@ -27,7 +27,7 @@ export default function AiSingularityTheory({ lang }: { lang: string }) {
 
       {/* Chapter 2 */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-6 text-amber-400">
+        <h2 className="text-2xl font-bold mb-6 text-warning-400">
           {lang === 'ru' ? 'Глава 2: Два лагеря — Акселерационисты и Доомеры' : 'Chapter 2: Two Camps — Accelerationists and Doomers'}
         </h2>
         <div className="space-y-4">
@@ -68,7 +68,7 @@ export default function AiSingularityTheory({ lang }: { lang: string }) {
 
       {/* Chapter 3 */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-6 text-amber-400">
+        <h2 className="text-2xl font-bold mb-6 text-warning-400">
           {lang === 'ru' ? 'Глава 3: Физические пределы и проверка реальностью' : 'Chapter 3: Physical Limits and Reality Check'}
         </h2>
         <div className="space-y-4">
@@ -82,7 +82,7 @@ export default function AiSingularityTheory({ lang }: { lang: string }) {
               ? 'Даже если мы предположим, что все технические барьеры будут преодолены, остаётся вопрос интерпретируемости: как мы узнаем, что ИИ действительно решает нашу задачу, а не её поверхностное приближение? Современные нейросети — "чёрные ящики": невозможно с уверенностью сказать, что именно они оптимизируют. Это означает, что даже без злого умысла система может вести себя непредсказуемо при выходе за границы обучающего распределения. Проблема не в том, что ИИ станет "злым" — проблема в том, что он может оказаться безразличным к нашим интересам.'
               : 'Even assuming all technical barriers are overcome, the question of interpretability remains: how do we know that an AI is actually solving our problem and not a superficial approximation of it? Modern neural networks are "black boxes": it is impossible to say with certainty what exactly they are optimizing. This means that even without malicious intent, a system can behave unpredictably when it moves beyond its training distribution. The problem is not that AI will become "evil" — the problem is that it may simply be indifferent to our interests.'}
           </p>
-          <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-4 italic text-sm text-blue-300">
+          <div className="bg-info-500/10 border border-info-500/20 rounded-lg p-4 italic text-sm text-info-300">
             {lang === 'ru'
               ? 'Сингулярность — это не только про код, но и про атомы. Пока AI заперт в дата-центрах, его влияние на реальность ограничено пропускной способностью наших интерфейсов с физическим миром.'
               : 'Singularity is not just about code, but about atoms. As long as AI is locked in data centers, its impact on reality is limited by the bandwidth of our interfaces with the physical world.'}
@@ -92,7 +92,7 @@ export default function AiSingularityTheory({ lang }: { lang: string }) {
 
       {/* Chapter 4 */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-6 text-amber-400">
+        <h2 className="text-2xl font-bold mb-6 text-warning-400">
           {lang === 'ru' ? 'Глава 4: Ключевые голоса в дебатах' : 'Chapter 4: Key Voices in the Debate'}
         </h2>
         <div className="space-y-4">
@@ -111,7 +111,7 @@ export default function AiSingularityTheory({ lang }: { lang: string }) {
 
       {/* Chapter 5 */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-6 text-amber-400">
+        <h2 className="text-2xl font-bold mb-6 text-warning-400">
           {lang === 'ru' ? 'Глава 5: От мысленного эксперимента к практической повестке' : 'Chapter 5: From Thought Experiment to Practical Agenda'}
         </h2>
         <div className="space-y-4">
@@ -126,7 +126,7 @@ export default function AiSingularityTheory({ lang }: { lang: string }) {
               : 'For practitioners — product managers, engineers, entrepreneurs — the singularity debate provides a decision-making framework for right now. How do you formulate objective functions for AI systems so they solve the intended problem rather than an absurdly optimized proxy of it? How do you design oversight and shutdown mechanisms? How do you explain risks to stakeholders who see only short-term gain? The singularity may be far off, but the questions it raises are relevant today — when deploying any AI product into the real world.'}
           </p>
         </div>
-        <div className="bg-gradient-to-br from-amber-500/10 to-accent-500/10 border border-amber-500/20 rounded-xl p-6 mt-6 text-center">
+        <div className="bg-gradient-to-br from-warning-500/10 to-accent-500/10 border border-warning-500/20 rounded-xl p-6 mt-6 text-center">
           <h3 className="text-lg font-bold mb-2 text-white">
             {lang === 'ru' ? 'Итоговая мысль' : 'Final Thought'}
           </h3>

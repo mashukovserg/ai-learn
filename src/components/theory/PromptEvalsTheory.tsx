@@ -41,7 +41,7 @@ export default function PromptEvalsTheory({ lang }: { lang: string }) {
             </p>
           </div>
           <div className="bg-card-dark border border-border-card rounded-xl p-6">
-            <h3 className="text-lg font-bold mb-4 text-blue-400">
+            <h3 className="text-lg font-bold mb-4 text-info-400">
               {lang === 'ru' ? 'LLM-as-a-Judge' : 'LLM-as-a-Judge'}
             </h3>
             <p className="text-xs text-neutral-400 leading-relaxed">
@@ -51,7 +51,7 @@ export default function PromptEvalsTheory({ lang }: { lang: string }) {
             </p>
           </div>
           <div className="bg-card-dark border border-border-card rounded-xl p-6">
-            <h3 className="text-lg font-bold mb-4 text-amber-400">
+            <h3 className="text-lg font-bold mb-4 text-warning-400">
               {lang === 'ru' ? 'Human-in-the-loop' : 'Human-in-the-loop'}
             </h3>
             <p className="text-xs text-neutral-400 leading-relaxed">

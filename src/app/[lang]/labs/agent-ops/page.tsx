@@ -396,7 +396,7 @@ export default function AgentOpsPage(props: { params: Promise<{ lang: string }> 
       )}
 
       {errorMessage && (
-        <div className="mb-4 text-sm rounded-md px-4 py-3 border bg-red-500/10 border-red-500/25 text-red-300">
+        <div className="mb-4 text-sm rounded-md px-4 py-3 border bg-danger-500/10 border-danger-500/25 text-danger-300">
           {errorMessage}
         </div>
       )}
@@ -421,8 +421,8 @@ export default function AgentOpsPage(props: { params: Promise<{ lang: string }> 
                         <div className="flex items-center gap-2">
                           <p className="text-sm font-semibold text-neutral-200">#{task.id} {task.title}</p>
                           <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border ${
-                            task.role === 'system_evaluator' ? 'bg-blue-500/10 text-blue-400 border-blue-500/20' :
-                            task.role === 'content_architect' ? 'bg-amber-500/10 text-amber-400 border-amber-500/20' :
+                            task.role === 'system_evaluator' ? 'bg-info-500/10 text-info-400 border-info-500/20' :
+                            task.role === 'content_architect' ? 'bg-warning-500/10 text-warning-400 border-warning-500/20' :
                             task.role === 'ux_guardrail' ? 'bg-purple-500/10 text-purple-400 border-purple-500/20' :
                             task.role === 'localization_sync' ? 'bg-pink-500/10 text-pink-400 border-pink-500/20' :
                             'bg-neutral-800 text-neutral-400 border-border-subtle'

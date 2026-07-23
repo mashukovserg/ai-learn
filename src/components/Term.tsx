@@ -18,7 +18,7 @@ export default function Term({ id, children, lang: forcedLang }: TermProps) {
   const glossaryEntry = GLOSSARY[id];
 
   if (!glossaryEntry) {
-    return <span className="text-red-500 font-bold">{children || id} [Term not found]</span>;
+    return <span className="text-danger-500 font-bold">{children || id} [Term not found]</span>;
   }
 
   const l = (forcedLang === 'ru' || forcedLang === 'en'

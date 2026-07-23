@@ -232,8 +232,8 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
             </div>
           </div>
 
-          <div className="bg-amber-500/5 border border-amber-500/15 rounded-lg p-5">
-            <h4 className="text-amber-400 font-bold mb-2 text-sm">{lang === 'ru' ? 'Неочевидный факт' : 'Non-obvious fact'}</h4>
+          <div className="bg-warning-500/5 border border-warning-500/15 rounded-lg p-5">
+            <h4 className="text-warning-400 font-bold mb-2 text-sm">{lang === 'ru' ? 'Неочевидный факт' : 'Non-obvious fact'}</h4>
             <p className="text-neutral-400 text-sm leading-relaxed">
               {lang === 'ru'
                 ? 'Файн-тюненная 7B модель часто превосходит промпт-инженеренную 70B модель на специфических задачах. Файн-тюнинг "впечатывает" задачу в веса, и модели не нужно тратить контекст на инструкции.'
@@ -311,7 +311,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
                   </tr>
                   <tr>
                     <td className="py-2 pr-4 text-neutral-300">{lang === 'ru' ? 'Обучение новым знаниям' : 'Teaching new knowledge'}</td>
-                    <td className="py-2 pr-4 text-red-400" colSpan={2}>{lang === 'ru' ? 'Не рекомендуется — используй RAG' : 'Not recommended — use RAG'}</td>
+                    <td className="py-2 pr-4 text-danger-400" colSpan={2}>{lang === 'ru' ? 'Не рекомендуется — используй RAG' : 'Not recommended — use RAG'}</td>
                   </tr>
                 </tbody>
               </table>
@@ -352,23 +352,23 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
 
             <div>
               <div className="text-accent-500 mb-2"># {lang === 'ru' ? 'Шаг 2: Загрузка модели с квантизацией (QLoRA)' : 'Step 2: Load model with quantization (QLoRA)'}</div>
-              <div className="text-blue-400">from</div> transformers <div className="inline text-blue-400">import</div> AutoModelForCausalLM, BitsAndBytesConfig<br />
+              <div className="text-info-400">from</div> transformers <div className="inline text-info-400">import</div> AutoModelForCausalLM, BitsAndBytesConfig<br />
               <div className="mt-1">bnb_config = BitsAndBytesConfig(</div>
-              <div className="pl-4">load_in_4bit=<span className="text-amber-400">True</span>,</div>
-              <div className="pl-4">bnb_4bit_quant_type=<span className="text-green-400">&quot;nf4&quot;</span>,</div>
+              <div className="pl-4">load_in_4bit=<span className="text-warning-400">True</span>,</div>
+              <div className="pl-4">bnb_4bit_quant_type=<span className="text-success-400">&quot;nf4&quot;</span>,</div>
               <div>)</div>
               <div className="mt-1">model = AutoModelForCausalLM.from_pretrained(</div>
-              <div className="pl-4"><span className="text-green-400">&quot;mistralai/Mistral-7B-v0.1&quot;</span>, quantization_config=bnb_config</div>
+              <div className="pl-4"><span className="text-success-400">&quot;mistralai/Mistral-7B-v0.1&quot;</span>, quantization_config=bnb_config</div>
               <div>)</div>
             </div>
 
             <div>
               <div className="text-accent-500 mb-2"># {lang === 'ru' ? 'Шаг 3: Настройка LoRA-адаптера' : 'Step 3: Configure LoRA adapter'}</div>
-              <div className="text-blue-400">from</div> peft <div className="inline text-blue-400">import</div> LoraConfig, get_peft_model<br />
+              <div className="text-info-400">from</div> peft <div className="inline text-info-400">import</div> LoraConfig, get_peft_model<br />
               <div className="mt-1">lora_config = LoraConfig(</div>
-              <div className="pl-4">r=<span className="text-amber-400">16</span>,                <span className="text-neutral-600"># {lang === 'ru' ? 'ранг адаптера' : 'adapter rank'}</span></div>
-              <div className="pl-4">lora_alpha=<span className="text-amber-400">32</span>,         <span className="text-neutral-600"># {lang === 'ru' ? 'скейлинг (обычно 2×r)' : 'scaling (usually 2×r)'}</span></div>
-              <div className="pl-4">target_modules=[<span className="text-green-400">&quot;q_proj&quot;</span>, <span className="text-green-400">&quot;k_proj&quot;</span>, <span className="text-green-400">&quot;v_proj&quot;</span>, <span className="text-green-400">&quot;o_proj&quot;</span>],</div>
+              <div className="pl-4">r=<span className="text-warning-400">16</span>,                <span className="text-neutral-600"># {lang === 'ru' ? 'ранг адаптера' : 'adapter rank'}</span></div>
+              <div className="pl-4">lora_alpha=<span className="text-warning-400">32</span>,         <span className="text-neutral-600"># {lang === 'ru' ? 'скейлинг (обычно 2×r)' : 'scaling (usually 2×r)'}</span></div>
+              <div className="pl-4">target_modules=[<span className="text-success-400">&quot;q_proj&quot;</span>, <span className="text-success-400">&quot;k_proj&quot;</span>, <span className="text-success-400">&quot;v_proj&quot;</span>, <span className="text-success-400">&quot;o_proj&quot;</span>],</div>
               <div>)</div>
               <div className="mt-1">model = get_peft_model(model, lora_config)</div>
               <div className="text-neutral-600"># → trainable: 0.36% {lang === 'ru' ? 'параметров' : 'of parameters'}</div>
@@ -376,14 +376,14 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
 
             <div>
               <div className="text-accent-500 mb-2"># {lang === 'ru' ? 'Шаг 4-5: Обучение' : 'Step 4-5: Training'}</div>
-              <div className="text-blue-400">from</div> trl <div className="inline text-blue-400">import</div> SFTTrainer<br />
+              <div className="text-info-400">from</div> trl <div className="inline text-info-400">import</div> SFTTrainer<br />
               <div className="mt-1">trainer = SFTTrainer(model=model, train_dataset=dataset, ...)</div>
               <div>trainer.train()</div>
             </div>
 
             <div>
               <div className="text-accent-500 mb-2"># {lang === 'ru' ? 'Шаг 6: Сохранение (только адаптер — несколько MB!)' : 'Step 6: Save (just the adapter — a few MB!)'}</div>
-              <div>model.save_pretrained(<span className="text-green-400">&quot;./my-legal-adapter&quot;</span>)</div>
+              <div>model.save_pretrained(<span className="text-success-400">&quot;./my-legal-adapter&quot;</span>)</div>
             </div>
           </div>
         </div>
@@ -404,14 +404,14 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
 
           <div className="bg-black/40 rounded-xl p-5 font-mono text-xs text-neutral-400 overflow-x-auto">
             <div className="text-accent-500 mb-2"># OpenAI Fine-Tuning API</div>
-            <div className="text-blue-400">from</div> openai <div className="inline text-blue-400">import</div> OpenAI<br />
+            <div className="text-info-400">from</div> openai <div className="inline text-info-400">import</div> OpenAI<br />
             <div className="mt-1">client = OpenAI()</div>
             <div className="mt-2 text-neutral-600"># 1. {lang === 'ru' ? 'Загрузка данных (формат JSONL)' : 'Upload data (JSONL format)'}</div>
-            <div>file = client.files.create(file=open(<span className="text-green-400">&quot;data.jsonl&quot;</span>, <span className="text-green-400">&quot;rb&quot;</span>), purpose=<span className="text-green-400">&quot;fine-tune&quot;</span>)</div>
+            <div>file = client.files.create(file=open(<span className="text-success-400">&quot;data.jsonl&quot;</span>, <span className="text-success-400">&quot;rb&quot;</span>), purpose=<span className="text-success-400">&quot;fine-tune&quot;</span>)</div>
             <div className="mt-2 text-neutral-600"># 2. {lang === 'ru' ? 'Запуск обучения' : 'Start training'}</div>
-            <div>job = client.fine_tuning.jobs.create(training_file=file.id, model=<span className="text-green-400">&quot;gpt-4o-mini&quot;</span>)</div>
+            <div>job = client.fine_tuning.jobs.create(training_file=file.id, model=<span className="text-success-400">&quot;gpt-4o-mini&quot;</span>)</div>
             <div className="mt-2 text-neutral-600"># 3. {lang === 'ru' ? 'Использование' : 'Usage'}</div>
-            <div>client.chat.completions.create(model=<span className="text-green-400">&quot;ft:gpt-4o-mini:my-org::abc123&quot;</span>, ...)</div>
+            <div>client.chat.completions.create(model=<span className="text-success-400">&quot;ft:gpt-4o-mini:my-org::abc123&quot;</span>, ...)</div>
           </div>
 
           <div className="bg-card border border-border-emphasis rounded-xl p-5">
@@ -461,8 +461,8 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
         </h2>
         <div className="space-y-6">
           <div className="grid grid-cols-1 gap-4">
-            <div className="bg-red-500/5 border border-red-500/20 rounded-xl p-5">
-              <h4 className="text-red-400 font-bold mb-2">Overfitting ({lang === 'ru' ? 'Переобучение' : 'Overfitting'})</h4>
+            <div className="bg-danger-500/5 border border-danger-500/20 rounded-xl p-5">
+              <h4 className="text-danger-400 font-bold mb-2">Overfitting ({lang === 'ru' ? 'Переобучение' : 'Overfitting'})</h4>
               <p className="text-neutral-400 text-sm leading-relaxed mb-2">
                 {lang === 'ru'
                   ? 'Модель запоминает обучающие примеры наизусть. Признаки: eval loss растет при снижающемся train loss.'
@@ -470,8 +470,8 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
               </p>
               <p className="text-neutral-500 text-xs">{lang === 'ru' ? 'Решение: ранняя остановка, больше данных, меньше эпох, dropout, меньше r' : 'Fix: early stopping, more data, fewer epochs, dropout, lower r'}</p>
             </div>
-            <div className="bg-red-500/5 border border-red-500/20 rounded-xl p-5">
-              <h4 className="text-red-400 font-bold mb-2">Underfitting ({lang === 'ru' ? 'Недообучение' : 'Underfitting'})</h4>
+            <div className="bg-danger-500/5 border border-danger-500/20 rounded-xl p-5">
+              <h4 className="text-danger-400 font-bold mb-2">Underfitting ({lang === 'ru' ? 'Недообучение' : 'Underfitting'})</h4>
               <p className="text-neutral-400 text-sm leading-relaxed mb-2">
                 {lang === 'ru'
                   ? 'Модель мало изменилась по сравнению с базовой. Она не усвоила ваши данные.'
@@ -479,8 +479,8 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
               </p>
               <p className="text-neutral-500 text-xs">{lang === 'ru' ? 'Решение: больше эпох, выше learning rate, больше r, больше данных' : 'Fix: more epochs, higher learning rate, larger r, more data'}</p>
             </div>
-            <div className="bg-red-500/5 border border-red-500/20 rounded-xl p-5">
-              <h4 className="text-red-400 font-bold mb-2">Catastrophic Forgetting ({lang === 'ru' ? 'Катастрофическое забывание' : 'Catastrophic Forgetting'})</h4>
+            <div className="bg-danger-500/5 border border-danger-500/20 rounded-xl p-5">
+              <h4 className="text-danger-400 font-bold mb-2">Catastrophic Forgetting ({lang === 'ru' ? 'Катастрофическое забывание' : 'Catastrophic Forgetting'})</h4>
               <p className="text-neutral-400 text-sm leading-relaxed mb-2">
                 {lang === 'ru'
                   ? 'Модель стала хороша в новой задаче, но забыла базовые навыки.'
@@ -488,8 +488,8 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
               </p>
               <p className="text-neutral-500 text-xs">{lang === 'ru' ? 'Решение: LoRA (а не full FT), добавить общие примеры в датасет' : 'Fix: LoRA (not full FT), add general examples to dataset'}</p>
             </div>
-            <div className="bg-red-500/5 border border-red-500/20 rounded-xl p-5">
-              <h4 className="text-red-400 font-bold mb-2">Data Contamination ({lang === 'ru' ? 'Загрязнение данных' : 'Data Contamination'})</h4>
+            <div className="bg-danger-500/5 border border-danger-500/20 rounded-xl p-5">
+              <h4 className="text-danger-400 font-bold mb-2">Data Contamination ({lang === 'ru' ? 'Загрязнение данных' : 'Data Contamination'})</h4>
               <p className="text-neutral-400 text-sm leading-relaxed mb-2">
                 {lang === 'ru'
                   ? 'Eval-данные попали в обучающий набор. Метрики выглядят отлично, но модель не работает в реальных условиях.'

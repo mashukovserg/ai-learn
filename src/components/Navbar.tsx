@@ -57,7 +57,7 @@ export default function Navbar({ onMenuClick }: { onMenuClick?: () => void }) {
   };
 
   const difficultyColor = (d: string) =>
-    d === 'Beginner' ? 'text-accent-400' : d === 'Intermediate' ? 'text-yellow-400' : 'text-red-400';
+    d === 'Beginner' ? 'text-accent-400' : d === 'Intermediate' ? 'text-yellow-400' : 'text-danger-400';
 
   return (
     <header className="h-16 border-b border-border-card bg-card/90 backdrop-blur-sm sticky top-0 z-10 flex items-center gap-3 px-4 md:px-6 lg:px-10">

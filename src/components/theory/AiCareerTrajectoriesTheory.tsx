@@ -47,7 +47,7 @@ interface Roadmap {
 }
 
 const CHIP_STYLES: Record<ChipTone, string> = {
-  amber: 'bg-amber-100 text-amber-900 border border-amber-200/80',
+  amber: 'bg-warning-100 text-warning-900 border border-warning-200/80',
   mint: 'bg-accent-100 text-accent-950 border border-accent-200/80',
   violet: 'bg-violet-100 text-violet-900 border border-violet-200/80',
   stone: 'bg-stone-100 text-stone-700 border border-stone-200/80',

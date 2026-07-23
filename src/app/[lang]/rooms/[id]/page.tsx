@@ -315,7 +315,7 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
                     <div className="flex items-center gap-3">
                       <button
                         onClick={handleReset}
-                        className="text-xs font-semibold text-red-400 hover:text-red-300 transition-colors"
+                        className="text-xs font-semibold text-danger-400 hover:text-danger-300 transition-colors"
                       >
                         {lang === 'ru' ? 'Да' : 'Yes'}
                       </button>

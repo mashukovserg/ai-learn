@@ -219,7 +219,7 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
 
       {/* Chapter 3 */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-6 text-blue-400">
+        <h2 className="text-2xl font-bold mb-6 text-info-400">
           {lang === 'ru' ? 'Глава 3: Восстание нейронов (2012 — момент ImageNet)' : 'Chapter 3: The Rise of Neurons (2012 — The ImageNet Moment)'}
         </h2>
         <div className="space-y-4">
@@ -253,13 +253,13 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
             )}
           </p>
 
-          <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-6">
-            <h4 className="text-blue-400 font-bold mb-4">
+          <div className="bg-info-500/10 border border-info-500/20 rounded-xl p-6">
+            <h4 className="text-info-400 font-bold mb-4">
               {lang === 'ru' ? 'Три столпа революции 2012 года' : 'The Three Pillars of the 2012 Revolution'}
             </h4>
             <ul className="list-disc list-inside text-neutral-300 space-y-4">
               <li>
-                <span className="text-blue-300 font-medium">{lang === 'ru' ? 'Данные (ImageNet):' : 'Data (ImageNet):'}</span>
+                <span className="text-info-300 font-medium">{lang === 'ru' ? 'Данные (ImageNet):' : 'Data (ImageNet):'}</span>
                 <p className="mt-2 ml-6 text-sm">
                   {lang === 'ru' ? 'Проект под руководством ' : 'A project led by '}
                   <Term id="li-fei-fei">{lang === 'ru' ? 'Ли Фей-Фей' : 'Li Fei-Fei'}</Term>
@@ -271,7 +271,7 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
                 </p>
               </li>
               <li>
-                <span className="text-blue-300 font-medium">{lang === 'ru' ? 'Вычисления (GPU):' : 'Compute (GPU):'}</span>
+                <span className="text-info-300 font-medium">{lang === 'ru' ? 'Вычисления (GPU):' : 'Compute (GPU):'}</span>
                 <p className="mt-2 ml-6 text-sm">
                   {lang === 'ru' ? 'Исследователи использовали игровые видеокарты ' : 'Researchers used gaming graphics cards from '}
                   <Term id="nvidia">NVIDIA</Term>
@@ -281,7 +281,7 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
                 </p>
               </li>
               <li>
-                <span className="text-blue-300 font-medium">{lang === 'ru' ? 'Алгоритмы:' : 'Algorithms:'}</span>{' '}
+                <span className="text-info-300 font-medium">{lang === 'ru' ? 'Алгоритмы:' : 'Algorithms:'}</span>{' '}
                 <Term id="backpropagation">{lang === 'ru' ? 'Метод обратного распространения ошибки' : 'The Backpropagation algorithm'}</Term>
                 {lang === 'ru' ? ' наконец-то заработал эффективно на действительно глубоких сетях.' : ' finally worked efficiently on truly deep networks.'}
               </li>
@@ -296,8 +296,8 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
 
           <div className="bg-card border border-border-emphasis rounded-xl p-5">
             <div className="flex items-center gap-2 mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 inline-block shrink-0" />
-              <span className="font-bold text-blue-400 uppercase tracking-widest text-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-info-400 inline-block shrink-0" />
+              <span className="font-bold text-info-400 uppercase tracking-widest text-sm">
                 {lang === 'ru' ? 'AlphaGo: рука бога и детский сад' : 'AlphaGo: the hand of God and kindergarten'}
               </span>
             </div>
@@ -327,8 +327,8 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
             )}
           </p>
 
-          <div className="bg-amber-500/5 border border-amber-500/20 rounded-lg p-5">
-            <h4 className="font-bold text-amber-400 mb-2">
+          <div className="bg-warning-500/5 border border-warning-500/20 rounded-lg p-5">
+            <h4 className="font-bold text-warning-400 mb-2">
               {lang === 'ru' ? 'Осторожно: "человеческий уровень ImageNet"' : 'Caution: "human-level ImageNet performance"'}
             </h4>
             <p className="text-sm text-neutral-300 leading-relaxed">
@@ -352,7 +352,7 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
 
       {/* Chapter 4 */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8">
-        <h2 className="text-2xl font-bold mb-6 text-amber-400">
+        <h2 className="text-2xl font-bold mb-6 text-warning-400">
           {lang === 'ru' ? 'Глава 4: Внимание — это всё, что вам нужно (2017)' : 'Chapter 4: Attention Is All You Need (2017)'}
         </h2>
         <div className="space-y-4">
@@ -367,7 +367,7 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
               ? '. Они обрабатывали текст слово за словом, строго последовательно. LSTM — усовершенствованная версия RNN со специальными "ячейками памяти": она удерживает контекст заметно дольше обычной RNN, но по-прежнему читает последовательно. Поэтому оба подхода были медленными и "забывали" контекст начала абзаца к моменту, когда дочитывали до конца.'
               : '. They processed text word by word, strictly sequentially. The LSTM is an improved version of the RNN with special "memory cells": it holds context noticeably longer than a plain RNN, but still reads sequentially. So both approaches were slow and "forgot" the context of the beginning of a paragraph by the time they reached the end.'}
           </p>
-          <div className="bg-amber-500/10 border border-amber-500/20 rounded-lg p-4">
+          <div className="bg-warning-500/10 border border-warning-500/20 rounded-lg p-4">
             <p className="text-sm text-neutral-300">
               {lang === 'ru'
                 ? 'В 2017 году исследователи из Google выпустили статью с дерзким названием "Attention Is All You Need". Они предложили новую архитектуру — '
@@ -425,7 +425,7 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
       </div>
 
       {/* Final Summary */}
-      <div className="bg-gradient-to-br from-accent-500/10 to-blue-500/10 border border-accent-500/20 rounded-xl p-8">
+      <div className="bg-gradient-to-br from-accent-500/10 to-info-500/10 border border-accent-500/20 rounded-xl p-8">
         <h3 className="text-xl font-bold mb-3 text-white">
           {lang === 'ru' ? 'Зачем инженеру учить историю AI?' : 'Why Should an Engineer Study AI History?'}
         </h3>

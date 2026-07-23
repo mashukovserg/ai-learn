@@ -166,7 +166,7 @@ export default function SettingsPage(props: { params: Promise<{ lang: string }> 
 
         <section className="bg-input border border-border-subtle rounded-xl p-6">
           <h2 className="text-lg font-semibold text-neutral-200 mb-2 flex items-center gap-2">
-            <RotateCcw size={18} className="text-amber-400" />
+            <RotateCcw size={18} className="text-warning-400" />
             {lang === 'ru' ? 'Сброс прогресса комнаты' : 'Reset Room Progress'}
           </h2>
           <p className="text-sm text-neutral-500 mb-4">
@@ -191,7 +191,7 @@ export default function SettingsPage(props: { params: Promise<{ lang: string }> 
               type="button"
               onClick={onResetRoomProgress}
               disabled={isResetting || !selectedRoomId}
-              className="px-4 py-2 rounded-md text-sm font-semibold bg-amber-300 text-amber-950 hover:bg-amber-200 disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+              className="px-4 py-2 rounded-md text-sm font-semibold bg-warning-300 text-warning-950 hover:bg-warning-200 disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
             >
               {isResetting
                 ? (lang === 'ru' ? 'Сброс...' : 'Resetting...')
@@ -214,7 +214,7 @@ export default function SettingsPage(props: { params: Promise<{ lang: string }> 
           className={`mt-5 text-sm rounded-md px-4 py-3 border ${
             status.kind === 'success'
               ? 'bg-accent-500/10 border-accent-500/25 text-accent-300'
-              : 'bg-red-500/10 border-red-500/25 text-red-300'
+              : 'bg-danger-500/10 border-danger-500/25 text-danger-300'
           }`}
         >
           {status.text}
