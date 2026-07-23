@@ -33,6 +33,28 @@ export default function AgenticTestingLoopTheory({ lang }: { lang: string }) {
               </>
             )}
           </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {lang === 'ru' ? (
+              <>
+                Из этой роли следуют инженерные требования к самим тестам. Хороший приёмочный тест для агента детерминирован, быстр и изолирован: агент запускает набор десятки раз за сессию, и десятиминутный прогон превращает цикл в очередь. Медленные интеграционные проверки поднимаются на верхние уровни пирамиды тестирования, а рабочей валютой петли становятся быстрые unit-прогоны.
+              </>
+            ) : (
+              <>
+                This role imposes engineering requirements on the tests themselves. A good acceptance test for an agent is deterministic, fast, and isolated: the agent runs the suite dozens of times per session, and a ten-minute run turns the loop into a queue. Slow integration checks move up the testing pyramid, while fast unit runs become the loop&apos;s working currency.
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {lang === 'ru' ? (
+              <>
+                Есть и обратная сторона. Если критерий успеха размыт — «сделай красиво», «улучши читаемость» — агент начинает оценивать себя сам, а его самопроверка наследует те же слепые зоны, что и генерация. Тесты выступают внешней реальностью, с которой модель не может договориться. Поэтому вложение в чёткие тесты окупается быстрее, чем вложение во всё более подробные текстовые инструкции.
+              </>
+            ) : (
+              <>
+                There is a flip side. When the success criterion is vague — &quot;make it nice,&quot; &quot;improve readability&quot; — the agent starts grading itself, and its self-check inherits the same blind spots as its generation. Tests act as an external reality the model cannot negotiate with. That is why investing in sharp tests pays off faster than investing in ever-longer textual instructions.
+              </>
+            )}
+          </p>
         </div>
       </section>
 
@@ -74,6 +96,28 @@ export default function AgenticTestingLoopTheory({ lang }: { lang: string }) {
               { out: '✓ formatPrice · 1 passed', tone: 'ok' },
             ]}
           />
+          <p className="text-neutral-300 leading-relaxed">
+            {lang === 'ru' ? (
+              <>
+                Порядок Red → Act принципиален именно для агента. Тест, написанный до кода, фиксирует намерение, пока его не исказила реализация. Если же агент пишет тест после кода, он почти неизбежно проверяет то, что получилось, а не то, что просили: тест превращается из спецификации в зеркало.
+              </>
+            ) : (
+              <>
+                The Red → Act order matters specifically for agents. A test written before the code pins down the intent before the implementation can distort it. When an agent writes the test after the code, it almost inevitably checks what came out rather than what was asked: the test turns from a specification into a mirror.
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {lang === 'ru' ? (
+              <>
+                На практике цикл держат на коротком шаге: один падающий тест за раз, минимальная правка, прогон, коммит после каждого зелёного. Такой ритм дёшево откатывается и оставляет читаемую историю. Если красное не уходит несколько итераций подряд — это не повод удвоить усилия, а сигнал остановиться и переформулировать задачу; как устроен этот стоп-кран, разбирает глава 5.
+              </>
+            ) : (
+              <>
+                In practice the loop runs on a short stride: one failing test at a time, a minimal edit, a run, a commit after every green. That rhythm is cheap to roll back and leaves a readable history. If the red refuses to clear for several iterations in a row, that is not a cue to push harder but a signal to stop and reframe the task; chapter 5 covers that brake.
+              </>
+            )}
+          </p>
         </div>
       </section>
 
@@ -101,6 +145,28 @@ export default function AgenticTestingLoopTheory({ lang }: { lang: string }) {
             ) : (
               <>
                 It is crucial to teach the agent <strong>triage</strong>: the ability to distinguish a logic error from a test error or infrastructure issue (like memory limits or dependency conflicts). If an agent endlessly rewrites code without realizing the problem is in the execution environment, the loop becomes a &quot;budget burn.&quot;
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {lang === 'ru' ? (
+              <>
+                Качество триажа определяется тем, что именно попадает агенту в контекст. Полезный сигнал — стектрейс с точной строкой, дифф «ожидалось/получено» и версия окружения; бесполезный — голое «тест упал». Формат ошибки важнее самого факта ошибки: по флагу агент чинит вслепую, по структурированному отчёту — прицельно.
+              </>
+            ) : (
+              <>
+                Triage quality is set by what actually reaches the agent&apos;s context. A useful signal is a stack trace with the exact line, an expected-vs-received diff, and the environment version; a useless one is a bare &quot;the test failed.&quot; The format of the error matters more than the fact of it: given a flag the agent fixes blindly, given a structured report — precisely.
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {lang === 'ru' ? (
+              <>
+                Результат триажа — одна из четырёх категорий, и у каждой своё действие. Ошибка в коде — чинить логику. Ошибка в тесте — чинить тест, не подгоняя код под неверное ожидание. Проблема окружения — например, ImportError из-за невставшей зависимости — решается настройкой, и переписывать логику здесь вреднее, чем бездействовать. Подозрение на нестабильность передаёт дело сценарию из следующей главы.
+              </>
+            ) : (
+              <>
+                Triage ends in one of four categories, each with its own action. A code bug — fix the logic. A test bug — fix the test rather than bending the code toward a wrong expectation. An environment issue — say, an ImportError from a missing dependency — is solved by setup, and rewriting logic there is worse than doing nothing. Suspected instability hands the case to the next chapter&apos;s scenario.
               </>
             )}
           </p>
@@ -134,6 +200,28 @@ export default function AgenticTestingLoopTheory({ lang }: { lang: string }) {
               </>
             )}
           </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {lang === 'ru' ? (
+              <>
+                Нестабильность приходит из привычных мест: реальное время и таймауты, сеть, порядок выполнения тестов, разделяемое между ними состояние. Для человека flaky-тест — раздражение; для агента — ложный компас, потому что скепсиса по умолчанию у модели нет: она принимает красное за чистую монету и начинает «чинить» исправный код.
+              </>
+            ) : (
+              <>
+                Instability comes from the usual places: wall-clock time and timeouts, the network, test execution order, state shared between tests. To a human a flaky test is an annoyance; to an agent it is a false compass, because the model has no default skepticism: it takes the red at face value and starts &quot;fixing&quot; healthy code.
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {lang === 'ru' ? (
+              <>
+                Рабочие тактики знакомы, но в агентном цикле они обязательны: карантин нестабильных тестов, повторный прогон упавшего теста до вынесения вердикта, детерминизация — фиксация seed, мок времени и сети. Регрессия дополняет картину: прогон связанных тестов после каждой правки страхует от «локального успеха», купленного ценой глобальной поломки.
+              </>
+            ) : (
+              <>
+                The tactics are familiar, but in an agentic loop they are mandatory: quarantine unstable tests, re-run a failure before passing a verdict, determinize — pin seeds, mock time and the network. Regression completes the picture: running related tests after every edit insures against a &quot;local success&quot; bought at the price of a global break.
+              </>
+            )}
+          </p>
         </div>
       </section>
 
@@ -161,6 +249,28 @@ export default function AgenticTestingLoopTheory({ lang }: { lang: string }) {
             ) : (
               <>
                 This prevents &quot;hallucination storms&quot; where a model, trying to fix one error, generates ten new ones. Properly configured escalation allows an engineer to step in exactly when the agent reaches a dead end, saving time and compute resources.
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {lang === 'ru' ? (
+              <>
+                Эскалация полезна ровно настолько, насколько полон переданный контекст. Человек, получивший «агент не справился», начинает с нуля; человек, получивший последний дифф, историю попыток и гипотезы триажа, начинает с середины. Хорошая петля готовит пакет эскалации заранее — как отчёт, а не как крик о помощи.
+              </>
+            ) : (
+              <>
+                Escalation is only as useful as the context handed over. A human who receives &quot;the agent failed&quot; starts from zero; one who receives the last diff, the attempt history, and the triage hypotheses starts from the middle. A good loop prepares the escalation package in advance — as a report, not as a cry for help.
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {lang === 'ru' ? (
+              <>
+                У лимитов есть и экономическая сторона: каждая итерация стоит токенов и времени, и лимит — это бюджет эксперимента, а не признание слабости. Порог настраивают по типу задачи: тривиальному фиксу хватает трёх попыток, исследовательской задаче дают больше — с обязательной сменой стратегии после середины бюджета. Вовремя остановиться — тоже навык цикла.
+              </>
+            ) : (
+              <>
+                Limits also have an economic side: every iteration costs tokens and time, and a limit is an experiment budget, not an admission of weakness. The threshold is tuned per task type: a trivial fix earns three attempts, an exploratory task gets more — with a mandatory change of strategy past mid-budget. Stopping on time is a loop skill too.
               </>
             )}
           </p>

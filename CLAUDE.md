@@ -155,7 +155,7 @@ These are enforced conventions, not suggestions. Read `docs/AGENTS.md` for full 
 - **Task solvability** — every task must be answerable purely from that room's theory, in both languages. If a task classifies items ("select the US-company models"), the theory must state that mapping explicitly.
 - **Task ID sequencing** — IDs within a room are sequential integers starting at `1`, no gaps or duplicates (progress % breaks otherwise).
 - **Task mix rule** — every room includes at least one `sorting` or `mentor` task; never MCQ/input-only.
-- **Chapter depth gate** — each theory chapter has ≥120 words and ≥2 paragraphs per language, unless explicitly labeled `Short block` / `Краткий блок`.
+- **Chapter depth gate** — each theory chapter has ≥240 words and ≥4 paragraphs per language, unless explicitly labeled `Short block` / `Краткий блок`. Applies fully to new/edited chapters; pre-2026-07-23 chapters are tracked debt (thicken when touching a room).
 - **Anti-Vibecode frontend gate** — single-column narrative flow (no default 2-column split for long text), left-aligned body/summary, no full-paragraph italics, no decorative glow/neon, **no leading icons in headings**, analytical (non-hype) tone.
 - **Forbidden phrasing** — never use `это не просто` or the word `вендор` (any case form) in authored text, docs, or replies; use concrete alternatives (`поставщик модели`, `платформа`, etc.).
 - **Docs sync / completion checklist** — when behavior, setup, or content changes, update in the same task: `README.md`, `docs/PROGRESS.md`, `docs/BACKLOG.md` (log completed work with a `(by <agent>)` tag), and `docs/CURRICULUM.md` / `docs/DEPLOYMENT.md` where relevant. Update Russian mirrors (`*.ru.md`) when they exist.

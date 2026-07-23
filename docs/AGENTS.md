@@ -276,12 +276,13 @@ For any theory chapter block (for example, sections titled "Глава N / Chapt
 
 1. Chapter text must not be short-form placeholder content.
 2. Minimum depth per language (`ru` and `en`) for each chapter:
-   - at least `120` words of body text
-   - at least `2` body paragraphs
+   - at least `240` words of body text
+   - at least `4` body paragraphs (owner's rule, 2026-07-23 — two-paragraph chapters read as stubs)
 3. If a chapter is intentionally concise by design (for example glossary-only or recap-only), it must be explicitly labeled in both languages as:
    - `Краткий блок`
    - `Short block`
 4. Without this explicit label, chapter content below the threshold is considered incomplete and should not be shipped.
+5. Scope of enforcement: the bar applies in full to **new chapters** and to **any chapter you substantively edit**. Chapters written before 2026-07-23 largely predate the 4-paragraph bar (a rough sweep found the majority of existing chapters below it — `agentic-testing-loop` was the flagged example and has been thickened); they are standing debt. When you touch a room for any content reason, bring the chapters you touch up to the bar in the same task. Do not mass-rewrite untouched rooms just for depth — thin prose padded to length is worse than short prose.
 
 ### Chapter heading typography lock (Mandatory)
 
