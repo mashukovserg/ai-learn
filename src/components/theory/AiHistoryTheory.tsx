@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Term from '@/components/Term';
-import { Cpu, Zap } from 'lucide-react';
 
 export default function AiHistoryTheory({ lang }: { lang: string }) {
   return (
@@ -111,7 +110,7 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
                 ? 'Параллельно с GOFAI существовал другой подход — нейронные сети, которые вдохновлялись строением мозга. Фрэнк Розенблатт разрабатывал перцептрон и его многослойные варианты. Но в 1969 году Марвин Минский и Сеймур Пейперт опубликовали книгу "Перцептроны", математически доказав ограничения однослойных сетей. Финансирование нейросетевых исследований мгновенно испарилось. Однако — как позже выяснили историки науки — ограничения однослойных сетей были уже известны специалистам в этой области. Самое разрушительное высказывание Минского о том, что многослойные сети "стерильны", было лишь предположением, а не доказанной теоремой.'
                 : 'Parallel to GOFAI was another approach — neural networks inspired by the brain. Frank Rosenblatt was developing the perceptron and multilayer variants. Then in 1969, Marvin Minsky and Seymour Papert published "Perceptrons," mathematically proving the limitations of single-layer networks. Funding for neural network research instantly evaporated. However — as later historians of science noted — the limitations of single-layer networks were already known to researchers in the field. Minsky\'s most damaging claim, that multilayer networks were "sterile," was a mere speculation, not a proven theorem.'}
             </p>
-            <p className="text-sm text-neutral-400 leading-relaxed italic">
+            <p className="text-sm text-neutral-400 leading-relaxed">
               {lang === 'ru'
                 ? 'Минский возглавлял MIT AI Lab и имел конкурентный интерес в перераспределении финансирования в пользу символического подхода. В 1971 году Розенблатт погиб в морской катастрофе — ему было 43 года. Без своего главного защитника нейронные сети были заморожены на полтора десятилетия.'
                 : 'Minsky headed the MIT AI Lab and had a competitive interest in redirecting funding toward symbolic AI. In 1971, Rosenblatt died in a boating accident at the age of 43. Without its most prominent advocate, neural network research was frozen for a decade and a half.'}
@@ -133,8 +132,7 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
           </p>
 
           <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-6">
-            <h4 className="text-cyan-400 font-bold mb-3 flex items-center gap-2">
-              <Cpu size={18} />
+            <h4 className="text-cyan-400 font-bold mb-3">
               {lang === 'ru' ? 'Почему наступала зима?' : 'Why did Winter come?'}
             </h4>
             <ul className="list-disc list-inside text-neutral-300 space-y-3">
@@ -196,7 +194,7 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
             </div>
             <p className="text-neutral-300 text-sm leading-relaxed">
               {lang === 'ru'
-                ? 'Джон Маккарти сформулировал это точнее всех: "Как только что-то начинает работать, это перестают называть ИИ." Deep Blue победил Каспарова в шахматы в 1997 году — и шахматы немедленно были переклассифицированы в "задачу, которая не требует настоящего интеллекта". Каждое достижение AI автоматически перестаёт считаться AI. Эта "движущаяся цель" существует с 1956 года.'
+                ? 'Джон Маккарти сформулировал это точнее всех: "Как только что-то начинает работать, это перестают называть ИИ." Deep Blue победил Каспарова в шахматы в 1997 году — и шахматы немедленно были переклассифицированы в "задачу, которая не требует настоящего интеллекта". Когда решающий ход Deep Blue разбирали, один комментатор заметил: "Может, Deep Blue и обыграл Каспарова, но удовольствия от этого не получил". Каждое достижение AI автоматически перестаёт считаться AI. Эта "движущаяся цель" существует с 1956 года.'
                 : 'John McCarthy put it most precisely: "As soon as it works, no one calls it AI anymore." Deep Blue defeated Kasparov at chess in 1997 — and chess was immediately reclassified as "a task that doesn\'t require real intelligence." When Deep Blue\'s winning move was analyzed, a commentator said: "Deep Blue may have beaten Kasparov, but it didn\'t get any joy out of it." Every AI achievement automatically stops being considered AI. This moving goalpost has existed since 1956.'}
             </p>
           </div>
@@ -256,8 +254,7 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
           </p>
 
           <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-6">
-            <h4 className="text-blue-400 font-bold mb-4 flex items-center gap-2">
-              <Zap size={18} />
+            <h4 className="text-blue-400 font-bold mb-4">
               {lang === 'ru' ? 'Три столпа революции 2012 года' : 'The Three Pillars of the 2012 Revolution'}
             </h4>
             <ul className="list-disc list-inside text-neutral-300 space-y-4">
@@ -367,8 +364,8 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
             {lang === 'ru' ? ' и ' : ' and '}
             <Term id="lstm">LSTM</Term>
             {lang === 'ru'
-              ? '. Они обрабатывали текст слово за словом, строго последовательно. Это было медленно, и они "забывали" контекст начала абзаца к моменту, когда дочитывали до конца.'
-              : '. They processed text word by word, strictly sequentially. This was slow, and they "forgot" the context of the beginning of a paragraph by the time they reached the end.'}
+              ? '. Они обрабатывали текст слово за словом, строго последовательно. LSTM — усовершенствованная версия RNN со специальными "ячейками памяти": она удерживает контекст заметно дольше обычной RNN, но по-прежнему читает последовательно. Поэтому оба подхода были медленными и "забывали" контекст начала абзаца к моменту, когда дочитывали до конца.'
+              : '. They processed text word by word, strictly sequentially. The LSTM is an improved version of the RNN with special "memory cells": it holds context noticeably longer than a plain RNN, but still reads sequentially. So both approaches were slow and "forgot" the context of the beginning of a paragraph by the time they reached the end.'}
           </p>
           <div className="bg-amber-500/10 border border-amber-500/20 rounded-lg p-4">
             <p className="text-sm text-neutral-300">

@@ -30,6 +30,11 @@ export interface PathMetadata {
   difficulty: LocalizedString;
   unlocked: boolean;
   /**
+   * Optional longer introduction shown on the path's own page. Falls back to
+   * `description` (the catalog blurb) when absent.
+   */
+  intro?: LocalizedString;
+  /**
    * Ordered room sequence for this path — the curriculum decision, kept here
    * rather than inferred from ROOMS_METADATA array position (which only records
    * when a room happened to be added). A room can sit at different positions in

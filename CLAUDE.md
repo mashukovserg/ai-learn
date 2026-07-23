@@ -50,9 +50,9 @@ cd backend && .venv/bin/python -m app.main      # server on :8000
 src/
 ├── app/[lang]/                  # ALL pages — [lang] = 'en' | 'ru'
 │   ├── page.tsx                 # Dashboard
-│   ├── rooms/[id]/page.tsx      # SINGLE dynamic room renderer + THEORY_COMPONENTS map
+│   ├── rooms/[id]/page.tsx      # SINGLE dynamic room renderer
 │   ├── rooms/page.tsx           # Room catalog (filters, live progress)
-│   ├── paths/                   # Learning-path pages (beginner, ideas-history, agentic-systems, agent-coding)
+│   ├── paths/[pathId]/          # single dynamic page for all learning paths (locked/unknown → 404)
 │   ├── labs/                    # agent-ops, prompt-compare (experimental tools)
 │   ├── professions/ skills/ settings/ compete/ leaderboard/ faq/ login/
 │   ├── api/labs/compare/route.ts
@@ -60,6 +60,7 @@ src/
 ├── components/
 │   ├── Task*.tsx                # 6 task renderers (see Task Types)
 │   ├── theory/<Room>Theory.tsx  # one theory component per room
+│   ├── theory/index.ts          # THEORY_COMPONENTS lazy registry (id → dynamic import)
 │   ├── Term.tsx                 # glossary hover tooltip
 │   └── ...                      # AppShell, Sidebar, Navbar, modals, charts
 ├── data/
@@ -114,7 +115,7 @@ There is **no runtime validation** of task data — malformed tasks silently bec
 1. Add metadata entry to `src/data/rooms/metadata.ts` (`ROOMS_METADATA`).
 2. Create `src/data/rooms/tasks/<room-id>.ts` and register it in `src/data/rooms/tasks/index.ts`.
 3. Create `src/components/theory/<RoomName>Theory.tsx`.
-4. Map the theory component in `THEORY_COMPONENTS` inside `src/app/[lang]/rooms/[id]/page.tsx` (unmapped rooms show a placeholder).
+4. Map the theory component in the lazy registry `src/components/theory/index.ts` (a missing mapping fails `check-all` via the registry guard).
 5. Add a data test under `src/data/rooms/__tests__/`.
 
 ### Glossary tooltips

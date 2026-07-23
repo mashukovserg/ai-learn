@@ -146,16 +146,16 @@ export const aiHistoryTasks: LocalizedTask[] = [
       },
       timeline: {
         events: [
-          { label: { ru: 'Дартмут 1956', en: 'Dartmouth 1956' }, year: '1956' },
-          { label: { ru: 'AlexNet 2012', en: 'AlexNet 2012' }, year: '2012' },
-          { label: { ru: 'Transformer 2017', en: 'Transformer 2017' }, year: '2017' },
-          { label: { ru: 'ChatGPT 2022', en: 'ChatGPT 2022' }, year: '2022' }
+          { label: { ru: 'Дартмутский семинар', en: 'The Dartmouth Workshop' }, year: '1956' },
+          { label: { ru: 'Победа AlexNet на ImageNet', en: 'AlexNet wins ImageNet' }, year: '2012' },
+          { label: { ru: 'Статья "Attention Is All You Need"', en: 'The "Attention Is All You Need" paper' }, year: '2017' },
+          { label: { ru: 'Запуск ChatGPT', en: 'ChatGPT launch' }, year: '2022' }
         ],
         correctOrder: [
-          { ru: 'Дартмут 1956', en: 'Dartmouth 1956' },
-          { ru: 'AlexNet 2012', en: 'AlexNet 2012' },
-          { ru: 'Transformer 2017', en: 'Transformer 2017' },
-          { ru: 'ChatGPT 2022', en: 'ChatGPT 2022' }
+          { ru: 'Дартмутский семинар', en: 'The Dartmouth Workshop' },
+          { ru: 'Победа AlexNet на ImageNet', en: 'AlexNet wins ImageNet' },
+          { ru: 'Статья "Attention Is All You Need"', en: 'The "Attention Is All You Need" paper' },
+          { ru: 'Запуск ChatGPT', en: 'ChatGPT launch' }
         ]
       }
     },

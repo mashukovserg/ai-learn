@@ -95,7 +95,7 @@ Known absent routes (do not assume they exist):
 
 Rooms with theory + tasks fully wired (41): **all** current `ROOMS_METADATA` entries are wired in the dynamic room route — `context-engineering-101` (AC-204) landed 2026-07-21. The inventory includes `ai-career-trajectories`, `prompt-contracts`, `mcp-tool-ecosystems`, `agentic-swarm-management`, `frontier-evals-logic`, `claude-code-agentic-loop`, `claude-code-pro-workflow`, `context-engineering-101`, `taxonomy-matching`, and the Open Models pair `local-models-101` + `llama-3-1-8b`.
 
-Theory components mapped in `THEORY_COMPONENTS` (41 total) inside `src/app/[lang]/rooms/[id]/page.tsx`. Rooms without a mapping show a fallback placeholder.
+Theory components are mapped in the lazy registry `src/components/theory/index.ts` (`THEORY_COMPONENTS`, 41 entries, `next/dynamic` — each room ships only its own theory chunk; SSR preserved). A room missing from the registry fails `check-all` via `src/components/theory/__tests__/registry.test.ts` — placeholders no longer slip through silently.
 
 ### Source of truth files (use these first)
 
@@ -107,8 +107,7 @@ When changing learning content or room behavior, prefer these files:
    - `paths.ts` — learning path metadata (`PATHS_METADATA`)
    - `tasks/<room-id>.ts` — per-room task arrays, assembled in `tasks/index.ts` as `ROOM_TASKS`
 2. `src/app/[lang]/rooms/[id]/page.tsx`
-   - Dynamic room renderer
-   - Theory component mapping
+   - Dynamic room renderer (theory mapping lives in `src/components/theory/index.ts`; task locale resolution in `src/data/rooms/resolveTask.ts`)
 3. `src/components/theory/*`
    - Theory text by room/topic
 4. `src/hooks/useProgress.ts`

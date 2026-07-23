@@ -3,6 +3,10 @@ import { PathMetadata } from './types';
 export const PATHS_METADATA: PathMetadata[] = [
   {
     id: 'beginner',
+    intro: {
+      ru: 'Этот путь разработан, чтобы дать вам твердое понимание современной эры ИИ.',
+      en: 'This path is designed to give you a rock-solid understanding of the modern AI era.',
+    },
     title: { ru: 'Основы AI', en: 'AI Foundations' },
     description: {
       ru: 'Идеальная точка входа. Изучите историю, терминологию и основные концепции LLM.',
@@ -69,6 +73,10 @@ export const PATHS_METADATA: PathMetadata[] = [
   },
   {
     id: 'agentic-systems',
+    intro: {
+      ru: 'Этот путь посвящен созданию автономных систем. Изучите, как превратить LLM из чат-бота в исполнительного агента, способного планировать и использовать инструменты.',
+      en: 'This path is dedicated to building autonomous systems. Learn how to transform an LLM from a chatbot into an executive agent capable of planning and using tools.',
+    },
     title: { ru: 'Агентские системы', en: 'Agentic Systems' },
     description: {
       ru: 'От простых чат-ботов к автономным исполнителям. Изучите, как строить системы, которые "делают", а не просто "говорят".',

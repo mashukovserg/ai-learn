@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import Term from '@/components/Term';
 
 export default function AiExistentialRiskTheory({ lang }: { lang: string }) {
   const ru = lang === 'ru';

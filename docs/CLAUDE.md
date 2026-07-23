@@ -69,6 +69,7 @@ cd backend && .venv/bin/python -m app.main
 src/
 ├── app/[lang]/              # Locale-based routing — all pages live here
 │   ├── rooms/[id]/page.tsx  # Single dynamic room renderer (not per-room files)
+│   ├── paths/[pathId]/      # Single dynamic learning-path page
 │   ├── paths/               # Learning path pages
 │   ├── labs/                # Experimental features (Agent Ops, Prompt Compare)
 │   └── ...

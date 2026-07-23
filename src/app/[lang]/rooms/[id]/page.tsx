@@ -14,97 +14,12 @@ import TaskScenario from '@/components/TaskScenario';
 import CompletionModal from '@/components/CompletionModal';
 import { useProgress } from '@/hooks/useProgress';
 import { ROOMS_METADATA, ROOM_TASKS, getNextRoomInPath } from '@/data/rooms';
+import { resolveTask } from '@/data/rooms/resolveTask';
+import { THEORY_COMPONENTS } from '@/components/theory';
 import { notFound } from 'next/navigation';
 
-// For now, we'll import theory components directly.
-// In a real project, these could be MDX files.
-import LlmMechanicsTheory from '@/components/theory/LlmMechanicsTheory';
-import LlmLandscapeTheory from '@/components/theory/LlmLandscapeTheory';
-import AiHistoryTheory from '@/components/theory/AiHistoryTheory';
-import ChatgptMomentTheory from '@/components/theory/ChatgptMomentTheory';
-import PostChatgptHistoryTheory from '@/components/theory/PostChatgptHistoryTheory';
-import AiImageCreationTheory from '@/components/theory/AiImageCreationTheory';
-import Prompting101Theory from '@/components/theory/Prompting101Theory';
-import AiCareerTrajectoriesTheory from '@/components/theory/AiCareerTrajectoriesTheory';
-import ScalingHypothesisTheory from '@/components/theory/ScalingHypothesisTheory';
-import ResearchGroundingTheory from '@/components/theory/ResearchGroundingTheory';
-import AiAlignmentTheory from '@/components/theory/AiAlignmentTheory';
-import NativeMultimodalityTheory from '@/components/theory/NativeMultimodalityTheory';
-import AiAgentsTheory from '@/components/theory/AiAgentsTheory';
-import DeepSearchAgentsTheory from '@/components/theory/DeepSearchAgentsTheory';
-import AiRagTheory from '@/components/theory/AiRagTheory';
-import AiSecurityTheory from '@/components/theory/AiSecurityTheory';
-import AiResearchTheory from '@/components/theory/AiResearchTheory';
-import FineTuning101Theory from '@/components/theory/FineTuning101Theory';
-import LocalModels101Theory from '@/components/theory/LocalModels101Theory';
-import TaxonomyMatchingTheory from '@/components/theory/TaxonomyMatchingTheory';
-import Llama318bTheory from '@/components/theory/Llama318bTheory';
-import AiSingularityTheory from "@/components/theory/AiSingularityTheory";
-import PromptEvalsTheory from "@/components/theory/PromptEvalsTheory";
-import Embeddings101Theory from "@/components/theory/Embeddings101Theory";
-import LlmGuardrailsTheory from "@/components/theory/LlmGuardrailsTheory";
-import AiRegulationRuTheory from "@/components/theory/AiRegulationRuTheory";
-import AiRegulationEuTheory from "@/components/theory/AiRegulationEuTheory";
-import AgentCodingFoundationsTheory from '@/components/theory/AgentCodingFoundationsTheory';
-import AgenticCodingToolsTheory from '@/components/theory/AgenticCodingToolsTheory';
-import AgenticCliToolsTheory from '@/components/theory/AgenticCliToolsTheory';
-import PromptContractsTheory from '@/components/theory/PromptContractsTheory';
-import MultiAgentCollaborationTheory from '@/components/theory/MultiAgentCollaborationTheory';
-import AgenticTestingLoopTheory from '@/components/theory/AgenticTestingLoopTheory';
-import AgenticUiDeliveryTheory from '@/components/theory/AgenticUiDeliveryTheory';
-import McpToolEcosystemsTheory from '@/components/theory/McpToolEcosystemsTheory';
-import AgenticSwarmTheory from '@/components/theory/AgenticSwarmTheory';
-import FrontierEvalsTheory from '@/components/theory/FrontierEvalsTheory';
-import ClaudeCodeAgenticLoopTheory from '@/components/theory/ClaudeCodeAgenticLoopTheory';
-import ClaudeCodeProWorkflowTheory from '@/components/theory/ClaudeCodeProWorkflowTheory';
-import ContextEngineering101Theory from '@/components/theory/ContextEngineering101Theory';
-import AiExistentialRiskTheory from '@/components/theory/AiExistentialRiskTheory';
 import PromptPlayground from '@/components/PromptPlayground';
 import { PLAYGROUND_CONFIGS } from '@/data/rooms/playgroundConfigs';
-
-const THEORY_COMPONENTS: Record<string, React.ComponentType<{ lang: string }>> = {
-  'llm-mechanics': LlmMechanicsTheory,
-  'llm-landscape': LlmLandscapeTheory,
-  'ai-history': AiHistoryTheory,
-  'ai-career-trajectories': AiCareerTrajectoriesTheory,
-  'chatgpt-moment': ChatgptMomentTheory,
-  'post-chatgpt-history': PostChatgptHistoryTheory,
-  'ai-image-creation': AiImageCreationTheory,
-  'prompting-101': Prompting101Theory,
-  'scaling-hypothesis': ScalingHypothesisTheory,
-  'research-grounding': ResearchGroundingTheory,
-  'ai-alignment': AiAlignmentTheory,
-  'native-multimodality': NativeMultimodalityTheory,
-  'ai-agents': AiAgentsTheory,
-  'deep-search-agents': DeepSearchAgentsTheory,
-  'ai-rag': AiRagTheory,
-  'ai-security': AiSecurityTheory,
-  'ai-research': AiResearchTheory,
-  'fine-tuning-101': FineTuning101Theory,
-  'local-models-101': LocalModels101Theory,
-  'llama-3-1-8b': Llama318bTheory,
-  'prompt-evals': PromptEvalsTheory,
-  'ai-singularity': AiSingularityTheory,
-  'embeddings-101': Embeddings101Theory,
-  'llm-guardrails': LlmGuardrailsTheory,
-  'ai-regulation-ru': AiRegulationRuTheory,
-  'ai-regulation-eu': AiRegulationEuTheory,
-  'agent-coding-foundations': AgentCodingFoundationsTheory,
-  'agentic-coding-tools': AgenticCodingToolsTheory,
-  'agentic-cli-tools': AgenticCliToolsTheory,
-  'prompt-contracts': PromptContractsTheory,
-  'multi-agent-collaboration': MultiAgentCollaborationTheory,
-  'agentic-testing-loop': AgenticTestingLoopTheory,
-  'agentic-ui-delivery': AgenticUiDeliveryTheory,
-  'mcp-tool-ecosystems': McpToolEcosystemsTheory,
-  'agentic-swarm-management': AgenticSwarmTheory,
-  'frontier-evals-logic': FrontierEvalsTheory,
-  'claude-code-agentic-loop': ClaudeCodeAgenticLoopTheory,
-  'claude-code-pro-workflow': ClaudeCodeProWorkflowTheory,
-  'context-engineering-101': ContextEngineering101Theory,
-  'ai-existential-risk': AiExistentialRiskTheory,
-  'taxonomy-matching': TaxonomyMatchingTheory,
-};
 
 const DefaultTheory = () => <div className="p-8 text-neutral-500">Theory content coming soon...</div>;
 
@@ -121,66 +36,12 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
 
   const { completedIds, markCompleted: persistCompleted, resetProgress } = useProgress(id);
 
-  // Initialize tasks with completion status from progress
+  // Initialize tasks with completion status from progress.
+  // Locale resolution lives in resolveTask (src/data/rooms/resolveTask.ts),
+  // where it is unit-testable; this component only adds completion state.
   const [tasks, setTasks] = useState(localizedTasks ? localizedTasks.map(t => ({
-    ...t,
-    question: t.question[lang as 'en' | 'ru'],
-    explanation: t.explanation[lang as 'en' | 'ru'],
-    answer: Array.isArray(t.answer) 
-      ? t.answer.map(a => typeof a === 'object' && a !== null && 'en' in a ? (a as unknown as Record<string, string>)[lang] : a)
-      : (typeof t.answer === 'object' && t.answer !== null && 'en' in t.answer ? (t.answer as unknown as Record<string, string>)[lang] : t.answer),
-    hint: t.hint ? t.hint[lang as 'en' | 'ru'] : undefined,
-    image: t.image ? {
-      src: t.image.src,
-      alt: t.image.alt[lang as 'en' | 'ru'],
-      caption: t.image.caption ? t.image.caption[lang as 'en' | 'ru'] : undefined,
-    } : undefined,
-    options: t.options?.map(o => typeof o === 'object' ? o[lang as 'en' | 'ru'] : o),
-    initialItems: t.initialItems?.map(o => typeof o === 'object' ? o[lang as 'en' | 'ru'] : o),
-    correctOrder: t.correctOrder?.map(o => typeof o === 'object' ? o[lang as 'en' | 'ru'] : o),
-    dialogue: t.dialogue ? {
-      mentorMessage: t.dialogue.mentorMessage[lang as 'en' | 'ru'],
-      userOptions: t.dialogue.userOptions.map(o => ({
-        text: o.text[lang as 'en' | 'ru'],
-        reaction: o.reaction[lang as 'en' | 'ru'],
-        isCorrect: o.isCorrect,
-        deepening: o.deepening ? o.deepening[lang as 'en' | 'ru'] : undefined,
-      }))
-    } : undefined,
-    categorize: t.categorize ? (() => {
-      const resolvedItems = t.categorize!.items.map(i => typeof i === 'object' ? i[lang as 'en' | 'ru'] : i);
-      const resolvedBuckets = t.categorize!.buckets.map(b => typeof b === 'object' ? b[lang as 'en' | 'ru'] : b);
-      const rawItems = t.categorize!.items.map(i => typeof i === 'object' ? i['en'] : i);
-      const rawBuckets = t.categorize!.buckets.map(b => typeof b === 'object' ? b['en'] : b);
-      const resolvedMapping: Record<string, string> = {};
-      for (const [rawItem, rawBucket] of Object.entries(t.categorize!.correctMapping)) {
-        const itemIdx = rawItems.indexOf(rawItem);
-        const bucketIdx = rawBuckets.indexOf(rawBucket);
-        if (itemIdx !== -1 && bucketIdx !== -1) {
-          resolvedMapping[resolvedItems[itemIdx]] = resolvedBuckets[bucketIdx];
-        }
-      }
-      return { items: resolvedItems, buckets: resolvedBuckets, correctMapping: resolvedMapping };
-    })() : undefined,
-    timeline: t.timeline ? {
-      events: t.timeline.events.map(e => ({
-        label: typeof e.label === 'object' ? e.label[lang as 'en' | 'ru'] : e.label,
-        year: e.year,
-      })),
-      correctOrder: t.timeline.correctOrder.map(l => typeof l === 'object' ? l[lang as 'en' | 'ru'] : l),
-    } : undefined,
-    scenario: t.scenario ? {
-      brief: t.scenario.brief[lang as 'en' | 'ru'],
-      constraints: t.scenario.constraints.map(c => c[lang as 'en' | 'ru']),
-      choices: t.scenario.choices.map(c => ({
-        text: c.text[lang as 'en' | 'ru'],
-        outcome: c.outcome[lang as 'en' | 'ru'],
-        score: c.score,
-        tags: c.tags,
-      })),
-      passingScore: t.scenario.passingScore,
-    } : undefined,
-    completed: completedIds.has(t.id)
+    ...resolveTask(t, lang),
+    completed: completedIds.has(t.id),
   })) : []);
 
   // Success modal state

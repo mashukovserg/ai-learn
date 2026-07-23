@@ -1,14 +1,33 @@
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import { ChevronLeft, Play } from 'lucide-react';
 import { getRoomsByPath, PATHS_METADATA } from '@/data/rooms';
 
-export default async function AgenticSystemsPathPage(props: {
-  params: Promise<{ lang: string }>;
+/**
+ * Single dynamic page for every learning path. Replaced four copy-pasted
+ * per-path pages (beginner / ideas-history / agentic-systems / agent-coding)
+ * that differed only in the path id and the intro paragraph — the intro now
+ * lives in PATHS_METADATA (`intro`, falling back to `description`).
+ *
+ * Locked paths and unknown ids 404, which preserves the old behaviour where
+ * locked paths simply had no page.
+ */
+export function generateStaticParams() {
+  return PATHS_METADATA.filter(p => p.unlocked).map(p => ({ pathId: p.id }));
+}
+
+export default async function PathPage(props: {
+  params: Promise<{ lang: string; pathId: string }>;
 }) {
-  const { lang } = await props.params;
+  const { lang, pathId } = await props.params;
   const l = lang as 'en' | 'ru';
-  const rooms = getRoomsByPath('agentic-systems');
-  const pathMeta = PATHS_METADATA.find(p => p.id === 'agentic-systems')!;
+
+  const pathMeta = PATHS_METADATA.find(p => p.id === pathId);
+  if (!pathMeta || !pathMeta.unlocked) {
+    notFound();
+  }
+
+  const rooms = getRoomsByPath(pathId);
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -23,9 +42,7 @@ export default async function AgenticSystemsPathPage(props: {
       <div className="mb-12">
         <h1 className="text-2xl font-semibold mb-3 text-neutral-200">{pathMeta.title[l]}</h1>
         <p className="text-neutral-500 text-sm max-w-2xl leading-relaxed">
-          {lang === 'ru'
-            ? 'Этот путь посвящен созданию автономных систем. Изучите, как превратить LLM из чат-бота в исполнительного агента, способного планировать и использовать инструменты.'
-            : 'This path is dedicated to building autonomous systems. Learn how to transform an LLM from a chatbot into an executive agent capable of planning and using tools.'}
+          {(pathMeta.intro ?? pathMeta.description)[l]}
         </p>
       </div>
 
