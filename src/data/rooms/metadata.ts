@@ -277,6 +277,23 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     icon: 'ShieldCheck',
   },
   {
+    id: 'agentic-release-control',
+    title: {
+      ru: 'AC-205: Релизный контур для агентного кода',
+      en: 'AC-205: Release Control for Agent-Written Code',
+    },
+    description: {
+      ru: 'Что происходит после зелёного локального прогона: обязательные проверки и права, ревью агентского пул-реквеста, канареечный выкат с флагами и откат как штатная операция.',
+      en: 'What happens after the green local run: required checks and permissions, reviewing an agent’s pull request, canary rollout with feature flags, and rollback as a routine operation.',
+    },
+    difficulty: 'Intermediate',
+    time: { ru: '35 мин', en: '35m' },
+    category: { ru: 'Агентная разработка', en: 'Agent Coding' },
+    image: '/images/how-llm-think-progress.png',
+    pathIds: ['agent-coding'],
+    icon: 'Rocket',
+  },
+  {
     id: 'agentic-ui-delivery',
     title: { ru: 'AC-203: Агентная UI-доставка', en: 'AC-203: Agentic UI Delivery' },
     description: {

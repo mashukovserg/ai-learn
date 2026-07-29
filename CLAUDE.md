@@ -65,7 +65,7 @@ src/
 │   └── ...                      # AppShell, Sidebar, Navbar, modals, charts
 ├── data/
 │   ├── rooms/                   # SINGLE SOURCE OF TRUTH for room content
-│   │   ├── metadata.ts          # ROOMS_METADATA (42 rooms)
+│   │   ├── metadata.ts          # ROOMS_METADATA (43 rooms)
 │   │   ├── paths.ts             # PATHS_METADATA
 │   │   ├── types.ts             # LocalizedString, LocalizedTask, LocalizedRoomMetadata, PathMetadata
 │   │   ├── tasks/<room-id>.ts   # per-room task arrays → assembled in tasks/index.ts as ROOM_TASKS
@@ -156,6 +156,7 @@ These are enforced conventions, not suggestions. Read `docs/AGENTS.md` for full 
 - **Task ID sequencing** — IDs within a room are sequential integers starting at `1`, no gaps or duplicates (progress % breaks otherwise).
 - **Task mix rule** — every room includes at least one `sorting` or `mentor` task; never MCQ/input-only.
 - **Chapter depth gate** — each theory chapter has ≥240 words and ≥4 paragraphs per language, unless explicitly labeled `Short block` / `Краткий блок`. Applies fully to new/edited chapters; pre-2026-07-23 chapters are tracked debt (thicken when touching a room).
+- **Screenshots / visual variety gate** — screenshots are a core design element used **proactively** to keep theory pages diversified and varied (not walls of prose). Aim for ≥1 genuine visual exhibit in every content-heavy room; actively seek suitable spots — product UIs, neutral-instrument charts (e.g. Wikimedia Pageviews), catalogs, benchmark leaderboards, primary-source docs. Guardrails are mandatory: real captures only (no mocked/AI-generated/doctored UI), the interpretive "sandwich" (intro above, meaning below), accent-border framing via `next/image`, bilingual `alt`/caption, and the solvability guard (a screenshot never spoils a task's answer). Suitability beats quota — never ship filler. Full rule: `docs/AGENTS.md` → "Product screenshots".
 - **Anti-Vibecode frontend gate** — single-column narrative flow (no default 2-column split for long text), left-aligned body/summary, no full-paragraph italics, no decorative glow/neon, **no leading icons in headings**, analytical (non-hype) tone.
 - **Forbidden phrasing** — never use `это не просто` or the word `вендор` (any case form) in authored text, docs, or replies; use concrete alternatives (`поставщик модели`, `платформа`, etc.).
 - **Docs sync / completion checklist** — when behavior, setup, or content changes, update in the same task: `README.md`, `docs/PROGRESS.md`, `docs/BACKLOG.md` (log completed work with a `(by <agent>)` tag), and `docs/CURRICULUM.md` / `docs/DEPLOYMENT.md` where relevant. Update Russian mirrors (`*.ru.md`) when they exist.
@@ -164,7 +165,7 @@ These are enforced conventions, not suggestions. Read `docs/AGENTS.md` for full 
 
 ## Current State & Limitations
 
-- **42 rooms** in `ROOMS_METADATA`, all 42 fully wired (theory + tasks) — `local-rag-docs` landed 2026-07-23.
+- **43 rooms** in `ROOMS_METADATA`, all 43 fully wired (theory + tasks) — `agentic-release-control` landed 2026-07-29.
 - `compete/` and `leaderboard/` render bilingual "coming soon" placeholder pages; no ranking/competition backend yet (the `leaderboard` backend package is a stub with no router).
 - Agent Ops cycle scheduling is **manual** (`POST /api/agent/cycle/run`); no periodic scheduler.
 

@@ -80,6 +80,7 @@
 - [x] **AC-201: CLI Tools for Agent Coding** (`agentic-cli-tools`) — terminal workflow discipline, discovery/change/verify loop, quality gates, and rollback routines.
   - *2026-04-05 update:* theory delivery was restructured into shorter practical blocks with explicit CLI loop model, concrete command examples, verify matrix, role split, and execution checklist.
 - [x] **AC-202: Agentic Testing Loop** (`agentic-testing-loop`) — 10 tasks; test-first prompting, regression safety, failure triage.
+- [x] **AC-205: Release Control for Agent-Written Code** (`agentic-release-control`) — 11 tasks; local run vs shared CI, quality gates and branch protection, who may start checks and merge, reviewing an agent's pull request, canary + feature flags + metric thresholds, rollback and the autonomy budget.
 - [x] **AC-203: Agentic UI Delivery** (`agentic-ui-delivery`) — 10 tasks; responsive implementation, accessibility checks, component consistency.
 - [x] **AC-204: Context Engineering 101** (`context-engineering-101`) — 12 tasks; context layers, window economics (ROI test, context rot), knowledge artifacts (rule/fact/procedure/role → constitution/index/skill/agent), hygiene cycle, compaction.
 

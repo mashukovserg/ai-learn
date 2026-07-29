@@ -51,6 +51,7 @@ export const THEORY_COMPONENTS: Record<string, ComponentType<{ lang: string }>> 
   'multi-agent-collaboration': dynamic(() => import('./MultiAgentCollaborationTheory'), { loading }),
   'agentic-testing-loop': dynamic(() => import('./AgenticTestingLoopTheory'), { loading }),
   'agentic-ui-delivery': dynamic(() => import('./AgenticUiDeliveryTheory'), { loading }),
+  'agentic-release-control': dynamic(() => import('./AgenticReleaseControlTheory'), { loading }),
   'mcp-tool-ecosystems': dynamic(() => import('./McpToolEcosystemsTheory'), { loading }),
   'agentic-swarm-management': dynamic(() => import('./AgenticSwarmTheory'), { loading }),
   'frontier-evals-logic': dynamic(() => import('./FrontierEvalsTheory'), { loading }),

@@ -118,6 +118,7 @@ export const PATHS_METADATA: PathMetadata[] = [
       'agentic-cli-tools',             // AC-201
       'context-engineering-101',       // AC-204
       'agentic-testing-loop',          // AC-202
+      'agentic-release-control',       // AC-205 — the local loop is green; who lets it into prod
       'agentic-ui-delivery',           // AC-203
       'mcp-tool-ecosystems',
       'claude-code-pro-workflow',      // Advanced
