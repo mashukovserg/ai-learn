@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Term from '@/components/Term';
-import Image from 'next/image';
+import Screenshot from '@/components/Screenshot';
 import { Clock, Zap, Award, AlertCircle, MessageSquare, Globe, TrendingUp } from 'lucide-react';
 
 export default function ChatgptMomentTheory({ lang }: { lang: string }) {
@@ -41,24 +41,17 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
           </p>
         </div>
 
-        <figure className="my-6">
-          <div className="rounded-xl border-2 border-accent-400/60 overflow-hidden">
-            <Image
-              src="/images/rooms/chatgpt-moment/wikipedia-pageviews-chatgpt.png"
-              alt={lang === 'ru'
-                ? 'График Wikimedia Pageviews: просмотры статьи "ChatGPT" в англоязычной Википедии — ноль до 30 ноября 2022, затем взрывной рост до сотен тысяч в день'
-                : 'Wikimedia Pageviews chart: views of the English Wikipedia article "ChatGPT" — zero before November 30, 2022, then an explosion to hundreds of thousands a day'}
-              width={1280}
-              height={650}
-              className="w-full h-auto"
-            />
-          </div>
-          <figcaption className="text-xs text-neutral-500 mt-2">
-            {lang === 'ru'
-              ? 'Просмотры статьи "ChatGPT" в англоязычной Википедии, ноябрь 2022 — декабрь 2023 (скриншот инструмента Wikimedia Pageviews)'
-              : 'Views of the English Wikipedia article "ChatGPT", November 2022 – December 2023 (screenshot of the Wikimedia Pageviews tool)'}
-          </figcaption>
-        </figure>
+        <Screenshot
+          src="/images/rooms/chatgpt-moment/wikipedia-pageviews-chatgpt.png"
+          alt={lang === 'ru'
+            ? 'График Wikimedia Pageviews: просмотры статьи "ChatGPT" в англоязычной Википедии — ноль до 30 ноября 2022, затем взрывной рост до сотен тысяч в день'
+            : 'Wikimedia Pageviews chart: views of the English Wikipedia article "ChatGPT" — zero before November 30, 2022, then an explosion to hundreds of thousands a day'}
+          width={1280}
+          height={650}
+          caption={lang === 'ru'
+            ? 'Просмотры статьи "ChatGPT" в англоязычной Википедии, ноябрь 2022 — декабрь 2023 (скриншот инструмента Wikimedia Pageviews). Нажмите, чтобы рассмотреть.'
+            : 'Views of the English Wikipedia article "ChatGPT", November 2022 – December 2023 (screenshot of the Wikimedia Pageviews tool). Tap to view larger.'}
+        />
 
         <p className="text-neutral-300 leading-relaxed mb-6">
           {lang === 'ru'

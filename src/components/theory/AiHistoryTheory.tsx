@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Term from '@/components/Term';
-import Image from 'next/image';
+import Screenshot from '@/components/Screenshot';
 
 export default function AiHistoryTheory({ lang }: { lang: string }) {
   return (
@@ -77,24 +77,17 @@ export default function AiHistoryTheory({ lang }: { lang: string }) {
             </div>
           </div>
 
-          <figure className="my-6">
-            <div className="rounded-xl border-2 border-accent-400/60 overflow-hidden">
-              <Image
-                src="/images/rooms/ai-history/dartmouth-proposal-stanford.png"
-                alt={lang === 'ru'
-                  ? 'Первая страница Дартмутской заявки 1955 года: Маккарти, Минский, Рочестер, Шеннон — «двухмесячное исследование ИИ с участием десяти человек»'
-                  : 'The first page of the 1955 Dartmouth proposal: McCarthy, Minsky, Rochester, Shannon — "a 2 month, 10 man study of artificial intelligence"'}
-                width={1280}
-                height={650}
-                className="w-full h-auto"
-              />
-            </div>
-            <figcaption className="text-xs text-neutral-500 mt-2">
-              {lang === 'ru'
-                ? 'Заявка на Дартмутский летний проект (31 августа 1955) — скриншот страницы стэнфордского архива Маккарти'
-                : 'The Dartmouth Summer Research Project proposal (August 31, 1955) — screenshot of the Stanford McCarthy archive page'}
-            </figcaption>
-          </figure>
+          <Screenshot
+            src="/images/rooms/ai-history/dartmouth-proposal-stanford.png"
+            alt={lang === 'ru'
+              ? 'Первая страница Дартмутской заявки 1955 года: Маккарти, Минский, Рочестер, Шеннон — «двухмесячное исследование ИИ с участием десяти человек»'
+              : 'The first page of the 1955 Dartmouth proposal: McCarthy, Minsky, Rochester, Shannon — "a 2 month, 10 man study of artificial intelligence"'}
+            width={1280}
+            height={650}
+            caption={lang === 'ru'
+              ? 'Заявка на Дартмутский летний проект (31 августа 1955) — скриншот страницы стэнфордского архива Маккарти. Нажмите, чтобы рассмотреть.'
+              : 'The Dartmouth Summer Research Project proposal (August 31, 1955) — screenshot of the Stanford McCarthy archive page. Tap to view larger.'}
+          />
 
           <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru' ? (
