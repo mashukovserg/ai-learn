@@ -296,6 +296,7 @@ Either no choice meets `passingScore` (default `60`), or a choice has a score ou
 - [ ] Launch DEC-002 implementation track for AI Learn Platform (`dec-002-platform-pipeline`): adapt Agent Ops into a terminal-session autonomous loop with 3 autonomy levels, Telegram approval gates, tiered review loop, quiet hours, and 4-hour digest cadence.
 
 ## Future Content (Room Pipeline)
+- [ ] **Literature Review in the AI Era** (`ai-literature-review`) — running a rigorous literature review with AI tools: query decomposition, source triage, deduplication, systematic screening (PRISMA-style), citation verification, synthesis, and guarding against hallucinated/nonexistent references. **Must cross-link with `deep-search-agents` (both ways):** deep-search teaches the general multi-wave search → verify → synthesize loop; this room applies that loop to academic literature. In `deep-search-agents`, add a "see also" pointer to this room; here, open by referencing deep-search as the prerequisite technique. (requested by owner 2026-07-24)
 - [ ] **Room 203: EvalOps Basics** — Build eval sets, score prompts/models, regression checks.
 - [ ] **Room 301: AI Product Systems** — Routing, fallback, cost controls, incident playbooks.
 - [ ] **AI Ethics & Bias** (`ai-ethics-bias`) — Training data bias, fairness metrics, case studies, responsible deployment.
