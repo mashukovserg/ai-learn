@@ -237,6 +237,38 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
       en: 'Guardrails are technical and product-level constraints for LLM systems: input filtering, argument validation, permission limits, escalation rules, and blocking quality gates before release.'
     }
   },
+  'quality-gate': {
+    id: 'quality-gate',
+    term: { ru: 'Quality gate', en: 'Quality Gate' },
+    definition: {
+      ru: 'Quality gate — блокирующее условие перед выпуском: сборка, линтеры, тесты, проверки безопасности. Это не один общий тест, а набор независимых проверок, и любая непройденная останавливает слияние ветки или выкат в прод.',
+      en: 'A quality gate is a blocking condition before release: build, linters, tests, security checks. It is not one big test but a set of independent checks — any failing check stops the merge or the rollout.'
+    }
+  },
+  'branch-protection': {
+    id: 'branch-protection',
+    term: { ru: 'Защита ветки', en: 'Branch Protection' },
+    definition: {
+      ru: 'Правило репозитория, которое запрещает пушить напрямую в основную ветку и требует, чтобы перечисленные проверки закончились успехом, а изменение прошло ревью. Именно защита ветки делает quality gate не обходимым.',
+      en: 'A repository rule that forbids pushing straight to the main branch and requires the listed checks to pass and the change to be reviewed. Branch protection is what makes a quality gate impossible to bypass.'
+    }
+  },
+  'canary-release': {
+    id: 'canary-release',
+    term: { ru: 'Canary (канареечный выпуск)', en: 'Canary Release' },
+    definition: {
+      ru: 'Canary — выкат, при котором новая версия сначала получает небольшую долю трафика. Её метрики сравнивают с остальной частью; выкат расширяют только при отсутствии деградации, а при плохих сигналах трафик возвращают на прежнюю версию.',
+      en: 'A canary release routes a small share of traffic to the new version first. Its metrics are compared against the rest of the fleet; the rollout expands only if nothing degrades, and traffic returns to the previous version when signals look bad.'
+    }
+  },
+  'feature-flag': {
+    id: 'feature-flag',
+    term: { ru: 'Feature flag (фича-флаг)', en: 'Feature Flag' },
+    definition: {
+      ru: 'Feature flag — переключатель, который управляет поведением кода без нового деплоя. Функция уезжает в прод выключенной, включается для части пользователей и выключается одним изменением конфигурации, поэтому откат стоит дёшево.',
+      en: 'A feature flag is a switch that controls code behavior without a new deployment. A feature ships to production turned off, is enabled for a subset of users, and is turned off again by a single config change — which makes rollback cheap.'
+    }
+  },
   'multimodality': {
     id: 'multimodality',
     term: { ru: 'Мультимодальность', en: 'Multimodality' },
