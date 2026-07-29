@@ -277,6 +277,40 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     icon: 'ShieldCheck',
   },
   {
+    id: 'git-safety-net',
+    title: {
+      ru: 'AC-105: Git как страховка агентной работы',
+      en: 'AC-105: Git as a Safety Net for Agent Work',
+    },
+    description: {
+      ru: 'Читать diff чужого изменения, коммитить так, чтобы откат стоил дёшево, и уверенно отменять: revert, reset, stash и reflog. Плюс ветка и worktree на задачу, когда агентов несколько.',
+      en: 'Read a diff you did not write, commit so that undo stays cheap, and reverse changes with confidence: revert, reset, stash, and the reflog. Plus a branch and a worktree per task when several agents are running.',
+    },
+    difficulty: 'Beginner',
+    time: { ru: '30 мин', en: '30m' },
+    category: { ru: 'Агентная разработка', en: 'Agent Coding' },
+    image: '/images/how-llm-think-progress.png',
+    pathIds: ['agent-coding'],
+    icon: 'GitBranch',
+  },
+  {
+    id: 'github-actions-ci',
+    title: {
+      ru: 'AC-206: CI своими руками — GitHub Actions',
+      en: 'AC-206: Build Your Own CI with GitHub Actions',
+    },
+    description: {
+      ru: 'От чистой машины до обязательной проверки в пул-реквесте: анатомия workflow, триггеры и джобы, кэш и матрица, секреты и права токена, артефакты и разбор красного прогона.',
+      en: 'From a clean machine to a required check on a pull request: workflow anatomy, triggers and jobs, caching and matrices, secrets and token permissions, artifacts, and how to read a red run.',
+    },
+    difficulty: 'Intermediate',
+    time: { ru: '35 мин', en: '35m' },
+    category: { ru: 'Агентная разработка', en: 'Agent Coding' },
+    image: '/images/how-llm-think-progress.png',
+    pathIds: ['agent-coding'],
+    icon: 'Workflow',
+  },
+  {
     id: 'agentic-release-control',
     title: {
       ru: 'AC-205: Релизный контур для агентного кода',

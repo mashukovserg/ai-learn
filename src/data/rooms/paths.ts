@@ -112,12 +112,14 @@ export const PATHS_METADATA: PathMetadata[] = [
     roomIds: [
       'agent-coding-foundations',      // AC-101
       'agentic-coding-tools',          // AC-102
+      'git-safety-net',                // AC-105 — read the diff, undo cheaply; everything below assumes it
       'prompt-contracts',              // AC-103
       'multi-agent-collaboration',     // AC-104
       'claude-code-agentic-loop',      // how the loop runs
       'agentic-cli-tools',             // AC-201
       'context-engineering-101',       // AC-204
       'agentic-testing-loop',          // AC-202
+      'github-actions-ci',             // AC-206 — author the checks…
       'agentic-release-control',       // AC-205 — the local loop is green; who lets it into prod
       'agentic-ui-delivery',           // AC-203
       'mcp-tool-ecosystems',

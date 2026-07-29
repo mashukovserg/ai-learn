@@ -13,6 +13,7 @@ import {
   Database,
   Eye,
   FileCode,
+  GitBranch,
   Globe,
   Image as ImageIcon,
   MessageSquare,
@@ -29,6 +30,7 @@ import {
   TrendingUp,
   Users,
   Waves,
+  Workflow,
   Wrench,
 } from 'lucide-react';
 import { ROOM_TASKS, ROOMS_METADATA } from '@/data/rooms';
@@ -76,6 +78,8 @@ const ICON_MAP: Record<string, React.ComponentType<{ size?: number; strokeWidth?
   Globe,
   Wrench,
   RefreshCw,
+  GitBranch,
+  Workflow,
 };
 
 function createInitialRoomSnapshots(): Record<string, RoomProgressSnapshot> {
