@@ -176,7 +176,17 @@ The GUI counterpart of the Terminal rule (reference pattern: TryHackMe's task pa
 
 - **The sandwich structure (mandatory):** a screenshot never floats alone. Text above introduces what the tool is and what the reader is about to see; the screenshot shows it; text below tells the reader how to interpret what's shown and its caveats. A screenshot with no interpretive text after it is decoration, not teaching.
 - **Authenticity:** only genuine captures of the real product. No mocked-up UI, no AI-generated fake interfaces, no doctored numbers — a learner must be able to open the product and see the same thing. Crop to the relevant region; blur or avoid personal data (emails, tokens, account names).
-- **Framing:** wrap in a rounded container with a visible accent border so the screenshot reads as a deliberate exhibit, not a pasted image: `rounded-xl border-2 border-cyan-400/60 overflow-hidden` (reuse an accent already present in the chapter; border tokens stay for surfaces, the accent border marks "this is an exhibit"). Render via `next/image` with explicit `width`/`height`.
+- **Use the `<Screenshot>` component (do NOT hand-roll the markup):** `src/components/Screenshot.tsx` is the first-class exhibit component. It renders the accent-bordered frame, is clickable, and opens a **full-screen lightbox** so learners can open the screenshot and read the details up close (essential on mobile — an inline thumbnail is unreadable). Close with ✕ / backdrop click / Escape.
+  ```tsx
+  import Screenshot from '@/components/Screenshot';
+  <Screenshot
+    src="/images/rooms/<room-id>/<name>.png"
+    alt={lang === 'ru' ? '…' : '…'}
+    width={1280} height={650}
+    caption={lang === 'ru' ? '… Нажмите, чтобы рассмотреть.' : '… Tap to view larger.'}
+  />
+  ```
+  Props: `src`, `alt` (resolved bilingual string), `width`/`height` (intrinsic size for `next/image`), optional `caption` (bilingual), optional `border` (defaults to `border-accent-400/60`). The default frame is `rounded-xl border-2 border-accent-400/60 overflow-hidden`; the accent border marks "this is an exhibit". Prefer this component over a hand-written `<figure>` + `next/image` block.
 - **Dark captures preferred:** when the product has a dark theme, capture in dark — it sits naturally on both platform themes, same logic as the Terminal staying dark on light UI.
 - **Assets:** `public/images/rooms/<room-id>/` for theory screenshots (task illustrations keep their existing `public/images/tasks/<room-id>/` convention). Prefer `.webp`/`.png`, keep files reasonably sized; name descriptively (`virustotal-detection-tab.webp`, not `screen1.png`).
 - **Localization:** `alt` is mandatory and bilingual (resolve `ru`/`en` at the call site, like Terminal strings); an optional caption must also be bilingual. The screenshot itself may show an English UI — that's authentic — but everything the platform renders around it ships in both locales.

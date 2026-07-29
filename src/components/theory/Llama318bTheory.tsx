@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Term from '@/components/Term';
-import Image from 'next/image';
+import Screenshot from '@/components/Screenshot';
 import Terminal from '@/components/Terminal';
 import { Flame, Globe, Cpu, Scale, Wrench, AlertTriangle } from 'lucide-react';
 
@@ -242,24 +242,17 @@ export default function Llama318bTheory({ lang }: { lang: string }) {
                   { out: '>>> ' + (lang === 'ru' ? 'готов к запросам' : 'ready for prompts'), tone: 'ok' },
                 ]}
               />
-              <figure className="mt-4">
-                <div className="rounded-xl border-2 border-accent-400/60 overflow-hidden">
-                  <Image
-                    src="/images/rooms/llama-3-1-8b/ollama-library-llama31.png"
-                    alt={lang === 'ru'
-                      ? 'Страница llama3.1 в каталоге Ollama: 117,6 млн загрузок, теги 8b/70b/405b и команда ollama run llama3.1'
-                      : 'The llama3.1 page in the Ollama library: 117.6M downloads, 8b/70b/405b tags, and the ollama run llama3.1 command'}
-                    width={1280}
-                    height={900}
-                    className="w-full h-auto"
-                  />
-                </div>
-                <figcaption className="text-xs text-neutral-500 mt-2">
-                  {lang === 'ru'
-                    ? 'Карточка llama3.1 в каталоге ollama.com/library (скриншот)'
-                    : 'The llama3.1 entry in the ollama.com/library catalog (screenshot)'}
-                </figcaption>
-              </figure>
+              <Screenshot
+                src="/images/rooms/llama-3-1-8b/ollama-library-llama31.png"
+                alt={lang === 'ru'
+                  ? 'Страница llama3.1 в каталоге Ollama: 117,6 млн загрузок, теги 8b/70b/405b и команда ollama run llama3.1'
+                  : 'The llama3.1 page in the Ollama library: 117.6M downloads, 8b/70b/405b tags, and the ollama run llama3.1 command'}
+                width={1280}
+                height={900}
+                caption={lang === 'ru'
+                  ? 'Карточка llama3.1 в каталоге ollama.com/library (скриншот). Нажмите, чтобы рассмотреть.'
+                  : 'The llama3.1 entry in the ollama.com/library catalog (screenshot). Tap to view larger.'}
+              />
               <p className="text-neutral-400 text-sm leading-relaxed mt-3">
                 {lang === 'ru'
                   ? 'Так выглядит источник тех самых весов: страница модели в каталоге Ollama. Читать её стоит как этикетку: счётчик загрузок (117,6 млн — масштаб экосистемы вокруг одной модели), теги размеров 8b/70b/405b, из которых на ноутбук идёт именно 8b, и команда запуска в один клик. Каждая команда из терминала выше начинается ровно отсюда.'
