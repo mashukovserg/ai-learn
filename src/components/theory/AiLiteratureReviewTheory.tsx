@@ -105,9 +105,19 @@ export default function AiLiteratureReviewTheory({ lang }: { lang: string }) {
             : 'Screening happens in two passes. First by title and abstract — fast and cheap; most of the irrelevant material is filtered here. Then by full text — slow and careful, against the eligibility criteria. Separating the passes matters: reading hundreds of papers in full is unrealistic, while deciding on a title alone is unreliable.'}
         </p>
         <p className="text-neutral-300 leading-relaxed mb-4">
-          {ru
-            ? 'Поток отбора принято отчитывать в стиле PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-Analyses): идентификация → дедупликация → скрининг → приемлемость → включено. На каждом шаге фиксируют, сколько работ выбыло и почему. Такая воронка делает обзор проверяемым: рецензент видит не только итог, но и весь путь отсева.'
-            : 'The selection flow is conventionally reported in PRISMA style (Preferred Reporting Items for Systematic Reviews and Meta-Analyses): identification → deduplication → screening → eligibility → included. At each step you record how many works dropped out and why. This funnel makes the review auditable: a reviewer sees not only the result but the entire path of exclusion.'}
+          {ru ? (
+            <>
+              Поток отбора принято отчитывать в стиле{' '}
+              <a href="https://www.prisma-statement.org/prisma-2020-statement" target="_blank" rel="noopener noreferrer" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">PRISMA</a>{' '}
+              (Preferred Reporting Items for Systematic Reviews and Meta-Analyses): идентификация → дедупликация → скрининг → приемлемость → включено. На каждом шаге фиксируют, сколько работ выбыло и почему. Такая воронка делает обзор проверяемым: рецензент видит не только итог, но и весь путь отсева.
+            </>
+          ) : (
+            <>
+              The selection flow is conventionally reported in{' '}
+              <a href="https://www.prisma-statement.org/prisma-2020-statement" target="_blank" rel="noopener noreferrer" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">PRISMA</a>{' '}
+              style (Preferred Reporting Items for Systematic Reviews and Meta-Analyses): identification → deduplication → screening → eligibility → included. At each step you record how many works dropped out and why. This funnel makes the review auditable: a reviewer sees not only the result but the entire path of exclusion.
+            </>
+          )}
         </p>
         <pre className="bg-base border border-border-subtle rounded-lg p-4 text-sm text-neutral-300 overflow-x-auto my-4">
 {ru
@@ -222,6 +232,62 @@ export default function AiLiteratureReviewTheory({ lang }: { lang: string }) {
             ? 'Короткий блок: скорость берём у ИИ, доверие — у процесса. Агент находит и черновит, протокол и человек отвечают за то, что попадёт в текст.'
             : 'Short block: take speed from the AI, trust from the process. The agent finds and drafts; the protocol and the human are accountable for what reaches the text.'}
         </p>
+      </div>
+
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
+          {ru ? 'Источники и стандарты' : 'Sources and Standards'}
+        </h2>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru
+            ? 'Рекомендации этой комнаты по скринингу и отчётности опираются на два признанных методологических стандарта. Ссылки ведут на первоисточники с постоянными идентификаторами (DOI) — их существование можно проверить самостоятельно, ровно так, как учит глава 4.'
+            : 'This room\'s guidance on screening and reporting follows two established methodological standards. The links point to primary sources with permanent identifiers (DOI) — you can verify their existence yourself, exactly as Chapter 4 teaches.'}
+        </p>
+        <div className="bg-deep border border-border-subtle rounded-lg p-5 my-4">
+          <p className="text-xs text-neutral-500 font-medium mb-3 uppercase tracking-wider">
+            {ru ? 'Источники' : 'Sources'}
+          </p>
+          <ul className="text-sm text-neutral-400 space-y-3">
+            <li>
+              Page, M. J., et al. (2021).{' '}
+              {ru
+                ? '«The PRISMA 2020 statement: an updated guideline for reporting systematic reviews» — стандарт отчётности и потоковая диаграмма отбора.'
+                : '"The PRISMA 2020 statement: an updated guideline for reporting systematic reviews" — the reporting standard and selection flow diagram.'}{' '}
+              <em>BMJ</em> 372:n71.{' '}
+              <a
+                href="https://doi.org/10.1136/bmj.n71"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300"
+              >
+                doi.org/10.1136/bmj.n71
+              </a>
+              {' · '}
+              <a
+                href="https://www.prisma-statement.org/prisma-2020-statement"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300"
+              >
+                prisma-statement.org
+              </a>
+            </li>
+            <li>
+              Higgins, J. P. T., et al. (eds.).{' '}
+              {ru
+                ? 'Cochrane Handbook for Systematic Reviews of Interventions (актуальная версия 6.x) — подробная методология скрининга, дедупликации и синтеза.'
+                : 'Cochrane Handbook for Systematic Reviews of Interventions (current version 6.x) — the detailed methodology for screening, deduplication, and synthesis.'}{' '}
+              <a
+                href="https://training.cochrane.org/handbook"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300"
+              >
+                training.cochrane.org/handbook
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </>
   );
