@@ -322,6 +322,25 @@ Final output format:
             ? 'Главная идея: сначала дисциплина процесса, потом масштабирование. Без критериев качества глубокий поиск быстро превращается в «длинный, но слабый» ответ.'
             : 'Core idea: process discipline first, scale second. Without quality gates, deep search quickly becomes a “long but weak” answer.'}
         </p>
+        <p className="text-neutral-400 leading-relaxed mt-4">
+          {lang === 'ru' ? (
+            <>
+              Дальше: как превратить этот поиск в строгий литературный обзор — с систематическим скринингом, проверкой ссылок против галлюцинаций и синтезом — разбирает{' '}
+              <Link href={`/${lang}/rooms/ai-literature-review`} className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
+                комната про литературный обзор в эпоху ИИ
+              </Link>
+              .
+            </>
+          ) : (
+            <>
+              Next: how to turn this search into a rigorous literature review — with systematic screening, citation verification against hallucinations, and synthesis — is covered in the{' '}
+              <Link href={`/${lang}/rooms/ai-literature-review`} className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
+                Literature Review in the AI Era room
+              </Link>
+              .
+            </>
+          )}
+        </p>
       </div>
     </>
   );

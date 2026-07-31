@@ -3,6 +3,7 @@
 // the same programmatic covers (no image assets needed).
 import React from 'react';
 import {
+  BookOpen,
   Bot,
   Brain,
   ClipboardCheck,
@@ -60,6 +61,7 @@ export const ICON_MAP: Record<string, RoomIconComponent> = {
   RefreshCw,
   Microscope,
   Library,
+  BookOpen,
 };
 
 export function getRoomIcon(iconName?: string): RoomIconComponent {

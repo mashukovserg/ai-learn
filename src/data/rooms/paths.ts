@@ -87,11 +87,12 @@ export const PATHS_METADATA: PathMetadata[] = [
     icon: 'Cpu',
     difficulty: { ru: 'Продвинутый', en: 'Advanced' },
     unlocked: true,
-    // What an agent is -> how it searches -> how it reaches tools -> how many
-    // agents are coordinated.
+    // What an agent is -> how it searches -> how it turns search into a rigorous
+    // review -> how it reaches tools -> how many agents are coordinated.
     roomIds: [
       'ai-agents',
       'deep-search-agents',
+      'ai-literature-review',
       'mcp-tool-ecosystems',
       'agentic-swarm-management',
     ],

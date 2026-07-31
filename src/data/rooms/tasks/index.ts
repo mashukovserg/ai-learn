@@ -42,6 +42,7 @@ import { agenticUiDeliveryTasks } from './agentic-ui-delivery';
 import { taxonomyMatchingTasks } from './taxonomy-matching';
 import { promptEvalsTasks } from './prompt-evals';
 import { localRagDocsTasks } from './local-rag-docs';
+import { aiLiteratureReviewTasks } from './ai-literature-review';
 
 export const ROOM_TASKS: Record<string, LocalizedTask[]> = {
   'llm-landscape': llmLandscapeTasks,
@@ -84,6 +85,7 @@ export const ROOM_TASKS: Record<string, LocalizedTask[]> = {
   'context-engineering-101': contextEngineering101Tasks,
   'ai-existential-risk': aiExistentialRiskTasks,
   'taxonomy-matching': taxonomyMatchingTasks,
+  'ai-literature-review': aiLiteratureReviewTasks,
   'prompt-evals': promptEvalsTasks,
   'local-rag-docs': localRagDocsTasks,
 };

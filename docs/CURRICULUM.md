@@ -40,6 +40,8 @@
   - *Topics:* Eval sets, metrics, release gates for LLM features.
 - [x] **AI for Image Creation** — 6 tasks
   - *Topics:* Prompts, composition, negative prompts, seed control, commercial use.
+- [x] **Literature Review in the AI Era (Литературный обзор в эпоху ИИ)** — 10 tasks (includes sorting, categorize, scenario, mentor)
+  - *Topics:* Rigorous AI-assisted literature review; PICO question framing and sub-query decomposition; inclusion/exclusion criteria before searching; deduplication and two-pass PRISMA-style screening; verifying citations against hallucinated/nonexistent references (resolve DOI → confirm venue/authors/quote); synthesis, evidence tables, and the reproducible audit trail. Two-way cross-linked with `deep-search-agents` (the retrieval engine it builds on).
 
 ### Module 6: Open Models
 - [x] **Local Models 101 (Локальные модели 101)** — 10 tasks (includes categorize, sorting, scenario, mentor, timeline)
