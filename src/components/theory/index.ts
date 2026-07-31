@@ -60,4 +60,5 @@ export const THEORY_COMPONENTS: Record<string, ComponentType<{ lang: string }>> 
   'local-rag-docs': dynamic(() => import('./LocalRagDocsTheory'), { loading }),
   'ai-existential-risk': dynamic(() => import('./AiExistentialRiskTheory'), { loading }),
   'taxonomy-matching': dynamic(() => import('./TaxonomyMatchingTheory'), { loading }),
+  'ai-literature-review': dynamic(() => import('./AiLiteratureReviewTheory'), { loading }),
 };

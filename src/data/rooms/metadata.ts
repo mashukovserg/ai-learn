@@ -591,4 +591,21 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     image: '/images/llm-landscape-network.png',
     icon: 'Network',
   },
+  {
+    id: 'ai-literature-review',
+    title: {
+      ru: 'Литературный обзор в эпоху ИИ',
+      en: 'Literature Review in the AI Era',
+    },
+    description: {
+      ru: 'Как провести строгий литературный обзор с ИИ-инструментами: декомпозиция вопроса, триаж источников, систематический скрининг (в стиле PRISMA), проверка ссылок против галлюцинаций и честный синтез с журналом аудита.',
+      en: 'How to run a rigorous literature review with AI tools: question decomposition, source triage, systematic screening (PRISMA-style), citation verification against hallucinations, and honest synthesis with an audit trail.',
+    },
+    difficulty: 'Intermediate',
+    time: { ru: '35 мин', en: '35m' },
+    category: { ru: 'Практика', en: 'Practice' },
+    image: '/images/research-grounding.png',
+    pathIds: ['agentic-systems'],
+    icon: 'BookOpen',
+  },
 ];
