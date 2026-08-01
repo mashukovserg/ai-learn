@@ -6,8 +6,8 @@
 ### Module 1: The Modern AI Landscape
 - [x] **Room 101: The LLM Landscape (Ландшафт LLM)** — 26 tasks
   - *Topics:* Original Gangster (OpenAI), Leaderboards (ELO/Chatbot Arena), Geopolitics (USA vs China vs EU), Sovereign AI, model-selection framework, SDK integration maturity.
-- [x] **Room 102: How LLMs Think (Как мыслят LLM)** — 4 tasks (includes sorting)
-  - *Topics:* Tokens, Context Windows, Next-Token Prediction, Temperature.
+- [x] **Room 102: How LLMs Think (Как мыслят LLM)** — 14 tasks (includes sorting, categorize, timeline, mentor, scenario)
+  - *Topics:* Tokens and BPE, next-token prediction (logits → Softmax → autoregressive loop), Self-Attention with Q/K/V and multi-head, positional encoding (sinusoidal → RoPE), temperature and decoding strategies (greedy, beam search, top-k, top-p/nucleus, repetition penalty), context windows (growth, KV cache, "Lost in the Middle"), hallucinations.
 - [x] **Room 103: Prompting 101 (Основы промптинга)** — 6 tasks
   - *Topics:* System Prompts, Few-shot/Zero-shot, Hallucination mitigation, Prompt iteration.
 - [x] **AI Career Trajectories (`ai-career-trajectories`)** — 6 tasks (includes sorting, categorize, mentor, scenario)
@@ -75,6 +75,7 @@
 ### Module A: Agent Coding Foundations
 - [x] **AC-101: Agent Coding Foundations** (`agent-coding-foundations`) — 10 tasks; framing, loop speed, acceptance criteria, guardrails, rollback.
 - [x] **AC-102: Agentic Coding Tools** (`agentic-coding-tools`) — 10 tasks; tool-layer architecture, contracts, role split, release controls, rollback discipline.
+- [x] **AC-105: Git as a Safety Net for Agent Work** (`git-safety-net`) — 10 tasks; reading a diff you did not write, signal files (checks/tests/dependencies), commits as units of undo and the staging area, restore/stash/reset/revert/reflog chosen by where the change lives, branch + worktree per task.
 - [x] **AC-103: Prompt Contracts for Coding Agents** (`prompt-contracts`) — 10 tasks; feature specs, constraints, output contracts.
 - [x] **AC-104: Multi-Agent Collaboration Patterns** (`multi-agent-collaboration`) — 10 tasks; decomposition, context hygiene, branch strategy.
 
@@ -82,6 +83,8 @@
 - [x] **AC-201: CLI Tools for Agent Coding** (`agentic-cli-tools`) — terminal workflow discipline, discovery/change/verify loop, quality gates, and rollback routines.
   - *2026-04-05 update:* theory delivery was restructured into shorter practical blocks with explicit CLI loop model, concrete command examples, verify matrix, role split, and execution checklist.
 - [x] **AC-202: Agentic Testing Loop** (`agentic-testing-loop`) — 10 tasks; test-first prompting, regression safety, failure triage.
+- [x] **AC-205: Release Control for Agent-Written Code** (`agentic-release-control`) — 11 tasks; local run vs shared CI, quality gates and branch protection, who may start checks and merge, reviewing an agent's pull request, canary + feature flags + metric thresholds, rollback and the autonomy budget.
+- [x] **AC-206: Build Your Own CI with GitHub Actions** (`github-actions-ci`) — 12 tasks; the clean-machine argument, workflow anatomy (triggers → jobs → steps), cache + parallel jobs + matrix + path filters, secrets and least-privilege run permissions with the "agent does not edit workflows" rule, artifacts and reading a red run.
 - [x] **AC-203: Agentic UI Delivery** (`agentic-ui-delivery`) — 10 tasks; responsive implementation, accessibility checks, component consistency.
 - [x] **AC-204: Context Engineering 101** (`context-engineering-101`) — 12 tasks; context layers, window economics (ROI test, context rot), knowledge artifacts (rule/fact/procedure/role → constitution/index/skill/agent), hygiene cycle, compaction.
 

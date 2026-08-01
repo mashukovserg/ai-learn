@@ -237,6 +237,38 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
       en: 'Guardrails are technical and product-level constraints for LLM systems: input filtering, argument validation, permission limits, escalation rules, and blocking quality gates before release.'
     }
   },
+  'quality-gate': {
+    id: 'quality-gate',
+    term: { ru: 'Quality gate', en: 'Quality Gate' },
+    definition: {
+      ru: 'Quality gate — блокирующее условие перед выпуском: сборка, линтеры, тесты, проверки безопасности. Это не один общий тест, а набор независимых проверок, и любая непройденная останавливает слияние ветки или выкат в прод.',
+      en: 'A quality gate is a blocking condition before release: build, linters, tests, security checks. It is not one big test but a set of independent checks — any failing check stops the merge or the rollout.'
+    }
+  },
+  'branch-protection': {
+    id: 'branch-protection',
+    term: { ru: 'Защита ветки', en: 'Branch Protection' },
+    definition: {
+      ru: 'Правило репозитория, которое запрещает пушить напрямую в основную ветку и требует, чтобы перечисленные проверки закончились успехом, а изменение прошло ревью. Именно защита ветки делает quality gate не обходимым.',
+      en: 'A repository rule that forbids pushing straight to the main branch and requires the listed checks to pass and the change to be reviewed. Branch protection is what makes a quality gate impossible to bypass.'
+    }
+  },
+  'canary-release': {
+    id: 'canary-release',
+    term: { ru: 'Canary (канареечный выпуск)', en: 'Canary Release' },
+    definition: {
+      ru: 'Canary — выкат, при котором новая версия сначала получает небольшую долю трафика. Её метрики сравнивают с остальной частью; выкат расширяют только при отсутствии деградации, а при плохих сигналах трафик возвращают на прежнюю версию.',
+      en: 'A canary release routes a small share of traffic to the new version first. Its metrics are compared against the rest of the fleet; the rollout expands only if nothing degrades, and traffic returns to the previous version when signals look bad.'
+    }
+  },
+  'feature-flag': {
+    id: 'feature-flag',
+    term: { ru: 'Feature flag (фича-флаг)', en: 'Feature Flag' },
+    definition: {
+      ru: 'Feature flag — переключатель, который управляет поведением кода без нового деплоя. Функция уезжает в прод выключенной, включается для части пользователей и выключается одним изменением конфигурации, поэтому откат стоит дёшево.',
+      en: 'A feature flag is a switch that controls code behavior without a new deployment. A feature ships to production turned off, is enabled for a subset of users, and is turned off again by a single config change — which makes rollback cheap.'
+    }
+  },
   'multimodality': {
     id: 'multimodality',
     term: { ru: 'Мультимодальность', en: 'Multimodality' },
@@ -619,6 +651,110 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
     definition: {
       ru: 'Отказоустойчивость (fault tolerance) — способность системы продолжать работу, когда отдельные её компоненты отказывают. Достигается избыточностью (дублирование сервисов, резервные копии) и стратегиями восстановления вроде retry, fallback и rollback. Проектируется из допущения, что отказы неизбежны: вопрос не «если», а «когда».',
       en: 'Fault tolerance is a system\'s ability to keep working when individual components fail. It is achieved through redundancy (duplicated services, backups) and recovery strategies like retry, fallback, and rollback. It is designed on the assumption that failures are inevitable: the question is not "if" but "when."',
+    },
+  },
+  'diff': {
+    id: 'diff',
+    term: { ru: 'Diff (различия)', en: 'Diff' },
+    definition: {
+      ru: 'Diff — построчное сравнение двух состояний кода: что было и что стало. Строки со знаком «−» удалены, со знаком «+» добавлены, остальные показаны как контекст. Diff, а не описание словами, — единица ревью: именно по нему видно, что изменение сделало на самом деле, включая то, о чём автор не упомянул.',
+      en: 'A diff is a line-by-line comparison of two code states: what was there and what is there now. Lines marked “−” were removed, lines marked “+” were added, the rest is context. The diff — not a prose description — is the unit of review: it shows what a change actually did, including the parts the author never mentioned.',
+    },
+  },
+  'commit': {
+    id: 'commit',
+    term: { ru: 'Коммит', en: 'Commit' },
+    definition: {
+      ru: 'Коммит — сохранённое состояние репозитория с автором, временем и сообщением. Два свойства делают его полезным в агентной работе: к любому коммиту можно вернуться, и он задаёт гранулярность отката. Один коммит на одно осмысленное изменение позволяет отменить неудачную часть, не теряя удачную.',
+      en: 'A commit is a saved repository state with an author, a timestamp, and a message. Two properties make it useful in agent work: any commit can be returned to, and it sets the granularity of undo. One commit per meaningful change lets you drop the part that failed without losing the part that worked.',
+    },
+  },
+  'staging-area': {
+    id: 'staging-area',
+    term: { ru: 'Индекс (staging area)', en: 'Staging Area' },
+    definition: {
+      ru: 'Индекс — промежуточная зона между рабочими файлами и коммитом: сюда командой add кладут именно те изменения, которые войдут в следующий коммит. Благодаря индексу из большой пачки правок агента можно собрать несколько отдельных коммитов вместо одного общего.',
+      en: 'The staging area sits between your working files and the commit: `add` puts exactly the changes that will go into the next commit there. Thanks to it, a large batch of agent edits can be assembled into several separate commits instead of one lump.',
+    },
+  },
+  'revert': {
+    id: 'revert',
+    term: { ru: 'Revert (обратный коммит)', en: 'Revert' },
+    definition: {
+      ru: 'Revert создаёт новый коммит, который отменяет изменения указанного старого, не стирая историю. Это безопасный способ отката для веток, которые уже видели другие: их локальные копии остаются согласованными, а в истории видно и ошибку, и её отмену.',
+      en: 'Revert creates a new commit that undoes the changes of an earlier one without erasing history. It is the safe way to roll back a branch other people have already pulled: their local copies stay consistent, and the history shows both the mistake and its undo.',
+    },
+  },
+  'reflog': {
+    id: 'reflog',
+    term: { ru: 'Reflog', en: 'Reflog' },
+    definition: {
+      ru: 'Reflog — локальный журнал того, куда указывала ветка в последние дни, включая состояния, потерянные после жёсткого сброса или неудачного rebase. Пока запись жива (по умолчанию около 90 дней), «удалённый» коммит можно найти по её хешу и вернуть.',
+      en: 'The reflog is a local journal of where a branch pointed over recent days, including states lost to a hard reset or a failed rebase. While an entry survives (about 90 days by default), a “deleted” commit can be found by its hash and brought back.',
+    },
+  },
+  'worktree': {
+    id: 'worktree',
+    term: { ru: 'Worktree', en: 'Worktree' },
+    definition: {
+      ru: 'Worktree — дополнительная рабочая копия того же репозитория в отдельной папке со своей веткой. Один репозиторий, несколько независимых рабочих директорий: два агента работают параллельно и не перетирают файлы друг друга, а переключение между задачами не требует прятать незавершённые правки.',
+      en: 'A worktree is an extra working copy of the same repository in its own folder, on its own branch. One repository, several independent working directories: two agents can work in parallel without overwriting each other’s files, and switching tasks no longer requires stashing unfinished edits.',
+    },
+  },
+  'ci-cd': {
+    id: 'ci-cd',
+    term: { ru: 'CI/CD', en: 'CI/CD' },
+    definition: {
+      ru: 'CI (непрерывная интеграция) — автоматическая сборка и проверка каждого изменения на чистой машине, независимо от того, что установлено у автора. CD — продолжение того же конвейера до выкладки. Смысл CI прост: «у меня работает» перестаёт быть аргументом, потому что проверку выполняет нейтральная сторона.',
+      en: 'CI (continuous integration) is the automatic build and check of every change on a clean machine, regardless of what the author has installed locally. CD extends the same pipeline to delivery. The point of CI is simple: “works on my machine” stops being an argument, because a neutral party runs the check.',
+    },
+  },
+  'gh-cli': {
+    id: 'gh-cli',
+    term: { ru: 'gh (GitHub CLI)', en: 'gh (GitHub CLI)' },
+    definition: {
+      ru: 'gh — официальный консольный клиент GitHub: показывает статус проверок пул-реквеста, логи прогонов и артефакты прямо в терминале, текстом. Ставится отдельно (brew install gh / sudo apt install gh) и один раз просит войти через gh auth login. Прав не добавляет: работает от имени вошедшего аккаунта и упирается в те же правила репозитория, что и веб-интерфейс.',
+      en: 'gh is the official GitHub command-line client: it shows pull request check status, run logs, and artifacts right in the terminal, as text. It is installed separately (brew install gh / sudo apt install gh) and asks you to sign in once with gh auth login. It grants no extra rights: it acts as the signed-in account and hits the same repository rules as the web interface.',
+    },
+  },
+  'workflow': {
+    id: 'workflow',
+    term: { ru: 'Workflow (GitHub Actions)', en: 'Workflow (GitHub Actions)' },
+    definition: {
+      ru: 'Workflow — описанный в YAML сценарий автоматизации, который лежит в репозитории в папке .github/workflows. В нём заданы события-триггеры (push, пул-реквест, расписание, ручной запуск), набор задач (jobs) и шаги внутри каждой. Workflow — это код: он проходит ревью и меняется вместе с проектом.',
+      en: 'A workflow is a YAML automation script stored in the repository under .github/workflows. It defines trigger events (push, pull request, schedule, manual run), a set of jobs, and the steps inside each. A workflow is code: it goes through review and evolves with the project.',
+    },
+  },
+  'runner': {
+    id: 'runner',
+    term: { ru: 'Runner', en: 'Runner' },
+    definition: {
+      ru: 'Runner — машина, на которой выполняется задача workflow. Хостится либо платформой (свежая виртуалка на каждый запуск), либо самой командой (self-hosted). Ключевое свойство — чистота: runner не знает про локальные настройки разработчика, поэтому ловит зависимости, которые «работают» только потому, что были установлены вручную.',
+      en: 'A runner is the machine that executes a workflow job. It is either hosted by the platform (a fresh virtual machine per run) or by the team itself (self-hosted). Its key property is cleanliness: a runner knows nothing about a developer’s local setup, so it catches dependencies that “work” only because someone installed them by hand.',
+    },
+  },
+  'matrix-build': {
+    id: 'matrix-build',
+    term: { ru: 'Матричная сборка', en: 'Matrix Build' },
+    definition: {
+      ru: 'Матрица — способ запустить одну и ту же задачу в нескольких вариантах окружения сразу: разные версии языка, операционные системы, наборы зависимостей. Задача описывается один раз, а CI разворачивает её в набор параллельных запусков, и падение видно точечно — в конкретной комбинации.',
+      en: 'A matrix runs the same job across several environment variants at once: different language versions, operating systems, dependency sets. The job is written once, and CI expands it into a set of parallel runs, so a failure is pinpointed to a specific combination.',
+    },
+  },
+  'build-artifact': {
+    id: 'build-artifact',
+    term: { ru: 'Артефакт сборки', en: 'Build Artifact' },
+    definition: {
+      ru: 'Артефакт — файл, сохранённый прогоном CI и доступный после его окончания: отчёт о покрытии, лог тестов, скриншоты упавших проверок, собранный пакет. Артефакты превращают закончившийся запуск из строчки «failed» в материал для разбора, который можно скачать и посмотреть.',
+      en: 'An artifact is a file saved by a CI run and downloadable after it finishes: a coverage report, a test log, screenshots of failed checks, a built package. Artifacts turn a finished run from a bare “failed” line into evidence you can download and inspect.',
+    },
+  },
+  'ci-secrets': {
+    id: 'ci-secrets',
+    term: { ru: 'Секреты CI', en: 'CI Secrets' },
+    definition: {
+      ru: 'Секреты — токены, ключи и пароли, которые CI хранит в зашифрованном виде и подставляет в задачу как переменные окружения. В логах они маскируются, в исходном коде их нет. Правило разделения простое: workflow ссылается на имя секрета, а значение известно только платформе.',
+      en: 'Secrets are tokens, keys, and passwords that CI stores encrypted and injects into a job as environment variables. They are masked in logs and absent from source code. The separation rule is simple: the workflow references a secret by name, while the value is known only to the platform.',
     },
   },
   'human-in-the-loop': {

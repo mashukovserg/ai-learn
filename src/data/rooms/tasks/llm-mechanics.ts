@@ -62,16 +62,16 @@ export const llmMechanicsTasks: LocalizedTask[] = [
       options: [
         { ru: 'Эффект "Lost in the Middle" (потеря фокуса в середине текста)', en: 'The "Lost in the Middle" effect (loss of focus in the middle of the text)' },
         { ru: 'Модель перегревается от большого объема данных', en: 'The model overheats from the large data volume' },
-        { ru: 'Накопление вычислительных шумов при каждом новом токене', en: 'Accumulation of computational noise with each new token' },
+        { ru: 'Модель дописывает недостающие факты, чтобы заполнить окно до конца', en: 'The model invents missing facts to fill the window to the end' },
         { ru: 'Физические ограничения видеопамяти при работе с KV-Cache', en: 'Physical VRAM limitations when working with KV-Cache' }
       ],
       answer: [
         { ru: 'Эффект "Lost in the Middle" (потеря фокуса в середине текста)', en: 'The "Lost in the Middle" effect (loss of focus in the middle of the text)' },
-        { ru: 'Накопление вычислительных шумов при каждом новом токене', en: 'Accumulation of computational noise with each new token' }
+        { ru: 'Физические ограничения видеопамяти при работе с KV-Cache', en: 'Physical VRAM limitations when working with KV-Cache' }
       ],
-      explanation: { 
-        ru: 'Правильно. Даже при наличии большого окна внимания, архитектура трансформеров склонна лучше "помнить" информацию в начале и в конце промпта.', 
-        en: 'Correct. Even with a large attention window, the Transformer architecture tends to better "remember" information at the beginning and end of the prompt.' 
+      explanation: {
+        ru: 'Правильно. Даже при большом окне модель лучше использует информацию в начале и в конце промпта, чем в середине. А KV-кэш, который ускоряет генерацию, растёт вместе с длиной контекста и упирается в объём видеопамяти.',
+        en: 'Correct. Even with a large window, the model uses information at the beginning and end of the prompt better than in the middle. And the KV cache that speeds up generation grows with context length until it hits the VRAM ceiling.'
       }
     },
     {

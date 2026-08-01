@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import Term from '@/components/Term';
 import Screenshot from '@/components/Screenshot';
 import { Clock, Zap, Award, AlertCircle, MessageSquare, Globe, TrendingUp } from 'lucide-react';
@@ -98,7 +99,12 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
             ? 'Настоящая магия момента ChatGPT заключалась не в том, что модель внезапно стала «умнее» за одну ночь, а в том, что она стала «послушной». Чтобы понять это, нужно рассмотреть переход от базовой GPT-3 к InstructGPT — фундаменту, на котором построен ChatGPT. Базовая модель — это просто предсказатель следующего слова. Если вы просили её написать эссе, она могла в ответ выдать список вопросов для викторины, потому что так было в её обучающих данных.'
             : 'The real magic of the ChatGPT moment wasn&apos;t that the model suddenly became "smarter" overnight; it was that it became "obedient." To understand this, we must look at the transition from base GPT-3 to InstructGPT—the foundation upon which ChatGPT is built. A base model is simply a next-word predictor. If you asked it to write an essay, it might respond with a list of quiz questions because that&apos;s what appeared in its training data.'}
         </p>
-        
+        <p className="text-neutral-300 leading-relaxed mb-6">
+          {lang === 'ru'
+            ? 'Разрыв легко почувствовать на одном примере. Базовую GPT-3 просят: «Объясни, почему небо голубое, простыми словами». Невыровненная модель с равной вероятностью может продолжить эту строку как заголовок статьи, дописать «…и почему трава зелёная, и почему закат красный», выдать список школьных вопросов или начать абзац художественного текста — она достраивает правдоподобное продолжение, а не выполняет просьбу. Выровненная модель воспринимает ту же строку как инструкцию и даёт короткое понятное объяснение. Разница не в объёме знаний — знания те же самые, — а в том, что модель научили распознавать намерение за текстом.'
+            : 'The gap is easiest to feel through a single example. Ask base GPT-3: "Explain why the sky is blue, in simple terms." An unaligned model is just as likely to continue that line as an article headline, to append "…and why grass is green, and why sunsets are red," to spit out a list of school quiz questions, or to start a paragraph of fiction—it completes a plausible continuation rather than fulfilling the request. An aligned model reads the same string as an instruction and returns a short, clear explanation. The difference is not the amount of knowledge—the knowledge is identical—but that the model has been taught to recognize the intent behind the text.'}
+        </p>
+
         <div className="grid md:grid-cols-1 gap-4 mb-8">
           <div className="bg-card p-6 rounded-lg border border-border-card">
             <h4 className="text-heading font-bold mb-3 uppercase ">{lang === 'ru' ? 'Процесс из трех этапов:' : 'The Three-Step Process:'}</h4>
@@ -114,6 +120,11 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
           {lang === 'ru'
             ? 'Этот процесс называют «выравниванием» (Alignment). Он превратил ИИ из статистического автодополнителя текста в собеседника, который понимает ваши намерения. Теперь модель не просто "знает" факты интернета, она знает, как подать их в форме, удобной и безопасной для человека.'
             : 'This process is called "Alignment." It transformed the AI from a statistical text completer into a conversationalist that understands your intentions. Now, the model doesn&apos;t just "know" internet facts; it knows how to present them in a form that is useful and safe for humans.'}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mt-6">
+          {lang === 'ru'
+            ? 'У послушания есть и цена, о которой стоит помнить с самого начала. Модель училась угождать оценщикам-людям — а значит, оптимизирована на то, чтобы ответ нравился, а не на то, чтобы он был верным. Отсюда склонность соглашаться с пользователем, даже когда тот неправ (это называют «сикофантией»), уверенный тон там, где уместно сомнение, и аккуратные, «причёсанные» формулировки, за которыми не всегда стоит проверенный факт. Выравнивание сделало ИИ удобным и массовым — и той же силой заложило проблему, к которой мы вернёмся в конце: приятный на слух ответ и правдивый ответ — не одно и то же.'
+            : 'Obedience comes at a price worth keeping in mind from the outset. The model learned to please human raters—which means it is optimized for an answer that is liked, not one that is correct. Hence the tendency to agree with the user even when the user is wrong (this is called "sycophancy"), a confident tone where doubt would be appropriate, and neat, polished phrasing that does not always rest on a verified fact. Alignment made AI convenient and mass-market—and by the same force planted the problem we return to at the end: an answer that sounds pleasant and an answer that is truthful are not the same thing.'}
         </p>
       </div>
 
@@ -238,15 +249,49 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
           <MessageSquare className="text-accent-500" />
           {lang === 'ru' ? 'Глава 5: Почему это именно "Момент"?' : 'Chapter 5: Why it is a "Moment"?'}
         </h2>
-        <p className="text-neutral-300 leading-relaxed mb-4 text-lg">
+        <p className="text-neutral-300 leading-relaxed mb-6 text-lg">
           {lang === 'ru'
-            ? 'В истории технологий есть точки невозврата: печатный станок, самолет, iPhone. "ChatGPT момент" — это точка, когда интеллект перестал быть монополией биологии. Мы перешли от эпохи "Поиска" к эпохе "Генерации".'
-            : 'Tech history has points of no return: the printing press, the airplane, the iPhone. The "ChatGPT moment" is the point where intelligence ceased to be a biological monopoly. We moved from the era of "Search" to the era of "Generation."'}
+            ? '30 ноября 2022 года интеллект модели не изменился ни на йоту. GPT-3 существовала с 2020 года, а «секретный соус» — обучение через RLHF — был описан в статье про InstructGPT ещё раньше в том же году. В тот четверг не появилось новой сверхспособности. Появился доступ. И в этом весь смысл слова «момент»: в истории технологий момент — это не день, когда возможность изобрели, а день, когда её отдали в руки всем сразу.'
+            : 'On November 30, 2022, the model\'s intelligence did not change one bit. GPT-3 had existed since 2020, and the "secret sauce"—training via RLHF—had been described in the InstructGPT paper earlier that same year. No new superpower appeared that Thursday. Access did. And that is the whole meaning of the word "moment": in the history of technology, a moment is not the day a capability is invented, but the day it is placed in everyone\'s hands at once.'}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-6">
+          {lang === 'ru'
+            ? 'Именно это отличает момент от зрелища. Deep Blue обыграл Каспарова в 1997-м, AlphaGo обыграла Ли Седоля в 2016-м — но эти события происходили не с вами. Вы наблюдали их со стороны, как матч на сцене: машина побеждала чемпиона мира, а не помогала вам с вашим письмом или вашим кодом. ChatGPT стал первым ИИ-событием, которое случилось лично с каждым — на вашем собственном экране, по вашему собственному вопросу. Разница между зрелищем и моментом ровно в этом: зрелище смотрят, момент проживают.'
+            : 'This is exactly what separates a moment from a spectacle. Deep Blue beat Kasparov in 1997; AlphaGo beat Lee Sedol in 2016—but those events did not happen to you. You watched them from the outside, like a match on a stage: a machine defeated a world champion, it did not help you with your letter or your code. ChatGPT was the first AI event that happened to everyone personally—on your own screen, in answer to your own question. The difference between a spectacle and a moment is precisely that: a spectacle is watched, a moment is lived.'}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-6">
+          {lang === 'ru'
+            ? 'Обычно «ChatGPT-момент» сравнивают с печатным станком или iPhone, но ближе всего по структуре другой пример — веб-браузер. Интернет как набор протоколов (TCP/IP, HTTP, HTML) существовал за годы до 1993 года и оставался территорией физиков и системных администраторов. Браузер Mosaic, а за ним Netscape, не изобрели веб — они дали ему лицо, по которому можно было просто кликать. За пару лет всемирная сеть превратилась из исследовательской инфраструктуры в бытовое слово. ChatGPT — это Mosaic-момент искусственного интеллекта: возможность уже была, интерфейс сделал её событием. И это переворачивает всю картину — «момент» оказывается прежде всего интерфейсным событием.'
+            : 'The "ChatGPT moment" is usually compared to the printing press or the iPhone, but the closest structural analogue is another one: the web browser. The internet as a set of protocols (TCP/IP, HTTP, HTML) existed for years before 1993 and remained the territory of physicists and system administrators. The Mosaic browser, and then Netscape, did not invent the web—they gave it a face you could simply click. Within a couple of years the World Wide Web went from research infrastructure to a household word. ChatGPT is the Mosaic moment of artificial intelligence: the capability was already there; the interface turned it into an event. And that reframes the whole picture—a "moment" turns out to be, first of all, an interface event.'}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-6">
+          {lang === 'ru'
+            ? 'Отсюда и главный сдвиг: от эпохи «Поиска» к эпохе «Генерации». Тридцать лет глаголом интернета было «искать» — вы вводили ключевые слова и получали ранжированный список мест, где ответ, возможно, лежит, а синтез делали сами. Генерация сворачивает эту цепочку: вы формулируете цель своими словами и получаете уже сам черновик ответа. Компьютер перестал быть местом, куда ходят посмотреть, и стал партнёром, который производит. Этот переход — от извлечения к синтезу — и есть общий корень всех потрясений из предыдущих глав: и «Code Red» в Google, и кризиса эссе, и «экзоскелета» для программиста.'
+            : 'Hence the central shift: from the era of "Search" to the era of "Generation." For thirty years the verb of the internet was "to search"—you typed keywords and got a ranked list of places where the answer might lie, and you did the synthesis yourself. Generation collapses that chain: you state the goal in your own words and receive the draft of the answer itself. The computer stopped being a place you go to look things up and became a partner that produces. This transition—from retrieval to synthesis—is the shared root of every disruption in the previous chapters: Google\'s "Code Red," the essay crisis, and the programmer\'s "exoskeleton" alike.'}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-6">
+          {lang === 'ru' ? (
+            <>
+              {'И генерация была лишь первым шагом. Модель, которая умеет выдать ответ за один ход, немедленно ставит следующий вопрос: а что, если дать ей несколько ходов, доступ к инструментам и право действовать в мире, а не только описывать его? Это и есть скачок от чат-бота к агенту — «модели с руками». ChatGPT-момент открыл эту дверь; что находится за ней, разбирает '}
+              <Link href={`/${lang}/rooms/ai-agents`} className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
+                комната «Agents &amp; Tools: Модели с руками»
+              </Link>
+              {'.'}
+            </>
+          ) : (
+            <>
+              {'And generation was only the first step. A model that can produce an answer in a single turn immediately raises the next question: what if you give it several turns, access to tools, and the right to act on the world rather than merely describe it? That is the leap from a chatbot to an agent — a "model with hands." The ChatGPT moment opened that door; what lies beyond it is the subject of the '}
+              <Link href={`/${lang}/rooms/ai-agents`} className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
+                Agents &amp; Tools: Models with Hands room
+              </Link>
+              {'.'}
+            </>
+          )}
         </p>
         <p className="text-neutral-300 leading-relaxed">
           {lang === 'ru'
-            ? 'Компьютер перестал быть просто инструментом для хранения данных. Он стал синтезатором новых идей, способным рассуждать, объяснять и творить вместе с человеком. Мы открыли новую главу в эволюции инструментов человечества, где программа превращается в активного партнера по мышлению.'
-            : 'The computer ceased to be just a tool for storing data. It became a synthesizer of new ideas, capable of reasoning, explaining, and creating alongside humans. This marks a new chapter in the evolution of human tools, where software becomes an active thinking partner.'}
+            ? 'Одна честная оговорка удерживает всё это от превращения в миф. «Момент» — это история, которую мы рассказываем задним числом, а кривая под ним была гладкой. Transformer (2017), scaling laws, RLHF и подешевевшие облачные вычисления приходили постепенно, и называть один ноябрьский день «рождением ИИ» — значит сплющивать десятилетие работы в одну дату. Дата реальна и полезна как отметка — день, когда пришла публика, — но технология началась не с неё. Считать 30 ноября непорочным зачатием ИИ было бы ровно тем хайпом, которого этот курс избегает.'
+            : 'One honest caveat keeps all of this from turning into a myth. A "moment" is a story we tell in hindsight, and the curve beneath it was smooth. The Transformer (2017), scaling laws, RLHF, and ever-cheaper cloud compute arrived gradually, and calling one November day the "birth of AI" flattens a decade of work into a single date. The date is real and useful as a marker—the day the public arrived—but the technology did not begin there. Treating November 30 as the immaculate conception of AI would be exactly the kind of hype this course avoids.'}
         </p>
       </div>
 

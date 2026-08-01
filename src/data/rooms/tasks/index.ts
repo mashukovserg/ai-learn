@@ -39,6 +39,9 @@ import { promptContractsTasks } from './prompt-contracts';
 import { multiAgentCollaborationTasks } from './multi-agent-collaboration';
 import { agenticTestingLoopTasks } from './agentic-testing-loop';
 import { agenticUiDeliveryTasks } from './agentic-ui-delivery';
+import { agenticReleaseControlTasks } from './agentic-release-control';
+import { gitSafetyNetTasks } from './git-safety-net';
+import { githubActionsCiTasks } from './github-actions-ci';
 import { taxonomyMatchingTasks } from './taxonomy-matching';
 import { promptEvalsTasks } from './prompt-evals';
 import { localRagDocsTasks } from './local-rag-docs';
@@ -77,6 +80,9 @@ export const ROOM_TASKS: Record<string, LocalizedTask[]> = {
   'multi-agent-collaboration': multiAgentCollaborationTasks,
   'agentic-testing-loop': agenticTestingLoopTasks,
   'agentic-ui-delivery': agenticUiDeliveryTasks,
+  'agentic-release-control': agenticReleaseControlTasks,
+  'git-safety-net': gitSafetyNetTasks,
+  'github-actions-ci': githubActionsCiTasks,
   'mcp-tool-ecosystems': mcpToolEcosystemsTasks,
   'agentic-swarm-management': agenticSwarmManagementTasks,
   'frontier-evals-logic': frontierEvalsLogicTasks,

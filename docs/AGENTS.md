@@ -91,11 +91,11 @@ Known absent routes (do not assume they exist):
 1. `/${lang}/compete`
 2. `/${lang}/leaderboard`
 
-### Room inventory (43 rooms in `ROOMS_METADATA`)
+### Room inventory (46 rooms in `ROOMS_METADATA`)
 
-Rooms with theory + tasks fully wired (43): **all** current `ROOMS_METADATA` entries are wired in the dynamic room route — `ai-literature-review` landed 2026-07-31. The inventory includes `ai-career-trajectories`, `prompt-contracts`, `mcp-tool-ecosystems`, `agentic-swarm-management`, `frontier-evals-logic`, `claude-code-agentic-loop`, `claude-code-pro-workflow`, `context-engineering-101`, `taxonomy-matching`, the `deep-search-agents` → `ai-literature-review` pair (two-way cross-linked), and the Open Models trio `local-models-101` + `llama-3-1-8b` + `local-rag-docs`.
+Rooms with theory + tasks fully wired (46): **all** current `ROOMS_METADATA` entries are wired in the dynamic room route — `agentic-release-control`, `git-safety-net` (AC-105) and `github-actions-ci` (AC-206) landed 2026-07-29. The inventory includes `ai-career-trajectories`, `prompt-contracts`, `mcp-tool-ecosystems`, `agentic-swarm-management`, `frontier-evals-logic`, `claude-code-agentic-loop`, `claude-code-pro-workflow`, `context-engineering-101`, `taxonomy-matching`, and the Open Models trio `local-models-101` + `llama-3-1-8b` + `local-rag-docs`.
 
-Theory components are mapped in the lazy registry `src/components/theory/index.ts` (`THEORY_COMPONENTS`, 43 entries, `next/dynamic` — each room ships only its own theory chunk; SSR preserved). A room missing from the registry fails `check-all` via `src/components/theory/__tests__/registry.test.ts` — placeholders no longer slip through silently.
+Theory components are mapped in the lazy registry `src/components/theory/index.ts` (`THEORY_COMPONENTS`, 45 entries, `next/dynamic` — each room ships only its own theory chunk; SSR preserved). A room missing from the registry fails `check-all` via `src/components/theory/__tests__/registry.test.ts` — placeholders no longer slip through silently.
 
 ### Source of truth files (use these first)
 
@@ -170,10 +170,12 @@ This is enforced by `src/__tests__/design-tokens.test.ts` (part of `check-all`):
 
 Several design decisions are deliberately **open**: terminal styling, site and terminal typefaces, and the accent green. They are recorded in [`DESIGN_FORKS.md`](DESIGN_FORKS.md) (+ `.ru`) with paste-ready values for every option. Before "fixing" a design inconsistency in these areas, check that file — the inconsistency may be a live fork rather than a defect. When you move a fork, record the move (new pick, demoted option, date, one line of rationale) in the same commit.
 
-### Product screenshots — a core design element (use them)
+### Product screenshots — a core design element (seek them out)
 
 The GUI counterpart of the Terminal rule (reference pattern: TryHackMe's task pages, e.g. an annotated VirusTotal screenshot framed between two paragraphs of explanation). When a chapter discusses a product with a graphical interface — a web console, dashboard, chat UI, settings screen — show a **real screenshot** of that product instead of describing the UI in prose. CLI/session content → `<Terminal>`; GUI content → screenshot.
 
+- **The variety mandate (proactive, not just reactive):** screenshots are a primary tool for making theory pages **diversified and varied** — long walls of prose are the failure mode we design against. Don't wait for a chapter to "be about a GUI product." Actively look, in every room, for a place where a real screenshot would carry meaning a paragraph can't: a product UI, but also a **neutral-instrument exhibit** (the `chatgpt-moment` Wikimedia Pageviews chart is the model — a third-party measurement, not a vendor's own numbers), a model catalog or docs page, a benchmark leaderboard, a real dashboard, a Google Trends curve, a primary-source document. Aim for **≥1 genuine visual exhibit in every content-heavy room**; when a chapter runs several prose paragraphs with no visual, treat that as a gap to fill, not a neutral default. The point is texture and evidence — never a decorative image count.
+- **Suitability over quota (the guardrail):** "everywhere suitable" is the operative word. A screenshot earns its place only when it is (a) genuine, (b) load-bearing — it *shows evidence* or *teaches an interface* the prose would otherwise merely assert — and (c) sandwiched in interpretive text (below). If you cannot capture a real one, or it would only illustrate a claim already obvious in words, ship the prose and log the missing exhibit in `BACKLOG.md` rather than inventing filler. A quota never justifies a fake or decorative image.
 - **The sandwich structure (mandatory):** a screenshot never floats alone. Text above introduces what the tool is and what the reader is about to see; the screenshot shows it; text below tells the reader how to interpret what's shown and its caveats. A screenshot with no interpretive text after it is decoration, not teaching.
 - **Authenticity:** only genuine captures of the real product. No mocked-up UI, no AI-generated fake interfaces, no doctored numbers — a learner must be able to open the product and see the same thing. Crop to the relevant region; blur or avoid personal data (emails, tokens, account names).
 - **Use the `<Screenshot>` component (do NOT hand-roll the markup):** `src/components/Screenshot.tsx` is the first-class exhibit component. It renders the accent-bordered frame, is clickable, and opens a **full-screen lightbox** so learners can open the screenshot and read the details up close (essential on mobile — an inline thumbnail is unreadable). Close with ✕ / backdrop click / Escape.
