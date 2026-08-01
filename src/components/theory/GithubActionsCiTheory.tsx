@@ -512,7 +512,7 @@ export default function GithubActionsCiTheory({ lang }: { lang: string }) {
               <>
                 Собрать этот материал можно не открывая браузер. У GitHub есть консольный клиент{' '}
                 <Term id="gh-cli" lang={lang}>gh</Term>: он показывает состояние пул-реквеста и прогонов там же, где
-                агент уже работает — в терминале, текстом. Ставится отдельно (<code>brew install gh</code> на macOS,
+                агент уже работает — в терминале, текстом. Ставится отдельно (<code>brew install gh</code> на macOS,{' '}
                 <code>sudo apt install gh</code> на Debian или Ubuntu) и один раз просит войти командой <code>gh auth login</code>.
                 Дальше вся разборка красного CI укладывается в несколько команд.
               </>
@@ -542,7 +542,7 @@ export default function GithubActionsCiTheory({ lang }: { lang: string }) {
           <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru' ? (
               <>
-                Три команды закрывают три вопроса: <code>gh pr checks</code> показывает, какие проверки прошли и какая упала,
+                Три команды закрывают три вопроса: <code>gh pr checks</code> показывает, какие проверки прошли и какая упала,{' '}
                 <code>gh run view --log-failed</code> отдаёт лог только упавшей задачи вместо десятков тысяч строк общего
                 вывода, а <code>gh run download</code> кладёт артефакты рядом с кодом. Именно такой набор удобно передавать
                 агенту: он получает имя упавшей задачи, конкретную строку ошибки и отчёт — то есть материал, а не
@@ -551,7 +551,7 @@ export default function GithubActionsCiTheory({ lang }: { lang: string }) {
               </>
             ) : (
               <>
-                Three commands answer three questions: <code>gh pr checks</code> shows which checks passed and which failed,
+                Three commands answer three questions: <code>gh pr checks</code> shows which checks passed and which failed,{' '}
                 <code>gh run view --log-failed</code> returns the log of the failing job only instead of tens of thousands of
                 lines, and <code>gh run download</code> puts the artifacts next to the code. That is exactly the set worth
                 handing to an agent: it gets the failing job name, the specific error line, and the report — material

@@ -353,4 +353,44 @@ export const githubActionsCiTasks: LocalizedTask[] = [
       passingScore: 70,
     },
   },
+  {
+    id: 11,
+    type: 'input',
+    question: {
+      ru: 'Какая команда консольного клиента GitHub показывает статус проверок текущего пул-реквеста? (три слова)',
+      en: 'Which GitHub CLI command shows the check status of the current pull request? (three words)',
+    },
+    answer: ['gh pr checks'],
+    hint: {
+      ru: 'Клиент называется gh, дальше — объект и что о нём спрашиваем.',
+      en: 'The client is called gh, then the object and what you ask about it.',
+    },
+    explanation: {
+      ru: 'gh pr checks выводит список проверок ветки со статусами и временем — видно, какая именно упала, не открывая браузер.',
+      en: 'gh pr checks prints the branch checks with their statuses and durations — you see exactly which one failed without opening a browser.',
+    },
+  },
+  {
+    id: 12,
+    type: 'multiple-select',
+    question: {
+      ru: 'Что верно про gh в работе с красным прогоном? (несколько ответов)',
+      en: 'Which statements about gh and a red run are true? (multiple answers)',
+    },
+    options: [
+      { ru: 'gh run view --log-failed отдаёт лог только упавшей задачи вместо десятков тысяч строк общего вывода', en: 'gh run view --log-failed returns the failing job’s log only instead of tens of thousands of lines' },
+      { ru: 'gh run download кладёт артефакты прогона рядом с кодом', en: 'gh run download puts the run artifacts next to the code' },
+      { ru: 'gh работает от имени вошедшего аккаунта и упирается в те же правила репозитория, что и веб-интерфейс', en: 'gh acts as the signed-in account and hits the same repository rules as the web interface' },
+      { ru: 'gh pr merge позволяет слить изменение в обход защиты ветки', en: 'gh pr merge lets you merge a change bypassing branch protection' },
+    ],
+    answer: [
+      { ru: 'gh run view --log-failed отдаёт лог только упавшей задачи вместо десятков тысяч строк общего вывода', en: 'gh run view --log-failed returns the failing job’s log only instead of tens of thousands of lines' },
+      { ru: 'gh run download кладёт артефакты прогона рядом с кодом', en: 'gh run download puts the run artifacts next to the code' },
+      { ru: 'gh работает от имени вошедшего аккаунта и упирается в те же правила репозитория, что и веб-интерфейс', en: 'gh acts as the signed-in account and hits the same repository rules as the web interface' },
+    ],
+    explanation: {
+      ru: 'Консольный клиент — удобный способ спрашивать GitHub, а не способ получить больше прав: слияние так же упрётся в защиту ветки. Поэтому агенту оставляют читающие команды (checks, view, download, watch), а изменяющие держат за человеком.',
+      en: 'The command-line client is a convenient way to ask GitHub questions, not a way to gain permissions: a merge still runs into branch protection. So an agent keeps the reading commands (checks, view, download, watch) while the changing ones stay with a human.',
+    },
+  },
 ];

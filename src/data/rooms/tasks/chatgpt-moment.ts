@@ -256,25 +256,25 @@ export const chatgptMomentTasks: LocalizedTask[] = [
       id: 10,
       type: 'sorting',
       question: {
-        ru: 'Упорядочите сервисы по времени достижения 1 миллиона пользователей (от самого быстрого).',
-        en: 'Sort services by time taken to reach 1 million users (fastest first).'
+        ru: 'Упорядочьте вехи, которые готовили «момент», по хронологии — от самой ранней к самой поздней.',
+        en: 'Put the milestones that led up to the "moment" in chronological order — earliest to latest.'
       },
       initialItems: [
-        { ru: 'Netflix (3.5 года)', en: 'Netflix (3.5 years)' },
-        { ru: 'Twitter (2 года)', en: 'Twitter (2 years)' },
-        { ru: 'Instagram (2.5 месяца)', en: 'Instagram (2.5 months)' },
-        { ru: 'ChatGPT (5 дней)', en: 'ChatGPT (5 days)' }
+        { ru: 'InstructGPT: обучение послушанию через RLHF', en: 'InstructGPT: training for obedience via RLHF' },
+        { ru: 'Выпуск GPT-3', en: 'GPT-3 released' },
+        { ru: 'Публичный релиз ChatGPT', en: 'ChatGPT public release' },
+        { ru: 'Архитектура Transformer', en: 'The Transformer architecture' }
       ],
       correctOrder: [
-        { ru: 'ChatGPT (5 дней)', en: 'ChatGPT (5 days)' },
-        { ru: 'Instagram (2.5 месяца)', en: 'Instagram (2.5 months)' },
-        { ru: 'Twitter (2 года)', en: 'Twitter (2 years)' },
-        { ru: 'Netflix (3.5 года)', en: 'Netflix (3.5 years)' }
+        { ru: 'Архитектура Transformer', en: 'The Transformer architecture' },
+        { ru: 'Выпуск GPT-3', en: 'GPT-3 released' },
+        { ru: 'InstructGPT: обучение послушанию через RLHF', en: 'InstructGPT: training for obedience via RLHF' },
+        { ru: 'Публичный релиз ChatGPT', en: 'ChatGPT public release' }
       ],
       answer: '',
       explanation: {
-        ru: 'ChatGPT установил абсолютный исторический рекорд, показав, насколько востребованным оказался доступный и понятный интерфейс к мощному ИИ.',
-        en: 'ChatGPT set an absolute historical record, demonstrating the massive demand for an accessible and clear interface to powerful AI.'
+        ru: 'Возможность зрела годами: Transformer (2017) → GPT-3 (2020) → InstructGPT, обученный слушаться через RLHF, — фундамент, на котором построен ChatGPT, — и только потом, 30 ноября 2022 года, публичный ChatGPT. «Момент» — это не рождение технологии, а день, когда к ней получили доступ все: сдвиг в интерфейсе, а не в интеллекте модели.',
+        en: 'The capability matured for years: the Transformer (2017) → GPT-3 (2020) → InstructGPT, trained to obey via RLHF and the foundation ChatGPT is built on — and only then, on November 30, 2022, the public ChatGPT. The "moment" was not the birth of the technology but the day everyone got access to it: a shift in interface, not in the model\'s intelligence.'
       }
     }
   ];

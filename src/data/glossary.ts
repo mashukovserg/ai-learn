@@ -709,6 +709,14 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
       en: 'CI (continuous integration) is the automatic build and check of every change on a clean machine, regardless of what the author has installed locally. CD extends the same pipeline to delivery. The point of CI is simple: “works on my machine” stops being an argument, because a neutral party runs the check.',
     },
   },
+  'gh-cli': {
+    id: 'gh-cli',
+    term: { ru: 'gh (GitHub CLI)', en: 'gh (GitHub CLI)' },
+    definition: {
+      ru: 'gh — официальный консольный клиент GitHub: показывает статус проверок пул-реквеста, логи прогонов и артефакты прямо в терминале, текстом. Ставится отдельно (brew install gh / sudo apt install gh) и один раз просит войти через gh auth login. Прав не добавляет: работает от имени вошедшего аккаунта и упирается в те же правила репозитория, что и веб-интерфейс.',
+      en: 'gh is the official GitHub command-line client: it shows pull request check status, run logs, and artifacts right in the terminal, as text. It is installed separately (brew install gh / sudo apt install gh) and asks you to sign in once with gh auth login. It grants no extra rights: it acts as the signed-in account and hits the same repository rules as the web interface.',
+    },
+  },
   'workflow': {
     id: 'workflow',
     term: { ru: 'Workflow (GitHub Actions)', en: 'Workflow (GitHub Actions)' },
