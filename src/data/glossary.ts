@@ -5,6 +5,14 @@ export interface GlossaryTerm {
 }
 
 export const GLOSSARY: Record<string, GlossaryTerm> = {
+  'value-alignment': {
+    id: 'value-alignment',
+    term: { ru: 'Выравнивание ценностей', en: 'Value Alignment' },
+    definition: {
+      ru: 'Выравнивание ценностей (value alignment) — задача сделать так, чтобы поведение ИИ-системы соответствовало человеческим ценностям, а у затронутых её решениями были основания эти решения принять. Техническая сторона — методы вроде RLHF и конституционного ИИ; нормативная — вопрос, чьи именно ценности и почему им следовать при обоснованном разногласии.',
+      en: 'Value alignment is the task of making an AI system\'s behaviour match human values — and giving those affected by its decisions reason to accept them. The technical side covers methods like RLHF and constitutional AI; the normative side asks whose values, and why they should be followed under reasonable disagreement.'
+    }
+  },
   'context-engineering': {
     id: 'context-engineering',
     term: { ru: 'Контекст-инжиниринг', en: 'Context Engineering' },

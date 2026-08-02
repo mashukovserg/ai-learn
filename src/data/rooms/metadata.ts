@@ -100,6 +100,20 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     icon: 'Scale',
   },
   {
+    id: 'ai-alignment-limits',
+    title: { ru: 'Чьи ценности? Пределы выравнивания', en: 'Whose Values? The Limits of Alignment' },
+    description: {
+      ru: 'Двойной вызов Шустера и Килова: почему краудсорсинг, RLHF и конституционный ИИ не дают оснований принимать морально спорные решения систем.',
+      en: 'Schuster and Kilov\'s dual challenge: why crowdsourcing, RLHF, and constitutional AI give no reason to accept systems\' morally contested decisions.',
+    },
+    difficulty: 'Intermediate',
+    time: { ru: '30 мин', en: '30m' },
+    category: { ru: 'Идеи и споры', en: 'Ideas and Debates' },
+    image: '/images/ai-singularity.png',
+    pathIds: ['ideas-history'],
+    icon: 'Landmark',
+  },
+  {
     id: 'prompting-101',
     title: { ru: 'Основы промптинга', en: 'Prompting 101' },
     description: {

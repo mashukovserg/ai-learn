@@ -34,6 +34,7 @@ import { claudeCodeAgenticLoopTasks } from './claude-code-agentic-loop';
 import { claudeCodeProWorkflowTasks } from './claude-code-pro-workflow';
 import { contextEngineering101Tasks } from './context-engineering-101';
 import { aiExistentialRiskTasks } from './ai-existential-risk';
+import { aiAlignmentLimitsTasks } from './ai-alignment-limits';
 
 import { promptContractsTasks } from './prompt-contracts';
 import { multiAgentCollaborationTasks } from './multi-agent-collaboration';
@@ -90,6 +91,7 @@ export const ROOM_TASKS: Record<string, LocalizedTask[]> = {
   'claude-code-pro-workflow': claudeCodeProWorkflowTasks,
   'context-engineering-101': contextEngineering101Tasks,
   'ai-existential-risk': aiExistentialRiskTasks,
+  'ai-alignment-limits': aiAlignmentLimitsTasks,
   'taxonomy-matching': taxonomyMatchingTasks,
   'ai-literature-review': aiLiteratureReviewTasks,
   'prompt-evals': promptEvalsTasks,

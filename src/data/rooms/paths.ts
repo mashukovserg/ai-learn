@@ -53,6 +53,7 @@ export const PATHS_METADATA: PathMetadata[] = [
       'scaling-hypothesis',
       'ai-singularity',
       'ai-existential-risk',
+      'ai-alignment-limits',
     ],
   },
   {
