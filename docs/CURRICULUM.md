@@ -67,7 +67,7 @@
   - *Topics:* API-access model tradeoffs, open-weight ecosystem dynamics, reasoning models (o1), geopolitics of compute.
 
 ### Ideas and Debates additions
-- [x] **Whose Values? The Limits of Alignment** () — 12 tasks; the dual challenge (epistemic + political), Delphi/Moral Machine, RLHF and constitutional AI under the same test, creeping technocracy, the practitioner's question "why should the affected accept this decision?". Pairs with the argument-anatomy method of .
+- [x] **Whose Values? The Limits of Alignment** (`ai-alignment-limits`) — 12 tasks; the dual challenge (epistemic + political), Delphi/Moral Machine, RLHF and constitutional AI under the same test, creeping technocracy, the practitioner's question "why should the affected accept this decision?". Pairs with the argument-anatomy method of `ai-existential-risk`.
 - [x] **Existential Risk: Anatomy of the Argument** (`ai-existential-risk`) — 12 tasks; Bostrom's four risk classes + maxipok, the basic AI x-risk case as three premises (Grace/AI Impacts), counterarguments by premise, the "proves too much" test. Teaches argument decomposition, not a verdict.
 
 ## Path in Rollout: Agent Coding (Агентная разработка)

@@ -100,7 +100,7 @@ Format: one row per idea. Rationale and risks stay short; design happens when th
 
 | Date | Room | Notes |
 |---|---|---|
-| 2026-08-02 |  | ideas-history: Schuster & Kilov 2025 (dual challenge). Normative complement to the technical ; argument-anatomy genre like  |
+| 2026-08-02 | `ai-alignment-limits` | ideas-history: Schuster & Kilov 2025 (dual challenge). Normative complement to the technical `ai-alignment`; argument-anatomy genre like `ai-existential-risk` |
 | 2026-07-22 | `ai-existential-risk` | ideas-history: Bostrom 2013 (four risk classes, maxipok) + Grace 2022 counterarguments. Angle is argument analysis — deliberately distinct from `ai-singularity` (the idea and its camps) and `ai-alignment` (technical methods) |
 | 2026-07-21 | `context-engineering-101` | AC-204, Module B: context layers, window economics, artifacts (skill/agent), hygiene cycle. Sourced from the owner's course notes; theory written original (course listings not copied), tool-specific numbers in a dated callout per the fact-decay rule |
 | 2026-07-11 | `research-ai-era`, `ai-literature-reviews` | Research cluster (method + tools), ideas-history path |
