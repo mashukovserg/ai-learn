@@ -116,6 +116,28 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
           </div>
         </div>
 
+        <p className="text-neutral-300 leading-relaxed mb-6">
+          {lang === 'ru'
+            ? 'Это не пересказ задним числом — вот первоисточник. В марте 2022 года, за восемь месяцев до ChatGPT, команда OpenAI выложила статью про InstructGPT. В её аннотации теми же словами описаны все три этапа: демонстрации разметчиков → ранжирование ответов → дообучение через reinforcement learning from human feedback.'
+            : 'This is not a retelling after the fact — here is the primary source. In March 2022, eight months before ChatGPT, the OpenAI team posted the InstructGPT paper. Its abstract spells out all three stages in the same terms: labeler demonstrations → ranking of outputs → further fine-tuning with reinforcement learning from human feedback.'}
+        </p>
+        <Screenshot
+          src="/images/rooms/chatgpt-moment/instructgpt-arxiv.png"
+          alt={lang === 'ru'
+            ? 'Страница статьи InstructGPT на arXiv (2203.02155, 4 марта 2022): заголовок «Training language models to follow instructions with human feedback», авторы и аннотация, где описан трёхэтапный процесс SFT → ранжирование → RLHF и результат — ответы модели InstructGPT на 1.3B параметров предпочтительнее ответов GPT-3 на 175B'
+            : 'The InstructGPT paper page on arXiv (2203.02155, March 4, 2022): the title "Training language models to follow instructions with human feedback", the authors, and the abstract describing the three-step SFT → ranking → RLHF process and the result — outputs from the 1.3B-parameter InstructGPT are preferred to those of the 175B GPT-3'}
+          width={1772}
+          height={1188}
+          caption={lang === 'ru'
+            ? 'Аннотация статьи InstructGPT на arXiv (2203.02155), март 2022 — фундамент, на котором позже построили ChatGPT (скриншот страницы arxiv.org). Нажмите, чтобы рассмотреть.'
+            : 'The abstract of the InstructGPT paper on arXiv (2203.02155), March 2022 — the foundation ChatGPT was later built on (screenshot of the arxiv.org page). Tap to view larger.'}
+        />
+        <p className="text-neutral-300 leading-relaxed mb-6">
+          {lang === 'ru'
+            ? 'Одна строчка из аннотации объясняет всю главу: ответы InstructGPT на 1.3 млрд параметров люди предпочитают ответам GPT-3 на 175 млрд — при том что модель в 100 с лишним раз меньше. Послушание оказалось важнее размера. И обратите внимание на дату: фундамент «момента» был заложен и опубликован задолго до того самого четверга ноября — публике просто ещё не выдали к нему удобную дверь.'
+            : 'One line of the abstract explains the whole chapter: humans prefer the answers of the 1.3-billion-parameter InstructGPT to those of the 175-billion GPT-3 — even though the model is over 100× smaller. Obedience turned out to matter more than size. And note the date: the foundation of the "moment" was laid and published long before that Thursday in November — the public had simply not yet been handed a convenient door to it.'}
+        </p>
+
         <p className="text-neutral-300 leading-relaxed">
           {lang === 'ru'
             ? 'Этот процесс называют «выравниванием» (Alignment). Он превратил ИИ из статистического автодополнителя текста в собеседника, который понимает ваши намерения. Теперь модель не просто "знает" факты интернета, она знает, как подать их в форме, удобной и безопасной для человека.'
