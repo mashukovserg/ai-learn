@@ -20,6 +20,7 @@ import {
   Palette,
   RefreshCw,
   Rocket,
+  Gauge,
   Scale,
   Search,
   Shield,
@@ -80,6 +81,7 @@ const ICON_MAP: Record<string, React.ComponentType<{ size?: number; strokeWidth?
   RefreshCw,
   GitBranch,
   Workflow,
+  Gauge,
 };
 
 function createInitialRoomSnapshots(): Record<string, RoomProgressSnapshot> {

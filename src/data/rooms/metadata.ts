@@ -342,6 +342,40 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     icon: 'Rocket',
   },
   {
+    id: 'agentic-guardrails',
+    title: {
+      ru: 'AC-301: Доставка agentic-фич с guardrails',
+      en: 'AC-301: Shipping Agentic Features with Guardrails',
+    },
+    description: {
+      ru: 'Как доказать, что защита держит, до того как фичу увидят пользователи: политика как проверяемый список, red teaming своей же системы, состязательный набор в обязательных проверках и границы, которые не спрашивают модель.',
+      en: 'How to prove the protection holds before users see the feature: policy as a checkable list, red teaming your own system, an adversarial set inside the mandatory checks, and boundaries that never ask the model.',
+    },
+    difficulty: 'Intermediate',
+    time: { ru: '35 мин', en: '35m' },
+    category: { ru: 'Агентная разработка', en: 'Agent Coding' },
+    image: '/images/llm-landscape-network.png',
+    pathIds: ['agent-coding'],
+    icon: 'ShieldCheck',
+  },
+  {
+    id: 'agentic-cost-latency',
+    title: {
+      ru: 'AC-302: Стоимость и задержка агентов',
+      en: 'AC-302: Cost and Latency Control for Agents',
+    },
+    description: {
+      ru: 'Почему единица счёта — прогон, а не запрос; какая задержка заметна человеку; четыре рычага снижения расхода и цена каждого; потолки расхода и учёт, отвечающий на вопрос «почему так дорого».',
+      en: 'Why the unit of cost is a run rather than a request; which latency a human actually notices; four levers for cutting spend and what each costs; spending ceilings and records that answer “why was this so expensive”.',
+    },
+    difficulty: 'Intermediate',
+    time: { ru: '35 мин', en: '35m' },
+    category: { ru: 'Агентная разработка', en: 'Agent Coding' },
+    image: '/images/how-llm-think-progress.png',
+    pathIds: ['agent-coding'],
+    icon: 'Gauge',
+  },
+  {
     id: 'agentic-ui-delivery',
     title: { ru: 'AC-203: Агентная UI-доставка', en: 'AC-203: Agentic UI Delivery' },
     description: {
