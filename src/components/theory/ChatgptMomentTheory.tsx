@@ -4,18 +4,16 @@ import React from 'react';
 import Link from 'next/link';
 import Term from '@/components/Term';
 import Screenshot from '@/components/Screenshot';
-import { Clock, Zap, Award, AlertCircle, MessageSquare, Globe, TrendingUp } from 'lucide-react';
 
 export default function ChatgptMomentTheory({ lang }: { lang: string }) {
   return (
     <>
       {/* Chapter 1: The Quiet Before the Storm */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Clock className="text-accent-500" />
+        <h2 className="text-3xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 1: Тишина перед бурей (До ноября 2022)' : 'Chapter 1: The Quiet Before the Storm (Pre-November 2022)'}
         </h2>
-        <p className="text-neutral-300 leading-relaxed mb-6 text-lg">
+        <p className="text-neutral-300 leading-relaxed mb-6">
           {lang === 'ru'
             ? 'До 30 ноября 2022 года мир искусственного интеллекта представлял собой раздробленный ландшафт, в котором обитали преимущественно исследователи, узкопрофильные разработчики и техно-энтузиасты. Хотя термин «ИИ» часто звучал на советах директоров, для обычного человека он оставался абстрактным понятием — чем-то, запрятанным в рекомендательных алгоритмах Netflix или в системе распознавания лиц iPhone. Мы уже знали про GPT-3, выпущенную OpenAI в 2020 году, но существовал огромный «разрыв в юзабилити». Использование модели требовало наличия API-ключа, привязанной кредитной карты и терпения, чтобы разобраться в интерфейсе Playground.'
             : 'Before November 30, 2022, the AI world was a fragmented landscape occupied mainly by researchers and niche developers. While "AI" was a buzzword in boardrooms, for the average person, it remained an abstract concept—something hidden in Netflix recommendation algorithms or iPhone face recognition. We already had GPT-3, released by OpenAI in 2020, but a massive "usability gap" existed. Using the model required an API key, a linked credit card, and the patience to navigate the complex Playground interface.'}
@@ -78,8 +76,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
 
       {/* Chapter 2: The Secret Ingredient - <Term id="rlhf">RLHF</Term> */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Zap className="text-accent-500" />
+        <h2 className="text-3xl font-bold mb-6 text-heading">
           {lang === 'ru' ? (
             <>
               {'Глава 2: Секретный ингредиент — '}
@@ -94,7 +91,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
             </>
           )}
         </h2>
-        <p className="text-neutral-300 leading-relaxed mb-6 text-lg">
+        <p className="text-neutral-300 leading-relaxed mb-6">
           {lang === 'ru'
             ? 'Настоящая магия момента ChatGPT заключалась не в том, что модель внезапно стала «умнее» за одну ночь, а в том, что она стала «послушной». Чтобы понять это, нужно рассмотреть переход от базовой GPT-3 к InstructGPT — фундаменту, на котором построен ChatGPT. Базовая модель — это просто предсказатель следующего слова. Если вы просили её написать эссе, она могла в ответ выдать список вопросов для викторины, потому что так было в её обучающих данных.'
             : 'The real magic of the ChatGPT moment wasn&apos;t that the model suddenly became "smarter" overnight; it was that it became "obedient." To understand this, we must look at the transition from base GPT-3 to InstructGPT—the foundation upon which ChatGPT is built. A base model is simply a next-word predictor. If you asked it to write an essay, it might respond with a list of quiz questions because that&apos;s what appeared in its training data.'}
@@ -152,8 +149,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
 
       {/* Chapter 3: The 5-Day Miracle & Interface Power */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <TrendingUp className="text-accent-500" />
+        <h2 className="text-3xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 3: Чудо пяти дней и сила интерфейса' : 'Chapter 3: The 5-Day Miracle & Interface Power'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-6">
@@ -191,15 +187,13 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
 
       {/* Chapter 4: Structural Changes & Market Reaction */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Globe className="text-accent-500" />
+        <h2 className="text-3xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 4: Тектонические сдвиги и реакция рынка' : 'Chapter 4: Tectonic Shifts & Market Reaction'}
         </h2>
         <div className="space-y-8">
           {/* Market Reaction & Code Red */}
           <div className="border-b border-border-card pb-6">
-            <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <Zap className="text-yellow-500" size={20} />
+            <h3 className="text-xl font-bold text-white mb-4">
               {lang === 'ru' ? 'Google "Code Red": Угроза бизнес-модели' : 'Google "Code Red": An Existential Threat'}
             </h3>
             <p className="text-neutral-300 leading-relaxed mb-4">
@@ -221,8 +215,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
 
           {/* Education & Coding */}
           <div className="border-b border-border-card pb-6">
-            <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <Award className="text-info-400" size={20} />
+            <h3 className="text-xl font-bold text-white mb-4">
               {lang === 'ru' ? 'Образование и Код: Смена парадигмы' : 'Education and Code: A Paradigm Shift'}
             </h3>
             <div className="grid grid-cols-1 gap-6">
@@ -247,8 +240,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
 
           {/* Geopolitics & Infrastructure */}
           <div>
-            <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <TrendingUp className="text-orange-400" size={20} />
+            <h3 className="text-xl font-bold text-white mb-4">
               {lang === 'ru' ? 'Геополитика и "Вычислительная Нефть"' : 'Geopolitics and "Compute Oil"'}
             </h3>
             <p className="text-neutral-300 leading-relaxed mb-4">
@@ -267,11 +259,10 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
 
       {/* Chapter 5: Why it is a "Moment" */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <MessageSquare className="text-accent-500" />
+        <h2 className="text-3xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 5: Почему это именно "Момент"?' : 'Chapter 5: Why it is a "Moment"?'}
         </h2>
-        <p className="text-neutral-300 leading-relaxed mb-6 text-lg">
+        <p className="text-neutral-300 leading-relaxed mb-6">
           {lang === 'ru'
             ? '30 ноября 2022 года интеллект модели не изменился ни на йоту. GPT-3 существовала с 2020 года, а «секретный соус» — обучение через RLHF — был описан в статье про InstructGPT ещё раньше в том же году. В тот четверг не появилось новой сверхспособности. Появился доступ. И в этом весь смысл слова «момент»: в истории технологий момент — это не день, когда возможность изобрели, а день, когда её отдали в руки всем сразу.'
             : 'On November 30, 2022, the model\'s intelligence did not change one bit. GPT-3 had existed since 2020, and the "secret sauce"—training via RLHF—had been described in the InstructGPT paper earlier that same year. No new superpower appeared that Thursday. Access did. And that is the whole meaning of the word "moment": in the history of technology, a moment is not the day a capability is invented, but the day it is placed in everyone\'s hands at once.'}
@@ -319,8 +310,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
 
       {/* Final Warning */}
       <div className="bg-danger-500/5 border border-danger-500/20 rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 flex items-center gap-3 text-danger-400">
-          <AlertCircle className="text-danger-500" />
+        <h2 className="text-2xl font-bold mb-4 text-danger-400">
           {lang === 'ru' ? 'Обратная сторона медали: Галлюцинации и Риски' : 'The Dark Side: Hallucinations and Risks'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-4">
