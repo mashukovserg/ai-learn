@@ -773,4 +773,196 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
       en: 'Human-in-the-Loop is the principle of an automated system handing the decision to a human at defined points: when automated recovery is exhausted, an action is irreversible, or confidence is low. The quality of the handoff decides everything: along with the task, the human must receive the full context — what the system was trying to do and what exactly went wrong.',
     },
   },
+  'red-teaming': {
+    id: 'red-teaming',
+    term: { ru: 'Red teaming', en: 'Red teaming' },
+    definition: {
+      ru: 'Проще всего проверить замок, попробовав его вскрыть. Red teaming — это когда команда целенаправленно атакует собственную систему до того, как её увидят пользователи: подбирает формулировки, обходящие фильтры, ищет сценарии, где модель выдаёт запрещённое или раскрывает лишнее. Название пришло из военных учений, где «красные» играют за противника. Отличие от обычного тестирования — в цели: тест проверяет, что заявленное работает, red team ищет то, о чём никто не подумал.',
+      en: 'The simplest way to test a lock is to try picking it. Red teaming is a team deliberately attacking its own system before users ever see it: hunting for phrasings that slip past filters, for situations where the model emits forbidden content or leaks something it should not. The name comes from military exercises where the "red" side plays the adversary. It differs from ordinary testing in intent: a test confirms the stated behaviour works, a red team looks for what nobody thought of.',
+    },
+  },
+  'jailbreak': {
+    id: 'jailbreak',
+    term: { ru: 'Джейлбрейк', en: 'Jailbreak' },
+    definition: {
+      ru: 'У модели есть правила, которым она обучена следовать: не объяснять, как навредить, не выдавать чужие данные. Джейлбрейк — формулировка запроса, которая уводит модель от этих правил, обычно через подмену рамки: ролевая игра, «это для книги», просьба «повторить за бабушкой». Ломается не код, а контекст: система остаётся исправной, но модель начинает считать, что правило к этому случаю не относится.',
+      en: 'A model has rules it was trained to follow: do not explain how to cause harm, do not reveal other people\'s data. A jailbreak is a prompt phrased to steer the model away from those rules, usually by swapping the frame: role-play, "it is for a novel", "repeat what grandma used to say". Nothing in the code breaks — the system stays healthy, but the model concludes the rule does not apply to this case.',
+    },
+  },
+  'pii': {
+    id: 'pii',
+    term: { ru: 'Персональные данные (PII)', en: 'Personal Data (PII)' },
+    definition: {
+      ru: 'Часть данных позволяет узнать конкретного человека: имя, телефон, адрес, номер паспорта или карты, а иногда и связка безобидных полей вместе. Такие данные называют персональными, в английской практике — PII (personally identifiable information). Для системы с LLM это граница ответственности: персональные данные нельзя без основания отправлять во внешний API, и их принято маскировать заглушками вроде [NAME_1] до отправки.',
+      en: 'Some data points identify a specific person: a name, a phone number, an address, a passport or card number — sometimes a combination of individually harmless fields. Such data is called personal data, or PII (personally identifiable information). For an LLM system it marks a responsibility boundary: personal data must not be sent to an external API without grounds, and is normally masked with placeholders like [NAME_1] before the call.',
+    },
+  },
+  'adversarial-eval': {
+    id: 'adversarial-eval',
+    term: { ru: 'Состязательный набор проверок', en: 'Adversarial Eval Set' },
+    definition: {
+      ru: 'Обычный набор тестов состоит из типичных запросов и проверяет, что система отвечает правильно. Состязательный набор состоит из запросов, придуманных, чтобы её сломать: обходы фильтров, инъекции в данных, пограничные случаи политики. Он собирается из находок red team и растёт после каждого инцидента, поэтому со временем описывает не идеальный сценарий, а реальную историю попыток обойти систему.',
+      en: 'An ordinary test set consists of typical requests and checks that the system answers correctly. An adversarial eval set consists of requests designed to break it: filter bypasses, injections hidden in data, policy edge cases. It is assembled from red-team findings and grows after every incident, so over time it describes not the happy path but the real history of attempts to get around the system.',
+    },
+  },
+  'prompt-caching': {
+    id: 'prompt-caching',
+    term: { ru: 'Кэширование промпта', en: 'Prompt Caching' },
+    definition: {
+      ru: 'Агент на каждом шаге отправляет модели одно и то же начало: системные инструкции, описания инструментов, файлы проекта. Кэширование промпта позволяет поставщику модели запомнить эту неизменную часть и не обрабатывать её заново — повторное чтение из кэша стоит заметно дешевле обычных входных токенов и возвращается быстрее. Работает только для точного совпадения префикса, поэтому стабильное начинается сверху, а изменчивое дописывается снизу.',
+      en: 'At every step an agent sends the model the same opening: system instructions, tool descriptions, project files. Prompt caching lets the provider retain that unchanging portion instead of reprocessing it — a cache read costs noticeably less than regular input tokens and returns faster. It only matches an exact prefix, which is why stable content goes at the top and volatile content is appended at the bottom.',
+    },
+  },
+  'ttft': {
+    id: 'ttft',
+    term: { ru: 'Время до первого токена (TTFT)', en: 'Time to First Token (TTFT)' },
+    definition: {
+      ru: 'Когда ответ печатается на экране постепенно, человек оценивает скорость не по тому, когда текст закончился, а по тому, когда он начался. Промежуток от отправки запроса до появления первого символа называют TTFT — time to first token. Общее время ответа и TTFT — разные величины, и оптимизируются они разными средствами: длинный ответ с быстрым началом ощущается отзывчивым, короткий с трёхсекундной паузой — нет.',
+      en: 'When an answer streams onto the screen, a person judges speed not by when the text ends but by when it starts. The gap between sending the request and seeing the first character is called TTFT — time to first token. Total response time and TTFT are different quantities optimised by different means: a long answer that starts quickly feels responsive, a short one after a three-second pause does not.',
+    },
+  },
+  'model-routing': {
+    id: 'model-routing',
+    term: { ru: 'Маршрутизация моделей', en: 'Model Routing' },
+    definition: {
+      ru: 'Внутри одной задачи шаги неодинаковы: определить язык файла — простая работа, спроектировать миграцию — сложная. Маршрутизация моделей означает, что система выбирает исполнителя под шаг, а не берёт самую сильную модель на всё: дешёвая и быстрая на классификацию и извлечение, дорогая на рассуждение и генерацию кода. Стоимость падает не за счёт качества, а за счёт того, что дорогая модель перестаёт делать дешёвую работу.',
+      en: 'Within a single task the steps are not equal: detecting a file\'s language is easy work, designing a migration is hard. Model routing means the system picks the executor per step instead of running the strongest model for everything: a cheap fast model for classification and extraction, an expensive one for reasoning and code generation. Cost falls not by sacrificing quality but by stopping the expensive model from doing cheap work.',
+    },
+  },
+  'token-budget': {
+    id: 'token-budget',
+    term: { ru: 'Бюджет токенов', en: 'Token Budget' },
+    definition: {
+      ru: 'Агент, оставленный без ограничений, может крутить цикл «поправил — сломал — поправил» до исчерпания счёта. Бюджет токенов — заранее заданный потолок расхода на один прогон, обычно вместе с лимитом шагов и времени. Он не улучшает ответ, а делает стоимость предсказуемой и превращает бесконечный цикл в честный отказ, который видно и можно передать человеку.',
+      en: 'An agent left without limits can spin a "fixed it — broke it — fixed it" loop until the invoice runs out. A token budget is a ceiling on spend for a single run, usually paired with step and wall-clock limits. It does not improve the answer; it makes cost predictable and converts a runaway loop into an honest stop that is visible and can be handed to a human.',
+    },
+  },
+  'batch-api': {
+    id: 'batch-api',
+    term: { ru: 'Пакетный режим (Batch API)', en: 'Batch API'},
+    definition: {
+      ru: 'Часть работы никто не ждёт в реальном времени: ночная переразметка архива, прогон оценочного набора, генерация описаний для каталога. Пакетный режим принимает такие запросы списком и возвращает результат в течение оговорённого окна (обычно до суток) — за это поставщики берут заметно меньше, чем за немедленный ответ. Обмен простой: вы отдаёте срочность и получаете цену.',
+      en: 'Some work nobody is waiting on in real time: an overnight re-labelling of an archive, an eval-set run, generating catalogue descriptions. A batch mode accepts such requests as a list and returns results within an agreed window (typically up to a day) — providers charge noticeably less for this than for an immediate answer. The trade is simple: you give up urgency and get price.',
+    },
+  },
+  'rate-limit': {
+    id: 'rate-limit',
+    term: { ru: 'Лимит запросов', en: 'Rate Limit' },
+    definition: {
+      ru: 'Поставщик модели ограничивает, сколько запросов и токенов один клиент может израсходовать в минуту. При превышении приходит не ответ, а отказ с кодом 429. Для агента это штатная ситуация, а не поломка: правильная реакция — подождать и повторить с растущей паузой, а не бить в стену повторами. Параллельный запуск десяти агентов упирается в этот потолок раньше, чем в стоимость.',
+      en: 'A model provider caps how many requests and tokens one client may consume per minute. Exceed it and you get a refusal with code 429 rather than an answer. For an agent this is a normal condition, not a breakage: the correct reaction is to wait and retry with a growing pause, not to hammer the wall. Launching ten agents in parallel hits this ceiling before it hits the budget.',
+    },
+  },
+  'tracing': {
+    id: 'tracing',
+    term: { ru: 'Трассировка прогона', en: 'Tracing' },
+    definition: {
+      ru: 'Когда прогон агента стоил вдесятеро больше обычного, итоговая цифра в счёте не объясняет причину. Трассировка — запись прогона по шагам: каждый вызов модели и инструмента со своим временем, числом токенов и результатом. Она превращает вопрос «почему так дорого» в конкретный ответ: тридцать перечитываний одного файла на шаге семь. Отдельный шаг такой записи принято называть спаном.',
+      en: 'When an agent run cost ten times the usual, the total on the invoice does not explain why. Tracing is a step-by-step record of the run: every model and tool call with its own duration, token count, and result. It turns "why was this so expensive" into a concrete answer — thirty re-reads of one file at step seven. An individual step in that record is conventionally called a span.',
+    },
+  },
+  'p95': {
+    id: 'p95',
+    term: { ru: 'Перцентиль задержки (P95)', en: 'Latency Percentile (P95)' },
+    definition: {
+      ru: 'Средняя задержка скрывает как раз тех, кому плохо: если девять запросов ответили за секунду, а десятый за минуту, среднее выглядит приемлемо. Перцентиль отвечает на другой вопрос: P95 — время, в которое уложились 95% запросов, то есть граница для худших пяти процентов. Именно этот «хвост» замечают пользователи и на нём ставят пороги, а не на среднем.',
+      en: 'An average latency hides exactly the users having a bad time: if nine requests answer in a second and the tenth takes a minute, the mean still looks acceptable. A percentile answers a different question: P95 is the time within which 95% of requests completed — the boundary for the worst five percent. That tail is what users notice, and it is what thresholds are set on, not the mean.',
+    },
+  },
+  'compute': {
+    id: 'compute',
+    term: { ru: 'Вычислительные мощности (compute)', en: 'Compute' },
+    definition: {
+      ru: 'Обучение и работа модели измеряются не только в деньгах, но и в количестве выполненных операций — сколько GPU-часов ушло на прогон. Эту величину называют compute, «вычисления». Она стала единицей учёта в отрасли и в регулировании: пороги в европейском законе об ИИ заданы именно через compute, потраченный на обучение, потому что его можно посчитать, в отличие от расплывчатой «мощности» модели.',
+      en: 'Training and running a model is measured not only in money but in operations performed — how many GPU-hours a run consumed. That quantity is called compute. It has become the industry\'s and the regulator\'s unit of account: the thresholds in the EU AI Act are defined through training compute precisely because it can be counted, unlike a vague notion of model "power".',
+    },
+  },
+  'ux': {
+    id: 'ux',
+    term: { ru: 'Пользовательский опыт (UX)', en: 'User Experience (UX)' },
+    definition: {
+      ru: 'UX — то, каким продукт ощущается в использовании: сколько шагов до цели, понятно ли, что произошло, приходится ли ждать. От интерфейса (UI) отличается охватом: UI — что нарисовано на экране, UX — весь путь пользователя, включая задержки, ошибки и восстановление после них. Для систем с LLM это особенно заметно: одна и та же модель за быстрым потоковым ответом и за трёхсекундной паузой воспринимается по-разному.',
+      en: 'UX is how a product feels in use: how many steps to the goal, whether it is clear what just happened, whether you have to wait. It differs from the interface (UI) in scope: UI is what is drawn on screen, UX is the whole path a user takes, including delays, errors, and recovery from them. In LLM systems this shows sharply — the same model behind a fast streaming answer and behind a three-second pause is perceived as two different products.',
+    },
+  },
+  'bias': {
+    id: 'bias',
+    term: { ru: 'Предвзятость (bias)', en: 'Bias' },
+    definition: {
+      ru: 'Модель повторяет закономерности своих обучающих данных, включая те, что отражают неравенство в самих данных: если в выборке резюме на инженерные позиции почти нет женщин, модель воспроизведёт эту диспропорцию как норму. Такой систематический перекос называют предвзятостью. Он не появляется из злого умысла и не лечится одной правкой кода — работать приходится с составом данных, метриками справедливости и проверками на выходе.',
+      en: 'A model repeats the patterns in its training data, including those that encode inequality in the data itself: if a résumé sample for engineering roles contains almost no women, the model reproduces that imbalance as the norm. Such systematic skew is called bias. It does not arise from ill intent and is not fixed by one code change — the work runs through data composition, fairness metrics, and output-side checks.',
+    },
+  },
+  'liability': {
+    id: 'liability',
+    term: { ru: 'Юридическая ответственность', en: 'Legal Liability' },
+    definition: {
+      ru: 'Когда система с ИИ причинила вред, вопрос «кто отвечает» имеет юридический, а не технический ответ. Ответственность — обязанность возместить вред, и законодатели распределяют её между участниками цепочки: разработчиком модели, оператором системы, владельцем сервиса и пользователем — соразмерно степени вины. Для продуктовой команды это означает, что роль в цепочке нужно понимать заранее: она определяет, какие логи и проверки придётся предъявлять.',
+      en: 'When an AI system causes harm, "who is responsible" has a legal answer, not a technical one. Liability is the obligation to compensate for harm, and lawmakers distribute it across the chain: the model developer, the system operator, the service owner, and the end user — proportionate to fault. For a product team this means knowing your position in that chain in advance: it determines which logs and checks you will have to produce.',
+    },
+  },
+  'prompt-engineering': {
+    id: 'prompt-engineering',
+    term: { ru: 'Промпт-инжиниринг', en: 'Prompt Engineering' },
+    definition: {
+      ru: 'Один и тот же вопрос, заданный по-разному, даёт разные по качеству ответы, и разница воспроизводима. Промпт-инжиниринг — работа над формулировкой запроса как над инженерным артефактом: роль, контекст, примеры, требования к формату, явные границы. Сегодня его рассматривают как часть более широкой дисциплины — контекст-инжиниринга, который управляет всем, что попадает в окно модели, а не только текстом инструкции.',
+      en: 'The same question asked in different ways yields answers of different quality, and the difference is reproducible. Prompt engineering treats the wording of a request as an engineering artefact: role, context, examples, format requirements, explicit boundaries. It is now regarded as part of the wider discipline of context engineering, which governs everything entering the model\'s window, not just the instruction text.',
+    },
+  },
+  'design-system': {
+    id: 'design-system',
+    term: { ru: 'Дизайн-система', en: 'Design System' },
+    definition: {
+      ru: 'Чтобы кнопки в разных углах продукта выглядели одинаково, недостаточно договорённости на словах — нужен общий набор компонентов и значений: цвета, отступы, типографика, состояния. Это и есть дизайн-система. Для агента она ценна тем, что переводит «сделай красиво» в проверяемое требование: агент не видит макет глазами, но может сверить свой код с перечнем допустимых токенов и компонентов.',
+      en: 'For buttons in different corners of a product to look alike, a verbal agreement is not enough — you need a shared set of components and values: colours, spacing, typography, states. That is a design system. For an agent its value is that it converts "make it look good" into a checkable requirement: the agent cannot see the mockup, but it can check its code against the list of allowed tokens and components.',
+    },
+  },
+  'slr': {
+    id: 'slr',
+    term: { ru: 'Систематический обзор', en: 'Systematic Review' },
+    definition: {
+      ru: 'Обычный обзор литературы отражает то, что автор успел прочитать. Систематический обзор устроен иначе: критерии поиска, включения и исключения фиксируются заранее, в протоколе, а затем весь корпус прогоняется через них — так, чтобы другой исследователь мог повторить процедуру и получить тот же набор источников. Цель — снизить влияние личного отбора; цена — существенно больший объём работы.',
+      en: 'An ordinary literature review reflects what the author happened to read. A systematic review works differently: search, inclusion, and exclusion criteria are fixed in advance in a protocol, and the whole corpus is run through them — so another researcher could repeat the procedure and arrive at the same set of sources. The aim is to reduce the effect of personal selection; the price is substantially more work.',
+    },
+  },
+  'active-learning': {
+    id: 'active-learning',
+    term: { ru: 'Active learning', en: 'Active Learning' },
+    definition: {
+      ru: 'Размечать тысячи статей вручную дорого, а случайная выборка тратит внимание впустую. Active learning строит цикл: человек размечает небольшой набор примеров, классификатор обучается на нём и ранжирует остальные по вероятности релевантности, человек смотрит верх списка, и его решения снова уходят в обучение. Модель на каждом круге спрашивает про самые информативные случаи, поэтому нужного результата достигают меньшим числом решений.',
+      en: 'Labelling thousands of papers by hand is expensive, and a random sample wastes attention. Active learning builds a loop: a human labels a small set of examples, a classifier trains on it and ranks the rest by probability of relevance, the human reviews the top of the list, and those decisions feed back into training. Each round the model asks about the most informative cases, so the same result takes fewer human decisions.',
+    },
+  },
+  'citation-chaining': {
+    id: 'citation-chaining',
+    term: { ru: 'Цепочка цитирований', en: 'Citation Chaining' },
+    definition: {
+      ru: 'Сильная статья несёт вокруг себя карту поля: в её списке литературы стоят работы, на которых она построена, а в индексах цитирования — те, кто построился на ней. Движение по этим ссылкам назад и вперёд называют цепочкой цитирований. Это надёжнее ключевых слов: связь через цитату проставлена самими исследователями, а не совпадением формулировок.',
+      en: 'A strong paper carries a map of its field around it: its reference list holds the work it was built on, and citation indexes hold whoever built on it. Walking those links backward and forward is called citation chaining. It is more reliable than keywords: a citation link was placed by researchers themselves rather than by a coincidence of wording.',
+    },
+  },
+  'controlled-vocabulary': {
+    id: 'controlled-vocabulary',
+    term: { ru: 'Контролируемый словарь', en: 'Controlled Vocabulary' },
+    definition: {
+      ru: 'Одно понятие живёт в литературе под несколькими названиями, а одно слово покрывает несколько понятий — поиск по первому пришедшему в голову термину систематически теряет источники. Контролируемый словарь — заранее составленный список синонимов и вариантов написания для каждого концепта, с которым вы работаете. Он превращает поиск из угадывания формулировки в проверяемую процедуру.',
+      en: 'One concept lives in the literature under several names, and one word covers several concepts — so searching by whichever term came to mind systematically loses sources. A controlled vocabulary is a prepared list of synonyms and spelling variants for each concept you work with. It turns search from guessing the phrasing into a checkable procedure.',
+    },
+  },
+  'empirical-puzzle': {
+    id: 'empirical-puzzle',
+    term: { ru: 'Эмпирическая загадка', en: 'Empirical Puzzle' },
+    definition: {
+      ru: 'У темы нет критерия завершения: «расскажи про открытые модели» можно расширять бесконечно. Эмпирическая загадка устроена иначе — это вопрос вида «почему наблюдается неожиданный факт X?». У неё есть конкретный объект, ожидание, которое он нарушает, и признак того, что ответ найден. Постановка загадки вместо темы — то, что превращает чтение в исследование.',
+      en: 'A topic has no completion criterion: "tell me about open models" expands forever. An empirical puzzle is different — a question of the form "why is surprising fact X the case?". It has a concrete object, an expectation that object violates, and a signal that the answer has been found. Framing a puzzle instead of a topic is what turns reading into research.',
+    },
+  },
+  'prepared-serendipity': {
+    id: 'prepared-serendipity',
+    term: { ru: 'Подготовленная серендипность', en: 'Prepared Serendipity' },
+    definition: {
+      ru: 'Случайная находка приходит только к тому, кто способен её заметить. Предварительное чтение расставляет в памяти опорные точки — имена, споры, термины, — и когда одна из них всплывает в неожиданном источнике, связь замечается сама. Это и называют подготовленной серендипностью. Отсюда практический вывод: собственный просмотр литературы нельзя отдать машине целиком, потому что готовность узнать связь нарабатывается только чтением.',
+      en: 'A chance find only reaches someone able to notice it. Prior reading plants anchors in memory — names, debates, terms — and when one of them surfaces in an unexpected source, the connection registers on its own. This is called prepared serendipity. The practical consequence: your own browsing of the literature cannot be delegated wholesale to a machine, because the readiness to recognise a connection is built only by reading.',
+    },
+  },
 };
