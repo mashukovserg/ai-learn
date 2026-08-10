@@ -44,11 +44,13 @@ export const PATHS_METADATA: PathMetadata[] = [
     icon: 'BookOpen',
     difficulty: { ru: 'Новичок', en: 'Beginner' },
     unlocked: true,
-    // Chronological: origins -> the ChatGPT break -> what followed -> the
-    // forward-looking debates (scaling, then singularity as the far horizon).
+    // Chronological: origins -> the ChatGPT break -> what the break did to one
+    // concrete institution (search) -> what followed -> the forward-looking
+    // debates (scaling, then singularity as the far horizon).
     roomIds: [
       'ai-history',
       'chatgpt-moment',
+      'search-retrieval-to-synthesis',
       'post-chatgpt-history',
       'scaling-hypothesis',
       'ai-singularity',

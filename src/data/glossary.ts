@@ -773,4 +773,44 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
       en: 'Human-in-the-Loop is the principle of an automated system handing the decision to a human at defined points: when automated recovery is exhausted, an action is irreversible, or confidence is low. The quality of the handoff decides everything: along with the task, the human must receive the full context — what the system was trying to do and what exactly went wrong.',
     },
   },
+  'generative-search': {
+    id: 'generative-search',
+    term: { ru: 'Генеративный поиск', en: 'Generative search' },
+    definition: {
+      ru: 'Генеративный поиск — способ выдачи, при котором система отвечает связным текстом, собранным языковой моделью из найденных документов, вместо ранжированного списка ссылок. Механика извлечения та же, что в RAG; отличается единица выдачи: не документ, а утверждение. Продуктовые формы — AI Overviews, Perplexity, ChatGPT Search.',
+      en: 'Generative search is a mode of output where the system answers with coherent prose composed by a language model from retrieved documents, instead of returning a ranked list of links. The retrieval mechanics are the same as in RAG; what differs is the unit of output — a claim rather than a document. Product forms include AI Overviews, Perplexity, and ChatGPT Search.',
+    },
+  },
+  'provenance': {
+    id: 'provenance',
+    term: { ru: 'Происхождение сведений', en: 'Provenance' },
+    definition: {
+      ru: 'Происхождение сведений (provenance) — возможность проследить, из какого источника взято конкретное утверждение. В списочной выдаче происхождение встроено в саму форму: ссылка и есть документ. В сгенерированном ответе утверждение и ссылка производятся разными процессами, поэтому их соответствие становится отдельным проверяемым фактом.',
+      en: 'Provenance is the ability to trace a specific claim back to the source it came from. In a list of results, provenance is built into the form itself: the link is the document. In a generated answer the claim and the citation are produced by different processes, so their correspondence becomes a separate fact that has to be checked.',
+    },
+  },
+  'verifiability': {
+    id: 'verifiability',
+    term: { ru: 'Проверяемость', en: 'Verifiability' },
+    definition: {
+      ru: 'Проверяемость в генеративном поиске — измеримое свойство пары «утверждение и приставленная к нему ссылка». Измеряется с двух сторон: доля предложений, полностью подтверждённых своими ссылками, и доля ссылок, которые действительно подтверждают своё предложение. В работе 2023 года эти доли составили около 51,5 % и 74,5 %, причём более беглые ответы оказались в среднем менее проверяемыми.',
+      en: 'Verifiability in generative search is a measurable property of the pair "claim and the citation attached to it". It is measured from two directions: the share of sentences fully supported by their citations, and the share of citations that actually support their sentence. A 2023 study put these at roughly 51.5% and 74.5%, with more fluent answers proving on average less verifiable.',
+    },
+  },
+  'serendipity': {
+    id: 'serendipity',
+    term: { ru: 'Серендипность', en: 'Serendipity' },
+    definition: {
+      ru: 'Серендипность — свойство поисковой выдачи приводить пользователя к тому, чего он не искал: соседняя ссылка меняет постановку самого вопроса. В списке она возникает как побочный эффект формы — видны результаты, о которых вы не спрашивали. Шах и Бендер называют её утрату одним из трёх последствий перехода к сгенерированному ответу.',
+      en: 'Serendipity is the property of search results leading a user to what they were not looking for: an adjacent link reframes the question itself. In a list it arises as a side effect of the form — you see results you did not ask about. Shah and Bender name its loss as one of the three consequences of moving to a generated answer.',
+    },
+  },
+  'echo-chamber': {
+    id: 'echo-chamber',
+    term: { ru: 'Эхо-камера', en: 'Echo chamber' },
+    definition: {
+      ru: 'Эхо-камера — ситуация, в которой человек преимущественно получает подтверждение уже имеющейся позиции. В поиске она возникает через избирательное восприятие: запрос формулируется под ожидаемый ответ. Исследование CHI 2024 показало, что генеративный интерфейс усиливает этот эффект сильнее обычного поиска, а смещение при этом переезжает из порядка ссылок в текст синтеза, где его труднее заметить.',
+      en: 'An echo chamber is a situation where a person predominantly receives confirmation of the view they already hold. In search it arises through selective exposure: the query is phrased around the expected answer. A CHI 2024 study found that a generative interface amplifies the effect more than conventional search, with the bias moving from the order of links into the synthesised text, where it is harder to notice.',
+    },
+  },
 };

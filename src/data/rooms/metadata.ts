@@ -72,6 +72,23 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     icon: 'Rocket',
   },
   {
+    id: 'search-retrieval-to-synthesis',
+    title: {
+      ru: 'Поиск: от извлечения к синтезу',
+      en: 'Search: From Retrieval to Synthesis',
+    },
+    description: {
+      ru: 'Что произошло с веб-поиском, когда выдачей стал ответ, а не список ссылок: диагноз Шаха и Бендер, измеренная проверяемость, экономика источников и рабочий протокол проверки.',
+      en: 'What happened to web search when the output became an answer instead of a list of links: the Shah and Bender diagnosis, measured verifiability, the economics of sources, and a working verification protocol.',
+    },
+    difficulty: 'Intermediate',
+    time: { ru: '35 мин', en: '35m' },
+    category: { ru: 'Идеи', en: 'Ideas' },
+    image: '/images/search-retrieval-to-synthesis.svg',
+    pathIds: ['ideas-history'],
+    icon: 'Search',
+  },
+  {
     id: 'ai-singularity',
     title: { ru: 'Сингулярность в AI-дебатах', en: 'Singularity in AI Debates' },
     description: {

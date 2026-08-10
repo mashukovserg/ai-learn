@@ -69,4 +69,5 @@ export const THEORY_COMPONENTS: Record<string, ComponentType<{ lang: string }>> 
   'ai-alignment-limits': dynamic(() => import('./AiAlignmentLimitsTheory'), { loading }),
   'taxonomy-matching': dynamic(() => import('./TaxonomyMatchingTheory'), { loading }),
   'ai-literature-review': dynamic(() => import('./AiLiteratureReviewTheory'), { loading }),
+  'search-retrieval-to-synthesis': dynamic(() => import('./SearchRetrievalToSynthesisTheory'), { loading }),
 };

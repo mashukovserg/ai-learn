@@ -1,0 +1,35 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" rx="32" fill="#171715"/>
+  <rect x="40" y="40" width="1120" height="640" rx="24" fill="#1C1B19" stroke="#2B2926"/>
+  <text x="84" y="110" fill="#8F8A82" font-family="monospace" font-size="28" letter-spacing="6">INFORMATION ACCESS</text>
+  <text x="84" y="182" fill="#F2EEE7" font-family="Georgia, serif" font-size="60" font-weight="700">From Retrieval</text>
+  <text x="84" y="252" fill="#F2EEE7" font-family="Georgia, serif" font-size="60" font-weight="700">to Synthesis</text>
+
+  <!-- Left: the ranked list -->
+  <text x="84" y="336" fill="#8F8A82" font-family="monospace" font-size="22" letter-spacing="3">TEN BLUE LINKS</text>
+  <rect x="84" y="360" width="420" height="44" rx="10" fill="#171715" stroke="#47433E"/>
+  <rect x="84" y="418" width="420" height="44" rx="10" fill="#171715" stroke="#47433E"/>
+  <rect x="84" y="476" width="420" height="44" rx="10" fill="#171715" stroke="#47433E"/>
+  <rect x="84" y="534" width="420" height="44" rx="10" fill="#171715" stroke="#47433E"/>
+  <rect x="102" y="376" width="200" height="12" rx="6" fill="#6F6A62"/>
+  <rect x="102" y="434" width="256" height="12" rx="6" fill="#6F6A62"/>
+  <rect x="102" y="492" width="176" height="12" rx="6" fill="#6F6A62"/>
+  <rect x="102" y="550" width="232" height="12" rx="6" fill="#6F6A62"/>
+  <text x="84" y="614" fill="#C8C2B8" font-family="monospace" font-size="20">the machine ranks · the human judges</text>
+
+  <!-- Arrow -->
+  <path d="M540 470 L636 470" stroke="#47433E" stroke-width="3"/>
+  <path d="M624 458 L640 470 L624 482 Z" fill="#47433E"/>
+
+  <!-- Right: the single synthesized answer -->
+  <text x="676" y="336" fill="#8F8A82" font-family="monospace" font-size="22" letter-spacing="3">ONE ANSWER</text>
+  <rect x="676" y="360" width="440" height="218" rx="14" fill="#171715" stroke="#47433E"/>
+  <rect x="700" y="392" width="392" height="12" rx="6" fill="#8F8A82"/>
+  <rect x="700" y="422" width="360" height="12" rx="6" fill="#8F8A82"/>
+  <rect x="700" y="452" width="392" height="12" rx="6" fill="#8F8A82"/>
+  <rect x="700" y="482" width="286" height="12" rx="6" fill="#8F8A82"/>
+  <circle cx="710" cy="536" r="13" fill="#171715" stroke="#6F6A62"/>
+  <circle cx="746" cy="536" r="13" fill="#171715" stroke="#6F6A62"/>
+  <circle cx="782" cy="536" r="13" fill="#171715" stroke="#6F6A62"/>
+  <text x="676" y="614" fill="#C8C2B8" font-family="monospace" font-size="20">who checks the join?</text>
+</svg>

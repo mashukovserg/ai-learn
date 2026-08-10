@@ -47,6 +47,7 @@ import { taxonomyMatchingTasks } from './taxonomy-matching';
 import { promptEvalsTasks } from './prompt-evals';
 import { localRagDocsTasks } from './local-rag-docs';
 import { aiLiteratureReviewTasks } from './ai-literature-review';
+import { searchRetrievalToSynthesisTasks } from './search-retrieval-to-synthesis';
 
 export const ROOM_TASKS: Record<string, LocalizedTask[]> = {
   'llm-landscape': llmLandscapeTasks,
@@ -94,6 +95,7 @@ export const ROOM_TASKS: Record<string, LocalizedTask[]> = {
   'ai-alignment-limits': aiAlignmentLimitsTasks,
   'taxonomy-matching': taxonomyMatchingTasks,
   'ai-literature-review': aiLiteratureReviewTasks,
+  'search-retrieval-to-synthesis': searchRetrievalToSynthesisTasks,
   'prompt-evals': promptEvalsTasks,
   'local-rag-docs': localRagDocsTasks,
 };
