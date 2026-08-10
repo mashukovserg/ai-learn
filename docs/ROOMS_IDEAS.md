@@ -84,6 +84,12 @@
 
 ## Future room ideas
 
+- **The Essay Crisis: Writing After AI** (`writing-after-ai`) — owner-supplied source set, next candidate in the `ideas-history` path
+  - Path: ideas-history, pairs with `search-retrieval-to-synthesis` (that room is about reading and finding; this one is about producing).
+  - Sources: Baron, N. (2023) *Who Wrote This?*; Kirschenbaum, M. (2016) *Track Changes*; Brandt, D. (2015) *The Rise of Writing*; Vee, A. (2017) *Coding Literacy*; Eaton, S. E. (2023) "Postplagiarism" (*Int. J. for Educational Integrity* 19).
+  - Angle: the historical depth is the point — word processing and literacy have been redefined before (Kirschenbaum, Vee), so "AI ends writing" needs to be tested against a track record. Eaton's postplagiarism supplies the frame for what integrity means when authorship is distributed.
+  - Task types: timeline (typewriter → word processor → spellcheck → LLM), categorize (what the tool does vs what the writer still owes), mentor (a colleague equating AI assistance with plagiarism), scenario (setting an assessment policy for a course).
+
 - **Room 203: EvalOps Basics**
   - Product-specific eval sets, scoring, and regression checks.
 - **Room 301: AI Product Systems**

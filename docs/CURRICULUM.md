@@ -67,6 +67,7 @@
   - *Topics:* API-access model tradeoffs, open-weight ecosystem dynamics, reasoning models (o1), geopolitics of compute.
 
 ### Ideas and Debates additions
+- [x] **Search: From Retrieval to Synthesis** (`search-retrieval-to-synthesis`) — 11 tasks; the ranked list as a division of labour, the generative pipeline, the Shah & Bender diagnosis written before ChatGPT, measured verifiability (51.5% / 74.5%) and the generative echo chamber, the economics of sources, and a working verification protocol. Sits right after `chatgpt-moment`: what the break did to one concrete institution. Cross-links to `ai-rag`, `research-grounding`, `deep-search-agents`, `ai-literature-review`.
 - [x] **Whose Values? The Limits of Alignment** (`ai-alignment-limits`) — 12 tasks; the dual challenge (epistemic + political), Delphi/Moral Machine, RLHF and constitutional AI under the same test, creeping technocracy, the practitioner's question "why should the affected accept this decision?". Pairs with the argument-anatomy method of `ai-existential-risk`.
 - [x] **Existential Risk: Anatomy of the Argument** (`ai-existential-risk`) — 12 tasks; Bostrom's four risk classes + maxipok, the basic AI x-risk case as three premises (Grace/AI Impacts), counterarguments by premise, the "proves too much" test. Teaches argument decomposition, not a verdict.
 

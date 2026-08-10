@@ -91,9 +91,9 @@ Known absent routes (do not assume they exist):
 1. `/${lang}/compete`
 2. `/${lang}/leaderboard`
 
-### Room inventory (47 rooms in `ROOMS_METADATA`)
+### Room inventory (48 rooms in `ROOMS_METADATA`)
 
-Rooms with theory + tasks fully wired (47): **all** current `ROOMS_METADATA` entries are wired in the dynamic room route — `agentic-release-control`, `git-safety-net` (AC-105) and `github-actions-ci` (AC-206) landed 2026-07-29. The inventory includes `ai-career-trajectories`, `prompt-contracts`, `mcp-tool-ecosystems`, `agentic-swarm-management`, `frontier-evals-logic`, `claude-code-agentic-loop`, `claude-code-pro-workflow`, `context-engineering-101`, `taxonomy-matching`, and the Open Models trio `local-models-101` + `llama-3-1-8b` + `local-rag-docs`.
+Rooms with theory + tasks fully wired (48): **all** current `ROOMS_METADATA` entries are wired in the dynamic room route — `agentic-release-control`, `git-safety-net` (AC-105) and `github-actions-ci` (AC-206) landed 2026-07-29. The inventory includes `ai-career-trajectories`, `prompt-contracts`, `mcp-tool-ecosystems`, `agentic-swarm-management`, `frontier-evals-logic`, `claude-code-agentic-loop`, `claude-code-pro-workflow`, `context-engineering-101`, `taxonomy-matching`, and the Open Models trio `local-models-101` + `llama-3-1-8b` + `local-rag-docs`. `search-retrieval-to-synthesis` landed 2026-08-10.
 
 Theory components are mapped in the lazy registry `src/components/theory/index.ts` (`THEORY_COMPONENTS`, 45 entries, `next/dynamic` — each room ships only its own theory chunk; SSR preserved). A room missing from the registry fails `check-all` via `src/components/theory/__tests__/registry.test.ts` — placeholders no longer slip through silently.
 
