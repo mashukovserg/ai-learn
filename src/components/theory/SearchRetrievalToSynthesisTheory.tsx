@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Term from '@/components/Term';
+import Screenshot from '@/components/Screenshot';
 
 export default function SearchRetrievalToSynthesisTheory({ lang }: { lang: string }) {
   const ru = lang === 'ru';
@@ -386,6 +387,81 @@ export default function SearchRetrievalToSynthesisTheory({ lang }: { lang: strin
                 the click to the source never happens, the source loses traffic and with it advertising,
                 subscriptions and the incentive to publish. The question is not fairness but sustainability:
                 generative search feeds on texts whose production it devalues.
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Посмотреть на эту петлю можно нейтральным инструментом. Публичная статистика Wikimedia
+                показывает просмотры страниц английской Википедии с разбивкой по типу обращения: людьми
+                («User») и автоматикой («Spider», «Automated»). Ниже — снимок этой панели за последние два
+                года; обратите внимание не на абсолютные величины, а на две линии сразу.
+              </>
+            ) : (
+              <>
+                This loop can be inspected with a neutral instrument. Wikimedia&apos;s public statistics show
+                page views of English Wikipedia split by the type of request: humans (&quot;User&quot;) and
+                automation (&quot;Spider&quot;, &quot;Automated&quot;). Below is a capture of that dashboard
+                over the last two years; watch the two lines together rather than the absolute values.
+              </>
+            )}
+          </p>
+          <Screenshot
+            src="/images/rooms/search-retrieval-to-synthesis/wikimedia-pageviews-by-agent-type.png"
+            alt={
+              ru
+                ? 'Панель Wikimedia Statistics: просмотры страниц английской Википедии за два года с разбивкой по типу обращения — люди, поисковые обходчики и автоматические клиенты.'
+                : 'Wikimedia Statistics dashboard: two years of English Wikipedia page views split by agent type — users, spiders, and automated clients.'
+            }
+            width={1383}
+            height={868}
+            caption={
+              ru
+                ? 'Wikimedia Statistics, метрика «Total page views» с фильтром по типу обращения. Нажмите, чтобы рассмотреть.'
+                : 'Wikimedia Statistics, the "Total page views" metric filtered by agent type. Tap to view larger.'
+            }
+          />
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Как это читать. Человеческая линия за два года дрейфует вниз — примерно с 7,6 до 6,7 млрд
+                просмотров в месяц, без обвала, но и без возврата. Линия автоматических обращений за тот же
+                период выросла с величин около 0,8 млрд до пиков около 3 млрд. И сразу оговорка, без которой
+                график сработает против нас: резкие переходы между «Spider» и «Automated» в середине периода
+                выглядят как следствие переклассификации агентов в самом инструменте, а не как реальный скачок
+                трафика. Поэтому опираться стоит на человеческую линию и на общий рост нечеловеческих
+                обращений, а не на распределение между двумя ботовыми категориями.
+              </>
+            ) : (
+              <>
+                How to read it. The human line drifts down over two years — from roughly 7.6 to 6.7 billion
+                monthly views, no collapse but no recovery either. The automated line over the same period grew
+                from around 0.8 billion to peaks near 3 billion. And immediately the caveat without which the
+                chart works against us: the sharp handovers between &quot;Spider&quot; and &quot;Automated&quot;
+                mid-period look like a reclassification of agents inside the instrument rather than a real jump
+                in traffic. So lean on the human line and on the overall growth of non-human requests, not on
+                how the two bot categories divide between themselves.
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Что этот график доказывает и чего не доказывает. Он показывает, что состав обращений к
+                крупному источнику меняется: доля людей снижается, доля машин растёт. Он{' '}
+                <strong>не</strong> доказывает, что причина — именно генеративный поиск: на человеческую линию
+                влияют и мобильные привычки, и изменения в самой поисковой выдаче, и сезонность. Полезен он
+                тем, что делает механизм наблюдаемым: у источника действительно появляется читатель, который
+                не кликает и не возвращается.
+              </>
+            ) : (
+              <>
+                What the chart proves and what it does not. It shows that the composition of requests to a major
+                source is changing: the human share falls, the machine share rises. It does <strong>not</strong>{' '}
+                prove that generative search is the cause: the human line is also moved by mobile habits, by
+                changes in search results themselves, and by seasonality. Its value is making the mechanism
+                observable — a source really is acquiring a reader that does not click and does not come back.
               </>
             )}
           </p>
