@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Play, Loader2, AlertTriangle, Clock, ChevronDown, ChevronUp, Sparkles, RotateCcw, ArrowRightLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { PlaygroundConfig } from '@/data/rooms/playgroundConfigs';
+import type { Lang } from '@/types/lang';
 
 const MODELS = [
   { id: 'llama-3.3-70b-versatile', label: 'Llama 3.3 70B' },
@@ -28,7 +29,7 @@ type CompareResult = {
 type Status = { kind: 'error' | 'rate-limit'; text: string } | null;
 
 interface PromptPlaygroundProps {
-  lang: string;
+  lang: Lang;
   config: PlaygroundConfig;
 }
 
@@ -36,7 +37,7 @@ export default function PromptPlayground({ lang, config }: PromptPlaygroundProps
   const [expanded, setExpanded] = useState(false);
   const [prompt, setPrompt] = useState('');
   const [systemPrompt, setSystemPrompt] = useState(
-    config.systemPrompt ? config.systemPrompt[lang as 'en' | 'ru'] : ''
+    config.systemPrompt ? config.systemPrompt[lang] : ''
   );
   const [showSystem, setShowSystem] = useState(!!config.systemPrompt);
   const [modelA, setModelA] = useState(MODELS[0].id);
@@ -152,10 +153,10 @@ export default function PromptPlayground({ lang, config }: PromptPlaygroundProps
                       <button
                         key={i}
                         type="button"
-                        onClick={() => applySuggestion(s.prompt[lang as 'en' | 'ru'])}
+                        onClick={() => applySuggestion(s.prompt[lang])}
                         className="text-xs px-3 py-1.5 rounded-full border border-accent-500/25 text-accent-400 hover:bg-accent-500/10 hover:border-accent-500/40 transition-colors"
                       >
-                        {s.label[lang as 'en' | 'ru']}
+                        {s.label[lang]}
                       </button>
                     ))}
                   </div>
@@ -306,7 +307,7 @@ export default function PromptPlayground({ lang, config }: PromptPlaygroundProps
   );
 }
 
-function ResponsePanel({ label, response, lang }: { label: string; response: ModelResponse; lang: string }) {
+function ResponsePanel({ label, response, lang }: { label: string; response: ModelResponse; lang: Lang }) {
   const isRu = lang === 'ru';
   return (
     <div className="bg-base border border-border-subtle rounded-lg overflow-hidden">

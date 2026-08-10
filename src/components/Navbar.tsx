@@ -22,11 +22,10 @@ export default function Navbar({ onMenuClick }: { onMenuClick?: () => void }) {
   const results = useMemo(() => {
     const q = query.toLowerCase().trim();
     if (!q) return [];
-    const l = lang as 'ru' | 'en';
     return ROOMS_METADATA.filter((r) => {
-      const title = r.title[l].toLowerCase();
-      const desc = r.description[l].toLowerCase();
-      const cat = r.category[l].toLowerCase();
+      const title = r.title[lang].toLowerCase();
+      const desc = r.description[lang].toLowerCase();
+      const cat = r.category[lang].toLowerCase();
       return title.includes(q) || desc.includes(q) || cat.includes(q) || r.id.includes(q);
     }).slice(0, 8);
   }, [query, lang]);
@@ -105,8 +104,8 @@ export default function Navbar({ onMenuClick }: { onMenuClick?: () => void }) {
                   className="flex items-center gap-3 px-4 py-2.5 hover:bg-white/[0.04] transition-colors"
                 >
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm text-neutral-200 truncate">{room.title[lang as 'ru' | 'en']}</p>
-                    <p className="text-xs text-neutral-500 truncate">{room.category[lang as 'ru' | 'en']}</p>
+                    <p className="text-sm text-neutral-200 truncate">{room.title[lang]}</p>
+                    <p className="text-xs text-neutral-500 truncate">{room.category[lang]}</p>
                   </div>
                   <span className={`text-xs font-medium shrink-0 ${difficultyColor(room.difficulty)}`}>
                     {room.difficulty}

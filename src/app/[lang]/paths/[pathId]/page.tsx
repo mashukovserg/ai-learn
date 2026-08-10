@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ChevronLeft, Play } from 'lucide-react';
 import { getRoomsByPath, PATHS_METADATA } from '@/data/rooms';
+import { toLang } from '@/types/lang';
 
 /**
  * Single dynamic page for every learning path. Replaced four copy-pasted
@@ -19,8 +20,8 @@ export function generateStaticParams() {
 export default async function PathPage(props: {
   params: Promise<{ lang: string; pathId: string }>;
 }) {
-  const { lang, pathId } = await props.params;
-  const l = lang as 'en' | 'ru';
+  const { lang: rawLang, pathId } = await props.params;
+  const lang = toLang(rawLang);
 
   const pathMeta = PATHS_METADATA.find(p => p.id === pathId);
   if (!pathMeta || !pathMeta.unlocked) {
@@ -40,9 +41,9 @@ export default async function PathPage(props: {
       </Link>
 
       <div className="mb-12">
-        <h1 className="text-2xl font-semibold mb-3 text-neutral-200">{pathMeta.title[l]}</h1>
+        <h1 className="text-2xl font-semibold mb-3 text-neutral-200">{pathMeta.title[lang]}</h1>
         <p className="text-neutral-500 text-sm max-w-2xl leading-relaxed">
-          {(pathMeta.intro ?? pathMeta.description)[l]}
+          {(pathMeta.intro ?? pathMeta.description)[lang]}
         </p>
       </div>
 
@@ -57,8 +58,8 @@ export default async function PathPage(props: {
 
             <div className="flex-1 bg-input border rounded-lg p-5 transition-colors border-accent-500/35">
               <div className="mb-1.5">
-                <h3 className="text-base font-semibold text-neutral-200 mb-1">{room.title[l]}</h3>
-                <p className="text-neutral-500 text-sm">{room.description[l]}</p>
+                <h3 className="text-base font-semibold text-neutral-200 mb-1">{room.title[lang]}</h3>
+                <p className="text-neutral-500 text-sm">{room.description[lang]}</p>
               </div>
 
               <div className="mt-4">

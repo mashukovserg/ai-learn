@@ -8,6 +8,7 @@ import { IBM_Plex_Sans, Ubuntu_Mono } from "next/font/google";
 import "./globals.css";
 import AppShell from "@/components/AppShell";
 import { LangProvider } from "@/hooks/useLang";
+import { LANGS } from "@/types/lang";
 
 // Site typeface: IBM Plex Sans. cyrillic subset is required — RU is the default locale.
 // Self-hosted by next/font (no external request, no layout shift). Exposed as a CSS
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
 };
 
 export async function generateStaticParams() {
-  return [{ lang: 'en' }, { lang: 'ru' }]
+  return LANGS.map((lang) => ({ lang }))
 }
 
 export default async function RootLayout(props: {

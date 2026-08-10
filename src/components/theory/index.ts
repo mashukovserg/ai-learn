@@ -17,6 +17,10 @@ import type { ComponentType } from 'react';
 
 const loading = () => null;
 
+// The prop stays `string` rather than `Lang`: `ComponentType` unions in
+// `ComponentClass`, whose `defaultProps` makes the props type invariant, so a
+// theory component declared `{ lang: string }` would not be assignable to a
+// `Lang`-typed registry. Callers pass a narrowed `Lang`, which widens fine.
 export const THEORY_COMPONENTS: Record<string, ComponentType<{ lang: string }>> = {
   'llm-mechanics': dynamic(() => import('./LlmMechanicsTheory'), { loading }),
   'llm-landscape': dynamic(() => import('./LlmLandscapeTheory'), { loading }),

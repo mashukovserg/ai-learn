@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ChevronRight, Search } from 'lucide-react';
 import AIProfessionCard from '@/components/AIProfessionCard';
 import { PROFESSIONS, ProfessionDifficulty, ProfessionStatus } from '@/data/professions';
+import { toLang } from '@/types/lang';
 
 type DifficultyFilter = 'all' | ProfessionDifficulty;
 type StatusFilter = 'all' | ProfessionStatus;
@@ -12,7 +13,7 @@ type StatusFilter = 'all' | ProfessionStatus;
 export default function ProfessionsPage(props: {
   params: Promise<{ lang: string }>;
 }) {
-  const { lang } = use(props.params);
+  const lang = toLang(use(props.params).lang);
   const [query, setQuery] = useState('');
   const [difficultyFilter, setDifficultyFilter] = useState<DifficultyFilter>('all');
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
@@ -21,9 +22,9 @@ export default function ProfessionsPage(props: {
     const normalizedQuery = query.trim().toLowerCase();
 
     return PROFESSIONS.filter((profession) => {
-      const title = profession.title[lang as 'en' | 'ru'].toLowerCase();
-      const description = profession.description[lang as 'en' | 'ru'].toLowerCase();
-      const highlights = profession.highlights.map((item) => item[lang as 'en' | 'ru'].toLowerCase());
+      const title = profession.title[lang].toLowerCase();
+      const description = profession.description[lang].toLowerCase();
+      const highlights = profession.highlights.map((item) => item[lang].toLowerCase());
 
       const matchesQuery = normalizedQuery.length === 0
         || title.includes(normalizedQuery)

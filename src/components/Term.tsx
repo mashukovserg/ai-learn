@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { GLOSSARY } from '@/data/glossary';
 import { BookOpen } from 'lucide-react';
 import { useLang } from '@/hooks/useLang';
+import { isLang } from '@/types/lang';
 
 interface TermProps {
   id: string;
@@ -21,9 +22,7 @@ export default function Term({ id, children, lang: forcedLang }: TermProps) {
     return <span className="text-danger-500 font-bold">{children || id} [Term not found]</span>;
   }
 
-  const l = (forcedLang === 'ru' || forcedLang === 'en'
-    ? forcedLang
-    : currentLang) as 'ru' | 'en';
+  const l = isLang(forcedLang) ? forcedLang : currentLang;
   const termText = children || glossaryEntry.term[l];
   const definition = glossaryEntry.definition[l];
 

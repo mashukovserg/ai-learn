@@ -87,7 +87,7 @@ export default function SkillsMatrix() {
                 className={isActive ? '' : 'text-neutral-600 group-hover:text-neutral-400 transition-colors'}
                 style={isActive ? { color: rs.text } : undefined}
               />
-              <span className="text-xs font-semibold tracking-tight">{r.name[lang as 'en' | 'ru']}</span>
+              <span className="text-xs font-semibold tracking-tight">{r.name[lang]}</span>
               {isActive && (
                 <motion.div
                   layoutId="active-indicator"
@@ -113,11 +113,11 @@ export default function SkillsMatrix() {
           <div>
             <div className="flex items-center gap-2 text-xs font-medium text-neutral-500 mb-2">
               <span className="font-bold uppercase tracking-widest" style={{ color: styles.text }}>
-                {role.name[lang as 'en' | 'ru']}
+                {role.name[lang]}
               </span>
             </div>
             <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
-              {role.name[lang as 'en' | 'ru']}
+              {role.name[lang]}
               <div
                 className="w-2 h-2 rounded-full"
                 style={{ backgroundColor: styles.solid, boxShadow: `0 0 8px ${styles.bg10}` }}
@@ -230,7 +230,7 @@ export default function SkillsMatrix() {
                               onMouseLeave={e => (e.currentTarget.style.borderColor = '')}
                             >
                               <span className="text-xs text-neutral-400 group-hover:text-neutral-200 truncate mr-2">
-                                {rec.title[lang as 'en' | 'ru']}
+                                {rec.title[lang]}
                               </span>
                               {rec.status === 'completed' ? (
                                 <CheckCircle2 size={14} style={{ color: styles.solid }} className="shrink-0" />

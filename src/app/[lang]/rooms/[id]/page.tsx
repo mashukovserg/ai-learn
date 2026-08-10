@@ -1,145 +1,56 @@
 "use client";
 
-import React, { use, useState, useEffect, useRef } from 'react';
+import React, { use, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronRight, HelpCircle, Clock, RotateCcw } from 'lucide-react';
 import { motion } from 'framer-motion';
-import TaskQuestion from '@/components/TaskQuestion';
-import TaskSorting from '@/components/TaskSorting';
-import TaskMentor from '@/components/TaskMentor';
-import TaskCategorize from '@/components/TaskCategorize';
-import TaskTimeline from '@/components/TaskTimeline';
-import TaskScenario from '@/components/TaskScenario';
-import CompletionModal from '@/components/CompletionModal';
-import { useProgress } from '@/hooks/useProgress';
-import { ROOMS_METADATA, ROOM_TASKS, getNextRoomInPath } from '@/data/rooms';
-import { resolveTask } from '@/data/rooms/resolveTask';
-import { THEORY_COMPONENTS } from '@/components/theory';
 import { notFound } from 'next/navigation';
-
+import CompletionModal from '@/components/CompletionModal';
 import PromptPlayground from '@/components/PromptPlayground';
+import TaskRenderer from '@/components/TaskRenderer';
+import { THEORY_COMPONENTS } from '@/components/theory';
+import { ROOMS_METADATA, getNextRoomInPath } from '@/data/rooms';
 import { PLAYGROUND_CONFIGS } from '@/data/rooms/playgroundConfigs';
+import { useRoomTasks } from '@/hooks/useRoomTasks';
+import { toLang } from '@/types/lang';
 
 const DefaultTheory = () => <div className="p-8 text-neutral-500">Theory content coming soon...</div>;
 
-type WindowWithWebkitAudio = Window & typeof globalThis & {
-  webkitAudioContext?: typeof AudioContext;
-};
-
 export default function DynamicRoomPage(props: { params: Promise<{ lang: string, id: string }> }) {
-  const params = use(props.params);
-  const { lang, id } = params;
+  const { lang: rawLang, id } = use(props.params);
+  const lang = toLang(rawLang);
 
   const metadata = ROOMS_METADATA.find(r => r.id === id);
-  const localizedTasks = ROOM_TASKS[id];
 
-  const { completedIds, markCompleted: persistCompleted, resetProgress } = useProgress(id);
+  // Task state, persistence, the completion chime and the success-modal
+  // trigger all live in useRoomTasks — see src/hooks/useRoomTasks.ts.
+  const {
+    tasks,
+    hasTasks,
+    markCompleted,
+    reset,
+    resetNonce,
+    progressPercent,
+    showSuccessModal,
+    closeSuccessModal,
+  } = useRoomTasks(id, lang);
 
-  // Initialize tasks with completion status from progress.
-  // Locale resolution lives in resolveTask (src/data/rooms/resolveTask.ts),
-  // where it is unit-testable; this component only adds completion state.
-  const [tasks, setTasks] = useState(localizedTasks ? localizedTasks.map(t => ({
-    ...resolveTask(t, lang),
-    completed: completedIds.has(t.id),
-  })) : []);
-
-  // Success modal state
-  const [showSuccessModal, setShowSuccessModal] = useState(false);
-  // Guard: only trigger modal when user completes a task, not on initial load
-  const modalTriggered = useRef(false);
-  // Reset-progress UI: confirm step + a nonce that remounts task cards so their
-  // internal solved/answer state is cleared (initialCompleted alone can't undo
-  // a task solved in the current session).
+  // Confirm step for the destructive reset button — pure UI state, so it stays
+  // in the page rather than in the hook.
   const [confirmReset, setConfirmReset] = useState(false);
-  const [resetNonce, setResetNonce] = useState(0);
-  const audioContextRef = useRef<AudioContext | null>(null);
 
-  // Update tasks completion status only when completedIds actually changes
-  useEffect(() => {
-    if (!localizedTasks) return;
-    
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setTasks(prev => {
-      // Check if anything actually changed to avoid unnecessary re-renders
-      const hasChanged = prev.some(t => t.completed !== completedIds.has(t.id));
-      if (!hasChanged) return prev;
-      
-      return prev.map(t => ({
-        ...t,
-        completed: completedIds.has(t.id)
-      }));
-    });
-  }, [completedIds, localizedTasks]);
-
-  if (!metadata || !localizedTasks) {
+  if (!metadata || !hasTasks) {
     return notFound();
   }
 
-  const playTaskDoneSound = () => {
-    if (typeof window === 'undefined') return;
-
-    const AudioCtx = window.AudioContext ?? (window as WindowWithWebkitAudio).webkitAudioContext;
-    if (!AudioCtx) return;
-
-    try {
-      const ctx = audioContextRef.current ?? new AudioCtx();
-      audioContextRef.current = ctx;
-
-      if (ctx.state === 'suspended') {
-        void ctx.resume();
-      }
-
-      const now = ctx.currentTime;
-      const gainNode = ctx.createGain();
-      gainNode.gain.setValueAtTime(0.0001, now);
-      gainNode.gain.exponentialRampToValueAtTime(0.08, now + 0.01);
-      gainNode.gain.exponentialRampToValueAtTime(0.0001, now + 0.2);
-      gainNode.connect(ctx.destination);
-
-      const osc1 = ctx.createOscillator();
-      osc1.type = 'sine';
-      osc1.frequency.setValueAtTime(660, now);
-      osc1.frequency.linearRampToValueAtTime(880, now + 0.12);
-      osc1.connect(gainNode);
-      osc1.start(now);
-      osc1.stop(now + 0.2);
-    } catch {
-      // Keep UI responsive if audio is blocked by browser policy
-    }
-  };
-
-  const markCompleted = (taskId: number) => {
-    const wasCompleted = tasks.some(t => t.id === taskId && t.completed);
-    if (!wasCompleted) {
-      playTaskDoneSound();
-    }
-
-    setTasks(prev => {
-      const updated = prev.map(t => t.id === taskId ? { ...t, completed: true } : t);
-      // Trigger success modal when the very last task is completed by user action
-      const allDone = updated.every(t => t.completed);
-      if (allDone && !modalTriggered.current) {
-        modalTriggered.current = true;
-        setTimeout(() => setShowSuccessModal(true), 500);
-      }
-      return updated;
-    });
-    persistCompleted(taskId);
-  };
-
   const handleReset = () => {
-    resetProgress();
-    setTasks(prev => prev.map(t => ({ ...t, completed: false })));
-    modalTriggered.current = false;
-    setShowSuccessModal(false);
+    reset();
     setConfirmReset(false);
-    setResetNonce(n => n + 1);
   };
 
   const TheoryComponent = THEORY_COMPONENTS[id] || DefaultTheory;
 
-  // Logic to find the next room
   // Next room follows the learning path, not ROOMS_METADATA array position —
   // index arithmetic over the global list used to hand the learner a room from
   // an unrelated path once a path ran out.
@@ -155,30 +66,29 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
               {lang === 'ru' ? 'Комнаты' : 'Rooms'}
             </Link>
             <ChevronRight size={14} />
-            <span className="text-neutral-300">{metadata.category[lang as 'en' | 'ru']}</span>
+            <span className="text-neutral-300">{metadata.category[lang]}</span>
             <ChevronRight size={14} />
-            <span className="text-accent-500 font-medium">{metadata.title[lang as 'en' | 'ru']}</span>
+            <span className="text-accent-500 font-medium">{metadata.title[lang]}</span>
           </nav>
 
           <div className="mb-8 flex flex-col md:flex-row md:items-start gap-5">
             <div className="flex-1 min-w-0">
-              <h1 className="text-3xl md:text-4xl font-semibold mb-4">{metadata.title[lang as 'en' | 'ru']}</h1>
-                          <div className="flex items-center gap-6 text-sm text-neutral-400">
-                            <span className="flex items-center gap-2 text-accent-500 font-bold bg-accent-500/10 px-2 py-1 rounded text-xs uppercase border border-accent-500/20">
-                              {metadata.difficulty}
-                            </span>
-                            <span className="flex items-center gap-2">
-                              <Clock size={16} className="text-neutral-500" /> {metadata.time[lang as 'en' | 'ru']}
-                            </span>
-                          </div>
-              
+              <h1 className="text-3xl md:text-4xl font-semibold mb-4">{metadata.title[lang]}</h1>
+              <div className="flex items-center gap-6 text-sm text-neutral-400">
+                <span className="flex items-center gap-2 text-accent-500 font-bold bg-accent-500/10 px-2 py-1 rounded text-xs uppercase border border-accent-500/20">
+                  {metadata.difficulty}
+                </span>
+                <span className="flex items-center gap-2">
+                  <Clock size={16} className="text-neutral-500" /> {metadata.time[lang]}
+                </span>
+              </div>
             </div>
 
             {metadata.image && (
               <div className="w-full md:w-[320px] rounded-xl overflow-hidden border border-border-card bg-card-dark shrink-0">
                 <Image
                   src={metadata.image}
-                  alt={metadata.title[lang as 'en' | 'ru']}
+                  alt={metadata.title[lang]}
                   width={640}
                   height={360}
                   priority
@@ -207,83 +117,13 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
             </h3>
             <div className="space-y-2">
               {tasks.map((task) => (
-                task.type === 'sorting' ? (
-                  <TaskSorting
-                    key={`${task.id}-${resetNonce}`}
-                    id={task.id}
-                    question={task.question}
-                    image={task.image}
-                    initialItems={task.initialItems as string[]}
-                    correctOrder={task.correctOrder as string[]}
-                    explanation={task.explanation}
-                    onSuccess={markCompleted}
-                    initialCompleted={task.completed}
-                  />
-                ) : task.type === 'mentor' ? (
-                  <TaskMentor
-                    key={`${task.id}-${resetNonce}`}
-                    id={task.id}
-                    question={task.question}
-                    image={task.image}
-                    mentorMessage={task.dialogue!.mentorMessage}
-                    userOptions={task.dialogue!.userOptions}
-                    onSuccess={markCompleted}
-                    initialCompleted={task.completed}
-                  />
-                ) : task.type === 'categorize' ? (
-                  <TaskCategorize
-                    key={`${task.id}-${resetNonce}`}
-                    id={task.id}
-                    question={task.question}
-                    image={task.image}
-                    items={task.categorize!.items}
-                    buckets={task.categorize!.buckets}
-                    correctMapping={task.categorize!.correctMapping}
-                    explanation={task.explanation}
-                    onSuccess={markCompleted}
-                    initialCompleted={task.completed}
-                  />
-                ) : task.type === 'timeline' ? (
-                  <TaskTimeline
-                    key={`${task.id}-${resetNonce}`}
-                    id={task.id}
-                    question={task.question}
-                    image={task.image}
-                    events={task.timeline!.events}
-                    correctOrder={task.timeline!.correctOrder}
-                    explanation={task.explanation}
-                    onSuccess={markCompleted}
-                    initialCompleted={task.completed}
-                  />
-                ) : task.type === 'scenario' ? (
-                  <TaskScenario
-                    key={`${task.id}-${resetNonce}`}
-                    id={task.id}
-                    question={task.question}
-                    image={task.image}
-                    brief={task.scenario!.brief}
-                    constraints={task.scenario!.constraints}
-                    choices={task.scenario!.choices}
-                    explanation={task.explanation}
-                    passingScore={task.scenario!.passingScore}
-                    onSuccess={markCompleted}
-                    initialCompleted={task.completed}
-                  />
-                ) : (
-                  <TaskQuestion
-                    key={`${task.id}-${resetNonce}`}
-                    id={task.id}
-                    question={task.question}
-                    image={task.image}
-                    correctAnswer={task.answer as string | string[]}
-                    options={task.options as string[]}
-                    hint={task.hint}
-                    explanation={task.explanation}
-                    type={task.type}
-                    onSuccess={markCompleted}
-                    initialCompleted={task.completed}
-                  />
-                )
+                // resetNonce in the key remounts the card so a task solved in
+                // this session drops its internal answer state on reset.
+                <TaskRenderer
+                  key={`${task.id}-${resetNonce}`}
+                  task={task}
+                  onSuccess={markCompleted}
+                />
               ))}
             </div>
           </div>
@@ -294,14 +134,14 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
                 {lang === 'ru' ? 'Прогресс' : 'Progress'}
               </span>
               <span className="text-sm font-bold text-accent-500">
-                {Math.round((tasks.filter(t => t.completed).length / tasks.length) * 100)}%
+                {Math.round(progressPercent)}%
               </span>
             </div>
             <div className="h-1.5 bg-deep rounded-full overflow-hidden border border-border-card">
               <motion.div
                 className="h-full bg-accent-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"
                 initial={{ width: 0 }}
-                animate={{ width: `${(tasks.filter(t => t.completed).length / tasks.length) * 100}%` }}
+                animate={{ width: `${progressPercent}%` }}
               />
             </div>
 
@@ -345,8 +185,8 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
       {/* Success modal — rendered outside the grid so it overlays everything */}
       <CompletionModal
         isOpen={showSuccessModal}
-        onClose={() => setShowSuccessModal(false)}
-        roomTitle={metadata.title[lang as 'en' | 'ru']}
+        onClose={closeSuccessModal}
+        roomTitle={metadata.title[lang]}
         pointsEarned={tasks.length * 10}
         nextRoomId={nextRoom?.id}
       />

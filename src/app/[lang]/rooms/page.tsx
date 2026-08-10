@@ -35,6 +35,7 @@ import {
 } from 'lucide-react';
 import { ROOM_TASKS, ROOMS_METADATA } from '@/data/rooms';
 import { getRoomProgress } from '@/hooks/useProgress';
+import { toLang } from '@/types/lang';
 
 type ProgressStatus = 'not-started' | 'in-progress' | 'completed';
 type DifficultyFilter = 'all' | 'Beginner' | 'Intermediate' | 'Advanced';
@@ -153,7 +154,7 @@ function progressTone(percent: number) {
 export default function RoomsPage(props: {
   params: Promise<{ lang: string }>;
 }) {
-  const { lang } = use(props.params);
+  const lang = toLang(use(props.params).lang);
   const lockedRooms = new Set<string>([]);
   const [difficultyFilter, setDifficultyFilter] = useState<DifficultyFilter>('all');
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
@@ -171,7 +172,7 @@ export default function RoomsPage(props: {
       seen.add(key);
       categories.push({
         value: `category:${key}`,
-        label: room.category[lang as 'ru' | 'en'],
+        label: room.category[lang],
       });
     }
     return categories;
@@ -348,9 +349,9 @@ export default function RoomsPage(props: {
           const progressPercent = roomSnapshots[room.id]?.percent ?? 0;
           const isCompleted = progressStatus === 'completed';
           const isLocked = lockedRooms.has(room.id);
-          const title = room.title[lang as 'en' | 'ru'];
-          const description = room.description[lang as 'en' | 'ru'];
-          const time = room.time[lang as 'en' | 'ru'];
+          const title = room.title[lang];
+          const description = room.description[lang];
+          const time = room.time[lang];
           const difficultyLabel = room.difficulty.toUpperCase();
           const Icon = (room.icon && ICON_MAP[room.icon]) || Terminal;
           const coverTone = getCoverTone(room.category.en);
@@ -380,7 +381,7 @@ export default function RoomsPage(props: {
                         <Icon size={32} strokeWidth={1.9} />
                       </div>
                       <div className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-neutral-100 backdrop-blur-sm">
-                        {room.category[lang as 'en' | 'ru']}
+                        {room.category[lang]}
                       </div>
                     </div>
                   </div>

@@ -1,4 +1,5 @@
 import { LocalizedTask, LocalizedString } from './types';
+import type { Lang } from '@/types/lang';
 
 /**
  * Resolves a bilingual `LocalizedTask` into the single-locale shape the task
@@ -11,17 +12,13 @@ import { LocalizedTask, LocalizedString } from './types';
  * whichever locale is being rendered.
  */
 
-type Lang = 'en' | 'ru';
-
 const isLocalized = (v: unknown): v is LocalizedString =>
   typeof v === 'object' && v !== null && 'en' in v;
 
 const pick = (v: LocalizedString | string, lang: Lang): string =>
   typeof v === 'object' ? v[lang] : v;
 
-export function resolveTask(t: LocalizedTask, rawLang: string) {
-  const lang = rawLang as Lang;
-
+export function resolveTask(t: LocalizedTask, lang: Lang) {
   return {
     ...t,
     question: t.question[lang],

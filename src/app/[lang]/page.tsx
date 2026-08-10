@@ -4,6 +4,7 @@ import { getDictionary } from "@/dictionaries/get-dictionary";
 import DashboardProgress from '@/components/DashboardProgress';
 import WelcomeLine from '@/components/WelcomeLine';
 import { ROOMS_METADATA } from '@/data/rooms';
+import { toLang } from '@/types/lang';
 
 const ICON_MAP: Record<string, React.ComponentType<{ size?: number }>> = {
   Bot, Brain, Waves, Terminal, TrendingUp, Search, MessageSquare, Eye, ClipboardCheck, Image, Shield, Sparkles,
@@ -12,8 +13,8 @@ const ICON_MAP: Record<string, React.ComponentType<{ size?: number }>> = {
 export default async function Home(props: {
   params: Promise<{ lang: string }>;
 }) {
-  const { lang } = await props.params;
-  const dict = await getDictionary(lang as 'en' | 'ru');
+  const lang = toLang((await props.params).lang);
+  const dict = await getDictionary(lang);
 
   // Use the first 3 rooms from our metadata for the dashboard
   const featuredRooms = ROOMS_METADATA.slice(0, 3);
@@ -65,9 +66,9 @@ export default async function Home(props: {
         <div className="space-y-2">
           {featuredRooms.map((room) => {
             const Icon = (room.icon && ICON_MAP[room.icon]) || Bot;
-            const title = room.title[lang as 'en' | 'ru'];
-            const description = room.description[lang as 'en' | 'ru'];
-            const time = room.time[lang as 'en' | 'ru'];
+            const title = room.title[lang];
+            const description = room.description[lang];
+            const time = room.time[lang];
 
             return (
               <Link key={room.id} href={`/${lang}/rooms/${room.id}`} className="flex items-center gap-3 bg-input border border-border-subtle rounded-lg px-3.5 py-3 hover:border-accent-500/35 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-16px_rgba(16,185,129,0.55)] transition-all group">

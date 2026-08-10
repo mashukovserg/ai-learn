@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { GraduationCap, Brain, BookOpen, ArrowRight, Lock, Cpu } from 'lucide-react';
 import { PATHS_METADATA } from '@/data/rooms';
+import { toLang } from '@/types/lang';
 
 const ICON_MAP: Record<string, React.ComponentType<{ size?: number }>> = {
   GraduationCap,
@@ -12,8 +13,7 @@ const ICON_MAP: Record<string, React.ComponentType<{ size?: number }>> = {
 export default async function PathsPage(props: {
   params: Promise<{ lang: string }>;
 }) {
-  const { lang } = await props.params;
-  const l = lang as 'en' | 'ru';
+  const lang = toLang((await props.params).lang);
 
   return (
     <div className="max-w-5xl mx-auto">
@@ -43,13 +43,13 @@ export default async function PathsPage(props: {
 
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-1.5">
-                  <h2 className="text-lg font-semibold text-neutral-200">{path.title[l]}</h2>
+                  <h2 className="text-lg font-semibold text-neutral-200">{path.title[lang]}</h2>
                   <span className="px-2 py-0.5 rounded text-[10px] font-medium uppercase text-neutral-500 bg-white/5">
-                    {path.difficulty[l]}
+                    {path.difficulty[lang]}
                   </span>
                   {!path.unlocked && <Lock size={13} className="text-neutral-600" />}
                 </div>
-                <p className="text-neutral-500 text-sm max-w-xl leading-relaxed">{path.description[l]}</p>
+                <p className="text-neutral-500 text-sm max-w-xl leading-relaxed">{path.description[lang]}</p>
               </div>
 
               <div className="flex flex-col items-end gap-4">

@@ -59,6 +59,7 @@ src/
 │   └── globals.css              # Tailwind v4 @theme design tokens
 ├── components/
 │   ├── Task*.tsx                # 6 task renderers (see Task Types)
+│   ├── TaskRenderer.tsx         # task-type → renderer dispatch (the room page just maps)
 │   ├── theory/<Room>Theory.tsx  # one theory component per room
 │   ├── theory/index.ts          # THEORY_COMPONENTS lazy registry (id → dynamic import)
 │   ├── Term.tsx                 # glossary hover tooltip
@@ -73,8 +74,10 @@ src/
 │   │   └── index.ts             # barrel + getRoomsByPath / derived helpers
 │   ├── glossary.ts  skills.ts  skillMappings.ts  professions.ts
 ├── dictionaries/{en,ru}.json    # UI label strings + get-dictionary.ts
-├── hooks/ useAuth.tsx  useProgress.ts  useLang.tsx
+├── hooks/ useAuth.tsx  useProgress.ts  useLang.tsx  useRoomTasks.ts
+├── lib/taskDoneSound.ts         # framework-free helpers (Web Audio chime)
 ├── proxy.ts                     # locale redirect (/ → /ru default)
+├── types/lang.ts                # Lang union + LANGS/DEFAULT_LANG/isLang/toLang
 └── types/room.ts                # TaskType union + legacy Task/Room/ContentBlock interfaces
 
 backend/app/
@@ -94,6 +97,8 @@ Path alias: `@/*` → `src/*` (`tsconfig.json`).
 
 ### Locale routing (never hard-code a locale)
 Every page lives under `src/app/[lang]/` and reads `lang` from route params or `useLang()`. Russian is the default (redirect in `src/proxy.ts`).
+
+The locale contract lives in `src/types/lang.ts` (`Lang`, `LANGS`, `DEFAULT_LANG`, `isLang`, `toLang`). Narrow **once** at the boundary where a locale enters — a route param, a cookie, `LangProvider` — with `toLang(...)`, then pass `Lang` down and index `LocalizedString` directly. Never write `lang as 'en' | 'ru'`: that cast is unchecked and turns a bad `[lang]` segment into a silent `undefined`. `useLang()` already returns `Lang`.
 - **UI chrome** (buttons, nav, headings) → `src/dictionaries/{en,ru}.json`.
 - **Content** (room titles, task text, theory) → `LocalizedString` shape `{ en: string; ru: string }` from `src/data/rooms/types.ts`.
 

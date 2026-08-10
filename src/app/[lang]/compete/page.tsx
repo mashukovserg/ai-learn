@@ -5,7 +5,7 @@ import { Swords } from 'lucide-react';
 import Link from 'next/link';
 
 export default function CompetePage() {
-  const lang = useLang() as 'ru' | 'en';
+  const lang = useLang();
 
   return (
     <div className="max-w-2xl mx-auto text-center py-20">

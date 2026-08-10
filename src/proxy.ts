@@ -1,18 +1,17 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-const locales = ['en', 'ru']
+import { LANGS, toLang } from '@/types/lang'
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
-  const pathnameHasLocale = locales.some(
+  const pathnameHasLocale = LANGS.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   )
 
   if (pathnameHasLocale) return
 
-  const preferredLanguage = request.cookies.get('preferred-language')?.value
-  const locale = locales.includes(preferredLanguage ?? '') ? preferredLanguage : 'ru'
+  const locale = toLang(request.cookies.get('preferred-language')?.value)
 
   // Redirect if there is no locale
   request.nextUrl.pathname = pathname === '/' ? `/${locale}` : `/${locale}${pathname}`

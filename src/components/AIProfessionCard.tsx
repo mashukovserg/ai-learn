@@ -12,7 +12,7 @@ function progressTone(progress: number) {
 }
 
 export default function AIProfessionCard({ profession }: { profession: ProfessionCard }) {
-  const lang = useLang() as 'en' | 'ru';
+  const lang = useLang();
   const Icon = profession.icon;
 
   const difficultyLabel = profession.difficulty === 'Beginner'

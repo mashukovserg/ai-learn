@@ -295,7 +295,7 @@ function FormattedMarkdown({ text }: { text: string }) {
 }
 
 export default function FaqPage() {
-  const lang = useLang() as 'ru' | 'en';
+  const lang = useLang();
 
   return (
     <div className="max-w-3xl mx-auto">

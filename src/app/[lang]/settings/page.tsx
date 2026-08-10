@@ -7,6 +7,10 @@ import { ChevronRight, Globe2, RotateCcw } from 'lucide-react';
 import SkillsMatrix from '@/components/SkillsMatrix';
 import { ROOMS_METADATA } from '@/data/rooms';
 import { useAuth } from '@/hooks/useAuth';
+import { LANGS, toLang, type Lang } from '@/types/lang';
+
+/** Locale names, each written in its own language — deliberately not translated. */
+const LANG_LABELS: Record<Lang, string> = { ru: 'Русский', en: 'English' };
 
 type StatusMessage = {
   kind: 'success' | 'error';
@@ -22,7 +26,7 @@ function redirectPathWithLocale(pathname: string | null, locale: string): string
 }
 
 export default function SettingsPage(props: { params: Promise<{ lang: string }> }) {
-  const { lang } = use(props.params);
+  const lang = toLang(use(props.params).lang);
   const pathname = usePathname();
   const router = useRouter();
   const { isAuthenticated, refreshUser } = useAuth();
@@ -34,7 +38,7 @@ export default function SettingsPage(props: { params: Promise<{ lang: string }> 
   const [status, setStatus] = useState<StatusMessage>(null);
 
   const roomOptions = useMemo(
-    () => ROOMS_METADATA.map(room => ({ id: room.id, title: room.title[lang as 'en' | 'ru'] })),
+    () => ROOMS_METADATA.map(room => ({ id: room.id, title: room.title[lang] })),
     [lang],
   );
 
@@ -145,11 +149,12 @@ export default function SettingsPage(props: { params: Promise<{ lang: string }> 
           <div className="flex flex-wrap items-center gap-3">
             <select
               value={selectedLanguage}
-              onChange={(e) => setSelectedLanguage(e.target.value)}
+              onChange={(e) => setSelectedLanguage(toLang(e.target.value))}
               className="bg-base border border-border-subtle rounded-md px-3 py-2 text-sm text-neutral-200"
             >
-              <option value="ru">Русский</option>
-              <option value="en">English</option>
+              {LANGS.map((code) => (
+                <option key={code} value={code}>{LANG_LABELS[code]}</option>
+              ))}
             </select>
             <button
               type="button"

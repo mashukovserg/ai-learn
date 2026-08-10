@@ -107,7 +107,8 @@ When changing learning content or room behavior, prefer these files:
    - `paths.ts` — learning path metadata (`PATHS_METADATA`)
    - `tasks/<room-id>.ts` — per-room task arrays, assembled in `tasks/index.ts` as `ROOM_TASKS`
 2. `src/app/[lang]/rooms/[id]/page.tsx`
-   - Dynamic room renderer (theory mapping lives in `src/components/theory/index.ts`; task locale resolution in `src/data/rooms/resolveTask.ts`)
+   - Dynamic room renderer — layout only. Theory mapping lives in `src/components/theory/index.ts`; task locale resolution in `src/data/rooms/resolveTask.ts`; task state, persistence and the completion modal in `src/hooks/useRoomTasks.ts`; task-type dispatch in `src/components/TaskRenderer.tsx` (adding a task type means adding a `case` there, not editing the page).
+   - `src/types/lang.ts` holds the locale contract (`Lang`, `LANGS`, `DEFAULT_LANG`, `isLang`, `toLang`). Narrow an untrusted locale string once at the boundary with `toLang`, then pass `Lang` down — never write `lang as 'en' | 'ru'`.
 3. `src/components/theory/*`
    - Theory text by room/topic
 4. `src/hooks/useProgress.ts`
