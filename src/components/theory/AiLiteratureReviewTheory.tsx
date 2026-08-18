@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import MiniReferenceWindow from '@/components/MiniReferenceWindow';
 import Term from '@/components/Term';
+import Screenshot from '@/components/Screenshot';
 
 const TOOLS_SURVEY_URL = 'https://doi.org/10.1007/s10462-024-10902-3';
 
@@ -36,14 +37,14 @@ export default function AiLiteratureReviewTheory({ lang }: { lang: string }) {
               <Link href={`/${lang}/rooms/deep-search-agents`} className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
                 Deep Search in AI Agents room
               </Link>
-              . The speed is real, but the researcher&apos;s role shifts: the hard part used to be &laquo;find&raquo;, now it is &laquo;judge and verify&raquo;.
+              . The speed is real, but the researcher’s role shifts: the hard part used to be «find», now it is «judge and verify».
             </>
           )}
         </p>
         <p className="text-neutral-300 leading-relaxed mb-4">
           {ru
             ? 'Вместе со скоростью приходит новый класс ошибок. Языковая модель умеет выдумывать ссылки, которые выглядят идеально: правдоподобные авторы, аккуратное название, валидный на вид DOI — но статьи не существует. Такая галлюцинированная ссылка не «плохо отформатирована», она безупречна внешне и именно поэтому опасна. Это центральный риск, вокруг которого построена вся комната.'
-            : 'With speed comes a new class of error. A language model can fabricate references that look perfect: plausible authors, a tidy title, a valid-looking DOI — for a paper that does not exist. Such a hallucinated citation is not &laquo;badly formatted&raquo;; it is flawless on the surface, which is exactly why it is dangerous. This is the central risk the whole room is built around.'}
+            : 'With speed comes a new class of error. A language model can fabricate references that look perfect: plausible authors, a tidy title, a valid-looking DOI — for a paper that does not exist. Such a hallucinated citation is not «badly formatted»; it is flawless on the surface, which is exactly why it is dangerous. This is the central risk the whole room is built around.'}
         </p>
         <p className="text-neutral-300 leading-relaxed mb-4">
           {ru
@@ -101,12 +102,12 @@ export default function AiLiteratureReviewTheory({ lang }: { lang: string }) {
         <p className="text-neutral-300 leading-relaxed mb-4">
           {ru
             ? 'Хороший обзор начинается с точного вопроса, а не с темы. «Влияние ИИ на образование» — это тема, по ней невозможно решить, какие статьи включать. Рамка вроде PICO (Population, Intervention, Comparison, Outcome — популяция, вмешательство, сравнение, исход) превращает расплывчатую тему в проверяемый вопрос с ясными границами: у кого, что именно, по сравнению с чем и какой измеряемый результат.'
-            : 'A good review starts with a precise question, not a topic. &laquo;The impact of AI on education&raquo; is a topic; you cannot decide which papers to include from it. A frame like PICO (Population, Intervention, Comparison, Outcome) turns a vague topic into a testable question with clear boundaries: in whom, doing what, compared to what, and with which measurable outcome.'}
+            : 'A good review starts with a precise question, not a topic. «The impact of AI on education» is a topic; you cannot decide which papers to include from it. A frame like PICO (Population, Intervention, Comparison, Outcome) turns a vague topic into a testable question with clear boundaries: in whom, doing what, compared to what, and with which measurable outcome.'}
         </p>
         <p className="text-neutral-300 leading-relaxed mb-4">
           {ru
             ? 'Дальше вопрос раскладывается на подзапросы. Поиск агента ровно настолько хорош, насколько хороши подзапросы: нужно перечислить фасеты вопроса, синонимы и альтернативные термины (например, «LLM», «большая языковая модель», «foundation model»). Именно здесь окупается этап планирования из глубокого поиска — без него агент найдёт только очевидное и пропустит работы, названные иначе.'
-            : 'Next the question is decomposed into sub-queries. An agent search is only as good as its sub-queries: you must enumerate the facets of the question, synonyms, and alternative terms (for example &laquo;LLM&raquo;, &laquo;large language model&raquo;, &laquo;foundation model&raquo;). This is where the planning step from deep search pays off — without it the agent finds only the obvious and misses work phrased differently.'}
+            : 'Next the question is decomposed into sub-queries. An agent search is only as good as its sub-queries: you must enumerate the facets of the question, synonyms, and alternative terms (for example «LLM», «large language model», «foundation model»). This is where the planning step from deep search pays off — without it the agent finds only the obvious and misses work phrased differently.'}
         </p>
         <p className="text-neutral-300 leading-relaxed mb-4">
           {ru
@@ -170,7 +171,7 @@ export default function AiLiteratureReviewTheory({ lang }: { lang: string }) {
         <p className="text-neutral-300 leading-relaxed mb-4">
           {ru
             ? 'Ещё одна опора строгости — фиксировать причину каждого исключения, а не только факт. «Не тот тип исследования», «нет полного текста», «дубликат» — короткая метка у каждой выбывшей работы превращает воронку в проверяемый документ. Где возможно, спорные решения дублируют два человека: расхождение между ними — сигнал, что критерий сформулирован нечётко и его стоит уточнить.'
-            : 'Another pillar of rigor is recording the reason for each exclusion, not just the fact. &laquo;Wrong study type&raquo;, &laquo;no full text&raquo;, &laquo;duplicate&raquo; — a short label on every dropped work turns the funnel into an auditable document. Where possible, contested decisions are made by two reviewers: a disagreement between them signals that a criterion is vaguely worded and worth sharpening.'}
+            : 'Another pillar of rigor is recording the reason for each exclusion, not just the fact. «Wrong study type», «no full text», «duplicate» — a short label on every dropped work turns the funnel into an auditable document. Where possible, contested decisions are made by two reviewers: a disagreement between them signals that a criterion is vaguely worded and worth sharpening.'}
         </p>
         <p className="text-neutral-300 leading-relaxed mb-4">
           {ru
@@ -203,6 +204,27 @@ export default function AiLiteratureReviewTheory({ lang }: { lang: string }) {
           {ru
             ? 'Важно, что именно меняется. Объём чтения не сокращается по волшебству — меняется порядок. Релевантные работы всплывают наверх, и большинство находок случается в первой трети списка, поэтому у исследователя появляется обоснованная точка остановки: когда несколько десятков подряд оказываются пустыми, вероятность, что дальше прячется нужное, падает. Решение по каждой статье при этом по-прежнему принимает человек — модель сортирует очередь, а не выносит вердикт.'
             : 'What matters is exactly what changes. The volume of reading does not shrink by magic — the order does. Relevant work floats to the top, and most finds happen in the first third of the list, which gives the researcher a defensible stopping point: when several dozen in a row come back empty, the chance that something needed is still hiding further down drops. The decision on each paper still belongs to the human — the model sorts the queue, it does not deliver a verdict.'}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru
+            ? 'Как это выглядит вблизи — видно на экране рецензирования ASReview LAB, открытого инструмента, чью документацию мы приводим ниже. Обратите внимание, насколько узок момент решения: одна карточка, заголовок, аннотация, ключевые слова.'
+            : 'What this looks like up close can be seen in the review screen of ASReview LAB, the open-source tool whose documentation is reproduced below. Note how narrow the moment of decision is: one card, a title, an abstract, keywords.'}
+        </p>
+        <Screenshot
+          src="/images/rooms/ai-literature-review/asreview-lab-screening-screen.png"
+          alt={ru
+            ? 'Экран рецензирования ASReview LAB: карточка одной статьи с заголовком, аннотацией и ключевыми словами, внизу две кнопки — Relevant и Not relevant.'
+            : 'The ASReview LAB review screen: a card for a single paper with its title, abstract, and keywords, and two buttons at the bottom — Relevant and Not relevant.'}
+          width={1290}
+          height={990}
+          caption={ru
+            ? 'Документация ASReview LAB, раздел Screening (asreview.readthedocs.io). Захват 18.08.2026. Нажмите, чтобы рассмотреть.'
+            : 'ASReview LAB documentation, Screening section (asreview.readthedocs.io). Captured 2026-08-18. Tap to view larger.'}
+        />
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru
+            ? 'Стоит задержаться на том, чего в этом интерфейсе нет. Нет оценки уверенности модели, нет её объяснения, нет даже места в очереди — только две кнопки. Это осознанное решение: если показать предсказание модели, человек начнёт с ним соглашаться, и разметка перестанет быть независимым сигналом, на котором модель учится. Обратная связь при этом идёт в обе стороны — каждое нажатие запускает переобучение, а обновлённый порядок применяется к ещё не просмотренным записям. Отсюда и практический вывод: пропущенное решение — не просто пропущенная статья, а потерянный обучающий пример.'
+            : 'It is worth dwelling on what this interface does not show. There is no model confidence score, no explanation, not even a position in the queue — only two buttons. That is a deliberate choice: show the model’s prediction and the human starts agreeing with it, at which point the labels stop being the independent signal the model learns from. The feedback runs both ways — each click triggers retraining, and the updated order applies to the records not yet seen. Hence a practical consequence: a skipped decision is not merely a skipped paper but a lost training example.'}
         </p>
         <p className="text-neutral-300 leading-relaxed mb-4">
           {ru
@@ -287,22 +309,22 @@ export default function AiLiteratureReviewTheory({ lang }: { lang: string }) {
         <p className="text-neutral-300 leading-relaxed mb-4">
           {ru
             ? 'Проверка — это конкретная последовательность, а не общее «доверие». Разрешите DOI и убедитесь, что он ведёт к заявленной работе. Подтвердите, что статья действительно существует в этом издании и за этот год. Проверьте, что перечисленные авторы её и вправду написали. И, наконец, откройте текст и убедитесь, что цитируемое утверждение в нём реально есть, а не приписано модели.'
-            : 'Verification is a concrete sequence, not a general feeling of &laquo;trust&raquo;. Resolve the DOI and confirm it points to the claimed work. Confirm the article actually exists in that venue and that year. Check that the listed authors really wrote it. And finally, open the text and confirm the quoted claim is genuinely there, not something the model attributed to it.'}
+            : 'Verification is a concrete sequence, not a general feeling of «trust». Resolve the DOI and confirm it points to the claimed work. Confirm the article actually exists in that venue and that year. Check that the listed authors really wrote it. And finally, open the text and confirm the quoted claim is genuinely there, not something the model attributed to it.'}
         </p>
         <p className="text-neutral-300 leading-relaxed mb-4">
           {ru
             ? 'Красные флаги стоит знать наизусть: DOI не разрешается или ведёт к другой статье; журнал и год не сходятся; цитату не удаётся найти в самом тексте; ссылка подозрительно идеально подтверждает именно вашу гипотезу. Последнее коварно — модель охотно «находит» ровно то, что вы хотели услышать.'
-            : 'The red flags are worth memorizing: a DOI that does not resolve or points to a different article; a venue and year that do not match; a quote you cannot find in the actual text; a reference that suspiciously and perfectly confirms your exact hypothesis. The last is insidious — the model happily &laquo;finds&raquo; precisely what you wanted to hear.'}
+            : 'The red flags are worth memorizing: a DOI that does not resolve or points to a different article; a venue and year that do not match; a quote you cannot find in the actual text; a reference that suspiciously and perfectly confirms your exact hypothesis. The last is insidious — the model happily «finds» precisely what you wanted to hear.'}
         </p>
         <p className="text-neutral-300 leading-relaxed mb-4">
           {ru
             ? 'Отдельно — отзывы и версии. Настоящая статья может быть отозвана (retracted) или заменена более новой версией. Сослаться на отозванное исследование — тоже провал строгости, хотя формально статья «существует». Поэтому проверка включает не только «есть ли работа», но и «в силе ли она сейчас».'
-            : 'Separately — retractions and versions. A real article may be retracted or superseded by a newer version. Citing a retracted study is also a rigor failure, even though the paper formally &laquo;exists&raquo;. So verification covers not only &laquo;does the work exist&raquo; but also &laquo;is it still standing&raquo;.'}
+            : 'Separately — retractions and versions. A real article may be retracted or superseded by a newer version. Citing a retracted study is also a rigor failure, even though the paper formally «exists». So verification covers not only «does the work exist» but also «is it still standing».'}
         </p>
         <p className="text-neutral-300 leading-relaxed mb-4">
           {ru
             ? 'На практике проверку удобно встроить в рабочий процесс: держать отдельный столбец «статус проверки» у каждой ссылки и не переносить её в чистовик, пока статус не стал «подтверждена». Быстрая выборочная сверка первых же ссылок часто вскрывает системную проблему — если модель выдумала одну, рядом почти наверняка есть и другие.'
-            : 'In practice it is convenient to build verification into the workflow: keep a separate &laquo;verification status&raquo; column for each reference and never move it into the clean draft until the status reads &laquo;confirmed&raquo;. A quick spot-check of the very first references often reveals a systemic problem — if the model invented one, others are almost certainly nearby.'}
+            : 'In practice it is convenient to build verification into the workflow: keep a separate «verification status» column for each reference and never move it into the clean draft until the status reads «confirmed». A quick spot-check of the very first references often reveals a systemic problem — if the model invented one, others are almost certainly nearby.'}
         </p>
         <MiniReferenceWindow
           title={ru ? 'Правило ссылок' : 'Citation rule'}
@@ -332,12 +354,12 @@ export default function AiLiteratureReviewTheory({ lang }: { lang: string }) {
         <p className="text-neutral-300 leading-relaxed mb-4">
           {ru
             ? 'Журнал аудита (audit trail) — это то, что делает обзор воспроизводимым. В нём записаны поисковые запросы и даты, список опрошенных баз, решения о включении и исключении с причинами и статус проверки каждой ссылки. Если через полгода кто-то спросит «почему эта работа не вошла?», ответ есть в журнале, а не в памяти.'
-            : 'The audit trail is what makes the review reproducible. It records the search queries and dates, the list of databases queried, the inclusion and exclusion decisions with reasons, and the verification status of each citation. If six months later someone asks &laquo;why was this work left out?&raquo;, the answer is in the log, not in memory.'}
+            : 'The audit trail is what makes the review reproducible. It records the search queries and dates, the list of databases queried, the inclusion and exclusion decisions with reasons, and the verification status of each citation. If six months later someone asks «why was this work left out?», the answer is in the log, not in memory.'}
         </p>
         <p className="text-neutral-300 leading-relaxed mb-4">
           {ru
             ? 'Хороший синтез не только собирает известное, но и обнажает пробелы: вопросы, по которым доказательств почти нет, и места, где сильные исследования противоречат друг другу. Именно эти пробелы часто становятся вкладом обзора — они показывают, куда двигать следующее исследование. Поэтому синтез заканчивают не гладким выводом «всё ясно», а честной картой того, что известно уверенно, что спорно и что ещё предстоит выяснить.'
-            : 'A good synthesis does not only gather what is known — it exposes the gaps: questions with almost no evidence, and places where strong studies contradict each other. These gaps are often the review\'s real contribution: they show where the next study should go. So a synthesis ends not with a smooth &laquo;all clear&raquo; conclusion, but with an honest map of what is known confidently, what is contested, and what remains to be established.'}
+            : 'A good synthesis does not only gather what is known — it exposes the gaps: questions with almost no evidence, and places where strong studies contradict each other. These gaps are often the review\'s real contribution: they show where the next study should go. So a synthesis ends not with a smooth «all clear» conclusion, but with an honest map of what is known confidently, what is contested, and what remains to be established.'}
         </p>
         <p className="text-neutral-300 leading-relaxed mb-4">
           {ru ? (
@@ -383,12 +405,12 @@ export default function AiLiteratureReviewTheory({ lang }: { lang: string }) {
         <p className="text-neutral-300 leading-relaxed mb-4">
           {ru
             ? 'Второй вызов — удобство, и он объясняет неожиданный факт: большинство исследователей до сих пор ведут обзоры в Excel и Zotero, а не в специализированных системах. Опрос 81 исследователя называет причины отказа: плохая usability (43%), нехватка функций (37%), несовместимость с рабочим процессом (37%). По шкале SUS инструменты набирают 66–77 баллов — «удовлетворительно», не более. Вывод неприятный, но полезный: инструмент, который не встроился в чужой процесс, не используется, каким бы точным ни был его классификатор.'
-            : 'The second challenge is usability, and it explains a surprising fact: most researchers still run reviews in Excel and Zotero rather than in specialized systems. A survey of 81 researchers lists the reasons for abandoning tools: poor usability (43%), missing functionality (37%), workflow incompatibility (37%). On the SUS scale the tools score 66–77 — satisfactory, no more. The conclusion is unwelcome but useful: a tool that does not fit into someone else&apos;s process goes unused, however accurate its classifier.'}
+            : 'The second challenge is usability, and it explains a surprising fact: most researchers still run reviews in Excel and Zotero rather than in specialized systems. A survey of 81 researchers lists the reasons for abandoning tools: poor usability (43%), missing functionality (37%), workflow incompatibility (37%). On the SUS scale the tools score 66–77 — satisfactory, no more. The conclusion is unwelcome but useful: a tool that does not fit into someone else’s process goes unused, however accurate its classifier.'}
         </p>
         <p className="text-neutral-300 leading-relaxed mb-4">
           {ru
             ? 'Третий вызов — оценка. В поле нет стандартных бенчмарков: инструменты тестируются на маленьких закрытых наборах данных, и сравнить их между собой честно почти невозможно. Практическое следствие для читателя обзора инструментов простое — заявленная точность одной системы и заявленная точность другой измерены на разном материале, поэтому сопоставлять эти числа напрямую нельзя. Проверяемым остаётся только то, что можно воспроизвести на своих данных.'
-            : 'The third challenge is evaluation. The field has no standard benchmarks: tools are tested on small private datasets, and comparing them fairly is nearly impossible. The practical consequence for anyone reading a tool comparison is simple — one system&apos;s reported accuracy and another&apos;s were measured on different material, so those numbers cannot be set against each other directly. What stays checkable is only what you can reproduce on your own data.'}
+            : 'The third challenge is evaluation. The field has no standard benchmarks: tools are tested on small private datasets, and comparing them fairly is nearly impossible. The practical consequence for anyone reading a tool comparison is simple — one system’s reported accuracy and another’s were measured on different material, so those numbers cannot be set against each other directly. What stays checkable is only what you can reproduce on your own data.'}
         </p>
         <p className="text-neutral-300 leading-relaxed mb-4">
           {ru
@@ -408,7 +430,7 @@ export default function AiLiteratureReviewTheory({ lang }: { lang: string }) {
             </>
           ) : (
             <>
-              It is telling what the survey&apos;s own first inclusion criterion was: a system must semi-automate the work while keeping the final decision with the user. <Term id="human-in-the-loop" lang={lang}>Human-in-the-loop</Term> here is not a temporary limitation pending better models but the field&apos;s deliberate stance. The reason lies in where an error goes: a wrongly excluded work does not stay inside the review, it propagates onward — into papers, meta-analyses, and at worst into clinical guidelines and policy.
+              It is telling what the survey’s own first inclusion criterion was: a system must semi-automate the work while keeping the final decision with the user. <Term id="human-in-the-loop" lang={lang}>Human-in-the-loop</Term> here is not a temporary limitation pending better models but the field’s deliberate stance. The reason lies in where an error goes: a wrongly excluded work does not stay inside the review, it propagates onward — into papers, meta-analyses, and at worst into clinical guidelines and policy.
             </>
           )}
         </p>
@@ -425,7 +447,7 @@ export default function AiLiteratureReviewTheory({ lang }: { lang: string }) {
         <p className="text-neutral-300 leading-relaxed mb-4">
           {ru
             ? 'Сведём это с остальной комнатой. Инструменты ускоряют руки: поиск, сортировку очереди, извлечение полей, оформление отчёта. Ни один из них не берёт на себя то, ради чего обзор делается, — решение, что считать доказательством и где проходит граница вопроса. Отсюда рабочее правило: инструмент выбирают под стадию, а ответственность за результат не делится между человеком и системой. Она остаётся целиком у того, чьё имя стоит под обзором.'
-            : 'Let us tie this back to the rest of the room. Tools speed up the hands: searching, sorting the queue, extracting fields, formatting the report. None of them takes on what the review exists for — deciding what counts as evidence and where the boundary of the question runs. Hence a working rule: pick the tool for the stage, and do not split responsibility for the result between the human and the system. It stays entirely with whoever&apos;s name is on the review.'}
+            : 'Let us tie this back to the rest of the room. Tools speed up the hands: searching, sorting the queue, extracting fields, formatting the report. None of them takes on what the review exists for — deciding what counts as evidence and where the boundary of the question runs. Hence a working rule: pick the tool for the stage, and do not split responsibility for the result between the human and the system. It stays entirely with whoever’s name is on the review.'}
         </p>
       </div>
 

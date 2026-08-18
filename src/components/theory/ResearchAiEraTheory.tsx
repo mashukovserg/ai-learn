@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Term from '@/components/Term';
+import Screenshot from '@/components/Screenshot';
 
 const BOOK_URL = 'https://press.uchicago.edu/ucp/books/book/chicago/D/bo18508006.html';
 
@@ -49,7 +50,7 @@ export default function ResearchAiEraTheory({ lang }: { lang: string }) {
             <p className="text-neutral-300 leading-relaxed">
               {lang === 'ru'
                 ? 'Дальше комната идёт по порядку самой работы. Сначала — чем исследовательский вопрос отличается от темы и почему без этого различия агент выдаёт справку. Потом — как менялось узкое место научного труда и что осталось человеку на этот раз. Затем — две подготовительные процедуры, которые окупаются до первого запроса: перевод темы в загадку и сборка словаря. Дальше — три режима работы с материалом и способ собрать ядро литературы по ссылкам, а не по запросам. И наконец — пять вопросов, которые Эбботт адресовал первоисточнику и которые почти без изменений применимы к ответу агента.'
-                : 'From here the room follows the order of the work itself. First, how a research question differs from a topic, and why without that distinction an agent returns a briefing. Then, how the bottleneck of scholarly work has shifted, and what is left to the human this time. Next, the two preparatory procedures that pay off before the first query: turning a topic into a puzzle, and assembling a vocabulary. Then the three modes of working with material, and how to assemble the core literature by following references rather than issuing queries. And finally, the five questions Abbott addressed to a primary source, which apply almost unchanged to an agent&apos;s answer.'}
+                : 'From here the room follows the order of the work itself. First, how a research question differs from a topic, and why without that distinction an agent returns a briefing. Then, how the bottleneck of scholarly work has shifted, and what is left to the human this time. Next, the two preparatory procedures that pay off before the first query: turning a topic into a puzzle, and assembling a vocabulary. Then the three modes of working with material, and how to assemble the core literature by following references rather than issuing queries. And finally, the five questions Abbott addressed to a primary source, which apply almost unchanged to an agent’s answer.'}
             </p>
           </div>
         </div>
@@ -219,6 +220,32 @@ export default function ResearchAiEraTheory({ lang }: { lang: string }) {
                 )}
               </p>
             </div>
+            <p className="text-neutral-300 leading-relaxed">
+              {lang === 'ru'
+                ? 'Посмотреть, как это выглядит, можно на любой странице статьи в Semantic Scholar. Ниже — карточка работы «Attention is All you Need» (Vaswani et al., 2017), той самой, что ввела трансформер. Обратите внимание на строку вкладок под аннотацией: обе стороны движения выложены рядом как обычные ссылки.'
+                : 'You can see what this looks like on any paper page in Semantic Scholar. Below is the record for "Attention is All you Need" (Vaswani et al., 2017), the paper that introduced the transformer. Look at the row of tabs under the abstract: both directions of travel are laid out side by side as ordinary links.'}
+            </p>
+            <Screenshot
+              src="/images/rooms/research-ai-era/semantic-scholar-citations-references.png"
+              alt={lang === 'ru'
+                ? 'Страница статьи «Attention is All you Need» в Semantic Scholar: заголовок, авторы, краткое содержание TLDR и строка вкладок со счётчиками — 189 200 Citations и 41 References.'
+                : 'The "Attention is All you Need" paper page on Semantic Scholar: title, authors, a TLDR summary, and a tab row with counters — 189,200 Citations and 41 References.'}
+              width={1670}
+              height={760}
+              caption={lang === 'ru'
+                ? 'Semantic Scholar, страница статьи Vaswani et al. (2017). Захват 18.08.2026. Нажмите, чтобы рассмотреть.'
+                : 'Semantic Scholar, paper page for Vaswani et al. (2017). Captured 2026-08-18. Tap to view larger.'}
+            />
+            <p className="text-neutral-300 leading-relaxed">
+              {lang === 'ru'
+                ? 'Два числа в этой строке — это и есть два направления. «41 References» ведёт назад, к работам, на которых статья стоит: их немного, список конечен, и его можно прочитать целиком. «189 200 Citations» ведёт вперёд, к тем, кто на неё сослался: их столько, что читать подряд бессмысленно. Асимметрия здесь не случайна, и она задаёт разную тактику. Назад идут за основанием — что нужно знать, чтобы понять эту работу. Вперёд идут за развитием — но по такому объёму движутся не подряд, а срезами: по годам, по подполям, по числу собственных цитирований.'
+                : 'The two numbers in that row are the two directions. "41 References" leads backward, to the work the paper stands on: there are few, the list is finite, and you can read all of it. "189,200 Citations" leads forward, to everyone who cited it: so many that reading straight through is pointless. The asymmetry is not accidental, and it dictates different tactics. Backward you go for the foundation — what you need to know to understand this paper. Forward you go for the development — but at that volume you move in slices, not in sequence: by year, by subfield, by how often each citing work is itself cited.'}
+            </p>
+            <p className="text-neutral-300 leading-relaxed">
+              {lang === 'ru'
+                ? 'Стоит сразу отметить и границы этой картины. Счётчик цитирований измеряет внимание, а не качество: работу цитируют и чтобы опереться на неё, и чтобы возразить. Сам Semantic Scholar раскладывает цитирования по типам — фоновые, методологические, результатные, — и это полезнее общего числа, но раскладка автоматическая и ошибается. И покрытие у любого индекса неполное: то, что вышло вне отслеживаемых площадок, в счётчик не попадёт. Поэтому цепочка даёт карту поля, но не рейтинг работ; ранжирует их по-прежнему читатель.'
+                : 'It is worth marking the limits of this picture straight away. A citation counter measures attention, not quality: a paper is cited both to build on it and to argue against it. Semantic Scholar itself breaks citations down by type — background, methods, results — which is more useful than the total, but the breakdown is automatic and it makes mistakes. And no index has complete coverage: whatever appeared outside the venues it tracks never reaches the counter. So the chain gives you a map of the field, not a ranking of the work; ranking is still the reader’s job.'}
+            </p>
           </div>
         </div>
       </section>
