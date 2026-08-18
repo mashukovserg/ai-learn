@@ -23,7 +23,7 @@ Work bands, in order:
 ### Selection heuristics (apply within a band)
 
 1. **Strengthen before you widen.** Prefer adding to an existing path/category over opening a new one. **No new category without at least 2 rooms planned for it** (precedent: «Открытые модели» opened as a pair).
-2. **Cluster pattern.** Pair a broad intro with a deep dive: `local-models-101` + `llama-3-1-8b`, `research-ai-era` + `ai-literature-reviews`, planned `prompt-evals` + `evalops-basics`. When an idea is too big for one room, design the cluster up front and note it in the queue.
+2. **Cluster pattern.** Pair a broad intro with a deep dive: `local-models-101` + `llama-3-1-8b`, `research-ai-era` + `ai-literature-review`, planned `prompt-evals` + `evalops-basics`. When an idea is too big for one room, design the cluster up front and note it in the queue.
 3. **Fact-decay check.** Build rooms on durable concepts (mechanisms, tradeoffs, workflows). Perishable specifics — prices, benchmark numbers, model names of the season — go into theory callouts with a date and an inline citation (see `AGENTS.md` → Inline citation format), never into task answers. Specifically: (a) use **model families, not versions** (GPT / Claude / Gemini / Llama / Mistral / Qwen / DeepSeek); keep concrete versions only in dated, source-linked callouts or citation labels. (b) **No categorical "best vendor = X" rankings**, and never as a task correct-answer — frame as "often among the leaders" and route learners to their own eval set. Precedent: the `llm-landscape` durability refactor (2026-07-16).
 4. **Difficulty balance.** Check the target path's difficulty spread before choosing; a path of all-Beginner rooms needs an Intermediate capstone more than a fifth intro.
 5. **pathIds at idea stage.** Every queue row names its target `pathIds`. A room without a path is invisible on path pages — see the coherence rules below.
@@ -103,7 +103,7 @@ Format: one row per idea. Rationale and risks stay short; design happens when th
 | 2026-08-02 | `ai-alignment-limits` | ideas-history: Schuster & Kilov 2025 (dual challenge). Normative complement to the technical `ai-alignment`; argument-anatomy genre like `ai-existential-risk` |
 | 2026-07-22 | `ai-existential-risk` | ideas-history: Bostrom 2013 (four risk classes, maxipok) + Grace 2022 counterarguments. Angle is argument analysis — deliberately distinct from `ai-singularity` (the idea and its camps) and `ai-alignment` (technical methods) |
 | 2026-07-21 | `context-engineering-101` | AC-204, Module B: context layers, window economics, artifacts (skill/agent), hygiene cycle. Sourced from the owner's course notes; theory written original (course listings not copied), tool-specific numbers in a dated callout per the fact-decay rule |
-| 2026-07-11 | `research-ai-era`, `ai-literature-reviews` | Research cluster (method + tools), ideas-history path |
+| 2026-07-11 | `research-ai-era`, `ai-literature-reviews` | Research cluster (method + tools). **Written but never registered — shipped only on 2026-08-18**: `research-ai-era` wired onto `agentic-systems`, `ai-literature-reviews` merged into `ai-literature-review` as chapters. |
 | 2026-05-16 | `local-models-101` | Opened «Открытые модели» category as intro to `llama-3-1-8b` |
 
 ## Idea intake

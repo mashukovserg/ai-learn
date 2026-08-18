@@ -46,6 +46,7 @@ import { githubActionsCiTasks } from './github-actions-ci';
 import { taxonomyMatchingTasks } from './taxonomy-matching';
 import { promptEvalsTasks } from './prompt-evals';
 import { localRagDocsTasks } from './local-rag-docs';
+import { researchAiEraTasks } from './research-ai-era';
 import { aiLiteratureReviewTasks } from './ai-literature-review';
 import { searchRetrievalToSynthesisTasks } from './search-retrieval-to-synthesis';
 
@@ -94,6 +95,7 @@ export const ROOM_TASKS: Record<string, LocalizedTask[]> = {
   'ai-existential-risk': aiExistentialRiskTasks,
   'ai-alignment-limits': aiAlignmentLimitsTasks,
   'taxonomy-matching': taxonomyMatchingTasks,
+  'research-ai-era': researchAiEraTasks,
   'ai-literature-review': aiLiteratureReviewTasks,
   'search-retrieval-to-synthesis': searchRetrievalToSynthesisTasks,
   'prompt-evals': promptEvalsTasks,

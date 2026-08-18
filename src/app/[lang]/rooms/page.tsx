@@ -4,6 +4,7 @@ import React, { use, useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import {
   ArrowUpRight,
+  BookOpen,
   Bot,
   Brain,
   ChevronRight,
@@ -14,9 +15,15 @@ import {
   Eye,
   FileCode,
   GitBranch,
+  Flame,
   Globe,
+  HardDrive,
   Image as ImageIcon,
+  Landmark,
+  Layers,
+  Library,
   MessageSquare,
+  Network,
   Palette,
   RefreshCw,
   Rocket,
@@ -81,6 +88,13 @@ const ICON_MAP: Record<string, React.ComponentType<{ size?: number; strokeWidth?
   RefreshCw,
   GitBranch,
   Workflow,
+  BookOpen,
+  Library,
+  Landmark,
+  Layers,
+  Network,
+  Flame,
+  HardDrive,
 };
 
 function createInitialRoomSnapshots(): Record<string, RoomProgressSnapshot> {

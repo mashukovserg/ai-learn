@@ -220,7 +220,6 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     difficulty: 'Intermediate',
     time: { ru: '30 мин', en: '30m' },
     category: { ru: 'Архитектура', en: 'Architecture' },
-    image: '/images/ai-alignment.png',
     icon: 'Shield',
   },
   {
@@ -410,7 +409,6 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     difficulty: 'Intermediate',
     time: { ru: '1.5 ч', en: '1.5h' },
     category: { ru: 'Практика', en: 'Practice' },
-    image: '/images/ai-rag.png',
     icon: 'Database',
   },
   {
@@ -423,7 +421,6 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     difficulty: 'Advanced',
     time: { ru: '2 ч', en: '2h' },
     category: { ru: 'Безопасность', en: 'Security' },
-    image: '/images/ai-security.png',
     icon: 'ShieldAlert',
   },
   {
@@ -436,7 +433,6 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     difficulty: 'Advanced',
     time: { ru: '2 ч', en: '2h' },
     category: { ru: 'Практика', en: 'Practice' },
-    image: '/images/ai-research.png',
     pathIds: ['beginner'],
     icon: 'Search',
   },
@@ -529,7 +525,6 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     difficulty: 'Intermediate',
     time: { ru: '20 мин', en: '20m' },
     category: { ru: 'Практика', en: 'Practice' },
-    image: '/images/research-grounding.png',
     pathIds: ['beginner'],
     icon: 'Search',
   },
@@ -543,7 +538,6 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     difficulty: 'Intermediate',
     time: { ru: '25 мин', en: '25m' },
     category: { ru: 'Безопасность', en: 'Security' },
-    image: '/images/ai-security.png',
     icon: 'ShieldCheck',
   },
   {
@@ -674,19 +668,34 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     icon: 'Network',
   },
   {
+    id: 'research-ai-era',
+    title: {
+      ru: 'Исследование в эпоху ИИ: метод Эбботта',
+      en: 'Research in the AI Era: The Abbott Method',
+    },
+    description: {
+      ru: 'Что остаётся исследователю, когда поиск и первичный синтез стоят почти ничего: загадка вместо темы, контролируемый словарь до запроса, три режима работы с материалом, цепочки цитирований и пять вопросов к ответу агента.',
+      en: 'What is left to the researcher when retrieval and first-pass synthesis cost almost nothing: a puzzle instead of a topic, a controlled vocabulary before the query, three modes of working with material, citation chains, and five questions to put to an agent\'s answer.',
+    },
+    difficulty: 'Intermediate',
+    time: { ru: '35 мин', en: '35m' },
+    category: { ru: 'Практика', en: 'Practice' },
+    pathIds: ['agentic-systems'],
+    icon: 'Library',
+  },
+  {
     id: 'ai-literature-review',
     title: {
       ru: 'Литературный обзор в эпоху ИИ',
       en: 'Literature Review in the AI Era',
     },
     description: {
-      ru: 'Как провести строгий литературный обзор с ИИ-инструментами: декомпозиция вопроса, триаж источников, систематический скрининг (в стиле PRISMA), проверка ссылок против галлюцинаций и честный синтез с журналом аудита.',
-      en: 'How to run a rigorous literature review with AI tools: question decomposition, source triage, systematic screening (PRISMA-style), citation verification against hallucinations, and honest synthesis with an audit trail.',
+      ru: 'Как провести строгий литературный обзор с ИИ-инструментами: декомпозиция вопроса, триаж источников, систематический скрининг (в стиле PRISMA), проверка ссылок против галлюцинаций, ландшафт SLR-инструментов и честный синтез с журналом аудита.',
+      en: 'How to run a rigorous literature review with AI tools: question decomposition, source triage, systematic screening (PRISMA-style), citation verification against hallucinations, the SLR tool landscape, and honest synthesis with an audit trail.',
     },
     difficulty: 'Intermediate',
-    time: { ru: '35 мин', en: '35m' },
+    time: { ru: '60 мин', en: '60m' },
     category: { ru: 'Практика', en: 'Practice' },
-    image: '/images/research-grounding.png',
     pathIds: ['agentic-systems'],
     icon: 'BookOpen',
   },

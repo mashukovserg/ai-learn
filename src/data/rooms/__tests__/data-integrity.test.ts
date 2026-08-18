@@ -38,10 +38,25 @@ describe('ROOMS_METADATA structure', () => {
     }
   );
 
+  // `image` is optional (the room page guards on it and the catalog draws a
+  // programmatic RoomCover). What is NOT allowed is a path that points nowhere:
+  // the old rule only demanded a non-empty string, and 8 rooms quietly shipped
+  // a dangling path that rendered a broken-image box. Declared => must exist.
   it.each(ROOMS_METADATA.map(r => [r.id, r] as const))(
-    '%s has a non-empty image path',
+    '%s declares no cover image, or one that exists under public/',
     (_id, room: LocalizedRoomMetadata) => {
-      expect(typeof room.image === 'string' && room.image.length > 0, `image for ${room.id}`).toBe(true);
+      if (room.image === undefined) return;
+
+      expect(
+        typeof room.image === 'string' && room.image.startsWith('/') && room.image.length > 1,
+        `image for ${room.id} must be a root-relative path under public/`
+      ).toBe(true);
+
+      const asset = path.join(process.cwd(), 'public', room.image);
+      expect(
+        fs.existsSync(asset),
+        `cover image for ${room.id} does not exist: public${room.image}`
+      ).toBe(true);
     }
   );
 });

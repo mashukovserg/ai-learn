@@ -3,6 +3,9 @@
 import React from 'react';
 import Link from 'next/link';
 import MiniReferenceWindow from '@/components/MiniReferenceWindow';
+import Term from '@/components/Term';
+
+const TOOLS_SURVEY_URL = 'https://doi.org/10.1007/s10462-024-10902-3';
 
 export default function AiLiteratureReviewTheory({ lang }: { lang: string }) {
   const ru = lang === 'ru';
@@ -56,6 +59,38 @@ export default function AiLiteratureReviewTheory({ lang }: { lang: string }) {
           {ru
             ? 'Ориентир качества на весь курс: строгий обзор воспроизводим. Другой человек, повторив ваши записанные шаги — те же запросы, те же критерии, те же даты, — должен прийти к тому же набору включённых работ.'
             : 'The quality anchor for the whole course: a rigorous review is reproducible. Another person repeating your recorded steps — the same queries, the same criteria, the same dates — should arrive at the same set of included studies.'}
+        </p>
+      </div>
+
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
+          {ru ? 'Что такое систематический обзор и почему он дорогой' : 'What a Systematic Review Is and Why It Is Expensive'}
+        </h2>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru ? (
+            <>
+              <Term id="slr" lang={lang}>Систематический обзор</Term> отличается от обычного обзора литературы примерно так же, как перепись населения от прогулки по городу. Прогулка даёт впечатление, перепись — счёт по правилам, которые записаны заранее и одинаковы для всех. Задача систематического обзора — найти и оценить всю релевантную литературу по конкретному вопросу, следуя протоколу, зафиксированному до начала поиска. Методология выросла в доказательной медицине 1990-х, где от полноты обзора зависели клинические рекомендации, и оттуда разошлась по социальным наукам, инженерии, образованию и менеджменту.
+            </>
+          ) : (
+            <>
+              A <Term id="slr" lang={lang}>systematic review</Term> differs from an ordinary literature review roughly as a census differs from a stroll through town. The stroll gives an impression; the census counts by rules written down in advance and applied the same way to everyone. The task of a systematic review is to find and appraise all relevant literature on a specific question, following a protocol fixed before the search begins. The methodology grew out of 1990s evidence-based medicine, where clinical guidelines depended on the completeness of the review, and spread from there to the social sciences, engineering, education, and management.
+            </>
+          )}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru
+            ? 'Цена этой строгости высока. Типичный систематический обзор занимает больше года, требует команды доменных экспертов, платных подписок на базы данных и периодических обновлений, чтобы не устареть к моменту публикации. При этом объём публикаций растёт с каждым годом: работы становится больше, а не меньше. Именно это сочетание — обязательная полнота при растущем корпусе — и делает обзор первым кандидатом на автоматизацию среди всех исследовательских жанров.'
+            : 'The price of that rigor is high. A typical systematic review takes more than a year, requires a team of domain experts, paid database subscriptions, and periodic updates so it is not already stale by publication. Meanwhile the volume of publications grows every year: the work gets bigger, not smaller. It is that combination — mandatory completeness over a growing corpus — that makes the review the first candidate for automation among all research genres.'}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru
+            ? 'Протокол принято раскладывать на шесть стадий: планирование (вопросы и сам протокол), поиск (запросы и снежный ком по ссылкам), скрининг (фильтрация по критериям включения), извлечение и синтез данных, оценка качества исследований и отчёт. Деление полезно не само по себе — оно показывает, что «обзор» это не одна работа, а шесть разных, с разной ценой ошибки. Ошибка на стадии планирования делает бессмысленными все последующие; ошибка на стадии отчёта портит только отчёт.'
+            : 'The protocol is conventionally split into six stages: planning (the questions and the protocol itself), search (queries and snowballing through references), screening (filtering by inclusion criteria), data extraction and synthesis, quality assessment, and reporting. The split is useful not for its own sake — it shows that a review is not one job but six different ones, with different costs of error. A mistake at the planning stage makes every later stage meaningless; a mistake at the reporting stage spoils only the report.'}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru
+            ? 'Каждая из шести стадий — кандидат на автоматизацию, но распределение помощи оказалось крайне неравномерным, и это стоит держать в голове, читая следующие главы. Автоматизировали не то, что важнее всего, а то, что проще всего формализовать: массовую однотипную сортировку. Стадии, где решение зависит от понимания предметной области — постановка вопроса, оценка качества исследований, — почти не получили поддержки. Поэтому «инструмент для систематических обзоров» на практике почти всегда означает «инструмент для одной стадии обзора».'
+            : 'Each of the six stages is a candidate for automation, but the help turned out to be distributed very unevenly, and that is worth holding in mind while reading the chapters that follow. What got automated was not the most important part but the most formalizable one: bulk, uniform sorting. The stages where the decision depends on understanding the subject matter — framing the question, appraising study quality — received almost no support. So "a tool for systematic reviews" in practice almost always means "a tool for one stage of a review".'}
         </p>
       </div>
 
@@ -141,6 +176,102 @@ export default function AiLiteratureReviewTheory({ lang }: { lang: string }) {
           {ru
             ? 'Где помогает ИИ, а где нет. Агент неплохо делает предварительный скрининг и кластеризацию похожих работ, размечает очевидные исключения. Но пограничные решения о приемлемости остаются за человеком: одно ошибочно включённое исследование тихо отравляет все выводы ниже по потоку, и заметить это потом почти невозможно.'
             : 'Where AI helps and where it does not. An agent is decent at pre-screening and clustering similar work, and at flagging obvious exclusions. But borderline eligibility calls stay with the human: a single wrongly included study quietly poisons every downstream conclusion, and it is almost impossible to notice later.'}
+        </p>
+      </div>
+
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
+          {ru ? 'Где живёт ИИ: скрининг и active learning' : 'Where the AI Lives: Screening and Active Learning'}
+        </h2>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru
+            ? 'Поиск выдаёт тысячи кандидатов, из которых релевантны единицы процентов. Чтение заголовков и аннотаций с решением «включить или исключить» — самая монотонная стадия обзора: одно и то же действие, повторённое тысячу раз, где внимание садится задолго до конца списка. Неудивительно, что именно сюда и стянулась почти вся автоматизация.'
+            : 'A search returns thousands of candidates, of which only a few percent are relevant. Reading titles and abstracts and deciding include-or-exclude is the most monotonous stage of a review: the same action repeated a thousand times, with attention flagging long before the list ends. It is no surprise that almost all the automation collected here.'}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru ? (
+            <>
+              Механизм называется <Term id="active-learning" lang={lang}>active learning</Term>, и устроен он как разговор, а не как разовая настройка. Исследователь размечает небольшой стартовый набор статей — эти нужны, эти нет. Классификатор обучается на них и переставляет весь оставшийся список по вероятности оказаться нужным. Человек читает верх списка, и каждое его решение возвращается в модель как новый пример; та переставляет очередь заново. Порог входа низкий: одни системы стартуют с одной релевантной и одной нерелевантной статьи, другие просят пять, десять или тридцать.
+            </>
+          ) : (
+            <>
+              The mechanism is called <Term id="active-learning" lang={lang}>active learning</Term>, and it works like a conversation rather than a one-off setup. The researcher labels a small seed set of papers — these are wanted, these are not. A classifier trains on them and reorders the entire remaining list by how likely each item is to be wanted. The human reads the top of the list, and every decision returns to the model as a new example; the model reorders the queue again. The entry threshold is low: some systems start from one relevant and one irrelevant paper, others ask for five, ten, or thirty.
+            </>
+          )}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru
+            ? 'Важно, что именно меняется. Объём чтения не сокращается по волшебству — меняется порядок. Релевантные работы всплывают наверх, и большинство находок случается в первой трети списка, поэтому у исследователя появляется обоснованная точка остановки: когда несколько десятков подряд оказываются пустыми, вероятность, что дальше прячется нужное, падает. Решение по каждой статье при этом по-прежнему принимает человек — модель сортирует очередь, а не выносит вердикт.'
+            : 'What matters is exactly what changes. The volume of reading does not shrink by magic — the order does. Relevant work floats to the top, and most finds happen in the first third of the list, which gives the researcher a defensible stopping point: when several dozen in a row come back empty, the chance that something needed is still hiding further down drops. The decision on each paper still belongs to the human — the model sorts the queue, it does not deliver a verdict.'}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru
+            ? 'У этого удобства есть цена, о которой стоит знать заранее. Модель учится на ваших первых решениях, а значит, наследует и вашу первоначальную рамку: если стартовый набор случайно оказался однобоким, ранжирование будет уверенно поднимать наверх то же самое и опускать всё непохожее. Это тот же риск, который в главе про протокол закрывается заранее записанными критериями. Отсюда практика: стартовый набор собирают намеренно разнородным, а часть отклонённого списка выборочно перечитывают вручную — не ради полноты, а чтобы проверить, не выучила ли модель вашу слепую зону.'
+            : 'This convenience has a cost worth knowing in advance. The model learns from your first decisions, which means it inherits your initial frame: if the seed set happened to be one-sided, the ranking will confidently keep lifting more of the same and pushing anything unlike it down. This is the same risk the protocol chapter closes with criteria written in advance. Hence the practice: assemble the seed set deliberately varied, and spot-read part of the rejected list by hand — not for completeness, but to check whether the model has learned your blind spot.'}
+        </p>
+      </div>
+
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
+          {ru ? 'Ландшафт инструментов: что внутри' : 'The Tool Landscape: What Is Inside'}
+        </h2>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru ? (
+            <>
+              Большой обзор этой области (<a href={TOOLS_SURVEY_URL} target="_blank" rel="noopener noreferrer" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Bolaños et al. 2024</a>) разобрал 21 систему полуавтоматизации систематических обзоров по 34 признакам: 23 общих (импорт ссылок, совместная работа, дедупликация, отчёты в стиле PRISMA, цена) и 11 связанных с ИИ (какая задача решается, каким подходом, как представлен текст, что требуется на входе, есть ли поддержка до и после скрининга). Такая сетка позволяет сравнивать инструменты не по обещаниям, а по одинаковым вопросам.
+            </>
+          ) : (
+            <>
+              A large survey of this field (<a href={TOOLS_SURVEY_URL} target="_blank" rel="noopener noreferrer" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Bolaños et al. 2024</a>) examined 21 systems for semi-automating systematic reviews across 34 features: 23 general ones (reference import, collaboration, deduplication, PRISMA-style reporting, price) and 11 AI-related ones (which task is solved, by which approach, how text is represented, what is required as input, whether there is pre- and post-screening support). A grid like that lets you compare tools by identical questions rather than by their promises.
+            </>
+          )}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru
+            ? 'Первый вывод отрезвляет: почти вся автоматизация сосредоточена на одной стадии. Из 21 инструмента 19 применяют машинное обучение к скринингу и лишь 4 — к извлечению данных. Планирование, оценка качества и отчёт исторически почти не получали поддержки. Второй вывод касается того, что работает внутри: самый частый классификатор — SVM, метод 1990-х; половина систем всё ещё представляет текст как «мешок слов», и только новейшие перешли на эмбеддинги вроде SciBERT и Sentence-BERT.'
+            : 'The first finding is sobering: almost all the automation sits on a single stage. Of the 21 tools, 19 apply machine learning to screening and only 4 to data extraction. Planning, quality assessment, and reporting historically received almost no support. The second finding concerns what runs inside: the most common classifier is the SVM, a 1990s method; half the systems still represent text as a bag of words, and only the newest have moved to embeddings such as SciBERT and Sentence-BERT.'}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru
+            ? 'Выбор инструмента поэтому зависит не от общего рейтинга, а от задачи. Вне биомедицины выделяется ASReview: открытый код, локальный запуск и выбор классификаторов от логистической регрессии до нейросетей. В биомедицине сильны Covidence, EPPI-Reviewer и Rayyan — с готовыми классификаторами рандомизированных контролируемых испытаний и подсветкой элементов PICO, той самой рамки из главы о протоколе. Для разведки поля интересны Iris.ai с интерактивными тематическими картами и Colandr, где пользователь задаёт собственные категории классификации.'
+            : 'Tool choice therefore depends not on an overall ranking but on the task. Outside biomedicine, ASReview stands out: open source, local execution, and a choice of classifiers from logistic regression to neural networks. In biomedicine, Covidence, EPPI-Reviewer, and Rayyan are strong — with ready-made classifiers for randomized controlled trials and highlighting of PICO elements, the same frame introduced in the protocol chapter. For scouting a field, Iris.ai with its interactive topic maps and Colandr, where the user defines their own classification categories, are worth a look.'}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru
+            ? 'Показательны и пробелы, потому что они очерчивают, какая часть работы остаётся ручной. Ни один инструмент не умеет сам подтягивать ссылки из библиографических баз — импорт делает человек. Лишь 4 из 21 открывают исходный код, то есть в остальных случаях проверить, как принято решение, невозможно в принципе. И только один поддерживает «живой обзор» с автоматическим добавлением новых статей, хотя устаревание — главная причина, по которой обзоры приходится обновлять. Совпадение этих трёх пробелов с тремя вызовами, о которых пойдёт речь ниже, не случайно.'
+            : 'The gaps are telling too, because they mark out which part of the work stays manual. No tool fetches references from bibliographic databases on its own — the import is done by a human. Only 4 of 21 release their source code, meaning that in the rest it is impossible in principle to check how a decision was made. And just one supports a living review with new papers added automatically, even though going out of date is the main reason reviews have to be updated at all. That these three gaps match the three challenges discussed below is not a coincidence.'}
+        </p>
+      </div>
+
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
+          {ru ? 'Новое поколение: LLM-инструменты' : 'The New Generation: LLM Tools'}
+        </h2>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru
+            ? 'С 2023 года рядом с классическими системами выросло другое семейство — инструменты на больших языковых моделях. Их делят на две группы. Поисковики (Elicit, Consensus, Scite, Scispace, Perplexity, EvidenceHunt) принимают вопрос на обычном языке и возвращают релевантные статьи с выжимками — вместо булевых запросов по ключевым словам. Писательские ассистенты (Jenni.ai, Silatus, Textero.ai) генерируют черновик академического текста по описанию и дорабатывают его вместе с пользователем.'
+            : 'Since 2023 a different family has grown up alongside the classic systems — tools built on large language models. They fall into two groups. Search engines (Elicit, Consensus, Scite, Scispace, Perplexity, EvidenceHunt) take a question in ordinary language and return relevant papers with summaries, instead of boolean keyword queries. Writing assistants (Jenni.ai, Silatus, Textero.ai) generate a draft of academic text from a description and refine it together with the user.'}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru ? (
+            <>
+              Технически почти все они — обёртки над внешним API языковой модели, усиленные <Term id="rag" lang={lang}>RAG</Term>: система сначала находит релевантные фрагменты в базе научных статей, а затем формулирует ответ, опираясь на них. Это заметно снижает выдумывание фактов по сравнению с моделью без поиска, но не убирает его: подобранный фрагмент может быть пересказан неточно, а сама подборка — оказаться неполной.
+            </>
+          ) : (
+            <>
+              Technically almost all of them are wrappers over an external language-model API, reinforced with <Term id="rag" lang={lang}>RAG</Term>: the system first retrieves relevant passages from a database of scientific papers, then composes an answer grounded in them. This noticeably reduces fact invention compared with a model that does not retrieve, but it does not remove it: a retrieved passage can be paraphrased inaccurately, and the retrieval itself can be incomplete.
+            </>
+          )}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru
+            ? 'Ключевое ограничение легко упустить за удобством интерфейса: эти инструменты не покрывают стадии систематического обзора. Они не ведут протокол, не считают критерии включения и не строят диаграмму отбора. Разница практическая: поисковик на языковой модели отвечает на ваш вопрос, а систематический обзор требует показать, сколько работ было найдено, сколько отсеяно и почему. Первое нельзя предъявить вместо второго — там, где нужна воронка PRISMA из предыдущих глав, гладкий ответ с пятью ссылками её не заменяет.'
+            : 'The key limitation is easy to miss behind a convenient interface: these tools do not cover the stages of a systematic review. They keep no protocol, track no inclusion criteria, and build no selection diagram. The difference is practical: a language-model search engine answers your question, whereas a systematic review has to show how many works were found, how many were excluded, and why. The first cannot be submitted in place of the second — where the PRISMA funnel from the earlier chapters is required, a smooth answer with five citations does not replace it.'}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru
+            ? 'Трезвая оценка авторов обзора: писательские ассистенты пока полезнее студентам с эссе, чем исследователям с обзорами. Но границу стоит проводить по стадиям, а не по инструментам. Естественно-языковой поиск хорошо работает как разведка — быстро очертить незнакомое поле, найти стартовые работы для цепочки цитирований. Он плохо работает как доказательство полноты. Эти функции почти наверняка встроят в системы следующего поколения, и тогда вопрос «чем работать» снова сведётся к вопросу «на какой стадии».'
+            : 'The survey authors judge it soberly: writing assistants are for now more useful to students with essays than to researchers with reviews. But the line is better drawn by stage than by tool. Natural-language search works well as reconnaissance — quickly outlining an unfamiliar field, finding seed works for a citation chain. It works poorly as evidence of completeness. These capabilities will almost certainly be built into the next generation of systems, at which point the question of which tool to use will again reduce to the question of which stage.'}
         </p>
       </div>
 
@@ -236,12 +367,90 @@ export default function AiLiteratureReviewTheory({ lang }: { lang: string }) {
 
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-2xl font-bold mb-4 text-heading">
+          {ru ? 'Три вызова: интеллект, удобство, оценка' : 'Three Challenges: Intelligence, Usability, Evaluation'}
+        </h2>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru ? (
+            <>
+              Первый вызов — обновить то, что работает внутри инструментов. Прямая замена SVM на языковую модель не решает задачу: в узких доменах такие модели слабее, склонны к <Term id="hallucination" lang={lang}>галлюцинациям</Term>, а их решения трудно объяснить. Для методологии, весь смысл которой в воспроизводимости, необъяснимое решение — дисквалифицирующее свойство: обзор, где нельзя показать, почему работа исключена, перестаёт быть систематическим. Перспективные направления — RAG поверх проверяемых баз статей и графы знаний, которые описывают работы машиночитаемыми связями «метод — задача — материал» и позволяют искать по концептам, а не по словам.
+            </>
+          ) : (
+            <>
+              The first challenge is upgrading what runs inside the tools. Swapping an SVM for a language model does not by itself solve the problem: in narrow domains such models are weaker, prone to <Term id="hallucination" lang={lang}>hallucinations</Term>, and their decisions are hard to explain. For a methodology whose entire point is reproducibility, an unexplainable decision is a disqualifying trait: a review that cannot show why a work was excluded stops being systematic. The promising directions are RAG over verifiable paper databases and knowledge graphs, which describe works through machine-readable method–task–material links and allow search by concept rather than by word.
+            </>
+          )}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru
+            ? 'Второй вызов — удобство, и он объясняет неожиданный факт: большинство исследователей до сих пор ведут обзоры в Excel и Zotero, а не в специализированных системах. Опрос 81 исследователя называет причины отказа: плохая usability (43%), нехватка функций (37%), несовместимость с рабочим процессом (37%). По шкале SUS инструменты набирают 66–77 баллов — «удовлетворительно», не более. Вывод неприятный, но полезный: инструмент, который не встроился в чужой процесс, не используется, каким бы точным ни был его классификатор.'
+            : 'The second challenge is usability, and it explains a surprising fact: most researchers still run reviews in Excel and Zotero rather than in specialized systems. A survey of 81 researchers lists the reasons for abandoning tools: poor usability (43%), missing functionality (37%), workflow incompatibility (37%). On the SUS scale the tools score 66–77 — satisfactory, no more. The conclusion is unwelcome but useful: a tool that does not fit into someone else&apos;s process goes unused, however accurate its classifier.'}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru
+            ? 'Третий вызов — оценка. В поле нет стандартных бенчмарков: инструменты тестируются на маленьких закрытых наборах данных, и сравнить их между собой честно почти невозможно. Практическое следствие для читателя обзора инструментов простое — заявленная точность одной системы и заявленная точность другой измерены на разном материале, поэтому сопоставлять эти числа напрямую нельзя. Проверяемым остаётся только то, что можно воспроизвести на своих данных.'
+            : 'The third challenge is evaluation. The field has no standard benchmarks: tools are tested on small private datasets, and comparing them fairly is nearly impossible. The practical consequence for anyone reading a tool comparison is simple — one system&apos;s reported accuracy and another&apos;s were measured on different material, so those numbers cannot be set against each other directly. What stays checkable is only what you can reproduce on your own data.'}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru
+            ? 'Отдельно стоит понять, почему в скрининге меряют не тем, чем обычно. Ошибки здесь неравноценны: лишняя статья стоит десяти минут чтения, а пропущенная оставляет в обзоре дыру, которую никто не заметит — именно потому, что её там нет. Поэтому вместо F1-меры, уравнивающей точность и полноту, предлагают F2, взвешенную в пользу полноты, и метрику WSS (Work Saved over Sampling) — сколько ручной работы инструмент сэкономил при заданном уровне полноты. Логика та же, что в главе о протоколе: строгость обзора определяется не тем, что в него попало, а тем, что вы можете предъявить о выбывшем.'
+            : 'It is worth understanding separately why screening is measured with unusual metrics. The errors are not symmetric here: an extra paper costs ten minutes of reading, while a missed one leaves a hole in the review that nobody notices — precisely because it is not there. Hence the proposal to replace the F1 score, which weighs precision and recall equally, with F2, weighted toward recall, and with WSS (Work Saved over Sampling) — how much manual work the tool saved at a given level of recall. The logic is the same as in the protocol chapter: the rigor of a review is set not by what made it in, but by what you can account for among what dropped out.'}
+        </p>
+      </div>
+
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
+          {ru ? 'Доверие, прозрачность и человек в контуре' : 'Trust, Transparency, and the Human in the Loop'}
+        </h2>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru ? (
+            <>
+              Показательно, каким был первый критерий отбора инструментов в самом обзоре: система должна полуавтоматизировать работу, сохраняя финальное решение за пользователем. <Term id="human-in-the-loop" lang={lang}>Human-in-the-loop</Term> здесь не временное ограничение до появления моделей получше, а осознанная позиция поля. Причина в том, куда уходит ошибка: неверно исключённая работа не остаётся внутри обзора, а тиражируется дальше — в статьи, метаанализы и, в худшем случае, в клинические рекомендации и политику.
+            </>
+          ) : (
+            <>
+              It is telling what the survey&apos;s own first inclusion criterion was: a system must semi-automate the work while keeping the final decision with the user. <Term id="human-in-the-loop" lang={lang}>Human-in-the-loop</Term> here is not a temporary limitation pending better models but the field&apos;s deliberate stance. The reason lies in where an error goes: a wrongly excluded work does not stay inside the review, it propagates onward — into papers, meta-analyses, and at worst into clinical guidelines and policy.
+            </>
+          )}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru
+            ? 'С прозрачностью в поле пока плохо, и это не абстрактная претензия. Большинство моделей — чёрные ящики, обучающие данные закрыты, исходный код открывают 4 инструмента из 21. Сложите это с требованием воспроизводимости из первой главы, и получится противоречие: обзор обязан быть повторяемым, но часть решений в нём принимает система, устройство которой проверить нельзя. Пока это противоречие не снято, ответственность за каждое включение и исключение остаётся на человеке, даже если очередь ему отсортировала модель.'
+            : 'Transparency in the field is poor so far, and that is not an abstract complaint. Most models are black boxes, training data is closed, and 4 tools out of 21 release their source code. Combine that with the reproducibility requirement from the first chapter and you get a contradiction: a review is obliged to be repeatable, yet part of its decisions are made by a system whose workings cannot be inspected. Until that contradiction is resolved, responsibility for every inclusion and exclusion stays with the human, even when a model sorted the queue for them.'}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru
+            ? 'Авторы обзора предлагают набор практик по трём осям. Производительность: публиковать бенчмарки и код оценки, чтобы заявленные числа можно было перепроверить. Удобство: тестировать на реальных пользователях стандартными опросниками, а не на разработчиках. Прозрачность: открывать данные и модели, объяснять решения и честно описывать ограничения. Заметьте, что это те же требования, которые обзор предъявляет к научной статье, — просто адресованные инструменту.'
+            : 'The survey authors propose a set of practices along three axes. Performance: publish benchmarks and evaluation code so reported numbers can be rechecked. Usability: test with real users using standard questionnaires, not with the developers. Transparency: open the data and models, explain decisions, and state limitations honestly. Note that these are the same demands a review makes of a scientific paper — simply addressed to a tool.'}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru
+            ? 'Сведём это с остальной комнатой. Инструменты ускоряют руки: поиск, сортировку очереди, извлечение полей, оформление отчёта. Ни один из них не берёт на себя то, ради чего обзор делается, — решение, что считать доказательством и где проходит граница вопроса. Отсюда рабочее правило: инструмент выбирают под стадию, а ответственность за результат не делится между человеком и системой. Она остаётся целиком у того, чьё имя стоит под обзором.'
+            : 'Let us tie this back to the rest of the room. Tools speed up the hands: searching, sorting the queue, extracting fields, formatting the report. None of them takes on what the review exists for — deciding what counts as evidence and where the boundary of the question runs. Hence a working rule: pick the tool for the stage, and do not split responsibility for the result between the human and the system. It stays entirely with whoever&apos;s name is on the review.'}
+        </p>
+      </div>
+
+      <div className="bg-card-dark border border-accent-500/20 rounded-xl p-8 mb-8">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
+          {ru ? 'Итог для практика (краткий блок)' : 'Practitioner’s Summary (short block)'}
+        </h2>
+        <ul className="text-neutral-300 leading-relaxed space-y-3 list-disc list-inside">
+          <li>{ru ? 'Протокол пишется до поиска: вопрос, критерии включения и стоп-правила. Всё, что записано заранее, потом нельзя тихо переписать под удобный результат.' : 'The protocol is written before the search: the question, the inclusion criteria, and the stop-rules. Anything recorded in advance cannot later be quietly rewritten to fit a convenient result.'}</li>
+          <li>{ru ? 'ИИ в обзорах сегодня — прежде всего скрининг через active learning: модель сортирует очередь чтения, человек принимает каждое решение.' : 'AI in reviews today means, above all, screening via active learning: the model sorts the reading queue, the human makes every decision.'}</li>
+          <li>{ru ? 'Выбирайте инструмент под стадию, а не по общему рейтингу: ASReview вне биомедицины, Covidence/EPPI-Reviewer/Rayyan — для биомедицинских обзоров.' : 'Pick the tool for the stage, not by an overall ranking: ASReview outside biomedicine, Covidence/EPPI-Reviewer/Rayyan for biomedical reviews.'}</li>
+          <li>{ru ? 'LLM-поисковики хороши для разведки поля, но не заменяют протокол: они не ведут учёт отсева и не строят воронку PRISMA.' : 'LLM search engines are good for scouting a field but do not replace the protocol: they keep no record of exclusions and build no PRISMA funnel.'}</li>
+          <li>{ru ? 'Оценивайте скрининг метриками, взвешенными в пользу полноты (F2, WSS): пропущенная статья дороже лишней.' : 'Evaluate screening with recall-weighted metrics (F2, WSS): a missed paper costs more than an extra one.'}</li>
+          <li>{ru ? 'Ни одна ссылка не попадает в список литературы, пока человек не подтвердил, что работа существует и говорит именно то, что вы утверждаете.' : 'No citation enters the bibliography until a human has confirmed the work exists and says exactly what you claim it says.'}</li>
+        </ul>
+      </div>
+
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
           {ru ? 'Источники и стандарты' : 'Sources and Standards'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-4">
           {ru
-            ? 'Рекомендации этой комнаты по скринингу и отчётности опираются на два признанных методологических стандарта. Ссылки ведут на первоисточники с постоянными идентификаторами (DOI) — их существование можно проверить самостоятельно, ровно так, как учит глава 4.'
-            : 'This room\'s guidance on screening and reporting follows two established methodological standards. The links point to primary sources with permanent identifiers (DOI) — you can verify their existence yourself, exactly as Chapter 4 teaches.'}
+            ? 'Рекомендации этой комнаты по скринингу и отчётности опираются на два признанных методологических стандарта, а разбор инструментов — на обзор поля 2024 года. Ссылки ведут на первоисточники с постоянными идентификаторами (DOI) — их существование можно проверить самостоятельно, ровно так, как учит глава о проверке ссылок.'
+            : 'This room\'s guidance on screening and reporting follows two established methodological standards, and its survey of the tools draws on a 2024 review of the field. The links point to primary sources with permanent identifiers (DOI) — you can verify their existence yourself, exactly as the chapter on verifying citations teaches.'}
         </p>
         <div className="bg-deep border border-border-subtle rounded-lg p-5 my-4">
           <p className="text-xs text-neutral-500 font-medium mb-3 uppercase tracking-wider">
@@ -284,6 +493,21 @@ export default function AiLiteratureReviewTheory({ lang }: { lang: string }) {
                 className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300"
               >
                 training.cochrane.org/handbook
+              </a>
+            </li>
+            <li>
+              Bolaños, F., Salatino, A., Osborne, F., &amp; Motta, E. (2024).{' '}
+              {ru
+                ? '«Artificial intelligence for literature reviews: opportunities and challenges» — разбор 21 системы полуавтоматизации обзоров по 34 признакам и 11 LLM-инструментов; источник данных для глав об инструментах и вызовах.'
+                : '"Artificial intelligence for literature reviews: opportunities and challenges" — an analysis of 21 review-automation systems across 34 features plus 11 LLM tools; the data source for the chapters on tools and challenges.'}{' '}
+              <em>Artificial Intelligence Review</em> 57:259.{' '}
+              <a
+                href={TOOLS_SURVEY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300"
+              >
+                doi.org/10.1007/s10462-024-10902-3
               </a>
             </li>
           </ul>

@@ -95,6 +95,7 @@ export const PATHS_METADATA: PathMetadata[] = [
     roomIds: [
       'ai-agents',
       'deep-search-agents',
+      'research-ai-era',
       'ai-literature-review',
       'mcp-tool-ecosystems',
       'agentic-swarm-management',

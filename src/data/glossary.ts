@@ -813,4 +813,52 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
       en: 'An echo chamber is a situation where a person predominantly receives confirmation of the view they already hold. In search it arises through selective exposure: the query is phrased around the expected answer. A CHI 2024 study found that a generative interface amplifies the effect more than conventional search, with the bias moving from the order of links into the synthesised text, where it is harder to notice.',
     },
   },
+  'empirical-puzzle': {
+    id: 'empirical-puzzle',
+    term: { ru: 'Эмпирическая загадка', en: 'Empirical puzzle' },
+    definition: {
+      ru: 'Эмпирическая загадка — вопрос вида «почему наблюдается неожиданный факт X?», в отличие от темы, которая просто называет область. Разница практическая: у темы нет критерия завершения и она расширяется бесконечно, а загадка задаёт правило остановки — работа закончена, когда загадка объяснена. Настоящая загадка требует минимум двух конкурирующих объяснений; если с самого начала допускается одно, доказательства превращаются в иллюстрацию.',
+      en: 'An empirical puzzle is a question of the form "why is surprising fact X the case?", as opposed to a topic, which merely names an area. The difference is practical: a topic has no completion criterion and expands forever, while a puzzle supplies a stopping rule — the work ends when the puzzle is explained. A real puzzle demands at least two competing explanations; if only one is allowed from the start, evidence becomes illustration.',
+    },
+  },
+  'controlled-vocabulary': {
+    id: 'controlled-vocabulary',
+    term: { ru: 'Контролируемый словарь', en: 'Controlled vocabulary' },
+    definition: {
+      ru: 'Контролируемый словарь — заранее составленный список того, как один и тот же концепт называют в литературе. Нужен потому, что ключевое слово не равно концепту: один концепт живёт под несколькими словами, одно слово покрывает несколько концептов. Для каждого понятия фиксируют предпочтительный термин, синонимы, более широкие и узкие понятия, смежные концепты и исторические названия. Улучшает и поисковые запросы, и промпты агентам, и собственный аргумент — нестабильные термины означают нестабильные выводы.',
+      en: 'A controlled vocabulary is a list, prepared in advance, of the ways one concept is named across the literature. It is needed because a keyword is not a concept: one concept lives under several words, and one word covers several concepts. For each notion you record the preferred term, synonyms, broader and narrower notions, related concepts, and historical labels. It improves search queries, agent prompts, and the argument itself — unstable terms mean unstable conclusions.',
+    },
+  },
+  'prepared-serendipity': {
+    id: 'prepared-serendipity',
+    term: { ru: 'Подготовленная серендипность', en: 'Prepared serendipity' },
+    definition: {
+      ru: 'Подготовленная серендипность — механизм, благодаря которому неожиданная находка вообще опознаётся как находка. Предварительное чтение раскладывает в памяти «аттракторы» — имена, споры, термины; когда один из них всплывает в неожиданном месте, исследователь видит связь, которую неподготовленный читатель пропустит. Отсюда практическое следствие: агент, показывающий только запрошенное, отрезает именно ту периферию, из которой такие находки и приходят. Серендипность описывает свойство самой выдачи, подготовленная серендипность — готовность читателя его использовать.',
+      en: 'Prepared serendipity is the mechanism by which an unexpected find is recognised as a find at all. Prior reading places "attractors" in memory — names, disputes, terms; when one surfaces in an unexpected place, the researcher sees a connection an unprepared reader would miss. The practical consequence: an agent that shows only what was asked for cuts off exactly the periphery such finds come from. Compare serendipity as a property of the results themselves.',
+    },
+  },
+  'citation-chaining': {
+    id: 'citation-chaining',
+    term: { ru: 'Цепочка цитирований', en: 'Citation chaining' },
+    definition: {
+      ru: 'Цепочка цитирований — способ собрать ядро литературы по полю, двигаясь не запросами, а ссылками. Берут 5–10 сильных стартовых работ и идут по их спискам литературы назад (кто на них повлиял) и по индексам цитирований вперёд (кто их развил). Повторяющиеся имена, работы и термины и образуют карту поля — её не даст ни один одиночный запрос, даже адресованный агенту.',
+      en: 'Citation chaining is a way of assembling the core literature of a field by following references rather than issuing queries. You take 5–10 strong seed works and walk their reference lists backward (who influenced them) and citation indexes forward (who built on them). The recurring names, works, and terms form the map of the field — no single query, even one addressed to an agent, will produce it.',
+    },
+  },
+  'slr': {
+    id: 'slr',
+    term: { ru: 'Систематический обзор (SLR)', en: 'Systematic review (SLR)' },
+    definition: {
+      ru: 'Систематический обзор отличается от обычного обзора литературы примерно так же, как перепись от прогулки по городу: задача — найти и оценить всю релевантную литературу по конкретному вопросу, следуя протоколу, зафиксированному до начала поиска. Протокол минимизирует предвзятость и делает результат воспроизводимым. Методология выросла в доказательной медицине 1990-х и разошлась по социальным наукам, инженерии и образованию. Цена строгости высока: типичный обзор занимает больше года и требует команды.',
+      en: 'A systematic review differs from an ordinary literature review roughly as a census differs from a stroll through town: the task is to find and appraise all relevant literature on a specific question, following a protocol fixed before the search begins. The protocol minimises bias and makes the result reproducible. The methodology grew out of 1990s evidence-based medicine and spread to the social sciences, engineering, and education. The price of that rigour is high: a typical review takes over a year and needs a team.',
+    },
+  },
+  'active-learning': {
+    id: 'active-learning',
+    term: { ru: 'Active learning', en: 'Active learning' },
+    definition: {
+      ru: 'Active learning — цикл, в котором модель и человек обучают друг друга по ходу работы. Исследователь размечает небольшой стартовый набор примеров; классификатор обучается и ранжирует остальные по вероятности оказаться нужными; человек проверяет верх списка, и его решения дообучают модель — дальше цикл повторяется. В скрининге литературы это меняет не объём чтения, а его порядок: релевантные работы всплывают наверх, решение по каждой по-прежнему принимает человек.',
+      en: 'Active learning is a loop in which the model and the human train each other as the work proceeds. The researcher labels a small seed set of examples; a classifier trains and ranks the rest by how likely they are to be wanted; the human reviews the top of the list, and those decisions retrain the model — then the cycle repeats. In literature screening it changes not the volume of reading but its order: relevant work floats to the top, while every decision still belongs to the human.',
+    },
+  },
 };
