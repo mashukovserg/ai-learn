@@ -162,6 +162,16 @@ li {
   letter-spacing: 0.002em;
 }
 
+/* Theory chapter headings are often `flex items-center` (icon + text with
+   <Term> spans). Flex defaults to nowrap, so on narrow viewports a heading
+   whose text is split by a Term into several flex items overflows the page
+   instead of wrapping. Guard all of them at once. */
+.reading-prose h2,
+.reading-prose h3,
+.reading-prose h4 {
+  flex-wrap: wrap;
+}
+
 .reading-prose p {
   margin-block: 0.95rem;
 }

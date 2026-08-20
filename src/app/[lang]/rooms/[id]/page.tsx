@@ -1,9 +1,9 @@
 "use client";
 
-import React, { use, useState } from 'react';
+import React, { use, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ChevronRight, HelpCircle, Clock, RotateCcw } from 'lucide-react';
+import { ChevronRight, HelpCircle, Clock, ListChecks, RotateCcw } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { notFound } from 'next/navigation';
 import CompletionModal from '@/components/CompletionModal';
@@ -40,6 +40,23 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
   // in the page rather than in the hook.
   const [confirmReset, setConfirmReset] = useState(false);
 
+  // Below lg the task panel sits after the whole theory column, which can be
+  // tens of screens tall — a floating shortcut keeps tasks reachable. Hidden
+  // while the panel itself is on screen.
+  const tasksPanelRef = useRef<HTMLElement>(null);
+  const [tasksInView, setTasksInView] = useState(false);
+
+  useEffect(() => {
+    const el = tasksPanelRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setTasksInView(entry.isIntersecting),
+      { rootMargin: '0px 0px -10% 0px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   if (!metadata || !hasTasks) {
     return notFound();
   }
@@ -61,14 +78,14 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
       <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_320px] gap-10 items-start">
         {/* Content Area */}
         <div className="min-w-0">
-          <nav className="flex items-center gap-2 text-sm text-neutral-500 mb-6">
-            <Link href={`/${lang}/rooms`} className="hover:text-neutral-300 transition-colors">
+          <nav className="flex items-center gap-2 text-sm text-neutral-500 mb-6 min-w-0">
+            <Link href={`/${lang}/rooms`} className="hover:text-neutral-300 transition-colors shrink-0">
               {lang === 'ru' ? 'Комнаты' : 'Rooms'}
             </Link>
-            <ChevronRight size={14} />
-            <span className="text-neutral-300">{metadata.category[lang]}</span>
-            <ChevronRight size={14} />
-            <span className="text-accent-500 font-medium">{metadata.title[lang]}</span>
+            <ChevronRight size={14} className="shrink-0 hidden sm:block" />
+            <span className="text-neutral-300 shrink-0 hidden sm:block">{metadata.category[lang]}</span>
+            <ChevronRight size={14} className="shrink-0" />
+            <span className="text-accent-500 font-medium truncate">{metadata.title[lang]}</span>
           </nav>
 
           <div className="mb-8 flex flex-col md:flex-row md:items-start gap-5">
@@ -109,8 +126,11 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
         </div>
 
         {/* Task Sidebar */}
-        <aside className="w-full lg:w-[320px] lg:sticky lg:top-[100px] flex flex-col gap-4">
-          <div className="bg-card-dark border border-border-card rounded-xl p-6 overflow-y-auto max-h-[calc(100vh-280px)]">
+        <aside
+          ref={tasksPanelRef}
+          className="w-full lg:w-[320px] lg:sticky lg:top-[100px] flex flex-col gap-4 scroll-mt-20"
+        >
+          <div className="bg-card-dark border border-border-card rounded-xl p-4 sm:p-6 lg:overflow-y-auto lg:max-h-[calc(100vh-280px)]">
             <h3 className="text-lg font-bold mb-6 flex items-center gap-2">
               <HelpCircle className="text-accent-500" size={20} />
               {lang === 'ru' ? 'Задания комнаты' : 'Room Tasks'}
@@ -181,6 +201,21 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
           </div>
         </aside>
       </div>
+
+      {/* Mobile/tablet shortcut to the task panel (it renders below the theory there) */}
+      {!tasksInView && (
+        <button
+          type="button"
+          onClick={() => tasksPanelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+          className="lg:hidden fixed bottom-5 right-5 z-30 flex items-center gap-2 rounded-full bg-accent-300 text-accent-950 pl-4 pr-4.5 py-2.5 text-sm font-semibold shadow-[0_8px_24px_-8px_rgba(0,0,0,0.6)] hover:bg-accent-200 transition-colors"
+        >
+          <ListChecks size={16} />
+          {lang === 'ru' ? 'Задания' : 'Tasks'}
+          <span className="text-accent-950/70 font-medium">
+            {tasks.filter(t => t.completed).length}/{tasks.length}
+          </span>
+        </button>
+      )}
 
       {/* Success modal — rendered outside the grid so it overlays everything */}
       <CompletionModal

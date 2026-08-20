@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useMemo } from 'react';
-import { Search, Zap, Menu, Terminal, Sun } from 'lucide-react';
+import { Search, Zap, Menu, Terminal, Sun, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
@@ -17,7 +17,10 @@ export default function Navbar({ onMenuClick }: { onMenuClick?: () => void }) {
   const { theme, setTheme } = useTheme();
   const [query, setQuery] = useState('');
   const [open, setOpen] = useState(false);
-  const wrapperRef = useRef<HTMLDivElement>(null);
+  // On <sm viewports the inline search collapses to nothing, so the input
+  // lives in a toggleable panel under the header instead.
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
 
   const results = useMemo(() => {
     const q = query.toLowerCase().trim();
@@ -32,8 +35,9 @@ export default function Navbar({ onMenuClick }: { onMenuClick?: () => void }) {
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
         setOpen(false);
+        setMobileSearchOpen(false);
       }
     };
     document.addEventListener('mousedown', handler);
@@ -44,6 +48,7 @@ export default function Navbar({ onMenuClick }: { onMenuClick?: () => void }) {
   useEffect(() => {
     setOpen(false);
     setQuery('');
+    setMobileSearchOpen(false);
   }, [pathname]);
   /* eslint-enable react-hooks/set-state-in-effect */
 
@@ -58,8 +63,51 @@ export default function Navbar({ onMenuClick }: { onMenuClick?: () => void }) {
   const difficultyColor = (d: string) =>
     d === 'Beginner' ? 'text-accent-400' : d === 'Intermediate' ? 'text-yellow-400' : 'text-danger-400';
 
+  const closeSearch = () => {
+    setOpen(false);
+    setQuery('');
+    setMobileSearchOpen(false);
+  };
+
+  const handleSearchKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      setOpen(false);
+      setMobileSearchOpen(false);
+    }
+    if (e.key === 'Enter' && results.length > 0) {
+      router.push(`/${lang}/rooms/${results[0].id}`);
+      closeSearch();
+    }
+  };
+
+  const resultsList = results.length === 0 ? (
+    <div className="px-4 py-3 text-sm text-neutral-500">
+      {lang === 'ru' ? 'Ничего не найдено' : 'No results found'}
+    </div>
+  ) : (
+    results.map((room) => (
+      <Link
+        key={room.id}
+        href={`/${lang}/rooms/${room.id}`}
+        onClick={closeSearch}
+        className="flex items-center gap-3 px-4 py-2.5 hover:bg-white/[0.04] transition-colors"
+      >
+        <div className="flex-1 min-w-0">
+          <p className="text-sm text-neutral-200 truncate">{room.title[lang]}</p>
+          <p className="text-xs text-neutral-500 truncate">{room.category[lang]}</p>
+        </div>
+        <span className={`text-xs font-medium shrink-0 ${difficultyColor(room.difficulty)}`}>
+          {room.difficulty}
+        </span>
+      </Link>
+    ))
+  );
+
   return (
-    <header className="h-16 border-b border-border-card bg-card/90 backdrop-blur-sm sticky top-0 z-10 flex items-center gap-3 px-4 md:px-6 lg:px-10">
+    <header
+      ref={headerRef}
+      className="relative h-16 border-b border-border-card bg-card/90 backdrop-blur-sm sticky top-0 z-30 flex items-center gap-2 sm:gap-3 px-3 sm:px-4 md:px-6 lg:px-10"
+    >
       <button
         type="button"
         onClick={onMenuClick}
@@ -68,7 +116,9 @@ export default function Navbar({ onMenuClick }: { onMenuClick?: () => void }) {
       >
         <Menu size={20} />
       </button>
-      <div ref={wrapperRef} className="relative flex-1 min-w-0 max-w-[26rem]">
+
+      {/* Inline search — needs real width, so ≥sm only */}
+      <div className="relative hidden sm:block flex-1 min-w-0 max-w-[26rem]">
         <div className="flex items-center gap-3 bg-base px-3.5 py-2 rounded-lg border border-border-card">
           <Search size={15} className="text-neutral-600" />
           <input
@@ -76,14 +126,7 @@ export default function Navbar({ onMenuClick }: { onMenuClick?: () => void }) {
             value={query}
             onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
             onFocus={() => query.trim() && setOpen(true)}
-            onKeyDown={(e) => {
-              if (e.key === 'Escape') { setOpen(false); }
-              if (e.key === 'Enter' && results.length > 0) {
-                router.push(`/${lang}/rooms/${results[0].id}`);
-                setOpen(false);
-                setQuery('');
-              }
-            }}
+            onKeyDown={handleSearchKeyDown}
             placeholder={lang === 'ru' ? "Поиск комнат..." : "Search rooms..."}
             className="bg-transparent border-none outline-none text-sm w-full text-neutral-300 placeholder:text-neutral-600"
           />
@@ -91,33 +134,24 @@ export default function Navbar({ onMenuClick }: { onMenuClick?: () => void }) {
 
         {open && query.trim() && (
           <div className="absolute top-full left-0 right-0 mt-1.5 bg-card border border-border-card rounded-lg shadow-xl overflow-hidden z-50">
-            {results.length === 0 ? (
-              <div className="px-4 py-3 text-sm text-neutral-500">
-                {lang === 'ru' ? 'Ничего не найдено' : 'No results found'}
-              </div>
-            ) : (
-              results.map((room) => (
-                <Link
-                  key={room.id}
-                  href={`/${lang}/rooms/${room.id}`}
-                  onClick={() => { setOpen(false); setQuery(''); }}
-                  className="flex items-center gap-3 px-4 py-2.5 hover:bg-white/[0.04] transition-colors"
-                >
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm text-neutral-200 truncate">{room.title[lang]}</p>
-                    <p className="text-xs text-neutral-500 truncate">{room.category[lang]}</p>
-                  </div>
-                  <span className={`text-xs font-medium shrink-0 ${difficultyColor(room.difficulty)}`}>
-                    {room.difficulty}
-                  </span>
-                </Link>
-              ))
-            )}
+            {resultsList}
           </div>
         )}
       </div>
 
-      <div className="flex items-center gap-2 sm:gap-4 md:gap-5 ml-auto shrink-0">
+      <div className="flex items-center gap-1.5 sm:gap-4 md:gap-5 ml-auto shrink-0">
+        {/* Mobile search toggle */}
+        <button
+          type="button"
+          onClick={() => setMobileSearchOpen((v) => !v)}
+          className={`sm:hidden p-2 rounded-md transition-colors ${
+            mobileSearchOpen ? 'text-neutral-200 bg-base' : 'text-neutral-400 hover:text-neutral-200 hover:bg-base'
+          }`}
+          aria-label={lang === 'ru' ? 'Поиск комнат' : 'Search rooms'}
+        >
+          {mobileSearchOpen ? <X size={18} /> : <Search size={18} />}
+        </button>
+
         <div className="flex items-center gap-1 bg-base p-0.5 rounded-lg border border-border-card">
           <button
             type="button"
@@ -154,14 +188,40 @@ export default function Navbar({ onMenuClick }: { onMenuClick?: () => void }) {
 
         <div className="flex items-center gap-1.5 text-neutral-400 text-sm">
           <Zap size={14} />
-          <span className="font-medium tracking-tight">{user?.points ?? 0} {lang === 'ru' ? 'очков' : 'pts'}</span>
+          <span className="font-medium tracking-tight">
+            {user?.points ?? 0}
+            <span className="hidden min-[400px]:inline"> {lang === 'ru' ? 'очков' : 'pts'}</span>
+          </span>
         </div>
 
-        <div className="hidden sm:flex flex-col items-end">
+        <div className="hidden md:flex flex-col items-end">
           <span className="text-xs text-neutral-600">{lang === 'ru' ? 'Серия' : 'Streak'}</span>
           <span className="text-sm font-medium text-neutral-400 tracking-tight">{user?.streak_days ?? 0} {lang === 'ru' ? 'дн.' : 'days'}</span>
         </div>
       </div>
+
+      {/* Mobile search panel — full-width, drops below the header */}
+      {mobileSearchOpen && (
+        <div className="sm:hidden absolute inset-x-0 top-full z-50 border-b border-border-card bg-card p-3 shadow-xl">
+          <div className="flex items-center gap-3 bg-base px-3.5 py-2.5 rounded-lg border border-border-card">
+            <Search size={15} className="text-neutral-600" />
+            <input
+              type="text"
+              autoFocus
+              value={query}
+              onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
+              onKeyDown={handleSearchKeyDown}
+              placeholder={lang === 'ru' ? "Поиск комнат..." : "Search rooms..."}
+              className="bg-transparent border-none outline-none text-sm w-full text-neutral-300 placeholder:text-neutral-600"
+            />
+          </div>
+          {query.trim() && (
+            <div className="mt-2 bg-card border border-border-card rounded-lg overflow-hidden max-h-[60vh] overflow-y-auto">
+              {resultsList}
+            </div>
+          )}
+        </div>
+      )}
     </header>
   );
 }

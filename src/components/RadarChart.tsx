@@ -45,8 +45,10 @@ export default function RadarChart({ data, color, onLabelClick }: RadarChartProp
   }).join(' ') + 'Z';
 
   return (
-    <div className="relative w-full aspect-square max-w-[500px] mx-auto">
-      <svg viewBox={`0 0 ${size} ${size}`} className="w-full h-full overflow-visible">
+    <div className="relative w-full max-w-[560px] mx-auto">
+      {/* Side padding in the viewBox keeps long start/end-anchored labels from
+          being clipped by overflow-hidden ancestors on narrow viewports. */}
+      <svg viewBox={`-60 -10 ${size + 120} ${size + 20}`} className="w-full h-auto overflow-visible">
         {/* Grids */}
         {gridPaths.map((path, i) => (
           <path

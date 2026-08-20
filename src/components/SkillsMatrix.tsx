@@ -60,10 +60,10 @@ export default function SkillsMatrix() {
   }, []);
 
   return (
-    <div className="flex bg-deep border border-border-card rounded-2xl overflow-hidden min-h-[600px] shadow-2xl">
-      {/* Sidebar */}
-      <aside className="w-[200px] border-r border-border-card bg-base p-4 flex flex-col gap-2 shrink-0">
-        <h4 className="text-[10px] font-bold text-neutral-600 uppercase tracking-widest px-3 mb-2">
+    <div className="flex flex-col md:flex-row bg-deep border border-border-card rounded-2xl overflow-hidden md:min-h-[600px] shadow-2xl">
+      {/* Role picker: horizontal chip row on mobile, vertical sidebar from md up */}
+      <aside className="w-full md:w-[200px] border-b md:border-b-0 md:border-r border-border-card bg-base p-2 md:p-4 flex flex-row md:flex-col gap-1.5 md:gap-2 shrink-0 overflow-x-auto md:overflow-visible">
+        <h4 className="hidden md:block text-[10px] font-bold text-neutral-600 uppercase tracking-widest px-3 mb-2">
           {lang === 'ru' ? 'Выбор роли' : 'Select Role'}
         </h4>
         {ROLES.map((r) => {
@@ -75,7 +75,7 @@ export default function SkillsMatrix() {
             <button
               key={r.id}
               onClick={() => { setSelectedRole(r.id); setLastSelectedSkill(null); }}
-              className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all group ${
+              className={`flex items-center gap-2 md:gap-3 px-3 py-2 md:py-2.5 rounded-xl transition-all group shrink-0 whitespace-nowrap ${
                 isActive
                   ? 'border'
                   : 'text-neutral-500 hover:text-neutral-300 hover:bg-white/5 border border-transparent'
@@ -101,7 +101,7 @@ export default function SkillsMatrix() {
       </aside>
 
       {/* Main Area */}
-      <main className="flex-1 p-8 flex flex-col relative overflow-hidden">
+      <main className="flex-1 p-4 sm:p-6 lg:p-8 flex flex-col relative overflow-hidden">
         {/* Background glow based on role */}
         <div
           className="absolute -top-[10%] -right-[10%] w-[400px] h-[400px] blur-[120px] opacity-20 transition-colors duration-1000 rounded-full"
@@ -109,14 +109,14 @@ export default function SkillsMatrix() {
         />
 
         {/* Header */}
-        <div className="flex justify-between items-start mb-12 relative z-10">
-          <div>
+        <div className="flex flex-wrap justify-between items-start gap-4 mb-8 lg:mb-12 relative z-10">
+          <div className="min-w-[14rem] flex-1">
             <div className="flex items-center gap-2 text-xs font-medium text-neutral-500 mb-2">
               <span className="font-bold uppercase tracking-widest" style={{ color: styles.text }}>
                 {role.name[lang]}
               </span>
             </div>
-            <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
+            <h1 className="text-2xl md:text-3xl font-bold text-white mb-2 flex items-center gap-3">
               {role.name[lang]}
               <div
                 className="w-2 h-2 rounded-full"
@@ -170,7 +170,7 @@ export default function SkillsMatrix() {
           </div>
         ) : (
           /* Matrix Visualization */
-          <div className="flex-1 flex flex-col lg:flex-row items-center justify-center gap-12 relative z-10">
+          <div className="flex-1 flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-12 relative z-10">
             <div className="w-full max-w-[450px]">
               <RadarChart
                 data={chartData}

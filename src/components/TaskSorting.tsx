@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Reorder } from 'framer-motion';
 import { GripVertical, ListOrdered } from 'lucide-react';
 import TaskWrapper, { TaskImage } from './TaskWrapper';
+import { useLang } from '@/hooks/useLang';
 
 interface TaskSortingProps {
   id: number;
@@ -26,6 +27,7 @@ export default function TaskSorting({
   onSuccess,
   initialCompleted = false,
 }: TaskSortingProps) {
+  const lang = useLang();
   const [items, setItems] = useState(initialCompleted ? correctOrder : initialItems);
   const [status, setStatus] = useState<'idle' | 'correct' | 'incorrect'>(initialCompleted ? 'correct' : 'idle');
   const resolvedStatus: 'idle' | 'correct' | 'incorrect' = initialCompleted ? 'correct' : status;
@@ -49,10 +51,10 @@ export default function TaskSorting({
       icon={<ListOrdered size={16} />}
       question={question}
       image={image}
-      subtitle="Drag to reorder"
+      subtitle={lang === 'ru' ? 'Перетащите, чтобы упорядочить' : 'Drag to reorder'}
       explanation={explanation}
-      incorrectMessage="Incorrect order. Try again!"
-      successLabel="Correct!"
+      incorrectMessage={lang === 'ru' ? 'Неверный порядок. Попробуйте ещё раз!' : 'Incorrect order. Try again!'}
+      successLabel={lang === 'ru' ? 'Верно!' : 'Correct!'}
     >
       <Reorder.Group axis="y" values={renderedItems} onReorder={resolvedStatus === 'correct' ? () => {} : setItems} className="space-y-1.5 mb-4">
         {renderedItems.map((item) => (
@@ -75,7 +77,7 @@ export default function TaskSorting({
           onClick={checkOrder}
           className="w-full py-2 bg-white/10 text-neutral-300 rounded-md text-xs font-medium hover:bg-white/15 transition-colors"
         >
-          Check Sequence
+          {lang === 'ru' ? 'Проверить порядок' : 'Check Sequence'}
         </button>
       )}
     </TaskWrapper>

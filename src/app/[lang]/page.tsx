@@ -27,7 +27,7 @@ export default async function Home(props: {
 
       {/* Continue learning — primary CTA */}
       <section className="bg-gradient-to-br from-card to-card-dark border border-accent-500/25 rounded-xl p-5 mb-9">
-        <div className="flex items-center justify-between gap-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 sm:gap-6">
           <div className="flex-1 min-w-0">
             <p className="text-xs text-accent-300/80 mb-1.5">
               {lang === 'ru' ? 'Текущий путь' : 'Current path'}
@@ -41,14 +41,12 @@ export default async function Home(props: {
             <DashboardProgress totalRooms={totalRooms} />
           </div>
 
-          <div className="flex items-center gap-3">
-            <Link
-              href={`/${lang}/rooms/llm-mechanics`}
-              className="px-5 py-2.5 bg-accent-300 text-accent-950 text-sm font-semibold rounded-md hover:bg-accent-200 transition-colors shadow-[0_0_0_1px_rgba(16,185,129,0.35),0_10px_24px_-12px_rgba(52,211,153,0.45)] flex items-center gap-1.5 shrink-0"
-            >
-              {dict.dashboard.continue} <ArrowRight size={14} />
-            </Link>
-          </div>
+          <Link
+            href={`/${lang}/rooms/llm-mechanics`}
+            className="px-5 py-2.5 bg-accent-300 text-accent-950 text-sm font-semibold rounded-md hover:bg-accent-200 transition-colors shadow-[0_0_0_1px_rgba(16,185,129,0.35),0_10px_24px_-12px_rgba(52,211,153,0.45)] flex items-center justify-center sm:justify-start gap-1.5 shrink-0"
+          >
+            {dict.dashboard.continue} <ArrowRight size={14} />
+          </Link>
         </div>
       </section>
 

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Check, ShieldQuestion, ListChecks } from 'lucide-react';
 import TaskWrapper, { TaskImage } from './TaskWrapper';
+import { useLang } from '@/hooks/useLang';
 
 export type TaskType = 'input' | 'multiple-choice' | 'multiple-select' | 'sorting' | 'categorize' | 'timeline' | 'scenario';
 
@@ -31,6 +32,7 @@ export default function TaskQuestion({
   onSuccess,
   initialCompleted = false,
 }: TaskQuestionProps) {
+  const lang = useLang();
   const [answer, setAnswer] = useState<string | string[]>(type === 'multiple-select' ? [] : '');
   const [status, setStatus] = useState<'idle' | 'correct' | 'incorrect'>(initialCompleted ? 'correct' : 'idle');
   const [showHint, setShowHint] = useState(false);
@@ -87,7 +89,9 @@ export default function TaskQuestion({
   const hintFooter = hint && resolvedStatus !== 'correct' ? (
     <div className="mt-2.5">
       <button onClick={() => setShowHint(!showHint)} className="text-[10px] font-medium text-neutral-600 uppercase hover:text-neutral-400 transition-colors">
-        {showHint ? 'Hide Hint' : 'Show Hint'}
+        {showHint
+          ? (lang === 'ru' ? 'Скрыть подсказку' : 'Hide Hint')
+          : (lang === 'ru' ? 'Показать подсказку' : 'Show Hint')}
       </button>
       {showHint && <p className="text-xs text-neutral-500 mt-1 italic border-l-2 border-neutral-700 pl-2">{hint}</p>}
     </div>
@@ -99,10 +103,12 @@ export default function TaskQuestion({
       icon={type === 'input' ? <ShieldQuestion size={16} /> : <ListChecks size={16} />}
       question={question}
       image={image}
-      subtitle={type === 'multiple-select' ? 'Select all that apply' : undefined}
+      subtitle={type === 'multiple-select'
+        ? (lang === 'ru' ? 'Выберите все подходящие' : 'Select all that apply')
+        : undefined}
       explanation={explanation}
-      incorrectMessage="Not quite. Try again or use hint."
-      successLabel="Correct!"
+      incorrectMessage={lang === 'ru' ? 'Не совсем. Попробуйте ещё раз или откройте подсказку.' : 'Not quite. Try again or use hint.'}
+      successLabel={lang === 'ru' ? 'Верно!' : 'Correct!'}
       footer={hintFooter}
     >
       {type === 'input' && (
@@ -123,7 +129,9 @@ export default function TaskQuestion({
             />
           </div>
           <button type="submit" disabled={resolvedStatus === 'correct'} className="px-3 py-1.5 bg-white/10 text-neutral-300 rounded-md text-xs font-medium hover:bg-white/15 transition-colors disabled:opacity-40">
-            {resolvedStatus === 'correct' ? 'Done' : 'Check'}
+            {resolvedStatus === 'correct'
+              ? (lang === 'ru' ? 'Готово' : 'Done')
+              : (lang === 'ru' ? 'Проверить' : 'Check')}
           </button>
         </form>
       )}
@@ -172,7 +180,7 @@ export default function TaskQuestion({
               onClick={checkAnswer}
               className="w-full mt-1.5 py-2 bg-white/10 text-neutral-300 rounded-md text-xs font-medium hover:bg-white/15 transition-colors"
             >
-              Submit Answer
+              {lang === 'ru' ? 'Ответить' : 'Submit Answer'}
             </button>
           )}
         </div>

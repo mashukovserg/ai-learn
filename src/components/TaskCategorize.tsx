@@ -170,7 +170,7 @@ export default function TaskCategorize({
                     : 'border-border-subtle bg-base'
               }`}
             >
-              <p className="text-[10px] font-bold text-neutral-500 uppercase tracking-wider mb-2 px-1">
+              <p className="text-[10px] font-bold text-neutral-500 uppercase tracking-wider mb-2 px-1 break-words">
                 {bucket}
               </p>
               <AnimatePresence>
@@ -186,7 +186,7 @@ export default function TaskCategorize({
                       // "place it into this chip's bucket", not "remove this chip".
                       if (selectedItem) { handleBucketTap(bucket); } else { handleRemove(item); }
                     }}
-                    className={`px-2 py-1 rounded text-xs mb-1 transition-colors ${
+                    className={`px-2 py-1 rounded text-xs mb-1 break-words transition-colors ${
                       resolvedStatus === 'correct'
                         ? 'bg-neutral-800/50 text-neutral-500 cursor-default'
                         : 'bg-neutral-800 text-neutral-300 cursor-pointer hover:bg-neutral-700'
