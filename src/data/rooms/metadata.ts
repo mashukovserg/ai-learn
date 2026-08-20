@@ -604,7 +604,7 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
       en: 'How to test models at the frontier of human knowledge: deep dive into Humanity\'s Last Exam, reasoning benchmarks, and memorization pitfalls.',
     },
     difficulty: 'Advanced',
-    time: { ru: '25 мин', en: '25m' },
+    time: { ru: '35 мин', en: '35m' },
     category: { ru: 'Архитектура', en: 'Architecture' },
     image: '/images/prompt-evals.png',
     icon: 'Brain',

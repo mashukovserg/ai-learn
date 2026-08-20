@@ -861,4 +861,20 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
       en: 'Active learning is a loop in which the model and the human train each other as the work proceeds. The researcher labels a small seed set of examples; a classifier trains and ranks the rest by how likely they are to be wanted; the human reviews the top of the list, and those decisions retrain the model — then the cycle repeats. In literature screening it changes not the volume of reading but its order: relevant work floats to the top, while every decision still belongs to the human.',
     },
   },
+  'benchmark-contamination': {
+    id: 'benchmark-contamination',
+    term: { ru: 'Контаминация бенчмарка', en: 'Benchmark contamination' },
+    definition: {
+      ru: 'Контаминация — попадание вопросов и ответов теста в обучающие данные модели. Модели учатся на корпусах, собранных из интернета, а вопросы популярных бенчмарков лежат в этом интернете годами — модель воспроизводит ответ по памяти, и тест засчитывает это как рассуждение. Снаружи оба случая неотличимы; ловится контаминация только свежими задачами той же трудности (как в эксперименте GSM1k) или закрытым набором вопросов.',
+      en: 'Contamination is test questions and answers ending up in a model’s training data. Models train on corpora scraped from the internet, and the questions of popular benchmarks have been sitting on that internet for years — the model reproduces the answer from memory, and the test scores it as reasoning. From outside the two cases are indistinguishable; contamination is caught only with fresh problems of equal difficulty (as in the GSM1k experiment) or with a private question set.',
+    },
+  },
+  'test-time-compute': {
+    id: 'test-time-compute',
+    term: { ru: 'Test-time compute', en: 'Test-time compute' },
+    definition: {
+      ru: 'Test-time compute — вычисления, которые модель тратит на размышления в момент ответа: раскладывает задачу на шаги, проверяет гипотезы, ловит собственные ошибки. Это второй закон роста в дополнение к масштабированию обучения: точность на трудных задачах растёт с бюджетом размышлений, но растут и цена, и время — у результата теперь всегда есть сноска, сколько модель думала и сколько это стоило.',
+      en: 'Test-time compute is the computation a model spends thinking at answer time: breaking the problem into steps, checking hypotheses, catching its own mistakes. It is a second growth law alongside training-time scaling: accuracy on hard tasks grows with the thinking budget — but so do cost and latency, so every result now carries a footnote for how long the model thought and what that cost.',
+    },
+  },
 };

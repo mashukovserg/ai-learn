@@ -74,8 +74,8 @@ export const frontierEvalsLogicTasks: LocalizedTask[] = [
     id: 4,
     type: 'multiple-choice',
     question: {
-      ru: 'Что Александр Ванг называет "режимом рассуждений" (reasoning paradigm) в новых моделях?',
-      en: 'What does Alexandr Wang call the "reasoning paradigm" in new models?'
+      ru: 'Что такое «режим рассуждений» (reasoning paradigm) в новых моделях?',
+      en: 'What is the "reasoning paradigm" in new models?'
     },
     options: [
       { ru: 'Способность модели дольше думать перед ответом (Test-time compute)', en: 'The model\'s ability to think longer before answering (Test-time compute)' },
@@ -100,18 +100,18 @@ export const frontierEvalsLogicTasks: LocalizedTask[] = [
       en: 'Why do regular tests (like MMLU) stop working for evaluating frontier models?'
     },
     options: [
-      { ru: 'Вопросы стали слишком легкими для ИИ', en: 'Questions have become too easy for AI' },
-      { ru: 'ИИ выучил ответы, так как они есть в обучающей выборке (contamination)', en: 'AI has memorized the answers because they are in the training set (contamination)' },
+      { ru: 'ИИ выучил ответы: вопросы старых тестов утекли в обучающую выборку (contamination)', en: 'AI memorized the answers: old test questions leaked into the training set (contamination)' },
+      { ru: 'Модели отказываются отвечать на вопросы старых тестов', en: 'Models refuse to answer old test questions' },
       { ru: 'Людям надоело их проверять', en: 'Humans are tired of checking them' },
-      { ru: 'Все вышеперечисленное', en: 'All of the above' }
+      { ru: 'Старые тесты слишком дороги в прогоне', en: 'Old tests are too expensive to run' }
     ],
     answer: {
-      ru: 'Все вышеперечисленное',
-      en: 'All of the above'
+      ru: 'ИИ выучил ответы: вопросы старых тестов утекли в обучающую выборку (contamination)',
+      en: 'AI memorized the answers: old test questions leaked into the training set (contamination)'
     },
     explanation: {
-      ru: 'Контаминация (утечка данных в обучение) — главная проблема современных бенчмарков.',
-      en: 'Contamination (data leakage into training) is the primary problem with modern benchmarks.'
+      ru: 'Контаминация — утечка вопросов и ответов теста в обучающие данные — главная проблема старых бенчмарков: эксперимент GSM1k показал падение до 8 п.п. на свежих задачах той же трудности. Вторая причина — насыщение: за 90%+ тест перестаёт различать сильные модели.',
+      en: 'Contamination — test questions and answers leaking into training data — is the primary problem with old benchmarks: the GSM1k experiment showed drops of up to 8 points on fresh problems of equal difficulty. The second cause is saturation: past 90%+ a test stops telling strong models apart.'
     }
   },
   {
@@ -268,8 +268,8 @@ export const frontierEvalsLogicTasks: LocalizedTask[] = [
     id: 11,
     type: 'multiple-choice',
     question: {
-      ru: 'Что Александр Ванг называет "Compute Gap"?',
-      en: 'What does Alexandr Wang call the "Compute Gap"?'
+      ru: 'Что называют «compute gap» в дискуссиях о лидерстве стран в ИИ?',
+      en: 'What does "compute gap" refer to in discussions of national AI leadership?'
     },
     options: [
       { ru: 'Разрыв в знаниях программистов', en: 'Gap in programmer knowledge' },

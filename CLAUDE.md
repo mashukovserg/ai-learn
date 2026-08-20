@@ -189,3 +189,4 @@ Frontend on **Vercel**; backend Docker container on **Railway** (Alembic auto-mi
 - `docs/DEPLOYMENT.md` — deploy topology + env var reference.
 - `docs/DESIGN_FORKS.md` (+ `.ru`) — **open design decisions** (terminal styling, typefaces, accent green) with paste-ready alternatives. The design is still being searched; a "current pick" there is provisional, not settled — read before changing any of those areas.
 - `docs/ROOMS_IDEAS.md`, `docs/ROADMAP_VIEW_MODE.md`, `docs/ROADMAP_3M.md` — content/design notes.
+- `docs/REFERENCES.md` — the owner's collection of outside projects that inspire AI-Learn (what to borrow, what to skip); append new entries there when the owner shares a reference.
