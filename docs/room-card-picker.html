@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI-Learn · Подбор дизайна карточек комнат</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans',system-ui,sans-serif;background:#0b0b0a;color:#e6e2da;line-height:1.5;-webkit-font-smoothing:antialiased;padding:28px 22px 60px}
+.wrap{max-width:1180px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+
+h1{font-size:24px;font-weight:600;letter-spacing:-.02em;margin-bottom:6px}
+h1 .muted{color:#6b665e;font-weight:400}
+.lede{color:#8f8a82;font-size:13.5px;max-width:78ch;margin-bottom:18px}
+.lede a{color:#34d399;text-decoration:none;border-bottom:1px solid rgba(52,211,153,.35)}
+
+.controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+.controls .lbl{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#6b665e;min-width:118px}
+button{font:inherit;cursor:pointer;transition:border-color .15s,color .15s,background .15s}
+.opt{background:#161615;border:1px solid #2b2926;color:#c9c4ba;border-radius:9px;padding:7px 13px;font-size:13px}
+.opt:hover{border-color:#4a4640}
+.opt.on{border-color:#34d399;color:#fff;background:#16201b}
+
+/* ---------- variant sections ---------- */
+.variant{margin-bottom:44px}
+.vhead{display:flex;align-items:baseline;gap:12px;margin-bottom:4px;flex-wrap:wrap}
+.vhead h2{font-size:17px;font-weight:600;letter-spacing:-.01em}
+.vtag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:2.5px 8px;border-radius:99px;border:1px solid #2b2926;color:#8f8a82}
+.vtag.cur{border-color:#7a4a1e;color:#e0a458}
+.vtag.rec{border-color:#2c5a41;color:#34d399}
+.vdesc{color:#8f8a82;font-size:13px;max-width:80ch;margin-bottom:6px}
+.tradeoff{font-size:12.5px;max-width:80ch;margin-bottom:14px}
+.tradeoff b{color:#a8b89d;font-weight:500}
+.tradeoff s{color:#b8938d;text-decoration:none;font-weight:500}
+.tradeoff span{color:#736e66}
+
+/* ---------- stage (site page background emulation) ---------- */
+.stage{border:1px solid #2b2926;border-radius:14px;padding:22px;transition:background .2s}
+.stage[data-page="dark"]{background:#121211;
+  --card:#171715;--card-border:#2b2926;--border-subtle:#302e2b;--border-emph:#393733;
+  --t1:#f5f5f4;--t2:#a8a29e;--t3:#78716c;--t4:#57534e;
+  --accent:#34d399;--accent-dim:rgba(52,211,153,.12);--accent-line:rgba(52,211,153,.45);
+  --base:#121211;--track:#26241f;
+  --cyan:#22d3ee;--violet:#a78bfa;--amber:#fbbf24;--rose:#fb7185;
+  --chipbg:rgba(255,255,255,.05)}
+.stage[data-page="light"]{background:#fafafa;
+  --card:#ffffff;--card-border:#e4e4e4;--border-subtle:#dcdcdc;--border-emph:#cfcfcf;
+  --t1:#111110;--t2:#44403c;--t3:#78716c;--t4:#a8a29e;
+  --accent:#047857;--accent-dim:rgba(4,120,87,.09);--accent-line:rgba(4,120,87,.4);
+  --base:#f4f4f3;--track:#e7e5e4;
+  --cyan:#0891b2;--violet:#7c3aed;--amber:#b45309;--rose:#be123c;
+  --chipbg:rgba(0,0,0,.045)}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+
+/* =============== A · current design =============== */
+.a-card{background:var(--card);border:1px solid var(--card-border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,border-color .25s}
+.a-card:hover{transform:translateY(-4px);border-color:rgba(34,211,238,.6);box-shadow:0 18px 34px rgba(0,0,0,.35)}
+.a-cover{position:relative;height:150px;border-bottom:1px solid var(--border-subtle)}
+.a-cover::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at top right,rgba(255,255,255,.14),transparent 28%),radial-gradient(circle at bottom left,rgba(255,255,255,.08),transparent 24%)}
+.a-cover.fund{background:linear-gradient(135deg,rgba(217,70,239,.25),rgba(244,63,94,.10) 50%,var(--card))}
+.a-cover.ideas{background:linear-gradient(135deg,rgba(139,92,246,.25),rgba(99,102,241,.10) 50%,var(--card))}
+.a-ring{position:absolute;right:14px;top:14px;z-index:1;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.05);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:600}
+.a-ring.done{border-color:rgba(52,211,153,.6);color:#a7f3d0;background:rgba(16,185,129,.12)}
+.a-ring.prog{border-color:rgba(103,232,249,.55);color:#a5f3fc;background:rgba(6,182,212,.12)}
+.a-foot{position:absolute;left:0;right:0;bottom:0;z-index:1;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding:0 18px 14px}
+.a-icon{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);backdrop-filter:blur(3px);border-radius:15px;padding:11px;color:#f0abfc}
+.a-icon.v2{color:#c4b5fd}
+.a-cat{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);backdrop-filter:blur(3px);border-radius:99px;padding:4px 11px;font-size:9.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#f5f5f4}
+.a-body{padding:15px;display:flex;flex-direction:column;flex:1}
+.a-meta{display:flex;align-items:center;gap:8px;font-size:9.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin-bottom:8px}
+.a-dot{width:6px;height:6px;border-radius:50%;background:var(--t3)}
+.a-title{font-size:15px;font-weight:600;color:var(--t1);margin-bottom:7px}
+.a-desc{font-size:13px;color:var(--t2);line-height:1.55;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.a-bot{margin-top:auto;padding-top:11px;border-top:1px solid var(--border-subtle);display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--t2)}
+.a-arrow{color:var(--t3)}
+
+/* =============== B · quiet flat card =============== */
+.b-card{position:relative;background:var(--card);border:1px solid var(--card-border);border-radius:10px;padding:16px 16px 18px;display:flex;flex-direction:column;transition:border-color .18s,background .18s;overflow:hidden}
+.b-card:hover{border-color:var(--accent-line)}
+.b-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:11px}
+.b-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;border:1px solid;flex-shrink:0}
+.b-icon.fund{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 30%,transparent);background:var(--accent-dim)}
+.b-icon.ideas{color:var(--violet);border-color:color-mix(in srgb,var(--violet) 30%,transparent);background:color-mix(in srgb,var(--violet) 10%,transparent)}
+.b-cat{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--t3)}
+.b-title{font-size:15px;font-weight:600;color:var(--t1);letter-spacing:-.01em;margin-bottom:6px}
+.b-desc{font-size:13px;color:var(--t2);line-height:1.55;margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.b-meta{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.05em;color:var(--t3)}
+.b-meta .lvl{display:flex;align-items:center;gap:6px}
+.b-lvl-dot{width:6px;height:6px;border-radius:50%}
+.lvl-beginner .b-lvl-dot{background:var(--accent)}
+.lvl-intermediate .b-lvl-dot{background:var(--amber)}
+.lvl-advanced .b-lvl-dot{background:var(--rose)}
+.b-state{display:flex;align-items:center;gap:6px}
+.b-state.done{color:var(--accent)}
+.b-state.prog{color:var(--cyan)}
+.b-bar{position:absolute;left:0;right:0;bottom:0;height:2px;background:transparent}
+.b-bar i{display:block;height:100%;background:var(--accent)}
+.b-bar i.prog{background:var(--cyan)}
+
+/* =============== C · category spine =============== */
+.c-card{position:relative;background:var(--card);border:1px solid var(--card-border);border-left:3px solid var(--sp,var(--accent));border-radius:10px;padding:15px 16px;display:flex;flex-direction:column;transition:border-color .18s}
+.c-card:hover{border-color:var(--border-emph);border-left-color:var(--sp,var(--accent))}
+.c-card.fund{--sp:var(--accent)}
+.c-card.ideas{--sp:var(--violet)}
+.c-meta{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);display:flex;gap:8px;align-items:center;margin-bottom:9px;flex-wrap:wrap}
+.c-meta .sep{color:var(--t4)}
+.c-meta .cat{color:color-mix(in srgb,var(--sp) 75%,var(--t2))}
+.c-title{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:var(--t1);margin-bottom:6px}
+.c-title svg{color:var(--sp);flex-shrink:0}
+.c-desc{font-size:13px;color:var(--t2);line-height:1.55;margin-bottom:13px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.c-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.c-track{flex:1;height:3px;border-radius:99px;background:var(--track);overflow:hidden}
+.c-track i{display:block;height:100%;border-radius:99px;background:var(--sp)}
+.c-pct{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--t3);min-width:64px;text-align:right}
+.c-pct.done{color:var(--accent)}
+
+/* =============== D · terminal list =============== */
+.d-list{background:var(--card);border:1px solid var(--card-border);border-radius:12px;overflow:hidden}
+.d-head{padding:9px 16px;border-bottom:1px solid var(--border-subtle);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--t4);display:flex;justify-content:space-between}
+.d-row{display:flex;align-items:center;gap:14px;padding:12px 16px;border-bottom:1px solid var(--border-subtle);cursor:pointer;transition:background .15s}
+.d-row:last-child{border-bottom:none}
+.d-row:hover{background:var(--chipbg)}
+.d-st{font-family:'IBM Plex Mono',monospace;font-size:12.5px;white-space:pre;color:var(--t4)}
+.d-st.done{color:var(--accent)}
+.d-st.prog{color:var(--cyan)}
+.d-main{flex:1;min-width:0}
+.d-title{font-size:13.5px;font-weight:600;color:var(--t1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.d-sub{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--t3);margin-top:2px}
+.d-side{display:flex;align-items:center;gap:16px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--t3);flex-shrink:0}
+.d-lvl.b{color:var(--accent)}.d-lvl.i{color:var(--amber)}.d-lvl.a{color:var(--rose)}
+.d-bar{white-space:pre;letter-spacing:-.5px}
+.d-bar.done{color:var(--accent)}.d-bar.prog{color:var(--cyan)}
+@media (max-width:640px){.d-side .d-time{display:none}}
+
+/* ---------- verdict ---------- */
+.verdict{border:1px solid #2c5a41;background:#101713;border-radius:12px;padding:18px 20px;max-width:86ch}
+.verdict h3{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#34d399;margin-bottom:10px}
+.verdict p{font-size:13.5px;color:#c9c4ba;margin-bottom:8px}
+.verdict p:last-child{margin-bottom:0}
+.verdict .mono{font-size:12.5px;color:#8f8a82}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Карточки комнат <span class="muted">· подбор дизайна</span></h1>
+  <p class="lede">Четыре направления для карточки в каталоге «Все комнаты» (49 штук в сетке). Каждый вариант отрисован
+  на реальном контенте в трёх состояниях: в процессе · не начата · завершена. Переключите фон страницы — карточки обязаны
+  работать в обеих темах. Решение фиксируется как Fork 5 в <a href="DESIGN_FORKS.md">DESIGN_FORKS.md</a>.</p>
+
+  <div class="controls">
+    <span class="lbl">Фон страницы</span>
+    <button class="opt on" data-page="dark">Тёмная тема</button>
+    <button class="opt" data-page="light">Светлая тема</button>
+  </div>
+
+  <!-- ================= A ================= -->
+  <section class="variant">
+    <div class="vhead"><h2>A · Градиентная обложка</h2><span class="vtag cur">текущий вариант</span></div>
+    <p class="vdesc">Что сейчас в проде: обложка-градиент высотой 160px, кольцо процента, иконка и чип категории по углам, тело карточки под обложкой.</p>
+    <p class="tradeoff"><b>За:</b> <span>заметная, «продуктовая», категории различаются цветом издалека.</span><br>
+    <s>Против:</s> <span>градиент мутный и не несёт информации; четыре угла = четыре конкурирующих элемента; кольцо «0%» кричит о пустоте; hover голубым спорит с изумрудным акцентом сайта; прямо противоречит нашему же гейту «без loud gradients» (ROADMAP_VIEW_MODE, анти-vibecode).</span></p>
+    <div class="stage" data-page="dark">
+      <div class="cards">
+        <div class="a-card">
+          <div class="a-cover fund">
+            <div class="a-ring prog">30%</div>
+            <div class="a-foot">
+              <div class="a-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="14" height="11" rx="2"/><path d="M12 8V5m0 0h.01M9 13h.01M15 13h.01M9 16h6"/></svg></div>
+              <div class="a-cat">Основы</div>
+            </div>
+          </div>
+          <div class="a-body">
+            <div class="a-meta"><span class="a-dot"></span>BEGINNER · <span style="color:var(--cyan)">В процессе</span></div>
+            <div class="a-title">Ландшафт LLM</div>
+            <div class="a-desc">Изучите экосистему 2026 года: OpenAI, Anthropic, DeepSeek и битву за лидерство в рейтинге ELO.</div>
+            <div class="a-bot"><span>🕒 25 мин</span><span class="a-arrow">↗</span></div>
+          </div>
+        </div>
+        <div class="a-card">
+          <div class="a-cover ideas">
+            <div class="a-ring">0%</div>
+            <div class="a-foot">
+              <div class="a-icon v2"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 7l-4 9h8l-4-9zm10 0l-4 9h8l-4-9z"/><path d="M5 3h14"/></svg></div>
+              <div class="a-cat">Идеи и споры</div>
+            </div>
+          </div>
+          <div class="a-body">
+            <div class="a-meta"><span class="a-dot"></span>INTERMEDIATE</div>
+            <div class="a-title">Экзистенциальный риск: анатомия аргумента</div>
+            <div class="a-desc">Что такое экзистенциальный риск по Бострому, правило maxipok и разбор базового аргумента о рисках ИИ.</div>
+            <div class="a-bot"><span>🕒 30 мин</span><span class="a-arrow">↗</span></div>
+          </div>
+        </div>
+        <div class="a-card" style="border-color:rgba(52,211,153,.5)">
+          <div class="a-cover fund">
+            <div class="a-ring done">100%</div>
+            <div class="a-foot">
+              <div class="a-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/></svg></div>
+              <div class="a-cat">Основы</div>
+            </div>
+          </div>
+          <div class="a-body">
+            <div class="a-meta"><span class="a-dot"></span>BEGINNER · <span style="color:var(--accent)">Завершено</span></div>
+            <div class="a-title" style="color:var(--accent)">Как мыслят LLM</div>
+            <div class="a-desc">Погрузитесь в токены, предсказание следующего токена, контекстные окна и температуру.</div>
+            <div class="a-bot"><span>🕒 25 мин</span><span class="a-arrow">↗</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= B ================= -->
+  <section class="variant">
+    <div class="vhead"><h2>B · Тихая карточка</h2><span class="vtag rec">рекомендация</span></div>
+    <p class="vdesc">Обложки нет. Иконка в маленькой плитке с оттенком категории, подпись категории моноширинным капсом,
+    заголовок, две строки описания, метаданные внизу. Прогресс — 2px-полоса по нижней кромке (появляется только когда &gt; 0),
+    завершённость — галка и изумрудная подпись. Hover — изумрудная рамка, без подпрыгиваний.</p>
+    <p class="tradeoff"><b>За:</b> <span>информация впереди декора; вертикально в ~1,7 раза компактнее — больше комнат на экран; ровно тот «quiet, technical» тон, что зафиксирован в ROADMAP_VIEW_MODE; акцент снова означает «интерактивно/сделано», hover перестаёт спорить с палитрой.</span><br>
+    <s>Против:</s> <span>каталог менее «нарядный»; категории различаются слабее, чем большими цветными обложками (остаётся оттенок иконки и подпись).</span></p>
+    <div class="stage" data-page="dark">
+      <div class="cards">
+        <div class="b-card">
+          <div class="b-top">
+            <div class="b-icon fund"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="14" height="11" rx="2"/><path d="M12 8V5m0 0h.01M9 13h.01M15 13h.01M9 16h6"/></svg></div>
+            <span class="b-cat">Основы</span>
+          </div>
+          <div class="b-title">Ландшафт LLM</div>
+          <div class="b-desc">Изучите экосистему 2026 года: OpenAI, Anthropic, DeepSeek и битву за лидерство в рейтинге ELO.</div>
+          <div class="b-meta">
+            <span class="lvl lvl-beginner"><span class="b-lvl-dot"></span>BEGINNER · 25 мин</span>
+            <span class="b-state prog">3/10</span>
+          </div>
+          <div class="b-bar"><i class="prog" style="width:30%"></i></div>
+        </div>
+        <div class="b-card">
+          <div class="b-top">
+            <div class="b-icon ideas"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 7l-4 9h8l-4-9zm10 0l-4 9h8l-4-9z"/><path d="M5 3h14"/></svg></div>
+            <span class="b-cat">Идеи и споры</span>
+          </div>
+          <div class="b-title">Экзистенциальный риск: анатомия аргумента</div>
+          <div class="b-desc">Что такое экзистенциальный риск по Бострому, правило maxipok и разбор базового аргумента о рисках ИИ.</div>
+          <div class="b-meta">
+            <span class="lvl lvl-intermediate"><span class="b-lvl-dot"></span>INTERMEDIATE · 30 мин</span>
+          </div>
+        </div>
+        <div class="b-card" style="border-color:color-mix(in srgb,var(--accent) 35%,transparent)">
+          <div class="b-top">
+            <div class="b-icon fund"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/></svg></div>
+            <span class="b-cat">Основы</span>
+          </div>
+          <div class="b-title">Как мыслят LLM</div>
+          <div class="b-desc">Погрузитесь в токены, предсказание следующего токена, контекстные окна и температуру.</div>
+          <div class="b-meta">
+            <span class="lvl lvl-beginner"><span class="b-lvl-dot"></span>BEGINNER · 25 мин</span>
+            <span class="b-state done">✓ завершено</span>
+          </div>
+          <div class="b-bar"><i style="width:100%"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= C ================= -->
+  <section class="variant">
+    <div class="vhead"><h2>C · Корешок категории</h2></div>
+    <p class="vdesc">Та же тихая карточка, но категория кодируется 3px-«корешком» слева (как метка на папке) и цветом в мета-строке.
+    Иконка уезжает в строку заголовка, прогресс — тонкая полоса в подвале с моноширинным счётчиком.</p>
+    <p class="tradeoff"><b>За:</b> <span>категории сканируются цветом даже при 49 карточках, декоративный вес почти нулевой; самая компактная из карточных версий.</span><br>
+    <s>Против:</s> <span>цветной левый борт — приём Practice-колаутов внутри теории; есть риск, что каталог и теория начнут говорить на одном визуальном языке о разных вещах.</span></p>
+    <div class="stage" data-page="dark">
+      <div class="cards">
+        <div class="c-card fund">
+          <div class="c-meta"><span class="cat">Основы</span><span class="sep">·</span><span>BEGINNER</span><span class="sep">·</span><span>25 мин</span></div>
+          <div class="c-title"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="14" height="11" rx="2"/><path d="M12 8V5m0 0h.01M9 13h.01M15 13h.01M9 16h6"/></svg>Ландшафт LLM</div>
+          <div class="c-desc">Изучите экосистему 2026 года: OpenAI, Anthropic, DeepSeek и битву за лидерство в рейтинге ELO.</div>
+          <div class="c-foot"><div class="c-track"><i style="width:30%"></i></div><span class="c-pct">3/10 · 30%</span></div>
+        </div>
+        <div class="c-card ideas">
+          <div class="c-meta"><span class="cat">Идеи и споры</span><span class="sep">·</span><span>INTERMEDIATE</span><span class="sep">·</span><span>30 мин</span></div>
+          <div class="c-title"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M7 7l-4 9h8l-4-9zm10 0l-4 9h8l-4-9z"/><path d="M5 3h14"/></svg>Экзистенциальный риск: анатомия аргумента</div>
+          <div class="c-desc">Что такое экзистенциальный риск по Бострому, правило maxipok и разбор базового аргумента о рисках ИИ.</div>
+          <div class="c-foot"><div class="c-track"></div><span class="c-pct">не начата</span></div>
+        </div>
+        <div class="c-card fund">
+          <div class="c-meta"><span class="cat">Основы</span><span class="sep">·</span><span>BEGINNER</span><span class="sep">·</span><span>25 мин</span></div>
+          <div class="c-title"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/></svg>Как мыслят LLM</div>
+          <div class="c-desc">Погрузитесь в токены, предсказание следующего токена, контекстные окна и температуру.</div>
+          <div class="c-foot"><div class="c-track"><i style="width:100%"></i></div><span class="c-pct done">✓ 100%</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= D ================= -->
+  <section class="variant">
+    <div class="vhead"><h2>D · Терминальный список</h2><span class="vtag">дополнительный режим, не замена</span></div>
+    <p class="vdesc">Не карточки, а плотный список в духе вывода <span class="mono">ls</span>: статус-глиф, название, категория,
+    сложность, время, ASCII-прогресс. 49 комнат на полутора экранах. Честнее всего сочетается с терминальной идентичностью
+    платформы — но хуже продаёт комнату новичку (нет описания).</p>
+    <p class="tradeoff"><b>За:</b> <span>максимальная плотность и сканируемость; идеален для вернувшегося пользователя («где я остановился»).</span><br>
+    <s>Против:</s> <span>без описаний труднее выбирать первую комнату; на телефоне строку приходится урезать. Поэтому — как переключатель «сетка/список» рядом с фильтрами, второй фазой.</span></p>
+    <div class="stage" data-page="dark">
+      <div class="d-list">
+        <div class="d-head"><span>каталог комнат</span><span>49 объектов</span></div>
+        <div class="d-row">
+          <span class="d-st prog">[~]</span>
+          <div class="d-main"><div class="d-title">Ландшафт LLM</div><div class="d-sub">Основы</div></div>
+          <div class="d-side"><span class="d-lvl b">BEG</span><span class="d-time">25 мин</span><span class="d-bar prog">▓▓▓░░░░░░░ 30%</span></div>
+        </div>
+        <div class="d-row">
+          <span class="d-st">[ ]</span>
+          <div class="d-main"><div class="d-title">Экзистенциальный риск: анатомия аргумента</div><div class="d-sub">Идеи и споры</div></div>
+          <div class="d-side"><span class="d-lvl i">INT</span><span class="d-time">30 мин</span><span class="d-bar">░░░░░░░░░░  0%</span></div>
+        </div>
+        <div class="d-row">
+          <span class="d-st done">[x]</span>
+          <div class="d-main"><div class="d-title">Как мыслят LLM</div><div class="d-sub">Основы</div></div>
+          <div class="d-side"><span class="d-lvl b">BEG</span><span class="d-time">25 мин</span><span class="d-bar done">▓▓▓▓▓▓▓▓▓▓ 100%</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="verdict">
+    <h3>Рекомендация</h3>
+    <p><b>B как основная карточка каталога.</b> Она единственная одновременно проходит все три зафиксированных гейта проекта:
+    анти-vibecode («no decorative glow»), ROADMAP_VIEW_MODE («avoid loud gradients») и семантику акцента из Fork 3
+    (зелёный = интерактивно/сделано). Если при 49 комнатах цветовое сканирование категорий окажется важным — у B и C общий каркас,
+    переход на C стоит один вечер.</p>
+    <p>D — не конкурент, а второй режим просмотра (переключатель «сетка/список»), лучше делать после того, как выбран базовый вариант карточки.</p>
+    <p class="mono">Файлы при внедрении: src/app/[lang]/rooms/page.tsx (JSX карточки + hover cyan → accent), токены уже есть в globals.css. Дашборд и «Пути» карточку не трогают.</p>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.controls .opt').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.controls .opt').forEach(b => b.classList.toggle('on', b === btn));
+    document.querySelectorAll('.stage').forEach(s => s.dataset.page = btn.dataset.page);
+  });
+});
+</script>
+</body>
+</html>

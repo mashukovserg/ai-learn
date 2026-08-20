@@ -281,6 +281,54 @@ keeps its baked-in green. Re-export or switch to SVG if a visual must track the 
 
 ---
 
+## Fork 5 — Room card design (OPEN, owner dislikes the current pick)
+
+**Context.** Opened 2026-08-20: the owner explicitly dislikes the current room cards in the
+`/rooms` catalog ("мне не нравится текущий дизайн карточек"). The current card also conflicts
+with two already-fixed style references: the anti-Vibecode gate (no decorative glow) and
+`ROADMAP_VIEW_MODE.md` ("avoid loud gradients", "quiet, technical"). A decision has **not**
+been made yet — the alternatives are built for judgment, not shipped.
+
+> **Compare visually: [`room-card-picker.html`](room-card-picker.html)** — renders all four
+> options on real room content in three progress states (in-progress / not started / completed),
+> on both page themes. Serve `docs/` (launch config `docs`, port 8899) and judge there.
+
+### Current pick — gradient cover card (in prod since the catalog redesign)
+
+160px gradient cover (category-tinted, hazy radial overlays), % ring top-right, icon tile
+bottom-left, category chip bottom-right, then the text body. Lives inline in
+`src/app/[lang]/rooms/page.tsx` (no separate component; `RoomCard.tsx` is an older unused
+variant). Hover: translate + **cyan** border — which fights the emerald accent semantics.
+
+- **For:** loud, "product-y", categories readable from across the room.
+- **Against:** the gradient carries no information; four corners = four competing elements;
+  a "0%" ring shouts about emptiness; ~340px of card height for ~3 lines of information.
+
+### Alternative B — quiet flat card (recommended in the picker)
+
+No cover. Category-tinted icon tile + mono uppercase category label, title, 2-line description,
+mono meta row (difficulty dot · time · progress count), 2px progress bar on the bottom edge
+(rendered only when > 0), completed = accent check + accent-tinted border. Hover: accent border,
+no translate. ~180px tall — почти вдвое плотнее текущей.
+
+### Alternative C — category spine
+
+Same quiet card, but the category is a 3px left border ("spine") + colored label in the meta
+row; icon moves into the title row. Best category scannability per pixel. Risk: colored left
+borders are the visual language of Practice callouts inside theory.
+
+### Alternative D — terminal list rows (secondary view, not a replacement)
+
+Dense `ls`-style rows: status glyph (`[ ]`/`[~]`/`[x]`), title, category, mono difficulty/time,
+ASCII progress bar. 49 rooms in ~1.5 screens. No descriptions — bad for first-time choosing,
+excellent for "where did I stop". If adopted — as a grid/list **toggle** next to the filters,
+after the base card is settled.
+
+**When a pick lands:** implement in `src/app/[lang]/rooms/page.tsx`, replace the cyan hover
+with `accent-*`, update this section (current → alternatives, date, why), and check both themes.
+
+---
+
 ## Related forks tracked elsewhere
 
 - **Accent green** — `docs/green-accent-picker.html` (interactive picker with site preview; Sage
