@@ -16,7 +16,7 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
         <div className="space-y-6">
           <p className="text-neutral-300 leading-relaxed text-lg">
             {lang === 'ru'
-              ? 'Если 2023 год был годом "Чата", то 2024 и 2025 стали годами "Агента". Мы перешли от взаимодействия, где человек должен контролировать каждое слово модели, к системам, которым достаточно поставить высокоуровневую цель. Агент — это не просто программа, это архитектурный паттерн, в котором LLM превращается из генератора текста в исполнительный разум.'
+              ? 'Если 2023 год был годом "Чата", то 2024 и 2025 стали годами "Агента". Мы перешли от взаимодействия, где человек должен контролировать каждое слово модели, к системам, которым достаточно поставить высокоуровневую цель. Агент — не отдельная программа, а архитектурный паттерн, в котором LLM превращается из генератора текста в исполнительный разум.'
               : 'If 2023 was the year of "Chat," then 2024 and 2025 became the years of the "Agent." We have moved from an interaction where a human must monitor every word of the model to systems where it is enough to set a high-level goal. An agent is not just a program; it is an architectural pattern in which the LLM transforms from a text generator into an executive mind.'}
           </p>
           <p className="text-neutral-300 leading-relaxed">
@@ -104,7 +104,7 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
         <div className="space-y-6">
           <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru'
-              ? 'ReAct — это не просто алгоритм, это когнитивный паттерн "Рассуждение + Действие". Исследования показали, что если модель сразу переходит к действию, она ошибается в 40% случаев. Если же она сначала пишет "Thought" (Мысль), точность возрастает до 85-90%.'
+              ? 'ReAct — не столько алгоритм, сколько когнитивный паттерн "Рассуждение + Действие". Исследования показали, что если модель сразу переходит к действию, она ошибается в 40% случаев. Если же она сначала пишет "Thought" (Мысль), точность возрастает до 85-90%.'
               : 'ReAct is not just an algorithm; it is a "Reason + Act" cognitive pattern. Research has shown that if a model jumps straight to action, it fails in 40% of cases. If it first writes a "Thought," accuracy increases to 85-90%.'}
           </p>
           <div className="p-8 bg-deep rounded-2xl border border-border-card space-y-4">
