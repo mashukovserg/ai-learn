@@ -15,7 +15,7 @@ export default function AiRagTheory({ lang }: { lang: string }) {
           {lang === 'ru' ? 'Глава 1: Проблема закрытых знаний — Почему ИИ нужен поиск' : 'Chapter 1: The Problem of Closed Knowledge — Why AI Needs Search'}
         </h2>
         <div className="space-y-6">
-          <p className="text-neutral-300 leading-relaxed text-lg">
+          <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru'
               ? 'Представьте, что вы наняли самого умного юриста в мире, но он перестал читать законы два года назад. Он может рассуждать блестяще, используя свою логику, но он абсолютно не осведомлен о новых поправках, принятых вчера, или о ваших личных документах, которые лежат у вас на столе. Именно в таком состоянии находится обычная большая языковая модель (LLM). Её знания "заморожены" в момент окончания обучения (Knowledge Cutoff). Она знает всё о мире до определенной даты, но ничего о том, что происходит прямо сейчас или внутри вашей компании.'
               : 'Imagine hiring the smartest lawyer in the world, but they stopped reading the laws two years ago. They can reason brilliantly using their logic, but they are completely unaware of new amendments passed yesterday or your private documents sitting on your desk. This is the exact state of a standard Large Language Model (LLM). Its knowledge is "frozen" at the time training ended (Knowledge Cutoff). It knows everything about the world up to a certain date, but nothing about what is happening right now or inside your company.'}

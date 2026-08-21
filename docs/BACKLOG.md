@@ -2,6 +2,9 @@
 
 > **Active roadmap:** [`ROADMAP_3M.md`](ROADMAP_3M.md) (2026-05-16 → 2026-08-15) — agents pick work from there first; this file keeps the detailed punch lists and the work log.
 
+## Completed (2026-08-22 session — by Claude Code)
+- [x] **Theory body font-size normalized across 13 rooms** (owner reported mismatched paragraph sizes in `ai-agents` chapter 1). Some chapter openers carried `text-lg` (18px) while adjacent body paragraphs were base 16px — an inconsistent "lede" applied to only some chapters in some rooms. Removed `text-lg` from all 27 plain body paragraphs in AiAgents, AiAlignment, AiImageCreation, AiRag, AiResearch, AiSecurity, ChatgptMoment, Embeddings101, FineTuning101, Llama318b, LocalModels101, NativeMultimodality, TaxonomyMatching theories. Deliberate exceptions kept: Prompting101's accent-bordered pull-quote, AiResearch's centered outro quote, AiCareerTrajectories' own internally consistent `text-base md:text-lg` system. Verified in the browser (both `ai-agents` ch. 1 paragraphs measure identical computed 16.8px); `check-all` green (2339 tests). (by Claude Code)
+
 ## Completed (2026-08-20 session, responsive pass — by Claude Code)
 - [x] **Responsive/adaptive pass across the app** (audited at 375 / 768 / 1280 in the browser; an iframe probe measured `scrollWidth` of all 49 room pages + 13 app pages at 375px — 0 horizontal overflows after the fixes).
   - **Navbar:** on `<sm` the inline search collapsed into an unusable empty square. Replaced with a search icon that opens a full-width panel under the header (autofocus, same results list, closes on route change/outside tap/Escape); the "очков/pts" label hides under 400px; streak moved `sm:` → `md:`.

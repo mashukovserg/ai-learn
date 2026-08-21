@@ -14,7 +14,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
             {lang === 'ru' ? 'Глава 1: Исследовательский тупик — Проблема объемов' : 'Chapter 1: The Research Bottleneck — The Volume Problem'}
           </h2>
           <div className="space-y-6">
-            <p className="text-neutral-300 leading-relaxed text-lg">
+            <p className="text-neutral-300 leading-relaxed">
               {lang === 'ru'
                 ? 'Каждый день в мире публикуются тысячи научных статей. Обычный человек физически не способен прочитать даже 1% материалов в своей узкой области. Это создает информационный шум, в котором легко пропустить прорывную идею. Исследователь в области медицины или ИИ должен прочитывать десятки статей в неделю, чтобы просто оставаться на месте. Это приводит к кризису воспроизводимости: мы тратим ресурсы на то, что уже было открыто или опровергнуто.'
                 : 'Thousands of scientific papers are published every day. A human is physically unable to read even 1% of the materials in their niche field. This creates information noise where breakthrough ideas are easily missed. A researcher in medicine or AI must read dozens of papers per week just to stay current. This leads to a reproducibility crisis: we waste resources on things that have already been discovered or refuted.'}
@@ -84,7 +84,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
             {lang === 'ru' ? 'Глава 3: Рекурсивный синтез — Как сжать библиотеку' : 'Chapter 3: Recursive Synthesis — Compressing a Library'}
           </h2>
           <div className="space-y-6">
-            <p className="text-neutral-300 leading-relaxed text-lg">
+            <p className="text-neutral-300 leading-relaxed">
               {lang === 'ru'
                 ? 'Главное "узкое горлышко" любой LLM — это лимит контекстного окна. Даже при окне в 1 миллион токенов вы не можете просто "впихнуть" текст 100 сложных научных статей в один промпт и попросить модель написать обзор. Модель "потеряется" в деталях, забудет начало и сгенерирует поверхностный ответ. Архитектурное решение этой проблемы — алгоритм "Снежный ком" (Recursive Summarization).'
                 : 'The main "bottleneck" of any LLM is the context window limit. Even with a 1-million-token window, you cannot simply "shove" the text of 100 complex scientific papers into a single prompt and ask the model to write a review. The model will get "lost" in the details, forget the beginning, and generate a superficial answer. The architectural solution to this problem is the "Snowball" algorithm (Recursive Summarization).'}
@@ -201,7 +201,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
             {lang === 'ru' ? 'Глава 6: Этика ИИ-соавторства' : 'Chapter 6: The Ethics of AI Co-authorship'}
           </h2>
           <div className="space-y-6">
-            <p className="text-neutral-300 leading-relaxed text-lg">
+            <p className="text-neutral-300 leading-relaxed">
               {lang === 'ru'
                 ? 'Кто является автором прорывной научной статьи, если 80% рутинного анализа, парсинга данных и первичного синтеза провел кремниевый агент? Этот вопрос сейчас активно обсуждается в журналах уровня Nature и Science.'
                 : 'Who is the author of a breakthrough scientific paper if 80% of the routine analysis, data parsing, and initial synthesis was conducted by a silicon agent? This question is currently heavily debated in journals like Nature and Science.'}

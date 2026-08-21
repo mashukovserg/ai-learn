@@ -14,7 +14,7 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
           {lang === 'ru' ? 'Глава 1: Агентская революция — ИИ обретает волю' : 'Chapter 1: The Agentic Revolution — AI Gains Agency'}
         </h2>
         <div className="space-y-6">
-          <p className="text-neutral-300 leading-relaxed text-lg">
+          <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru'
               ? 'Если 2023 год был годом "Чата", то 2024 и 2025 стали годами "Агента". Мы перешли от взаимодействия, где человек должен контролировать каждое слово модели, к системам, которым достаточно поставить высокоуровневую цель. Агент — это не просто программа, это архитектурный паттерн, в котором LLM превращается из генератора текста в исполнительный разум.'
               : 'If 2023 was the year of "Chat," then 2024 and 2025 became the years of the "Agent." We have moved from an interaction where a human must monitor every word of the model to systems where it is enough to set a high-level goal. An agent is not just a program; it is an architectural pattern in which the LLM transforms from a text generator into an executive mind.'}
@@ -227,7 +227,7 @@ export default function AiAgentsTheory({ lang }: { lang: string }) {
           {lang === 'ru' ? 'Глава 6: Архитектура памяти — Как не забыть всё' : 'Chapter 6: Memory Architecture — How Not to Forget Everything'}
         </h2>
         <div className="space-y-6">
-          <p className="text-neutral-300 leading-relaxed text-lg">
+          <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru'
               ? 'Для выполнения долгосрочных задач (например, "изучай рынок электромобилей в течение недели и делай ежедневные сводки") агенту нужна сложная система памяти. Мы используем концепцию семантической памяти на базе <Term id="rag">RAG</Term>.'
               : 'To perform long-term tasks (e.g., "study the EV market for a week and provide daily summaries"), an agent needs a complex memory system. We use the concept of semantic memory based on <Term id="rag">RAG</Term>.'}

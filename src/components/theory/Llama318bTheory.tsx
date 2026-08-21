@@ -16,7 +16,7 @@ export default function Llama318bTheory({ lang }: { lang: string }) {
           {lang === 'ru' ? 'Глава 1: Что такое Llama 3.1 8B?' : 'Chapter 1: What is Llama 3.1 8B?'}
         </h2>
         <div className="space-y-6">
-          <p className="text-neutral-300 leading-relaxed text-lg">
+          <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru'
               ? 'Llama 3.1 8B — открытая языковая модель от Meta с 8 миллиардами параметров, выпущенная 23 июля 2024 года. На простом языке: это «открытый конкурент GPT-3.5», которого вы можете скачать целиком и запустить на своём ноутбуке или сервере, не отправляя никому ни одного байта данных.'
               : 'Llama 3.1 8B is an open-weights language model from Meta with 8 billion parameters, released on July 23, 2024. In plain English: it is the "open competitor to GPT-3.5" that you can download in full and run on your own laptop or server without sending a single byte of data to anyone.'}

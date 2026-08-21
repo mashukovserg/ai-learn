@@ -15,7 +15,7 @@ export default function AiSecurityTheory({ lang }: { lang: string }) {
           {lang === 'ru' ? 'Глава 1: Новая эра взлома — Психология вместо кода' : 'Chapter 1: A New Era of Hacking — Psychology Over Code'}
         </h2>
         <div className="space-y-6">
-          <p className="text-neutral-300 leading-relaxed text-lg">
+          <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru'
               ? 'Традиционный хакинг — это поиск дыр в программном коде, переполнение буфера или использование незакрытых портов. Безопасность ИИ — это совсем другое измерение. Здесь атака происходит через естественный язык. Поскольку большие языковые модели (LLM) — это вероятностные машины, они уязвимы для манипуляций, которые больше похожи на гипноз, внушение или социальную инженерию, чем на классический взлом. Хакер не пишет эксплойт на C++, он пишет промпт на английском или русском языке, который "уговаривает" модель нарушить её внутренние правила безопасности.'
               : 'Traditional hacking involves finding holes in software code, buffer overflows, or exploiting open ports. AI security is a completely different dimension. Here, the attack happens through natural language. Since Large Language Models (LLMs) are probabilistic machines, they are vulnerable to manipulations that resemble hypnosis, suggestion, or social engineering more than classical hacking. A hacker doesn\'t write an exploit in C++; they write a prompt in English or Russian that "persuades" the model to violate its internal safety rules.'}

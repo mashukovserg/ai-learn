@@ -15,7 +15,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
           <Clock className="text-accent-500" />
           {lang === 'ru' ? 'Глава 1: Тишина перед бурей (До ноября 2022)' : 'Chapter 1: The Quiet Before the Storm (Pre-November 2022)'}
         </h2>
-        <p className="text-neutral-300 leading-relaxed mb-6 text-lg">
+        <p className="text-neutral-300 leading-relaxed mb-6">
           {lang === 'ru'
             ? 'До 30 ноября 2022 года мир искусственного интеллекта представлял собой раздробленный ландшафт, в котором обитали преимущественно исследователи, узкопрофильные разработчики и техно-энтузиасты. Хотя термин «ИИ» часто звучал на советах директоров, для обычного человека он оставался абстрактным понятием — чем-то, запрятанным в рекомендательных алгоритмах Netflix или в системе распознавания лиц iPhone. Мы уже знали про GPT-3, выпущенную OpenAI в 2020 году, но существовал огромный «разрыв в юзабилити». Использование модели требовало наличия API-ключа, привязанной кредитной карты и терпения, чтобы разобраться в интерфейсе Playground.'
             : 'Before November 30, 2022, the AI world was a fragmented landscape occupied mainly by researchers and niche developers. While "AI" was a buzzword in boardrooms, for the average person, it remained an abstract concept—something hidden in Netflix recommendation algorithms or iPhone face recognition. We already had GPT-3, released by OpenAI in 2020, but a massive "usability gap" existed. Using the model required an API key, a linked credit card, and the patience to navigate the complex Playground interface.'}
@@ -94,7 +94,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
             </>
           )}
         </h2>
-        <p className="text-neutral-300 leading-relaxed mb-6 text-lg">
+        <p className="text-neutral-300 leading-relaxed mb-6">
           {lang === 'ru'
             ? 'Настоящая магия момента ChatGPT заключалась не в том, что модель внезапно стала «умнее» за одну ночь, а в том, что она стала «послушной». Чтобы понять это, нужно рассмотреть переход от базовой GPT-3 к InstructGPT — фундаменту, на котором построен ChatGPT. Базовая модель — это просто предсказатель следующего слова. Если вы просили её написать эссе, она могла в ответ выдать список вопросов для викторины, потому что так было в её обучающих данных.'
             : 'The real magic of the ChatGPT moment wasn&apos;t that the model suddenly became "smarter" overnight; it was that it became "obedient." To understand this, we must look at the transition from base GPT-3 to InstructGPT—the foundation upon which ChatGPT is built. A base model is simply a next-word predictor. If you asked it to write an essay, it might respond with a list of quiz questions because that&apos;s what appeared in its training data.'}
@@ -271,7 +271,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
           <MessageSquare className="text-accent-500" />
           {lang === 'ru' ? 'Глава 5: Почему это именно "Момент"?' : 'Chapter 5: Why it is a "Moment"?'}
         </h2>
-        <p className="text-neutral-300 leading-relaxed mb-6 text-lg">
+        <p className="text-neutral-300 leading-relaxed mb-6">
           {lang === 'ru'
             ? '30 ноября 2022 года интеллект модели не изменился ни на йоту. GPT-3 существовала с 2020 года, а «секретный соус» — обучение через RLHF — был описан в статье про InstructGPT ещё раньше в том же году. В тот четверг не появилось новой сверхспособности. Появился доступ. И в этом весь смысл слова «момент»: в истории технологий момент — это не день, когда возможность изобрели, а день, когда её отдали в руки всем сразу.'
             : 'On November 30, 2022, the model\'s intelligence did not change one bit. GPT-3 had existed since 2020, and the "secret sauce"—training via RLHF—had been described in the InstructGPT paper earlier that same year. No new superpower appeared that Thursday. Access did. And that is the whole meaning of the word "moment": in the history of technology, a moment is not the day a capability is invented, but the day it is placed in everyone\'s hands at once.'}

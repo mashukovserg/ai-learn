@@ -15,7 +15,7 @@ export default function AiImageCreationTheory({ lang }: { lang: string }) {
             {lang === 'ru' ? 'Искусство пикселей: от хаоса к шедевру' : 'The Art of Pixels: From Chaos to Masterpiece'}
           </h2>
           <div className="prose prose-invert max-w-none">
-            <p className="text-neutral-300 leading-relaxed mb-4 text-lg">
+            <p className="text-neutral-300 leading-relaxed mb-4">
               {lang === 'ru'
                 ? 'Генерация изображений с помощью ИИ (Midjourney, Stable Diffusion, DALL-E) часто кажется настоящей магией. Вы пишете текст, и через секунду получаете картину, побеждающую на художественных конкурсах. Однако за этим стоит не творческий порыв алгоритма, а строгая и элегантная математика процесса, называемого "Диффузией" (Diffusion).'
                 : 'AI image generation (Midjourney, Stable Diffusion, DALL-E) often feels like pure magic. You type text, and a second later, you get a painting that wins art competitions. However, behind this is not a creative algorithmic impulse, but the strict and elegant mathematics of a process called "Diffusion."'}

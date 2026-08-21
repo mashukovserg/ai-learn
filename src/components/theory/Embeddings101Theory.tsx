@@ -14,7 +14,7 @@ export default function Embeddings101Theory({ lang }: { lang: string }) {
           {lang === 'ru' ? 'Глава 1: Что такое эмбеддинги?' : 'Chapter 1: What Are Embeddings?'}
         </h2>
         <div className="space-y-6">
-          <p className="text-neutral-300 leading-relaxed text-lg">
+          <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru'
               ? 'Компьютеры не умеют читать. Они умеют считать. Чтобы работать с текстом, нужно превратить слова в числа — причём так, чтобы похожие по смыслу слова получали похожие числа. Именно это и делают эмбеддинги: они превращают текст в вектор — массив чисел фиксированной длины, который кодирует значение.'
               : 'Computers can\'t read. They compute. To work with text, we need to turn words into numbers — and in a way that semantically similar words get similar numbers. That\'s exactly what embeddings do: they convert text into a vector — a fixed-length array of numbers that encodes meaning.'}

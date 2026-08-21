@@ -14,7 +14,7 @@ export default function FineTuning101Theory({ lang }: { lang: string }) {
           {lang === 'ru' ? 'Глава 1: Что такое файн-тюнинг?' : 'Chapter 1: What is Fine-Tuning?'}
         </h2>
         <div className="space-y-6">
-          <p className="text-neutral-300 leading-relaxed text-lg">
+          <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru'
               ? 'Представьте: у вас есть GPT-4 или Claude. Они умные, знают кучу всего. Но вот проблема — вы работаете в юридической фирме, и вам нужна модель, которая отвечает только в формате юридического заключения, знает внутреннюю терминологию, не галлюцинирует про законы, а цитирует конкретные статьи — и работает быстро и дёшево.'
               : 'Imagine you have GPT-4 or Claude. They\'re smart, they know a lot. But here\'s the problem — you work at a law firm, and you need a model that answers only in legal opinion format, knows internal terminology, doesn\'t hallucinate about laws but cites specific statutes — and runs fast and cheap.'}

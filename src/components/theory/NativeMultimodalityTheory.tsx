@@ -14,7 +14,7 @@ export default function NativeMultimodalityTheory({ lang }: { lang: string }) {
           {lang === 'ru' ? 'Глава 1: От "текстоцентризма" к единому восприятию' : 'Chapter 1: From Text-Centrism to Unified Perception'}
         </h2>
         <div className="space-y-6">
-          <p className="text-neutral-300 leading-relaxed text-lg">
+          <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru'
               ? 'Первые большие языковые модели (LLM) были по своей природе "слепыми" и "глухими". Они жили исключительно в мире текста. Если вы хотели, чтобы ИИ "увидел" картинку, вам нужно было использовать сложную связку: отдельная модель зрения описывала изображение словами, и этот текст передавался основной модели. Это было похоже на попытку объяснить слепому человеку, как выглядит закат, используя только слова. Огромное количество информации, такой как пространственные отношения, текстуры и эмоции, неизбежно терялось в процессе этого неуклюжего "перевода".'
               : 'The first large language models (LLMs) were by nature "blind" and "deaf." They lived exclusively in the world of text. If you wanted an AI to "see" a picture, you had to use a complex chain: a separate vision model described the image in words, and that text was passed to the main model. It was like trying to explain a sunset to a blind person using only words. A vast amount of information, such as spatial relationships, textures, and emotions, was inevitably lost in the process of this clumsy "translation."'}

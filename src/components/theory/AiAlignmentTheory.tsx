@@ -14,7 +14,7 @@ export default function AiAlignmentTheory({ lang }: { lang: string }) {
           {lang === 'ru' ? 'Глава 1: Проблема выравнивания — Укрощение хаоса' : 'Chapter 1: The Alignment Problem — Taming Chaos'}
         </h2>
         <div className="space-y-6">
-          <p className="text-neutral-300 leading-relaxed text-lg">
+          <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru'
               ? 'Представьте себе суперкомпьютер, который прочитал каждую страницу интернета, каждую книгу в библиотеке Конгресса и каждый пост в социальных сетях. Такая "базовая модель" (Base Model) обладает невероятными знаниями, но у нее полностью отсутствует внутренний компас. Она — идеальный статистический подражатель. Если её обучение закончится на этом этапе, она будет одинаково охотно писать как научные статьи, так и инструкции по созданию биологического оружия или расистские манифесты. Она не плохая и не хорошая — она просто отражает статистическую структуру данных, на которых выросла.'
               : 'Imagine a supercomputer that has read every page of the internet, every book in the Library of Congress, and every social media post. Such a "Base Model" possesses incredible knowledge but completely lacks an internal compass. It is a perfect statistical imitator. If its training ends at this stage, it will be equally willing to write scientific papers as it is to write instructions for biological weapons or racist manifestos. It is neither good nor bad—it simply reflects the statistical structure of the data it was raised on.'}

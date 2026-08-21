@@ -13,7 +13,7 @@ export default function LocalModels101Theory({ lang }: { lang: string }) {
           {lang === 'ru' ? 'Глава 1: Что такое открытые веса' : 'Chapter 1: What Are Open Weights'}
         </h2>
         <div className="space-y-6">
-          <p className="text-neutral-300 leading-relaxed text-lg">
+          <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru'
               ? <>{'Когда вы пишете запрос в ChatGPT или Claude, текст уходит на сервер компании, обрабатывается там и возвращается ответом. Сама модель — файл с миллиардами обученных параметров — вам недоступна. Локальные модели устроены иначе: их '} <Term id="open-weights" lang={lang}>открытые веса</Term> {' можно скачать как обычный файл и запустить на собственном компьютере. Запрос никуда не отправляется — весь '} <Term id="inference" lang={lang}>инференс</Term> {' происходит на вашем железе.'}</>
               : <>{'When you send a prompt to ChatGPT or Claude, the text travels to the company\'s servers, gets processed there, and comes back as a response. The model itself — a file with billions of trained parameters — is out of your reach. Local models work differently: their '} <Term id="open-weights" lang={lang}>open weights</Term> {' can be downloaded like a regular file and run on your own computer. The prompt never leaves your machine — all '} <Term id="inference" lang={lang}>inference</Term> {' happens on your hardware.'}</>}
@@ -40,7 +40,7 @@ export default function LocalModels101Theory({ lang }: { lang: string }) {
           {lang === 'ru' ? 'Глава 2: Зачем запускать локально' : 'Chapter 2: Why Run Locally'}
         </h2>
         <div className="space-y-6">
-          <p className="text-neutral-300 leading-relaxed text-lg">
+          <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru'
               ? 'Первая причина — приватность. Медицинские записи, юридические документы, исходный код с коммерческой тайной — есть данные, которые нельзя или страшно отправлять на чужие серверы. Локальная модель обрабатывает их, не покидая периметра компании, что снимает целый класс юридических вопросов о передаче данных третьим лицам. Вторая причина — работа офлайн: модель на ноутбуке отвечает в самолёте, в деревне без интернета и при недоступности облачного сервиса.'
               : 'The first reason is privacy. Medical records, legal documents, source code with trade secrets — some data cannot or should not be sent to someone else\'s servers. A local model processes them without leaving the company perimeter, removing a whole class of legal questions about third-party data transfer. The second reason is offline work: a model on a laptop answers on a plane, in a village with no internet, or during a cloud outage.'}
@@ -67,7 +67,7 @@ export default function LocalModels101Theory({ lang }: { lang: string }) {
           {lang === 'ru' ? 'Глава 3: Ландшафт открытых моделей' : 'Chapter 3: The Open Model Landscape'}
         </h2>
         <div className="space-y-6">
-          <p className="text-neutral-300 leading-relaxed text-lg">
+          <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru'
               ? 'Экосистема открытых моделей выросла вокруг нескольких семейств. Llama от Meta — самое влиятельное: первая версия утекла в сеть в феврале 2023 года, Llama 2 вышла уже официально в июле 2023-го, а Llama 3.1 (июль 2024) подняла планку качества для открытых моделей. Qwen от Alibaba славится сильной многоязычностью, Mistral 7B от французской Mistral AI в сентябре 2023 года показала, что 7 миллиардов параметров могут обгонять модели вдвое больше. Gemma — открытая линейка Google, Phi от Microsoft делает ставку на компактность, а DeepSeek-R1 (январь 2025) принесла в открытый мир рассуждающие модели.'
               : 'The open model ecosystem grew around a few families. Meta\'s Llama is the most influential: the first version leaked online in February 2023, Llama 2 shipped officially in July 2023, and Llama 3.1 (July 2024) raised the quality bar for open models. Alibaba\'s Qwen is known for strong multilingual skills; Mistral 7B from France\'s Mistral AI showed in September 2023 that 7 billion parameters can beat models twice the size. Gemma is Google\'s open line, Microsoft\'s Phi bets on compactness, and DeepSeek-R1 (January 2025) brought reasoning models to the open world.'}
@@ -131,7 +131,7 @@ export default function LocalModels101Theory({ lang }: { lang: string }) {
           {lang === 'ru' ? 'Глава 4: Первый запуск' : 'Chapter 4: Your First Local Run'}
         </h2>
         <div className="space-y-6">
-          <p className="text-neutral-300 leading-relaxed text-lg">
+          <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru'
               ? 'Самый простой путь — Ollama: бесплатный инструмент командной строки для Mac, Linux и Windows. Порядок действий: установить Ollama с официального сайта, скачать модель командой скачивания (pull), запустить её командой запуска (run) и проверить работу тестовым вопросом в чате. Весь путь от установки до первого ответа занимает минут пять. Если командная строка пугает, есть LM Studio — приложение с графическим интерфейсом, где модели выбираются из каталога кликом.'
               : 'The easiest path is Ollama: a free command-line tool for Mac, Linux, and Windows. The sequence: install Ollama from the official site, download a model with the pull command, start it with the run command, and verify it works with a test question in the chat. The whole journey from install to first answer takes about five minutes. If the command line feels intimidating, there is LM Studio — a GUI application where models are picked from a catalog with a click.'}
@@ -168,7 +168,7 @@ export default function LocalModels101Theory({ lang }: { lang: string }) {
           {lang === 'ru' ? 'Глава 5: Пределы и ожидания' : 'Chapter 5: Limits and Expectations'}
         </h2>
         <div className="space-y-6">
-          <p className="text-neutral-300 leading-relaxed text-lg">
+          <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru'
               ? 'Типичное разочарование новичка: скачал модель 8B, задал ей вопрос, на который ChatGPT отвечает блестяще, — и получил ответ заметно слабее. Это ожидаемо. Модель на ноутбуке в сотни раз меньше фронтирной облачной, и разница проявляется на сложных рассуждениях, точных фактах и редких темах. Маленькие модели чаще галлюцинируют — уверенно выдают неверные факты, — поэтому проверка ответов для них ещё важнее, чем для больших.'
               : 'A typical beginner disappointment: you download an 8B model, ask it a question ChatGPT answers brilliantly — and get a noticeably weaker response. That is expected. A laptop model is hundreds of times smaller than a frontier cloud model, and the gap shows on complex reasoning, precise facts, and rare topics. Small models hallucinate more often — confidently producing wrong facts — so verifying answers matters even more than with big ones.'}
@@ -187,7 +187,7 @@ export default function LocalModels101Theory({ lang }: { lang: string }) {
           {lang === 'ru' ? 'Глава 6: Локальные модели в исследованиях по безопасности' : 'Chapter 6: Local Models in Security Research'}
         </h2>
         <div className="space-y-6">
-          <p className="text-neutral-300 leading-relaxed text-lg">
+          <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru'
               ? 'Работа по безопасности собирает вместе ровно те условия, при которых локальные модели особенно уместны. Материал, который специалист подаёт модели, — часто самые чувствительные данные организации: исходный код на ревью, сетевые логи, образцы вредоносного ПО, улики цифровой экспертизы из активного расследования. Отправка такого материала в сторонний API способна нарушить договор с клиентом, правила обращения с уликами или закон о защите данных. Запуск модели с открытыми весами на своей инфраструктуре удерживает материал внутри периметра — поэтому растущий пласт работ по защитной безопасности и цифровой криминалистике строится на локально развёрнутых моделях, а не на облачных API. Та же схема работает в изолированных лабораториях (air-gapped — машины без подключения к интернету), где доступ к облаку невозможен по замыслу.'
               : 'Security work concentrates the exact conditions that make local models attractive. The material a practitioner feeds a model is often the most sensitive data an organization holds: source code under review, network logs, captured malware samples, or forensic evidence from an active investigation. Sending any of that to a third-party API can breach a client contract, chain-of-custody rules, or data-protection law. Running an open-weights model on your own infrastructure keeps the material inside the perimeter — which is why a growing body of defensive-security and digital-forensics research builds on locally deployed models rather than cloud APIs. The same setup runs in air-gapped labs (machines with no internet connection) where cloud access is impossible by design.'}
