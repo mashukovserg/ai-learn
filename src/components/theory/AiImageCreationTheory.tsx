@@ -10,7 +10,7 @@ export default function AiImageCreationTheory({ lang }: { lang: string }) {
       {/* Introduction */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
+          <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-heading">
             <ImageIcon className="text-accent-500" />
             {lang === 'ru' ? 'Искусство пикселей: от хаоса к шедевру' : 'The Art of Pixels: From Chaos to Masterpiece'}
           </h2>

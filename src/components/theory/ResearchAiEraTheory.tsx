@@ -12,7 +12,7 @@ export default function ResearchAiEraTheory({ lang }: { lang: string }) {
       {/* Introduction */}
       <section>
         <div className="bg-card-dark border border-border-card rounded-xl p-8">
-          <h2 className="text-3xl font-bold mb-6 text-heading">
+          <h2 className="text-2xl font-bold mb-6 text-heading">
             {lang === 'ru' ? 'Метод Эбботта: от библиотеки к агентам' : 'The Abbott Method: From the Library to Agents'}
           </h2>
           <div className="space-y-4">

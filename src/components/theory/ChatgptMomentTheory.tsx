@@ -319,7 +319,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
 
       {/* Final Warning */}
       <div className="bg-danger-500/5 border border-danger-500/20 rounded-xl p-8 mb-8">
-        <h2 className="text-2xl font-bold mb-4 flex items-center gap-3 text-danger-400">
+        <h2 className="text-3xl font-bold mb-4 flex items-center gap-3 text-danger-400">
           <AlertCircle className="text-danger-500" />
           {lang === 'ru' ? 'Обратная сторона медали: Галлюцинации и Риски' : 'The Dark Side: Hallucinations and Risks'}
         </h2>

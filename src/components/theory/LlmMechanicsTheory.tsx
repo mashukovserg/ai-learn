@@ -10,7 +10,7 @@ export default function LlmMechanicsTheory({ lang }: { lang: string }) {
     <>
       {/* Chapter 1: Tokens & The BPE Process */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-2xl md:text-3xl font-bold mb-6 text-heading">
+        <h2 className="text-3xl font-bold mb-6 text-heading">
           <span className="leading-tight text-balance">
             {lang === 'ru' ? 'Глава 1: Токены — атомы цифрового разума' : 'Chapter 1: Tokens — The Atoms of the Digital Mind'}
           </span>

@@ -13,6 +13,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Agent worktrees are separate working copies (with their own .next output);
+    // linting them duplicates every warning and fails check-all on generated code.
+    ".claude/worktrees/**",
   ]),
 ]);
 

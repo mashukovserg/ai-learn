@@ -98,13 +98,13 @@ export const aiAgentsTasks: LocalizedTask[] = [
       },
       options: [
         { ru: 'Это просто вежливое вступление для пользователя', en: 'It\'s just a polite intro for the user' },
-        { ru: 'Без него точность выполнения сложных задач падает с 85-90% до 40%', en: 'Without it, accuracy on complex tasks drops from 85-90% to 40%' },
+        { ru: 'Явное рассуждение перед действием снижает галлюцинации и резко поднимает успешность: в ALFWorld ReAct обошёл базовые методы на 34 п.п.', en: 'Explicit reasoning before acting reduces hallucinations and sharply lifts success rates: on ALFWorld, ReAct beat baseline methods by 34 percentage points' },
         { ru: 'Это позволяет модели тратить меньше токенов на ответ', en: 'It allows the model to spend fewer tokens on the response' }
       ],
-      answer: { ru: 'Без него точность выполнения сложных задач падает с 85-90% до 40%', en: 'Without it, accuracy on complex tasks drops from 85-90% to 40%' },
-      explanation: { 
-        ru: 'Точно. Если модель сразу "прыгает" в действие без планирования, она чаще ошибается. Когнитивная пауза (Thought) резко повышает качество.', 
-        en: 'Exactly. If the model "jumps" straight to action without planning, it fails more often. A cognitive pause (Thought) drastically improves quality.' 
+      answer: { ru: 'Явное рассуждение перед действием снижает галлюцинации и резко поднимает успешность: в ALFWorld ReAct обошёл базовые методы на 34 п.п.', en: 'Explicit reasoning before acting reduces hallucinations and sharply lifts success rates: on ALFWorld, ReAct beat baseline methods by 34 percentage points' },
+      explanation: {
+        ru: 'Точно. Если модель сразу «прыгает» в действие без планирования, она чаще ошибается. В экспериментах Yao et al. связка Thought → Action дала +34 п.п. на ALFWorld и +10 п.п. на WebShop по сравнению с базовыми методами.',
+        en: 'Exactly. If the model "jumps" straight to action without planning, it fails more often. In Yao et al.\'s experiments, the Thought → Action pairing gained +34 points on ALFWorld and +10 on WebShop over baseline methods.'
       }
     },
     {
