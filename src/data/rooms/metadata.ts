@@ -638,6 +638,20 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     icon: 'Terminal',
   },
   {
+    id: 'opencode-terminal-agent',
+    title: { ru: 'OpenCode: открытый агент в терминале', en: 'OpenCode: The Open Terminal Agent' },
+    description: {
+      ru: 'Открытый (MIT) кодинг-агент с подключаемыми моделями: агенты build и plan, файл правил AGENTS.md, откат /undo и шлюз моделей OpenCode Zen — на подлинных снимках рабочей сессии.',
+      en: 'An open (MIT) coding agent with pluggable models: the build and plan agents, the AGENTS.md rules file, /undo rollback, and the OpenCode Zen model gateway — on genuine captures of a working session.',
+    },
+    difficulty: 'Intermediate',
+    time: { ru: '30 мин', en: '30m' },
+    category: { ru: 'Агентная разработка', en: 'Agent Coding' },
+    image: '/images/how-llm-think-progress.png',
+    pathIds: ['agent-coding'],
+    icon: 'Terminal',
+  },
+  {
     id: 'context-engineering-101',
     title: { ru: 'Контекст-инжиниринг 101', en: 'Context Engineering 101' },
     description: {

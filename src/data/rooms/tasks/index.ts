@@ -32,6 +32,7 @@ import { agenticSwarmManagementTasks } from './agentic-swarm-management';
 import { frontierEvalsLogicTasks } from './frontier-evals-logic';
 import { claudeCodeAgenticLoopTasks } from './claude-code-agentic-loop';
 import { claudeCodeProWorkflowTasks } from './claude-code-pro-workflow';
+import { opencodeTerminalAgentTasks } from './opencode-terminal-agent';
 import { contextEngineering101Tasks } from './context-engineering-101';
 import { aiExistentialRiskTasks } from './ai-existential-risk';
 import { aiAlignmentLimitsTasks } from './ai-alignment-limits';
@@ -91,6 +92,7 @@ export const ROOM_TASKS: Record<string, LocalizedTask[]> = {
   'frontier-evals-logic': frontierEvalsLogicTasks,
   'claude-code-agentic-loop': claudeCodeAgenticLoopTasks,
   'claude-code-pro-workflow': claudeCodeProWorkflowTasks,
+  'opencode-terminal-agent': opencodeTerminalAgentTasks,
   'context-engineering-101': contextEngineering101Tasks,
   'ai-existential-risk': aiExistentialRiskTasks,
   'ai-alignment-limits': aiAlignmentLimitsTasks,
