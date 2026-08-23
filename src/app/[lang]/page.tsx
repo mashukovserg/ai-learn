@@ -32,7 +32,7 @@ export default async function Home(props: {
             <p className="text-xs text-accent-300/80 mb-1.5">
               {lang === 'ru' ? 'Текущий путь' : 'Current path'}
             </p>
-            <h2 className="text-base font-semibold text-neutral-200 mb-1">
+            <h2 className="font-semibold text-neutral-200 mb-1">
               {lang === 'ru' ? 'Основы AI' : 'AI Foundations'}
             </h2>
             <p className="text-sm text-neutral-500">

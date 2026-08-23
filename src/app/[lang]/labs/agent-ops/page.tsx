@@ -409,7 +409,7 @@ export default function AgentOpsPage(props: { params: Promise<{ lang: string }> 
       ) : (
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-4">
           <section className="bg-input border border-border-subtle rounded-xl p-5 xl:col-span-2">
-            <h3 className="text-base font-semibold text-neutral-200 mb-3">{t.queueTitle}</h3>
+            <h3 className="font-semibold text-neutral-200 mb-3">{t.queueTitle}</h3>
             {tasks.length === 0 ? (
               <p className="text-sm text-neutral-500">{t.noTasks}</p>
             ) : (
@@ -454,7 +454,7 @@ export default function AgentOpsPage(props: { params: Promise<{ lang: string }> 
           </section>
 
           <section className="bg-input border border-border-subtle rounded-xl p-5">
-            <h3 className="text-base font-semibold text-neutral-200 mb-3">{t.runsTitle}</h3>
+            <h3 className="font-semibold text-neutral-200 mb-3">{t.runsTitle}</h3>
             {runs.length === 0 ? (
               <p className="text-sm text-neutral-500">{t.noRuns}</p>
             ) : (
@@ -473,7 +473,7 @@ export default function AgentOpsPage(props: { params: Promise<{ lang: string }> 
           </section>
 
           <section className="bg-input border border-border-subtle rounded-xl p-5 xl:col-span-3">
-            <h3 className="text-base font-semibold text-neutral-200 mb-3">{t.knowledgeTitle}</h3>
+            <h3 className="font-semibold text-neutral-200 mb-3">{t.knowledgeTitle}</h3>
             {knowledge.length === 0 ? (
               <p className="text-sm text-neutral-500">{t.noKnowledge}</p>
             ) : (

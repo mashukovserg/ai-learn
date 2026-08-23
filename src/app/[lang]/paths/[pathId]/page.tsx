@@ -58,7 +58,7 @@ export default async function PathPage(props: {
 
             <div className="flex-1 bg-input border rounded-lg p-5 transition-colors border-accent-500/35">
               <div className="mb-1.5">
-                <h3 className="text-base font-semibold text-neutral-200 mb-1">{room.title[lang]}</h3>
+                <h3 className="font-semibold text-neutral-200 mb-1">{room.title[lang]}</h3>
                 <p className="text-neutral-500 text-sm">{room.description[lang]}</p>
               </div>
 

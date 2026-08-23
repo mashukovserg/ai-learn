@@ -144,6 +144,8 @@ The accent ramp (`--color-accent-100…950`) mirrors the shade scale, so alpha m
 
 This is enforced by `src/__tests__/design-tokens.test.ts` (part of `check-all`): it fails on any literal `emerald-*` in components and on any theory heading painted with the accent, naming the offending files. Status palettes migrated on 2026-07-23 (red→danger, amber→warning, blue→info, green→success — values copied verbatim from Tailwind's default theme, so it was a visual no-op). Categorical content hues (`cyan`, `rose`, `purple`, `violet`, `pink`, `orange`, `slate`, `yellow`) are deliberately NOT status roles and stay literal; the guard tracks them informationally.
 
+**Trap — never write `text-base` (Mandatory).** `--color-base` is a *color* token, so Tailwind v4 generates `.text-base` as `color: var(--color-base)` — the page background — and that utility shadows the built-in font-size one, which is not emitted at all. A plain `text-base` therefore sets no size and silently loses to a neighbouring `text-neutral-*`; a `md:text-base` *wins* over it (variants are emitted after base utilities) and paints the paragraph in the background color — invisible on the dark theme and on the light one alike. This shipped unnoticed in `ai-career-trajectories` until 2026-08-23. Body copy already inherits the base size, so drop the utility; when an explicit size is genuinely needed, use `text-[1rem]`. `bg-base` is unaffected and stays the right way to reach that surface. Guarded by `src/__tests__/design-tokens.test.ts`.
+
 **Known boundary:** raster assets (`public/images/**`) are not tokenized. A room cover PNG keeps its baked-in colors through an accent swap; re-export or prefer SVG when a visual must follow the accent.
 
 ### Terminal component — a core design element (use it)

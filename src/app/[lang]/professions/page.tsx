@@ -52,7 +52,7 @@ export default function ProfessionsPage(props: {
         <h1 className="mb-3 text-3xl font-semibold text-neutral-100 md:text-4xl">
           {lang === 'ru' ? 'Профессии в AI' : 'AI Professions'}
         </h1>
-        <p className="max-w-3xl text-base leading-relaxed text-neutral-400">
+        <p className="max-w-3xl leading-relaxed text-neutral-400">
           {lang === 'ru'
             ? 'Изучите ключевые роли в AI и найдите трек, который ближе вашему способу мышления: инженерия, research, безопасность, продукт или leadership.'
             : 'Explore the major roles in AI and find the track that fits how you think best: engineering, research, security, product, or leadership.'}
@@ -104,7 +104,7 @@ export default function ProfessionsPage(props: {
 
       {filteredProfessions.length === 0 && (
         <div className="mt-8 rounded-2xl border border-border-card bg-card-dark p-8 text-center">
-          <p className="text-base text-neutral-300">
+          <p className="text-neutral-300">
             {lang === 'ru'
               ? 'По текущим фильтрам ничего не найдено. Попробуйте убрать часть ограничений.'
               : 'No professions matched the current filters. Try relaxing the search or filters.'}

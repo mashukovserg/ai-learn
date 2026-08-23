@@ -46,11 +46,16 @@ interface Roadmap {
   branches: BranchCard[];
 }
 
+/**
+ * Skill chips. The tints are derived from one hue each at low opacity so they sit on the dark
+ * card instead of looking like light-surface stickers pasted onto it; the `[data-theme="saas"]`
+ * block flips every shade used here, so the same classes stay readable on the light theme.
+ */
 const CHIP_STYLES: Record<ChipTone, string> = {
-  amber: 'bg-warning-100 text-warning-900 border border-warning-200/80',
-  mint: 'bg-accent-100 text-accent-950 border border-accent-200/80',
-  violet: 'bg-violet-100 text-violet-900 border border-violet-200/80',
-  stone: 'bg-stone-100 text-stone-700 border border-stone-200/80',
+  amber: 'bg-warning-400/10 text-warning-300 border border-warning-400/30',
+  mint: 'bg-accent-400/10 text-accent-300 border border-accent-400/30',
+  violet: 'bg-violet-400/10 text-violet-400 border border-violet-400/30',
+  stone: 'bg-neutral-500/10 text-neutral-300 border border-neutral-500/30',
 };
 
 const TRACK_LABELS: Record<TrackId, LocalizedText> = {
@@ -549,13 +554,10 @@ export default function AiCareerTrajectoriesTheory({ lang }: { lang: string }) {
           <p className="text-xs md:text-sm uppercase tracking-[0.35em] text-neutral-500 font-mono mb-4">
             {currentLang === 'ru' ? 'Карта карьеры' : 'Career Roadmap'}
           </p>
-          <h2
-            className="text-4xl md:text-6xl font-semibold text-neutral-100 leading-[0.95] mb-5"
-            style={{ fontFamily: 'var(--font-reading, "Iowan Old Style"), Georgia, serif' }}
-          >
-            {currentLang === 'ru' ? 'Карьерные траектории в AI' : 'AI Career Trajectories'}
+          <h2 className="text-2xl md:text-3xl font-semibold text-heading leading-snug mb-5">
+            {currentLang === 'ru' ? 'Три трека и точки развилки' : 'Three tracks and their branch points'}
           </h2>
-          <p className="text-base md:text-lg text-neutral-300 leading-relaxed mb-3">
+          <p className="text-neutral-300 leading-relaxed mb-3">
             {currentLang === 'ru'
               ? 'Используйте карту как ориентир, а не как жесткую лестницу. В AI рост зависит от того, любите ли вы исследовательскую новизну, выпуск надежных систем или увеличение результата через координацию команды.'
               : 'Use this map as orientation, not as a rigid ladder. In AI, career growth depends on whether you prefer research novelty, shipping reliable systems, or multiplying impact through team coordination.'}
@@ -578,7 +580,7 @@ export default function AiCareerTrajectoriesTheory({ lang }: { lang: string }) {
                   setSelectedTrack(track);
                   setOpenStageId(ROADMAPS[track].stages[0].id);
                 }}
-                className={`rounded-2xl border px-5 py-3 text-base md:text-lg font-mono transition-colors ${
+                className={`rounded-2xl border px-5 py-3 font-mono transition-colors ${
                   isActive
                     ? 'bg-card border-border-emphasis text-neutral-100'
                     : 'bg-base border-border-card text-neutral-400 hover:text-neutral-200 hover:border-border-emphasis'
@@ -592,7 +594,7 @@ export default function AiCareerTrajectoriesTheory({ lang }: { lang: string }) {
 
         <div className="mt-8 rounded-[1.5rem] border border-border-card bg-card p-5 md:p-6">
           <h3 className="text-lg md:text-xl text-neutral-100 font-semibold mb-2">{text(roadmap.title, currentLang)}</h3>
-          <p className="text-sm md:text-base text-neutral-400 leading-relaxed">{text(roadmap.subtitle, currentLang)}</p>
+          <p className="text-neutral-400 leading-relaxed">{text(roadmap.subtitle, currentLang)}</p>
         </div>
 
         <div className="mt-8 space-y-6">
@@ -616,7 +618,7 @@ export default function AiCareerTrajectoriesTheory({ lang }: { lang: string }) {
                         {text(stage.years, currentLang)}
                       </p>
                       <h4 className="text-2xl md:text-3xl font-medium text-neutral-100 mb-1">{text(stage.title, currentLang)}</h4>
-                      <p className="text-sm md:text-base font-mono uppercase tracking-[0.14em] text-neutral-500">
+                      <p className="text-sm font-mono uppercase tracking-[0.14em] text-neutral-500">
                         {text(stage.level, currentLang)}
                       </p>
                     </div>
@@ -631,7 +633,7 @@ export default function AiCareerTrajectoriesTheory({ lang }: { lang: string }) {
                     </button>
                   </div>
 
-                  <p className="mt-4 text-sm md:text-base text-neutral-300 leading-relaxed">{text(stage.summary, currentLang)}</p>
+                  <p className="mt-4 text-neutral-300 leading-relaxed">{text(stage.summary, currentLang)}</p>
 
                   <div className="mt-4 flex flex-wrap gap-2">
                     {stage.chips.map((chip) => (
@@ -644,7 +646,7 @@ export default function AiCareerTrajectoriesTheory({ lang }: { lang: string }) {
                   {isOpen && (
                     <div className="mt-5 space-y-4 border-t border-border-card pt-5">
                       {stage.details.map((detail) => (
-                        <p key={text(detail, currentLang)} className="text-sm md:text-base text-neutral-300 leading-relaxed">
+                        <p key={text(detail, currentLang)} className="text-neutral-300 leading-relaxed">
                           {text(detail, currentLang)}
                         </p>
                       ))}
@@ -665,7 +667,7 @@ export default function AiCareerTrajectoriesTheory({ lang }: { lang: string }) {
           {roadmap.branches.map((branch) => (
             <article key={text(branch.title, currentLang)} className="rounded-[1.35rem] border border-border-card bg-base p-5">
               <h3 className="text-2xl font-medium text-neutral-100 mb-3">{text(branch.title, currentLang)}</h3>
-              <p className="text-sm md:text-base text-neutral-400 leading-relaxed mb-4">{text(branch.body, currentLang)}</p>
+              <p className="text-neutral-400 leading-relaxed mb-4">{text(branch.body, currentLang)}</p>
               <span className={`inline-flex px-3 py-1 rounded-full text-sm font-medium ${CHIP_STYLES[branch.badge.tone]}`}>
                 {text(branch.badge.label, currentLang)}
               </span>
