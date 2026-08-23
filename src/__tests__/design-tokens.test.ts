@@ -76,6 +76,39 @@ describe('design tokens: retired palettes must not be used literally', () => {
   }
 });
 
+describe('design tokens: `text-base` is a color utility, not a size', () => {
+  /**
+   * `--color-base` in the @theme block makes Tailwind v4 generate `.text-base` as a COLOR
+   * utility — `color: var(--color-base)` — which shadows the built-in font-size utility of the
+   * same name. The generated sheet has no size rule for `text-base` at all.
+   *
+   * Consequences, both found in the wild (2026-08-23, `ai-career-trajectories`):
+   *   - `md:text-base` beats a plain `text-neutral-300` on the same element (variants are
+   *     emitted after base utilities), so the paragraph is painted in the page background
+   *     color — invisible on the dark theme, and equally invisible on the light one.
+   *   - `text-base` never sets a size, so it silently does nothing where it looks like it does.
+   *
+   * Body copy already inherits the base size, so the fix is to drop the utility. When an
+   * explicit size is genuinely needed, use an arbitrary value (`text-[1rem]`).
+   */
+  it('no `text-base` utility in components (it paints text in --color-base)', () => {
+    const re = /(?<![\w-])(?:[a-z]+:)*text-base(?![\w-])/g;
+    const offenders = files
+      .map(f => ({ rel: f.rel, count: (f.text.match(re) ?? []).length }))
+      .filter(f => f.count > 0);
+
+    expect(
+      offenders,
+      offenders.length
+        ? `\n\n\`text-base\` resolves to \`color: var(--color-base)\` — the page background — because ` +
+          `the surface token shadows Tailwind's size utility. Drop it (body copy inherits the base ` +
+          `size) or use \`text-[1rem]\`:\n` +
+          offenders.map(o => `  ${o.rel}: ${o.count} use(s)`).join('\n') + '\n'
+        : undefined
+    ).toEqual([]);
+  });
+});
+
 describe('design tokens: theory headings use the heading token', () => {
   /**
    * Fork 3 (docs/DESIGN_FORKS.md): chapter headings are deliberately NOT the accent

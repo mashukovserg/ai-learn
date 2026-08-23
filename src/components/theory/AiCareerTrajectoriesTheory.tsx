@@ -2,6 +2,93 @@
 
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import Term from '@/components/Term';
+
+const STAFF_ARCHETYPES_URL = 'https://staffeng.com/guides/staff-archetypes/';
+const PENDULUM_URL = 'https://charity.wtf/2017/05/11/the-engineer-manager-pendulum/';
+const DROPBOX_FRAMEWORK_URL = 'https://dropbox.github.io/dbx-career-framework/';
+const PROGRESSION_FYI_URL = 'https://progression.fyi/';
+const AI_ENGINEER_URL = 'https://www.latent.space/p/ai-engineer';
+const ANTHROPIC_RE_RS_URL = 'https://job-boards.greenhouse.io/anthropic/jobs/5135168008';
+const LIGHTCAST_AI_INDEX_URL = 'https://lightcast.io/resources/blog/stanford-ai-2026';
+const AI_INDEX_URL = 'https://hai.stanford.edu/ai-index/2026-ai-index-report';
+
+function SrcLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
+      {children}
+    </a>
+  );
+}
+
+function RefLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300">
+      {children}
+    </a>
+  );
+}
+
+const SOURCES: { authors: string; title: string; venue?: string; note: LocalizedText; href: string; label: string }[] = [
+  {
+    authors: 'Larson, W.',
+    title: '«Staff Engineer: Leadership beyond the management track»',
+    venue: 'staffeng.com',
+    note: { ru: 'четыре архетипа staff-инженера и разница в образе работы между ними', en: 'the four staff-engineer archetypes and how their working lives differ' },
+    href: STAFF_ARCHETYPES_URL,
+    label: 'staffeng.com',
+  },
+  {
+    authors: 'Majors, C. (2017).',
+    title: '«The Engineer/Manager Pendulum»',
+    note: { ru: 'менеджмент как смена профессии, а не повышение; маятник между треками', en: 'management as a change of profession rather than a promotion; the pendulum between tracks' },
+    href: PENDULUM_URL,
+    label: 'charity.wtf',
+  },
+  {
+    authors: 'Dropbox.',
+    title: '«Engineering Career Framework» (v2.9.1)',
+    note: { ru: 'открытая рамка: SWE IC1–IC7, MLE IC1–IC5, менеджеры M3–M7, четыре столпа оценки', en: 'a published framework: SWE IC1–IC7, MLE IC1–IC5, managers M3–M7, four assessment pillars' },
+    href: DROPBOX_FRAMEWORK_URL,
+    label: 'dropbox.github.io',
+  },
+  {
+    authors: 'Progression.',
+    title: '«progression.fyi»',
+    note: { ru: 'сборник открытых карьерных рамок: CircleCI, Medium, Figma, GitLab, Amazon, Rent the Runway, GOV.UK', en: 'a collection of public career frameworks: CircleCI, Medium, Figma, GitLab, Amazon, Rent the Runway, GOV.UK' },
+    href: PROGRESSION_FYI_URL,
+    label: 'progression.fyi',
+  },
+  {
+    authors: 'swyx (2023).',
+    title: '«The Rise of the AI Engineer»',
+    venue: 'Latent.Space',
+    note: { ru: 'разделение AI-инженера, ML-инженера и исследователя; цитата Карпатого', en: 'the split between AI engineer, ML engineer, and research scientist; the Karpathy quote' },
+    href: AI_ENGINEER_URL,
+    label: 'latent.space',
+  },
+  {
+    authors: 'Anthropic.',
+    title: '«Research Engineer / Research Scientist, Pre-training»',
+    note: { ru: 'совмещённая вакансия и приглашение «любому на спектре исследователь/инженер»', en: 'the combined posting and its invitation to "anyone along the researcher/engineer spectrum"' },
+    href: ANTHROPIC_RE_RS_URL,
+    label: 'job-boards.greenhouse.io',
+  },
+  {
+    authors: 'Lightcast (2026).',
+    title: '«Four Takeaways from the 2026 Stanford AI Index»',
+    note: { ru: 'доли вакансий с AI-навыками по странам, рост агентных навыков, Python в 258 674 вакансиях', en: 'AI-skill posting shares by country, the growth of agentic skills, Python in 258,674 postings' },
+    href: LIGHTCAST_AI_INDEX_URL,
+    label: 'lightcast.io',
+  },
+  {
+    authors: 'Stanford HAI (2026).',
+    title: '«The 2026 AI Index Report»',
+    note: { ru: 'первоисточник данных по рынку труда (глава 4, Economy)', en: 'the primary source for the labour-market data (Chapter 4, Economy)' },
+    href: AI_INDEX_URL,
+    label: 'hai.stanford.edu',
+  },
+];
 
 type Lang = 'en' | 'ru';
 type TrackId = 'ic' | 'research' | 'management';
@@ -46,11 +133,16 @@ interface Roadmap {
   branches: BranchCard[];
 }
 
+/**
+ * Skill chips. The tints are derived from one hue each at low opacity so they sit on the dark
+ * card instead of looking like light-surface stickers pasted onto it; the `[data-theme="saas"]`
+ * block flips every shade used here, so the same classes stay readable on the light theme.
+ */
 const CHIP_STYLES: Record<ChipTone, string> = {
-  amber: 'bg-warning-100 text-warning-900 border border-warning-200/80',
-  mint: 'bg-accent-100 text-accent-950 border border-accent-200/80',
-  violet: 'bg-violet-100 text-violet-900 border border-violet-200/80',
-  stone: 'bg-stone-100 text-stone-700 border border-stone-200/80',
+  amber: 'bg-warning-400/10 text-warning-300 border border-warning-400/30',
+  mint: 'bg-accent-400/10 text-accent-300 border border-accent-400/30',
+  violet: 'bg-violet-400/10 text-violet-400 border border-violet-400/30',
+  stone: 'bg-neutral-500/10 text-neutral-300 border border-neutral-500/30',
 };
 
 const TRACK_LABELS: Record<TrackId, LocalizedText> = {
@@ -545,17 +637,51 @@ export default function AiCareerTrajectoriesTheory({ lang }: { lang: string }) {
   return (
     <div className="not-prose space-y-8">
       <section className="bg-card-dark border border-border-card rounded-[1.75rem] p-6 md:p-8">
+        <p className="text-sm uppercase tracking-[0.25em] text-neutral-500 font-mono mb-5">
+          {currentLang === 'ru' ? 'Глава 1' : 'Chapter 1'}
+        </p>
+        <h2 className="text-2xl md:text-3xl font-semibold text-heading leading-snug mb-5">
+          {currentLang === 'ru' ? 'Лестницы, общей для всех, не существует' : 'There is no ladder that everyone shares'}
+        </h2>
+
+        <div className="max-w-3xl space-y-4">
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? 'Когда человек говорит «я middle, хочу дорасти до senior», это звучит так, будто есть общая шкала — как рост в сантиметрах. Общей шкалы нет. Грейд — это строка во внутреннем документе конкретной компании, который описывает, какую работу она готова оплачивать по такой ставке и что считает следующим шагом. За проходной этой компании документ силы не имеет.'
+              : 'When someone says "I am a mid-level engineer, I want to make senior", it sounds like there is a shared scale, the way height is measured in centimetres. There is no shared scale. A level is a line in one company\u2019s internal document describing what work it is willing to pay a given rate for and what it counts as the next step. Past that company\u2019s door the document has no force.'}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? <>{'Проверить это легко, потому что часть компаний публикует свои рамки целиком. В открытой '}<SrcLink href={DROPBOX_FRAMEWORK_URL}>рамке Dropbox</SrcLink>{' у software-инженеров уровни идут с IC1 по IC7, и последний называется Senior Principal. У ML-инженеров той же компании — только с IC1 по IC5. У менеджеров ветка отдельная, с M3 по M7. То есть даже внутри одной организации потолок зависит от специальности, а оценивают человека не по одной оси, а по четырём: Results, Direction, Talent, Culture.'}</>
+              : <>{'This is easy to check, because some companies publish their frameworks in full. In the public '}<SrcLink href={DROPBOX_FRAMEWORK_URL}>Dropbox framework</SrcLink>{' software engineers run from IC1 to IC7, the last one called Senior Principal. Machine-learning engineers at the same company only run IC1 to IC5. Managers sit on a separate M3\u2013M7 branch. Even inside one organisation the ceiling depends on the speciality, and a person is assessed not on one axis but on four: Results, Direction, Talent, Culture.'}</>}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? <>{'Сайт '}<SrcLink href={PROGRESSION_FYI_URL}>progression.fyi</SrcLink>{' собирает такие открытые рамки в одном месте — CircleCI, Medium, Figma, GitLab, Amazon, Rent the Runway, Spotify, GOV.UK и десятки других. Если открыть их подряд, видно главное: они не совпадают ни числом уровней, ни тем, что измеряют. У CircleCI это матрица компетенций на шесть уровней; у Figma шесть уровней и вовсе без отдельного менеджерского трека; Rent the Runway опирается на четыре «столпа»; GOV.UK описывает 38 профессий сразу.'}</>
+              : <>{'The site '}<SrcLink href={PROGRESSION_FYI_URL}>progression.fyi</SrcLink>{' collects such public frameworks in one place — CircleCI, Medium, Figma, GitLab, Amazon, Rent the Runway, Spotify, GOV.UK and dozens more. Open them one after another and the main thing becomes visible: they agree neither on the number of levels nor on what they measure. CircleCI uses a six-level competency matrix; Figma has six levels and no separate manager track at all; Rent the Runway rests on four "pillars"; GOV.UK covers 38 professions at once.'}</>}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? <>{'Отсюда следствие, ради которого этот разбор и нужен. Формула «три года опыта — значит middle» между компаниями не переносится, потому что переносить нечего: в одной senior отвечает за свой сервис, в другой — за направление из четырёх команд. Титул в резюме сообщает, что вас так назвали там, а не что вы делаете здесь. Сравнивать себя имеет смысл с текстом конкретной '}<Term id="career-framework" lang={currentLang}>карьерной рамки</Term>{' — той компании, куда вы идёте.'}</>
+              : <>{'Hence the conclusion this whole detour is for. The formula "three years of experience equals mid-level" does not transfer between companies, because there is nothing to transfer: in one place a senior owns a single service, in another a direction spanning four teams. A title on a CV reports what you were called there, not what you do here. The thing to compare yourself against is the text of a specific '}<Term id="career-framework" lang={currentLang}>career framework</Term>{' — the one at the company you are joining.'}</>}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? 'Что делать практически. На собеседовании и на ревью просите показать рамку: если её нет в письменном виде, ожидания существуют только у кого-то в голове, и договориться о них нельзя — их можно только угадывать. В вакансии читайте не титул, а описание зоны ответственности: за что вы отвечаете, с кем согласовываете решения и что здесь считается провалом.'
+              : 'What to do about it. In interviews and reviews, ask to see the framework: if it does not exist in writing, the expectations live in someone\u2019s head and cannot be agreed on — only guessed at. In a job posting, read the responsibility description rather than the title: what you own, whose agreement your decisions need, and what counts as failure here.'}
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-card-dark border border-border-card rounded-[1.75rem] p-6 md:p-8">
         <div className="max-w-3xl">
           <p className="text-xs md:text-sm uppercase tracking-[0.35em] text-neutral-500 font-mono mb-4">
             {currentLang === 'ru' ? 'Карта карьеры' : 'Career Roadmap'}
           </p>
-          <h2
-            className="text-4xl md:text-6xl font-semibold text-neutral-100 leading-[0.95] mb-5"
-            style={{ fontFamily: 'var(--font-reading, "Iowan Old Style"), Georgia, serif' }}
-          >
-            {currentLang === 'ru' ? 'Карьерные траектории в AI' : 'AI Career Trajectories'}
+          <h2 className="text-2xl md:text-3xl font-semibold text-heading leading-snug mb-5">
+            {currentLang === 'ru' ? 'Три трека и точки развилки' : 'Three tracks and their branch points'}
           </h2>
-          <p className="text-base md:text-lg text-neutral-300 leading-relaxed mb-3">
+          <p className="text-neutral-300 leading-relaxed mb-3">
             {currentLang === 'ru'
               ? 'Используйте карту как ориентир, а не как жесткую лестницу. В AI рост зависит от того, любите ли вы исследовательскую новизну, выпуск надежных систем или увеличение результата через координацию команды.'
               : 'Use this map as orientation, not as a rigid ladder. In AI, career growth depends on whether you prefer research novelty, shipping reliable systems, or multiplying impact through team coordination.'}
@@ -578,7 +704,7 @@ export default function AiCareerTrajectoriesTheory({ lang }: { lang: string }) {
                   setSelectedTrack(track);
                   setOpenStageId(ROADMAPS[track].stages[0].id);
                 }}
-                className={`rounded-2xl border px-5 py-3 text-base md:text-lg font-mono transition-colors ${
+                className={`rounded-2xl border px-5 py-3 font-mono transition-colors ${
                   isActive
                     ? 'bg-card border-border-emphasis text-neutral-100'
                     : 'bg-base border-border-card text-neutral-400 hover:text-neutral-200 hover:border-border-emphasis'
@@ -592,7 +718,7 @@ export default function AiCareerTrajectoriesTheory({ lang }: { lang: string }) {
 
         <div className="mt-8 rounded-[1.5rem] border border-border-card bg-card p-5 md:p-6">
           <h3 className="text-lg md:text-xl text-neutral-100 font-semibold mb-2">{text(roadmap.title, currentLang)}</h3>
-          <p className="text-sm md:text-base text-neutral-400 leading-relaxed">{text(roadmap.subtitle, currentLang)}</p>
+          <p className="text-neutral-400 leading-relaxed">{text(roadmap.subtitle, currentLang)}</p>
         </div>
 
         <div className="mt-8 space-y-6">
@@ -616,7 +742,7 @@ export default function AiCareerTrajectoriesTheory({ lang }: { lang: string }) {
                         {text(stage.years, currentLang)}
                       </p>
                       <h4 className="text-2xl md:text-3xl font-medium text-neutral-100 mb-1">{text(stage.title, currentLang)}</h4>
-                      <p className="text-sm md:text-base font-mono uppercase tracking-[0.14em] text-neutral-500">
+                      <p className="text-sm font-mono uppercase tracking-[0.14em] text-neutral-500">
                         {text(stage.level, currentLang)}
                       </p>
                     </div>
@@ -631,7 +757,7 @@ export default function AiCareerTrajectoriesTheory({ lang }: { lang: string }) {
                     </button>
                   </div>
 
-                  <p className="mt-4 text-sm md:text-base text-neutral-300 leading-relaxed">{text(stage.summary, currentLang)}</p>
+                  <p className="mt-4 text-neutral-300 leading-relaxed">{text(stage.summary, currentLang)}</p>
 
                   <div className="mt-4 flex flex-wrap gap-2">
                     {stage.chips.map((chip) => (
@@ -644,7 +770,7 @@ export default function AiCareerTrajectoriesTheory({ lang }: { lang: string }) {
                   {isOpen && (
                     <div className="mt-5 space-y-4 border-t border-border-card pt-5">
                       {stage.details.map((detail) => (
-                        <p key={text(detail, currentLang)} className="text-sm md:text-base text-neutral-300 leading-relaxed">
+                        <p key={text(detail, currentLang)} className="text-neutral-300 leading-relaxed">
                           {text(detail, currentLang)}
                         </p>
                       ))}
@@ -659,18 +785,92 @@ export default function AiCareerTrajectoriesTheory({ lang }: { lang: string }) {
 
       <section className="bg-card-dark border border-border-card rounded-[1.75rem] p-6 md:p-8">
         <p className="text-sm uppercase tracking-[0.25em] text-neutral-500 font-mono mb-5">
+          {currentLang === 'ru' ? 'Глава 2' : 'Chapter 2'}
+        </p>
+        <h2 className="text-2xl md:text-3xl font-semibold text-heading leading-snug mb-5">
+          {currentLang === 'ru' ? 'Что на самом деле меняется между уровнями' : 'What actually changes between levels'}
+        </h2>
+
+        <div className="max-w-3xl space-y-4">
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? 'Между junior и senior меняется не список технологий. Junior вполне может знать Kubernetes и три фреймворка — этим давно никого не удивишь. Меняется размер куска работы, который человек берёт и доводит до конца сам: без того, чтобы кто-то другой держал за него границы задачи, ловил его ошибки на ревью и договаривался вместо него со смежными командами.'
+              : 'What changes between junior and senior is not the list of technologies. A junior may well know Kubernetes and three frameworks — that surprises nobody any more. What changes is the size of the piece of work a person takes and carries to the end alone: without someone else holding the boundaries of the task, catching their mistakes in review, and negotiating with neighbouring teams on their behalf.'}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? <>{'Рамки говорят об этом прямым текстом. Dropbox формулирует ожидания уровня через три вещи: scope — размер задачи, collaborative reach — насколько далеко расходится круг согласования, и levers for impact — чем именно вы двигаете результат ('}<SrcLink href={DROPBOX_FRAMEWORK_URL}>dropbox.github.io</SrcLink>{'). Ни одна из трёх осей не про количество выученных инструментов. Инструменты — способ, а не мера.'}</>
+              : <>{'The frameworks say this plainly. Dropbox states level expectations through three things: scope — the size of the problem, collaborative reach — how far the circle of agreement extends, and levers for impact — what you actually move the result with ('}<SrcLink href={DROPBOX_FRAMEWORK_URL}>dropbox.github.io</SrcLink>{'). None of the three axes is about how many tools you have learned. Tools are a means, not a measure.'}</>}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? <>{'На верхних уровнях IC-трека расхождение доходит до того, что «'}<Term id="staff-engineer" lang={currentLang}>staff-инженер</Term>{'» перестаёт быть одной ролью. Уилл Ларсон описал четыре архетипа ('}<SrcLink href={STAFF_ARCHETYPES_URL}>staffeng.com</SrcLink>{'): Tech Lead ведёт подход и исполнение одной команды или кластера команд; Architect отвечает за направление и качество критичного технического домена; Solver берётся за сложные проблемы, которые руководство назвало приоритетными; Right Hand расширяет внимание и полномочия руководителя на всю организацию.'}</>
+              : <>{'At the top of the IC track the divergence goes so far that "'}<Term id="staff-engineer" lang={currentLang}>staff engineer</Term>{'" stops being one role. Will Larson described four archetypes ('}<SrcLink href={STAFF_ARCHETYPES_URL}>staffeng.com</SrcLink>{'): the Tech Lead guides approach and execution for a team or cluster of teams; the Architect owns the direction and quality of a critical technical domain; the Solver takes on hard problems leadership has named a priority; the Right Hand extends a senior executive\u2019s attention and authority across the organisation.'}</>}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? 'Разницу между ними Ларсон формулирует через образ жизни, а не через должность: Tech Lead и Architect годами работают с одними и теми же людьми над одними и теми же проблемами и обрастают общим чувством цели, тогда как Solver и Right Hand перемещаются от пожара к пожару, и их отношения с командами скорее транзакционные. Это четыре разных рабочих недели, а не четыре ступеньки одной лестницы.'
+              : 'Larson frames the difference through working life rather than job title: the Tech Lead and the Architect work with the same people on the same problems for years and develop a shared sense of purpose, while the Solver and the Right Hand bounce from fire to fire, with more transactional relationships week to week. These are four different working weeks, not four rungs of one ladder.'}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? <>{'Отсюда честный тест собственного уровня. Спрашивать надо не «какие технологии я знаю», а «за какой контур меня зовут, когда всё сломалось, и чьё согласие нужно, чтобы моё решение стало решением команды». Для систем на языковых моделях в этот контур входят '}<Term id="evals" lang={currentLang}>eval</Term>{'-набор, '}<Term id="slo" lang={currentLang}>SLO</Term>{' по доле ответов, прошедших проверку, и стоимость одного ответа — цифры, за которые кто-то отвечает поимённо.'}</>
+              : <>{'This gives an honest test of your own level. The question is not "which technologies do I know" but "what am I called in for when it breaks, and whose agreement turns my decision into the team\u2019s decision". For systems built on language models that surface includes the '}<Term id="evals" lang={currentLang}>eval</Term>{' suite, the '}<Term id="slo" lang={currentLang}>SLO</Term>{' for the share of answers that pass, and the cost per answer — numbers somebody owns by name.'}</>}
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-card-dark border border-border-card rounded-[1.75rem] p-6 md:p-8">
+        <p className="text-sm uppercase tracking-[0.25em] text-neutral-500 font-mono mb-5">
           {text(roadmap.branchesTitle, currentLang)}
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {roadmap.branches.map((branch) => (
             <article key={text(branch.title, currentLang)} className="rounded-[1.35rem] border border-border-card bg-base p-5">
               <h3 className="text-2xl font-medium text-neutral-100 mb-3">{text(branch.title, currentLang)}</h3>
-              <p className="text-sm md:text-base text-neutral-400 leading-relaxed mb-4">{text(branch.body, currentLang)}</p>
+              <p className="text-neutral-400 leading-relaxed mb-4">{text(branch.body, currentLang)}</p>
               <span className={`inline-flex px-3 py-1 rounded-full text-sm font-medium ${CHIP_STYLES[branch.badge.tone]}`}>
                 {text(branch.badge.label, currentLang)}
               </span>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="bg-card-dark border border-border-card rounded-[1.75rem] p-6 md:p-8">
+        <p className="text-sm uppercase tracking-[0.25em] text-neutral-500 font-mono mb-5">
+          {currentLang === 'ru' ? 'Глава 3' : 'Chapter 3'}
+        </p>
+        <h2 className="text-2xl md:text-3xl font-semibold text-heading leading-snug mb-5">
+          {currentLang === 'ru' ? 'Три роли вокруг моделей' : 'Three roles around the models'}
+        </h2>
+
+        <div className="max-w-3xl space-y-4">
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? <>{'До 2023 года работа с машинным обучением подразумевала, что вы модель обучаете. Доступ к сильным моделям через API это разделил: строить продукт и обучать модель стало возможно порознь. Эссе swyx «The Rise of the AI Engineer» (июнь 2023) закрепило за первой половиной отдельное имя ('}<SrcLink href={AI_ENGINEER_URL}>latent.space</SrcLink>{'), а Карпатого там цитируют так: «One can be quite successful in this role without ever training anything».'}</>
+              : <>{'Before 2023, working with machine learning implied that you trained the model. API access to strong models split that apart: building the product and training the model became separable jobs. swyx\u2019s essay "The Rise of the AI Engineer" (June 2023) gave the first half its own name ('}<SrcLink href={AI_ENGINEER_URL}>latent.space</SrcLink>{'), quoting Karpathy: "One can be quite successful in this role without ever training anything."'}</>}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? <>{'Разграничение из эссе такое. '}<Term id="ai-engineer" lang={currentLang}>AI-инженер</Term>{' строит продукты поверх готовых моделей и API: контекст, инструменты, оценка качества, стоимость и надёжность ответа. ML-инженер обучает и оптимизирует модели, отвечает за MLOps и архитектуру сети. Исследователь создаёт новые базовые модели, и таких людей мало — swyx оценивает их число примерно в пять тысяч на весь мир. Это авторская оценка, а не перепись, и относиться к ней стоит как к порядку величины.'}</>
+              : <>{'The distinction the essay draws goes like this. The '}<Term id="ai-engineer" lang={currentLang}>AI engineer</Term>{' builds products on top of existing models and APIs: context, tools, evaluation, cost, and answer reliability. The ML engineer trains and optimises models, owning MLOps and network architecture. The research scientist creates new foundation models, and such people are scarce — swyx puts the number at roughly five thousand worldwide. That is an author\u2019s estimate rather than a census, and it is worth treating as an order of magnitude.'}</>}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? <>{'На практике граница между инженером и исследователем мягче, чем в схеме. Anthropic публикует совмещённую вакансию «Research Engineer / Research Scientist, Pre-training» и прямо приглашает откликаться «любому на спектре исследователь/инженер» ('}<SrcLink href={ANTHROPIC_RE_RS_URL}>job-boards.greenhouse.io</SrcLink>{'). Обязанности там перечислены подряд: исследовать и реализовывать решения в области архитектур, алгоритмов, обработки данных и оптимизаторов; самостоятельно вести небольшие исследовательские проекты; проектировать, запускать и анализировать эксперименты; оптимизировать и масштабировать обучающую инфраструктуру; развивать внутренние инструменты.'}</>
+              : <>{'In practice the line between engineer and researcher is softer than the diagram. Anthropic posts a combined "Research Engineer / Research Scientist, Pre-training" role and explicitly invites "anyone along the researcher/engineer spectrum" to apply ('}<SrcLink href={ANTHROPIC_RE_RS_URL}>job-boards.greenhouse.io</SrcLink>{'). The responsibilities are listed side by side: conduct research and implement solutions in model architecture, algorithms, data processing and optimisers; independently lead small research projects; design, run and analyse experiments; optimise and scale the training infrastructure; improve internal tooling.'}</>}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? <>{'Отсюда правило чтения вакансий: смотрите на глаголы, а не на титул. «Проектировать эксперименты и анализировать результаты» — это '}<Term id="research-engineer" lang={currentLang}>research engineer</Term>{', даже если в заголовке написано «инженер». «Довести до продакшна и держать задержку» — это продуктовая инженерия, даже если в заголовке написано «исследователь». Требования той же вакансии Anthropic это подтверждают: сильные навыки разработки, Python и фреймворки глубокого обучения, опыт с крупными ML-системами, знакомство с ускорителями и Kubernetes.'}</>
+              : <>{'Which gives a rule for reading job posts: look at the verbs, not the title. "Design experiments and analyse results" is a '}<Term id="research-engineer" lang={currentLang}>research engineer</Term>{', even when the headline says engineer. "Ship it and hold the latency" is product engineering, even when the headline says researcher. The requirements in that same Anthropic posting bear this out: strong software engineering, Python and deep-learning frameworks, experience with large-scale ML systems, familiarity with accelerators and Kubernetes.'}</>}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? <>{'Насколько это массовые роли, можно посмотреть по вакансиям. По данным Lightcast для отчёта Stanford AI Index 2026, в США AI-навыки упоминают 2,5% всех вакансий — на 55% больше, чем годом раньше, и на 72% больше, чем в 2022-м ('}<SrcLink href={LIGHTCAST_AI_INDEX_URL}>lightcast.io</SrcLink>{'). Python остаётся самым востребованным конкретным навыком: 258 674 вакансии, рост почти на 30% за год. Навыки, связанные с агентными системами, выросли с 0,06% вакансий в 2024 году до 0,23% в 2025-м — это около 90 тысяч объявлений. По доле AI-вакансий впереди Сингапур (4,769%), затем Гонконг (3,5%), Люксембург (3,4%), Испания (3,3%) и США (2,6%).'}</>
+              : <>{'How mainstream these roles are can be read off job postings. Lightcast data prepared for the Stanford AI Index 2026 puts AI skills in 2.5% of all US postings — up 55% year over year and 72% since 2022 ('}<SrcLink href={LIGHTCAST_AI_INDEX_URL}>lightcast.io</SrcLink>{'). Python remains the most-demanded specific skill: 258,674 postings, nearly 30% growth in a year. Skills tied to agentic systems grew from 0.06% of postings in 2024 to 0.23% in 2025 — around 90,000 listings. By share of AI postings the leader is Singapore (4.769%), followed by Hong Kong (3.5%), Luxembourg (3.4%), Spain (3.3%) and the United States (2.6%).'}</>}
+          </p>
         </div>
       </section>
 
@@ -685,6 +885,64 @@ export default function AiCareerTrajectoriesTheory({ lang }: { lang: string }) {
               <p className="text-sm text-neutral-400 leading-relaxed">{text(card.body, currentLang)}</p>
             </article>
           ))}
+        </div>
+      </section>
+      <section className="bg-card-dark border border-border-card rounded-[1.75rem] p-6 md:p-8">
+        <p className="text-sm uppercase tracking-[0.25em] text-neutral-500 font-mono mb-5">
+          {currentLang === 'ru' ? 'Глава 4' : 'Chapter 4'}
+        </p>
+        <h2 className="text-2xl md:text-3xl font-semibold text-heading leading-snug mb-5">
+          {currentLang === 'ru' ? 'Менеджмент — развилка, а не повышение' : 'Management is a branch, not a promotion'}
+        </h2>
+
+        <div className="max-w-3xl space-y-4">
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? <>{'Переход в менеджмент принято описывать как следующую ступень: сначала senior, потом «уже руководит». Чарити Мейджорс сформулировала возражение ещё в 2017 году: «Management is NOT a promotion. It is a change of profession» — это смена профессии ('}<SrcLink href={PENDULUM_URL}>charity.wtf</SrcLink>{'). Меняется предмет работы: вместо систем — люди, планирование и найм.'}</>
+              : <>{'Moving into management is usually described as the next rung: first senior, then "now they lead people". Charity Majors put the objection plainly back in 2017: "Management is NOT a promotion. It is a change of profession" ('}<SrcLink href={PENDULUM_URL}>charity.wtf</SrcLink>{'). The object of the work changes: people, planning, and hiring instead of systems.'}</>}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? 'Второе её наблюдение неприятнее и полезнее: «Your engineering skills and context-sharpness are decaying the longer you do it» — инженерные навыки и чувство контекста тупеют тем сильнее, чем дольше вы в менеджменте, потому что всерьёз расти можно только в чём-то одном. Отсюда её же вывод про маятник: лучшие инженеры — те, кто побывал в менеджменте, и лучшие менеджеры — те, кто возвращался в инженеры. Туда и обратно, а не в одну сторону.'
+              : 'Her second observation is less comfortable and more useful: "Your engineering skills and context-sharpness are decaying the longer you do it" — the longer you manage, the duller your engineering and your feel for context become, because you can only really improve at one of these at a time. Hence the pendulum: the best individual contributors are the ones who have done time in management, and the best managers are the ones who went back. Back and forth, not one way.'}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? <>{'У этого есть прямое следствие для решения. Если менеджмент — не повышение, то и возврат в '}<Term id="ic-track" lang={currentLang}>IC-трек</Term>{' — не понижение: терять нечего, статуса вы не приобретали. Мейджорс так и пишет: занимайтесь этим, пока вам это нравится, потом прекращайте. Формально это подтверждают и рамки: у Dropbox менеджерская ветка M3–M7 идёт рядом с инженерной IC1–IC7, а не поверх неё.'}</>
+              : <>{'That has a direct consequence for the decision. If management is not a promotion, then returning to the '}<Term id="ic-track" lang={currentLang}>IC track</Term>{' is not a demotion: there is nothing to give up, because no status was acquired. Majors writes exactly that — do it as long as it makes you happy, then stop. The frameworks agree formally too: at Dropbox the managerial M3\u2013M7 branch runs beside the engineering IC1\u2013IC7, not above it.'}</>}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? 'Проверить эту гипотезу можно за две недели, не меняя должность. Возьмите один кусок менеджерской работы и делайте его целиком: планирование ближайшего цикла, ревью чужого дизайн-документа, онбординг нового человека. Ведите короткий дневник: сколько часов ушло и что из вашей инженерной работы за эти часы не сделалось. Через две недели ответьте на два вопроса — стало ли команде понятнее, что делать, и стало ли вам самому легче оттого, что этим занимались вы.'
+              : 'You can test the hypothesis in two weeks without changing your job title. Take one piece of managerial work and do the whole of it: planning the next cycle, reviewing someone else\u2019s design document, onboarding a new person. Keep a short diary: how many hours it took and which of your own engineering work did not happen in those hours. After two weeks answer two questions — did the team get clearer about what to do, and did you personally feel better for having done it.'}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? 'Два ответа «да» — сигнал, что развилку стоит проходить, и разговор с руководителем будет опираться на две недели фактов, а не на желание вырасти. Ответы «нет» тоже полезны: вы за две недели узнали то, на что иначе ушёл бы год и одна неудачная должность. Дневник в обоих случаях остаётся у вас — это тот самый текст, который потом кладут рядом с рамкой на разговоре о следующем уровне.'
+              : 'Two yeses are a signal the branch is worth taking, and the conversation with your manager will rest on two weeks of evidence rather than a wish to grow. Two noes are useful too: you learned in two weeks what would otherwise cost a year and one bad job. Either way the diary stays with you — it is exactly the kind of text people put next to the framework when the next-level conversation comes around.'}
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-card-dark border border-border-card rounded-[1.75rem] p-6 md:p-8">
+        <h2 className="text-2xl md:text-3xl font-semibold text-heading leading-snug mb-4">
+          {currentLang === 'ru' ? 'Источники' : 'Sources'}
+        </h2>
+        <p className="max-w-3xl text-neutral-300 leading-relaxed mb-5">
+          {currentLang === 'ru'
+            ? 'Все числа, цитаты и названные документы в этой комнате опираются на источники ниже; ссылки проверены 23.08.2026. Уровни, годы и названия ролей в карте карьеры — обобщение практики, а не выдержка из одной рамки: сверяйте их с рамкой конкретной компании.'
+            : 'Every number, quote, and named document in this room rests on the sources below; the links were checked on 2026-08-23. The levels, year ranges, and role names in the career map are a generalisation of common practice rather than an extract from a single framework — check them against the framework of the specific company.'}
+        </p>
+        <div className="bg-deep border border-border-subtle rounded-[1.35rem] p-5">
+          <ul className="text-sm text-neutral-400 space-y-3">
+            {SOURCES.map((source) => (
+              <li key={source.href}>
+                {source.authors} {source.title}{source.venue ? ` (${source.venue})` : ''}{' — '}
+                {text(source.note, currentLang)}.{' '}
+                <RefLink href={source.href}>{source.label}</RefLink>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
     </div>

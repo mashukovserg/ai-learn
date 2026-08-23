@@ -10,7 +10,7 @@
   - *Темы:* Токены и BPE, предсказание следующего токена (логиты → Softmax → авторегрессивный цикл), Self-Attention с Q/K/V и multi-head, позиционное кодирование (синусоидальное → RoPE), температура и стратегии декодинга (greedy, beam search, top-k, top-p/nucleus, штраф за повторы), контекстное окно (рост, KV-кэш, «Lost in the Middle»), галлюцинации.
 - [x] **Комната 103: Основы промптинга** — 5 заданий
   - *Темы:* Системные промпты, Few-shot/Zero-shot, Борьба с галлюцинациями, Итерация промптов.
-- [x] **AI Career Trajectories (`ai-career-trajectories`)** — 6 заданий (включая sorting, categorize, mentor, scenario)
+- [x] **AI Career Trajectories (`ai-career-trajectories`)** — 10 заданий (включая sorting, categorize, mentor, scenario, input); 4 главы с источниками вокруг интерактивной карты карьеры
   - *Темы:* IC-, research- и management-траектории, точки развилки после senior-уровня, фокус навыков по этапам и реалистичный первый план перехода в AI.
 
 ### Модуль 2: Мультимодальность

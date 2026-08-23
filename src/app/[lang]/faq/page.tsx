@@ -191,7 +191,7 @@ function FaqAccordion({ item, lang }: { item: FaqItem; lang: 'ru' | 'en' }) {
           <div className="text-sm text-neutral-400 leading-relaxed whitespace-pre-line prose prose-invert prose-sm max-w-none
             [&_strong]:text-neutral-200 [&_code]:text-accent-300 [&_code]:bg-accent-500/10 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded
             [&_table]:border-collapse [&_th]:text-left [&_th]:text-neutral-300 [&_th]:pb-2 [&_th]:pr-6 [&_td]:pr-6 [&_td]:py-1 [&_td]:text-neutral-400
-            [&_h2]:text-neutral-200 [&_h2]:text-base [&_h2]:mt-0">
+            [&_h2]:text-neutral-200 [&_h2]:mt-0">
             <FormattedMarkdown text={item.answer[lang]} />
           </div>
         </div>

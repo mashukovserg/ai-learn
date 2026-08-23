@@ -877,4 +877,52 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
       en: 'Test-time compute is the computation a model spends thinking at answer time: breaking the problem into steps, checking hypotheses, catching its own mistakes. It is a second growth law alongside training-time scaling: accuracy on hard tasks grows with the thinking budget — but so do cost and latency, so every result now carries a footnote for how long the model thought and what that cost.',
     },
   },
+  'career-framework': {
+    id: 'career-framework',
+    term: { ru: 'Карьерная рамка', en: 'Career framework' },
+    definition: {
+      ru: 'Карьерная рамка (career framework, карьерная лестница) — внутренний документ компании, который описывает уровни, ожидания на каждом из них и то, по каким осям человека оценивают. Часть компаний публикует свои рамки открыто: у Dropbox software-инженеры идут по IC1–IC7, ML-инженеры той же компании — только по IC1–IC5, менеджеры по отдельной ветке M3–M7, а оценка ведётся по четырём столпам (Results, Direction, Talent, Culture). Рамки не совпадают между компаниями ни числом уровней, ни осями оценки, поэтому титул сам по себе не переносится: сравнивать себя нужно с текстом конкретной рамки.',
+      en: 'A career framework (career ladder) is a company-internal document describing levels, the expectations at each, and the axes a person is assessed on. Some companies publish theirs: at Dropbox software engineers run IC1–IC7, the same company’s ML engineers only IC1–IC5, managers sit on a separate M3–M7 track, and assessment runs on four pillars (Results, Direction, Talent, Culture). Frameworks agree neither on the number of levels nor on what they measure, so a title does not transfer between companies — compare yourself against the text of the specific framework.',
+    },
+  },
+  'ic-track': {
+    id: 'ic-track',
+    term: { ru: 'IC-трек', en: 'IC track' },
+    definition: {
+      ru: 'IC-трек (individual contributor) — путь роста без людей в прямом подчинении: влияние растёт через технические решения, а не через размер команды. Противопоставляется менеджерскому треку, но не является его младшей версией: в опубликованных рамках верхние уровни IC (staff, principal) стоят на одной высоте с менеджерскими. Переход между треками — развилка, а не повышение или понижение.',
+      en: 'The IC (individual contributor) track is growth without direct reports: influence grows through technical decisions rather than headcount. It is the counterpart of the management track, not a junior version of it — in published frameworks the upper IC levels (staff, principal) sit level with managerial ones. Moving between tracks is a branch, not a promotion or a demotion.',
+    },
+  },
+  'staff-engineer': {
+    id: 'staff-engineer',
+    term: { ru: 'Staff-инженер', en: 'Staff engineer' },
+    definition: {
+      ru: 'Staff-инженер — уровень IC-трека выше senior, на котором «одна должность» распадается на разные работы. Уилл Ларсон описывает четыре архетипа: Tech Lead ведёт подход и исполнение одной команды или кластера команд; Architect отвечает за направление и качество критичного технического домена; Solver берётся за сложные проблемы, названные руководством приоритетными; Right Hand расширяет внимание и полномочия руководителя. Первые два годами работают с одними людьми над одними задачами, вторые два переходят от пожара к пожару.',
+      en: 'Staff engineer is the IC level above senior at which "one job title" splits into different jobs. Will Larson describes four archetypes: the Tech Lead guides approach and execution for a team or cluster of teams; the Architect owns direction and quality of a critical technical domain; the Solver takes on hard problems leadership has named a priority; the Right Hand extends a senior executive’s attention and authority. The first two work with the same people on the same problems for years; the latter two move from fire to fire.',
+    },
+  },
+  'ai-engineer': {
+    id: 'ai-engineer',
+    term: { ru: 'AI-инженер', en: 'AI engineer' },
+    definition: {
+      ru: 'AI-инженер — роль, выделившаяся после того, как доступ к сильным моделям стал возможен через API: человек строит продукт поверх готовой модели, не обучая её. Термин закрепил swyx в июне 2023 года («The Rise of the AI Engineer»), процитировав Карпатого: «One can be quite successful in this role without ever training anything». Основная работа — контекст, инструменты, оценка качества, стоимость и надёжность ответа, а не архитектура сети.',
+      en: 'AI engineer is the role that separated out once strong models became reachable through an API: you build a product on top of a model instead of training one. The term was fixed by swyx in June 2023 ("The Rise of the AI Engineer"), quoting Karpathy: "One can be quite successful in this role without ever training anything." The work is context, tools, evaluation, cost, and answer reliability — not network architecture.',
+    },
+  },
+  'research-engineer': {
+    id: 'research-engineer',
+    term: { ru: 'Research engineer', en: 'Research engineer' },
+    definition: {
+      ru: 'Research engineer — роль на стыке исследования и инженерии: постановка и анализ экспериментов, реализация идей в коде, масштабирование обучающей инфраструктуры. В лабораториях граница с research scientist размыта: Anthropic публикует совмещённые вакансии «Research Engineer / Research Scientist» и прямо предлагает откликаться «любому на спектре исследователь/инженер», подбирая роль под background кандидата, а не наоборот.',
+      en: 'Research engineer is a role on the seam between research and engineering: designing and analysing experiments, turning ideas into code, scaling training infrastructure. In the labs the boundary with research scientist is soft: Anthropic posts combined "Research Engineer / Research Scientist" roles and explicitly encourages "anyone along the researcher/engineer spectrum" to apply, fitting the role to the candidate’s background rather than the other way round.',
+    },
+  },
+  'slo': {
+    id: 'slo',
+    term: { ru: 'SLO', en: 'SLO' },
+    definition: {
+      ru: 'SLO (service level objective) — заранее объявленная цель по качеству работы сервиса: например, 99% ответов быстрее двух секунд за календарный месяц. Отличается от обещания «работает хорошо» тем, что её можно нарушить измеримо. Для систем на языковых моделях к обычным SLO по доступности и задержке добавляют цели по доле ответов, прошедших eval-набор, и по стоимости одного ответа.',
+      en: 'An SLO (service level objective) is a pre-declared target for how well a service works — for example, 99% of answers under two seconds over a calendar month. Unlike a promise that something "works well", an SLO can be missed measurably. For systems built on language models, the usual availability and latency objectives are joined by targets for the share of answers passing an eval suite and for the cost per answer.',
+    },
+  },
 };

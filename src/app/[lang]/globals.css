@@ -1,7 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  /* Surface backgrounds (darkest → lightest) */
+  /* Surface backgrounds (darkest → lightest).
+     WARNING — `--color-base` makes Tailwind generate `.text-base` as a COLOR utility
+     (`color: var(--color-base)`), which shadows the built-in font-size utility of the same
+     name: `text-base` paints text in the page background instead of sizing it, and
+     `md:text-base` even beats a plain `text-neutral-*` on the same element. Use `bg-base`
+     freely; never `text-base` (guarded in src/__tests__/design-tokens.test.ts). */
   --color-base: #121211;
   --color-deep: #0e0e0d;
   --color-card-dark: #171715;
