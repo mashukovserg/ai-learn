@@ -151,7 +151,7 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
       en: 'IC, research, and management tracks in AI: growth stages, branch points, and signals for choosing the right role.',
     },
     difficulty: 'Beginner',
-    time: { ru: '20 мин', en: '20m' },
+    time: { ru: '35 мин', en: '35m' },
     category: { ru: 'Основы', en: 'Foundations' },
     image: '/images/ai-career-trajectories.svg',
     pathIds: ['beginner'],

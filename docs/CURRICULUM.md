@@ -10,7 +10,7 @@
   - *Topics:* Tokens and BPE, next-token prediction (logits → Softmax → autoregressive loop), Self-Attention with Q/K/V and multi-head, positional encoding (sinusoidal → RoPE), temperature and decoding strategies (greedy, beam search, top-k, top-p/nucleus, repetition penalty), context windows (growth, KV cache, "Lost in the Middle"), hallucinations.
 - [x] **Room 103: Prompting 101 (Основы промптинга)** — 6 tasks
   - *Topics:* System Prompts, Few-shot/Zero-shot, Hallucination mitigation, Prompt iteration.
-- [x] **AI Career Trajectories (`ai-career-trajectories`)** — 6 tasks (includes sorting, categorize, mentor, scenario)
+- [x] **AI Career Trajectories (`ai-career-trajectories`)** — 10 tasks (includes sorting, categorize, mentor, scenario, input); 4 sourced chapters around the interactive career map
   - *Topics:* IC vs research vs management paths, branch points after senior level, skills focus by stage, realistic first-year transition plan into AI.
 
 ### Module 2: Multimodality

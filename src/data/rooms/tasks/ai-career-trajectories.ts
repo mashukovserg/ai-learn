@@ -316,5 +316,84 @@ export const aiCareerTrajectoriesTasks: LocalizedTask[] = [
       ru: 'Для первого перехода в AI сильнее всего работает комбинация из инженерной базы, узкого проекта, измерения качества и реального демонстрируемого результата.',
       en: 'For a first move into AI, the strongest combination is engineering foundations, one focused project, quality measurement, and a real demonstrable outcome.'
     }
+  },
+  {
+    id: 7,
+    type: 'multiple-choice',
+    question: {
+      ru: 'В открытой карьерной рамке Dropbox software-инженеры проходят уровни IC1–IC7. Какой диапазон та же рамка отводит ML-инженерам этой компании?',
+      en: 'In the public Dropbox career framework, software engineers run from IC1 to IC7. What range does the same framework give that company’s ML engineers?'
+    },
+    options: [
+      { ru: 'IC1–IC5', en: 'IC1–IC5' },
+      { ru: 'Тот же IC1–IC7', en: 'The same IC1–IC7' },
+      { ru: 'M3–M7', en: 'M3–M7' },
+      { ru: 'Уровней у ML-инженеров рамка не задаёт', en: 'The framework sets no levels for ML engineers' }
+    ],
+    answer: { ru: 'IC1–IC5', en: 'IC1–IC5' },
+    explanation: {
+      ru: 'Верно. У ML-инженеров в рамке Dropbox уровни IC1–IC5, тогда как у software-инженеров — IC1–IC7, а у менеджеров отдельная ветка M3–M7. Это и есть главный вывод главы 1: потолок лестницы зависит от специальности и от компании, поэтому титул сам по себе никуда не переносится.',
+      en: 'Correct. ML engineers run IC1–IC5 in the Dropbox framework, while software engineers run IC1–IC7 and managers sit on a separate M3–M7 branch. That is the point of Chapter 1: the ceiling depends on the speciality and the company, so a title on its own does not transfer anywhere.'
+    }
+  },
+  {
+    id: 8,
+    type: 'multiple-select',
+    question: {
+      ru: 'Через какие оси рамка Dropbox формулирует ожидания уровня? Выберите все подходящие.',
+      en: 'Which axes does the Dropbox framework use to state level expectations? Select all that apply.'
+    },
+    options: [
+      { ru: 'Scope — размер задачи', en: 'Scope — the size of the problem' },
+      { ru: 'Collaborative reach — насколько далеко расходится круг согласования', en: 'Collaborative reach — how far the circle of agreement extends' },
+      { ru: 'Levers for impact — чем именно вы двигаете результат', en: 'Levers for impact — what you actually move the result with' },
+      { ru: 'Количество освоенных инструментов и фреймворков', en: 'The number of tools and frameworks learned' },
+      { ru: 'Стаж в годах', en: 'Years of experience' }
+    ],
+    answer: [
+      { ru: 'Scope — размер задачи', en: 'Scope — the size of the problem' },
+      { ru: 'Collaborative reach — насколько далеко расходится круг согласования', en: 'Collaborative reach — how far the circle of agreement extends' },
+      { ru: 'Levers for impact — чем именно вы двигаете результат', en: 'Levers for impact — what you actually move the result with' }
+    ],
+    explanation: {
+      ru: 'Да, это три оси из главы 2: scope, collaborative reach и levers for impact. Ни количество инструментов, ни стаж в рамке уровнем не считаются — инструменты это способ, а не мера.',
+      en: 'Yes — those are the three axes from Chapter 2: scope, collaborative reach, and levers for impact. Neither the tool count nor years of service is a level in the framework: tools are a means, not a measure.'
+    }
+  },
+  {
+    id: 9,
+    type: 'input',
+    question: {
+      ru: 'Сколько архетипов staff-инженера описывает Уилл Ларсон? Ответьте числом.',
+      en: 'How many staff-engineer archetypes does Will Larson describe? Answer with a number.'
+    },
+    answer: ['4', 'четыре', 'four'],
+    hint: {
+      ru: 'Они перечислены в главе 2: двое годами работают с одними людьми, двое перемещаются от пожара к пожару.',
+      en: 'They are listed in Chapter 2: two work with the same people for years, two bounce from fire to fire.'
+    },
+    explanation: {
+      ru: 'Верно, четыре: Tech Lead, Architect, Solver и Right Hand. Первые двое годами работают с одними людьми над одними проблемами, вторые двое переходят от пожара к пожару — это разные рабочие недели, а не разные ступеньки.',
+      en: 'Correct — four: Tech Lead, Architect, Solver, and Right Hand. The first two work with the same people on the same problems for years, the latter two move from fire to fire: different working weeks, not different rungs.'
+    }
+  },
+  {
+    id: 10,
+    type: 'multiple-choice',
+    question: {
+      ru: 'Как Чарити Мейджорс описывает переход инженера в менеджмент?',
+      en: 'How does Charity Majors describe an engineer’s move into management?'
+    },
+    options: [
+      { ru: 'Как смену профессии, а не повышение', en: 'As a change of profession, not a promotion' },
+      { ru: 'Как повышение, закрепляющее senior-статус', en: 'As a promotion that locks in senior status' },
+      { ru: 'Как финальную ступень IC-трека', en: 'As the final rung of the IC track' },
+      { ru: 'Как способ ускорить рост инженерных навыков', en: 'As a way to accelerate the growth of engineering skills' }
+    ],
+    answer: { ru: 'Как смену профессии, а не повышение', en: 'As a change of profession, not a promotion' },
+    explanation: {
+      ru: 'Верно: «Management is NOT a promotion. It is a change of profession». Из этого следует и обратное — возврат в IC-трек не понижение, терять нечего. Инженерные навыки, по её же наблюдению, за время в менеджменте тупеют, поэтому она и предлагает маятник: туда и обратно, а не в одну сторону.',
+      en: 'Correct: "Management is NOT a promotion. It is a change of profession." The converse follows — returning to the IC track is not a demotion, because there is nothing to give up. Engineering skills decay while you manage, by her own account, which is why she proposes the pendulum: back and forth, not one way.'
+    }
   }
 ];
