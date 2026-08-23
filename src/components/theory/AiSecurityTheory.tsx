@@ -30,7 +30,7 @@ export default function AiSecurityTheory({ lang }: { lang: string }) {
           </div>
           <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru'
-              ? 'Важно понимать, что мы защищаем не только саму модель, но и всю экосистему вокруг неё: доступ к вашим письмам, базам данных и инструментам, которыми ИИ может управлять от вашего имени. Взлом агента — это не просто получение "плохого слова" в чате, это потенциальный доступ к реальным корпоративным секретам и операциям.'
+              ? 'Важно понимать, что мы защищаем не только саму модель, но и всю экосистему вокруг неё: доступ к вашим письмам, базам данных и инструментам, которыми ИИ может управлять от вашего имени. Взлом агента — не получение "плохого слова" в чате, а потенциальный доступ к реальным корпоративным секретам и операциям.'
               : 'It is important to understand that we are protecting not just the model itself, but the entire ecosystem around it: access to your emails, databases, and tools that the AI can control on your behalf. Hacking an agent is not just about getting a "bad word" in chat; it is potential access to real corporate secrets and operations.'}
           </p>
         </div>

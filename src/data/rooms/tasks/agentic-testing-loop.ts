@@ -27,7 +27,7 @@ export const agenticTestingLoopTasks: LocalizedTask[] = [
       en: 'Without pre-written tests, the agent has no objective completion criterion and may "drift" in an infinite loop.'
     },
     explanation: {
-      ru: 'В агентной разработке тесты — это не просто проверка, а "маяк", по которому модель понимает, что задача выполнена успешно.',
+      ru: 'В агентной разработке тесты — не только проверка, но и "маяк", по которому модель понимает, что задача выполнена успешно.',
       en: 'In agentic development, tests are not just a check; they are a "beacon" that helps the model understand the task is completed successfully.'
     }
   },

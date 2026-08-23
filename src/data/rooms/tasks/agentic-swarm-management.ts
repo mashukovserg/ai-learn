@@ -249,7 +249,7 @@ export const agenticSwarmManagementTasks: LocalizedTask[] = [
     options: [
       { ru: 'Никогда не использовать ИИ', en: 'Never use AI' },
       { ru: 'Глубокое погружение в детали и личный аудит качества на всех уровнях "фрактала"', en: 'Diving deep into details and personal quality auditing at all levels of the "fractal"' },
-      { ru: 'Делегирование всех решений сторонним вендорам', en: 'Delegating all decisions to third-party vendors' },
+      { ru: 'Делегирование всех решений сторонним поставщикам', en: 'Delegating all decisions to third-party vendors' },
       { ru: 'Использование только самых дорогих моделей', en: 'Using only the most expensive models' }
     ],
     answer: {
