@@ -122,6 +122,7 @@ export const PATHS_METADATA: PathMetadata[] = [
       'multi-agent-collaboration',     // AC-104
       'claude-code-agentic-loop',      // how the loop runs
       'agentic-cli-tools',             // AC-201
+      'opencode-terminal-agent',       // the same loop ideas in an open-source, model-agnostic tool
       'context-engineering-101',       // AC-204
       'agentic-testing-loop',          // AC-202
       'github-actions-ci',             // AC-206 — author the checks…
