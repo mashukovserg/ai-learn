@@ -96,8 +96,8 @@
 
 Строить по порядку, каждую — по процедуре «How to add a new room» и полному completion-чеклисту `AGENTS.md` (метаданные + 5 глав двуязычной теории + 10 заданий с ≥3 типами + маппинг навыков + синхронизация документации):
 
-- [ ] AC-301 — Shipping Agentic Features with Guardrails
-- [ ] AC-302 — Cost & Latency Control for Agents
+- [x] AC-301 — Shipping Agentic Features with Guardrails (`agentic-guardrails`, 2026-08-07)
+- [x] AC-302 — Cost & Latency Control for Agents (`agentic-cost-latency`, 2026-08-07)
 - [ ] AC-303 — Team Protocols for Agent Coding
 - [ ] AC-401 — Production Incidents in Agentic Systems
 - [ ] AC-402 — Agent Coding Capstone (синтез AC-101…AC-401, с упором на scenario-задания)

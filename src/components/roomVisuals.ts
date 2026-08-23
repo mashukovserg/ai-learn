@@ -19,6 +19,7 @@ import {
   Palette,
   RefreshCw,
   Rocket,
+  Gauge,
   Scale,
   Search,
   Shield,
@@ -62,6 +63,7 @@ export const ICON_MAP: Record<string, RoomIconComponent> = {
   Microscope,
   Library,
   BookOpen,
+  Gauge,
 };
 
 export function getRoomIcon(iconName?: string): RoomIconComponent {

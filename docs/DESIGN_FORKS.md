@@ -340,7 +340,7 @@ switching later is an evening's work.
 ### Alternative D — terminal list rows (secondary view, not a replacement)
 
 Dense `ls`-style rows: status glyph (`[ ]`/`[~]`/`[x]`), title, category, mono difficulty/time,
-ASCII progress bar. 50 rooms in ~1.5 screens. No descriptions — bad for first-time choosing,
+ASCII progress bar. 52 rooms in ~1.5 screens. No descriptions — bad for first-time choosing,
 excellent for "where did I stop". Still worth doing as a grid/list **toggle** next to the filters,
 now that the base card is settled.
 

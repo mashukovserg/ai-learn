@@ -93,8 +93,8 @@
 - [x] **AC-204: Context Engineering 101** (`context-engineering-101`) — 12 tasks; context layers, window economics (ROI test, context rot), knowledge artifacts (rule/fact/procedure/role → constitution/index/skill/agent), hygiene cycle, compaction.
 
 ### Module C: Shipping and Team Operations
-- [ ] **AC-301: Shipping Agentic Features with Guardrails** — policy checks, red-team prompts, release gates.
-- [ ] **AC-302: Cost & Latency Control for Agents** — routing, caching, budget boundaries, observability.
+- [x] **AC-301: Shipping Agentic Features with Guardrails** (`agentic-guardrails`) — 12 tasks; policy as a checkable list (forbidden action + condition + observable signal), the four red-team directions (direct bypass, planted instruction, escalation, leakage), findings becoming an adversarial eval set inside the quality gate, deny-by-default boundaries that never ask the model, and post-release monitoring with precision/recall on false positives.
+- [x] **AC-302: Cost & Latency Control for Agents** (`agentic-cost-latency`) — 12 tasks; cost per run rather than per request, TTFT vs total latency and P95 tails, the four levers (prefix caching, parallel independent calls, context trimming, model routing, batch mode) with the price of each, per-run/project/provider ceilings with a circuit breaker, and tracing that attributes spend.
 - [ ] **AC-303: Team Protocols for Agent Coding** — review standards, handoffs, decision logs.
 
 ### Module D: Production Reality and Capstone

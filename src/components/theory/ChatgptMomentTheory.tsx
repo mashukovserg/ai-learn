@@ -4,15 +4,13 @@ import React from 'react';
 import Link from 'next/link';
 import Term from '@/components/Term';
 import Screenshot from '@/components/Screenshot';
-import { Clock, Zap, Award, AlertCircle, MessageSquare, Globe, TrendingUp } from 'lucide-react';
 
 export default function ChatgptMomentTheory({ lang }: { lang: string }) {
   return (
     <>
       {/* Chapter 1: The Quiet Before the Storm */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Clock className="text-accent-500" />
+        <h2 className="text-3xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 1: Тишина перед бурей (До ноября 2022)' : 'Chapter 1: The Quiet Before the Storm (Pre-November 2022)'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-6">
@@ -78,8 +76,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
 
       {/* Chapter 2: The Secret Ingredient - <Term id="rlhf">RLHF</Term> */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Zap className="text-accent-500" />
+        <h2 className="text-3xl font-bold mb-6 text-heading">
           {lang === 'ru' ? (
             <>
               {'Глава 2: Секретный ингредиент — '}
@@ -152,8 +149,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
 
       {/* Chapter 3: The 5-Day Miracle & Interface Power */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <TrendingUp className="text-accent-500" />
+        <h2 className="text-3xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 3: Чудо пяти дней и сила интерфейса' : 'Chapter 3: The 5-Day Miracle & Interface Power'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-6">
@@ -191,15 +187,13 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
 
       {/* Chapter 4: Structural Changes & Market Reaction */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <Globe className="text-accent-500" />
+        <h2 className="text-3xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 4: Тектонические сдвиги и реакция рынка' : 'Chapter 4: Tectonic Shifts & Market Reaction'}
         </h2>
         <div className="space-y-8">
           {/* Market Reaction & Code Red */}
           <div className="border-b border-border-card pb-6">
-            <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <Zap className="text-yellow-500" size={20} />
+            <h3 className="text-xl font-bold text-white mb-4">
               {lang === 'ru' ? 'Google "Code Red": Угроза бизнес-модели' : 'Google "Code Red": An Existential Threat'}
             </h3>
             <p className="text-neutral-300 leading-relaxed mb-4">
@@ -221,8 +215,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
 
           {/* Education & Coding */}
           <div className="border-b border-border-card pb-6">
-            <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <Award className="text-info-400" size={20} />
+            <h3 className="text-xl font-bold text-white mb-4">
               {lang === 'ru' ? 'Образование и Код: Смена парадигмы' : 'Education and Code: A Paradigm Shift'}
             </h3>
             <div className="grid grid-cols-1 gap-6">
@@ -247,8 +240,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
 
           {/* Geopolitics & Infrastructure */}
           <div>
-            <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
-              <TrendingUp className="text-orange-400" size={20} />
+            <h3 className="text-xl font-bold text-white mb-4">
               {lang === 'ru' ? 'Геополитика и "Вычислительная Нефть"' : 'Geopolitics and "Compute Oil"'}
             </h3>
             <p className="text-neutral-300 leading-relaxed mb-4">
@@ -267,8 +259,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
 
       {/* Chapter 5: Why it is a "Moment" */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <MessageSquare className="text-accent-500" />
+        <h2 className="text-3xl font-bold mb-6 text-heading">
           {lang === 'ru' ? 'Глава 5: Почему это именно "Момент"?' : 'Chapter 5: Why it is a "Moment"?'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-6">
@@ -319,8 +310,7 @@ export default function ChatgptMomentTheory({ lang }: { lang: string }) {
 
       {/* Final Warning */}
       <div className="bg-danger-500/5 border border-danger-500/20 rounded-xl p-8 mb-8">
-        <h2 className="text-3xl font-bold mb-4 flex items-center gap-3 text-danger-400">
-          <AlertCircle className="text-danger-500" />
+        <h2 className="text-3xl font-bold mb-4 text-danger-400">
           {lang === 'ru' ? 'Обратная сторона медали: Галлюцинации и Риски' : 'The Dark Side: Hallucinations and Risks'}
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-4">

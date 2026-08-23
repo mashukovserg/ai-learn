@@ -25,6 +25,7 @@ import {
   Palette,
   RefreshCw,
   Rocket,
+  Gauge,
   Scale,
   Search,
   Shield,
@@ -95,6 +96,7 @@ const ICON_MAP: Record<string, React.ComponentType<{ size?: number; strokeWidth?
   Network,
   Flame,
   HardDrive,
+  Gauge,
 };
 
 function createInitialRoomSnapshots(): Record<string, RoomProgressSnapshot> {

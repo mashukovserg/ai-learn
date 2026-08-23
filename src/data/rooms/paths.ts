@@ -127,6 +127,8 @@ export const PATHS_METADATA: PathMetadata[] = [
       'agentic-testing-loop',          // AC-202
       'github-actions-ci',             // AC-206 — author the checks…
       'agentic-release-control',       // AC-205 — the local loop is green; who lets it into prod
+      'agentic-guardrails',            // AC-301 — proving the guardrails hold before the rollout
+      'agentic-cost-latency',          // AC-302 — the other limiter on autonomy: money and seconds
       'agentic-ui-delivery',           // AC-203
       'mcp-tool-ecosystems',
       'claude-code-pro-workflow',      // Advanced
