@@ -536,4 +536,69 @@ export const agentCodingFoundationsTasks: LocalizedTask[] = [
       en: 'Correct. A strict JSON schema is a good practice, not an antipattern. The other four points make the system unpredictable and non-reproducible.',
     },
   },
+  {
+    id: 14,
+    type: 'multiple-choice',
+    question: {
+      ru: 'Почему инженер, не понимающий предметную область, не может опереться на контур проверок из глав 2–6?',
+      en: 'Why can an engineer who does not understand the domain not rely on the validation loop from Chapters 2–6?',
+    },
+    options: [
+      {
+        ru: 'Потому что критерии приёмки и проверку результата может написать только тот, кто понимает задачу, — иначе контур формально есть, но ничего не проверяет.',
+        en: 'Because acceptance criteria and result validation can only be written by someone who understands the task — otherwise the loop formally exists but validates nothing.',
+      },
+      {
+        ru: 'Потому что агент отказывается работать без указания уровня квалификации инженера.',
+        en: 'Because the agent refuses to work unless it is told the engineer\u2019s seniority level.',
+      },
+      {
+        ru: 'Потому что логи шагов агента читаются только автоматическими инструментами.',
+        en: 'Because agent step logs can only be read by automated tooling.',
+      },
+      {
+        ru: 'Потому что guardrails заменяют собой понимание предметной области.',
+        en: 'Because guardrails substitute for domain understanding.',
+      },
+    ],
+    answer: {
+      ru: 'Потому что критерии приёмки и проверку результата может написать только тот, кто понимает задачу, — иначе контур формально есть, но ничего не проверяет.',
+      en: 'Because acceptance criteria and result validation can only be written by someone who understands the task — otherwise the loop formally exists but validates nothing.',
+    },
+    explanation: {
+      ru: 'Верно. Весь контур — контракт задачи, роли, проверки, логи, guardrails — держится на предпосылке из главы 8: чтобы поймать плохой результат на проверке, нужно понимать предметную область не хуже, чем понимал бы её человек, пишущий код руками. Инженер, который не может объяснить выбор запроса к базе, не напишет и критерий, отличающий правильный запрос от медленного.',
+      en: 'Correct. The whole loop — task contract, roles, checks, logs, guardrails — rests on the premise from Chapter 8: to catch a bad result at validation you have to understand the domain about as well as a person writing the code by hand would. An engineer who cannot explain the choice of a database query will not write the criterion that separates a correct query from a slow one.',
+    },
+  },
+  {
+    id: 15,
+    type: 'categorize',
+    question: {
+      ru: 'Разложите передачи работы агенту по тому, что переходит вместе с ней: только механика (когнитивная разгрузка) или само решение (когнитивный долг).',
+      en: 'Sort these handovers to the agent by what travels with the work: mechanics only (cognitive offloading) or the decision itself (cognitive debt).',
+    },
+    categorize: {
+      items: [
+        { ru: 'Сгенерировать обвязку вокруг уже принятого решения', en: 'Generate plumbing around a decision already made' },
+        { ru: 'Переименовать сущность во всех файлах проекта', en: 'Rename an entity across every file in the project' },
+        { ru: 'Выбрать подход к задаче, в которой вы не разбирались', en: 'Choose the approach for a task you have not worked through' },
+        { ru: 'Принять код, который вы не объясните при поломке в проде', en: 'Accept code you could not explain when it breaks in production' },
+      ],
+      buckets: [
+        { ru: 'Когнитивная разгрузка', en: 'Cognitive offloading' },
+        { ru: 'Когнитивный долг', en: 'Cognitive debt' },
+      ],
+      correctMapping: {
+        'Generate plumbing around a decision already made': 'Cognitive offloading',
+        'Rename an entity across every file in the project': 'Cognitive offloading',
+        'Choose the approach for a task you have not worked through': 'Cognitive debt',
+        'Accept code you could not explain when it breaks in production': 'Cognitive debt',
+      },
+    },
+    answer: '',
+    explanation: {
+      ru: 'Разделитель из главы 8 — не сложность и не размер задачи, а то, переходит ли вместе с работой само решение. Обвязка и переименование — механика, которую вы понимаете. Выбор подхода в незнакомой задаче и приём необъяснимого кода отдают суждение: результат вы получаете, основание — нет.',
+      en: 'The dividing line from Chapter 8 is neither difficulty nor size, but whether the decision travels with the work. Plumbing and a rename are mechanics you understand. Choosing an approach in an unfamiliar task and accepting unexplainable code hand over judgement: you get the result, not the reasoning.',
+    },
+  },
 ];

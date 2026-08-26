@@ -325,5 +325,31 @@ export const frontierEvalsLogicTasks: LocalizedTask[] = [
       ru: 'Верно. Заявление поставщика — не доказательство: важны условия замера (режим, попытки, отсутствие контаминации, честные конфигурации), а один бенчмарк не покрывает все задачи.',
       en: 'Correct. A vendor claim is not proof: the measurement conditions matter (mode, attempts, no contamination, fair configurations), and one benchmark does not cover every task.'
     }
+  },
+  {
+    id: 14,
+    type: 'multiple-choice',
+    question: {
+      ru: 'Почему, по Шолле, балл за навык в конкретной задаче плохо годится как мера интеллекта?',
+      en: 'Why, on Chollet\u2019s argument, is a score for skill at a given task a poor measure of intelligence?'
+    },
+    options: [
+      { ru: 'Потому что при неограниченных априорных знаниях и данных любой уровень навыка можно «купить», и это маскирует способность системы обобщать.', en: 'Because with unlimited priors and training data any level of skill can be "bought", which masks the system\u2019s power to generalise.' },
+      { ru: 'Потому что навык в конкретной задаче невозможно измерить достаточно точно.', en: 'Because skill at a given task cannot be measured precisely enough.' },
+      { ru: 'Потому что тесты на конкретные навыки слишком дороги в проведении.', en: 'Because task-specific tests are too expensive to run.' },
+      { ru: 'Потому что балл за навык всегда коррелирует с размером модели.', en: 'Because a skill score always correlates with model size.' }
+    ],
+    answer: {
+      ru: 'Потому что при неограниченных априорных знаниях и данных любой уровень навыка можно «купить», и это маскирует способность системы обобщать.',
+      en: 'Because with unlimited priors and training data any level of skill can be "bought", which masks the system\u2019s power to generalise.'
+    },
+    hint: {
+      ru: 'Глава «Навык или способность его набирать»: умение всегда чем-то оплачено — примерами, подсказками, тренировкой на похожем.',
+      en: 'The chapter "Skill, or the Ability to Acquire It": an ability is always paid for — with examples, priors, practice on similar problems.'
+    },
+    explanation: {
+      ru: 'Верно. В «On the Measure of Intelligence» (2019) Шолле пишет, что неограниченные априорные знания или обучающие данные позволяют купить любой уровень навыка, скрывая собственную способность системы обобщать. Взамен он предлагает мерить эффективность освоения навыка — насколько дёшево система осваивает новую задачу относительно того, с чем начинала; под это определение и построен ARC. Отсюда же понятно, почему насыщение и контаминация бьют по тестам на навык сильнее, чем по тестам на новизну.',
+      en: 'Correct. In "On the Measure of Intelligence" (2019) Chollet argues that unlimited priors or training data let you buy any level of skill, hiding the system\u2019s own power to generalise. In its place he proposes measuring skill-acquisition efficiency — how cheaply a system picks up a new task relative to what it started with; ARC was built to that definition. This also explains why saturation and contamination hit skill tests harder than novelty tests.'
+    }
   }
 ];

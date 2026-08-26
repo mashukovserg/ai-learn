@@ -516,6 +516,70 @@ export default function AgentCodingFoundationsTheory({ lang }: { lang: string })
           </p>
         </div>
       </section>
+
+      {/* Chapter 8 */}
+      <section className="bg-card-dark border border-border-card rounded-xl p-8">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
+          {ru ? 'Глава 8: Что нельзя отдавать агенту' : 'Chapter 8: What Not to Hand to the Agent'}
+        </h2>
+        <div className="space-y-4">
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Все предыдущие главы описывали контур, который вы строите вокруг агента: контракт задачи, роли, проверки, логи, guardrails. У этого контура есть предпосылка, о которой обычно не говорят вслух: чтобы задать критерии приёмки и поймать плохой результат на проверке, нужно понимать предметную область не хуже, чем её понимал бы человек, пишущий этот код руками. Инженер, который не может объяснить, почему выбран такой запрос к базе, не сможет и написать критерий, отличающий правильный запрос от медленного. Контур в этом случае формально существует, но ничего не проверяет.
+              </>
+            ) : (
+              <>
+                Every previous chapter described the loop you build around the agent: the task contract, roles, checks, logs, guardrails. That loop rests on a premise nobody usually says out loud: to write acceptance criteria and catch a bad result at validation, you have to understand the domain about as well as a person writing that code by hand would. An engineer who cannot explain why a particular database query was chosen also cannot write the criterion that separates a correct query from a slow one. The loop formally exists in that case, but it validates nothing.
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Отсюда практическое различение, которое стоит держать в голове при каждой передаче задачи. <Term id="cognitive-debt" lang={lang}>Когнитивный долг</Term> — вы отдали агенту суждение: как задача должна быть устроена, какой подход выбрать, что считать правильным. Результат вы получили, основание — нет. Когнитивная разгрузка — вы отдали механическую работу, которую и так понимаете: шаблонный код, переименование по проекту, забытый синтаксис, обвязка вокруг уже принятого решения. Разделитель здесь не сложность задачи и не её размер, а то, переходит ли вместе с работой само решение.
+              </>
+            ) : (
+              <>
+                From this follows a practical distinction worth holding in mind on every handover. <Term id="cognitive-debt" lang={lang}>Cognitive debt</Term> — you handed the agent judgement: how the task should be structured, which approach to take, what counts as correct. You got the result; you did not get the reasoning. Cognitive offloading — you handed over mechanical work you already understand: boilerplate, a project-wide rename, forgotten syntax, plumbing around a decision already made. The dividing line is not how hard or how large the task is, but whether the decision travels with the work.
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Что происходит, когда различение не проводят, измерено. В <a href="https://www.anthropic.com/research/AI-assistance-coding-skills" target="_blank" rel="noopener noreferrer" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">эксперименте Anthropic (январь 2026)</a> 52 в основном junior‑инженера писали две функции на асинхронной библиотеке Trio, а через несколько минут отвечали на вопросы по тому, что только что сделали. Группа с помощником набрала 50%, писавшие руками — 67% (d = 0,738, p = 0,01). Важна деталь внутри группы с помощником: выше отвечали те, кто не только получал код, но и задавал по нему уточняющие вопросы. То есть вредна не сама модель, а режим, в котором она работает как источник готовых ответов.
+              </>
+            ) : (
+              <>
+                What happens when the distinction is not drawn has been measured. In <a href="https://www.anthropic.com/research/AI-assistance-coding-skills" target="_blank" rel="noopener noreferrer" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Anthropic’s experiment (January 2026)</a>, 52 mostly junior engineers wrote two features against the async library Trio and then, minutes later, answered questions about what they had just done. The AI-assisted group scored 50%, those who coded by hand 67% (d = 0.738, p = 0.01). One detail inside the assisted group matters: the higher scorers were those who did not merely collect code but asked follow-up questions about it. The harm is not the model itself but the mode in which it works as a source of finished answers.
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                У этого наблюдения длинная предыстория. Ещё в 2002 году Джоэл Спольски сформулировал <a href="https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/" target="_blank" rel="noopener noreferrer" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">закон дырявых абстракций</a>: любая нетривиальная абстракция в какой-то степени протекает, а единственный способ грамотно справляться с протечками — знать, что именно абстракция скрывает. Его вывод бьёт точно в эту главу: «the abstractions save us time working, but they don&rsquo;t save us time learning» — абстракции экономят время на работе, но не экономят время на обучении. Агент здесь ничем не отличается от компилятора или ORM, разве что скрывает больше.
+              </>
+            ) : (
+              <>
+                The observation has a long prehistory. Back in 2002 Joel Spolsky formulated the <a href="https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/" target="_blank" rel="noopener noreferrer" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Law of Leaky Abstractions</a>: all non-trivial abstractions are to some degree leaky, and the only way to deal with the leaks competently is to know what the abstraction is hiding. His conclusion lands squarely on this chapter: &ldquo;the abstractions save us time working, but they don&rsquo;t save us time learning&rdquo;. An agent is no different here from a compiler or an ORM, except that it hides more.
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Рабочая проверка укладывается в три вопроса перед тем, как принять результат. Первый: смогу ли я объяснить, что здесь происходит, если это упадёт в проде завтра? Второй: если бы агента не было, я бы понимал, как решать эту задачу, — или просто не взялся бы за неё? Третий: это рутина, которую делали сто раз, или здесь есть решение, которое кто-то должен принять осознанно? Хотя бы один тревожный ответ — сигнал не отказываться от агента, а сменить режим: просить разбор и альтернативы вместо готового кода, а потом писать спорный участок самому. Тот же приём делает и сам контур надёжнее — критерии приёмки из главы 2 может написать только тот, кто понимает задачу.
+              </>
+            ) : (
+              <>
+                The working check fits into three questions asked before you accept a result. First: could I explain what is happening here if it fell over in production tomorrow? Second: without the agent, would I know how to solve this task — or would I simply not have taken it on? Third: is this routine done a hundred times before, or is there a decision here that someone has to make deliberately? Even one uncomfortable answer is a signal not to drop the agent but to change its mode: ask for an explanation and alternatives instead of finished code, then write the contested part yourself. The same habit makes the loop itself more reliable — the acceptance criteria from Chapter 2 can only be written by someone who understands the task.
+              </>
+            )}
+          </p>
+        </div>
+      </section>
     </div>
   );
 }

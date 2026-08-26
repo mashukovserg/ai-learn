@@ -10,8 +10,8 @@
   - *Topics:* Tokens and BPE, next-token prediction (logits → Softmax → autoregressive loop), Self-Attention with Q/K/V and multi-head, positional encoding (sinusoidal → RoPE), temperature and decoding strategies (greedy, beam search, top-k, top-p/nucleus, repetition penalty), context windows (growth, KV cache, "Lost in the Middle"), hallucinations.
 - [x] **Room 103: Prompting 101 (Основы промптинга)** — 6 tasks
   - *Topics:* System Prompts, Few-shot/Zero-shot, Hallucination mitigation, Prompt iteration.
-- [x] **AI Career Trajectories (`ai-career-trajectories`)** — 10 tasks (includes sorting, categorize, mentor, scenario, input); 4 sourced chapters around the interactive career map
-  - *Topics:* IC vs research vs management paths, branch points after senior level, skills focus by stage, realistic first-year transition plan into AI.
+- [x] **AI Career Trajectories (`ai-career-trajectories`)** — 12 tasks (includes sorting, categorize, mentor, scenario, input); 5 sourced chapters around the interactive career map
+  - *Topics:* IC vs research vs management paths, branch points after senior level, skills focus by stage, realistic first-year transition plan into AI, how expertise forms when an agent writes the code (PNAS 2025, ICER 2024, Anthropic 2026).
 
 ### Module 2: Multimodality
 - [x] **Room 201: Native Multimodality** — 6 tasks
@@ -76,7 +76,7 @@
 **Goal:** Train learners to deliver production-grade software with coding-agent loops, engineering discipline, and measurable quality gates.
 
 ### Module A: Agent Coding Foundations
-- [x] **AC-101: Agent Coding Foundations** (`agent-coding-foundations`) — 10 tasks; framing, loop speed, acceptance criteria, guardrails, rollback.
+- [x] **AC-101: Agent Coding Foundations** (`agent-coding-foundations`) — 15 tasks; framing, loop speed, acceptance criteria, guardrails, rollback, cognitive debt vs cognitive offloading.
 - [x] **AC-102: Agentic Coding Tools** (`agentic-coding-tools`) — 10 tasks; tool-layer architecture, contracts, role split, release controls, rollback discipline.
 - [x] **AC-105: Git as a Safety Net for Agent Work** (`git-safety-net`) — 10 tasks; reading a diff you did not write, signal files (checks/tests/dependencies), commits as units of undo and the staging area, restore/stash/reset/revert/reflog chosen by where the change lives, branch + worktree per task.
 - [x] **AC-103: Prompt Contracts for Coding Agents** (`prompt-contracts`) — 10 tasks; feature specs, constraints, output contracts.

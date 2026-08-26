@@ -1,12 +1,16 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import Term from '@/components/Term';
 import Screenshot from '@/components/Screenshot';
+
+const LINK_CLS = 'text-accent-300 hover:text-accent-200 underline underline-offset-4';
 
 const HLE_URL = 'https://lastexam.ai/';
 const HLE_PAPER_URL = 'https://doi.org/10.1038/s41586-025-09962-4';
 const GSM1K_URL = 'https://arxiv.org/abs/2405.00332';
+const MEASURE_INTELLIGENCE_URL = 'https://arxiv.org/abs/1911.01547';
 const EPOCH_DATA_URL = 'https://epoch.ai/blog/will-we-run-out-of-data-limits-of-llm-scaling-based-on-human-generated-data';
 
 export default function FrontierEvalsTheory({ lang }: { lang: string }) {
@@ -255,6 +259,44 @@ export default function FrontierEvalsTheory({ lang }: { lang: string }) {
         </p>
       </div>
 
+      <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
+        <h2 className="text-2xl font-bold mb-4 text-heading">
+          {ru ? 'Навык или способность его набирать' : 'Skill, or the Ability to Acquire It'}
+        </h2>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru
+            ? 'Под всеми предыдущими главами лежит вопрос, который редко задают вслух: что вообще означает высокий балл. Интуитивно кажется, что он означает «система умеет». Но умение всегда чем-то оплачено — примерами в обучающей выборке, встроенными подсказками, тренировкой на похожих задачах. И если оплатить можно неограниченно, то и уровень умения можно, грубо говоря, купить: достаточно дать системе достаточно данных нужного вида, и балл вырастет, ничего не сообщив о том, справится ли она с задачей другого вида.'
+            : 'Underneath all the previous chapters lies a question rarely asked out loud: what does a high score actually mean. Intuitively it seems to mean "the system can do it". But an ability is always paid for — with examples in the training set, with built-in priors, with practice on similar problems. And if you can pay without limit, then a level of ability can, crudely put, be bought: give the system enough data of the right kind and the score rises, telling you nothing about whether it will handle a problem of a different kind.'}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru ? (
+            <>
+              Этот довод в законченном виде сформулировал Франсуа Шолле в работе <a href={MEASURE_INTELLIGENCE_URL} target="_blank" rel="noopener noreferrer" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">«On the Measure of Intelligence»</a> (2019). Его претензия к принятой практике проста: измеряя навык в конкретной задаче, мы не измеряем интеллект, потому что «unlimited priors or unlimited training data allow experimenters to “buy” arbitrary levels of skills for a system» — неограниченные априорные знания или данные позволяют купить любой уровень навыка, и это маскирует собственную способность системы обобщать. Взамен он предложил измерять <Term id="skill-acquisition-efficiency" lang={lang}>эффективность освоения навыка</Term>: не насколько система хороша в известной задаче, а насколько дёшево она осваивает новую относительно того, с чем начинала. Под это определение он и построил ARC — набор головоломок на явно заданных, близких к врождённым человеческим априорных знаниях.
+            </>
+          ) : (
+            <>
+              The argument was set out in full by François Chollet in <a href={MEASURE_INTELLIGENCE_URL} target="_blank" rel="noopener noreferrer" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">&ldquo;On the Measure of Intelligence&rdquo;</a> (2019). His objection to standard practice is simple: measuring skill at a given task does not measure intelligence, because &ldquo;unlimited priors or unlimited training data allow experimenters to &lsquo;buy&rsquo; arbitrary levels of skills for a system&rdquo; — which masks the system&rsquo;s own power to generalise. In its place he proposed measuring <Term id="skill-acquisition-efficiency" lang={lang}>skill-acquisition efficiency</Term>: not how good a system is at a known task, but how cheaply it picks up a new one relative to what it started with. ARC was built to that definition — a set of puzzles resting on an explicit set of priors designed to be as close as possible to innate human ones.
+            </>
+          )}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru
+            ? 'Отсюда видно, почему две проблемы из первых глав — насыщение и контаминация — не случайные болезни бенчмарков, а следствия одного устройства. Тест, который меряет навык, стареет ровно в тот момент, когда навык стало чем оплатить: задачи попали в обучающую выборку или под них натренировались специально. Тест, который меряет способность осваивать новое, стареет медленнее, потому что «новое» нельзя выучить заранее по определению. Именно поэтому ARC живёт с 2019 года, а очередной набор школьных задач списывается за пару лет.'
+            : 'From here you can see why the two problems from the earlier chapters — saturation and contamination — are not accidental diseases of benchmarks but consequences of one design. A test that measures skill ages exactly when there is something to pay for that skill with: the problems entered the training set, or the system was trained specifically for them. A test that measures the ability to acquire something new ages more slowly, because "new" cannot be learned in advance by definition. That is why ARC has been alive since 2019 while yet another set of school problems is written off within a couple of years.'}
+        </p>
+        <p className="text-neutral-300 leading-relaxed mb-4">
+          {ru ? (
+            <>
+              У этого различения есть побочный эффект, который стоит проговорить: оно применимо не только к моделям. Разрыв между «набрал балл» и «способен освоить новое» ровно тот же, что и разрыв между закрытыми тикетами и умением вести задачу самому, — его разбирает комната <Link href={`/${lang}/rooms/ai-career-trajectories`} className={LINK_CLS}>«Карьерные траектории в AI»</Link>. И проверяется он одинаково с обеих сторон: задачей, которой раньше не было. Для модели это свежий закрытый набор, для инженера — инцидент, ответа на который нет ни в документации, ни в обучающей выборке.
+            </>
+          ) : (
+            <>
+              The distinction has a side effect worth naming: it applies to more than models. The gap between &ldquo;scored well&rdquo; and &ldquo;able to pick up something new&rdquo; is the same gap as the one between closed tickets and the ability to carry a task alone — the subject of the <Link href={`/${lang}/rooms/ai-career-trajectories`} className={LINK_CLS}>AI Career Trajectories</Link> room. And it is tested the same way from either side: with a problem that did not exist before. For a model that is a fresh private set; for an engineer, an incident whose answer is in neither the documentation nor the training data.
+            </>
+          )}
+        </p>
+      </div>
+
       <div className="bg-card-dark border border-accent-500/20 rounded-xl p-8 mb-8">
         <h2 className="text-2xl font-bold mb-4 text-heading">
           {ru ? 'Итог для практика (краткий блок)' : 'Practitioner’s Summary (short block)'}
@@ -266,6 +308,7 @@ export default function FrontierEvalsTheory({ lang }: { lang: string }) {
           <li>{ru ? 'Проверяйте цепочку, а не только итог: правильный ответ при бредовом решении — лотерейный билет, а не интеллект.' : 'Check the chain, not just the outcome: a correct answer atop nonsense working is a lottery ticket, not intelligence.'}</li>
           <li>{ru ? 'Заявление «модель №1» читается с четырьмя вопросами: тот же режим и число попыток? нет утечки? сопоставимые конфигурации? и №1 — в чём именно?' : 'Read any «#1 model» claim with four questions: same mode and attempts? no leakage? comparable configurations? and #1 at what, exactly?'}</li>
           <li>{ru ? 'Своя проверка сильнее чужого лидерборда: собирайте эвал из нерешённых задач собственной области.' : 'Your own check beats someone else’s leaderboard: build the eval from your field’s unsolved problems.'}</li>
+          <li>{ru ? 'Спрашивайте, что балл измеряет: навык в известной задаче можно «купить» данными и подсказками, способность осваивать новое — нет.' : 'Ask what the score measures: skill at a known task can be «bought» with data and priors; the ability to acquire something new cannot.'}</li>
         </ul>
       </div>
 
@@ -313,6 +356,15 @@ export default function FrontierEvalsTheory({ lang }: { lang: string }) {
                 : '"Will We Run Out of Data?" — the estimate that high-quality public text runs out for training in 2026–2032.'}{' '}
               <a href={EPOCH_DATA_URL} target="_blank" rel="noopener noreferrer" className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300">
                 epoch.ai
+              </a>
+            </li>
+            <li>
+              Chollet, F. (2019).{' '}
+              {ru
+                ? '«On the Measure of Intelligence» — критика измерения навыка в конкретной задаче, определение интеллекта как эффективности освоения навыка и устройство ARC.'
+                : '"On the Measure of Intelligence" — the critique of measuring skill at a given task, intelligence defined as skill-acquisition efficiency, and the design of ARC.'}{' '}
+              <a href={MEASURE_INTELLIGENCE_URL} target="_blank" rel="noopener noreferrer" className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300">
+                arxiv.org/abs/1911.01547
               </a>
             </li>
           </ul>

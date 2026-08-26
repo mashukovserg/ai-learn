@@ -395,5 +395,62 @@ export const aiCareerTrajectoriesTasks: LocalizedTask[] = [
       ru: 'Верно: «Management is NOT a promotion. It is a change of profession». Из этого следует и обратное — возврат в IC-трек не понижение, терять нечего. Инженерные навыки, по её же наблюдению, за время в менеджменте тупеют, поэтому она и предлагает маятник: туда и обратно, а не в одну сторону.',
       en: 'Correct: "Management is NOT a promotion. It is a change of profession." The converse follows — returning to the IC track is not a demotion, because there is nothing to give up. Engineering skills decay while you manage, by her own account, which is why she proposes the pendulum: back and forth, not one way.'
     }
+  },
+  {
+    id: 11,
+    type: 'multiple-choice',
+    question: {
+      ru: 'В эксперименте PNAS (2025) школьникам дали GPT Base и GPT Tutor. Что произошло с группой GPT Base после того, как доступ к помощнику убрали?',
+      en: 'In the PNAS (2025) experiment students were given GPT Base and GPT Tutor. What happened to the GPT Base group after access to the assistant was removed?'
+    },
+    options: [
+      { ru: 'Она написала контрольную на 17% хуже тех, у кого доступа не было вообще', en: 'It scored 17% below students who had never had access at all' },
+      { ru: 'Она сохранила преимущество, полученное на тренировке', en: 'It kept the advantage it had gained during practice' },
+      { ru: 'Она написала контрольную так же, как группа GPT Tutor', en: 'It scored the same as the GPT Tutor group' },
+      { ru: 'Она написала контрольную на 48% лучше контрольной группы', en: 'It scored 48% above the control group' }
+    ],
+    answer: {
+      ru: 'Она написала контрольную на 17% хуже тех, у кого доступа не было вообще',
+      en: 'It scored 17% below students who had never had access at all'
+    },
+    hint: {
+      ru: 'Глава 5: +48% и +127% — это результаты тренировочных сессий, пока помощник был под рукой. Контрольную писали без него.',
+      en: 'Chapter 5: +48% and +127% are the practice-session results, measured while the assistant was available. The exam was written without it.'
+    },
+    explanation: {
+      ru: 'Верно. +48% (GPT Base) и +127% (GPT Tutor) — прирост оценок на тренировке, пока помощник был доступен. Когда доступ убрали, группа GPT Base оказалась на 17% ниже тех, кто не пользовался помощником вовсе. У GPT Tutor этот провал в основном исчез, и единственная разница между версиями была в том, отдавал помощник готовый ответ или подсказку.',
+      en: 'Correct. +48% (GPT Base) and +127% (GPT Tutor) are the grade gains during practice, while the assistant was available. Once access was removed, the GPT Base group came out 17% below students who had never used an assistant. For GPT Tutor that drop largely disappeared — and the only difference between the versions was whether the assistant returned a finished answer or a hint.'
+    }
+  },
+  {
+    id: 12,
+    type: 'categorize',
+    question: {
+      ru: 'Разложите ситуации по тому, что вы передаёте модели: механическую работу (когнитивная разгрузка) или само решение (когнитивный долг).',
+      en: 'Sort the situations by what you are handing to the model: mechanical work (cognitive offloading) or the decision itself (cognitive debt).'
+    },
+    categorize: {
+      items: [
+        { ru: 'Переименовать поле во всех файлах проекта', en: 'Rename a field across every file in the project' },
+        { ru: 'Вспомнить забытый синтаксис знакомой конструкции', en: 'Look up forgotten syntax for a construct you know' },
+        { ru: 'Выбрать схему хранения данных, не разобравшись в вариантах', en: 'Pick a data storage scheme without working through the options' },
+        { ru: 'Принять сгенерированный код, который вы не сможете объяснить завтра', en: 'Accept generated code you could not explain tomorrow' }
+      ],
+      buckets: [
+        { ru: 'Когнитивная разгрузка', en: 'Cognitive offloading' },
+        { ru: 'Когнитивный долг', en: 'Cognitive debt' }
+      ],
+      correctMapping: {
+        'Rename a field across every file in the project': 'Cognitive offloading',
+        'Look up forgotten syntax for a construct you know': 'Cognitive offloading',
+        'Pick a data storage scheme without working through the options': 'Cognitive debt',
+        'Accept generated code you could not explain tomorrow': 'Cognitive debt',
+      }
+    },
+    answer: '',
+    explanation: {
+      ru: 'Разделитель из главы 5 — не сложность задачи, а то, отдаёте вы работу или суждение. Переименование и забытый синтаксис — механика, которую вы и так понимаете: это разгрузка. Выбор схемы хранения и приём необъяснимого кода отдают модели решение, и основание, по которому оно выбрано, к вам не возвращается — это долг, который вернётся при первой поломке.',
+      en: 'The dividing line from Chapter 5 is not how hard the task is, but whether you hand over work or judgement. A rename and forgotten syntax are mechanics you already understand: that is offloading. Choosing a storage scheme and accepting unexplainable code hand the decision to the model, and the reasoning behind it never reaches you — that is debt, and it comes due at the first breakage.'
+    }
   }
 ];

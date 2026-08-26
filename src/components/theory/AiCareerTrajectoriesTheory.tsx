@@ -12,6 +12,9 @@ const AI_ENGINEER_URL = 'https://www.latent.space/p/ai-engineer';
 const ANTHROPIC_RE_RS_URL = 'https://job-boards.greenhouse.io/anthropic/jobs/5135168008';
 const LIGHTCAST_AI_INDEX_URL = 'https://lightcast.io/resources/blog/stanford-ai-2026';
 const AI_INDEX_URL = 'https://hai.stanford.edu/ai-index/2026-ai-index-report';
+const PNAS_GUARDRAILS_URL = 'https://doi.org/10.1073/pnas.2422633122';
+const WIDENING_GAP_URL = 'https://arxiv.org/abs/2405.17739';
+const ANTHROPIC_SKILLS_URL = 'https://www.anthropic.com/research/AI-assistance-coding-skills';
 
 function SrcLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
@@ -87,6 +90,38 @@ const SOURCES: { authors: string; title: string; venue?: string; note: Localized
     note: { ru: 'первоисточник данных по рынку труда (глава 4, Economy)', en: 'the primary source for the labour-market data (Chapter 4, Economy)' },
     href: AI_INDEX_URL,
     label: 'hai.stanford.edu',
+  },
+  {
+    authors: 'Bastani, H., Bastani, O., Sungu, A., Ge, H., Kabakcı, Ö., Mariman, R. (2025).',
+    title: '«Generative AI without guardrails can harm learning: Evidence from high school mathematics»',
+    venue: 'PNAS 122(26)',
+    note: {
+      ru: 'почти 1000 старшеклассников; +48% (GPT Base) и +127% (GPT Tutor) на тренировке, −17% на контрольной после снятия доступа у GPT Base',
+      en: 'nearly 1,000 high-school students; +48% (GPT Base) and +127% (GPT Tutor) in practice, −17% on the exam once access was removed for GPT Base',
+    },
+    href: PNAS_GUARDRAILS_URL,
+    label: 'doi.org/10.1073/pnas.2422633122',
+  },
+  {
+    authors: 'Prather, J., Reeves, B., Leinonen, J., MacNeil, S., Randrianasolo, A., Becker, B., Kimmel, B., Wright, J., Briggs, B. (2024).',
+    title: '«The Widening Gap: The Benefits and Harms of Generative AI for Novice Programmers»',
+    venue: 'ICER 2024',
+    note: {
+      ru: '21 лабораторная сессия с айтрекингом; «иллюзия компетентности» у буксующих новичков',
+      en: '21 lab sessions with eye tracking; the "illusion of competence" among struggling novices',
+    },
+    href: WIDENING_GAP_URL,
+    label: 'arxiv.org/abs/2405.17739',
+  },
+  {
+    authors: 'Anthropic (2026).',
+    title: '«How AI assistance impacts the formation of coding skills»',
+    note: {
+      ru: '52 инженера, задача на Trio: 50% против 67% на квизе сразу после работы (d = 0,738, p = 0,01)',
+      en: '52 engineers on a Trio task: 50% against 67% on a quiz taken right after the work (d = 0.738, p = 0.01)',
+    },
+    href: ANTHROPIC_SKILLS_URL,
+    label: 'anthropic.com',
   },
 ];
 
@@ -925,13 +960,50 @@ export default function AiCareerTrajectoriesTheory({ lang }: { lang: string }) {
       </section>
 
       <section className="bg-card-dark border border-border-card rounded-[1.75rem] p-6 md:p-8">
+        <p className="text-sm uppercase tracking-[0.25em] text-neutral-500 font-mono mb-5">
+          {currentLang === 'ru' ? 'Глава 5' : 'Chapter 5'}
+        </p>
+        <h2 className="text-2xl md:text-3xl font-semibold text-heading leading-snug mb-5">
+          {currentLang === 'ru' ? 'Экспертиза набирается трением' : 'Expertise is built out of friction'}
+        </h2>
+
+        <div className="max-w-3xl space-y-4">
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? 'В главе 2 мы договорились, что между уровнями меняется размер куска работы, который человек берёт и доводит до конца сам. Остаётся неудобный вопрос: откуда берётся способность доводить до конца? Обычный ответ — «из опыта» — слишком общий. Если посмотреть, что именно в опыте работает, окажется, что работают часы, когда вы застряли и выбирались сами: искали причину ошибки без внятного лога, переписывали подход, когда стало ясно, что он не выдержит нагрузки, вникали, почему один метод медленнее другого. Именно из этих часов вырастает то, что инженеры называют чутьём: взгляд на код и мысль «здесь, скорее всего, будут проблемы».'
+              : 'In Chapter 2 we agreed that what changes between levels is the size of the piece of work a person takes and carries to the end alone. That leaves an awkward question: where does the ability to carry it to the end come from? The usual answer — "from experience" — is too vague. Look at which part of experience actually does the work, and it turns out to be the hours you spent stuck and got yourself out: hunting a cause with no usable log, rewriting an approach once it became clear it would not hold under load, working out why one method is slower than another. Those hours are what grows the thing engineers call taste: you look at some code and think "this will probably cause problems".'}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? <>{'Это не риторика — эффект измеряли. В полевом эксперименте, опубликованном в '}<SrcLink href={PNAS_GUARDRAILS_URL}>PNAS в 2025 году</SrcLink>{', почти тысяче турецких старшеклассников дали помощника по математике в двух версиях: GPT Base — обычный интерфейс чата, и GPT Tutor — тот же GPT‑4, но с инструкцией давать подсказки учителя вместо готовых ответов. Пока помощник был под рукой, оценки в тренировочных сессиях выросли у обеих групп: +48% у GPT Base и +127% у GPT Tutor. Потом доступ убрали и провели контрольную. Группа GPT Base написала её на 17% хуже тех, у кого доступа не было вообще. У GPT Tutor этот провал в основном исчез — разница между двумя группами была только в том, отдавал помощник ответ или заставлял решать самому.'}</>
+              : <>{'This is not rhetoric — the effect has been measured. In a field experiment published in '}<SrcLink href={PNAS_GUARDRAILS_URL}>PNAS in 2025</SrcLink>{', nearly a thousand Turkish high-school students were given a maths assistant in two versions: GPT Base, a plain chat interface, and GPT Tutor, the same GPT-4 but instructed to give teacher-designed hints instead of finished answers. While the assistant was available, grades in the practice sessions rose in both groups: +48% for GPT Base and +127% for GPT Tutor. Then access was removed and an exam was held. The GPT Base group scored 17% below students who had never had access at all. For GPT Tutor that drop largely disappeared — and the only difference between the two groups was whether the assistant handed over the answer or made the student work it out.'}</>}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? <>{'В программировании картина такая же. На конференции ICER 2024 разобрали '}<SrcLink href={WIDENING_GAP_URL}>21 лабораторную сессию с новичками</SrcLink>{', пишущими код вместе с GenAI: наблюдение, интервью и айтрекинг. Задачу закрыли 20 человек из 21, но группа разошлась надвое. Те, кто продвигался быстро, использовали модель для кода, который и так собирались написать, и умели игнорировать неверные встроенные подсказки. Те, кто буксовал, заканчивали с <Term id="illusion-of-competence" lang={currentLang}>иллюзией компетентности</Term> — считали, что справились лучше, чем справились на самом деле. В '}<SrcLink href={ANTHROPIC_SKILLS_URL}>эксперименте Anthropic (январь 2026)</SrcLink>{' 52 в основном junior‑инженера писали две функции на библиотеке Trio, а через несколько минут отвечали на вопросы по тому, что только что написали: 50% у группы с помощником против 67% у писавших руками (d = 0,738, p = 0,01). Вывод авторов сформулирован прямо: когнитивное усилие — «и даже мучительное застревание» — судя по всему, необходимо для настоящего владения материалом.'}</>
+              : <>{'In programming the picture is the same. At ICER 2024 researchers analysed '}<SrcLink href={WIDENING_GAP_URL}>21 lab sessions with novices</SrcLink>{' coding alongside GenAI, combining observation, interviews and eye tracking. Twenty of the 21 finished the assigned problem, but the group split in two. Those who moved fast used the model for code they already intended to write, and were able to ignore unhelpful or incorrect inline suggestions. Those who struggled finished with an <Term id="illusion-of-competence" lang={currentLang}>illusion of competence</Term> — they believed they had done better than they had. In '}<SrcLink href={ANTHROPIC_SKILLS_URL}>Anthropic’s experiment (January 2026)</SrcLink>{', 52 mostly junior engineers wrote two features using the Trio library and then, minutes later, answered questions about what they had just written: 50% for the AI-assisted group against 67% for those who coded by hand (d = 0.738, p = 0.01). The authors put their conclusion plainly: cognitive effort — "and even getting painfully stuck" — is likely important for fostering mastery.'}</>}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? 'Для карьеры отсюда следует конкретная вещь. Junior‑грейд — это период, за который организация платит, зная, что вы ещё учитесь: вам дают задачи меньше вашего потенциала, ловят ошибки на ревью и держат за вас границы. Если весь этот период задачи фактически закрывает агент, на выходе будет история закрытых тикетов — но не то, что рамка описывает как «ведёт кусок работы сам». Расхождение обнаружится не на код‑ревью, где сгенерированный код выглядит прилично, а на первом инциденте, ответа на который нет ни в документации, ни в обучающей выборке модели. И обнаружится оно не перед коллегами, а перед вами.'
+              : 'For a career this has a concrete consequence. The junior grade is the period an organisation pays for knowing you are still learning: you get work below your potential, your mistakes are caught in review, and someone else holds the boundaries for you. If an agent effectively closes that work for the whole of that period, what you end up with is a history of closed tickets — not the thing a framework describes as "owns a piece of work end to end". The gap will not show up in code review, where generated code looks respectable; it shows up at the first incident whose answer is in neither the documentation nor the model’s training data. And it shows up in front of you before it shows up in front of colleagues.'}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {currentLang === 'ru'
+              ? <>{'Практический разделитель — вопрос о том, что именно вы передаёте модели. Механическую и уже понятную вам работу (шаблонный код, переименование по проекту, забытый синтаксис) передавать нормально: это разгрузка, и она освобождает время на думание. А вот решение о том, как задача должна быть устроена, передавать дорого: вы получаете результат, но не получаете основание, по которому этот результат выбран, — это '}<Term id="cognitive-debt" lang={currentLang}>когнитивный долг</Term>{'. Проверить себя можно одним вопросом перед тем, как принять сгенерированный код: смогу ли я объяснить, что здесь происходит, если завтра оно упадёт в проде? Если нет — задавайте модели вопросы по этому коду, пока не сможете. Ровно эта разница отделила GPT Tutor от GPT Base.'}</>
+              : <>{'The practical dividing line is the question of what exactly you hand to the model. Handing over mechanical work you already understand — boilerplate, a project-wide rename, syntax you have forgotten — is fine: that is offloading, and it frees time for thinking. Handing over the decision about how the task should be structured is expensive: you get the result without the reasoning that selected it, which is '}<Term id="cognitive-debt" lang={currentLang}>cognitive debt</Term>{'. You can test yourself with one question before accepting generated code: could I explain what is happening here if it fell over in production tomorrow? If not, keep asking the model about that code until you can. That is precisely the difference that separated GPT Tutor from GPT Base.'}</>}
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-card-dark border border-border-card rounded-[1.75rem] p-6 md:p-8">
         <h2 className="text-2xl md:text-3xl font-semibold text-heading leading-snug mb-4">
           {currentLang === 'ru' ? 'Источники' : 'Sources'}
         </h2>
         <p className="max-w-3xl text-neutral-300 leading-relaxed mb-5">
           {currentLang === 'ru'
-            ? 'Все числа, цитаты и названные документы в этой комнате опираются на источники ниже; ссылки проверены 23.08.2026. Уровни, годы и названия ролей в карте карьеры — обобщение практики, а не выдержка из одной рамки: сверяйте их с рамкой конкретной компании.'
-            : 'Every number, quote, and named document in this room rests on the sources below; the links were checked on 2026-08-23. The levels, year ranges, and role names in the career map are a generalisation of common practice rather than an extract from a single framework — check them against the framework of the specific company.'}
+            ? 'Все числа, цитаты и названные документы в этой комнате опираются на источники ниже; ссылки проверены 26.08.2026. Уровни, годы и названия ролей в карте карьеры — обобщение практики, а не выдержка из одной рамки: сверяйте их с рамкой конкретной компании.'
+            : 'Every number, quote, and named document in this room rests on the sources below; the links were checked on 2026-08-26. The levels, year ranges, and role names in the career map are a generalisation of common practice rather than an extract from a single framework — check them against the framework of the specific company.'}
         </p>
         <div className="bg-deep border border-border-subtle rounded-[1.35rem] p-5">
           <ul className="text-sm text-neutral-400 space-y-3">
