@@ -151,7 +151,7 @@ export default function AiRagTheory({ lang }: { lang: string }) {
         <div className="space-y-6">
           <p className="text-neutral-300 leading-relaxed">
             {lang === 'ru'
-              ? 'Когда пользователь задает вопрос, начинается "магия" дополнения запроса. Процесс RAG — это не просто поиск, это сложная хореография данных, которая происходит за кулисами чата.'
+              ? 'Когда пользователь задает вопрос, начинается "магия" дополнения запроса. Процесс RAG — не одиночный поисковый запрос, а сложная хореография данных, которая происходит за кулисами чата.'
               : 'When a user asks a question, the "magic" of query augmentation begins. The RAG process is not just search; it is a sophisticated choreography of data happening behind the scenes of the chat.'}
           </p>
           <div className="space-y-4">

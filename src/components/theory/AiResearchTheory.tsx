@@ -26,7 +26,7 @@ export default function AiResearchTheory({ lang }: { lang: string }) {
             </p>
             <p className="text-neutral-300 leading-relaxed">
               {lang === 'ru'
-                ? 'Использование ИИ в исследованиях — это не просто быстрый "гугл". Это переход от линейного чтения к параллельному активному синтезу. Мы превращаем языковую модель из пассивного читателя в проактивного "навигатора", который строит сложные цепочки рассуждений, ищет неочевидные связи между работами из разных областей знаний и формулирует новые гипотезы на основе гигантских объемов данных.'
+                ? 'Использование ИИ в исследованиях — не ускоренная версия "гугла", а переход от линейного чтения к параллельному активному синтезу. Мы превращаем языковую модель из пассивного читателя в проактивного "навигатора", который строит сложные цепочки рассуждений, ищет неочевидные связи между работами из разных областей знаний и формулирует новые гипотезы на основе гигантских объемов данных.'
                 : 'Using AI in research is not just a fast "Google." It is a transition from linear reading to parallel active synthesis. We are transforming the language model from a passive reader into a proactive "navigator" that builds complex reasoning chains, finds non-obvious connections between works from different fields of knowledge, and formulates new hypotheses based on gigantic datasets.'}
             </p>
             <div className="bg-card border border-border-emphasis rounded-xl p-6 my-6">

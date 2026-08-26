@@ -163,7 +163,7 @@ export default function AiAlignmentTheory({ lang }: { lang: string }) {
              <h4 className="font-bold text-white mb-2">{lang === 'ru' ? 'Итоговая мысль:' : 'Final Thought:'}</h4>
              <p className=" text-neutral-300 leading-relaxed">
                {lang === 'ru'
-                 ? 'Alignment — это не просто патч безопасности для чат-бота. Это попытка построить мост между биологическим интеллектом и цифровым разумом, гарантируя, что этот мост не рухнет под тяжестью новых способностей ИИ. Выравнивание — это самая важная инженерная дисциплина XXI века.'
+                 ? 'Alignment — не точечный патч безопасности для чат-бота, а попытка построить мост между биологическим интеллектом и цифровым разумом, гарантируя, что этот мост не рухнет под тяжестью новых способностей ИИ. Выравнивание — это самая важная инженерная дисциплина XXI века.'
                  : 'Alignment is not just a safety patch for a chatbot. It is an attempt to build a bridge between biological intelligence and digital mind, ensuring that this bridge does not collapse under the weight of AI&apos;s new capabilities. Alignment is the most important engineering discipline of the 21st century.'}
              </p>
           </div>
