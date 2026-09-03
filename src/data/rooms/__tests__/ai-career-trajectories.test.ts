@@ -42,9 +42,9 @@ describe(`room ${ROOM_ID}`, () => {
     expect(path.roomIds).toContain(ROOM_ID);
   });
 
-  it('has ten tasks registered in ROOM_TASKS', () => {
+  it('has twelve tasks registered in ROOM_TASKS', () => {
     expect(ROOM_TASKS[ROOM_ID]).toBeDefined();
-    expect(ROOM_TASKS[ROOM_ID].length).toBeGreaterThanOrEqual(10);
+    expect(ROOM_TASKS[ROOM_ID].length).toBeGreaterThanOrEqual(12);
   });
 
   it('satisfies the task mix rule (at least one sorting or mentor task)', () => {
@@ -76,11 +76,11 @@ describe(`room ${ROOM_ID}`, () => {
     }
   });
 
-  it('ships four chapters in both locales', () => {
+  it('ships five chapters in both locales', () => {
     const ruChapters = [...theorySource.matchAll(/'Глава (\d+)'/g)].map(m => Number(m[1]));
     const enChapters = [...theorySource.matchAll(/'Chapter (\d+)'/g)].map(m => Number(m[1]));
-    expect(ruChapters).toEqual([1, 2, 3, 4]);
-    expect(enChapters).toEqual([1, 2, 3, 4]);
+    expect(ruChapters).toEqual([1, 2, 3, 4, 5]);
+    expect(enChapters).toEqual([1, 2, 3, 4, 5]);
   });
 
   it('cites the sources its claims rest on', () => {
@@ -92,6 +92,9 @@ describe(`room ${ROOM_ID}`, () => {
       'latent.space/p/ai-engineer',
       'job-boards.greenhouse.io/anthropic',
       'lightcast.io/resources/blog/stanford-ai-2026',
+      'doi.org/10.1073/pnas.2422633122',
+      'arxiv.org/abs/2405.17739',
+      'anthropic.com/research/AI-assistance-coding-skills',
     ]) {
       expect(theorySource, `theory is missing the source "${marker}"`).toContain(marker);
     }

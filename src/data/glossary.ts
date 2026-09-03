@@ -5,6 +5,30 @@ export interface GlossaryTerm {
 }
 
 export const GLOSSARY: Record<string, GlossaryTerm> = {
+  'cognitive-debt': {
+    id: 'cognitive-debt',
+    term: { ru: 'Когнитивный долг', en: 'Cognitive debt' },
+    definition: {
+      ru: 'Когнитивный долг — состояние, когда решение принято за вас моделью и вы приняли результат, не имея основания, по которому он выбран. Отличается от когнитивной разгрузки: разгрузка передаёт механическую и уже понятную работу (шаблонный код, переименование, забытый синтаксис), долг передаёт суждение — как задача должна быть устроена. Долг возвращается в момент, когда систему нужно чинить или менять, а объяснить её устройство некому.',
+      en: 'Cognitive debt is the state where a model made the decision for you and you accepted the result without the reasoning that selected it. It differs from cognitive offloading: offloading hands over mechanical work you already understand (boilerplate, renames, forgotten syntax), while debt hands over judgement — how the task should be structured. The debt comes due when the system has to be fixed or changed and nobody can explain how it works.'
+    }
+  },
+  'illusion-of-competence': {
+    id: 'illusion-of-competence',
+    term: { ru: 'Иллюзия компетентности', en: 'Illusion of competence' },
+    definition: {
+      ru: 'Иллюзия компетентности — расхождение между тем, насколько человек считает себя разобравшимся в задаче, и тем, насколько он в ней разобрался. Термин закреплён в работе Prather et al. (ICER 2024) о новичках, пишущих код с GenAI: буксующие участники заканчивали сессию уверенными, что справились лучше, чем справились. Диагностируется просто — просьбой объяснить готовое решение без обращения к модели.',
+      en: 'The illusion of competence is the gap between how well a person believes they have understood a task and how well they actually have. The term was fixed by Prather et al. (ICER 2024) in their study of novices coding with GenAI: struggling participants finished the session convinced they had done better than they had. It is easy to diagnose — ask them to explain the finished solution without consulting the model.'
+    }
+  },
+  'skill-acquisition-efficiency': {
+    id: 'skill-acquisition-efficiency',
+    term: { ru: 'Эффективность освоения навыка', en: 'Skill-acquisition efficiency' },
+    definition: {
+      ru: 'Эффективность освоения навыка — определение интеллекта, предложенное Франсуа Шолле в «On the Measure of Intelligence» (2019): мерить не то, насколько система хороша в конкретной задаче, а насколько дёшево она осваивает новую задачу при заданных априорных знаниях и опыте. Различие практическое: имея неограниченные данные или подсказки, любой уровень навыка можно «купить», и тогда результат теста говорит о подготовке, а не о способности обобщать.',
+      en: 'Skill-acquisition efficiency is the definition of intelligence proposed by François Chollet in "On the Measure of Intelligence" (2019): measure not how good a system is at a given task, but how cheaply it picks up a new one, relative to the priors and experience it started with. The distinction is practical: with unlimited data or priors any level of skill can be "bought", and a test score then reports preparation rather than the ability to generalise.'
+    }
+  },
   'value-alignment': {
     id: 'value-alignment',
     term: { ru: 'Выравнивание ценностей', en: 'Value Alignment' },
