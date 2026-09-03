@@ -349,6 +349,46 @@ separate call from this fork.
 
 ---
 
+## Fork 6 — Page structure and density (OPEN, opened 2026-09-03)
+
+**Context.** On 2026-09-03 the owner said the current design no longer works for them and, asked
+what exactly, pointed at **page structure and density** — not tone, not colour: the icon-tile
+sidebar, a card per room, a card per task, a card per theory block, all on one screen. The
+direction the owner chose from four offered: **dark, but quiet technical** (Linear, Vercel,
+HTB Academy) — over a light learning platform (Brilliant/Khan), an editorial/book treatment, or an
+RPG-like game (Boot.dev).
+
+**Reference board:** [`design-references.html`](design-references.html) — 17 genuine captures
+(headless Chrome, 1440 px, 2026-09-03) with "take / skip / where it lands" for each, plus the four
+current pages annotated. The same references are logged in [`REFERENCES.md`](REFERENCES.md).
+
+**Five properties shared by every "quiet dark" reference** (the criteria for judging mockups):
+
+1. One surface — blocks separate by a hairline or a slightly lighter fill, not a rounded frame;
+   frames stay only on what is genuinely separate (terminal, screenshot, input).
+2. Hierarchy by type and air — two heading levels, a 65–70ch reading column, mono meta lines.
+3. Navigation is text — a list of rows with small section headers, not icon tiles.
+4. The right rail is thin — "on this page" / properties / tabs, not a second stack of cards.
+5. One accent per screen — colour carries state and one action; the rest is cool-biased grey.
+
+**Working hypothesis per page** (not a pick):
+
+| Page | Now | Hypothesis | Reference |
+|---|---|---|---|
+| Shell / sidebar | icon tiles | text rows with small section headers; active = text colour | Linear app UI, Vercel Docs |
+| `/rooms` | filter rail + card grid | two-column rows: title, one line, mono meta; filters as one top line | CodeCrafters catalog |
+| Room page | theory container + task-card column | three columns: chapters left, 68ch reading centre, TOC + task list right; a task expands in place | Vercel / Resend / Claude Docs |
+| Path | big boxes with a button | vertical stage list with one progress line; total time + "start the first room" on top | CodeCrafters, Frontend Masters |
+| Dashboard | a frame per block | one "continue" line, frameless tiles, link lists | Linear Docs, Stripe Docs |
+
+**Next step.** As for Forks 1, 4, 5: build `docs/structure-picker.html` with 2–3 variants of the
+*room page* on real AC-303 content (current; Vercel-style three-column; two-column with tasks
+inside the reading flow), both themes, 375 px — and judge by eye.
+
+**Current pick:** none yet — the shipped layout stays until a variant is chosen.
+
+---
+
 ## Related forks tracked elsewhere
 
 - **Accent green** — `docs/green-accent-picker.html` (interactive picker with site preview; Sage
