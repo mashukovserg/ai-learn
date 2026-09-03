@@ -98,7 +98,7 @@ Build in order, each per the "How to add a new room" procedure and full `AGENTS.
 
 - [x] AC-301 — Shipping Agentic Features with Guardrails (`agentic-guardrails`, 2026-08-07)
 - [x] AC-302 — Cost & Latency Control for Agents (`agentic-cost-latency`, 2026-08-07)
-- [ ] AC-303 — Team Protocols for Agent Coding
+- [x] AC-303 — Team Protocols for Agent Coding (`agentic-team-protocols`, 2026-09-03)
 - [ ] AC-401 — Production Incidents in Agentic Systems
 - [ ] AC-402 — Agent Coding Capstone (scenario-heavy synthesis of AC-101…AC-401)
 

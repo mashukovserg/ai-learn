@@ -95,7 +95,7 @@
 ### Module C: Shipping and Team Operations
 - [x] **AC-301: Shipping Agentic Features with Guardrails** (`agentic-guardrails`) — 12 tasks; policy as a checkable list (forbidden action + condition + observable signal), the four red-team directions (direct bypass, planted instruction, escalation, leakage), findings becoming an adversarial eval set inside the quality gate, deny-by-default boundaries that never ask the model, and post-release monitoring with precision/recall on false positives.
 - [x] **AC-302: Cost & Latency Control for Agents** (`agentic-cost-latency`) — 12 tasks; cost per run rather than per request, TTFT vs total latency and P95 tails, the four levers (prefix caching, parallel independent calls, context trimming, model routing, batch mode) with the price of each, per-run/project/provider ceilings with a circuit breaker, and tracing that attributes spend.
-- [ ] **AC-303: Team Protocols for Agent Coding** — review standards, handoffs, decision logs.
+- [x] **AC-303: Team Protocols for Agent Coding** (`agentic-team-protocols`, 2026-09-03) — 12 tasks; why verbal agreements stopped coping (METR 2025, DORA 2024, GitClear 2020–2024) and the merge-owner accountability rule, the four PR-template fields for agent-written changes with the 200–400-line review ceiling, the review rubric in cheap-to-expensive order plus driver-does-not-review and CODEOWNERS, the handoff note vs the decision record (ADR, superseded not edited), and rules-file ownership with reason-and-date lines, quarterly pruning and four team metrics.
 
 ### Module D: Production Reality and Capstone
 - [ ] **AC-401: Incident Playbooks for Agentic Features** — rollback, hotfixes, postmortems.

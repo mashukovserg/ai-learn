@@ -98,7 +98,7 @@
 
 - [x] AC-301 — Shipping Agentic Features with Guardrails (`agentic-guardrails`, 2026-08-07)
 - [x] AC-302 — Cost & Latency Control for Agents (`agentic-cost-latency`, 2026-08-07)
-- [ ] AC-303 — Team Protocols for Agent Coding
+- [x] AC-303 — Team Protocols for Agent Coding (`agentic-team-protocols`, 03.09.2026)
 - [ ] AC-401 — Production Incidents in Agentic Systems
 - [ ] AC-402 — Agent Coding Capstone (синтез AC-101…AC-401, с упором на scenario-задания)
 

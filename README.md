@@ -41,6 +41,7 @@ AI learning platform with interactive theory + tasks, built with Next.js App Rou
 - Implemented AC-101 room `agent-coding-foundations` with full theory + 10 localized tasks and added Agent Coding path wiring (`/${lang}/paths/agent-coding`).
 - Implemented AC-102 room `agentic-coding-tools` with full theory + 10 localized tasks and wired it into the Agent Coding path (`/${lang}/paths/agent-coding`).
 - Implemented AC-201 room `agentic-cli-tools` with full theory + 10 localized tasks focused on CLI discovery/change/verify loops and safe rollback routines.
+- Implemented AC-303 room `agentic-team-protocols` (Team Protocols for Agent Coding, agent-coding path, right after AC-302): the PR template for agent-written changes, the review rubric, the handoff note and decision log, and rules-file ownership — 5 bilingual chapters with three terminals, one genuine Google "Small CLs" capture and a sourced references card, 12 tasks across 7 types.
 - Refined AC-201 theory presentation for learning flow: reduced paragraph density, added a clear loop model, concrete CLI command examples per phase, verify tooling matrix, role split (agent vs engineer), and a practical checklist/exercise in EN/RU.
 - Added glossary terms for `guardrails` and `context-window` for AC-101 theory tooltips in EN/RU.
 - Added a new Labs tool: `/${lang}/labs/agent-ops` (Agent Ops MVP) with task queue management, manual cycle execution, run logs, and a knowledge feed.
@@ -51,7 +52,7 @@ AI learning platform with interactive theory + tasks, built with Next.js App Rou
 - The rooms catalog now places difficulty/focus/status controls in a dedicated side filter rail on desktop, keeping the room grid visible higher on the page while preserving a stacked mobile filter layout.
 - Fixed `/${lang}/rooms` hydration mismatch by deferring localStorage-based progress status reads to post-mount client sync.
 - Moved Skills Matrix to the Profile page (`/${lang}/settings`) and wired `/${lang}/skills` to redirect to `/${lang}/settings#skills-matrix` for backward compatibility.
-- Rooms pages (52 rooms):
+- Rooms pages (53 rooms):
   - `/${lang}/rooms` (listing page with live progress states, thematic focus filter, and compact difficulty/status metadata)
   - `/${lang}/rooms/[id]` — Dynamic room renderer for 50 topics across foundations, debates, advanced systems, agent coding, and open models, including the Open Models pair (`local-models-101`, `llama-3-1-8b`), the `ai-career-trajectories` room with a dedicated career-roadmap theory layout, and the `opencode-terminal-agent` room built on genuine OpenCode session captures.
 - Interactive task components:
