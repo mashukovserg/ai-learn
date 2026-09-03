@@ -392,6 +392,23 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     icon: 'Gauge',
   },
   {
+    id: 'agentic-team-protocols',
+    title: {
+      ru: 'AC-303: Командные протоколы Agent Coding',
+      en: 'AC-303: Team Protocols for Agent Coding',
+    },
+    description: {
+      ru: 'Что должен нести пул-реквест, написанный агентом; рубрика ревью для того, чего не проверит CI; записка о передаче, которая переживает закрытие сессии; журнал решений и правила о том, кто меняет общий файл правил.',
+      en: 'What an agent-written pull request must carry; a review rubric for what CI cannot check; the handoff note that outlives the session; the decision log, and the rules about who changes the shared rules file.',
+    },
+    difficulty: 'Intermediate',
+    time: { ru: '35 мин', en: '35m' },
+    category: { ru: 'Агентная разработка', en: 'Agent Coding' },
+    image: '/images/ai-agents.png',
+    pathIds: ['agent-coding'],
+    icon: 'ClipboardCheck',
+  },
+  {
     id: 'agentic-ui-delivery',
     title: { ru: 'AC-203: Агентная UI-доставка', en: 'AC-203: Agentic UI Delivery' },
     description: {

@@ -1093,4 +1093,44 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
       en: 'For buttons in different corners of a product to look alike, a verbal agreement is not enough — you need a shared set of components and values: colours, spacing, typography, states. That is a design system. For an agent its value is that it converts "make it look good" into a checkable requirement: the agent cannot see the mockup, but it can check its code against the list of allowed tokens and components.',
     },
   },
+  'pr-template': {
+    id: 'pr-template',
+    term: { ru: 'Шаблон пул-реквеста', en: 'Pull Request Template' },
+    definition: {
+      ru: 'Ревьюер открывает изменение и хочет знать четыре вещи: что просили сделать, что сделано, чему из этого можно верить и где искать пробелы. Если каждый автор отвечает на них по-своему или не отвечает вовсе, ревью начинается с допроса. Шаблон пул-реквеста — заранее заданный список полей, который платформа подставляет в описание каждого нового изменения; для кода, написанного агентом, в нём обязательно поле «что проверено и как» с пометкой, что автор прогнал сам.',
+      en: 'A reviewer opens a change and wants to know four things: what was asked, what was done, which of it can be trusted, and where to look for gaps. If every author answers in their own way or not at all, the review starts as an interrogation. A pull request template is a preset list of fields the platform inserts into the description of every new change; for agent-written code it must carry a “what was verified and how” field marking what the author ran themselves.',
+    },
+  },
+  'review-rubric': {
+    id: 'review-rubric',
+    term: { ru: 'Рубрика ревью', en: 'Review Rubric' },
+    definition: {
+      ru: 'Два ревьюера, читая одно и то же изменение без договорённости, смотрят на разное: один на стиль, другой на тесты, третий на то, что ему попалось первым. Рубрика — короткий список вопросов в фиксированном порядке, которые ревьюер задаёт каждому изменению: совпадает ли diff с задачей, тронуты ли опасные файлы, держится ли утверждение «проверено». Она делает ревью воспроизводимым и даёт команде основание вернуть изменение без спора о вкусах.',
+      en: 'Two reviewers reading the same change without an agreement look at different things: one at style, another at tests, a third at whatever caught their eye first. A rubric is a short list of questions in a fixed order that a reviewer puts to every change: does the diff match the task, were dangerous files touched, does the “verified” claim hold. It makes review reproducible and gives the team grounds to return a change without an argument about taste.',
+    },
+  },
+  'handoff-note': {
+    id: 'handoff-note',
+    term: { ru: 'Записка о передаче', en: 'Handoff Note' },
+    definition: {
+      ru: 'Когда сессия агента закрывается, всё, что он знал о задаче, исчезает; человек, который его вёл, к утру помнит половину. Записка о передаче — короткий текст в условленном месте, который пишет человек перед тем, как отойти от задачи: что сделано, что не работает и на чём, следующий шаг, ловушки, на которые уже наступили, и команды для воспроизведения. Её отличие от итога, написанного агентом, — пометка, что проверено самим человеком, а что только предполагается.',
+      en: 'When an agent session closes, everything it knew about the task is gone; the human who drove it remembers half by morning. A handoff note is a short text in an agreed place, written by the human before stepping away from the task: what is done, what fails and where, the next step, the traps already stepped on, and the commands to reproduce. What sets it apart from a summary written by the agent is the mark of what the human verified themselves and what is only assumed.',
+    },
+  },
+  'decision-record': {
+    id: 'decision-record',
+    term: { ru: 'Запись о решении (ADR)', en: 'Decision Record (ADR)' },
+    definition: {
+      ru: 'Код показывает, что сделано, но не почему. Через год человек — или агент, читающий репозиторий, — увидит странное место и «починит» его, не зная, что оно было выбрано намеренно. Запись о решении — короткий файл в репозитории с четырьмя частями: контекст, решение, статус, последствия. Записи не правят задним числом: устаревшую помечают как заменённую и пишут рядом новую, чтобы история выбора сохранилась. Формат предложил Майкл Найгард в 2011 году.',
+      en: 'Code shows what was done but not why. A year later a person — or an agent reading the repository — will see an odd spot and “fix” it without knowing it was chosen on purpose. A decision record is a short file in the repository with four parts: context, decision, status, consequences. Records are not edited after the fact: an outdated one is marked superseded and a new one is written next to it, so the history of the choice survives. Michael Nygard proposed the format in 2011.',
+    },
+  },
+  'codeowners': {
+    id: 'codeowners',
+    term: { ru: 'CODEOWNERS', en: 'CODEOWNERS' },
+    definition: {
+      ru: 'Некоторые файлы в репозитории важнее других: конфигурация проверок, миграции базы, общий файл правил для агентов. Хочется, чтобы изменение в них не прошло мимо человека, который за них отвечает, — и чтобы об этом не надо было помнить. CODEOWNERS — файл, в котором путям сопоставлены ответственные; платформа сама назначает их ревьюерами, а вместе с защитой ветки делает их одобрение обязательным. Так владение становится правилом системы, а не устной договорённостью.',
+      en: 'Some files in a repository matter more than others: the checks configuration, database migrations, the shared rules file for agents. You want a change to them never to slip past the person responsible — and you do not want to have to remember that. CODEOWNERS is a file that maps paths to owners; the platform assigns them as reviewers on its own and, together with branch protection, makes their approval mandatory. Ownership becomes a rule of the system rather than a verbal agreement.',
+    },
+  },
 };

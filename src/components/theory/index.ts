@@ -58,6 +58,7 @@ export const THEORY_COMPONENTS: Record<string, ComponentType<{ lang: string }>> 
   'agentic-release-control': dynamic(() => import('./AgenticReleaseControlTheory'), { loading }),
   'agentic-guardrails': dynamic(() => import('./AgenticGuardrailsTheory'), { loading }),
   'agentic-cost-latency': dynamic(() => import('./AgenticCostLatencyTheory'), { loading }),
+  'agentic-team-protocols': dynamic(() => import('./AgenticTeamProtocolsTheory'), { loading }),
   'git-safety-net': dynamic(() => import('./GitSafetyNetTheory'), { loading }),
   'github-actions-ci': dynamic(() => import('./GithubActionsCiTheory'), { loading }),
   'mcp-tool-ecosystems': dynamic(() => import('./McpToolEcosystemsTheory'), { loading }),

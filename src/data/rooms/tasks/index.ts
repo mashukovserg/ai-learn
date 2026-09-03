@@ -44,6 +44,7 @@ import { agenticUiDeliveryTasks } from './agentic-ui-delivery';
 import { agenticReleaseControlTasks } from './agentic-release-control';
 import { agenticGuardrailsTasks } from './agentic-guardrails';
 import { agenticCostLatencyTasks } from './agentic-cost-latency';
+import { agenticTeamProtocolsTasks } from './agentic-team-protocols';
 import { gitSafetyNetTasks } from './git-safety-net';
 import { githubActionsCiTasks } from './github-actions-ci';
 import { taxonomyMatchingTasks } from './taxonomy-matching';
@@ -89,6 +90,7 @@ export const ROOM_TASKS: Record<string, LocalizedTask[]> = {
   'agentic-release-control': agenticReleaseControlTasks,
   'agentic-guardrails': agenticGuardrailsTasks,
   'agentic-cost-latency': agenticCostLatencyTasks,
+  'agentic-team-protocols': agenticTeamProtocolsTasks,
   'git-safety-net': gitSafetyNetTasks,
   'github-actions-ci': githubActionsCiTasks,
   'mcp-tool-ecosystems': mcpToolEcosystemsTasks,
