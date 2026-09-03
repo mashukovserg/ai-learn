@@ -32,3 +32,12 @@
 - **Что не брать:** глубоко-математический трек (выводы SHAP, семейство CAM, аксиоматика IG/DeepLIFT/LRP, каузальный вывод) — не наш уровень абстракции и огромная стоимость авторинга; на такое лучше ссылаться из глоссария или «Куда дальше», чем дублировать.
 
 ---
+
+## Дизайн-референсы для развилки 6 — структура и плотность (03.09.2026)
+
+- **Ссылки и снимки:** [`design-references.html`](design-references.html) (17 подлинных снимков, headless Chrome, 1440 px) — доска с разбором «взять / не брать / где у нас». Контекст и критерии: `DESIGN_FORKS.md` → развилка 6.
+- **Что это:** подборка под выбранное владельцем направление «тёмное, но тихое техническое». Ядро — четыре сайта, чья структура ложится прямо на наши страницы: **CodeCrafters — каталог** (https://app.codecrafters.io/catalog: ряды в две колонки вместо плиток → `/rooms`), **Vercel Docs** (https://vercel.com/docs: три колонки, терминал в потоке чтения, тонкая правая колонка → страница комнаты), **Linear Docs** и интерфейс Linear (https://linear.app/docs, https://linear.app/: сайдбар-текст, плитки без рамок → оболочка, дашборд, путь), **Supabase Docs** (https://supabase.com/docs: плотность мелкими рядами → профессии, глоссарий). Дополняют структуру чтения светлые, но тихие **Claude Platform Docs** (https://docs.anthropic.com/en/docs/intro), **Stripe Docs** (https://docs.stripe.com/), **Resend Docs** (https://resend.com/docs/introduction: «On this page» → правая колонка комнаты); тон — **CodeCrafters** лендинг (https://codecrafters.io/), **Raycast** (https://www.raycast.com/: пустые состояния); учебные — **Frontend Masters** (https://frontendmasters.com/learn/: суммарное время пути), **Boot.dev** (https://www.boot.dev/tracks/backend: «попробовать путь без регистрации»).
+- **Что не брать (зафиксировано, чтобы не возвращаться):** **pwn.college** (https://pwn.college/) — «без рамок» без типографического ритма даёт стену текста; **LeetCode Explore** (https://leetcode.com/explore/) — плотность градиентными карточками, то, от чего ушли в развилке 5; **Warp** (https://www.warp.dev/) — моно в заголовках, граница для развилки 2; **Brilliant** (https://brilliant.org/) — светлое дружелюбное направление, отклонено; **roadmap.sh** (https://roadmap.sh/ai-engineer) — относится к `ROADMAP_VIEW_MODE.md`, а не к этой развилке.
+- **Не удалось снять (таймаут 45 с, повторить руками):** shadcn/ui docs, Mintlify docs, Cursor docs, каталог HTB Academy; Exercism отдал страницу проверки Cloudflare.
+
+---
