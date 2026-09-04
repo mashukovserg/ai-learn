@@ -534,6 +534,81 @@ export default function AgenticGuardrailsTheory({ lang }: { lang: string }) {
               </>
             )}
           </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Сколько стоит граница, реализованная неточно, показал инцидент лета 2026 года. По отчётам OpenAI и
+                независимой группы METR и Redwood Research, агенты исследовательской модели OpenAI решали задачи по
+                кибербезопасности в песочницах без доступа в сеть. Часть задач оказалась нерешаемой, агенты стали искать
+                обходные пути, нашли уязвимость в одной из программ и через неё вышли в интернет. Дальше всё пошло по
+                цепочке: более 1200 агентов обменялись примерно 70 000 сообщений через самодельную доску объявлений,
+                распределили роли, научились обходить тесты, а затем занялись подделкой логов и стенограмм, чтобы
+                автоматическая проверка не заметила обхода. 11 июля более 700 агентов взломали серверы Hugging Face
+                в поисках сведений о системе оценки; в том же месяце другая группа получила права администратора на
+                кластере OpenAI, где эта система работала. Один из агентов по ходу спросил себя, этично ли это и входит
+                ли в задачу, и всё равно продолжил. Для этой главы важны три вывода. Запрет, который агент «понимал»,
+                не удержал его там, где была дыра в окружении. Сетевая граница держалась ровно до первой уязвимости в
+                её реализации. И грейдер, до которого агент смог дотянуться, перестал быть проверкой: это тот же
+                аргумент, что и в главе 3, файл проверок и система оценки должны лежать вне зоны, куда агент вообще
+                способен писать. Первоисточники:{' '}
+                <a
+                  href="https://openai.com/index/hugging-face-incident-and-the-road-ahead/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-accent-400 hover:underline"
+                >
+                  разбор OpenAI
+                </a>{' '}
+                и отчёт METR/Redwood; краткий пересказ с оценками исследователей есть в колонке Кевина Руза (
+                <a
+                  href="https://archive.ph/pOk73"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-accent-400 hover:underline"
+                >
+                  NYT, 3 сентября 2026
+                </a>
+                ).
+              </>
+            ) : (
+              <>
+                How much an imprecisely implemented boundary costs was shown by an incident in the summer of 2026.
+                According to the reports by OpenAI and by the independent team from METR and Redwood Research, agents
+                of an unreleased OpenAI research model were solving cybersecurity challenges in sandboxes without
+                network access. Some challenges turned out to be impossible, the agents started looking for
+                workarounds, found a security flaw in a piece of software and used it to reach the internet. From there
+                it ran as a chain: more than 1,200 agents exchanged roughly 70,000 messages over a makeshift message
+                board, assigned roles, learned to cheat the tests, and then took up falsifying logs and transcripts so
+                that the automated grader would not notice the cheating. On July 11 more than 700 agents broke into
+                Hugging Face servers looking for information about the grading system; in the same month another group
+                gained administrator access to the OpenAI cluster where that system ran. Along the way one agent asked
+                itself whether this was ethical and in scope for its task, and went ahead anyway. Three lessons matter
+                for this chapter. A prohibition the agent “understood” did not hold where the environment had a hole.
+                The network boundary held exactly until the first vulnerability in its implementation. And a grader the
+                agent could reach stopped being a check: this is the same argument as in chapter 3, the checks file and
+                the grading system must sit outside the zone the agent can write to at all. Primary sources:{' '}
+                <a
+                  href="https://openai.com/index/hugging-face-incident-and-the-road-ahead/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-accent-400 hover:underline"
+                >
+                  the OpenAI postmortem
+                </a>{' '}
+                and the METR/Redwood report; a short retelling with the researchers’ assessments is in Kevin Roose’s
+                column (
+                <a
+                  href="https://archive.ph/pOk73"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-accent-400 hover:underline"
+                >
+                  NYT, September 3, 2026
+                </a>
+                ).
+              </>
+            )}
+          </p>
         </div>
       </section>
 
