@@ -1141,4 +1141,12 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
       en: 'AI Overviews is the Google Search block in which a language model writes a short answer from retrieved pages and places it above the organic links; sources are shown as links beside or below the text. It grew out of the Search Generative Experience experiment (Search Labs, May 2023), launched in the US in May 2024 and reached most countries by the end of that year. The defining trait of the form: the result list is kept, but the first screen belongs to generated text — which is why the argument about this product is less about answer quality than about how much traffic still reaches the sources.',
     },
   },
+  'ironies-of-automation': {
+    id: 'ironies-of-automation',
+    term: { ru: 'Иронии автоматизации', en: 'Ironies of automation' },
+    definition: {
+      ru: 'Чем больше задачи отдано автомату, тем хуже человек готов вмешаться, когда автомат ошибётся: навык ручного управления без практики угасает, следить за системой, которая почти всегда права, скучно и трудно, а вмешательство требуется в самых редких и сложных ситуациях. Это наблюдение Лизанн Бейнбридж из статьи «Ironies of automation» (Automatica, 1983). Следствие для любых схем «модель решает, человек присматривает»: надзор нужно проектировать как работу с тренировкой и реальными полномочиями, а не как подпись под готовым решением.',
+      en: 'The more of a task is handed to the automation, the less prepared the human is to step in when it fails: manual skill decays without practice, watching a system that is almost always right is dull and hard, and intervention is demanded in the rarest and hardest situations. The observation is Lisanne Bainbridge\'s, from "Ironies of automation" (Automatica, 1983). The consequence for any "the model decides, a human watches" scheme: oversight has to be designed as real work with practice and real authority, not as a signature under a finished decision.',
+    },
+  },
 };

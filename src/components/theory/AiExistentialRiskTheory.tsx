@@ -1,6 +1,8 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
+import Term from '@/components/Term';
 
 export default function AiExistentialRiskTheory({ lang }: { lang: string }) {
   const ru = lang === 'ru';
@@ -329,6 +331,64 @@ export default function AiExistentialRiskTheory({ lang }: { lang: string }) {
           <p className="text-neutral-300 leading-relaxed">
             {ru ? (
               <>
+                Есть и третий тип хода — не возражение против посылки, а обходной путь к выводу. Сет Лазар и Алекс
+                Паскаль (<a href="https://www.techpolicy.press/can-democracy-survive-artificial-general-intelligence/" target="_blank" rel="noopener noreferrer" className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300">TechPolicy.Press, 13 февраля 2024</a>) предлагают допустить, что выравнивание
+                удалось: AGI безопасен и делает, что просят. Вторая посылка — о целях, расходящихся с
+                человеческими, — тогда ложна, а вывод об утрате контроля над будущим всё равно достижим. Если
+                система справляется с любой когнитивной задачей лучше людей, включая управление, у людей
+                появляется стимул передавать ей решения на каждом уровне — от клуба и школы до ведомств,
+                ведающих экономикой и правосудием. Власть не захватывают; её отдают из удобства, и авторы называют
+                это «рассеянной прогулкой по политической тропинке из первоцветов».
+              </>
+            ) : (
+              <>
+                There is a third kind of move: not an objection to a premise but a detour to the conclusion. Seth
+                Lazar and Alex Pascal (<a href="https://www.techpolicy.press/can-democracy-survive-artificial-general-intelligence/" target="_blank" rel="noopener noreferrer" className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300">TechPolicy.Press, 13 February 2024</a>) propose granting that
+                alignment succeeds: the AGI is safe and does what it is asked. The second premise, about goals
+                diverging from human values, is then false, yet the conclusion about losing control of the future
+                remains reachable. If the system handles every cognitive task better than people, governance
+                included, people acquire an incentive to hand it decisions at every level, from the club and the
+                school to the agencies that run the economy and the courts. Power is not seized; it is given away
+                out of convenience, which the authors call &quot;an absent-minded walk down a political primrose
+                path&quot;.
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Почему не спасает оговорка «человек будет присматривать», показала ещё Лизанн Бейнбридж в
+                <a href="https://doi.org/10.1016/0005-1098(83)90046-8" target="_blank" rel="noopener noreferrer" className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300">«Ironies of automation»</a> (Automatica, 1983): у оператора, который лишь наблюдает за
+                исправным автоматом, угасает навык и рассеивается внимание, и он хуже всего готов вмешаться
+                именно тогда, когда это нужно, — <Term id="ironies-of-automation" lang={lang}>иронии
+                автоматизации</Term>. Для метода этой комнаты ход поучителен вдвойне. Во-первых, «выравнивание
+                решено» не закрывает спор: к выводу ведёт вторая цепочка, в которой опасная посылка — не цели
+                системы, а наша готовность ей уступать. Во-вторых, это колонка, а не исследование: она указывает
+                на механизм и на прецедент, но не измеряет ни скорость, ни вероятность уступки. Локализовать её
+                посылки — такое же упражнение, как и с цепочкой Грейс. Подробнее о «зелёном свете» для AGI и
+                демократическом контроле — в комнате{' '}
+                <Link href={`/${lang}/rooms/ai-alignment-limits`} className="text-accent-400 hover:underline">«Чьи ценности? Пределы выравнивания»</Link>.
+              </>
+            ) : (
+              <>
+                Why the proviso &quot;a human will keep watch&quot; does not rescue the situation was shown by
+                Lisanne Bainbridge in <a href="https://doi.org/10.1016/0005-1098(83)90046-8" target="_blank" rel="noopener noreferrer" className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300">&quot;Ironies of automation&quot;</a> (Automatica, 1983): an operator
+                who merely monitors a working automaton loses skill and attention and is least ready to intervene
+                exactly when intervention is needed — the{' '}
+                <Term id="ironies-of-automation" lang={lang}>ironies of automation</Term>. For this room&apos;s
+                method the move is instructive twice over. First, &quot;alignment solved&quot; does not close the
+                debate: a second chain leads to the conclusion, and its dangerous premise is not the system&apos;s
+                goals but our willingness to defer. Second, it is an opinion piece, not a study: it points to a
+                mechanism and a precedent but measures neither the speed nor the probability of deference.
+                Locating its premises is the same exercise as with Grace&apos;s chain. The &quot;green light&quot;
+                for AGI and democratic control are covered further in the{' '}
+                <Link href={`/${lang}/rooms/ai-alignment-limits`} className="text-accent-400 hover:underline">&quot;Whose Values? The Limits of Alignment&quot;</Link> room.
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
                 Практический навык, который стоит унести из этой комнаты, шире темы ИИ. Столкнувшись с
                 утверждением о будущем, разложите его на посылки; выясните, какую из них оспаривает
                 собеседник; спросите, что конкретно изменило бы его оценку. Часто обнаруживается, что стороны
@@ -373,6 +433,28 @@ export default function AiExistentialRiskTheory({ lang }: { lang: string }) {
                   className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300"
                 >
                   aiimpacts.org
+                </a>
+              </li>
+              <li>
+                Lazar, S. &amp; Pascal, A. (2024). &quot;Can Democracy Survive Artificial General Intelligence?&quot;. <em>TechPolicy.Press</em>, 13 {ru ? 'февраля' : 'February'} 2024.{' '}
+                <a
+                  href="https://www.techpolicy.press/can-democracy-survive-artificial-general-intelligence/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300"
+                >
+                  techpolicy.press
+                </a>
+              </li>
+              <li>
+                Bainbridge, L. (1983). &quot;Ironies of automation&quot;. <em>Automatica</em> 19(6), 775–779.{' '}
+                <a
+                  href="https://doi.org/10.1016/0005-1098(83)90046-8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300"
+                >
+                  doi.org/10.1016/0005-1098(83)90046-8
                 </a>
               </li>
             </ul>

@@ -344,4 +344,23 @@ export const aiExistentialRiskTasks: LocalizedTask[] = [
       passingScore: 70,
     },
   },
+  {
+    id: 13,
+    type: 'multiple-choice',
+    question: {
+      ru: 'Какую посылку базового аргумента обходит ход Лазара и Паскаля о «тропинке из первоцветов»?',
+      en: 'Which premise of the basic argument does Lazar and Pascal\'s "primrose path" move bypass?',
+    },
+    options: [
+      { ru: 'Вторую — о целях, расходящихся с человеческими: контроль теряется даже при выровненном AGI', en: 'The second, about goals diverging from human values: control is lost even with an aligned AGI' },
+      { ru: 'Первую — о целенаправленности системы', en: 'The first, about the system being goal-directed' },
+      { ru: 'Третью — о превосходстве системы в способностях', en: 'The third, about the system\'s superior capabilities' },
+      { ru: 'Никакую: это обычное возражение против вывода', en: 'None: it is an ordinary objection to the conclusion' },
+    ],
+    answer: { ru: 'Вторую — о целях, расходящихся с человеческими: контроль теряется даже при выровненном AGI', en: 'The second, about goals diverging from human values: control is lost even with an aligned AGI' },
+    explanation: {
+      ru: 'Ход допускает, что выравнивание удалось, и всё равно приходит к утрате контроля: через постепенную передачу решений из удобства и слабость надзора (иронии автоматизации по Бейнбридж). Опасная посылка здесь — не цели системы, а наша готовность уступать.',
+      en: 'The move grants that alignment succeeded and still reaches loss of control: through gradual handover of decisions out of convenience and the weakness of oversight (Bainbridge\'s ironies of automation). The dangerous premise is not the system\'s goals but our willingness to defer.',
+    },
+  },
 ];

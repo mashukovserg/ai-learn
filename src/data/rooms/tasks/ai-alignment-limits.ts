@@ -346,4 +346,47 @@ export const aiAlignmentLimitsTasks: LocalizedTask[] = [
       passingScore: 70,
     },
   },
+  {
+    id: 13,
+    type: 'multiple-choice',
+    question: {
+      ru: 'Чем, по Лазару и Паскалю, «зелёный свет» отличается от ограждений (guardrails)?',
+      en: 'For Lazar and Pascal, how does the "green light" differ from guardrails?',
+    },
+    options: [
+      { ru: 'Ограждения снижают вред от системы, которую решено строить; зелёный свет — решение, строить ли её вообще', en: 'Guardrails reduce the harm of a system already decided on; the green light is the decision whether to build it at all' },
+      { ru: 'Это одно и то же, различие терминологическое', en: 'They are the same thing; the difference is terminological' },
+      { ru: 'Зелёный свет — техническая проверка перед релизом модели', en: 'The green light is a technical check before a model release' },
+      { ru: 'Ограждения устанавливает общество, а зелёный свет даёт компания', en: 'Society sets the guardrails while the company gives the green light' },
+    ],
+    answer: { ru: 'Ограждения снижают вред от системы, которую решено строить; зелёный свет — решение, строить ли её вообще', en: 'Guardrails reduce the harm of a system already decided on; the green light is the decision whether to build it at all' },
+    explanation: {
+      ru: 'Различение из главы 6: ограждения отвечают на «как снизить вред», зелёный свет — на «строить ли». Второй вопрос, по авторам, сегодня решают «несколько человек в ещё меньшем числе компаний», а не общества.',
+      en: 'The distinction from chapter 6: guardrails answer "how to reduce harm", the green light answers "whether to build". The second question, the authors say, is currently settled by "a few people at even fewer tech companies", not by societies.',
+    },
+  },
+  {
+    id: 14,
+    type: 'multiple-select',
+    question: {
+      ru: 'Какие утверждения соответствуют аргументу о «тропинке из первоцветов»? (выберите все верные)',
+      en: 'Which statements match the "primrose path" argument? (select all that apply)',
+    },
+    options: [
+      { ru: 'Он не зависит от того, удастся ли выравнивание: AGI может быть безопасным и послушным', en: 'It does not depend on whether alignment succeeds: the AGI can be safe and obedient' },
+      { ru: 'Власть уходит к системе не через захват, а через постепенную передачу решений из удобства', en: 'Power moves to the system not by seizure but by gradual handover of decisions out of convenience' },
+      { ru: 'Надежда «человек присмотрит» слаба: по Бейнбридж, у надзирающего угасают навык и внимание', en: 'The hope that "a human will keep watch" is weak: per Bainbridge, the supervisor\'s skill and attention decay' },
+      { ru: 'Аргумент требует, чтобы у AGI были цели, расходящиеся с человеческими', en: 'The argument requires the AGI to have goals diverging from human values' },
+      { ru: 'Авторы предлагают запретить исследования AGI законом', en: 'The authors propose banning AGI research by law' },
+    ],
+    answer: [
+      { ru: 'Он не зависит от того, удастся ли выравнивание: AGI может быть безопасным и послушным', en: 'It does not depend on whether alignment succeeds: the AGI can be safe and obedient' },
+      { ru: 'Власть уходит к системе не через захват, а через постепенную передачу решений из удобства', en: 'Power moves to the system not by seizure but by gradual handover of decisions out of convenience' },
+      { ru: 'Надежда «человек присмотрит» слаба: по Бейнбридж, у надзирающего угасают навык и внимание', en: 'The hope that "a human will keep watch" is weak: per Bainbridge, the supervisor\'s skill and attention decay' },
+    ],
+    explanation: {
+      ru: 'Сила хода в том, что он обходится без расходящихся целей: достаточно превосходства системы и нашей готовности уступать. Вместо запрета авторы предлагают «публичную опцию» и реальный контроль институтов, которыми управляют люди.',
+      en: 'The strength of the move is that it needs no diverging goals: the system\'s superiority and our willingness to defer suffice. Instead of a ban the authors propose a "public option" and real control by institutions run by people.',
+    },
+  },
 ];

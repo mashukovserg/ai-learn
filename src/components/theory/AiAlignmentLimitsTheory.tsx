@@ -452,9 +452,147 @@ export default function AiAlignmentLimitsTheory({ lang }: { lang: string }) {
               </>
             )}
           </p>
+        </div>
+      </section>
+
+      {/* Chapter 6: Who gave the green light? Lazar & Pascal on democracy and AGI */}
+      <section className="bg-card-dark border border-border-card rounded-xl p-8">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
+          {ru ? 'Глава 6: Кто дал зелёный свет? Демократия и AGI' : 'Chapter 6: Who Gave the Green Light? Democracy and AGI'}
+        </h2>
+        <div className="space-y-4">
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Шустер и Килов разбирают отдельное решение: почему затронутый должен принять вывод системы по
+                спорному вопросу. Сет Лазар и Алекс Паскаль поднимают тот же вопрос на уровень выше — к решению
+                строить такие системы вообще. Их колонка <a href="https://www.techpolicy.press/can-democracy-survive-artificial-general-intelligence/" target="_blank" rel="noopener noreferrer" className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300">«Can Democracy Survive Artificial General Intelligence?»</a>{' '}
+                вышла на TechPolicy.Press 13 февраля 2024 года — в год, когда выборы проходили более чем в сорока
+                странах, где живёт больше 40% населения планеты. Лазар — философ из Австралийского национального
+                университета, руководитель лаборатории MINT; Паскаль — старший научный сотрудник Центра Эша в
+                Гарвардской школе Кеннеди, в 2021–2023 годах работал в аппарате Белого дома по внутренней политике.
+                Под AGI они, опираясь на рамку <a href="https://arxiv.org/abs/2311.02462" target="_blank" rel="noopener noreferrer" className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300">«Levels of AGI»</a> от Google DeepMind (Morris и др., 2023),
+                понимают вычислительную систему, которая выполняет любую когнитивную задачу человека на уровне
+                медианного человека или выше, — и оговаривают, что нынешние модели этому определению соответствуют
+                разве что в языковой части.
+              </>
+            ) : (
+              <>
+                Schuster and Kilov examine a single decision: why an affected person should accept a system&apos;s
+                verdict on a contested question. Seth Lazar and Alex Pascal lift the same question one level up, to
+                the decision to build such systems at all. Their piece{' '}
+                <a href="https://www.techpolicy.press/can-democracy-survive-artificial-general-intelligence/" target="_blank" rel="noopener noreferrer" className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300">&quot;Can Democracy Survive Artificial General Intelligence?&quot;</a> appeared on
+                TechPolicy.Press on 13 February 2024, in a year when more than forty countries, home to over 40% of
+                the world&apos;s population, held elections. Lazar is a philosopher at the Australian National
+                University who leads the MINT lab; Pascal is a senior fellow at the Ash Center of the Harvard Kennedy
+                School and served on the White House domestic policy staff in 2021–2023. Following Google
+                DeepMind&apos;s <a href="https://arxiv.org/abs/2311.02462" target="_blank" rel="noopener noreferrer" className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300">&quot;Levels of AGI&quot;</a> framework (Morris et al., 2023), they take AGI
+                to mean a computational system that performs any cognitive task humans perform at the level of the
+                median human or better, and they note that current models meet that bar, at most, on the linguistic
+                part.
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Первый ход авторов — различение, которое легко пропустить. Ограждения (guardrails) отвечают на
+                вопрос «как снизить вред от системы, которую решено строить». <strong>Зелёный свет</strong> — на
+                вопрос «строить ли её вообще». Второй вопрос сегодня решают, по формулировке колонки, «несколько
+                человек в ещё меньшем числе компаний». Корпоративные эксперименты с управлением — советы
+                директоров, попечительские структуры, сбор «демократических вкладов» — этого не меняют: совет
+                директоров не представляет общества, чью жизнь технология перестроит, а «демократические вклады —
+                не то же самое, что демократический контроль». Ноябрьский кризис управления в OpenAI 2023 года
+                авторы приводят как пример: когда попечительская структура разошлась с интересами инвесторов,
+                победили инвесторы. Прецедент обратного они тоже называют: клонирование человека общества сумели
+                притормозить, когда решили это сделать. Их предложение — <strong>«публичная опция»</strong> в ИИ:
+                исследования на общественные средства и в общественных интересах, на порядок масштабнее программы
+                National AI Research Resource.
+              </>
+            ) : (
+              <>
+                The authors&apos; first move is a distinction that is easy to miss. Guardrails answer the question
+                &quot;how do we reduce the harm of a system we have decided to build&quot;. The{' '}
+                <strong>green light</strong> answers &quot;should it be built at all&quot;. The second question is
+                currently settled, in the piece&apos;s phrase, by &quot;a few people at even fewer tech
+                companies&quot;. Corporate governance experiments — boards, trustee structures, &quot;democratic
+                inputs&quot; programmes — do not change that: a board does not represent the societies whose lives
+                the technology will rearrange, and &quot;democratic inputs are not the same as democratic
+                control&quot;. OpenAI&apos;s governance crisis of November 2023 is their example: when the trustee
+                structure diverged from investor interests, the investors won. They also name the opposite
+                precedent: societies did slow human cloning once they chose to. Their proposal is an AI{' '}
+                <strong>&quot;public option&quot;</strong>: publicly funded research in the public interest, an order
+                of magnitude more ambitious than the National AI Research Resource.
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Второй ход интереснее, потому что он не зависит от того, удастся ли выравнивание. Допустим, AGI
+                построен, безопасен и делает, что просят. Если он справляется с любой когнитивной задачей лучше
+                людей, то и с управлением тоже — и появится стимул передавать ему решения на каждом уровне: в
+                клубе, школе, компании, затем в ведомствах, которые ведают экономикой, транспортом,
+                здравоохранением, правосудием. Никто не захватывает власть; люди сами, из удобства, шаг за шагом
+                её отдают. Авторы называют это «рассеянной прогулкой по политической тропинке из первоцветов».
+                Почему на «человек будет присматривать» надеяться не стоит, известно давно: Лизанн Бейнбридж в
+                статье «Ironies of automation» (Automatica, 1983) показала, что автоматизация задачи с расчётом
+                на вмешательство человека в критический момент устроена против человека — навык без практики
+                угасает, внимание к рутинно исправной системе рассеивается, и оператор хуже всего готов ровно
+                тогда, когда нужен. Этот эффект есть в глоссарии под именем{' '}
+                <Term id="ironies-of-automation" lang={lang}>иронии автоматизации</Term>.
+              </>
+            ) : (
+              <>
+                The second move is more interesting because it does not depend on whether alignment succeeds.
+                Suppose AGI is built, safe, and does what it is asked. If it handles every cognitive task better
+                than people, it handles governance better too, and there will be an incentive to hand it decisions
+                at every level: the club, the school, the company, then the agencies that run the economy,
+                transport, healthcare, and justice. Nobody seizes power; people give it away step by step, out of
+                convenience. The authors call this &quot;an absent-minded walk down a political primrose
+                path&quot;. Why &quot;a human will keep an eye on it&quot; is a poor bet has been known for
+                decades: Lisanne Bainbridge&apos;s &quot;Ironies of automation&quot; (Automatica, 1983) showed that
+                automating a task while counting on a human to step in at the critical moment works against the
+                human — skill decays without practice, attention to a routinely correct system drifts, and the
+                operator is least prepared exactly when needed. The effect lives in the glossary as the{' '}
+                <Term id="ironies-of-automation" lang={lang}>ironies of automation</Term>.
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Сложите оба хода с разбором Шустера и Килова — получится один механизм в двух масштабах. «Ползучая
+                технократия» из главы 5 — это спорные решения, тихо переезжающие в системы; «тропинка из
+                первоцветов» — те же решения, переезжающие вместе с институтами. Ответ у обеих статей
+                процедурный: институты, которыми управляют люди, должны быть способны и обязаны осуществлять
+                реальный контроль, и для этого, по Лазару и Паскалю, может понадобиться перестроить «стареющие
+                институты конституционной демократии». Читать колонку стоит с оговорками. Это авторская позиция, а
+                не исследование; сроки «2–5 лет до AGI» — заявления разработчиков, которые авторы пересказывают, а
+                не проверяют; «публичная опция» описана как направление, без бюджета и устройства. Но рабочий
+                вопрос из неё вынести можно. К вопросу главы 5 «почему затронутый должен принять это решение?»
+                добавляется ещё один: «<strong>кто разрешил построить систему, которая это решает, и мог ли он
+                сказать нет?</strong>».
+              </>
+            ) : (
+              <>
+                Put both moves next to Schuster and Kilov and you get one mechanism at two scales. The
+                &quot;creeping technocracy&quot; of chapter 5 is contested decisions quietly migrating into systems;
+                the &quot;primrose path&quot; is the same decisions migrating together with the institutions. Both
+                papers answer procedurally: institutions run by people must be able, and expected, to exercise
+                meaningful control, which for Lazar and Pascal may require rethinking &quot;the aging institutions
+                of constitutional democracy&quot;. Read the piece with caveats. It is an opinion essay, not a study;
+                the &quot;2–5 years to AGI&quot; timeline is a developers&apos; claim the authors relay rather than
+                test; the &quot;public option&quot; is a direction, with no budget or design attached. But one
+                working question can be taken from it. Next to chapter 5&apos;s &quot;why should an affected person
+                accept this decision?&quot; goes a second one: &quot;<strong>who authorized building the system that
+                decides it, and could they have said no?</strong>&quot;.
+              </>
+            )}
+          </p>
           <div className="bg-deep border border-border-subtle rounded-lg p-5 my-4">
             <p className="text-xs text-neutral-500 font-medium mb-3 uppercase tracking-wider">
-              {ru ? 'Источник' : 'Source'}
+              {ru ? 'Источники' : 'Sources'}
             </p>
             <ul className="text-sm text-neutral-400 space-y-2">
               <li>
@@ -468,6 +606,39 @@ export default function AiAlignmentLimitsTheory({ lang }: { lang: string }) {
                   className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300"
                 >
                   doi.org/10.1007/s00146-025-02427-2
+                </a>
+              </li>
+              <li>
+                Lazar, S. &amp; Pascal, A. (2024). &quot;Can Democracy Survive Artificial General Intelligence?&quot;. <em>TechPolicy.Press</em>, 13 {ru ? 'февраля' : 'February'} 2024.{' '}
+                <a
+                  href="https://www.techpolicy.press/can-democracy-survive-artificial-general-intelligence/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300"
+                >
+                  techpolicy.press
+                </a>
+              </li>
+              <li>
+                Bainbridge, L. (1983). &quot;Ironies of automation&quot;. <em>Automatica</em> 19(6), 775–779.{' '}
+                <a
+                  href="https://doi.org/10.1016/0005-1098(83)90046-8"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300"
+                >
+                  doi.org/10.1016/0005-1098(83)90046-8
+                </a>
+              </li>
+              <li>
+                Morris, M. R., Sohl-Dickstein, J., Fiedel, N., Warkentin, T., Dafoe, A., Faust, A., Farabet, C. &amp; Legg, S. (2023). &quot;Levels of AGI for Operationalizing Progress on the Path to AGI&quot;. arXiv:2311.02462.{' '}
+                <a
+                  href="https://arxiv.org/abs/2311.02462"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300"
+                >
+                  arxiv.org/abs/2311.02462
                 </a>
               </li>
             </ul>
