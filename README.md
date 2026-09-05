@@ -165,6 +165,13 @@ npm run test:coverage  # v8 coverage report
 ```
 The suite codifies the rules from `docs/AGENTS.md` → "Task data validation gate" and "Task ID sequencing" against `ROOMS_METADATA`, `PATHS_METADATA`, and `ROOM_TASKS`. The 47 pre-existing data defects surfaced by the initial run were fixed on 2026-07-15 (see `docs/TESTING.md` for history), and `npm run test` is now part of `check-all` — the suite gates every change.
 
+### Anki deck (offline review of every room)
+`docs/anki/ai-learn.apkg` turns all room tasks into flashcards: two top-level decks (`AI-Learn RU`, `AI-Learn EN`), one subdeck per room, and the room name on the back of every card. Regenerate after content changes:
+```bash
+npx vitest run --config scripts/anki/vitest.config.ts   # dumps scripts/anki/rooms.json
+python3 scripts/anki/build_deck.py scripts/anki/rooms.json docs/anki/ai-learn.apkg   # needs `pip install genanki`
+```
+
 ## Project docs
 All docs are available in English and Russian (`.ru.md`):
 - `docs/PROGRESS.md` / `docs/PROGRESS.ru.md`: implementation status and milestones

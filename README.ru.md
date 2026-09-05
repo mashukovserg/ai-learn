@@ -166,6 +166,13 @@ npm run test:coverage  # отчёт coverage (v8)
 ```
 Набор кодифицирует правила из `docs/AGENTS.md` → «Task data validation gate» и «Task ID sequencing» против `ROOMS_METADATA`, `PATHS_METADATA` и `ROOM_TASKS`. Первый запуск выявил 47 заранее существовавших дефектов данных — стратегия и тристаж-лист в `docs/TESTING.md`. `npm run test` намеренно **не** включён в `check-all`, пока тристаж не разгребён.
 
+### Anki-колода (офлайн-повторение всех комнат)
+`docs/anki/ai-learn.apkg` превращает все задания комнат в карточки: две колоды верхнего уровня (`AI-Learn RU`, `AI-Learn EN`), по подколоде на комнату, на обороте каждой карточки — название комнаты. Пересобрать после правок контента:
+```bash
+npx vitest run --config scripts/anki/vitest.config.ts   # пишет scripts/anki/rooms.json
+python3 scripts/anki/build_deck.py scripts/anki/rooms.json docs/anki/ai-learn.apkg   # нужен `pip install genanki`
+```
+
 ## Документация проекта
 - `docs/PROGRESS.md` / `docs/PROGRESS.ru.md`: статус реализации и вехи
 - `docs/BACKLOG.md` / `docs/BACKLOG.ru.md`: инженерный бэклог
