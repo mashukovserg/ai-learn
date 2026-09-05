@@ -38,6 +38,7 @@ AI learning platform with interactive theory + tasks, built with Next.js App Rou
 - Post-ChatGPT Era Chapter 1 now includes a glossary tooltip for the term "Code Red" / "Красный код".
 - Post-ChatGPT Era room now uses a dedicated cover image (`/images/post-chatgpt-era.webp`) on room cards and room header.
 - Singularity in AI Debates room now uses a dedicated cover image (`/images/ai-singularity.avif`) on room cards and room header.
+- Room header cover images removed (2026-09-05, owner decision): the room page no longer renders a cover, the `image` field is gone from `ROOMS_METADATA` and its type, and the generated cover assets under `public/images/*` were deleted. Only `public/images/rooms/**` (real screenshots) and `public/images/tasks/**` (task illustrations) remain.
 - Implemented AC-101 room `agent-coding-foundations` with full theory + 10 localized tasks and added Agent Coding path wiring (`/${lang}/paths/agent-coding`).
 - Implemented AC-102 room `agentic-coding-tools` with full theory + 10 localized tasks and wired it into the Agent Coding path (`/${lang}/paths/agent-coding`).
 - Implemented AC-201 room `agentic-cli-tools` with full theory + 10 localized tasks focused on CLI discovery/change/verify loops and safe rollback routines.

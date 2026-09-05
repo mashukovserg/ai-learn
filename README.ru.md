@@ -38,6 +38,7 @@
 - В комнате Post-ChatGPT Era в главе 1 добавлен tooltip для термина "Красный код" / "Code Red".
 - Для комнаты Post-ChatGPT Era добавлена отдельная обложка (`/images/post-chatgpt-era.webp`) в карточках и в хедере комнаты.
 - Для комнаты «Сингулярность в AI-дебатах» добавлена отдельная обложка (`/images/ai-singularity.avif`) в карточках и в хедере комнаты.
+- Обложки в шапке комнаты убраны (05.09.2026, решение владельца): страница комнаты больше не рендерит обложку, поле `image` удалено из `ROOMS_METADATA` и из типа, сгенерированные файлы обложек в `public/images/*` удалены. Остались только `public/images/rooms/**` (реальные скриншоты) и `public/images/tasks/**` (иллюстрации задач).
 - Реализована комната AC-101 `agent-coding-foundations` с полной теорией и 10 локализованными заданиями, а также подключен путь Agent Coding (`/${lang}/paths/agent-coding`).
 - Реализована комната AC-102 `agentic-coding-tools` с полной теорией и 10 локализованными заданиями, комната подключена в путь Agent Coding (`/${lang}/paths/agent-coding`).
 - Реализована комната AC-201 `agentic-cli-tools` с полной теорией и 10 локализованными заданиями по CLI-циклу (discovery/change/verify), quality-gates и rollback.
