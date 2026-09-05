@@ -280,6 +280,37 @@ table{border-collapse:collapse;width:100%;margin-top:18px;font-size:14px;min-wid
 </section>
 
 <section>
+  <h2>Типографика — к развилке 2</h2>
+  <p class="intro">Отдельная полка: референс не про структуру, а про шрифт. Владелец прислал 05.09.2026 с вопросом «какой шрифт тут используется?». Ответ измерен в DOM, а не на глаз.</p>
+
+<article class="ref">
+  <figure><a href="https://www.techpolicy.press/can-democracy-survive-artificial-general-intelligence/" target="_blank" rel="noreferrer"><img src="design-refs/techpolicy-article.jpg" alt="TechPolicy.Press — шапка статьи: заголовок антиквой Libre Baskerville, навигация гротеском Lexend" loading="lazy"></a></figure>
+  <div class="notes">
+    <p class="kind">редакционный сайт · светлая · 1440 px · 05.09.2026</p>
+    <h3><a href="https://www.techpolicy.press/can-democracy-survive-artificial-general-intelligence/" target="_blank" rel="noreferrer">TechPolicy.Press — заголовок и шапка</a></h3>
+    <dl>
+      <dt>Шрифты</dt><dd>Заголовок статьи — <strong>Libre Baskerville 700, 32 px</strong>. Навигация, подписи авторов, рубрики — <strong>Lexend 400</strong>, 12–14 px. Roboto объявлен в CSS, но ни один видимый элемент его не использует.</dd>
+      <dt>Взять</dt><dd>Разделение ролей: антиква только в одном месте (заголовок), всё остальное — гротеск. У нас для этого уже есть отдельные токены <code>--font-ui</code> и <code>--font-reading</code>.</dd>
+      <dt>Не брать</dt><dd>Саму антикву: у Libre Baskerville на Google Fonts нет кириллицы (только <code>latin</code>, <code>latin-ext</code>).</dd>
+    </dl>
+  </div>
+</article>
+<article class="ref">
+  <figure><a href="https://www.techpolicy.press/can-democracy-survive-artificial-general-intelligence/" target="_blank" rel="noreferrer"><img src="design-refs/techpolicy-body.jpg" alt="TechPolicy.Press — колонка чтения: абзацы Lexend 300, 16 px с интерлиньяжем 28 px" loading="lazy"></a></figure>
+  <div class="notes">
+    <p class="kind">редакционный сайт · светлая · 1440 px · 05.09.2026</p>
+    <h3><a href="https://www.techpolicy.press/can-democracy-survive-artificial-general-intelligence/" target="_blank" rel="noreferrer">TechPolicy.Press — колонка чтения</a></h3>
+    <dl>
+      <dt>Шрифты</dt><dd>Тело статьи — <strong>Lexend 300, 16 px / 28 px</strong> (интерлиньяж 1,75), колонка ~746 px. Подзаголовки — Lexend 700, 26,6 px. Подписи к иллюстрациям — Lexend 400, 14 px.</dd>
+      <dt>Взять</dt><dd>Ритм: лёгкое начертание и щедрый интерлиньяж делают страницу спокойной без единой рамки. Проверяемая гипотеза для наших абзацев теории — IBM Plex Sans 300 с <code>line-height: 1.75</code>.</dd>
+      <dt>Не брать</dt><dd>Lexend как семью: на Google Fonts только <code>latin</code>, <code>latin-ext</code>, <code>vietnamese</code> — на русской по умолчанию платформе каждая кириллическая буква упадёт в системный шрифт. Строка ~90 символов — длиннее нашей нормы 65–70.</dd>
+      <dt>Где у нас</dt><dd>Развилка 2a в <code>DESIGN_FORKS.md</code> — записано как «заблокировано — нет кириллицы», с кандидатами на лёгкий гротеск с кириллицей (Golos Text, PT Sans, Manrope).</dd>
+    </dl>
+  </div>
+</article>
+</section>
+
+<section>
   <h2>Как это ложится на наши страницы</h2>
   <p class="intro">Рабочая гипотеза для макета, не решение. Каждая строка опирается на конкретный референс выше.</p>
   <div class="tablewrap"><table>
