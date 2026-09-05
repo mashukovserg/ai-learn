@@ -41,16 +41,16 @@ export default function SearchRetrievalToSynthesisTheory({ lang }: { lang: strin
                 Это разделение было не столько замыслом, сколько следствием технической скромности. Система не
                 умела ответить на вопрос — она умела найти документы, в которых ответ, вероятно, содержится.
                 Чираг Шах и Эмили Бендер называют такое устройство <strong>системой доступа к информации</strong>{' '}
-                и подчёркивают: её выход — не утверждение о мире, а указание на то, где утверждения о мире
-                находятся (<a href="https://doi.org/10.1145/3498366.3505816" target="_blank" rel="noopener noreferrer" className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300">Shah &amp; Bender 2022</a>). Ответственность за само утверждение оставалась на источнике и на читателе.
+                — и из их разбора следует, что её выход — не утверждение о мире, а указание на то, где
+                утверждения о мире находятся (<a href="https://doi.org/10.1145/3498366.3505816" target="_blank" rel="noopener noreferrer" className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300">Shah &amp; Bender 2022</a>). Ответственность за само утверждение оставалась на источнике и на читателе.
               </>
             ) : (
               <>
                 That division was less a design philosophy than a consequence of technical modesty. The system
                 could not answer a question; it could find documents in which an answer probably sits. Chirag
-                Shah and Emily Bender call such a system an <strong>information access system</strong> and press
-                the point: its output is not a claim about the world but a pointer to where claims about the
-                world live (<a href="https://doi.org/10.1145/3498366.3505816" target="_blank" rel="noopener noreferrer" className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300">Shah &amp; Bender 2022</a>). Responsibility for the claim itself stayed with the source and the reader.
+                Shah and Emily Bender call such a system an <strong>information access system</strong>, and it
+                follows from their analysis that its output is not a claim about the world but a pointer to
+                where claims about the world live (<a href="https://doi.org/10.1145/3498366.3505816" target="_blank" rel="noopener noreferrer" className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300">Shah &amp; Bender 2022</a>). Responsibility for the claim itself stayed with the source and the reader.
               </>
             )}
           </p>
