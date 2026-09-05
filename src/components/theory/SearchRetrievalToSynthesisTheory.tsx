@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Link from 'next/link';
 import Term from '@/components/Term';
 import Screenshot from '@/components/Screenshot';
 
@@ -41,7 +42,7 @@ export default function SearchRetrievalToSynthesisTheory({ lang }: { lang: strin
                 умела ответить на вопрос — она умела найти документы, в которых ответ, вероятно, содержится.
                 Чираг Шах и Эмили Бендер называют такое устройство <strong>системой доступа к информации</strong>{' '}
                 и подчёркивают: её выход — не утверждение о мире, а указание на то, где утверждения о мире
-                находятся. Ответственность за само утверждение оставалась на источнике и на читателе.
+                находятся (<a href="https://doi.org/10.1145/3498366.3505816" target="_blank" rel="noopener noreferrer" className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300">Shah &amp; Bender 2022</a>). Ответственность за само утверждение оставалась на источнике и на читателе.
               </>
             ) : (
               <>
@@ -49,7 +50,7 @@ export default function SearchRetrievalToSynthesisTheory({ lang }: { lang: strin
                 could not answer a question; it could find documents in which an answer probably sits. Chirag
                 Shah and Emily Bender call such a system an <strong>information access system</strong> and press
                 the point: its output is not a claim about the world but a pointer to where claims about the
-                world live. Responsibility for the claim itself stayed with the source and the reader.
+                world live (<a href="https://doi.org/10.1145/3498366.3505816" target="_blank" rel="noopener noreferrer" className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300">Shah &amp; Bender 2022</a>). Responsibility for the claim itself stayed with the source and the reader.
               </>
             )}
           </p>
@@ -111,7 +112,7 @@ export default function SearchRetrievalToSynthesisTheory({ lang }: { lang: strin
                 шагов. Запрос превращается в одно или несколько поисковых обращений; найденные фрагменты
                 документов складываются в контекст языковой модели; модель пишет связный текст, опираясь на этот
                 контекст. Механика извлечения — та же <Term id="rag" lang={lang}>RAG</Term>, что разобрана в
-                комнате «RAG: Подключение к реальности». Новое здесь не в извлечении, а в том, что выдаётся
+                комнате <Link href={`/${lang}/rooms/ai-rag`} className="text-accent-400 hover:underline">«RAG: Подключение к реальности»</Link>. Новое здесь не в извлечении, а в том, что выдаётся
                 наружу: наружу выдаётся текст.
               </>
             ) : (
@@ -120,7 +121,7 @@ export default function SearchRetrievalToSynthesisTheory({ lang }: { lang: strin
                 query is turned into one or more retrieval calls; the retrieved document fragments are loaded
                 into a language model&apos;s context; the model writes a coherent text grounded in that context.
                 The retrieval mechanics are the same <Term id="rag" lang={lang}>RAG</Term> covered in the
-                &quot;RAG: Connecting to Reality&quot; room. What is new is not the retrieval but what leaves
+                <Link href={`/${lang}/rooms/ai-rag`} className="text-accent-400 hover:underline">&quot;RAG: Connecting to Reality&quot;</Link> room. What is new is not the retrieval but what leaves
                 the system: what leaves the system is prose.
               </>
             )}
@@ -128,7 +129,7 @@ export default function SearchRetrievalToSynthesisTheory({ lang }: { lang: strin
           <p className="text-neutral-300 leading-relaxed">
             {ru ? (
               <>
-                Сегодня это три разные продуктовые формы. AI Overviews у Google ставит сгенерированный блок над
+                Сегодня это три разные продуктовые формы. <Term id="ai-overviews" lang={lang}>AI Overviews</Term> у Google ставит сгенерированный блок над
                 органическими ссылками — список никуда не делся, но потерял первый экран. Perplexity строит
                 продукт вокруг ответа: ссылки присутствуют как чипы-сноски внутри абзаца. ChatGPT Search
                 встраивает веб в диалог, где обращение к поиску — один из шагов рассуждения. Компании разные,
@@ -136,7 +137,7 @@ export default function SearchRetrievalToSynthesisTheory({ lang }: { lang: strin
               </>
             ) : (
               <>
-                Today this comes in three product shapes. Google&apos;s AI Overviews places a generated block
+                Today this comes in three product shapes. Google&apos;s <Term id="ai-overviews" lang={lang}>AI Overviews</Term> places a generated block
                 above the organic links — the list is still there, but it lost the first screen. Perplexity
                 builds the product around the answer: sources appear as citation chips inside the paragraph.
                 ChatGPT Search folds the web into a dialogue where a search call is one step of reasoning.
@@ -194,7 +195,7 @@ export default function SearchRetrievalToSynthesisTheory({ lang }: { lang: strin
           <p className="text-neutral-300 leading-relaxed">
             {ru ? (
               <>
-                Статья «Situating Search» вышла в марте 2022 года на конференции CHIIR — за восемь месяцев до
+                Статья <a href="https://doi.org/10.1145/3498366.3505816" target="_blank" rel="noopener noreferrer" className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300">«Situating Search»</a> вышла в марте 2022 года на конференции CHIIR — за восемь месяцев до
                 публичного запуска ChatGPT. Шах и Бендер разбирали тогда ещё гипотетическое предложение:
                 заменить выдачу документов языковой моделью, отвечающей напрямую. Для чтения спора сегодня это
                 существенно. Перед нами не реакция на популярный продукт, а разбор идеи, сделанный до того, как
@@ -202,7 +203,7 @@ export default function SearchRetrievalToSynthesisTheory({ lang }: { lang: strin
               </>
             ) : (
               <>
-                &quot;Situating Search&quot; appeared in March 2022 at the CHIIR conference — eight months
+                <a href="https://doi.org/10.1145/3498366.3505816" target="_blank" rel="noopener noreferrer" className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300">&quot;Situating Search&quot;</a> appeared in March 2022 at the CHIIR conference — eight months
                 before ChatGPT&apos;s public launch. Shah and Bender were analysing a then-hypothetical
                 proposal: replace the document list with a language model that answers directly. That matters
                 for how the debate reads today. This is not a reaction to a popular product but an analysis of
@@ -253,7 +254,7 @@ export default function SearchRetrievalToSynthesisTheory({ lang }: { lang: strin
           <p className="text-neutral-300 leading-relaxed">
             {ru ? (
               <>
-                В 2024 году Шах и Бендер выпустили конструктивное продолжение в ACM Transactions on the Web:
+                В 2024 году Шах и Бендер выпустили конструктивное продолжение в <a href="https://doi.org/10.1145/3649468" target="_blank" rel="noopener noreferrer" className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300">ACM Transactions on the Web</a>:
                 какими должны быть хорошие инструменты доступа к информации и здоровый веб. Их критерии —
                 сохранённая связь утверждения с источником, поддержка пользовательского цикла вместо его
                 сокращения, явное разделение того, что система нашла, и того, что она сформулировала сама.
@@ -262,7 +263,7 @@ export default function SearchRetrievalToSynthesisTheory({ lang }: { lang: strin
               </>
             ) : (
               <>
-                In 2024 Shah and Bender published a constructive sequel in ACM Transactions on the Web: what
+                In 2024 Shah and Bender published a constructive sequel in <a href="https://doi.org/10.1145/3649468" target="_blank" rel="noopener noreferrer" className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300">ACM Transactions on the Web</a>: what
                 good information-access tools and a healthy web would look like. Their criteria — keep the link
                 between claim and source intact, support the user&apos;s loop instead of shortening it, and mark
                 clearly what the system found versus what it composed itself. Their position is therefore not
@@ -374,7 +375,7 @@ export default function SearchRetrievalToSynthesisTheory({ lang }: { lang: strin
           <p className="text-neutral-300 leading-relaxed">
             {ru ? (
               <>
-                У сдвига есть слой, невидимый из интерфейса, — экономика источников. Шах и Уэст (arXiv:2402.11707,
+                У сдвига есть слой, невидимый из интерфейса, — экономика источников. Шах и Уэст (<a href="https://arxiv.org/abs/2402.11707" target="_blank" rel="noopener noreferrer" className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300">arXiv:2402.11707</a>,
                 2024) описывают петлю обратной связи: синтез отвечает на вопрос на месте, клик по источнику не
                 происходит, источник теряет трафик, а вместе с ним рекламу, подписки и мотивацию публиковать.
                 Вопрос здесь не о справедливости, а об устойчивости: генеративный поиск питается текстами,
@@ -383,7 +384,7 @@ export default function SearchRetrievalToSynthesisTheory({ lang }: { lang: strin
             ) : (
               <>
                 The shift has a layer invisible from the interface: the economics of sources. Shah and West
-                (arXiv:2402.11707, 2024) describe a feedback loop — the synthesis answers the question in place,
+                (<a href="https://arxiv.org/abs/2402.11707" target="_blank" rel="noopener noreferrer" className="text-accent-400 border-b border-accent-500/40 hover:text-accent-300">arXiv:2402.11707</a>, 2024) describe a feedback loop — the synthesis answers the question in place,
                 the click to the source never happens, the source loses traffic and with it advertising,
                 subscriptions and the incentive to publish. The question is not fairness but sustainability:
                 generative search feeds on texts whose production it devalues.
@@ -708,9 +709,25 @@ export default function SearchRetrievalToSynthesisTheory({ lang }: { lang: strin
           <div className="bg-accent-500/5 border-l-4 border-accent-500 p-6 my-4">
             <h4 className="font-bold text-heading mb-2">{ru ? 'Куда дальше' : 'Where to Go Next'}</h4>
             <p className="text-neutral-400 leading-relaxed text-sm">
-              {ru
-                ? 'Механика извлечения, на которой стоит генеративный поиск, — в комнате «RAG: Подключение к реальности». Практика цитирования и калибровки доверия — в «Исследования и заземление (grounding)». Как агент планирует подзапросы и собирает ответ с ссылками — в «Глубокий поиск в AI-агентах». Строгий протокол проверки источников для академической работы — в «Литературный обзор в эпоху ИИ».'
-                : 'The retrieval mechanics generative search stands on are in the "RAG: Connecting to Reality" room. Citation practice and trust calibration are in "Research & Grounding". How an agent plans sub-queries and assembles a cited answer is in "Deep Search in AI Agents". The rigorous source-verification protocol for academic work is in "Literature Review in the AI Era".'}
+              {ru ? (
+                <>
+                  Механика извлечения, на которой стоит генеративный поиск, — в комнате{' '}
+                  <Link href={`/${lang}/rooms/ai-rag`} className="text-accent-400 hover:underline">«RAG: Подключение к реальности»</Link>. Практика цитирования и калибровки доверия — в{' '}
+                  <Link href={`/${lang}/rooms/research-grounding`} className="text-accent-400 hover:underline">«Исследования и заземление (grounding)»</Link>. Как агент планирует подзапросы и
+                  собирает ответ с ссылками — в <Link href={`/${lang}/rooms/deep-search-agents`} className="text-accent-400 hover:underline">«Глубокий поиск в AI-агентах»</Link>. Строгий
+                  протокол проверки источников для академической работы — в{' '}
+                  <Link href={`/${lang}/rooms/ai-literature-review`} className="text-accent-400 hover:underline">«Литературный обзор в эпоху ИИ»</Link>.
+                </>
+              ) : (
+                <>
+                  The retrieval mechanics generative search stands on are in the{' '}
+                  <Link href={`/${lang}/rooms/ai-rag`} className="text-accent-400 hover:underline">&quot;RAG: Connecting to Reality&quot;</Link> room. Citation practice and trust calibration are
+                  in <Link href={`/${lang}/rooms/research-grounding`} className="text-accent-400 hover:underline">&quot;Research &amp; Grounding&quot;</Link>. How an agent plans sub-queries and
+                  assembles a cited answer is in <Link href={`/${lang}/rooms/deep-search-agents`} className="text-accent-400 hover:underline">&quot;Deep Search in AI Agents&quot;</Link>. The
+                  rigorous source-verification protocol for academic work is in{' '}
+                  <Link href={`/${lang}/rooms/ai-literature-review`} className="text-accent-400 hover:underline">&quot;Literature Review in the AI Era&quot;</Link>.
+                </>
+              )}
             </p>
           </div>
         </div>

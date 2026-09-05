@@ -1133,4 +1133,12 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
       en: 'Some files in a repository matter more than others: the checks configuration, database migrations, the shared rules file for agents. You want a change to them never to slip past the person responsible — and you do not want to have to remember that. CODEOWNERS is a file that maps paths to owners; the platform assigns them as reviewers on its own and, together with branch protection, makes their approval mandatory. Ownership becomes a rule of the system rather than a verbal agreement.',
     },
   },
+  'ai-overviews': {
+    id: 'ai-overviews',
+    term: { ru: 'AI Overviews', en: 'AI Overviews' },
+    definition: {
+      ru: 'AI Overviews — блок Google Поиска, в котором языковая модель пишет короткий ответ по найденным страницам и ставит его над органическими ссылками; источники показаны ссылками сбоку или под текстом. Вырос из эксперимента Search Generative Experience (Search Labs, май 2023), запущен в США в мае 2024 года и к концу 2024-го расширен на большинство стран. Ключевая особенность формы: список результатов сохранён, но первый экран занимает сгенерированный текст — поэтому спор об этом продукте идёт не о качестве ответов, а о том, сколько трафика доходит до источников.',
+      en: 'AI Overviews is the Google Search block in which a language model writes a short answer from retrieved pages and places it above the organic links; sources are shown as links beside or below the text. It grew out of the Search Generative Experience experiment (Search Labs, May 2023), launched in the US in May 2024 and reached most countries by the end of that year. The defining trait of the form: the result list is kept, but the first screen belongs to generated text — which is why the argument about this product is less about answer quality than about how much traffic still reaches the sources.',
+    },
+  },
 };
