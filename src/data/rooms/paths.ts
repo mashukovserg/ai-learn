@@ -56,6 +56,7 @@ export const PATHS_METADATA: PathMetadata[] = [
       'ai-singularity',
       'ai-existential-risk',
       'ai-alignment-limits',
+      'ai-political-philosophy',
     ],
   },
   {

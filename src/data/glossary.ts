@@ -5,6 +5,38 @@ export interface GlossaryTerm {
 }
 
 export const GLOSSARY: Record<string, GlossaryTerm> = {
+  'political-legitimacy': {
+    id: 'political-legitimacy',
+    term: { ru: 'Политическая легитимность', en: 'Political legitimacy' },
+    definition: {
+      ru: 'Политическая легитимность — наличие оснований считать осуществление власти оправданным для тех, кто ей подчинён. В контексте ИИ точность и полезность системы не создают легитимность автоматически: важны полномочие определять цель, публичность правил, подотчётность и возможность оспорить решение.',
+      en: 'Political legitimacy is the presence of reasons for those subject to power to regard its exercise as justified. In AI, accuracy and utility do not automatically create legitimacy: authority to define the objective, public rules, accountability, and the ability to challenge a decision all matter.',
+    },
+  },
+  'public-reason': {
+    id: 'public-reason',
+    term: { ru: 'Публичный разум', en: 'Public reason' },
+    definition: {
+      ru: 'Публичный разум — ролзианское требование обосновывать фундаментальные политические решения основаниями, которые граждане с разными мировоззрениями могут рассматривать как общие политические аргументы. «Так решила модель» или «это коммерческая тайна» этому требованию не отвечают.',
+      en: 'Public reason is the Rawlsian requirement to justify fundamental political decisions with reasons citizens holding different worldviews can regard as shared political arguments. “The model decided” and “it is a trade secret” do not meet that requirement.',
+    },
+  },
+  'non-domination': {
+    id: 'non-domination',
+    term: { ru: 'Не-господство', en: 'Non-domination' },
+    definition: {
+      ru: 'Не-господство — республиканское понимание свободы как независимости от произвольной, неконтролируемой власти другого. Даже если владелец ИИ-системы пока не вмешивается, зависимость остаётся политической проблемой, когда он может односторонне менять правила, а затронутые не могут потребовать обоснования.',
+      en: 'Non-domination is the republican idea of freedom as independence from another party’s arbitrary, uncontrolled power. Even without present interference, dependence remains a political problem when an AI system owner can change rules unilaterally and affected people cannot demand justification.',
+    },
+  },
+  'contestability': {
+    id: 'contestability',
+    term: { ru: 'Оспоримость', en: 'Contestability' },
+    definition: {
+      ru: 'Оспоримость — возможность не только узнать и понять решение ИИ-системы, но и потребовать его пересмотра или изменения самого правила. Она требует понятного основания, компетентного адресата жалобы и эффективного средства исправления последствий.',
+      en: 'Contestability is the ability not only to learn about and understand an AI decision, but to demand review of the outcome or change to the rule itself. It requires an intelligible reason, a competent recipient for complaints, and an effective remedy.',
+    },
+  },
   'cognitive-debt': {
     id: 'cognitive-debt',
     term: { ru: 'Когнитивный долг', en: 'Cognitive debt' },

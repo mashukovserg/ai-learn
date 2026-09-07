@@ -36,6 +36,7 @@ import { opencodeTerminalAgentTasks } from './opencode-terminal-agent';
 import { contextEngineering101Tasks } from './context-engineering-101';
 import { aiExistentialRiskTasks } from './ai-existential-risk';
 import { aiAlignmentLimitsTasks } from './ai-alignment-limits';
+import { aiPoliticalPhilosophyTasks } from './ai-political-philosophy';
 
 import { promptContractsTasks } from './prompt-contracts';
 import { multiAgentCollaborationTasks } from './multi-agent-collaboration';
@@ -102,6 +103,7 @@ export const ROOM_TASKS: Record<string, LocalizedTask[]> = {
   'context-engineering-101': contextEngineering101Tasks,
   'ai-existential-risk': aiExistentialRiskTasks,
   'ai-alignment-limits': aiAlignmentLimitsTasks,
+  'ai-political-philosophy': aiPoliticalPhilosophyTasks,
   'taxonomy-matching': taxonomyMatchingTasks,
   'research-ai-era': researchAiEraTasks,
   'ai-literature-review': aiLiteratureReviewTasks,

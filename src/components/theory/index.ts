@@ -71,6 +71,7 @@ export const THEORY_COMPONENTS: Record<string, ComponentType<{ lang: string }>> 
   'local-rag-docs': dynamic(() => import('./LocalRagDocsTheory'), { loading }),
   'ai-existential-risk': dynamic(() => import('./AiExistentialRiskTheory'), { loading }),
   'ai-alignment-limits': dynamic(() => import('./AiAlignmentLimitsTheory'), { loading }),
+  'ai-political-philosophy': dynamic(() => import('./AiPoliticalPhilosophyTheory'), { loading }),
   'taxonomy-matching': dynamic(() => import('./TaxonomyMatchingTheory'), { loading }),
   'research-ai-era': dynamic(() => import('./ResearchAiEraTheory'), { loading }),
   'ai-literature-review': dynamic(() => import('./AiLiteratureReviewTheory'), { loading }),

@@ -131,6 +131,19 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     icon: 'Landmark',
   },
   {
+    id: 'ai-political-philosophy',
+    title: { ru: 'Политическая философия ИИ', en: 'Political Philosophy of AI' },
+    description: {
+      ru: 'Свобода, справедливость, легитимность и демократия: как классические политические идеи помогают разбирать власть современных ИИ-систем.',
+      en: 'Freedom, justice, legitimacy, and democracy: how classical political ideas help us examine the power of modern AI systems.',
+    },
+    difficulty: 'Intermediate',
+    time: { ru: '35 мин', en: '35m' },
+    category: { ru: 'Идеи и споры', en: 'Ideas and Debates' },
+    pathIds: ['ideas-history'],
+    icon: 'Landmark',
+  },
+  {
     id: 'prompting-101',
     title: { ru: 'Основы промптинга', en: 'Prompting 101' },
     description: {
