@@ -1,424 +1,176 @@
 # Agent Runtime Policy
 
-## Frontend Auto-Start Rule (Mandatory)
+What a test enforces is named here in one line, with the test that holds it — the detail lives in the test, which is checked on every run and cannot go stale. What stays in prose is what a test cannot carry: judgment, taste, and the history behind a decision.
 
-For any coding task request, the agent must ensure the frontend is available at:
+The full pre-2026-09-07 text of this file, before that split, is archived verbatim in [`HISTORY.md`](HISTORY.md). If a rule was cut and you find you needed it, restore it from there — and add the test that should have been holding it.
 
-`http://localhost:3000`
+Architecture and file layout live in `../CLAUDE.md`; this file is only the gates.
 
-Coding task requests include (non-exhaustive): implementation, bugfix, review, study, audit, and exploration.
+---
 
-## Default Behavior
+## Runtime
 
-1. Ensure frontend availability before or early in task execution.
-2. Use `npm run dev` from repo root if startup is required.
-3. Keep the frontend process running after startup/check (do not auto-stop).
-4. Respect explicit user overrides (for example: "don't start server", "backend only", custom port).
-5. Never start a second `next dev` process if `http://localhost:3000` is healthy; always reuse the existing frontend server.
+**Frontend must be up.** For any coding task — implementation, bugfix, review, study, audit, exploration — make sure `http://localhost:3000` answers, reuse it if it does, `npm run dev` from the repo root if it does not, and leave it running. Say in your report which of the two it was. The backend (`http://localhost:8000`) is only needed when the task asks for it; without it the frontend falls back to guest mode and `/api/*` returns 500s, which is expected, not a bug.
 
-## Deterministic Startup/Check Sequence
+Explicit user overrides win ("don't start the server", "backend only", a custom port).
 
-1. Probe `http://localhost:3000`.
-2. If reachable, reuse existing server and continue.
-3. If unreachable, start `npm run dev` from repo root.
-4. Re-check `http://localhost:3000`.
-5. If sandbox restrictions block bind/network, request escalation automatically.
+---
 
-## Response Requirements
+## Content gates
 
-For coding tasks, the agent response must:
+### Localization parity (Mandatory)
 
-1. Explicitly state whether the frontend was already running or started by the agent.
-2. Include the URL `http://localhost:3000` in status updates.
-3. If startup fails, report:
-   - exact failure reason
-   - immediate next action (for example escalation request or user override path)
+Any change to user-facing text ships in both `en` and `ru` in the same task. Never one locale alone unless the user explicitly asks for that.
 
-## Scope and Assumptions
+### Task solvability (Mandatory)
 
-1. No application API/schema/type changes are required by this policy.
-2. Default frontend entrypoint is `npm run dev`.
-3. Default frontend port is `3000`.
-4. Backend startup is not required unless explicitly requested.
+The gate no test can hold, and the reason the others exist. After adding or editing tasks, walk through each one and ask: *can a learner who has read this room's theory, in this language, select the correct answer?* If the answer depends on anything not stated in the theory, the task or the theory is wrong. A task that classifies items ("pick the US-company models") needs that mapping stated explicitly in the theory.
 
-## Localization Gate (Mandatory)
-
-For any change that modifies user-facing text, the agent must update both language variants in the same task:
-
-1. English (`en`)
-2. Russian (`ru`)
-
-Do not ship user-facing text changes in only one locale unless the user explicitly requests a single-language change.
-
-## Docs Sync Trigger (Mandatory)
-
-When behavior or setup changes, update both docs in the same task:
-
-1. `../README.md`
-2. `PROGRESS.md`
-
-This includes (non-exhaustive):
-
-1. Changes to routes/endpoints/user-visible behavior.
-2. Changes to startup/run/setup commands, ports, or environment requirements.
-3. Changes to availability/limitations status that affect current project state.
-
-## Project Orientation for Agents
-
-### What this repository is
-
-This project is a bilingual AI learning platform:
-
-1. Frontend: Next.js App Router (`src/app/[lang]`) with RU/EN locale routing.
-2. Backend: FastAPI (`backend/app`) with PostgreSQL persistence.
-3. Learning model: rooms + tasks + theory + progress + points/streak.
-
-### Current route shape (important)
-
-Implemented top-level frontend sections:
-
-1. `/${lang}` (dashboard)
-2. `/${lang}/rooms`
-3. `/${lang}/rooms/[id]` (primary dynamic room page)
-4. `/${lang}/paths` and path detail pages
-5. `/${lang}/professions`
-6. `/${lang}/login`
-7. `/${lang}/skills`
-8. `/${lang}/settings`
-
-Known absent routes (do not assume they exist):
-
-1. `/${lang}/compete`
-2. `/${lang}/leaderboard`
-
-### Room inventory (53 rooms in `ROOMS_METADATA`)
-
-Rooms with theory + tasks fully wired (53): **all** current `ROOMS_METADATA` entries are wired in the dynamic room route — `agentic-release-control`, `git-safety-net` (AC-105) and `github-actions-ci` (AC-206) landed 2026-07-29. The inventory includes `ai-career-trajectories`, `prompt-contracts`, `mcp-tool-ecosystems`, `agentic-swarm-management`, `frontier-evals-logic`, `claude-code-agentic-loop`, `claude-code-pro-workflow`, `context-engineering-101`, `taxonomy-matching`, and the Open Models trio `local-models-101` + `llama-3-1-8b` + `local-rag-docs`. `search-retrieval-to-synthesis` landed 2026-08-10. `research-ai-era` was wired up 2026-08-18 after sitting unreachable on disk since 2026-07-21 — a filesystem orphan guard (`src/data/rooms/__tests__/no-orphan-content.test.ts`) now fails `check-all` on any task file or `*Theory.tsx` that is registered nowhere. `opencode-terminal-agent` (agent-coding path, right after `agentic-cli-tools`) landed 2026-08-22, built on genuine captures of the owner's own OpenCode session.
-
-Theory components are mapped in the lazy registry `src/components/theory/index.ts` (`THEORY_COMPONENTS`, 53 entries, `next/dynamic` — each room ships only its own theory chunk; SSR preserved). A room missing from the registry fails `check-all` via `src/components/theory/__tests__/registry.test.ts` — placeholders no longer slip through silently.
-
-### Source of truth files (use these first)
-
-When changing learning content or room behavior, prefer these files:
-
-1. `src/data/rooms/` (barrel: `src/data/rooms/index.ts`)
-   - `types.ts` — shared interfaces (`LocalizedString`, `LocalizedTask`, `LocalizedRoomMetadata`)
-   - `metadata.ts` — canonical room metadata (`ROOMS_METADATA`)
-   - `paths.ts` — learning path metadata (`PATHS_METADATA`)
-   - `tasks/<room-id>.ts` — per-room task arrays, assembled in `tasks/index.ts` as `ROOM_TASKS`
-2. `src/app/[lang]/rooms/[id]/page.tsx`
-   - Dynamic room renderer — layout only. Theory mapping lives in `src/components/theory/index.ts`; task locale resolution in `src/data/rooms/resolveTask.ts`; task state, persistence and the completion modal in `src/hooks/useRoomTasks.ts`; task-type dispatch in `src/components/TaskRenderer.tsx` (adding a task type means adding a `case` there, not editing the page).
-   - `src/types/lang.ts` holds the locale contract (`Lang`, `LANGS`, `DEFAULT_LANG`, `isLang`, `toLang`). Narrow an untrusted locale string once at the boundary with `toLang`, then pass `Lang` down — never write `lang as 'en' | 'ru'`.
-3. `src/components/theory/*`
-   - Theory text by room/topic
-4. `src/hooks/useProgress.ts`
-   - Progress persistence strategy (API + localStorage fallback)
-5. `src/hooks/useAuth.tsx`
-   - Auth context and `/api` auth calls
-6. `backend/app/api/*`
-   - Backend API contracts for auth/progress/users
-7. `src/types/room.ts`
-   - `TaskType` union: `'input' | 'multiple-choice' | 'multiple-select' | 'sorting' | 'mentor' | 'categorize' | 'timeline' | 'scenario'`
-
-### Design tokens (Mandatory)
-
-Surface and border colors are defined as Tailwind v4 theme tokens in `src/app/[lang]/globals.css` under `@theme`. When writing or editing component styles:
-
-- Use `bg-card`, `bg-card-dark`, `bg-base`, `bg-deep`, `bg-input`, `bg-muted` for backgrounds.
-- Use `border-border-card`, `border-border-subtle`, `border-border-emphasis` for borders.
-- **Never** introduce new arbitrary hex background or border values (e.g. `bg-[#1a1a1a]`, `border-[#262626]`). Use the existing tokens or propose a new token in `globals.css`.
-
-**Address color by role, not by palette name (Mandatory).** The point is that a design change must never cost a repo-wide sweep. Evidence from this repo: swapping the terminal look took minutes (11 `--color-term-*` tokens), while recoloring theory headings cost 250 replacements across 34 files — because the accent was hardcoded as `emerald-*` everywhere.
-
-| Role | Use | Never |
-|---|---|---|
-| Brand / interactive accent | `text-accent-500`, `bg-accent-500/10`, `border-accent-500/20` | `emerald-*` |
-| Theory chapter headings | `text-heading` | `text-accent-*` (Fork 3 — the accent means *interactive*) |
-| Terminal | `bg-term-bg`, `text-term-prompt`, … | literal hex |
-| Error / failure states | `text-danger-500`, `bg-danger-500/10` | `red-*` |
-| Warnings / cautions | `text-warning-400`, `border-warning-500/30` | `amber-*` |
-| Informational / neutral-highlight | `text-info-400`, `bg-info-500/10` | `blue-*` |
-| Positive / success states | `text-success-400` | `green-*` |
-
-The accent ramp (`--color-accent-100…950`) mirrors the shade scale, so alpha modifiers work normally (`bg-accent-500/10`). **Swapping the whole site accent = editing the ramp in `@theme` plus its `[data-theme="saas"]` override — 7 lines, no component edits.**
-
-This is enforced by `src/__tests__/design-tokens.test.ts` (part of `check-all`): it fails on any literal `emerald-*` in components and on any theory heading painted with the accent, naming the offending files. Status palettes migrated on 2026-07-23 (red→danger, amber→warning, blue→info, green→success — values copied verbatim from Tailwind's default theme, so it was a visual no-op). Categorical content hues (`cyan`, `rose`, `purple`, `violet`, `pink`, `orange`, `slate`, `yellow`) are deliberately NOT status roles and stay literal; the guard tracks them informationally.
-
-**Trap — never write `text-base` (Mandatory).** `--color-base` is a *color* token, so Tailwind v4 generates `.text-base` as `color: var(--color-base)` — the page background — and that utility shadows the built-in font-size one, which is not emitted at all. A plain `text-base` therefore sets no size and silently loses to a neighbouring `text-neutral-*`; a `md:text-base` *wins* over it (variants are emitted after base utilities) and paints the paragraph in the background color — invisible on the dark theme and on the light one alike. This shipped unnoticed in `ai-career-trajectories` until 2026-08-23. Body copy already inherits the base size, so drop the utility; when an explicit size is genuinely needed, use `text-[1rem]`. `bg-base` is unaffected and stays the right way to reach that surface. Guarded by `src/__tests__/design-tokens.test.ts`.
-
-**Known boundary:** raster assets (`public/images/**`) are not tokenized. A room cover PNG keeps its baked-in colors through an accent swap; re-export or prefer SVG when a visual must follow the accent.
-
-### Terminal component — a core design element (use it)
-
-`src/components/Terminal.tsx` is a first-class part of the visual language, not a one-off. It renders a terminal window styled after **GNOME Terminal on Ubuntu**: the signature aubergine background (`#300A24`), the **Tango** ANSI palette, and **Ubuntu Mono** (loaded via `next/font` in `layout.tsx`, exposed as the `--font-term` token → `font-term` utility). The emerald-vs-aubergine tension is being resolved on the *heading* side, not the terminal side (fork history in `DESIGN_FORKS.md`, Forks 1 & 3). It stays intentionally dark in **both** themes — its `--color-term-*` tokens in `@theme` are deliberately **not** overridden in the `[data-theme="saas"]` block, so a terminal looks like a terminal on light UI too. Reach for it whenever a chapter shows a real command or interactive session — it is the preferred way to render such content, and terminals should recur across the platform rather than appear in one or two rooms.
-
-- **Import + use** (lang-agnostic — resolve bilingual strings at the call site):
-  ```tsx
-  import Terminal from '@/components/Terminal';
-  <Terminal title="ollama · zsh" lines={[
-    { cmd: 'ollama pull llama3.1:8b', comment: lang === 'ru' ? '# скачать' : '# download' },
-    { out: 'pulling manifest ... success' },
-    { out: '✓ ready', tone: 'ok' },
-  ]} />
-  ```
-  Output tones map to the Tango palette: `'dim'` (default) · `'ok'` green · `'bad'` red · `'dir'` blue · `'link'` cyan · `'warn'` yellow — the same colors Ubuntu's `LS_COLORS` uses, so `ls`-style output can be rendered faithfully.
-  Line kinds: `{ cmd, comment?, prompt? }` (a prompt line, default prompt `$`) and `{ out, tone? }` (an output line).
-- **Use it for:** CLI command sequences, agent/tool-call sessions (`● tool ▸ …`), REPL interactions, install→run→verify flows, red→green test loops, API-call sessions.
-- **Do NOT use it for:** static JSON/YAML/schema/config display or math notation — those stay as plain code blocks (`bg-deep` + `<pre>`). The terminal means *a session* (command → output); misusing it as a decorative frame for static data cheapens the element.
-- **Solvability:** never let a terminal hand a learner a task's answer (e.g. don't show the exact ordering a `sorting` task asks them to produce). Terminals illustrate; they don't spoil.
-- Prefer this component over hand-rolling terminal markup, and over converting a real command block to a bespoke `<pre>`. If it exists, reuse it.
-- **The terminal's visual style is an open fork, not a settled choice** — the project is still searching for its optimal design. The Ubuntu look above is *what is wired up today*. Alternatives (neutral black-gray, Tango-on-black, Solarized, Dracula) are kept paste-ready in [`DESIGN_FORKS.md`](DESIGN_FORKS.md). The whole look is token-driven, so switching is a one-block swap in `globals.css` — never a component or per-room edit. If you change the pick, update `DESIGN_FORKS.md` in the same task and do not delete the losing option.
-
-### Design forks — do not silently collapse them (Mandatory)
-
-Several design decisions are deliberately **open**: terminal styling, site and terminal typefaces, and the accent green. They are recorded in [`DESIGN_FORKS.md`](DESIGN_FORKS.md) (+ `.ru`) with paste-ready values for every option. Before "fixing" a design inconsistency in these areas, check that file — the inconsistency may be a live fork rather than a defect. When you move a fork, record the move (new pick, demoted option, date, one line of rationale) in the same commit.
-
-### Product screenshots — a core design element (seek them out)
-
-The GUI counterpart of the Terminal rule (reference pattern: TryHackMe's task pages, e.g. an annotated VirusTotal screenshot framed between two paragraphs of explanation). When a chapter discusses a product with a graphical interface — a web console, dashboard, chat UI, settings screen — show a **real screenshot** of that product instead of describing the UI in prose. CLI/session content → `<Terminal>`; GUI content → screenshot.
-
-- **The variety mandate (proactive, not just reactive):** screenshots are a primary tool for making theory pages **diversified and varied** — long walls of prose are the failure mode we design against. Don't wait for a chapter to "be about a GUI product." Actively look, in every room, for a place where a real screenshot would carry meaning a paragraph can't: a product UI, but also a **neutral-instrument exhibit** (the `chatgpt-moment` Wikimedia Pageviews chart is the model — a third-party measurement, not a vendor's own numbers), a model catalog or docs page, a benchmark leaderboard, a real dashboard, a Google Trends curve, a primary-source document. Aim for **≥1 genuine visual exhibit in every content-heavy room**; when a chapter runs several prose paragraphs with no visual, treat that as a gap to fill, not a neutral default. The point is texture and evidence — never a decorative image count.
-- **Suitability over quota (the guardrail):** "everywhere suitable" is the operative word. A screenshot earns its place only when it is (a) genuine, (b) load-bearing — it *shows evidence* or *teaches an interface* the prose would otherwise merely assert — and (c) sandwiched in interpretive text (below). If you cannot capture a real one, or it would only illustrate a claim already obvious in words, ship the prose and log the missing exhibit in `BACKLOG.md` rather than inventing filler. A quota never justifies a fake or decorative image.
-- **The sandwich structure (mandatory):** a screenshot never floats alone. Text above introduces what the tool is and what the reader is about to see; the screenshot shows it; text below tells the reader how to interpret what's shown and its caveats. A screenshot with no interpretive text after it is decoration, not teaching.
-- **Authenticity:** only genuine captures of the real product. No mocked-up UI, no AI-generated fake interfaces, no doctored numbers — a learner must be able to open the product and see the same thing. Crop to the relevant region; blur or avoid personal data (emails, tokens, account names).
-- **Use the `<Screenshot>` component (do NOT hand-roll the markup):** `src/components/Screenshot.tsx` is the first-class exhibit component. It renders the accent-bordered frame, is clickable, and opens a **full-screen lightbox** so learners can open the screenshot and read the details up close (essential on mobile — an inline thumbnail is unreadable). Close with ✕ / backdrop click / Escape.
-  ```tsx
-  import Screenshot from '@/components/Screenshot';
-  <Screenshot
-    src="/images/rooms/<room-id>/<name>.png"
-    alt={lang === 'ru' ? '…' : '…'}
-    width={1280} height={650}
-    caption={lang === 'ru' ? '… Нажмите, чтобы рассмотреть.' : '… Tap to view larger.'}
-  />
-  ```
-  Props: `src`, `alt` (resolved bilingual string), `width`/`height` (intrinsic size for `next/image`), optional `caption` (bilingual), optional `border` (defaults to `border-accent-400/60`). The default frame is `rounded-xl border-2 border-accent-400/60 overflow-hidden`; the accent border marks "this is an exhibit". Prefer this component over a hand-written `<figure>` + `next/image` block.
-- **Dark captures preferred:** when the product has a dark theme, capture in dark — it sits naturally on both platform themes, same logic as the Terminal staying dark on light UI.
-- **Assets:** `public/images/rooms/<room-id>/` for theory screenshots (task illustrations keep their existing `public/images/tasks/<room-id>/` convention). Prefer `.webp`/`.png`, keep files reasonably sized; name descriptively (`virustotal-detection-tab.webp`, not `screen1.png`).
-- **Localization:** `alt` is mandatory and bilingual (resolve `ru`/`en` at the call site, like Terminal strings); an optional caption must also be bilingual. The screenshot itself may show an English UI — that's authentic — but everything the platform renders around it ships in both locales.
-- **Solvability:** same guard as terminals — a screenshot must never hand a learner a task's answer (don't show the filled-in value an `input` task asks for). Screenshots illustrate; they don't spoil.
-
-### Available task components
-
-Six components render tasks inside rooms (dispatched by `TaskType`):
-
-1. `TaskQuestion` — handles `input`, `multiple-choice`, `multiple-select`.
-2. `TaskSorting` — handles `sorting` (drag-to-reorder with Framer Motion).
-3. `TaskMentor` — handles `mentor` (dialogue-based interaction).
-4. `TaskCategorize` — handles `categorize` (drag items into labeled buckets).
-5. `TaskTimeline` — handles `timeline` (arrange events in chronological order).
-6. `TaskScenario` — handles `scenario` (multi-step decision mission with scoring).
-
-### Runtime and startup conventions
-
-1. Frontend default URL: `http://localhost:3000`
-2. Backend default URL: `http://localhost:8000`
-3. Frontend -> backend API proxy: `/api/*` via `next.config.ts`
-4. Frontend dev command: `npm run dev`
-5. Frontend quality checks: `npm run check-all`
-
-### Agent workflow expectations
-
-For coding tasks, agents should:
-
-1. Read `../README.md` and this file before substantial edits.
-2. Prefer updating canonical sources over duplicating data in pages.
-3. Preserve bilingual behavior and update both `en` and `ru` where required.
-4. Run relevant checks after edits (`npm run check-all` at minimum for frontend changes).
-5. Report what was changed, what was verified, and any unresolved warnings/limitations.
-
-### Commit hygiene — work must be committed to survive (Mandatory)
-
-**The working tree is not durable.** Sessions re-sync to the latest merged `main`, and uncommitted edits to tracked files are silently wiped when the tree moves to a newly merged branch. Real work on this repo happens through committed branches merged as PRs (`git log` shows the merge history). Therefore:
-
-1. **Do not end a session with substantial uncommitted edits to tracked files.** They will be lost on the next branch sync. (This has bitten real work more than once — e.g. the light-theme toggle repeatedly vanished until it was committed.)
-2. **Work on a dedicated branch** (`git checkout -b <topic>`), not on a detached/uncommitted `main` working tree.
-3. When a logical unit is complete: run `npm run check-all`, then **commit** the specific files (`git add <paths>` — not `git add -A`, to avoid sweeping in unrelated untracked artifacts), and **push the branch** (`git push -u origin <branch>`) so it is durable on the remote and can become a PR.
-4. New untracked files that belong to the change (new components, hooks, task files) must be explicitly `git add`-ed — they are not part of any commit until you add them, and they will not survive on their own.
-5. Committing/pushing on the user's behalf follows the normal outward-action rule: confirm the push with the user unless already authorized in this session.
-
-### Task mix and interactivity rule (Mandatory)
-
-To ensure high interactivity and engagement, every room must follow the "Task Mix Rule":
-
-1. Every room must include at least one "sorting" (drag-to-reorder) or "mentor" (dialogue-based) task.
-2. Relying exclusively on multiple-choice or input tasks is forbidden.
-3. Aim for a diverse mix of task types within each room to maintain learner momentum.
+The same guard applies to exhibits: a terminal or screenshot must never hand over a task's answer.
 
 ### Task data validation gate (Mandatory)
 
-After adding or editing tasks in `ROOM_TASKS`, the agent must verify every task is completable in both locales before shipping. Validation rules per `TaskType`:
+Enforced by `src/data/rooms/__tests__/task-shapes.test.ts` and `data-integrity.test.ts`: per-type field validity for all 8 `TaskType`s, `LocalizedString` completeness on every user-visible field, task-image existence and locale parity, and the task-mix rule (every room carries at least one `sorting` or `mentor` task — never MCQ/input only).
 
-1. **`input`** — `correctAnswer` (string or string[]) must be non-empty. Answers are normalized (lowercased, trimmed, quotes/punctuation stripped), so `correctAnswer` values should be lowercase with no trailing punctuation. If an array, at least one item is required.
-2. **`multiple-choice`** — `correctAnswer` must be an exact string match to one of the `options` entries (case-sensitive, no normalization). Verify the correct option text is identical in both fields.
-3. **`multiple-select`** — every string in `correctAnswer[]` must appear in `options[]` (case-sensitive). Order does not matter (sorted internally), but set membership does.
-4. **`sorting`** — `correctOrder[]` must contain exactly the same strings as `initialItems[]`, just in the right order. No extra or missing items.
-5. **`mentor`** — at least one object in `userOptions` must have `isCorrect: true`, otherwise the task is unsolvable. Every option must have a non-empty `reaction` string.
-6. **`categorize`** — every key in `correctMapping` must appear in `items[]`, and every value must appear in `buckets[]`. No orphaned keys or unknown bucket names.
-7. **`timeline`** — every label in `correctOrder[]` must match an `events[].label` exactly (case-sensitive). Every event must have a non-empty `year` string.
-8. **`scenario`** — at least one choice must have `score >= passingScore` (default 60). Every choice must have a numeric `score` (0–100) and a non-empty `outcome` string.
-
-Cross-cutting checks:
-
-- All user-visible text fields (`question`, `options`, `items`, `buckets`, `mentorMessage`, `brief`, `constraints`, choice `text`, event `label`) must be `LocalizedString` with both `en` and `ru` populated.
-- **Task images (optional `image` field)** — any task may declare `image: { src, alt, caption? }` (rendered above the question for all 8 task types). Rules: `src` must start with `/` and point to an existing file under `public/` (convention: `public/images/tasks/<room-id>/`); `alt` is a required `LocalizedString` with both locales; `caption`, when present, must also be bilingual. The Vitest suite enforces file existence and locale parity — a missing file fails `npm run test`.
-- After adding tasks, mentally walk through each one: "can a user who reads the theory select the correct answer?" If the answer depends on text not in the theory, the task or theory needs updating.
-- No runtime validation exists in the components — bad data silently produces unsolvable tasks, so this gate is the only safety net.
+Worth knowing rather than rediscovering: **the components do no runtime validation at all**, so malformed task data does not throw — it silently produces a task nobody can solve. This gate is the only safety net.
 
 ### Task ID sequencing (Mandatory)
 
-Within each room's task array in `ROOM_TASKS`, task IDs must be sequential integers starting at 1 with no gaps or duplicates.
+Task IDs within a room are sequential integers from 1, no gaps, no duplicates. Enforced by `data-integrity.test.ts`.
 
-1. First task in a room: `id: 1`. Second: `id: 2`. And so on.
-2. No gaps (e.g. 1, 2, 4 — missing 3).
-3. No duplicates (e.g. two tasks with `id: 2`).
-4. When appending tasks to an existing room, continue from the current highest ID + 1.
-5. When removing a task mid-array, renumber all subsequent tasks to close the gap.
-
-**Why:** The progress system stores completed task IDs as a `Set<number>` and compares `set.size` against `ROOM_TASKS[roomId].length` to compute completion percentage. Gaps inflate the denominator without a reachable numerator, so the progress bar can never reach 100%. Duplicates cause one task to silently shadow another — completing either one marks the same ID, leaving the other permanently stuck.
-
-### Content and i18n consistency rules
-
-When changing educational content:
-
-1. Keep tasks solvable from theory content in both languages.
-2. Keep terminology support intact (use glossary/`Term` where needed).
-3. Ensure room titles/descriptions/tasks remain synchronized across UI surfaces.
-4. When writing or editing theory content, the agent must ask the project creator which domain terms should be wrapped in `<Term>` tooltips before shipping the content.
+**Why it matters:** progress stores completed IDs as a `Set<number>` and compares `set.size` against `ROOM_TASKS[roomId].length`. A gap inflates the denominator without a reachable numerator, so the bar can never reach 100%; a duplicate lets one task shadow another, leaving the second permanently stuck.
 
 ### Chapter Text Depth Gate (Mandatory)
 
-For any theory chapter block (for example, sections titled "Глава N / Chapter N"):
+At least 240 words per language and 4 body paragraphs per theory chapter, unless the chapter is concise by design and labelled `Краткий блок` / `Short block` in both languages. Enforced by `src/components/theory/__tests__/chapter-depth.test.ts`.
 
-1. Chapter text must not be short-form placeholder content.
-2. Minimum depth per language (`ru` and `en`) for each chapter:
-   - at least `240` words of body text
-   - at least `4` body paragraphs (owner's rule, 2026-07-23 — two-paragraph chapters read as stubs)
-3. If a chapter is intentionally concise by design (for example glossary-only or recap-only), it must be explicitly labeled in both languages as:
-   - `Краткий блок`
-   - `Short block`
-4. Without this explicit label, chapter content below the threshold is considered incomplete and should not be shipped.
-5. Enforced by `src/components/theory/__tests__/chapter-depth.test.ts`. The 44 rooms that predate the bar are listed there as debt; a room you edit must come off that list.
-5. Scope of enforcement: the bar applies in full to **new chapters** and to **any chapter you substantively edit**. Chapters written before 2026-07-23 largely predate the 4-paragraph bar (a rough sweep found the majority of existing chapters below it — `agentic-testing-loop` was the flagged example and has been thickened); they are standing debt. When you touch a room for any content reason, bring the chapters you touch up to the bar in the same task. Do not mass-rewrite untouched rooms just for depth — thin prose padded to length is worse than short prose.
+**Scope is the judgment part.** The bar applies in full to new chapters and to any chapter you substantively edit. The 44 rooms that predate it are listed as debt in that test: bring a room up to the bar when you touch it for any other reason, and take it off the list. Do not mass-rewrite untouched rooms — prose padded to length is worse than short prose.
 
-### Chapter heading typography lock (Mandatory)
+### Forbidden phrasing (Mandatory)
 
-For chapter headings in theory blocks (for example, "Глава N: ..." / "Chapter N: ..."):
+Never write the construction `это не просто` or the word `вендор` (any case form) — in theory text, docs, commit messages, PR notes, or replies to the user. Use a concrete contrast instead of the template, and for the second one a concrete alternative by context: `поставщик модели`, `игрок рынка`, `платформа`, `компания`.
 
-1. Do not change font size by default.
-2. Treat the current heading size as locked unless the user explicitly asks to change it.
-3. If typography changes are requested, apply only the requested scope (single chapter or global), not broader.
+Enforced by `src/__tests__/forbidden-phrasing.test.ts` across `src/`, `docs/` and the root docs. Quoting the pattern in order to talk about it — backticks, `«»`, `""` — is exempt, which is why this section can name what it forbids.
+
+### Content and i18n consistency
+
+1. Keep terminology support intact — wrap domain terms in `<Term>` and register them in `src/data/glossary.ts` with both locales.
+2. Ask the owner which domain terms should get `<Term>` tooltips before shipping new theory.
+3. Keep room titles and descriptions synchronized across the surfaces that render them.
+
+---
+
+## Design
+
+### Design forks — do not silently collapse them (Mandatory)
+
+Several design decisions are deliberately **open**: terminal styling, site and terminal typefaces, the accent green, page structure and density. They live in [`DESIGN_FORKS.md`](DESIGN_FORKS.md) (+ `.ru`) with paste-ready values for every option.
+
+Before "fixing" a design inconsistency in those areas, check that file — the inconsistency may be a live fork rather than a defect. When you move a fork, record the move (new pick, demoted option, date, one line of rationale) in the same commit, and never delete the losing option.
+
+### Design tokens (Mandatory)
+
+Surfaces and borders are `@theme` tokens in `src/app/[lang]/globals.css`: `bg-card`, `bg-card-dark`, `bg-base`, `bg-deep`, `bg-input`, `bg-muted`; `border-border-card`, `border-border-subtle`, `border-border-emphasis`. Never introduce an arbitrary hex — reuse a token or add one.
+
+**Address color by role, not by palette name.** A design change must never cost a repo-wide sweep. The evidence is in this repo: swapping the terminal look took minutes (11 `--color-term-*` tokens), while recoloring theory headings cost 250 replacements across 34 files, because the accent was hardcoded as `emerald-*` everywhere.
+
+| Role | Use | Never |
+|---|---|---|
+| Brand / interactive accent | `text-accent-500`, `bg-accent-500/10` | `emerald-*` |
+| Theory chapter headings | `text-heading` | `text-accent-*` (Fork 3 — the accent means *interactive*) |
+| Terminal | `bg-term-bg`, `text-term-prompt`, … | literal hex |
+| Error / failure | `text-danger-500` | `red-*` |
+| Warning / caution | `text-warning-400` | `amber-*` |
+| Informational | `text-info-400` | `blue-*` |
+| Success | `text-success-400` | `green-*` |
+
+Swapping the whole site accent means editing the ramp in `@theme` plus its `[data-theme="saas"]` override — 7 lines, no component edits. Categorical content hues (`cyan`, `rose`, `purple`, `violet`, `pink`, `orange`, `slate`, `yellow`) are deliberately not status roles and stay literal. Enforced by `src/__tests__/design-tokens.test.ts`.
+
+**Trap — never write `text-base`.** `--color-base` is a *color* token, so Tailwind v4 generates `.text-base` as `color: var(--color-base)` — the page background — and that utility shadows the built-in font-size one, which is never emitted. So a plain `text-base` sets no size and quietly loses to a neighbouring `text-neutral-*`, while a `md:text-base` *wins* over it (variants come after base utilities) and paints the paragraph in the background color, invisible on both themes. This shipped unnoticed in `ai-career-trajectories` until 2026-08-23. Body copy already inherits the base size, so drop the utility; use `text-[1rem]` when a size is genuinely needed. `bg-base` is unaffected.
+
+**Known boundary:** raster assets under `public/images/**` are not tokenized — a cover PNG keeps its baked-in colors through an accent swap.
 
 ### No leading icons in headings (Mandatory)
 
-For room and theory headings (page titles, chapter headings, section headings):
+No decorative leading icons in headings — emphasis comes from typography, spacing and color. Enforced by `src/__tests__/heading-icons.test.ts`, which lists the 17 files that predate the rule as debt; strip the icons when you touch one.
 
-1. Do not add decorative icons before heading text.
-2. If a heading currently has a leading icon, remove it unless the user explicitly requests it.
-3. Keep emphasis through typography, spacing, and color only (not icon prefixes).
-4. Enforced by `src/__tests__/heading-icons.test.ts`. The 17 files that predate the rule are listed there as debt; strip the icons when you touch one.
+**Chapter heading typography lock:** heading size is locked. Do not change it by default; if the user asks for a typography change, apply only the scope requested.
 
 ### Anti-Vibecode Frontend Gate (Mandatory)
 
-This gate applies to:
+Applies to UI composition and to user-facing lesson copy.
 
-1. Frontend UI composition and visual presentation.
-2. User-facing lesson copy (theory blocks, explanatory text, summaries, and comparison framing).
+1. **Layout:** single-column reading flow for long narrative theory — no default desktop two-column split unless the user asks for a split comparison.
+2. **Alignment:** body and summary text left-aligned; centered only on request.
+3. **Typography:** no full-paragraph italics for core explanatory content.
+4. **Restraint:** no decorative glow, neon or attention-grabbing shadow on core reading cards.
+5. **Headings:** no leading icons (above).
+6. **Tone:** analytical and concrete; no hype, no drama, no pathos-laden pronouncements. Ground a claim in a number or a source instead of asserting its importance.
+7. **Comparison cards:** stacked sequential cards by default, not side-by-side splits.
+8. **Evidence framing:** observations and tradeoffs, not absolute-dominance narratives.
+9. Style and tone rewrites ship in both locales, same task.
+10. An explicit user instruction overrides any point above, limited to the scope requested.
 
-Pass/fail points:
+### Terminal component — a core design element (use it)
 
-1. **Layout clarity:** do not use a default desktop two-column split for long narrative theory blocks; use a single-column reading flow unless the user explicitly requests a split comparison.
-2. **Text alignment:** body and summary text must be left-aligned by default; centered paragraphs are allowed only when explicitly requested.
-3. **Typography emphasis:** do not use full-paragraph italic styling for core explanatory content.
-4. **Visual restraint:** avoid decorative glow, neon, or attention-grabbing shadow accents on core reading cards by default.
-5. **Heading discipline:** do not add decorative leading icons; follow `No leading icons in headings (Mandatory)`.
-6. **Tone discipline:** avoid hype or dramatic wording; prefer analytical and concrete phrasing.
-7. **Comparison cards:** for camp/model tradeoff blocks, default to stacked sequential cards instead of side-by-side split cards.
-8. **Evidence framing:** frame claims as observations and tradeoffs, not as absolute dominance narratives.
-9. **Localization parity:** any style/tone rewrite must be shipped in both locales (`en` and `ru`) in the same task.
-10. **User override:** explicit user instruction can override any point above, limited to the requested scope.
+`src/components/Terminal.tsx` is part of the visual language, not a one-off: a GNOME-Terminal-on-Ubuntu window — aubergine `#300A24`, the Tango ANSI palette, Ubuntu Mono via the `--font-term` token. It stays dark in **both** themes (its `--color-term-*` tokens are deliberately not overridden in the `[data-theme="saas"]` block), so a terminal looks like a terminal on light UI too.
 
-Vibecode markers to remove:
+```tsx
+import Terminal from '@/components/Terminal';
+<Terminal title="ollama · zsh" lines={[
+  { cmd: 'ollama pull llama3.1:8b', comment: lang === 'ru' ? '# скачать' : '# download' },
+  { out: 'pulling manifest ... success' },
+  { out: '✓ ready', tone: 'ok' },
+]} />
+```
 
-1. Desktop two-column narrative cards for long explanatory text.
-2. Paragraph-level italics used only for dramatic emphasis.
-3. Decorative glow emphasis on core text containers.
-4. Overly dramatic copy templates.
+Line kinds are `{ cmd, comment?, prompt? }` and `{ out, tone? }`; tones `dim` · `ok` · `bad` · `dir` · `link` · `warn` map to the Tango colors Ubuntu's `LS_COLORS` uses, so `ls`-style output renders faithfully.
 
-Pre-ship checklist (yes/no):
+- **Use it for:** command sequences, agent/tool-call sessions, REPL interactions, install→run→verify flows, red→green test loops, API sessions. Reach for it whenever a chapter shows a real command, and let terminals recur across the platform rather than sit in one or two rooms.
+- **Not for:** static JSON/YAML/config or math — those stay plain `<pre>` on `bg-deep`. The terminal means *a session*; using it as a decorative frame for static data cheapens it.
+- The look itself is an open fork (see above) and is token-driven — switching is a one-block swap in `globals.css`, never a component edit.
 
-1. Is long-form narrative content presented in a single-column flow by default?
-2. Are body and summary paragraphs left-aligned unless the user requested centering?
-3. Are core explanatory paragraphs free of full-paragraph italics?
-4. Are decorative glow/neon/shadow accents removed from core reading cards?
-5. Is wording analytical and tradeoff-oriented instead of dramatic?
-6. Were style/tone changes applied in both `en` and `ru`?
+### Product screenshots — a core design element (seek them out)
 
-### Forbidden phrase pattern: "это не просто" (Mandatory)
+The GUI counterpart of the Terminal rule. CLI content → `<Terminal>`; GUI content → a real screenshot. Use `src/components/Screenshot.tsx` (accent-bordered frame, clickable, full-screen lightbox — essential on mobile) rather than hand-rolling `<figure>` + `next/image`. Assets go in `public/images/rooms/<room-id>/`, named descriptively.
 
-For any generated content and agent communication in this repository (theory text, docs, room content, summaries, PR notes, and user replies):
+- **Seek them out, proactively.** Screenshots are the primary tool for keeping theory pages varied — walls of prose are the failure mode we design against. Don't wait for a chapter to "be about a GUI product": look in every room for a place a real capture carries meaning prose can't — a product UI, a neutral-instrument exhibit (the `chatgpt-moment` Wikimedia Pageviews chart is the model: third-party measurement, not a company's own numbers), a model catalog, a benchmark leaderboard, a primary-source document. Aim for ≥1 genuine exhibit in every content-heavy room.
+- **Suitability beats quota.** An exhibit earns its place only if it is genuine, load-bearing (it *shows* evidence or teaches an interface the prose would otherwise merely assert), and interpreted. If you cannot capture a real one, ship the prose and log the gap in `BACKLOG.md` — never invent filler.
+- **The sandwich is mandatory.** Text above introduces what the reader is about to see; the capture shows it; text below says how to read it and what the caveats are. A screenshot with no interpretation after it is decoration, not teaching.
+- **Authenticity:** genuine captures only. No mocked-up UI, no AI-generated interfaces, no doctored numbers — a learner must be able to open the product and see the same thing. Crop to the relevant region; avoid or blur personal data. Prefer dark captures when the product has a dark theme.
+- `alt` is mandatory and bilingual, as is a caption when present. The UI in the image may be English — that's authentic — but everything the platform renders around it ships in both locales.
 
-1. Do not use the construction `это не просто` (any case form).
-2. Treat the regex-like pattern `/(^|\\s)это\\s+не\\s+просто(\\s|$)/i` as forbidden in authored text.
-3. Rewrite with direct, concrete wording instead of contrastive template phrasing.
-4. Enforced by `src/__tests__/forbidden-phrasing.test.ts` over `src/`, `docs/` and the root docs. Quoting the pattern to talk about it (backticks, «», "") is exempt; a bare use fails.
+---
 
-### Forbidden word pattern: "вендор" (Mandatory)
+## Working practice
 
-For any generated content and agent communication in this repository (theory text, docs, room content, summaries, PR notes, and user replies):
+### Commit hygiene — work must be committed to survive (Mandatory)
 
-1. Do not use the word `вендор` in any case form.
-2. Treat the regex-like pattern `/(^|\\s)вендор(а|у|ом|е|ы|ов|ам|ами|ах)?(\\s|$)/i` as forbidden in authored text.
-3. Use concrete alternatives by context, for example: `поставщик модели`, `игрок рынка`, `платформа`, `компания`.
-4. Enforced by `src/__tests__/forbidden-phrasing.test.ts` (same use/mention rule as above).
+**The working tree is not durable.** Sessions re-sync to the latest merged `main`, and uncommitted edits to tracked files are silently wiped when the tree moves. This has cost real work more than once — the light-theme toggle kept vanishing until it was committed.
 
-### Completion checklist (Mandatory)
+1. Work on a dedicated branch, never on an uncommitted `main` working tree.
+2. When a logical unit is done: `npm run check-all`, then `git add` the specific paths — not `git add -A`, which sweeps in unrelated artifacts — then commit and `git push -u origin <branch>`.
+3. New untracked files that belong to the change must be explicitly added; they are part of no commit until you do.
+4. Never end a session with substantial uncommitted edits.
+5. Pushing on the user's behalf follows the normal outward-action rule: confirm unless already authorized this session.
 
-When a new room, feature, or backlog item is finished, the agent must in the same task:
+### Docs sync (Mandatory)
 
-1. Mark the item as `[x]` in `BACKLOG.md`.
-2. Add a milestone row (date + description) to `PROGRESS.md`.
-3. Update room counts/lists in `PROGRESS.md` and `AGENTS.md` (Room inventory section) if a room was added or wired up.
-4. Update `CURRICULUM.md` if the change affects path/module/room coverage.
-5. Update `../README.md` if the change affects routes, architecture, or user-visible behavior.
+When behavior, setup, or content changes, update in the same task — and update the `*.ru.md` mirror of anything you touch that has one:
 
-### Agent work log (Mandatory)
+| File | When |
+|---|---|
+| `BACKLOG.md` (+ `.ru`) | Always. Mark the item `[x]` and log what you did in `## Completed`, with a `(by <agent>)` tag. Group by logical unit, not by file touched. Do it when the unit is finished — never defer to a future session. |
+| `PROGRESS.md` (+ `.ru`) | A milestone row: date + what changed. |
+| `CURRICULUM.md` (+ `.ru`) | Path, module, or room coverage changed. |
+| `../README.md` (+ `.ru`) | Routes, architecture, or user-visible behavior changed. |
+| `DEPLOYMENT.md` | See below. |
+| `HISTORY.md` | A gate moved between prose and tests, or the policy changed substantially. |
 
-When an agent completes work in a session, it must explicitly log what it did in `BACKLOG.md` (and `BACKLOG.ru.md` if maintained):
+Room counts are **not** maintained by hand anywhere. `ROOMS_METADATA.length` is the answer, and the registry guards fail `check-all` if the registries disagree.
 
-1. Add completed items to the `## Completed` section with `[x]` checkboxes.
-2. Each entry must include a brief credit tag: `(by <agent name>)` — e.g. `(by Claude Code)`, `(by Gemini)`.
-3. Group related work into logical entries (e.g. one entry per room, one per feature), not one entry per file touched.
-4. Do this at the end of the session or when a logical unit of work is finished — do not defer to a future session.
+### Deployment docs (Mandatory)
 
-### Documentation update matrix
+Update `DEPLOYMENT.md` in the same task when you change `backend/Dockerfile`, `next.config.ts`, `backend/settings.py`, `backend/.env.sample`, `docker-compose.yml`, add an Alembic migration with a deploy-time requirement, or add any new service, port or third-party integration.
 
-When behavior/setup/content changes, update docs in the same task:
-
-1. `../README.md`: setup, architecture, route/status overview.
-2. `PROGRESS.md`: implementation status and milestones.
-3. `CURRICULUM.md`: path/module/room coverage changes.
-4. `BACKLOG.md`: newly identified follow-up engineering/content work.
-5. `DEPLOYMENT.md`: any deployment-related change (see rule below).
-
-If Russian mirrors exist and are maintained (`*.ru.md`), update them in the same task unless explicitly scoped out by the user.
-
-### Deployment Docs Sync Rule (Mandatory)
-
-When any of the following are changed, update `DEPLOYMENT.md` in the same task:
-
-1. `backend/Dockerfile` — startup command, base image, build steps, user setup.
-2. `next.config.ts` — rewrite rules, env var references affecting the API proxy.
-3. `backend/settings.py` — new or renamed env vars consumed by the app.
-4. `backend/.env.sample` — env var additions, removals, or default changes.
-5. `docker-compose.yml` — service definitions, port mappings, volume changes.
-6. `alembic/` — new migrations that add deploy-time database requirements.
-7. Any new service, port, or third-party integration added to the stack.
-
-What to update in `DEPLOYMENT.md`:
-
-- Add a **"What Was Changed"** entry explaining the before/after and why.
-- Update the **Environment Variables Reference** table if vars were added/renamed/removed.
-- Update startup commands or steps if the deploy sequence changed.
-- Keep the Architecture / Request Flow section accurate if the topology changed.
-
-Do not defer `DEPLOYMENT.md` updates to a follow-up task.
+What to update there: a **"What Was Changed"** entry with the before/after and why; the Environment Variables Reference table if vars moved; the startup commands if the sequence changed; the Architecture / Request Flow section if the topology changed. Do not defer it to a follow-up task.

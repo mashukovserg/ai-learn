@@ -71,6 +71,30 @@ Suite after: 13 files, 2623 tests.
 
 **What this unlocks.** A gate cannot be removed from the policy file until something else enforces it. With these three landed, the corresponding prose sections become candidates for deletion — along with the 40 lines of step-by-step frontend startup procedure, the room-count line the code already knows, and the gates now covered by tests. That deletion is the next step, and the method is ablation rather than judgement: remove, run real tasks, restore only what measurably breaks.
 
+## 4. 2026-09-07 — the ablation
+
+With the three guards landed, the prose they duplicated could go. The rule applied: **delete only what is enforced by a test, derivable from the code, or stated more than once.** Everything else stayed, because the point was never brevity — it was that a rule should live wherever it can actually be checked.
+
+`docs/AGENTS.md`: **424 lines → 176, 4,773 words → 2,328 (−52%), 34 sections → 21.**
+
+| Cut | Why |
+|-----|-----|
+| Four runtime sections (~40 lines) — "Default Behavior", "Deterministic Startup/Check Sequence", "Response Requirements", "Scope and Assumptions" | A numbered procedure for "probe the port; if it answers, reuse it; if not, run `npm run dev`; re-check". Replaced by one paragraph. Overspecifying steps was the failure mode named in the talk |
+| "Room inventory" (53 rooms, listed by name) | `ROOMS_METADATA.length` is the answer, and the registry guards fail `check-all` if the registries disagree. This line alone accounted for **seventeen** of the file's edits |
+| "Current route shape", "What this repository is", "Source of truth files", "Available task components" | Duplicated `CLAUDE.md` and the directory tree itself |
+| "Runtime and startup conventions", "Agent workflow expectations" | Restated the runtime section and generic agent behaviour |
+| 20 lines of per-`TaskType` field rules | All 538 assertions of `task-shapes.test.ts`. What stayed is the part no test carries: components do no runtime validation, so bad data produces an unsolvable task rather than an error |
+| Anti-Vibecode's "markers to remove" and "pre-ship checklist" | The same six points as its "pass/fail points", written three times |
+| "Docs Sync Trigger", "Completion checklist", "Agent work log", "Documentation update matrix" | Four overlapping sections about updating docs, merged into one table |
+
+**Kept deliberately** — none of it is testable, all of it is expensive to relearn: the solvability gate (a task must be answerable from that room's theory), the `text-base` trap, the role-vs-palette table with the 250-replacements story behind it, the design-fork rule, when a `<Terminal>` is and is not appropriate, the screenshot sandwich and authenticity rules, and commit hygiene.
+
+**Section names were left alone where anything links to them.** "Task data validation gate" and "Task ID sequencing" are referenced from 11 and 7 files respectively — including source comments in `TaskRenderer.tsx` and `resolveTask.ts` — so the merged sections kept their original headings. Renaming would have been churn, not ablation.
+
+**One thing the audit turned up.** The deleted prose said `input` tasks validate a field called `correctAnswer` and that its values "should be lowercase with no trailing punctuation". The field is actually `answer`, and `TaskQuestion` normalises both sides before comparing, so case and punctuation never mattered. The test had it right and the policy file had been wrong for months — nobody noticed, because prose is not executed. That is the argument for this whole exercise in one example.
+
+**What was not done:** the real method is delete, run tasks, restore what breaks. Only the first step is verifiable in one session. `check-all` stays green (13 files, 2623 tests), but the evidence that a cut rule was not load-bearing accumulates over the next weeks of content work. The archive below is the recovery source, and the rule for restoring is: bring the prose back **with the test that should have been holding it**.
+
 ---
 
 ## Archive: `docs/AGENTS.md` as of 2026-09-07

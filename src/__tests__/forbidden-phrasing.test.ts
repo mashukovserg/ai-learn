@@ -1,6 +1,5 @@
 /**
- * Forbidden-phrasing guard — docs/AGENTS.md → "Forbidden phrase pattern" and
- * "Forbidden word pattern".
+ * Forbidden-phrasing guard — docs/AGENTS.md → "Forbidden phrasing".
  *
  * Why this exists: the rule lived only in prose, so it was enforced by whoever
  * happened to remember it. Two separate branches were spent purging `это не
@@ -76,7 +75,7 @@ const files = [
   // This guard has to spell the patterns out to test for them.
   .filter(f => f.rel !== join('src', '__tests__', 'forbidden-phrasing.test.ts'));
 
-describe('forbidden phrasing (docs/AGENTS.md → "Forbidden phrase/word pattern")', () => {
+describe('forbidden phrasing (docs/AGENTS.md → "Forbidden phrasing")', () => {
   for (const { label, pattern, instead } of FORBIDDEN) {
     it(`no unquoted "${label}" in authored text`, () => {
       const offenders: string[] = [];
