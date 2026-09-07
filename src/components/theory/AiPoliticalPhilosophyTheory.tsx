@@ -9,6 +9,165 @@ const SourceLink = ({ href, children }: { href: string; children: React.ReactNod
   </a>
 );
 
+type LocalizedText = { ru: string; en: string };
+
+const SOURCES: { authors: string; title: string; venue?: string; note: LocalizedText; href: string; label: string }[] = [
+  {
+    authors: 'Berlin, I.',
+    title: 'Two Concepts of Liberty',
+    venue: 'Oxford, 1958',
+    note: {
+      ru: 'различение негативной свободы (отсутствие вмешательства) и позитивной (быть автором своей жизни) — рамка главы 2',
+      en: 'the distinction between negative liberty (absence of interference) and positive liberty (authorship of one’s life) — the frame of Chapter 2',
+    },
+    href: 'https://plato.stanford.edu/entries/liberty-positive-negative/',
+    label: 'plato.stanford.edu — Positive and Negative Liberty',
+  },
+  {
+    authors: 'Pettit, P.',
+    title: 'Republicanism: A Theory of Freedom and Government',
+    venue: 'Oxford University Press, 1997',
+    note: {
+      ru: 'свобода как не-господство: добрый хозяин остаётся хозяином, потому что несвободу создаёт сама неконтролируемая способность вмешаться',
+      en: 'freedom as non-domination: a benevolent master is still a master, because it is the uncontrolled capacity to interfere that creates unfreedom',
+    },
+    href: 'https://plato.stanford.edu/entries/republicanism/',
+    label: 'plato.stanford.edu — Republicanism',
+  },
+  {
+    authors: 'Rawls, J.',
+    title: 'A Theory of Justice',
+    venue: 'Harvard University Press, 1971',
+    note: {
+      ru: 'первоначальное положение и завеса неведения — источник теста главы 3 «приемлем ли порядок для того, кому достанется худшая позиция»',
+      en: 'the original position and the veil of ignorance — the source of Chapter 3’s test of whether an arrangement is acceptable to whoever ends up worst off',
+    },
+    href: 'https://plato.stanford.edu/entries/original-position/',
+    label: 'plato.stanford.edu — Original Position',
+  },
+  {
+    authors: 'Rawls, J.',
+    title: 'Political Liberalism',
+    venue: 'Columbia University Press, 1993',
+    note: {
+      ru: 'публичный разум: на фундаментальные вопросы гражданам предлагают основания, доступные как политические аргументы, а не мировоззрение',
+      en: 'public reason: on fundamental questions citizens are offered reasons available as political arguments rather than a worldview to adopt',
+    },
+    href: 'https://plato.stanford.edu/entries/public-reason/',
+    label: 'plato.stanford.edu — Public Reason',
+  },
+  {
+    authors: 'Habermas, J.',
+    title: 'Between Facts and Norms',
+    venue: 'Suhrkamp, 1992',
+    note: {
+      ru: 'легитимность нормы через условия обсуждения: затронутые должны были иметь возможность участвовать в свободном и равном разговоре',
+      en: 'legitimacy through the conditions of discussion: those affected must have been able to take part in free and equal deliberation',
+    },
+    href: 'https://plato.stanford.edu/entries/habermas/',
+    label: 'plato.stanford.edu — Habermas',
+  },
+  {
+    authors: 'Anderson, E.',
+    title: 'Private Government: How Employers Rule Our Lives (and Why We Don’t Talk about It)',
+    venue: 'Princeton University Press, 2017',
+    note: {
+      ru: 'частная власть как режим управления: работодатель распоряжается жизнью работника без выборов, разделения властей и апелляции',
+      en: 'private power as a form of government: the employer directs a worker’s life without elections, separation of powers, or appeal',
+    },
+    href: 'https://press.princeton.edu/books/hardcover/9780691176512/private-government',
+    label: 'press.princeton.edu',
+  },
+  {
+    authors: 'Birhane, A., Kalluri, P., Card, D., Agnew, W., Dotan, R., Bao, M.',
+    title: 'The Values Encoded in Machine Learning Research',
+    venue: 'ACM FAccT / arXiv:2106.15590, 2021',
+    note: {
+      ru: '100 самых цитируемых статей по ML: 15% объясняют связь с общественными потребностями, 1% упоминает возможный вред; растущая связь с крупными компаниями и элитными университетами',
+      en: 'the 100 most-cited ML papers: 15% explain a link to societal needs, 1% mention potential harm; increasingly tied to large companies and elite universities',
+    },
+    href: 'https://arxiv.org/abs/2106.15590',
+    label: 'arxiv.org/abs/2106.15590',
+  },
+  {
+    authors: 'Lange, B.',
+    title: 'Epistemic Deference to AI',
+    venue: 'arXiv:2510.21043, 2025',
+    note: {
+      ru: 'вывод модели — довод среди прочих, а не замена суждению; непрозрачность и отсутствие сигналов отказа делают безоговорочное доверие неоправданным',
+      en: 'a model’s output is one contributory reason, not a replacement for judgement; opacity and missing failure signals leave unqualified deference unjustified',
+    },
+    href: 'https://arxiv.org/abs/2510.21043',
+    label: 'arxiv.org/abs/2510.21043',
+  },
+  {
+    authors: 'Kulveit, J., Douglas, R., Ammann, N., Turan, D., Krueger, D., Duvenaud, D.',
+    title: 'Gradual Disempowerment',
+    venue: '2025',
+    note: {
+      ru: 'утрата влияния без враждебного ИИ и без заговора: вытеснение человеческого участия отвязывает стимулы институтов от человеческого благополучия',
+      en: 'loss of influence with no hostile AI and no conspiracy: displacing human participation untethers institutional incentives from human flourishing',
+    },
+    href: 'https://gradual-disempowerment.ai/',
+    label: 'gradual-disempowerment.ai',
+  },
+  {
+    authors: 'Anthropic, Collective Intelligence Project.',
+    title: 'Collective Constitutional AI: Aligning a Language Model with Public Input',
+    venue: '2023',
+    note: {
+      ru: '~1000 репрезентативно набранных взрослых, 1127 формулировок, 38 252 голоса; публичная конституция совпала с исходной примерно на половину',
+      en: '~1,000 representatively sampled adults, 1,127 statements, 38,252 votes; the public constitution overlapped the original by roughly half',
+    },
+    href: 'https://www.anthropic.com/research/collective-constitutional-ai-aligning-a-language-model-with-public-input',
+    label: 'anthropic.com',
+  },
+  {
+    authors: 'Landemore, H.',
+    title: 'Why Rule by the People Is Better than Rule by the Experts',
+    venue: 'Aeon',
+    note: {
+      ru: 'довод против технократии: там, где вопрос не сводится к технике, решение многих обычно превосходит решение узкого круга',
+      en: 'the case against technocracy: where a question does not reduce to technique, the judgement of the many usually beats a narrow circle',
+    },
+    href: 'https://aeon.co/essays/why-rule-by-the-people-is-better-than-rule-by-the-experts',
+    label: 'aeon.co',
+  },
+  {
+    authors: 'Christiano, T., Bajaj, S.',
+    title: 'Democracy — The Justification of Democracy',
+    venue: 'Stanford Encyclopedia of Philosophy',
+    note: {
+      ru: 'систематический разбор инструментальных и внутренних доводов за демократию — опора финального аудита главы 5',
+      en: 'a systematic survey of instrumental and intrinsic arguments for democracy — the backing for the final audit in Chapter 5',
+    },
+    href: 'https://plato.stanford.edu/entries/democracy/',
+    label: 'plato.stanford.edu — Democracy',
+  },
+  {
+    authors: 'Council of Europe.',
+    title: 'Framework Convention on Artificial Intelligence and Human Rights, Democracy and the Rule of Law',
+    venue: '2024',
+    note: {
+      ru: 'связывает жизненный цикл системы с правами человека и верховенством права и требует информации, достаточной для оспаривания решения',
+      en: 'binds the system lifecycle to human rights and the rule of law, and requires information sufficient to contest a decision',
+    },
+    href: 'https://www.coe.int/en/web/artificial-intelligence/the-framework-convention-on-artificial-intelligence',
+    label: 'coe.int',
+  },
+  {
+    authors: 'UNESCO.',
+    title: 'Recommendation on the Ethics of Artificial Intelligence',
+    venue: '2021',
+    note: {
+      ru: 'справедливость через недискриминацию, разнообразие, доступность выгод и оценку воздействия на протяжении жизненного цикла',
+      en: 'justice through non-discrimination, diversity, accessibility of benefits, and lifecycle impact assessment',
+    },
+    href: 'https://www.unesco.org/en/artificial-intelligence/recommendation-ethics',
+    label: 'unesco.org',
+  },
+];
+
 export default function AiPoliticalPhilosophyTheory({ lang }: { lang: string }) {
   const ru = lang === 'ru';
 
@@ -53,16 +212,16 @@ export default function AiPoliticalPhilosophyTheory({ lang }: { lang: string }) 
         <div className="space-y-4">
           <p className="text-neutral-300 leading-relaxed">
             {ru ? (
-              <>Классическая либеральная традиция часто начинает со свободы как защищённой сферы выбора. В знаменитом различении Исайи Берлина негативная свобода означает отсутствие чужого вмешательства, а позитивная — способность быть автором собственной жизни. ИИ усложняет обе стороны. Фильтр может не запрещать читать политический текст, но сделать его практически невидимым. Персональный помощник может расширить способность действовать — перевести документ, подготовить обращение, объяснить закон — и одновременно незаметно сузить набор вариантов, если оптимизирует поведение под интересы платформы. Поэтому формального «кнопка не заблокирована» недостаточно для оценки свободы.</>
+              <>Классическая либеральная традиция часто начинает со свободы как защищённой сферы выбора. В знаменитом различении Исайи Берлина (<SourceLink href="https://plato.stanford.edu/entries/liberty-positive-negative/">«Two Concepts of Liberty»</SourceLink>, 1958) негативная свобода означает отсутствие чужого вмешательства, а позитивная — способность быть автором собственной жизни. ИИ усложняет обе стороны. Фильтр может не запрещать читать политический текст, но сделать его практически невидимым. Персональный помощник может расширить способность действовать — перевести документ, подготовить обращение, объяснить закон — и одновременно незаметно сузить набор вариантов, если оптимизирует поведение под интересы платформы. Поэтому формального «кнопка не заблокирована» недостаточно для оценки свободы.</>
             ) : (
-              <>The classical liberal tradition often begins with freedom as a protected sphere of choice. In Isaiah Berlin’s influential distinction, negative liberty is freedom from another’s interference, while positive liberty concerns the capacity to be the author of one’s life. AI complicates both. A filter need not forbid access to political writing; it can make the writing practically invisible. A personal assistant can expand agency by translating a document, drafting an appeal, or explaining a law, while quietly narrowing the menu of options if it optimizes behaviour for the platform’s interests. A formal claim that “the button was never disabled” is therefore insufficient to assess freedom.</>
+              <>The classical liberal tradition often begins with freedom as a protected sphere of choice. In Isaiah Berlin’s influential distinction (<SourceLink href="https://plato.stanford.edu/entries/liberty-positive-negative/">“Two Concepts of Liberty”</SourceLink>, 1958), negative liberty is freedom from another’s interference, while positive liberty concerns the capacity to be the author of one’s life. AI complicates both. A filter need not forbid access to political writing; it can make the writing practically invisible. A personal assistant can expand agency by translating a document, drafting an appeal, or explaining a law, while quietly narrowing the menu of options if it optimizes behaviour for the platform’s interests. A formal claim that “the button was never disabled” is therefore insufficient to assess freedom.</>
             )}
           </p>
           <p className="text-neutral-300 leading-relaxed">
             {ru ? (
-              <>Республиканская традиция добавляет третью линзу: свободу как <Term id="non-domination" lang={lang}>не-господство</Term>. Несвободен не только тот, кому уже помешали, но и тот, кто живёт под произвольной властью другого. Добрый хозяин может никогда не вмешаться в жизнь зависимого человека, однако сама неконтролируемая способность вмешаться создаёт господство. Для ИИ это различие особенно важно: платформа может сегодня не понижать политические сообщения, работодатель — не использовать чувствительный признак, государство — не объединять базы наблюдения. Если правила можно односторонне поменять, а затронутые не могут потребовать обоснования, отсутствие сегодняшнего вреда ещё не означает свободы.</>
+              <>Республиканская традиция — прежде всего <SourceLink href="https://plato.stanford.edu/entries/republicanism/">Филип Петтит</SourceLink> в «Republicanism» (1997) — добавляет третью линзу: свободу как <Term id="non-domination" lang={lang}>не-господство</Term>. Несвободен не только тот, кому уже помешали, но и тот, кто живёт под произвольной властью другого. Добрый хозяин может никогда не вмешаться в жизнь зависимого человека, однако сама неконтролируемая способность вмешаться создаёт господство. Для ИИ это различие особенно важно: платформа может сегодня не понижать политические сообщения, работодатель — не использовать чувствительный признак, государство — не объединять базы наблюдения. Если правила можно односторонне поменять, а затронутые не могут потребовать обоснования, отсутствие сегодняшнего вреда ещё не означает свободы.</>
             ) : (
-              <>The republican tradition adds a third lens: freedom as <Term id="non-domination" lang={lang}>non-domination</Term>. A person is unfree not only when interference has occurred, but when they live under another’s arbitrary power. A benevolent master may never interfere with a dependent person, yet the uncontrolled capacity to interfere still constitutes domination. This distinction is especially useful for AI. A platform may not demote political posts today, an employer may not use a sensitive attribute, and a state may not combine surveillance databases. If the rules can be changed unilaterally and affected people cannot demand justification, the absence of present harm does not yet amount to freedom.</>
+              <>The republican tradition — above all <SourceLink href="https://plato.stanford.edu/entries/republicanism/">Philip Pettit</SourceLink> in “Republicanism” (1997) — adds a third lens: freedom as <Term id="non-domination" lang={lang}>non-domination</Term>. A person is unfree not only when interference has occurred, but when they live under another’s arbitrary power. A benevolent master may never interfere with a dependent person, yet the uncontrolled capacity to interfere still constitutes domination. This distinction is especially useful for AI. A platform may not demote political posts today, an employer may not use a sensitive attribute, and a state may not combine surveillance databases. If the rules can be changed unilaterally and affected people cannot demand justification, the absence of present harm does not yet amount to freedom.</>
             )}
           </p>
           <p className="text-neutral-300 leading-relaxed">
@@ -92,16 +251,16 @@ export default function AiPoliticalPhilosophyTheory({ lang }: { lang: string }) 
           </p>
           <p className="text-neutral-300 leading-relaxed">
             {ru ? (
-              <>Джон Ролз предлагает мысленный эксперимент первоначального положения: выбирать принципы общества за «завесой неведения», не зная своего класса, здоровья, происхождения или талантов. Применяя его к ИИ, мы не знаем, окажемся ли владельцем модели, работником, чей труд автоматизируют, человеком из плохо представленной в данных группы или получателем решения. Такая перспектива не выдаёт готовый закон, но меняет бремя доказательства. Недостаточно показать рост среднего качества. Нужно спросить, приемлем ли порядок для тех, кому достанется худшая позиция, и улучшает ли неравенство их положение, а не только положение победителей.</>
+              <>Джон Ролз в «Теории справедливости» (1971) предлагает мысленный эксперимент <SourceLink href="https://plato.stanford.edu/entries/original-position/">первоначального положения</SourceLink>: выбирать принципы общества за «завесой неведения», не зная своего класса, здоровья, происхождения или талантов. Применяя его к ИИ, мы не знаем, окажемся ли владельцем модели, работником, чей труд автоматизируют, человеком из плохо представленной в данных группы или получателем решения. Такая перспектива не выдаёт готовый закон, но меняет бремя доказательства. Недостаточно показать рост среднего качества. Нужно спросить, приемлем ли порядок для тех, кому достанется худшая позиция, и улучшает ли неравенство их положение, а не только положение победителей.</>
             ) : (
-              <>John Rawls asks us to choose principles of society from an original position behind a “veil of ignorance,” without knowing our class, health, background, or talents. Applied to AI, we do not know whether we will own a model, lose work to automation, belong to a group poorly represented in the data, or receive a consequential automated decision. The device does not output a ready-made statute, but it changes the burden of proof. Showing an increase in average performance is not enough. We must ask whether the arrangement is acceptable to those who receive the worst position and whether inequality improves their prospects rather than merely those of the winners.</>
+              <>John Rawls, in “A Theory of Justice” (1971), asks us to choose principles of society from an <SourceLink href="https://plato.stanford.edu/entries/original-position/">original position</SourceLink> behind a “veil of ignorance,” without knowing our class, health, background, or talents. Applied to AI, we do not know whether we will own a model, lose work to automation, belong to a group poorly represented in the data, or receive a consequential automated decision. The device does not output a ready-made statute, but it changes the burden of proof. Showing an increase in average performance is not enough. We must ask whether the arrangement is acceptable to those who receive the worst position and whether inequality improves their prospects rather than merely those of the winners.</>
             )}
           </p>
           <p className="text-neutral-300 leading-relaxed">
             {ru ? (
-              <>Современная политика ИИ добавляет материальные слои: кто контролирует вычисления и данные, чей труд размечает обучающие наборы, какие языки получают качественные модели, кто потребляет энергию и где остаётся экологическая цена. Рекомендация <SourceLink href="https://www.unesco.org/en/artificial-intelligence/recommendation-ethics">ЮНЕСКО по этике ИИ</SourceLink> связывает справедливость с недискриминацией, разнообразием, доступностью выгод и оценкой воздействия в течение жизненного цикла. Это полезнее узкого теста «одинакова ли точность по группам»: политическая справедливость рассматривает не только выход модели, но и институт производства — собственность, труд, инфраструктуру и распределение права определять цели.</>
+              <>Современная политика ИИ добавляет материальные слои: кто контролирует вычисления и данные, чей труд размечает обучающие наборы, какие языки получают качественные модели, кто потребляет энергию и где остаётся экологическая цена. Что эти слои не нейтральны, показывает разбор самой исследовательской практики: <SourceLink href="https://arxiv.org/abs/2106.15590">Бирхане и соавторы</SourceLink> разметили 100 самых цитируемых статей по машинному обучению и нашли, что лишь 15% из них объясняют связь работы с общественными потребностями, а 1% упоминает возможный вред; в верхней шестёрке ценностей — производительность, обобщаемость и эффективность, а сами статьи всё теснее связаны с крупными компаниями и элитными университетами. Рекомендация <SourceLink href="https://www.unesco.org/en/artificial-intelligence/recommendation-ethics">ЮНЕСКО по этике ИИ</SourceLink> связывает справедливость с недискриминацией, разнообразием, доступностью выгод и оценкой воздействия в течение жизненного цикла. Это полезнее узкого теста «одинакова ли точность по группам»: политическая справедливость рассматривает не только выход модели, но и институт производства — собственность, труд, инфраструктуру и распределение права определять цели.</>
             ) : (
-              <>Contemporary AI politics adds material layers: who controls compute and data, whose labour labels training sets, which languages receive capable models, who consumes energy, and where environmental costs remain. The <SourceLink href="https://www.unesco.org/en/artificial-intelligence/recommendation-ethics">UNESCO Recommendation on the Ethics of AI</SourceLink> connects fairness with non-discrimination, diversity, access to benefits, and lifecycle impact assessment. This is broader than asking whether accuracy is equal across groups. Political justice examines not only model outputs but the institution of production: ownership, labour, infrastructure, and the distribution of authority to define the goals.</>
+              <>Contemporary AI politics adds material layers: who controls compute and data, whose labour labels training sets, which languages receive capable models, who consumes energy, and where environmental costs remain. That these layers are not neutral is visible in research practice itself: <SourceLink href="https://arxiv.org/abs/2106.15590">Birhane and colleagues</SourceLink> annotated the 100 most-cited machine-learning papers and found that only 15% of them explain how the work relates to societal needs, while 1% mentions potential harm; the top six values are performance, generalisation and efficiency, and the papers themselves are increasingly tied to large companies and elite universities. The <SourceLink href="https://www.unesco.org/en/artificial-intelligence/recommendation-ethics">UNESCO Recommendation on the Ethics of AI</SourceLink> connects fairness with non-discrimination, diversity, access to benefits, and lifecycle impact assessment. This is broader than asking whether accuracy is equal across groups. Political justice examines not only model outputs but the institution of production: ownership, labour, infrastructure, and the distribution of authority to define the goals.</>
             )}
           </p>
           <p className="text-neutral-300 leading-relaxed">
@@ -117,16 +276,16 @@ export default function AiPoliticalPhilosophyTheory({ lang }: { lang: string }) 
         <div className="space-y-4">
           <p className="text-neutral-300 leading-relaxed">
             {ru ? (
-              <>В плюралистическом обществе разумные люди не совпадут в религии, морали или представлении о хорошей жизни. Поэтому Ролз связывает легитимное применение политической власти с <Term id="public-reason" lang={lang}>публичным разумом</Term>: при решении фундаментальных вопросов гражданам предлагают основания, доступные как политические аргументы, а не требуют принять конкретное мировоззрение. Для ИИ это означает, что фраза «так решила модель» не является публичным основанием. Не является им и ссылка на коммерческую тайну. Обоснование должно связывать цель, релевантные признаки, правило решения и допустимые ограничения с нормами, которые затронутый может проверить и оспорить.</>
+              <>В плюралистическом обществе разумные люди не совпадут в религии, морали или представлении о хорошей жизни. Поэтому Ролз в «Политическом либерализме» (1993) связывает легитимное применение политической власти с <SourceLink href="https://plato.stanford.edu/entries/public-reason/"><Term id="public-reason" lang={lang}>публичным разумом</Term></SourceLink>: при решении фундаментальных вопросов гражданам предлагают основания, доступные как политические аргументы, а не требуют принять конкретное мировоззрение. Для ИИ это означает, что фраза «так решила модель» не является публичным основанием. Не является им и ссылка на коммерческую тайну. Тот же вывод получается с эпистемической стороны: <SourceLink href="https://arxiv.org/abs/2510.21043">Ланге</SourceLink> доказывает, что вывод модели работает как один довод среди прочих, а не как замена собственному суждению, и что непрозрачность вместе с отсутствием внятных сигналов отказа делает безоговорочное доверие неоправданным. Обоснование должно связывать цель, релевантные признаки, правило решения и допустимые ограничения с нормами, которые затронутый может проверить и оспорить.</>
             ) : (
-              <>In a pluralist society, reasonable people will not converge on religion, morality, or a single conception of the good life. Rawls therefore connects legitimate political power with <Term id="public-reason" lang={lang}>public reason</Term>: on fundamental questions, citizens should be offered reasons available as political arguments rather than required to accept one worldview. For AI, “the model decided” is not a public reason. Neither is an appeal to trade secrecy. A justification must connect the objective, relevant features, decision rule, and acceptable constraints to norms that an affected person can inspect and contest.</>
+              <>In a pluralist society, reasonable people will not converge on religion, morality, or a single conception of the good life. Rawls, in “Political Liberalism” (1993), therefore connects legitimate political power with <SourceLink href="https://plato.stanford.edu/entries/public-reason/"><Term id="public-reason" lang={lang}>public reason</Term></SourceLink>: on fundamental questions, citizens should be offered reasons available as political arguments rather than required to accept one worldview. For AI, “the model decided” is not a public reason. Neither is an appeal to trade secrecy. The same conclusion arrives from the epistemic side: <SourceLink href="https://arxiv.org/abs/2510.21043">Lange</SourceLink> argues that a model’s output works as one contributory reason among others rather than a replacement for independent judgement, and that opacity together with the absence of clear failure signals leaves unqualified deference unjustified. A justification must connect the objective, relevant features, decision rule, and acceptable constraints to norms that an affected person can inspect and contest.</>
             )}
           </p>
           <p className="text-neutral-300 leading-relaxed">
             {ru ? (
-              <>Юрген Хабермас переносит центр тяжести с правильного результата на условия обсуждения: норма претендует на легитимность, когда затронутые могли бы участвовать в свободном и равном обсуждении. Реальное участие никогда не идеально, но идея обнаруживает подмены. Фокус-группа из удобных пользователей, краудсорсинговая разметка и опрос в интерфейсе ещё не демократия: неизвестно, кого исключили, кто задал варианты и как ответы повлияли на решение. Участие становится политически значимым, когда есть представительство затронутых, информация, время для возражения, влияние на итог и отчёт о том, почему часть требований отклонена.</>
+              <><SourceLink href="https://plato.stanford.edu/entries/habermas/">Юрген Хабермас</SourceLink> в «Фактичности и значимости» (1992) переносит центр тяжести с правильного результата на условия обсуждения: норма претендует на легитимность, когда затронутые могли бы участвовать в свободном и равном обсуждении. Реальное участие никогда не идеально, но идея обнаруживает подмены. Фокус-группа из удобных пользователей, краудсорсинговая разметка и опрос в интерфейсе ещё не демократия: неизвестно, кого исключили, кто задал варианты и как ответы повлияли на решение. Как выглядит попытка сделать участие настоящим, показывает эксперимент <SourceLink href="https://www.anthropic.com/research/collective-constitutional-ai-aligning-a-language-model-with-public-input">Anthropic и Collective Intelligence Project</SourceLink>: около тысячи репрезентативно набранных взрослых американцев предложили 1127 формулировок и отдали 38 252 голоса, а получившаяся «публичная конституция» совпала с исходной примерно наполовину. Участие становится политически значимым, когда есть представительство затронутых, информация, время для возражения, влияние на итог и отчёт о том, почему часть требований отклонена.</>
             ) : (
-              <>Jürgen Habermas shifts attention from a correct outcome to the conditions of discussion: a norm can claim legitimacy when those affected could participate in free and equal deliberation. Actual participation is never ideal, but the idea exposes substitutes. A convenient user focus group, crowdsourced labels, and an in-product poll are not yet democracy: we do not know who was excluded, who framed the options, or how answers changed the decision. Participation becomes politically meaningful when affected groups are represented, receive information and time to object, can influence the outcome, and can see why some demands were rejected.</>
+              <><SourceLink href="https://plato.stanford.edu/entries/habermas/">Jürgen Habermas</SourceLink>, in “Between Facts and Norms” (1992), shifts attention from a correct outcome to the conditions of discussion: a norm can claim legitimacy when those affected could participate in free and equal deliberation. Actual participation is never ideal, but the idea exposes substitutes. A convenient user focus group, crowdsourced labels, and an in-product poll are not yet democracy: we do not know who was excluded, who framed the options, or how answers changed the decision. What a serious attempt at participation looks like is visible in the <SourceLink href="https://www.anthropic.com/research/collective-constitutional-ai-aligning-a-language-model-with-public-input">Anthropic and Collective Intelligence Project</SourceLink> experiment: roughly a thousand representatively sampled American adults contributed 1,127 statements and cast 38,252 votes, and the resulting “public constitution” overlapped with the original by about half. Participation becomes politically meaningful when affected groups are represented, receive information and time to object, can influence the outcome, and can see why some demands were rejected.</>
             )}
           </p>
           <p className="text-neutral-300 leading-relaxed">
@@ -149,16 +308,16 @@ export default function AiPoliticalPhilosophyTheory({ lang }: { lang: string }) 
         <div className="space-y-4">
           <p className="text-neutral-300 leading-relaxed">
             {ru ? (
-              <>Демократии сталкиваются с двойной задачей. Они должны управлять системами, применяемыми государством, и одновременно ограничивать частную инфраструктурную власть: модели, облака, рекламные рынки и платформы, от которых зависит публичная сфера. Выбор между «регулировать» и «не регулировать» слишком груб. Нужна карта институтов: парламент задаёт права и пределы, независимый регулятор проверяет соблюдение, суд предоставляет средство защиты, аудиторы исследуют систему, гражданское общество представляет затронутых, а разработчик отвечает за документацию и исправление. «Человек в контуре» не заменяет эту цепочку, если человек лишь нажимает кнопку без времени, данных и полномочий.</>
+              <>Демократии сталкиваются с двойной задачей. Они должны управлять системами, применяемыми государством, и одновременно ограничивать частную инфраструктурную власть: модели, облака, рекламные рынки и платформы, от которых зависит публичная сфера. Что частная власть бывает не менее принудительной, чем государственная, показывает <SourceLink href="https://press.princeton.edu/books/hardcover/9780691176512/private-government">Элизабет Андерсон</SourceLink> на примере работодателя, управляющего жизнью работника без выборов и апелляции. А <SourceLink href="https://gradual-disempowerment.ai/">Кулвейт и соавторы</SourceLink> описывают механизм, для которого не нужен ни враждебный ИИ, ни заговор: по мере вытеснения человеческого участия из экономики, политики и культуры институты теряют встроенный стимул служить людям, и те, кто сопротивляется давлению, вытесняются теми, кто не сопротивляется. Выбор между «регулировать» и «не регулировать» слишком груб. Нужна карта институтов: парламент задаёт права и пределы, независимый регулятор проверяет соблюдение, суд предоставляет средство защиты, аудиторы исследуют систему, гражданское общество представляет затронутых, а разработчик отвечает за документацию и исправление. «Человек в контуре» не заменяет эту цепочку, если человек лишь нажимает кнопку без времени, данных и полномочий.</>
             ) : (
-              <>Democracies face a double task. They must govern systems used by the state while constraining private infrastructural power: models, clouds, advertising markets, and platforms on which the public sphere depends. The choice between “regulate” and “do not regulate” is too crude. We need an institutional map: legislatures define rights and limits, independent regulators inspect compliance, courts provide remedies, auditors investigate systems, civil society represents affected groups, and developers remain responsible for documentation and repair. A “human in the loop” cannot replace this chain when the human merely clicks approve without time, evidence, or authority.</>
+              <>Democracies face a double task. They must govern systems used by the state while constraining private infrastructural power: models, clouds, advertising markets, and platforms on which the public sphere depends. That private power can be no less coercive than public power is the argument of <SourceLink href="https://press.princeton.edu/books/hardcover/9780691176512/private-government">Elizabeth Anderson</SourceLink>, whose case is the employer governing a worker’s life without elections or appeal. And <SourceLink href="https://gradual-disempowerment.ai/">Kulveit and colleagues</SourceLink> describe a mechanism that needs neither a hostile AI nor a conspiracy: as human participation is displaced across the economy, politics and culture, institutions lose their built-in incentive to serve people, and those who resist the pressure are displaced by those who do not. The choice between “regulate” and “do not regulate” is too crude. We need an institutional map: legislatures define rights and limits, independent regulators inspect compliance, courts provide remedies, auditors investigate systems, civil society represents affected groups, and developers remain responsible for documentation and repair. A “human in the loop” cannot replace this chain when the human merely clicks approve without time, evidence, or authority.</>
             )}
           </p>
           <p className="text-neutral-300 leading-relaxed">
             {ru ? (
-              <>Демократический контроль не требует голосовать за каждый параметр модели. Решения различаются по уровню. Инженеры могут выбирать архитектуру в пределах публично установленных ограничений; организация — процедуру тестирования; регулятор — стандарты доказательности; граждане и их представители — цели, права и красные линии. Ошибка технократии — представить ценностный выбор как чистую оптимизацию. Обратная ошибка — вынести технический вопрос на плебисцит без знаний и вариантов. Хорошее управление соединяет экспертизу с подотчётностью: специалист объясняет последствия, но не получает автоматического права определять общественную цель.</>
+              <>Демократический контроль не требует голосовать за каждый параметр модели. Решения различаются по уровню. Инженеры могут выбирать архитектуру в пределах публично установленных ограничений; организация — процедуру тестирования; регулятор — стандарты доказательности; граждане и их представители — цели, права и красные линии. Ошибка технократии — представить ценностный выбор как чистую оптимизацию; против неё <SourceLink href="https://aeon.co/essays/why-rule-by-the-people-is-better-than-rule-by-the-experts">Элен Ландемор</SourceLink> возражает, что решения многих обычно лучше решений узкого круга экспертов именно там, где вопрос не сводится к технике. Систематический разбор доводов за демократию — инструментальных и внутренних — собран в <SourceLink href="https://plato.stanford.edu/entries/democracy/">статье «Democracy» Стэнфордской философской энциклопедии</SourceLink>. Обратная ошибка — вынести технический вопрос на плебисцит без знаний и вариантов. Хорошее управление соединяет экспертизу с подотчётностью: специалист объясняет последствия, но не получает автоматического права определять общественную цель.</>
             ) : (
-              <>Democratic control does not require a vote on every model parameter. Decisions operate at different levels. Engineers may choose architecture within publicly established constraints; an organization may choose a testing procedure; a regulator may set evidentiary standards; citizens and representatives determine objectives, rights, and red lines. Technocracy errs by presenting value choices as pure optimization. The reverse error is to send a technical question to a plebiscite without knowledge or meaningful options. Good governance joins expertise to accountability: the expert explains consequences but does not thereby acquire the right to define the public objective.</>
+              <>Democratic control does not require a vote on every model parameter. Decisions operate at different levels. Engineers may choose architecture within publicly established constraints; an organization may choose a testing procedure; a regulator may set evidentiary standards; citizens and representatives determine objectives, rights, and red lines. Technocracy errs by presenting value choices as pure optimization; against it <SourceLink href="https://aeon.co/essays/why-rule-by-the-people-is-better-than-rule-by-the-experts">Hélène Landemore</SourceLink> argues that decisions by the many usually beat decisions by a narrow expert circle precisely where the question does not reduce to technique. A systematic survey of the arguments for democracy, instrumental and intrinsic, is collected in the <SourceLink href="https://plato.stanford.edu/entries/democracy/">Stanford Encyclopedia entry on Democracy</SourceLink>. The reverse error is to send a technical question to a plebiscite without knowledge or meaningful options. Good governance joins expertise to accountability: the expert explains consequences but does not thereby acquire the right to define the public objective.</>
             )}
           </p>
           <p className="text-neutral-300 leading-relaxed">
@@ -172,6 +331,20 @@ export default function AiPoliticalPhilosophyTheory({ lang }: { lang: string }) 
             {ru ? <>Итогом аудита должен быть не философский ярлык, а карта ответственности. В ней названы цель, затронутые группы, допустимые основания, распределение выгод и ошибок, владелец каждого решения, процедура участия и путь пересмотра. Такая карта допускает честный вывод «систему пока нельзя легитимно применять», даже если демо впечатляет. Она допускает и положительный вывод, когда автоматизация расширяет возможности, остаётся под контролем и исправляет ошибки. Политическая философия здесь не тормоз инноваций, а язык, на котором общество задаёт им условия.</> : <>The audit should end not with a philosophical label but with a map of responsibility. It names the objective, affected groups, admissible reasons, distribution of benefits and errors, owner of each decision, participation procedure, and route of review. Such a map allows the honest conclusion that a system cannot yet be deployed legitimately even when its demo is impressive. It also allows a positive conclusion when automation expands capability, remains under control, and repairs mistakes. Political philosophy is not a brake on innovation here; it is the language in which a society sets innovation’s terms.</>}
           </p>
         </div>
+      </section>
+      <section className="bg-card-dark border border-border-card rounded-xl p-8">
+        <h2 className="text-2xl font-bold mb-5 text-heading">{ru ? 'Источники' : 'Sources'}</h2>
+        <ul className="space-y-4">
+          {SOURCES.map(s => (
+            <li key={s.href} className="text-sm text-neutral-300 leading-relaxed">
+              <span className="text-neutral-400">{s.authors}</span>{' '}
+              <span className="text-neutral-200">{s.title}</span>
+              {s.venue ? <span className="text-neutral-500">{` — ${s.venue}`}</span> : null}
+              <span className="text-neutral-500">{` — ${ru ? s.note.ru : s.note.en}. `}</span>
+              <SourceLink href={s.href}>{s.label}</SourceLink>
+            </li>
+          ))}
+        </ul>
       </section>
     </div>
   );
