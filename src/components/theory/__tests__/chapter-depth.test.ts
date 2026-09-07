@@ -55,7 +55,6 @@ const SHORT_BLOCK_LABELS = ['краткий блок', 'short block'];
  */
 const DEBT: string[] = [
   'AgentCodingFoundationsTheory.tsx',
-  'AgenticCliToolsTheory.tsx',
   'AgenticCodingToolsTheory.tsx',
   'AgenticSwarmTheory.tsx',
   'AgenticTestingLoopTheory.tsx',
