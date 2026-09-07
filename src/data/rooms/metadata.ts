@@ -272,7 +272,7 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
       en: 'Read the shell an agent wrote for you: quoting and empty variables, set -euo pipefail, dry runs, and your own check script.',
     },
     difficulty: 'Intermediate',
-    time: { ru: '30 мин', en: '30m' },
+    time: { ru: '45 мин', en: '45m' },
     category: { ru: 'Агентная разработка', en: 'Agent Coding' },
     pathIds: ['agent-coding'],
     icon: 'Terminal',

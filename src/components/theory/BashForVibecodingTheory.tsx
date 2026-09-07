@@ -146,7 +146,7 @@ export default function BashForVibecodingTheory({ lang }: { lang: string }) {
                 <SourceLink href="https://github.com/ValveSoftware/steam-for-linux/issues/3671">тикет #3671</SourceLink>:
                 после того как путь к каталогу перестал разрешаться, скрипт рекурсивно удалил все файлы, принадлежавшие
                 пользователю, — включая подключённый внешний диск с резервной копией на три терабайта. Точной строки в
-                тикете нет, но механизм такого класса аварий разбирается в главе 2, и он занимает ровно одну строку.
+                тикете нет, но механизм такого класса аварий разбирается в главе 4, и он занимает ровно одну строку.
               </>
             ) : (
               <>
@@ -155,7 +155,7 @@ export default function BashForVibecodingTheory({ lang }: { lang: string }) {
                 <SourceLink href="https://github.com/ValveSoftware/steam-for-linux/issues/3671">issue #3671</SourceLink>:
                 after a directory path stopped resolving, the script recursively deleted every file owned by the user —
                 including a mounted external drive holding a three-terabyte backup. The issue does not quote the exact
-                line, but the mechanism behind this class of failure is the subject of Chapter 2, and it fits on one
+                line, but the mechanism behind this class of failure is the subject of Chapter 4, and it fits on one
                 line.
               </>
             )}
@@ -186,8 +186,292 @@ export default function BashForVibecodingTheory({ lang }: { lang: string }) {
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
         <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru
-            ? 'Глава 2: Кавычки, пробелы и пустая переменная'
-            : 'Chapter 2: Quotes, Spaces, and the Empty Variable'}
+            ? 'Глава 2: В каком shell вы находитесь и почему агент этого не знает'
+            : 'Chapter 2: Which Shell You Are In, and Why the Agent Does Not Know'}
+        </h2>
+        <div className="space-y-4">
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Вам продиктовали рецепт по телефону, исходя из того, что у вас газовая плита. У вас индукционная.
+                часть шагов совпадёт, но «убавьте огонь до минимума» окажется бессмысленной инструкцией, и вы поймёте
+                это не сразу, а когда что-то подгорит.
+              </>
+            ) : (
+              <>
+                Someone dictates a recipe to you over the phone, assuming you have a gas hob. Yours is induction. Most
+                of the steps will match, but “turn the flame right down” turns out to be a meaningless instruction, and
+                you find that out not immediately but when something burns.
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Ровно это происходит между вами и агентом. Он почти всегда пишет для <strong>bash</strong> — потому что
+                bash стоит по умолчанию в большинстве дистрибутивов Linux, и на нём написана основная масса примеров, на
+                которых модель училась. А у вас в терминале может быть zsh (по умолчанию в macOS с 2019 года) или fish.
+                Пока вы запускаете готовый файл, разницы нет. Как только вы копируете строки из ответа агента прямо в
+                свою командную строку — разница появляется.
+              </>
+            ) : (
+              <>
+                Exactly this happens between you and an agent. It almost always writes for <strong>bash</strong> —
+                because bash is the default in most Linux distributions, and most of the examples the model learned from
+                are written in it. Your terminal, meanwhile, may be running zsh (the macOS default since 2019) or fish.
+                While you run a finished file, the difference does not matter. The moment you copy lines out of the
+                agent’s answer straight into your own prompt, it does.
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {ru
+              ? 'Узнать, где вы находитесь, — две команды. Первая показывает ваш текущий shell, вторая — список установленных в системе.'
+              : 'Finding out where you are takes two commands. The first shows your current shell, the second lists the ones installed on the system.'}
+          </p>
+          <Terminal
+            lines={[
+              { cmd: 'echo $SHELL', comment: ru ? '# какой shell у меня сейчас' : '# which shell am I in' },
+              { out: '/bin/zsh' },
+              { cmd: 'cat /etc/shells', comment: ru ? '# что вообще установлено' : '# what is installed at all' },
+              { out: '/bin/sh' },
+              { out: '/bin/bash' },
+              { out: '/bin/zsh' },
+              { out: '/usr/bin/fish' },
+              { cmd: 'bash', comment: ru ? '# перейти в bash на одну сессию' : '# switch to bash for one session' },
+              { out: 'bash-5.2$', tone: 'ok' },
+            ]}
+          />
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Файл <code className="text-accent-300">/etc/shells</code> перечисляет shell&apos;ы, разрешённые в системе
+                как оболочки входа. Набрав имя любого из них, вы перейдёте в него на текущую сессию; команда{' '}
+                <code className="text-accent-300">chsh -s /bin/zsh</code> меняет оболочку по умолчанию насовсем. Для
+                разовой проверки чужого скрипта достаточно первого способа — и это, кстати, самый дешёвый способ
+                воспроизвести окружение, для которого агент писал.
+              </>
+            ) : (
+              <>
+                The file <code className="text-accent-300">/etc/shells</code> lists the shells the system allows as login
+                shells. Typing the name of any of them switches you into it for the current session;{' '}
+                <code className="text-accent-300">chsh -s /bin/zsh</code> changes your default shell permanently. For a
+                one-off check of someone else’s script the first is enough — and it is, incidentally, the cheapest way
+                to reproduce the environment the agent was writing for.
+              </>
+            )}
+          </p>
+          <div className="bg-deep border border-border-subtle rounded-lg p-4 my-4 overflow-x-auto">
+            <table className="w-full text-sm text-neutral-300">
+              <thead>
+                <tr className="text-neutral-500 text-xs uppercase tracking-wider">
+                  <th className="text-left pb-2 pr-6 font-medium">{ru ? 'Свойство' : 'Property'}</th>
+                  <th className="text-left pb-2 pr-6 font-medium">Bash</th>
+                  <th className="text-left pb-2 pr-6 font-medium">Zsh</th>
+                  <th className="text-left pb-2 font-medium">Fish</th>
+                </tr>
+              </thead>
+              <tbody className="align-top">
+                <tr>
+                  <td className="pr-6 py-1">{ru ? 'Полное имя' : 'Full name'}</td>
+                  <td className="pr-6 py-1">Bourne Again Shell</td>
+                  <td className="pr-6 py-1">Z Shell</td>
+                  <td className="py-1">Friendly Interactive Shell</td>
+                </tr>
+                <tr>
+                  <td className="pr-6 py-1">{ru ? 'Совместимость со скриптами агента' : 'Compatibility with agent scripts'}</td>
+                  <td className="pr-6 py-1">{ru ? 'полная — под неё и пишут' : 'full — this is what gets written'}</td>
+                  <td className="pr-6 py-1">{ru ? 'высокая, отличия в мелочах' : 'high, differs in details'}</td>
+                  <td className="py-1">{ru ? 'нет: другой синтаксис' : 'none: different syntax'}</td>
+                </tr>
+                <tr>
+                  <td className="pr-6 py-1">{ru ? 'Подсветка синтаксиса' : 'Syntax highlighting'}</td>
+                  <td className="pr-6 py-1">{ru ? 'нет' : 'no'}</td>
+                  <td className="pr-6 py-1">{ru ? 'через плагины' : 'via plugins'}</td>
+                  <td className="py-1">{ru ? 'встроена' : 'built in'}</td>
+                </tr>
+                <tr>
+                  <td className="pr-6 py-1">{ru ? 'Исправление опечаток' : 'Spelling correction'}</td>
+                  <td className="pr-6 py-1">{ru ? 'нет' : 'no'}</td>
+                  <td className="pr-6 py-1">{ru ? 'есть' : 'yes'}</td>
+                  <td className="py-1">{ru ? 'есть' : 'yes'}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Практический вывод один, и он важнее таблицы. Fish намеренно несовместим с bash: там иначе устроены
+                переменные и подстановки, поэтому строка из ответа агента может выдать ошибку, а может — что хуже —
+                выполниться иначе, чем задумано. Zsh совместим почти во всём, и расхождения всплывают на краях. Если вы
+                работаете в fish или zsh, а запускаете чужой скрипт, надёжнее не вставлять его строки в свой промпт, а
+                сохранить в файл — тогда решать, каким интерпретатором его выполнять, будет не ваш терминал, а первая
+                строка самого файла. О ней — следующая глава.
+              </>
+            ) : (
+              <>
+                There is one practical conclusion, and it matters more than the table. Fish is deliberately incompatible
+                with bash: variables and substitutions work differently there, so a line from the agent’s answer may
+                produce an error — or, worse, run differently from what was intended. Zsh is compatible in almost
+                everything, and the divergences surface at the edges. If you work in fish or zsh but are running someone
+                else’s script, it is safer not to paste its lines into your prompt but to save it to a file — then what
+                decides the interpreter is not your terminal but the file’s own first line. That line is the next
+                chapter.
+              </>
+            )}
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-card-dark border border-border-card rounded-xl p-8">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
+          {ru
+            ? 'Глава 3: Из чего состоит скрипт'
+            : 'Chapter 3: What a Script Is Made Of'}
+        </h2>
+        <div className="space-y-4">
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Чтобы проверить чужой договор, не нужно быть юристом — достаточно знать, где в нём стороны, где предмет,
+                где сумма и где условия расторжения. Четырёх ориентиров хватает, чтобы прочитать документ по существу и
+                увидеть, если один из них подменён.
+              </>
+            ) : (
+              <>
+                To check someone else’s contract you do not need to be a lawyer — it is enough to know where the parties
+                are, where the subject is, where the sum is, and where the termination clauses are. Four landmarks are
+                enough to read the document for substance and to notice when one of them has been swapped.
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Со скриптом так же. Он не «программа», а список команд, записанный в файл, и опорных конструкций в нём
+                всего четыре: переменные, циклы, условия и комментарии. Плюс первая строка, которая говорит, чем этот
+                файл исполнять. Знать их достаточно, чтобы читать то, что прислал агент, — писать с нуля для этого не
+                требуется.
+              </>
+            ) : (
+              <>
+                A script is the same. It is not “a program” but a list of commands written into a file, and it has only
+                four load-bearing constructs: variables, loops, conditionals and comments. Plus a first line saying what
+                should execute the file. Knowing those is enough to read what an agent sent you — writing them from
+                scratch is not required.
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Первая строка называется <strong>shebang</strong> и начинается с символов{' '}
+                <code className="text-accent-300">#!</code>, за которыми идёт путь к интерпретатору:{' '}
+                <code className="text-accent-300">#!/bin/bash</code>. Она и снимает неоднозначность из главы 2 — какой
+                бы shell ни был у вас, файл будет исполнен тем, что указан в shebang. Если её нет, интерпретатор
+                выбирает система, и результат зависит от машины.
+              </>
+            ) : (
+              <>
+                The first line is called the <strong>shebang</strong> and begins with the characters{' '}
+                <code className="text-accent-300">#!</code> followed by the path to an interpreter:{' '}
+                <code className="text-accent-300">#!/bin/bash</code>. It is what removes the ambiguity from Chapter 2 —
+                whatever shell you are in, the file is executed by the one the shebang names. Without it the system
+                picks, and the result depends on the machine.
+              </>
+            )}
+          </p>
+          <Terminal
+            title="greet.sh"
+            lines={[
+              { cmd: '#!/bin/bash', prompt: ' ' },
+              { cmd: '# спросить имя и поздороваться', prompt: ' ' },
+              { cmd: 'echo "Как вас зовут?"', prompt: ' ' },
+              { cmd: 'read name', prompt: ' ' },
+              { cmd: 'if [ "$name" = "" ]; then', prompt: ' ' },
+              { cmd: '  echo "Имя не введено"; exit 1', prompt: ' ' },
+              { cmd: 'fi', prompt: ' ' },
+              { cmd: 'for i in {1..3}; do echo "$i. Здравствуйте, $name"; done', prompt: ' ' },
+            ]}
+          />
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                В восьми строках выше собраны все четыре конструкции. <strong>Переменная</strong>{' '}
+                <code className="text-accent-300">name</code> хранит значение, которое{' '}
+                <code className="text-accent-300">read</code> получил от пользователя; обращаются к ней через{' '}
+                <code className="text-accent-300">&quot;$name&quot;</code>. <strong>Условие</strong> открывается словом{' '}
+                <code className="text-accent-300">if</code> и закрывается зеркальным{' '}
+                <code className="text-accent-300">fi</code>. <strong>Цикл</strong> идёт от{' '}
+                <code className="text-accent-300">do</code> до <code className="text-accent-300">done</code> и повторяет
+                тело для каждого значения. <strong>Комментарий</strong> начинается с{' '}
+                <code className="text-accent-300">#</code> и на выполнение не влияет.
+              </>
+            ) : (
+              <>
+                Those eight lines contain all four constructs. The <strong>variable</strong>{' '}
+                <code className="text-accent-300">name</code> holds the value{' '}
+                <code className="text-accent-300">read</code> took from the user; you reach it as{' '}
+                <code className="text-accent-300">&quot;$name&quot;</code>. The <strong>conditional</strong> opens with{' '}
+                <code className="text-accent-300">if</code> and closes with a mirrored{' '}
+                <code className="text-accent-300">fi</code>. The <strong>loop</strong> runs from{' '}
+                <code className="text-accent-300">do</code> to <code className="text-accent-300">done</code>, repeating
+                its body for each value. A <strong>comment</strong> starts with{' '}
+                <code className="text-accent-300">#</code> and does not affect execution.
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Чтобы файл запустился, ему нужно право на исполнение:{' '}
+                <code className="text-accent-300">chmod +x greet.sh</code>. Запускают его как{' '}
+                <code className="text-accent-300">./greet.sh</code> — с точкой и слэшем впереди. Точка означает «в
+                текущем каталоге»: без неё shell ищет файл только в каталогах из переменной{' '}
+                <code className="text-accent-300">PATH</code>, где вашего скрипта нет, и отвечает «command not found».
+                Это первая ошибка, на которую натыкаются, получив скрипт от агента, и она не про скрипт, а про то, где
+                его искали.
+              </>
+            ) : (
+              <>
+                For the file to run it needs the execute permission:{' '}
+                <code className="text-accent-300">chmod +x greet.sh</code>. You then run it as{' '}
+                <code className="text-accent-300">./greet.sh</code> — with the dot and slash in front. The dot means “in
+                the current directory”: without it the shell looks for the file only in the directories listed in{' '}
+                <code className="text-accent-300">PATH</code>, where your script is not, and answers “command not
+                found”. This is the first error people hit after receiving a script from an agent, and it is not about
+                the script but about where it was looked for.
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {ru ? (
+              <>
+                Одно замечание именно про агентские скрипты. Комментарии модель пишет охотно и обильно — и это
+                единственная часть файла, которую никто не проверяет, потому что на выполнение она не влияет. Поэтому
+                комментарий может честно описывать <em>прошлую</em> версию строки, под которой стоит. Читая скрипт,
+                сверяйте комментарий с кодом, а не доверяйте ему: расхождение между ними — не мелочь, а признак того,
+                что файл правили, не перечитывая целиком.
+              </>
+            ) : (
+              <>
+                One note specific to agent-written scripts. Models write comments readily and abundantly — and comments
+                are the one part of the file nobody verifies, because they do not affect execution. So a comment may
+                faithfully describe the <em>previous</em> version of the line beneath it. When reading a script, check
+                the comment against the code rather than trusting it: a mismatch between the two is not a triviality but
+                a sign that the file was edited without being reread.
+              </>
+            )}
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-card-dark border border-border-card rounded-xl p-8">
+        <h2 className="text-2xl font-bold mb-5 text-heading">
+          {ru
+            ? 'Глава 4: Кавычки, пробелы и пустая переменная'
+            : 'Chapter 4: Quotes, Spaces, and the Empty Variable'}
         </h2>
         <div className="space-y-4">
           <p className="text-neutral-300 leading-relaxed">
@@ -310,8 +594,8 @@ export default function BashForVibecodingTheory({ lang }: { lang: string }) {
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
         <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru
-            ? 'Глава 3: Скрипт, который умеет останавливаться'
-            : 'Chapter 3: A Script That Knows How to Stop'}
+            ? 'Глава 5: Скрипт, который умеет останавливаться'
+            : 'Chapter 5: A Script That Knows How to Stop'}
         </h2>
         <div className="space-y-4">
           <p className="text-neutral-300 leading-relaxed">
@@ -353,7 +637,7 @@ export default function BashForVibecodingTheory({ lang }: { lang: string }) {
                 <code className="text-accent-300">set -euo pipefail</code>. Три флага, каждый закрывает свою дыру.{' '}
                 <code className="text-accent-300">-e</code> останавливает скрипт на первой команде, вернувшей ошибку.{' '}
                 <code className="text-accent-300">-u</code> превращает обращение к незаданной переменной в ошибку — то
-                есть ровно тот случай из главы 2, когда пустое значение раскрывается во что-то опасное.{' '}
+                есть ровно тот случай из главы 4, когда пустое значение раскрывается во что-то опасное.{' '}
                 <code className="text-accent-300">-o pipefail</code> делает так, что конвейер считается упавшим, если
                 упало любое его звено, а не только последнее.
               </>
@@ -363,7 +647,7 @@ export default function BashForVibecodingTheory({ lang }: { lang: string }) {
                 <code className="text-accent-300">set -euo pipefail</code>. Three flags, each closing its own hole.{' '}
                 <code className="text-accent-300">-e</code> stops the script at the first command that returns an error.{' '}
                 <code className="text-accent-300">-u</code> turns a reference to an unset variable into an error — which
-                is precisely the Chapter 2 case where an empty value expands into something dangerous.{' '}
+                is precisely the Chapter 4 case where an empty value expands into something dangerous.{' '}
                 <code className="text-accent-300">-o pipefail</code> makes a pipeline count as failed if any stage
                 failed, not only the last one.
               </>
@@ -438,8 +722,8 @@ export default function BashForVibecodingTheory({ lang }: { lang: string }) {
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
         <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru
-            ? 'Глава 4: Сначала показать, потом сделать'
-            : 'Chapter 4: Show First, Do Second'}
+            ? 'Глава 6: Сначала показать, потом сделать'
+            : 'Chapter 6: Show First, Do Second'}
         </h2>
         <div className="space-y-4">
           <p className="text-neutral-300 leading-relaxed">
@@ -535,8 +819,8 @@ export default function BashForVibecodingTheory({ lang }: { lang: string }) {
       <section className="bg-card-dark border border-border-card rounded-xl p-8">
         <h2 className="text-2xl font-bold mb-5 text-heading">
           {ru
-            ? 'Глава 5: Один скрипт проверки вместо десяти команд'
-            : 'Chapter 5: One Check Script Instead of Ten Commands'}
+            ? 'Глава 7: Один скрипт проверки вместо десяти команд'
+            : 'Chapter 7: One Check Script Instead of Ten Commands'}
         </h2>
         <div className="space-y-4">
           <p className="text-neutral-300 leading-relaxed">
@@ -588,7 +872,7 @@ export default function BashForVibecodingTheory({ lang }: { lang: string }) {
               <>
                 Порядок внутри скрипта имеет значение. Проверки ставят от дешёвых к дорогим: линт отрабатывает за
                 секунды, типы — за десятки секунд, тесты — за минуты. Если падает линт, ждать тестов незачем, а{' '}
-                <code className="text-accent-300">set -e</code> из главы 3 обеспечивает остановку на первом же провале.
+                <code className="text-accent-300">set -e</code> из главы 5 обеспечивает остановку на первом же провале.
                 Так один и тот же скрипт становится и{' '}
                 <Term id="quality-gate" lang={lang}>quality gate</Term> для человека, и командой, которую можно вызвать
                 из CI: система непрерывной интеграции читает тот же код возврата.
@@ -597,7 +881,7 @@ export default function BashForVibecodingTheory({ lang }: { lang: string }) {
               <>
                 Order inside the script matters. Checks are arranged cheapest first: lint finishes in seconds, types in
                 tens of seconds, tests in minutes. If lint fails there is no reason to wait for the tests, and{' '}
-                <code className="text-accent-300">set -e</code> from Chapter 3 guarantees the stop at the first failure.
+                <code className="text-accent-300">set -e</code> from Chapter 5 guarantees the stop at the first failure.
                 The same script thus becomes both a{' '}
                 <Term id="quality-gate" lang={lang}>quality gate</Term> for a human and a command CI can call: the
                 continuous-integration system reads the very same exit code.

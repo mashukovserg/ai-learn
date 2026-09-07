@@ -294,5 +294,84 @@ export const bashForVibecodingTasks: LocalizedTask[] = [
         }
       ]
     }
+  },
+  {
+    id: 13,
+    type: 'input',
+    question: {
+      ru: 'Какую команду набрать, чтобы узнать, в каком shell вы сейчас работаете?',
+      en: 'Which command tells you which shell you are currently working in?'
+    },
+    answer: ['echo $shell', 'echo $SHELL', '$SHELL', 'echo shell'],
+    hint: {
+      ru: 'Вывести на экран значение одной переменной окружения.',
+      en: 'Print the value of a single environment variable.'
+    },
+    explanation: {
+      ru: 'echo $SHELL. Список установленных в системе оболочек лежит в файле /etc/shells — его смотрят командой cat /etc/shells.',
+      en: 'echo $SHELL. The list of shells installed on the system lives in /etc/shells, which you read with cat /etc/shells.'
+    }
+  },
+  {
+    id: 14,
+    type: 'multiple-choice',
+    question: {
+      ru: 'Агент написал команды для bash, а у вас в терминале fish. Вы копируете строки прямо в свой промпт. В чём главный риск?',
+      en: 'The agent wrote commands for bash, but your terminal runs fish. You paste the lines straight into your prompt. What is the main risk?'
+    },
+    options: [
+      { ru: 'Fish намеренно несовместим с bash: строка может выдать ошибку, а может выполниться иначе, чем задумано', en: 'Fish is deliberately incompatible with bash: a line may error out, or it may run differently from what was intended' },
+      { ru: 'Fish медленнее bash, поэтому команды выполнятся с задержкой', en: 'Fish is slower than bash, so the commands will run with a delay' },
+      { ru: 'Никакого: все shell в Linux понимают один и тот же синтаксис', en: 'None: every shell in Linux understands the same syntax' }
+    ],
+    answer: { ru: 'Fish намеренно несовместим с bash: строка может выдать ошибку, а может выполниться иначе, чем задумано', en: 'Fish is deliberately incompatible with bash: a line may error out, or it may run differently from what was intended' },
+    explanation: {
+      ru: 'Ошибка заметна сразу, а тихо изменившееся поведение — нет, и это опаснее. Zsh совместим с bash почти во всём, расхождения всплывают на краях. Надёжный ход — не вставлять строки в свой промпт, а сохранить в файл: тогда интерпретатор задаёт shebang, а не ваш терминал.',
+      en: 'An error is visible at once; behaviour that quietly changed is not, and that is the more dangerous case. Zsh is compatible with bash in almost everything, with divergences at the edges. The safe move is not to paste lines into your prompt but to save them to a file: then the shebang decides the interpreter, not your terminal.'
+    }
+  },
+  {
+    id: 15,
+    type: 'multiple-select',
+    question: {
+      ru: 'Агент прислал файл script.sh. Что нужно, чтобы он запустился, и почему? Выберите все верные утверждения.',
+      en: 'The agent sent you a file called script.sh. What does it take to run it, and why? Select all correct statements.'
+    },
+    options: [
+      { ru: 'Дать право на исполнение: chmod +x script.sh', en: 'Grant the execute permission: chmod +x script.sh' },
+      { ru: 'Запускать как ./script.sh — точка означает «в текущем каталоге»', en: 'Run it as ./script.sh — the dot means “in the current directory”' },
+      { ru: 'Без ./ shell ищет файл только в каталогах из PATH и ответит «command not found»', en: 'Without ./ the shell looks only in the directories listed in PATH and answers “command not found”' },
+      { ru: 'Первая строка #!/bin/bash задаёт интерпретатор независимо от вашего текущего shell', en: 'The first line #!/bin/bash sets the interpreter regardless of your current shell' },
+      { ru: 'Расширение .sh обязательно, иначе файл не запустится', en: 'The .sh extension is mandatory, otherwise the file will not run' },
+      { ru: 'Скрипт нужно запускать от администратора, иначе прав не хватит', en: 'The script has to be run as administrator, otherwise permissions will be insufficient' }
+    ],
+    answer: [
+      { ru: 'Дать право на исполнение: chmod +x script.sh', en: 'Grant the execute permission: chmod +x script.sh' },
+      { ru: 'Запускать как ./script.sh — точка означает «в текущем каталоге»', en: 'Run it as ./script.sh — the dot means “in the current directory”' },
+      { ru: 'Без ./ shell ищет файл только в каталогах из PATH и ответит «command not found»', en: 'Without ./ the shell looks only in the directories listed in PATH and answers “command not found”' },
+      { ru: 'Первая строка #!/bin/bash задаёт интерпретатор независимо от вашего текущего shell', en: 'The first line #!/bin/bash sets the interpreter regardless of your current shell' }
+    ],
+    explanation: {
+      ru: 'Расширение .sh — удобная договорённость, а не требование: интерпретатор задаёт shebang. Права администратора не нужны для запуска и, наоборот, снимают последнюю защиту при ошибке в скрипте.',
+      en: 'The .sh extension is a convenient convention, not a requirement: the shebang sets the interpreter. Administrator rights are not needed to run a script and, on the contrary, remove the last protection if the script is wrong.'
+    }
+  },
+  {
+    id: 16,
+    type: 'multiple-choice',
+    question: {
+      ru: 'В скрипте от агента комментарий описывает не то, что делает строка под ним. Что это значит?',
+      en: 'In a script from an agent, a comment describes something other than what the line beneath it does. What does that mean?'
+    },
+    options: [
+      { ru: 'Файл правили, не перечитывая целиком: комментарии не влияют на выполнение, поэтому их никто не проверяет', en: 'The file was edited without being reread: comments do not affect execution, so nobody verifies them' },
+      { ru: 'Скрипт не запустится, потому что комментарий противоречит коду', en: 'The script will not run, because the comment contradicts the code' },
+      { ru: 'Так и должно быть: комментарии всегда описывают замысел, а не реализацию', en: 'That is expected: comments always describe the intent rather than the implementation' }
+    ],
+    answer: { ru: 'Файл правили, не перечитывая целиком: комментарии не влияют на выполнение, поэтому их никто не проверяет', en: 'The file was edited without being reread: comments do not affect execution, so nobody verifies them' },
+    explanation: {
+      ru: 'Комментарий — единственная часть файла, которую не проверяет ни интерпретатор, ни тесты, поэтому он легко описывает прошлую версию строки. Расхождение комментария с кодом — сигнал перечитать весь файл, а не мелочь.',
+      en: 'A comment is the one part of the file neither the interpreter nor the tests check, so it easily describes a previous version of the line. A mismatch between comment and code is a signal to reread the whole file, not a triviality.'
+    }
   }
 ];

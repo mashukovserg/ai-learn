@@ -6,7 +6,7 @@
  * into all three registries, that it sits where the curriculum put it (after
  * `opencode-terminal-agent`, so the AC-201 → OpenCode pairing stays intact),
  * that it satisfies the task-mix rule, that its glossary terms exist, that the
- * five chapters ship in both locales, and that the Sources card still carries
+ * seven chapters ship in both locales, and that the Sources card still carries
  * the references the safety claims rest on.
  *
  * The room teaches reading shell rather than writing it, so its claims are
@@ -44,8 +44,8 @@ describe(`room ${ROOM_ID}`, () => {
     expect(path.roomIds[idx - 1]).toBe('opencode-terminal-agent');
   });
 
-  it('has 12 tasks registered in ROOM_TASKS', () => {
-    expect(ROOM_TASKS[ROOM_ID]?.length).toBe(12);
+  it('has 16 tasks registered in ROOM_TASKS', () => {
+    expect(ROOM_TASKS[ROOM_ID]?.length).toBe(16);
   });
 
   it('uses a varied task mix rather than MCQ/input only', () => {
@@ -62,11 +62,11 @@ describe(`room ${ROOM_ID}`, () => {
     }
   });
 
-  it('ships five chapters in both locales', () => {
+  it('ships seven chapters in both locales', () => {
     const ruChapters = [...theorySource.matchAll(/'Глава (\d+):/g)].map(m => Number(m[1]));
     const enChapters = [...theorySource.matchAll(/'Chapter (\d+):/g)].map(m => Number(m[1]));
-    expect(ruChapters).toEqual([1, 2, 3, 4, 5]);
-    expect(enChapters).toEqual([1, 2, 3, 4, 5]);
+    expect(ruChapters).toEqual([1, 2, 3, 4, 5, 6, 7]);
+    expect(enChapters).toEqual([1, 2, 3, 4, 5, 6, 7]);
   });
 
   it('ships a bilingual Sources card with the references the safety claims rest on', () => {
