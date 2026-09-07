@@ -164,7 +164,7 @@ npm run test           # одноразовый прогон data-integrity и t
 npm run test:watch     # watch-режим
 npm run test:coverage  # отчёт coverage (v8)
 ```
-Набор кодифицирует правила из `docs/AGENTS.md` → «Task data validation gate» и «Task ID sequencing» против `ROOMS_METADATA`, `PATHS_METADATA` и `ROOM_TASKS`. Первый запуск выявил 47 заранее существовавших дефектов данных — стратегия и тристаж-лист в `docs/TESTING.md`. `npm run test` намеренно **не** включён в `check-all`, пока тристаж не разгребён.
+Набор кодифицирует правила из `docs/AGENTS.md` → «Task data validation gate» и «Task ID sequencing» против `ROOMS_METADATA`, `PATHS_METADATA` и `ROOM_TASKS`. Первый запуск выявил 47 заранее существовавших дефектов данных; они исправлены 15.07.2026 (история в `docs/TESTING.md`), и `npm run test` теперь входит в `check-all` — набор гейтит каждое изменение. С 07.09.2026 там же держатся три гейта, прежде жившие только в прозе: запрещённые формулировки, глубина глав и иконки в заголовках.
 
 ## Документация проекта
 - `docs/PROGRESS.md` / `docs/PROGRESS.ru.md`: статус реализации и вехи
@@ -174,3 +174,4 @@ npm run test:coverage  # отчёт coverage (v8)
 - `docs/ROADMAP_VIEW_MODE.md` / `docs/ROADMAP_VIEW_MODE.ru.md`: референс для roadmap-экранов с траекториями и layout прогрессии
 - `docs/DEVELOPER_GUIDE.md` / `docs/DEVELOPER_GUIDE.ru.md`: гид для разработчика
 - `docs/TESTING.md`: стратегия тестов, карта покрытия и тристаж-лист известных проблем в данных
+- `docs/HISTORY.md`: как развивались проект и агентская политика, с дословными архивами `docs/AGENTS.md`

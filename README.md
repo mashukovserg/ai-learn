@@ -174,3 +174,4 @@ All docs are available in English and Russian (`.ru.md`):
 - `docs/ROADMAP_VIEW_MODE.md` / `docs/ROADMAP_VIEW_MODE.ru.md`: reference for roadmap-style trajectory screens and progression layouts
 - `docs/DEVELOPER_GUIDE.md` / `docs/DEVELOPER_GUIDE.ru.md`: codebase walkthrough for newcomers
 - `docs/TESTING.md`: test strategy, coverage map, and triage list of known data issues
+- `docs/HISTORY.md`: how the project and its agent policy evolved, with verbatim archives of `docs/AGENTS.md`

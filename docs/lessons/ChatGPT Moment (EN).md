@@ -65,4 +65,4 @@ Furthermore, the "Guardrails" implemented via RLHF became a point of intense deb
 
 ## Conclusion: The New Baseline
 
-We no longer live in a world where AI is a futuristic promise. The ChatGPT Moment established a new baseline for human-computer interaction. It proved that Large Language Models are not just clever tricks, but a new layer of the internet's infrastructure. Whether we are using it to write code, plan vacations, or learn new languages, we are all now "augmented" by a machine that was originally just intended as a "low-key research preview."
+We no longer live in a world where AI is a futuristic promise. The ChatGPT Moment established a new baseline for human-computer interaction. It showed that Large Language Models are not demo toys, but a new layer of the internet's infrastructure. Whether we are using it to write code, plan vacations, or learn new languages, we are all now "augmented" by a machine that was originally just intended as a "low-key research preview."

@@ -1,6 +1,88 @@
-# Agent Runtime Policy
+# Project History
 
-## Frontend Auto-Start Rule (Mandatory)
+How AI-Learn got to where it is — and an archive of the agent policy at each point where that policy is about to change substantially.
+
+This file complements, and does not repeat, the two live records:
+
+| File | Answers |
+|------|---------|
+| `docs/PROGRESS.md` | What is built right now, and the dated milestone table for content |
+| `docs/BACKLOG.md` | What each completed task actually did, with verification evidence |
+| **`docs/HISTORY.md`** | **How the project and its agent policy evolved, and what the policy used to say** |
+
+Kept in English only. The archived material below is English, so a Russian mirror would translate an archive rather than a working document.
+
+---
+
+## 1. Phases
+
+Reconstructed from `git log` on `main` — 128 commits, 2026-02-13 to 2026-09-05.
+
+| Period | Commits | What happened |
+|--------|---------|---------------|
+| 2026-02 | 14 | Platform born. Next.js scaffold on 2026-02-13; rooms, i18n and the curriculum three days later; the green accent rolled across the flows. |
+| 2026-03 | 6 | Early authoring rules, including the first forbidden-word rule (`вендор`, 2026-03-17). |
+| 2026-05 | 1 | Quiet. `docs/PROGRESS.md` still carries "last synced 2026-05-16" from this period. |
+| 2026-07 | 69 | The build-out. Docs restructured into `docs/` and `AGENTS.md` written (07-09); the Vitest gate armed (07-15/16); design tokens made semantic (07-21/23); the chapter depth bar raised to ≥4 paragraphs (07-23); rooms added roughly weekly. |
+| 2026-08 | 33 | Consolidation. AC-301/302 guardrails and cost-latency, OpenCode, two unreachable rooms recovered (08-18), the `text-base` token trap found and fixed (08-23). |
+| 2026-09 | 5 | AC-303 team protocols; design Fork 6 opened; the Anki deck generator. |
+
+The shape worth noticing: the project ran for five months on convention, then in July acquired both its written policy and its test suite within a week of each other. Everything since has been an argument about which of the two should carry a given rule.
+
+## 2. How the agent policy grew
+
+`docs/AGENTS.md` did not accumulate gradually. Thirty sections arrived in a single commit on 2026-07-09 (`feat: local-models-101 room, docs restructure into docs/`), and only six were added afterwards — each one a reaction to a specific incident:
+
+| Date | Gate added | Provoked by |
+|------|-----------|-------------|
+| 2026-07-09 | 30 sections at once — runtime, localization, task validation, depth, anti-vibecode, forbidden phrasing, docs sync | The docs restructure; the policy was written as a whole, not grown |
+| 2026-07-16 | Commit hygiene — work must be committed to survive | Uncommitted work being wiped on branch sync |
+| 2026-07-17 | Terminal component as a core design element | The terminal shipping in one room and not being reused |
+| 2026-07-18 | Product screenshots as a core design element | Theory pages reading as walls of prose |
+| 2026-07-20 | Design forks — do not silently collapse them | An agent picking one option and deleting the alternatives |
+| 2026-07-23 | Chapter depth bar raised to ≥4 paragraphs | Two-paragraph chapters reading as stubs |
+| 2026-07-29 | Screenshots rewritten from "use them" to "seek them out" | The passive wording produced no screenshots |
+
+Between those, the file was edited seventeen times for one reason only: to update the room count in the "Room inventory" heading (38 → 39 → 40 → … → 53). That line has been the single most-edited thing in the policy, and it restates a number the code already knows (`ROOMS_METADATA.length`).
+
+## 3. 2026-09-07 — prose gates become tests
+
+The first deliberate move of a rule out of the policy file and into the suite, prompted by Boris Cherny's YC Startup School talk (2026-08-02): smarter models need fewer instructions, every prompt line must be earned, and the value of prompt engineering has moved to designing verification the model can audit itself against.
+
+An audit of which mandatory gates were actually enforced found the split below.
+
+**Already enforced by tests** (10 files, 2614 tests): task mix, task ID sequencing, design tokens, theory registry, orphan content, glossary references, bilingual copy in room data, chapter counts, genuine screenshots.
+
+**Prose only, and therefore regressing:**
+
+| Gate | Evidence it was not holding |
+|------|------------------------------|
+| Forbidden phrasing | Two branches spent purging the patterns by hand; the second found files the first missed by grepping case-sensitively. Both cleaned `src/` and left `docs/` — 5 live violations remained |
+| Chapter depth | Never measured mechanically. Word counts had been checked by hand "in the rendered DOM", room by room, in a browser. Measured across all 53 rooms for the first time: 44 below the bar, 9 above — and the 9 are exactly the rooms authored after the gate landed |
+| No leading icons in headings | Never checked. 99 headings across 17 files carry an icon |
+
+Three guards were added, each following the `NOT_YET_MIGRATED` pattern the design-token test already used — fail by default, list the pre-existing debt explicitly, and fail again when a listed entry is no longer in debt so the list can only shrink:
+
+- `src/__tests__/forbidden-phrasing.test.ts` — the use/mention distinction does the work: a quoted occurrence (backticks, «», "") is talking about the rule, a bare one is breaking it. No file allowlist to maintain, so the policy docs, the READMEs and every BACKLOG entry logging a past sweep pass untouched.
+- `src/components/theory/__tests__/chapter-depth.test.ts` — counts words per language by script (Cyrillic vs Latin) rather than parsing the JSX ternaries, which prose full of colons and parentheses defeats. Deliberately errs toward under-reporting: a guard that fails a good chapter gets disabled.
+- `src/__tests__/heading-icons.test.ts` — icons inside `<h1>`–`<h4>`. The existing 99 are listed, not stripped: that is a visible design change to shipped content, and `docs/DESIGN_FORKS.md` says the design is still being searched.
+
+Suite after: 13 files, 2623 tests.
+
+**What this unlocks.** A gate cannot be removed from the policy file until something else enforces it. With these three landed, the corresponding prose sections become candidates for deletion — along with the 40 lines of step-by-step frontend startup procedure, the room-count line the code already knows, and the gates now covered by tests. That deletion is the next step, and the method is ablation rather than judgement: remove, run real tasks, restore only what measurably breaks.
+
+---
+
+## Archive: `docs/AGENTS.md` as of 2026-09-07
+
+Verbatim snapshot taken before the ablation described above, at commit `732356e`. 420 lines, 4,689 words, 43 sections. Preserved so that a rule deleted from the live policy can be recovered with its original wording and rationale.
+
+<details>
+<summary>Full text</summary>
+
+## Agent Runtime Policy
+
+### Frontend Auto-Start Rule (Mandatory)
 
 For any coding task request, the agent must ensure the frontend is available at:
 
@@ -8,7 +90,7 @@ For any coding task request, the agent must ensure the frontend is available at:
 
 Coding task requests include (non-exhaustive): implementation, bugfix, review, study, audit, and exploration.
 
-## Default Behavior
+### Default Behavior
 
 1. Ensure frontend availability before or early in task execution.
 2. Use `npm run dev` from repo root if startup is required.
@@ -16,7 +98,7 @@ Coding task requests include (non-exhaustive): implementation, bugfix, review, s
 4. Respect explicit user overrides (for example: "don't start server", "backend only", custom port).
 5. Never start a second `next dev` process if `http://localhost:3000` is healthy; always reuse the existing frontend server.
 
-## Deterministic Startup/Check Sequence
+### Deterministic Startup/Check Sequence
 
 1. Probe `http://localhost:3000`.
 2. If reachable, reuse existing server and continue.
@@ -24,7 +106,7 @@ Coding task requests include (non-exhaustive): implementation, bugfix, review, s
 4. Re-check `http://localhost:3000`.
 5. If sandbox restrictions block bind/network, request escalation automatically.
 
-## Response Requirements
+### Response Requirements
 
 For coding tasks, the agent response must:
 
@@ -34,14 +116,14 @@ For coding tasks, the agent response must:
    - exact failure reason
    - immediate next action (for example escalation request or user override path)
 
-## Scope and Assumptions
+### Scope and Assumptions
 
 1. No application API/schema/type changes are required by this policy.
 2. Default frontend entrypoint is `npm run dev`.
 3. Default frontend port is `3000`.
 4. Backend startup is not required unless explicitly requested.
 
-## Localization Gate (Mandatory)
+### Localization Gate (Mandatory)
 
 For any change that modifies user-facing text, the agent must update both language variants in the same task:
 
@@ -50,7 +132,7 @@ For any change that modifies user-facing text, the agent must update both langua
 
 Do not ship user-facing text changes in only one locale unless the user explicitly requests a single-language change.
 
-## Docs Sync Trigger (Mandatory)
+### Docs Sync Trigger (Mandatory)
 
 When behavior or setup changes, update both docs in the same task:
 
@@ -63,9 +145,9 @@ This includes (non-exhaustive):
 2. Changes to startup/run/setup commands, ports, or environment requirements.
 3. Changes to availability/limitations status that affect current project state.
 
-## Project Orientation for Agents
+### Project Orientation for Agents
 
-### What this repository is
+#### What this repository is
 
 This project is a bilingual AI learning platform:
 
@@ -73,7 +155,7 @@ This project is a bilingual AI learning platform:
 2. Backend: FastAPI (`backend/app`) with PostgreSQL persistence.
 3. Learning model: rooms + tasks + theory + progress + points/streak.
 
-### Current route shape (important)
+#### Current route shape (important)
 
 Implemented top-level frontend sections:
 
@@ -91,13 +173,13 @@ Known absent routes (do not assume they exist):
 1. `/${lang}/compete`
 2. `/${lang}/leaderboard`
 
-### Room inventory (53 rooms in `ROOMS_METADATA`)
+#### Room inventory (53 rooms in `ROOMS_METADATA`)
 
 Rooms with theory + tasks fully wired (53): **all** current `ROOMS_METADATA` entries are wired in the dynamic room route — `agentic-release-control`, `git-safety-net` (AC-105) and `github-actions-ci` (AC-206) landed 2026-07-29. The inventory includes `ai-career-trajectories`, `prompt-contracts`, `mcp-tool-ecosystems`, `agentic-swarm-management`, `frontier-evals-logic`, `claude-code-agentic-loop`, `claude-code-pro-workflow`, `context-engineering-101`, `taxonomy-matching`, and the Open Models trio `local-models-101` + `llama-3-1-8b` + `local-rag-docs`. `search-retrieval-to-synthesis` landed 2026-08-10. `research-ai-era` was wired up 2026-08-18 after sitting unreachable on disk since 2026-07-21 — a filesystem orphan guard (`src/data/rooms/__tests__/no-orphan-content.test.ts`) now fails `check-all` on any task file or `*Theory.tsx` that is registered nowhere. `opencode-terminal-agent` (agent-coding path, right after `agentic-cli-tools`) landed 2026-08-22, built on genuine captures of the owner's own OpenCode session.
 
 Theory components are mapped in the lazy registry `src/components/theory/index.ts` (`THEORY_COMPONENTS`, 53 entries, `next/dynamic` — each room ships only its own theory chunk; SSR preserved). A room missing from the registry fails `check-all` via `src/components/theory/__tests__/registry.test.ts` — placeholders no longer slip through silently.
 
-### Source of truth files (use these first)
+#### Source of truth files (use these first)
 
 When changing learning content or room behavior, prefer these files:
 
@@ -120,7 +202,7 @@ When changing learning content or room behavior, prefer these files:
 7. `src/types/room.ts`
    - `TaskType` union: `'input' | 'multiple-choice' | 'multiple-select' | 'sorting' | 'mentor' | 'categorize' | 'timeline' | 'scenario'`
 
-### Design tokens (Mandatory)
+#### Design tokens (Mandatory)
 
 Surface and border colors are defined as Tailwind v4 theme tokens in `src/app/[lang]/globals.css` under `@theme`. When writing or editing component styles:
 
@@ -148,7 +230,7 @@ This is enforced by `src/__tests__/design-tokens.test.ts` (part of `check-all`):
 
 **Known boundary:** raster assets (`public/images/**`) are not tokenized. A room cover PNG keeps its baked-in colors through an accent swap; re-export or prefer SVG when a visual must follow the accent.
 
-### Terminal component — a core design element (use it)
+#### Terminal component — a core design element (use it)
 
 `src/components/Terminal.tsx` is a first-class part of the visual language, not a one-off. It renders a terminal window styled after **GNOME Terminal on Ubuntu**: the signature aubergine background (`#300A24`), the **Tango** ANSI palette, and **Ubuntu Mono** (loaded via `next/font` in `layout.tsx`, exposed as the `--font-term` token → `font-term` utility). The emerald-vs-aubergine tension is being resolved on the *heading* side, not the terminal side (fork history in `DESIGN_FORKS.md`, Forks 1 & 3). It stays intentionally dark in **both** themes — its `--color-term-*` tokens in `@theme` are deliberately **not** overridden in the `[data-theme="saas"]` block, so a terminal looks like a terminal on light UI too. Reach for it whenever a chapter shows a real command or interactive session — it is the preferred way to render such content, and terminals should recur across the platform rather than appear in one or two rooms.
 
@@ -169,11 +251,11 @@ This is enforced by `src/__tests__/design-tokens.test.ts` (part of `check-all`):
 - Prefer this component over hand-rolling terminal markup, and over converting a real command block to a bespoke `<pre>`. If it exists, reuse it.
 - **The terminal's visual style is an open fork, not a settled choice** — the project is still searching for its optimal design. The Ubuntu look above is *what is wired up today*. Alternatives (neutral black-gray, Tango-on-black, Solarized, Dracula) are kept paste-ready in [`DESIGN_FORKS.md`](DESIGN_FORKS.md). The whole look is token-driven, so switching is a one-block swap in `globals.css` — never a component or per-room edit. If you change the pick, update `DESIGN_FORKS.md` in the same task and do not delete the losing option.
 
-### Design forks — do not silently collapse them (Mandatory)
+#### Design forks — do not silently collapse them (Mandatory)
 
 Several design decisions are deliberately **open**: terminal styling, site and terminal typefaces, and the accent green. They are recorded in [`DESIGN_FORKS.md`](DESIGN_FORKS.md) (+ `.ru`) with paste-ready values for every option. Before "fixing" a design inconsistency in these areas, check that file — the inconsistency may be a live fork rather than a defect. When you move a fork, record the move (new pick, demoted option, date, one line of rationale) in the same commit.
 
-### Product screenshots — a core design element (seek them out)
+#### Product screenshots — a core design element (seek them out)
 
 The GUI counterpart of the Terminal rule (reference pattern: TryHackMe's task pages, e.g. an annotated VirusTotal screenshot framed between two paragraphs of explanation). When a chapter discusses a product with a graphical interface — a web console, dashboard, chat UI, settings screen — show a **real screenshot** of that product instead of describing the UI in prose. CLI/session content → `<Terminal>`; GUI content → screenshot.
 
@@ -197,7 +279,7 @@ The GUI counterpart of the Terminal rule (reference pattern: TryHackMe's task pa
 - **Localization:** `alt` is mandatory and bilingual (resolve `ru`/`en` at the call site, like Terminal strings); an optional caption must also be bilingual. The screenshot itself may show an English UI — that's authentic — but everything the platform renders around it ships in both locales.
 - **Solvability:** same guard as terminals — a screenshot must never hand a learner a task's answer (don't show the filled-in value an `input` task asks for). Screenshots illustrate; they don't spoil.
 
-### Available task components
+#### Available task components
 
 Six components render tasks inside rooms (dispatched by `TaskType`):
 
@@ -208,7 +290,7 @@ Six components render tasks inside rooms (dispatched by `TaskType`):
 5. `TaskTimeline` — handles `timeline` (arrange events in chronological order).
 6. `TaskScenario` — handles `scenario` (multi-step decision mission with scoring).
 
-### Runtime and startup conventions
+#### Runtime and startup conventions
 
 1. Frontend default URL: `http://localhost:3000`
 2. Backend default URL: `http://localhost:8000`
@@ -216,7 +298,7 @@ Six components render tasks inside rooms (dispatched by `TaskType`):
 4. Frontend dev command: `npm run dev`
 5. Frontend quality checks: `npm run check-all`
 
-### Agent workflow expectations
+#### Agent workflow expectations
 
 For coding tasks, agents should:
 
@@ -226,7 +308,7 @@ For coding tasks, agents should:
 4. Run relevant checks after edits (`npm run check-all` at minimum for frontend changes).
 5. Report what was changed, what was verified, and any unresolved warnings/limitations.
 
-### Commit hygiene — work must be committed to survive (Mandatory)
+#### Commit hygiene — work must be committed to survive (Mandatory)
 
 **The working tree is not durable.** Sessions re-sync to the latest merged `main`, and uncommitted edits to tracked files are silently wiped when the tree moves to a newly merged branch. Real work on this repo happens through committed branches merged as PRs (`git log` shows the merge history). Therefore:
 
@@ -236,7 +318,7 @@ For coding tasks, agents should:
 4. New untracked files that belong to the change (new components, hooks, task files) must be explicitly `git add`-ed — they are not part of any commit until you add them, and they will not survive on their own.
 5. Committing/pushing on the user's behalf follows the normal outward-action rule: confirm the push with the user unless already authorized in this session.
 
-### Task mix and interactivity rule (Mandatory)
+#### Task mix and interactivity rule (Mandatory)
 
 To ensure high interactivity and engagement, every room must follow the "Task Mix Rule":
 
@@ -244,7 +326,7 @@ To ensure high interactivity and engagement, every room must follow the "Task Mi
 2. Relying exclusively on multiple-choice or input tasks is forbidden.
 3. Aim for a diverse mix of task types within each room to maintain learner momentum.
 
-### Task data validation gate (Mandatory)
+#### Task data validation gate (Mandatory)
 
 After adding or editing tasks in `ROOM_TASKS`, the agent must verify every task is completable in both locales before shipping. Validation rules per `TaskType`:
 
@@ -264,7 +346,7 @@ Cross-cutting checks:
 - After adding tasks, mentally walk through each one: "can a user who reads the theory select the correct answer?" If the answer depends on text not in the theory, the task or theory needs updating.
 - No runtime validation exists in the components — bad data silently produces unsolvable tasks, so this gate is the only safety net.
 
-### Task ID sequencing (Mandatory)
+#### Task ID sequencing (Mandatory)
 
 Within each room's task array in `ROOM_TASKS`, task IDs must be sequential integers starting at 1 with no gaps or duplicates.
 
@@ -276,7 +358,7 @@ Within each room's task array in `ROOM_TASKS`, task IDs must be sequential integ
 
 **Why:** The progress system stores completed task IDs as a `Set<number>` and compares `set.size` against `ROOM_TASKS[roomId].length` to compute completion percentage. Gaps inflate the denominator without a reachable numerator, so the progress bar can never reach 100%. Duplicates cause one task to silently shadow another — completing either one marks the same ID, leaving the other permanently stuck.
 
-### Content and i18n consistency rules
+#### Content and i18n consistency rules
 
 When changing educational content:
 
@@ -285,7 +367,7 @@ When changing educational content:
 3. Ensure room titles/descriptions/tasks remain synchronized across UI surfaces.
 4. When writing or editing theory content, the agent must ask the project creator which domain terms should be wrapped in `<Term>` tooltips before shipping the content.
 
-### Chapter Text Depth Gate (Mandatory)
+#### Chapter Text Depth Gate (Mandatory)
 
 For any theory chapter block (for example, sections titled "Глава N / Chapter N"):
 
@@ -297,10 +379,9 @@ For any theory chapter block (for example, sections titled "Глава N / Chapt
    - `Краткий блок`
    - `Short block`
 4. Without this explicit label, chapter content below the threshold is considered incomplete and should not be shipped.
-5. Enforced by `src/components/theory/__tests__/chapter-depth.test.ts`. The 44 rooms that predate the bar are listed there as debt; a room you edit must come off that list.
 5. Scope of enforcement: the bar applies in full to **new chapters** and to **any chapter you substantively edit**. Chapters written before 2026-07-23 largely predate the 4-paragraph bar (a rough sweep found the majority of existing chapters below it — `agentic-testing-loop` was the flagged example and has been thickened); they are standing debt. When you touch a room for any content reason, bring the chapters you touch up to the bar in the same task. Do not mass-rewrite untouched rooms just for depth — thin prose padded to length is worse than short prose.
 
-### Chapter heading typography lock (Mandatory)
+#### Chapter heading typography lock (Mandatory)
 
 For chapter headings in theory blocks (for example, "Глава N: ..." / "Chapter N: ..."):
 
@@ -308,16 +389,15 @@ For chapter headings in theory blocks (for example, "Глава N: ..." / "Chapt
 2. Treat the current heading size as locked unless the user explicitly asks to change it.
 3. If typography changes are requested, apply only the requested scope (single chapter or global), not broader.
 
-### No leading icons in headings (Mandatory)
+#### No leading icons in headings (Mandatory)
 
 For room and theory headings (page titles, chapter headings, section headings):
 
 1. Do not add decorative icons before heading text.
 2. If a heading currently has a leading icon, remove it unless the user explicitly requests it.
 3. Keep emphasis through typography, spacing, and color only (not icon prefixes).
-4. Enforced by `src/__tests__/heading-icons.test.ts`. The 17 files that predate the rule are listed there as debt; strip the icons when you touch one.
 
-### Anti-Vibecode Frontend Gate (Mandatory)
+#### Anti-Vibecode Frontend Gate (Mandatory)
 
 This gate applies to:
 
@@ -353,25 +433,23 @@ Pre-ship checklist (yes/no):
 5. Is wording analytical and tradeoff-oriented instead of dramatic?
 6. Were style/tone changes applied in both `en` and `ru`?
 
-### Forbidden phrase pattern: "это не просто" (Mandatory)
+#### Forbidden phrase pattern: "это не просто" (Mandatory)
 
 For any generated content and agent communication in this repository (theory text, docs, room content, summaries, PR notes, and user replies):
 
 1. Do not use the construction `это не просто` (any case form).
 2. Treat the regex-like pattern `/(^|\\s)это\\s+не\\s+просто(\\s|$)/i` as forbidden in authored text.
 3. Rewrite with direct, concrete wording instead of contrastive template phrasing.
-4. Enforced by `src/__tests__/forbidden-phrasing.test.ts` over `src/`, `docs/` and the root docs. Quoting the pattern to talk about it (backticks, «», "") is exempt; a bare use fails.
 
-### Forbidden word pattern: "вендор" (Mandatory)
+#### Forbidden word pattern: "вендор" (Mandatory)
 
 For any generated content and agent communication in this repository (theory text, docs, room content, summaries, PR notes, and user replies):
 
 1. Do not use the word `вендор` in any case form.
 2. Treat the regex-like pattern `/(^|\\s)вендор(а|у|ом|е|ы|ов|ам|ами|ах)?(\\s|$)/i` as forbidden in authored text.
 3. Use concrete alternatives by context, for example: `поставщик модели`, `игрок рынка`, `платформа`, `компания`.
-4. Enforced by `src/__tests__/forbidden-phrasing.test.ts` (same use/mention rule as above).
 
-### Completion checklist (Mandatory)
+#### Completion checklist (Mandatory)
 
 When a new room, feature, or backlog item is finished, the agent must in the same task:
 
@@ -381,7 +459,7 @@ When a new room, feature, or backlog item is finished, the agent must in the sam
 4. Update `CURRICULUM.md` if the change affects path/module/room coverage.
 5. Update `../README.md` if the change affects routes, architecture, or user-visible behavior.
 
-### Agent work log (Mandatory)
+#### Agent work log (Mandatory)
 
 When an agent completes work in a session, it must explicitly log what it did in `BACKLOG.md` (and `BACKLOG.ru.md` if maintained):
 
@@ -390,7 +468,7 @@ When an agent completes work in a session, it must explicitly log what it did in
 3. Group related work into logical entries (e.g. one entry per room, one per feature), not one entry per file touched.
 4. Do this at the end of the session or when a logical unit of work is finished — do not defer to a future session.
 
-### Documentation update matrix
+#### Documentation update matrix
 
 When behavior/setup/content changes, update docs in the same task:
 
@@ -402,7 +480,7 @@ When behavior/setup/content changes, update docs in the same task:
 
 If Russian mirrors exist and are maintained (`*.ru.md`), update them in the same task unless explicitly scoped out by the user.
 
-### Deployment Docs Sync Rule (Mandatory)
+#### Deployment Docs Sync Rule (Mandatory)
 
 When any of the following are changed, update `DEPLOYMENT.md` in the same task:
 
@@ -422,3 +500,5 @@ What to update in `DEPLOYMENT.md`:
 - Keep the Architecture / Request Flow section accurate if the topology changed.
 
 Do not defer `DEPLOYMENT.md` updates to a follow-up task.
+
+</details>

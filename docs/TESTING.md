@@ -109,6 +109,21 @@ Fix: either restore the task file (`PROGRESS.md` 2026-02-17 milestone says it on
 
 For each item, fix the underlying data, re-run `npm run test`, and remove the entry above when its test passes. When the list is empty, re-add `npm run test` to `check-all` in `package.json`.
 
+## Gates migrated from prose (2026-09-07)
+
+Three `docs/AGENTS.md` gates were enforced only by whoever remembered them. Each is now a layer-1 guard, built on the same pattern as the design-token test: fail by default, list the pre-existing debt explicitly, and fail again once a listed entry is no longer in debt, so the list can only shrink.
+
+| Guard | Enforces | Debt at landing |
+|---|---|---|
+| `src/__tests__/forbidden-phrasing.test.ts` | "Forbidden phrase/word pattern" over `src/`, `docs/` and root docs | 0 — the 5 live violations were fixed in the same change |
+| `src/components/theory/__tests__/chapter-depth.test.ts` | "Chapter Text Depth Gate" (≥240 words per language, ≥4 paragraphs) | 44 of 53 rooms |
+| `src/__tests__/heading-icons.test.ts` | "No leading icons in headings" | 17 files, 99 headings |
+
+Two design notes worth keeping:
+
+- **Use vs. mention.** The forbidden-phrasing guard has to name the strings it forbids, and so do `AGENTS.md`, `CLAUDE.md`, the READMEs and every BACKLOG entry logging a past sweep. Rather than an allowlist of those files, the guard exempts *quoted* occurrences (backticks, «», ""), which is how a mention is always written here. Zero false positives across ~15 policy and log references.
+- **Counting words in JSX.** Theory is components, not data, so the depth guard classifies words by script (Cyrillic → ru, Latin → en) instead of parsing the `{ru ? … : …}` ternaries, which prose full of colons and parentheses defeats. This over-counts English slightly (Latin technical tokens inside Russian prose), so the guard can miss a thin chapter but cannot fail a good one — the safe direction, since a guard that cries wolf gets disabled.
+
 ## What we deliberately don't test (yet)
 
 - **Theory component rendering.** Theory text is reviewed by humans. Snapshot tests on theory would create churn without catching a meaningful bug class.

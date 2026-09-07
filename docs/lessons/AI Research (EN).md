@@ -20,7 +20,7 @@ source: src/app/[lang]/rooms/[id]/page.tsx
 
 ## Chapter 1: The Research Bottleneck — Volume Crisis
 
-The world of science is in a state of informational overheating. Thousands of papers are published every day in narrow fields of knowledge. No living human is capable of tracking this flow in real-time. This leads to a "research bottleneck": we spend time on duplicate discoveries or developing ideas that have already been debunked in related disciplines. An AI researcher is not just a chatbot; it is an autonomous system of filtration and synthesis that turns an ocean of data into a structured knowledge map.
+The world of science is in a state of informational overheating. Thousands of papers are published every day in narrow fields of knowledge. No living human is capable of tracking this flow in real-time. This leads to a "research bottleneck": we spend time on duplicate discoveries or developing ideas that have already been debunked in related disciplines. An AI researcher does not work like a chatbot: instead of answering a single question, it filters and synthesises the stream of publications into a structured knowledge map.
 
 We are moving from passive searches in Google Scholar to active agentic modeling. An agent doesn't just find links; it builds arguments, looks for contradictions in methodology, and identifies "blind spots" where research has not yet been conducted.
 
