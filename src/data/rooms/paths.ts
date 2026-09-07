@@ -123,6 +123,7 @@ export const PATHS_METADATA: PathMetadata[] = [
       'claude-code-agentic-loop',      // how the loop runs
       'agentic-cli-tools',             // AC-201
       'opencode-terminal-agent',       // the same loop ideas in an open-source, model-agnostic tool
+      'bash-for-vibecoding',           // the scripts that loop is made of — read the shell before running it
       'context-engineering-101',       // AC-204
       'agentic-testing-loop',          // AC-202
       'github-actions-ci',             // AC-206 — author the checks…

@@ -27,6 +27,7 @@ import { aiRegulationEuTasks } from './ai-regulation-eu';
 import { agentCodingFoundationsTasks } from './agent-coding-foundations';
 import { agenticCodingToolsTasks } from './agentic-coding-tools';
 import { agenticCliToolsTasks } from './agentic-cli-tools';
+import { bashForVibecodingTasks } from './bash-for-vibecoding';
 import { mcpToolEcosystemsTasks } from './mcp-tool-ecosystems';
 import { agenticSwarmManagementTasks } from './agentic-swarm-management';
 import { frontierEvalsLogicTasks } from './frontier-evals-logic';
@@ -83,6 +84,7 @@ export const ROOM_TASKS: Record<string, LocalizedTask[]> = {
   'agent-coding-foundations': agentCodingFoundationsTasks,
   'agentic-coding-tools': agenticCodingToolsTasks,
   'agentic-cli-tools': agenticCliToolsTasks,
+  'bash-for-vibecoding': bashForVibecodingTasks,
   'prompt-contracts': promptContractsTasks,
   'multi-agent-collaboration': multiAgentCollaborationTasks,
   'agentic-testing-loop': agenticTestingLoopTasks,

@@ -265,6 +265,19 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     icon: 'Terminal',
   },
   {
+    id: 'bash-for-vibecoding',
+    title: { ru: 'Bash-скрипты для вайбкодинга', en: 'Bash Scripting for Vibe Coding' },
+    description: {
+      ru: 'Читать shell, который написал за вас агент: кавычки и пустые переменные, set -euo pipefail, холостой прогон и свой скрипт проверки.',
+      en: 'Read the shell an agent wrote for you: quoting and empty variables, set -euo pipefail, dry runs, and your own check script.',
+    },
+    difficulty: 'Intermediate',
+    time: { ru: '30 мин', en: '30m' },
+    category: { ru: 'Агентная разработка', en: 'Agent Coding' },
+    pathIds: ['agent-coding'],
+    icon: 'Terminal',
+  },
+  {
     id: 'prompt-contracts',
     title: { ru: 'AC-103: Промпт-контракты для агентов', en: 'AC-103: Prompt Contracts for Agents' },
     description: {

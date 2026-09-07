@@ -51,6 +51,7 @@ export const THEORY_COMPONENTS: Record<string, ComponentType<{ lang: string }>> 
   'agent-coding-foundations': dynamic(() => import('./AgentCodingFoundationsTheory'), { loading }),
   'agentic-coding-tools': dynamic(() => import('./AgenticCodingToolsTheory'), { loading }),
   'agentic-cli-tools': dynamic(() => import('./AgenticCliToolsTheory'), { loading }),
+  'bash-for-vibecoding': dynamic(() => import('./BashForVibecodingTheory'), { loading }),
   'prompt-contracts': dynamic(() => import('./PromptContractsTheory'), { loading }),
   'multi-agent-collaboration': dynamic(() => import('./MultiAgentCollaborationTheory'), { loading }),
   'agentic-testing-loop': dynamic(() => import('./AgenticTestingLoopTheory'), { loading }),
