@@ -152,5 +152,39 @@ export const aiRagTasks: LocalizedTask[] = [
         ],
         passingScore: 50
       }
+    },
+    {
+      id: 7,
+      type: 'input',
+      question: {
+        ru: 'Знания обычной языковой модели «заморожены» в момент окончания обучения: она знает всё о мире до определённой даты, но ничего о том, что происходит прямо сейчас или внутри вашей компании. Введите английский термин, которым в теории названа эта граница.',
+        en: 'A standard language model\'s knowledge is "frozen" at the moment training ended: it knows everything about the world up to a certain date, but nothing about what is happening right now or inside your company. Enter the term the theory uses for this boundary.',
+      },
+      answer: ['knowledge cutoff', 'knowledge cut off', 'knowledge cutoff date', 'cutoff', 'cut off', 'отсечение знаний', 'дата отсечения знаний'],
+      hint: {
+        ru: 'Глава 1, первый абзац — термин стоит в скобках сразу после слова «заморожены».',
+        en: 'Chapter 1, first paragraph — the term is in parentheses right after the word "frozen".',
+      },
+      explanation: {
+        ru: 'Верно. Именно эта граница — причина, по которой модели нужен поиск: RAG подкладывает ей актуальные документы вместо того, чтобы дорого и медленно переучивать её на каждое изменение.',
+        en: 'Correct. This boundary is exactly why the model needs retrieval: RAG hands it current documents instead of retraining it, expensively and slowly, on every change.',
+      },
+    },
+    {
+      id: 8,
+      type: 'input',
+      question: {
+        ru: 'Теория называет так будущее технологии: системы, где ИИ сам решает, достаточно ли ему информации или нужно сходить в поиск ещё раз, переформулировать запрос или проверить другой источник — переход от «найди и покажи» к «найди, проанализируй и убедись». Введите название этого подхода.',
+        en: 'The theory calls this the future of the technology: systems where the AI itself decides whether it has enough information or needs to search again, rephrase the query, or check another source — the move from "retrieve and show" to "retrieve, analyze, and verify". Enter the name of this approach.',
+      },
+      answer: ['agentic rag', 'agentic retrieval augmented generation', 'агентный rag', 'агентный раг'],
+      hint: {
+        ru: 'Последний абзац главы 5; название состоит из английского прилагательного и знакомой вам аббревиатуры.',
+        en: 'The last paragraph of chapter 5; the name is an English adjective plus an abbreviation you already know.',
+      },
+      explanation: {
+        ru: 'Верно. Такая система не доверяет первому результату поиска: она проверяет, хватает ли контекста, и при необходимости ищет заново — следующий шаг после реранкинга в борьбе с шумом и «потерей в середине».',
+        en: 'Correct. Such a system does not trust the first retrieval result: it checks whether the context is sufficient and searches again if needed — the next step after reranking in the fight against noise and "lost in the middle".',
+      },
     }
   ];

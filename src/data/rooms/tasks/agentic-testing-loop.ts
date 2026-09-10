@@ -386,5 +386,39 @@ export const agenticTestingLoopTasks: LocalizedTask[] = [
       ru: 'Высокое покрытие дает уверенность в том, что агент не оставил за собой "бомб замедленного действия".',
       en: 'High coverage gives confidence that the agent hasn\'t left "time bombs" behind.'
     }
+  },
+  {
+    id: 11,
+    type: 'input',
+    question: {
+      ru: 'В главе 1 тесты играют роль объективного критерия успеха: «зелёный» статус означает, что задача выполнена, и модель может проверить это сама, без участия человека. Введите термин, которым теория называет тесты в этой роли.',
+      en: 'In chapter 1, tests act as the objective success criterion: a green status means the task is done, and the model can verify this on its own with no human involved. Enter the term the theory uses for tests in that role.',
+    },
+    answer: ['acceptance criteria', 'acceptance criterion', 'критерии приемки', 'критерии приёмки', 'критерий приемки', 'критерий приёмки', 'приемочные критерии', 'приёмочные критерии'],
+    hint: {
+      ru: 'Английский термин из двух слов, выделенный жирным в первой главе; в тестировании так называют условия, при которых работу принимают.',
+      en: 'A two-word English term in bold in chapter 1; in testing it names the conditions under which work is accepted.',
+    },
+    explanation: {
+      ru: 'Верно. Когда тесты становятся acceptance criteria, у агента появляется внешняя реальность, с которой нельзя договориться: размытое «сделай красиво» модель оценивает сама, а падающий тест — нет.',
+      en: 'Correct. Once tests become acceptance criteria, the agent has an external reality it cannot negotiate with: a vague "make it nice" is graded by the model itself, a failing test is not.',
+    },
+  },
+  {
+    id: 12,
+    type: 'input',
+    question: {
+      ru: 'Глава 4 перечисляет обязательные тактики против нестабильных тестов. Одна из них — изолировать такой тест, чтобы его случайные падения не влияли на вердикт цикла, пока причину не нашли. Введите название этой тактики.',
+      en: 'Chapter 4 lists mandatory tactics against unstable tests. One of them is isolating such a test so its random failures do not affect the loop verdict until the cause is found. Enter the name of that tactic.',
+    },
+    answer: ['quarantine', 'карантин', 'карантина', 'карантину', 'карантином', 'карантине', 'карантинирование'],
+    hint: {
+      ru: 'Одно слово; так же называют изоляцию заболевших, чтобы не заразить остальных.',
+      en: 'One word; the same term is used for isolating the sick so they do not infect the rest.',
+    },
+    explanation: {
+      ru: 'Верно. У модели нет скепсиса по умолчанию: красный статус она принимает за чистую монету и начинает «чинить» исправный код. Карантин убирает ложный сигнал из петли, а повторный прогон и детерминизация дополняют его.',
+      en: 'Correct. The model has no default skepticism: it takes a red status at face value and starts "fixing" healthy code. Quarantine removes the false signal from the loop; re-runs and determinization complete the set.',
+    },
   }
 ];

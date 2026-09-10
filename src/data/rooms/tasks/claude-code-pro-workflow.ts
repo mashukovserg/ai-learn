@@ -256,5 +256,39 @@ export const claudeCodeProWorkflowTasks: LocalizedTask[] = [
       ru: 'Диалоговое окно может очиститься, но файл с планом останется надежной точкой опоры для проекта.',
       en: 'The dialogue window may clear, but the plan file remains a reliable reference point for the project.'
     }
+  },
+  {
+    id: 11,
+    type: 'input',
+    question: {
+      ru: 'Claude Code передаёт вашему скрипту статусной строки JSON с данными сессии (стоимость, расход токенов) не через аргументы командной строки и не через файл, а через тот стандартный поток процесса, из которого скрипт читает данные. Введите короткое имя этого потока.',
+      en: 'Claude Code hands your status-line script a JSON with session data (cost, token usage) — not via command-line arguments and not via a file, but through the standard process stream your script reads from. Enter the short name of that stream.',
+    },
+    answer: ['stdin', 'standard input', 'стандартный ввод', 'стандартного ввода', 'стандартный поток ввода'],
+    hint: {
+      ru: 'Пять латинских букв; в теории это имя стоит в скобках в разделе про Status Line.',
+      en: 'Five Latin letters; the theory gives the name in parentheses in the Status Line section.',
+    },
+    explanation: {
+      ru: 'Верно. Поскольку данные приходят через stdin, скрипт можно написать на любом языке, который умеет читать этот поток — Bash, Python или Node.js, — и вернуть одну строку для экрана.',
+      en: 'Correct. Because the data arrives on stdin, the script can be written in any language that reads that stream — Bash, Python, or Node.js — and return a single line for the screen.',
+    },
+  },
+  {
+    id: 12,
+    type: 'input',
+    question: {
+      ru: 'В режиме /plan Claude сначала составляет пошаговый список действий в виде файла определённого формата — лёгкой текстовой разметки, которую удобно читать, обсуждать и править до нажатия «Execute». Введите название этого формата.',
+      en: 'In /plan mode Claude first drafts the step-by-step action list as a file in a specific format — a lightweight text markup that is easy to read, discuss, and edit before you hit "Execute". Enter the name of that format.',
+    },
+    answer: ['markdown', 'md', 'маркдаун'],
+    hint: {
+      ru: 'Формат, в котором обычно пишут README проектов.',
+      en: 'The format project READMEs are usually written in.',
+    },
+    explanation: {
+      ru: 'Верно. План в виде Markdown-файла читается человеком и хранится в репозитории, поэтому его можно сохранить рядом с кодом и итерироваться на нём, а не терять после очистки диалога.',
+      en: 'Correct. A plan as a Markdown file is human-readable and lives in the repository, so you can keep it next to the code and iterate on it instead of losing it when the dialogue clears.',
+    },
   }
 ];

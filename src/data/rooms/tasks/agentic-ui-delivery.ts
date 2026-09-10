@@ -386,5 +386,39 @@ export const agenticUiDeliveryTasks: LocalizedTask[] = [
       ru: 'Visual Feedback Loop закрывает пробел между кодом и реальностью, делая агентов полноценными фронтенд-разработчиками.',
       en: 'A Visual Feedback Loop closes the gap between code and reality, making agents full-fledged frontend developers.'
     }
+  },
+  {
+    id: 11,
+    type: 'input',
+    question: {
+      ru: 'Глава 3 советует подавать агенту спецификацию в определённом формате: сначала строится простая вертикальная структура, а правила расширения на десктоп добавляются потом — так проще, чем «схлопывать» сложный многоколоночный интерфейс без визуального контроля. Введите название этого подхода.',
+      en: 'Chapter 3 recommends giving the agent the spec in a particular format: build the simple vertical structure first and add the desktop expansion rules later, which is easier than "collapsing" a complex multi-column layout without visual feedback. Enter the name of this approach.',
+    },
+    answer: ['mobile first', 'mobile-first', 'mobile first approach', 'мобайл ферст', 'мобайл-ферст'],
+    hint: {
+      ru: 'Английский термин из двух слов через дефис, выделенный жирным в главе 3; второе слово обозначает очерёдность.',
+      en: 'A hyphenated two-word English term in bold in chapter 3; the second word is about what comes first.',
+    },
+    explanation: {
+      ru: 'Верно. Агент работает без визуального контроля, поэтому направление важно: добавить правила sm:/md:/lg: к простой вертикальной структуре легче, чем разобрать сложную сетку обратно.',
+      en: 'Correct. The agent works without visual feedback, so direction matters: adding sm:/md:/lg: rules to a simple vertical structure is easier than taking a complex grid apart.',
+    },
+  },
+  {
+    id: 12,
+    type: 'input',
+    question: {
+      ru: 'В главе 5 описан Visual Feedback Loop: агент делает скриншот отрендеренного компонента через headless-браузер и отправляет его Vision-модели для сравнения с макетом. Введите название headless-браузера, который теория приводит в пример.',
+      en: 'Chapter 5 describes the Visual Feedback Loop: the agent takes a screenshot of the rendered component through a headless browser and sends it to a Vision model to compare with the mock-up. Enter the name of the headless browser the theory gives as its example.',
+    },
+    answer: ['playwright', 'плейрайт', 'плэйрайт'],
+    hint: {
+      ru: 'Одно английское слово; оно стоит в скобках в первом абзаце главы 5.',
+      en: 'One English word; it appears in parentheses in the first paragraph of chapter 5.',
+    },
+    explanation: {
+      ru: 'Верно. Скриншот из Playwright замыкает петлю: агент получает не только текст ошибки линтера, но и картинку, по которой Vision-модель может сказать «заголовок слишком близко к краю».',
+      en: 'Correct. A Playwright screenshot closes the loop: the agent receives not just a linter message but an image from which a Vision model can say "the heading is too close to the edge".',
+    },
   }
 ];

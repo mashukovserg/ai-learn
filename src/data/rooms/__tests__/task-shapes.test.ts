@@ -40,9 +40,21 @@ function localizedEquals(a: LocalizedString, b: LocalizedString): boolean {
 describe('input tasks', () => {
   const tasks = tasksOfType('input');
 
+  // docs/AGENTS.md → "Task mix and interactivity rule", item 2: typing the exact
+  // term is the recall check every room must carry (the owner's 2026-09-10
+  // request). The target for new/edited rooms is two; one is the floor.
+  it.each(Object.keys(ROOM_TASKS).map(roomId => [roomId] as const))(
+    '%s has at least one input (type-the-term) task',
+    roomId => {
+      const count = ROOM_TASKS[roomId].filter(t => t.type === 'input').length;
+      expect(count, `${roomId} has no input task — add a type-the-term task`).toBeGreaterThanOrEqual(1);
+    }
+  );
+
   // Runtime accepts answer as string | string[] | LocalizedString | (LocalizedString | string)[].
-  // Both sides are lowercased+trimmed by the runtime normalizer in TaskQuestion,
-  // so case and trailing punctuation in source don't break matching — only
+  // Both sides go through normalizeAnswer (src/lib/answerNormalize.ts) and a
+  // localized entry is accepted in both locales (resolveTask), so case, ё/е,
+  // hyphens and trailing punctuation in source don't break matching — only
   // emptiness does.
   function isFilledAnswerEntry(v: unknown): boolean {
     if (typeof v === 'string') return v.trim().length > 0;

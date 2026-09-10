@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Check, ShieldQuestion, ListChecks } from 'lucide-react';
 import TaskWrapper, { TaskImage } from './TaskWrapper';
 import { useLang } from '@/hooks/useLang';
+import { isAnswerMatch } from '@/lib/answerNormalize';
 
 export type TaskType = 'input' | 'multiple-choice' | 'multiple-select' | 'sorting' | 'categorize' | 'timeline' | 'scenario';
 
@@ -41,24 +42,14 @@ export default function TaskQuestion({
     ? (Array.isArray(correctAnswer) ? (correctAnswer[0] ?? '') : correctAnswer)
     : (answer as string);
 
-  const normalize = (value: string) =>
-    value
-      .toLowerCase()
-      .trim()
-      .replace(/[""«»"]/g, '')
-      .replace(/[.,!?;:]+$/g, '');
-
   const checkAnswer = (e: React.FormEvent | React.MouseEvent) => {
     e.preventDefault();
     let isCorrect = false;
 
     if (type === 'input') {
-      const userAnswer = normalize(answer as string);
-      if (Array.isArray(correctAnswer)) {
-        isCorrect = correctAnswer.some((item) => normalize(item) === userAnswer);
-      } else {
-        isCorrect = normalize(correctAnswer as string) === userAnswer;
-      }
+      // Normalisation rules live in src/lib/answerNormalize.ts (and are
+      // documented in docs/AGENTS.md → "Task data validation gate", rule 1).
+      isCorrect = isAnswerMatch(answer as string, correctAnswer);
     } else if (type === 'multiple-choice') {
       isCorrect = (answer as string) === (correctAnswer as string);
     } else if (type === 'multiple-select') {

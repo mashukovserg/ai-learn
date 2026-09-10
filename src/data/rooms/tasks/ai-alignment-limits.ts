@@ -346,4 +346,38 @@ export const aiAlignmentLimitsTasks: LocalizedTask[] = [
       passingScore: 70,
     },
   },
+  {
+    id: 13,
+    type: 'input',
+    question: {
+      ru: 'Исследовательская система на базе LLM, дообученная на банке человеческих суждений: пользователь вводит «есть мясо» или «солгать другу», а система отвечает «это нормально» или «это плохо». Введите название этой системы.',
+      en: 'A research system built on an LLM and fine-tuned on a bank of human judgments: the user types "eating meat" or "lying to a friend", and the system replies "it\'s okay" or "it\'s wrong". Enter the name of this system.',
+    },
+    answer: ['delphi', 'делфи', 'дельфи'],
+    hint: {
+      ru: 'Глава 2: одно слово, вынесенное в заголовок главы рядом со вторым краудсорсинговым проектом.',
+      en: 'Chapter 2: one word, placed in the chapter title next to the second crowdsourcing project.',
+    },
+    explanation: {
+      ru: 'Верно. Обучение на агрегированных суждениях делает такую систему экспертом по тому, что люди склонны говорить о морали, а не по тому, что морально верно, — вместе с типичными для выборки предрассудками.',
+      en: 'Correct. Training on aggregated judgments makes such a system an expert on what people tend to say about morality, not on what is morally correct — along with the biases typical of its sample.',
+    },
+  },
+  {
+    id: 14,
+    type: 'input',
+    question: {
+      ru: 'Эксперимент MIT, собравший миллионы ответов о дилеммах беспилотного автомобиля: кого спасать, если столкновение неизбежно. Его авторы называют проект «инструментом вовлечения публики». Введите название эксперимента.',
+      en: 'An MIT experiment that collected millions of answers to self-driving-car dilemmas: whom to spare when a crash is unavoidable. Its authors call it "a tool that empowers public engagement". Enter the name of the experiment.',
+    },
+    answer: ['moral machine', 'the moral machine', 'moral machine experiment', 'моральная машина'],
+    hint: {
+      ru: 'Глава 2: название из двух английских слов, оно тоже стоит в заголовке главы.',
+      en: 'Chapter 2: a two-word English name, also found in the chapter title.',
+    },
+    explanation: {
+      ru: 'Верно. На этом примере видно, как защита смещается с эпистемической линии на политическую: авторы не претендуют на моральную экспертизу, а говорят о «решении как сообщество», — и статья показывает, что выборка посетителей сайта не образует легитимной процедуры.',
+      en: 'Correct. This example shows the defence shifting from the epistemic line to the political one: the authors claim no moral expertise but speak of "deciding as a community" — and the paper shows that a sample of website visitors is not a legitimate procedure.',
+    },
+  },
 ];

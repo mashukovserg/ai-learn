@@ -241,14 +241,19 @@ For coding tasks, agents should:
 To ensure high interactivity and engagement, every room must follow the "Task Mix Rule":
 
 1. Every room must include at least one "sorting" (drag-to-reorder) or "mentor" (dialogue-based) task.
-2. Relying exclusively on multiple-choice or input tasks is forbidden.
-3. Aim for a diverse mix of task types within each room to maintain learner momentum.
+2. Every room must include at least one `input` task where the learner **types the exact term** (recall, not recognition); the Vitest suite enforces the floor of one. The target for any room you create or edit is **two or more** — when a room needs more tasks, convert a "which of these is the name of…" multiple-choice into an `input` before adding another multiple-choice (owner request, 2026-09-10).
+3. Relying exclusively on multiple-choice or input tasks is forbidden.
+4. Aim for a diverse mix of task types within each room to maintain learner momentum.
 
 ### Task data validation gate (Mandatory)
 
 After adding or editing tasks in `ROOM_TASKS`, the agent must verify every task is completable in both locales before shipping. Validation rules per `TaskType`:
 
-1. **`input`** — `correctAnswer` (string or string[]) must be non-empty. Answers are normalized (lowercased, trimmed, quotes/punctuation stripped), so `correctAnswer` values should be lowercase with no trailing punctuation. If an array, at least one item is required.
+1. **`input`** — `answer` is a non-empty string, `{ en, ru }`, or an array mixing both. Rules that make a type-the-term task fair:
+   - **The term must appear verbatim in that room's theory in both languages** (ideally as a `<Term>`), and the question/hint must describe the concept without naming it.
+   - **Both locales are accepted on every page.** A localized `{ en, ru }` answer (alone or inside the array) is flattened into both spellings by `resolveTask`, so a learner reading `/ru` may type the English term the chapter introduced. If you write plain strings instead, list the English canonical form and the Russian form yourself.
+   - **List different words, not different spellings.** Both sides go through `normalizeAnswer` (`src/lib/answerNormalize.ts`): NFKC + lowercase, `ё`→`е`, quotes/backticks/apostrophes dropped, hyphens/dashes/underscores treated as spaces, whitespace collapsed, trailing `.,!?;:` stripped. So `top-p` = `top p` = `Top_P`, and `«Джейлбрейк».` = `джейлбрейк`. What is **not** folded: Russian case endings (`трассировка` ≠ `трассировку` — list the inflected forms a learner is likely to type), a dropped hyphen (`re-ranking` ≠ `reranking` — list both), and articles or extra words (`the runner` ≠ `runner`).
+   - Prefer terms with one canonical spelling; a term with many synonyms belongs in multiple-choice.
 2. **`multiple-choice`** — `correctAnswer` must be an exact string match to one of the `options` entries (case-sensitive, no normalization). Verify the correct option text is identical in both fields.
 3. **`multiple-select`** — every string in `correctAnswer[]` must appear in `options[]` (case-sensitive). Order does not matter (sorted internally), but set membership does.
 4. **`sorting`** — `correctOrder[]` must contain exactly the same strings as `initialItems[]`, just in the right order. No extra or missing items.

@@ -419,5 +419,39 @@ export const promptContractsTasks: LocalizedTask[] = [
       ru: 'Контракт должен быть стабильным. Если он "адаптируется" под ошибки модели, он перестает быть контрактом.',
       en: 'A contract must be stable. If it "adapts" to model errors, it ceases to be a contract.'
     }
+  },
+  {
+    id: 11,
+    type: 'input',
+    question: {
+      ru: 'Третий слой сильного промпт-контракта требует, чтобы агент логировал не только результат, но и цепочку рассуждений в строго заданном поле — так «чёрный ящик» становится прозрачным процессом, и видно, на каком этапе сломалась логика. Введите название этого слоя.',
+      en: 'The third layer of a strong prompt contract requires the agent to log not only the result but also its reasoning in a strictly defined field — turning the "black box" into a transparent process where you can see which stage broke. Enter the name of this layer.',
+    },
+    answer: ['observability layer', 'observability', 'слой наблюдаемости', 'наблюдаемость', 'наблюдаемости'],
+    hint: {
+      ru: 'В теории все три слоя названы по-английски; первые два — Schema Layer и Constraint Layer.',
+      en: 'The theory names all three layers in English; the first two are Schema Layer and Constraint Layer.',
+    },
+    explanation: {
+      ru: 'Верно. Observability Layer превращает сбой из загадки в конкретное место в контракте: вы видите, где логика агента ушла в сторону, и точечно правите системный промпт.',
+      en: 'Correct. The Observability Layer turns a failure from a mystery into a specific place in the contract: you see where the agent\'s logic went astray and fix the system prompt precisely there.',
+    },
+  },
+  {
+    id: 12,
+    type: 'input',
+    question: {
+      ru: 'Чтобы бороться с дрейфом, в контракт встраивают механизм: валидатор, обнаружив нарушение схемы, сам отправляет агенту сообщение вида «Ошибка валидации в поле X, ожидался тип Y», и агент исправляется в рамках той же сессии без участия человека. Как теория называет этот механизм? Введите термин.',
+      en: 'To fight drift, the contract embeds a mechanism: when the validator detects a schema violation, it automatically sends the agent a message like "Validation error in field X, type Y expected", and the agent fixes itself within the same session with no human involved. What does the theory call this mechanism? Enter the term.',
+    },
+    answer: ['error correction loop', 'error correction loops', 'цикл исправления ошибок', 'циклы исправления ошибок', 'цикл коррекции ошибок', 'петля исправления ошибок'],
+    hint: {
+      ru: 'Три английских слова; теория приводит термин в главе 3 в английском написании.',
+      en: 'Three words; the theory gives the term in Chapter 3.',
+    },
+    explanation: {
+      ru: 'Верно. Error Correction Loops позволяют агенту «самоисцеляться»: конкретное сообщение об ошибке схемы исправляет вывод быстрее и дешевле, чем повторная отправка всей истории с просьбой «быть внимательнее».',
+      en: 'Correct. Error Correction Loops let the agent "self-heal": a specific schema error message fixes the output faster and cheaper than resending the whole history with a plea to "be more careful".',
+    },
   }
 ];

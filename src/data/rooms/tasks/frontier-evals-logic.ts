@@ -351,5 +351,39 @@ export const frontierEvalsLogicTasks: LocalizedTask[] = [
       ru: 'Верно. В «On the Measure of Intelligence» (2019) Шолле пишет, что неограниченные априорные знания или обучающие данные позволяют купить любой уровень навыка, скрывая собственную способность системы обобщать. Взамен он предлагает мерить эффективность освоения навыка — насколько дёшево система осваивает новую задачу относительно того, с чем начинала; под это определение и построен ARC. Отсюда же понятно, почему насыщение и контаминация бьют по тестам на навык сильнее, чем по тестам на новизну.',
       en: 'Correct. In "On the Measure of Intelligence" (2019) Chollet argues that unlimited priors or training data let you buy any level of skill, hiding the system\u2019s own power to generalise. In its place he proposes measuring skill-acquisition efficiency — how cheaply a system picks up a new task relative to what it started with; ARC was built to that definition. This also explains why saturation and contamination hit skill tests harder than novelty tests.'
     }
+  },
+  {
+    id: 15,
+    type: 'input',
+    question: {
+      ru: 'В официальной таблице HLE рядом с точностью стоит вторая колонка: моделей просят давать не только ответ, но и уверенность в нём от 0 до 100%, а метрика показывает, насколько заявленная уверенность расходится с реальной точностью. У GPT-4o она равна 89% при 2,7% правильных ответов. Введите название этой метрики.',
+      en: 'The official HLE table has a second column next to accuracy: models are asked to give not only an answer but their confidence in it from 0 to 100%, and the metric shows how far the stated confidence diverges from actual accuracy. For GPT-4o it is 89% against 2.7% correct answers. Enter the name of this metric.',
+    },
+    answer: ['calibration error', 'calibration', 'ошибка калибровки', 'ошибку калибровки', 'ошибки калибровки', 'калибровка', 'калибровку', 'калибровки'],
+    hint: {
+      ru: 'Глава «Как читать лидерборд», скриншот таблицы: заголовок колонки по-английски, два слова.',
+      en: 'The "How to Read a Leaderboard" chapter, the screenshot of the table: the column header, two English words.',
+    },
+    explanation: {
+      ru: 'Верно. Модель, не решающая почти ничего, была почти во всём уверена: сверхуверенность на непосильных вопросах — систематическое свойство нынешних систем, и это второй, тихий провал, который таблица показывает рядом с первым.',
+      en: 'Correct. A model that solves almost nothing was confident about almost everything: overconfidence on impossible questions is a systematic property of current systems, and it is the second, quieter failure the table shows next to the first.',
+    },
+  },
+  {
+    id: 16,
+    type: 'input',
+    question: {
+      ru: 'Хороший бенчмарк служит лабораториям компасом, но у компаса есть известный дефект: когда метрика становится целью, она перестаёт быть хорошей метрикой. Именно поэтому индустрия живёт на конвейере из новых экзаменов. Введите название этого закона.',
+      en: 'A good benchmark serves labs as a compass, but the compass has a known defect: when a metric becomes the target, it stops being a good metric. This is why the industry lives on a conveyor of new exams. Enter the name of this law.',
+    },
+    answer: ['goodharts law', 'goodhart\'s law', 'goodhart', 'закон гудхарта', 'гудхарт', 'гудхарта'],
+    hint: {
+      ru: 'Закон носит фамилию экономиста; формулировка стоит в последнем абзаце главы «Как читать лидерборд», сразу после «северной звезды».',
+      en: 'The law bears an economist\'s surname; it is stated in the last paragraph of "How to Read a Leaderboard", right after the North Star.',
+    },
+    explanation: {
+      ru: 'Верно. Как только лаборатории начинают целиться в конкретный тест, его балл перестаёт измерять то, ради чего тест создавали, — отсюда и жизненный цикл бенчмарка от 5% до бесполезности.',
+      en: 'Correct. Once labs start aiming at a specific test, its score stops measuring what the test was built for — hence the benchmark life cycle from 5% to useless.',
+    },
   }
 ];

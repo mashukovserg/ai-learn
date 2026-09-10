@@ -43,7 +43,7 @@ The rules below are the codified version of `AGENTS.md` → "Task data validatio
 
 | Type | Rule |
 |---|---|
-| `input` | `answer` is a non-empty string or non-empty `string[]`; entries are lowercase and trimmed (matches the runtime normalizer). |
+| `input` | `answer` is a non-empty string, `{ en, ru }`, or a non-empty array mixing both. Matching is done by `normalizeAnswer` (`src/lib/answerNormalize.ts`, unit-tested in `src/lib/__tests__/`), and a localized entry is accepted in both locales (`resolveTask`, tested in `resolveTask.test.ts`). Every room must carry at least one `input` task (floor enforced here; the authoring target is two). |
 | `multiple-choice` | `answer.en` is exactly equal to one `options[i].en` and `answer.ru` is exactly equal to that same `options[i].ru`. |
 | `multiple-select` | Every entry in `answer[]` (both locales) appears in `options[]` (matched as a `LocalizedString`). |
 | `sorting` | `correctOrder` is a permutation of `initialItems` — same multiset in both locales. |

@@ -265,5 +265,39 @@ export const claudeCodeAgenticLoopTasks: LocalizedTask[] = [
       ru: 'Когда агент ищет информацию в вашей кодовой базе, он по сути выполняет локальный RAG.',
       en: 'When the agent searches for information in your codebase, it is essentially performing a local RAG.'
     }
+  },
+  {
+    id: 11,
+    type: 'input',
+    question: {
+      ru: 'Когда агент говорит «я сейчас исправлю этот баг», на самом деле он генерирует вызов конкретного инструмента с параметрами — и именно это делает его работу детерминированной. Введите имя инструмента, которое теория приводит в этом примере.',
+      en: 'When the agent says "I\'ll fix this bug now", it is actually generating a call to a specific tool with parameters, and that is what makes its work deterministic. Enter the tool name the theory gives in this example.',
+    },
+    answer: ['edit_file', 'edit file', 'edit-file'],
+    hint: {
+      ru: 'Два английских слова через нижнее подчёркивание: действие и то, к чему оно применяется.',
+      en: 'Two English words joined by an underscore: an action and the thing it applies to.',
+    },
+    explanation: {
+      ru: 'Верно. Вызов edit_file — фаза «Действие» цикла: модель не правит файл «мыслью», а выдаёт структурированную команду с параметрами, которую исполняет среда.',
+      en: 'Correct. Calling edit_file is the "Take Action" phase of the loop: the model does not edit the file by "thought", it emits a structured command with parameters that the environment executes.',
+    },
+  },
+  {
+    id: 12,
+    type: 'input',
+    question: {
+      ru: 'Контекстное окно агента (обычно 200 000 токенов) в длинных сессиях заполняется. Чтобы не «забыть» задачу, Claude Code держит резерв: при приближении к лимиту история диалога автоматически суммаризируется. Введите размер этого резерва в процентах, как он указан в теории.',
+      en: 'The agent\'s context window (usually 200,000 tokens) fills up in long sessions. To avoid "forgetting" the task, Claude Code keeps a reserve: as the limit approaches, the dialogue history is summarized automatically. Enter the size of that reserve as a percentage, as the theory states it.',
+    },
+    answer: ['22%', '22', '22 %', '22 percent', '22 процента', '22 процентов'],
+    hint: {
+      ru: 'Число из двух одинаковых цифр; оно стоит в скобках рядом с названием буфера в разделе «Память и сжатие».',
+      en: 'A number made of two identical digits; it sits in parentheses next to the buffer name in the "Memory and Auto-compacting" section.',
+    },
+    explanation: {
+      ru: 'Верно. Буфер auto-compact в 22% срабатывает заранее, а не в момент переполнения: агент успевает сжать историю, сохранив суть задачи, и продолжает сессию без потери критического контекста.',
+      en: 'Correct. The 22% auto-compact buffer fires ahead of time rather than at overflow: the agent compresses the history while keeping the gist of the task and continues the session without losing critical context.',
+    },
   }
 ];

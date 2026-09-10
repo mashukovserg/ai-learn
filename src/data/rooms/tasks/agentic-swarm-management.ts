@@ -304,5 +304,39 @@ export const agenticSwarmManagementTasks: LocalizedTask[] = [
       ru: 'Исторически автоматизация не убирает работу, а повышает планку амбиций человечества.',
       en: 'Historically, automation hasn\'t eliminated work but has raised the bar for humanity\'s ambitions.'
     }
+  },
+  {
+    id: 13,
+    type: 'input',
+    question: {
+      ru: 'В ключевой аналогии теории рой агентов сравнивается с целым отделом, которому вы поручаете «исследовать 10 конкурентов, собрать их цены в таблицу и подготовить отчёт». Кем вы становитесь, управляя таким отделом (по этой аналогии)? Введите термин.',
+      en: 'In the theory\'s key analogy, an agentic swarm is compared to an entire department you task with "research 10 competitors, collect their prices in a table, and prepare a report". According to that analogy, what role do you take on when running such a department? Enter the term.',
+    },
+    answer: ['dispatcher', 'диспетчер', 'диспетчером', 'диспетчера'],
+    hint: {
+      ru: 'Аналогия из транспорта и логистики: человек, который распределяет рейсы, а не сидит за рулём.',
+      en: 'A transport-and-logistics analogy: the person who assigns the runs rather than sitting behind the wheel.',
+    },
+    explanation: {
+      ru: 'Верно. Диспетчер не выполняет каждый рейс сам: он ставит задачи, распределяет ресурсы и следит за сроками — именно такой становится роль человека при переходе от одного ассистента к рою.',
+      en: 'Correct. A dispatcher does not drive every run: they set tasks, allocate resources, and watch deadlines — exactly the role a human takes on when moving from a single assistant to a swarm.',
+    },
+  },
+  {
+    id: 14,
+    type: 'input',
+    question: {
+      ru: 'В той же аналогии ИИ-ассистент, которого вы просите написать письмо, сравнивается с системой, которая помогает вам в конкретный момент, пока вы сами остаётесь за рулём. Введите термин из теории.',
+      en: 'In the same analogy, an AI assistant you ask to write an email is compared to a system that helps you at a specific moment while you remain at the wheel. Enter the term the theory uses.',
+    },
+    answer: ['autopilot', 'auto pilot', 'автопилот', 'автопилотом', 'автопилота'],
+    hint: {
+      ru: 'Одно слово из авиации и автомобилей; в теории оно стоит в заголовке блока с аналогией.',
+      en: 'One word from aviation and cars; the theory puts it in the heading of the analogy box.',
+    },
+    explanation: {
+      ru: 'Верно. Автопилот снимает часть нагрузки в конкретной задаче, но управление остаётся у вас; рой же берёт на себя работу целого отдела, и ваша роль смещается к постановке целей и контролю.',
+      en: 'Correct. An autopilot takes over part of a specific task, but control stays with you; a swarm takes on the work of a whole department, and your role shifts to setting goals and overseeing.',
+    },
   }
 ];

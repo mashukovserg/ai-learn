@@ -18,16 +18,41 @@ const isLocalized = (v: unknown): v is LocalizedString =>
 const pick = (v: LocalizedString | string, lang: Lang): string =>
   typeof v === 'object' ? v[lang] : v;
 
+/**
+ * `input` answers accept BOTH locales' spellings regardless of the page
+ * language: a learner reading the Russian theory may still type the English
+ * term the chapter introduced (and vice versa), and the theory always gives
+ * both. So a localized `{ en, ru }` answer — alone or inside an array — is
+ * flattened into every variant, and the renderer's matcher
+ * (src/lib/answerNormalize.ts) checks the typed text against all of them.
+ *
+ * `multiple-choice` / `multiple-select` answers must stay single-locale: they
+ * are compared verbatim against the rendered option strings.
+ */
+function resolveAnswer(t: LocalizedTask, lang: Lang): unknown {
+  const a = t.answer;
+  if (t.type === 'input') {
+    const raw = Array.isArray(a) ? a : [a];
+    const variants: string[] = [];
+    for (const v of raw) {
+      if (isLocalized(v)) variants.push(v.en, v.ru);
+      else if (typeof v === 'string') variants.push(v);
+    }
+    return variants;
+  }
+  return Array.isArray(a)
+    ? a.map(v => (isLocalized(v) ? v[lang] : v))
+    : isLocalized(a)
+      ? a[lang]
+      : a;
+}
+
 export function resolveTask(t: LocalizedTask, lang: Lang) {
   return {
     ...t,
     question: t.question[lang],
     explanation: t.explanation[lang],
-    answer: Array.isArray(t.answer)
-      ? t.answer.map(a => (isLocalized(a) ? (a as unknown as Record<string, string>)[lang] : a))
-      : isLocalized(t.answer)
-        ? (t.answer as unknown as Record<string, string>)[lang]
-        : t.answer,
+    answer: resolveAnswer(t, lang),
     hint: t.hint ? t.hint[lang] : undefined,
     image: t.image
       ? {
