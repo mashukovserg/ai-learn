@@ -488,6 +488,22 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     icon: 'Search',
   },
   {
+    id: 'transfer-learning',
+    title: {
+      ru: 'Transfer learning: предобучение и адаптация',
+      en: 'Transfer Learning: Pretrain, Then Adapt',
+    },
+    description: {
+      ru: 'Почему одна большая предобученная модель плюс дешёвая адаптация вытеснила обучение с нуля: от признаков ImageNet и BERT до LoRA, post-training и промптов — и что в этой картине обычно упрощают.',
+      en: 'Why one large pretrained model plus cheap adaptation displaced training from scratch: from ImageNet features and BERT to LoRA, post-training and prompts — and what this picture usually oversimplifies.',
+    },
+    difficulty: 'Intermediate',
+    time: { ru: '35 мин', en: '35m' },
+    category: { ru: 'Архитектура', en: 'Architecture' },
+    pathIds: ['beginner', 'intermediate'],
+    icon: 'Layers',
+  },
+  {
     id: 'fine-tuning-101',
     title: { ru: 'Файн-тюнинг и адаптация', en: 'Fine-Tuning & Adaptation' },
     description: {
