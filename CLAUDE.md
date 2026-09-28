@@ -176,7 +176,7 @@ These are enforced conventions, not suggestions. Read `docs/AGENTS.md` for full 
 
 ## Deployment
 
-Frontend on **Vercel**; backend Docker container on **Railway** (Alembic auto-migrates on start). `BACKEND_URL` controls the Next.js rewrite target. See `docs/DEPLOYMENT.md` — and update it in the same task when changing `backend/Dockerfile`, `next.config.ts`, `backend/settings.py`, `docker-compose.yml`, or adding migrations/services.
+Frontend on **Vercel**; backend Docker container on **Railway** (Alembic auto-migrates on start). Vercel is Git-connected (since 2026-07-21): **a push to `main` is a production release**, and every other branch push gets a preview deploy — verify before merging, not after. `BACKEND_URL` controls the Next.js rewrite target. See `docs/DEPLOYMENT.md` — and update it in the same task when changing `backend/Dockerfile`, `next.config.ts`, `backend/settings.py`, `docker-compose.yml`, or adding migrations/services.
 
 ## Docs Index (all mirrored `.ru.md` where noted)
 - `docs/AGENTS.md` — runtime + authoring gates (**start here** for content work).
