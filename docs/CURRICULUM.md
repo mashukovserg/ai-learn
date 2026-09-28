@@ -20,6 +20,8 @@
   - *Topics:* RAG basics, retrieval quality, source citation and trust calibration.
 
 ### Module 3: Architecture & Adaptation
+- [x] **Transfer Learning: Pretrain, Then Adapt (`transfer-learning`)** — 11 tasks (3 input, timeline, sorting, categorize, multiple-select, mentor, 3 multiple-choice); 6 sourced chapters, 2 genuine screenshots; sits right before Fine-Tuning in the beginner and intermediate paths
+  - *Topics:* why pretrain → adapt beats training from scratch (a BERT terminal: 1,538 new parameters out of 109,483,778), ImageNet features 2014 and its limit on medical images, the 2018 NLP shift (ULMFiT/ELMo/GPT/BERT), the adaptation ladder (full fine-tuning → LoRA/adapters → post-training → prompting), the loss-landscape basin (Neyshabur 2020) and LIMA's superficial alignment hypothesis, pretraining data curation (dedup, quality classifiers, domain weights, DoReMi), post-training vs "the internet average" (InstructGPT, DeepSeek-R1), prompting's reach and limit (few-shot, chain of thought), closed-model fine-tuning and OpenAI's 2026 wind-down, formal limits on hallucination.
 - [x] **Fine-Tuning & Adaptation (Файн-тюнинг и адаптация)** — 12 tasks (includes categorize, scenario, mentor)
   - *Topics:* LoRA, QLoRA, full fine-tune vs prompting vs RAG, dataset preparation, overfitting, catastrophic forgetting, decision framework.
 - [x] **Embeddings & Vector Search (Эмбеддинги и векторный поиск)** — 10 tasks (includes timeline, categorize, sorting, scenario)

@@ -25,6 +25,7 @@ export const PATHS_METADATA: PathMetadata[] = [
       'ai-career-trajectories',
       'local-models-101',
       'llama-3-1-8b',
+      'transfer-learning',
       'fine-tuning-101',
       'embeddings-101',
       'local-rag-docs',
@@ -71,6 +72,7 @@ export const PATHS_METADATA: PathMetadata[] = [
     roomIds: [
       'local-models-101',
       'llama-3-1-8b',
+      'transfer-learning',
       'fine-tuning-101',
       'embeddings-101',
       'local-rag-docs',

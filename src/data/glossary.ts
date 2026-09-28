@@ -1133,4 +1133,28 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
       en: 'Some files in a repository matter more than others: the checks configuration, database migrations, the shared rules file for agents. You want a change to them never to slip past the person responsible — and you do not want to have to remember that. CODEOWNERS is a file that maps paths to owners; the platform assigns them as reviewers on its own and, together with branch protection, makes their approval mandatory. Ownership becomes a rule of the system rather than a verbal agreement.',
     },
   },
+  'transfer-learning': {
+    id: 'transfer-learning',
+    term: { ru: 'Transfer learning (перенос обучения)', en: 'Transfer Learning' },
+    definition: {
+      ru: 'Для узкой задачи редко хватает данных, чтобы обучить модель с нуля: пятисот размеченных снимков мало, чтобы сеть сама открыла, что такое край или текстура. Transfer learning — подход, при котором модель сначала учат на большой и общей задаче, где данных много и разметка дешёвая, а потом переиспользуют выученное для целевой задачи: дообучают, добавляют небольшую надстройку или просто дают инструкцию в промпте. Схему коротко записывают как «pretrain → adapt».',
+      en: 'A narrow task rarely has enough data to train a model from scratch: five hundred labelled scans are too few for a network to discover on its own what an edge or a texture is. Transfer learning is the approach where a model is first trained on a large, general task with plenty of cheaply labelled data, and what it learned is then reused for the target task: by fine-tuning, by adding a small add-on, or simply by giving instructions in the prompt. The scheme is written in short as "pretrain → adapt".',
+    },
+  },
+  'pretraining': {
+    id: 'pretraining',
+    term: { ru: 'Предобучение (pretraining)', en: 'Pretraining' },
+    definition: {
+      ru: 'Первый и самый дорогой этап обучения модели. Её учат на огромном корпусе решать общую задачу, для которой ответы есть в самих данных: предсказать следующее слово (GPT) или пропущенное слово (BERT) — людям ничего размечать не нужно, текст сам служит ключом ответов. Итог — базовая модель: она хорошо продолжает текст и хранит большую часть знаний, которые потом используются во всех адаптациях, но ещё не умеет вести себя как ассистент.',
+      en: 'The first and most expensive stage of training a model. It is trained on a huge corpus to solve a general task whose answers are already in the data: predict the next word (GPT) or a masked word (BERT) — nobody has to label anything, the text itself is the answer key. The result is a base model: it continues text well and holds most of the knowledge that every later adaptation draws on, but it does not yet behave like an assistant.',
+    },
+  },
+  'post-training': {
+    id: 'post-training',
+    term: { ru: 'Post-training (пост-обучение)', en: 'Post-training' },
+    definition: {
+      ru: 'Всё обучение, которое идёт после предобучения и превращает «продолжателя текстов» в ассистента: обычно сначала SFT на примерах инструкций и ответов, затем обучение с подкреплением — на оценках людей (RLHF) или на задачах с проверяемым ответом, например в математике и коде. Формально это тоже перенос обучения: веса предобученной модели сдвигаются под новую цель. Данных здесь на порядки меньше, чем при предобучении, но поведение продукта меняется заметно.',
+      en: 'All the training that comes after pretraining and turns a "text continuer" into an assistant: usually SFT on examples of instructions and answers first, then reinforcement learning — on human ratings (RLHF) or on tasks with verifiable answers, such as maths and code. Formally this is transfer learning too: the pretrained weights shift toward a new goal. It uses orders of magnitude less data than pretraining, yet it changes the product\'s behaviour noticeably.',
+    },
+  },
 };
