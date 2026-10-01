@@ -518,6 +518,38 @@ export const ROOMS_METADATA: LocalizedRoomMetadata[] = [
     icon: 'Wrench',
   },
   {
+    id: 'reasoning-models',
+    title: {
+      ru: 'Модели-рассуждатели и test-time compute',
+      en: 'Reasoning Models and Test-Time Compute',
+    },
+    description: {
+      ru: 'Почему модели стали «думать» перед ответом: от цепочки рассуждений в промпте до o1 и DeepSeek-R1, обученных с подкреплением на проверяемых наградах, — и где длинное рассуждение не помогает или не говорит правду о причине ответа.',
+      en: 'Why models started to "think" before answering: from chain-of-thought prompting to o1 and DeepSeek-R1, trained with reinforcement learning on verifiable rewards — and where long reasoning does not help, or does not tell the truth about why the answer came out.',
+    },
+    difficulty: 'Intermediate',
+    time: { ru: '35 мин', en: '35m' },
+    category: { ru: 'Архитектура', en: 'Architecture' },
+    pathIds: ['beginner', 'ideas-history'],
+    icon: 'Brain',
+  },
+  {
+    id: 'llm-interpretability',
+    title: {
+      ru: 'Интерпретируемость LLM: от чёрного ящика к схемам',
+      en: 'LLM Interpretability: From Black Box to Circuits',
+    },
+    description: {
+      ru: 'Как заглянуть внутрь языковой модели: почему карта внимания — ещё не объяснение, что показывают пробинг и logit lens, зачем нужны суперпозиция и sparse autoencoders, как строят схемы вычислений — и почему само объяснение тоже приходится проверять.',
+      en: 'How to look inside a language model: why an attention map is not yet an explanation, what probing and the logit lens show, why superposition and sparse autoencoders matter, how circuits are traced — and why the explanation itself has to be checked too.',
+    },
+    difficulty: 'Intermediate',
+    time: { ru: '40 мин', en: '40m' },
+    category: { ru: 'Архитектура', en: 'Architecture' },
+    pathIds: ['beginner', 'ideas-history'],
+    icon: 'Eye',
+  },
+  {
     id: 'local-models-101',
     title: {
       ru: 'Локальные модели 101: свой ИИ без облака',

@@ -41,6 +41,8 @@ export const THEORY_COMPONENTS: Record<string, ComponentType<{ lang: string }>> 
   'ai-research': dynamic(() => import('./AiResearchTheory'), { loading }),
   'fine-tuning-101': dynamic(() => import('./FineTuning101Theory'), { loading }),
   'transfer-learning': dynamic(() => import('./TransferLearningTheory'), { loading }),
+  'reasoning-models': dynamic(() => import('./ReasoningModelsTheory'), { loading }),
+  'llm-interpretability': dynamic(() => import('./LlmInterpretabilityTheory'), { loading }),
   'local-models-101': dynamic(() => import('./LocalModels101Theory'), { loading }),
   'llama-3-1-8b': dynamic(() => import('./Llama318bTheory'), { loading }),
   'prompt-evals': dynamic(() => import('./PromptEvalsTheory'), { loading }),
