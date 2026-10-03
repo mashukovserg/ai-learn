@@ -178,7 +178,7 @@ When adding a new room or task file, add a corresponding test in `src/data/rooms
 ## Not Yet Implemented
 
 - `src/app/[lang]/compete/` — route exists, no content
-- `src/app/[lang]/leaderboard/` — route exists, no content
+- Leaderboard — removed on 2026-10-03 at the owner's request (not planned)
 - Agent Ops cycle scheduling — currently manual trigger only
 
 See `BACKLOG.md` for the full engineering backlog and `PROGRESS.md` for milestone status.

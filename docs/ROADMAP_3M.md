@@ -120,10 +120,11 @@ Build in order, each per the "How to add a new room" procedure and full `AGENTS.
 
 Goal: close the two "coming soon" stubs and add the first retention loop.
 
-### M3-1 🔴 Leaderboard
-- [ ] Implement `backend/app/api/leaderboard/router.py`: `GET /leaderboard` returning top users by points (login, points, completed rooms; no emails).
-- [ ] Replace the placeholder at `src/app/[lang]/leaderboard/` with a real table (auth-aware: highlight current user).
-- [ ] Restore sidebar link.
+### M3-1 ⛔ Leaderboard — dropped 2026-10-03
+The owner decided the platform has no leaderboard; the placeholder page, sidebar link and empty backend stub were removed. The items below are kept for history only.
+- [ ] ~~Implement `backend/app/api/leaderboard/router.py`: `GET /leaderboard` returning top users by points (login, points, completed rooms; no emails).~~
+- [ ] ~~Replace the placeholder at `src/app/[lang]/leaderboard/` with a real table (auth-aware: highlight current user).~~
+- [ ] ~~Restore sidebar link.~~
 
 **Acceptance:** endpoint returns ranked data; page renders in both locales; `DEPLOYMENT.md` updated if env/infra changes.
 

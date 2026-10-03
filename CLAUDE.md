@@ -54,7 +54,7 @@ src/
 │   ├── rooms/page.tsx           # Room catalog (filters, live progress)
 │   ├── paths/[pathId]/          # single dynamic page for all learning paths (locked/unknown → 404)
 │   ├── labs/                    # agent-ops, prompt-compare (experimental tools)
-│   ├── professions/ skills/ settings/ compete/ leaderboard/ faq/ login/
+│   ├── professions/ skills/ settings/ compete/ faq/ login/
 │   ├── api/labs/compare/route.ts
 │   └── globals.css              # Tailwind v4 @theme design tokens
 ├── components/
@@ -83,8 +83,7 @@ src/
 backend/app/
 ├── main.py                      # FastAPI app; registers routers: auth, users, progress, labs, agent
 ├── database.py                  # async engine + session
-├── api/{auth,users,progress,agent,labs,leaderboard}/  # router.py + schemas.py per domain
-│                                # (leaderboard is a stub package — no router wired yet)
+├── api/{auth,users,progress,agent,labs}/  # router.py + schemas.py per domain
 ├── api/dependencies/            # DBSessionDep, CurrentUserIDDep (cookie → session → user_id)
 ├── db/models/                   # ORM: UserORM, AuthSessionORM, UserProgressORM, AgentTask/Run/KnowledgeItemORM
 ├── db/repositories/             # repository pattern — routes call repos, never SQLAlchemy directly
@@ -171,7 +170,7 @@ These are enforced conventions, not suggestions. Read `docs/AGENTS.md` for full 
 ## Current State & Limitations
 
 - **54 rooms** in `ROOMS_METADATA`, all fully wired (theory + tasks) — `transfer-learning` (the pretrain → adapt paradigm, right before `fine-tuning-101`) was authored 2026-09-28; `agentic-team-protocols` (AC-303) was authored 2026-09-03, leaving AC-401/AC-402 as the M2-1 tail; `agentic-guardrails` (AC-301) and `agentic-cost-latency` (AC-302) were authored 2026-08-07 and merged 2026-08-23, closing the roadmap's M2-1 tail; `opencode-terminal-agent` added 2026-08-22; `research-ai-era` was wired up on 2026-08-18, having sat unreachable on disk since 2026-07-21.
-- `compete/` and `leaderboard/` render bilingual "coming soon" placeholder pages; no ranking/competition backend yet (the `leaderboard` backend package is a stub with no router).
+- `compete/` renders a bilingual "coming soon" placeholder page; no competition backend yet. The leaderboard was removed on the owner's request on 2026-10-03 (page, sidebar link, dictionary key and the empty backend stub) — do not re-add one without asking.
 - Agent Ops cycle scheduling is **manual** (`POST /api/agent/cycle/run`); no periodic scheduler.
 
 ## Deployment

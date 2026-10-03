@@ -88,8 +88,8 @@ Implemented top-level frontend sections:
 
 Known absent routes (do not assume they exist):
 
-1. `/${lang}/compete`
-2. `/${lang}/leaderboard`
+1. `/${lang}/compete` (a "coming soon" placeholder only)
+2. `/${lang}/leaderboard` — removed on 2026-10-03 at the owner's request; do not re-add a leaderboard without asking
 
 ### Room inventory (54 rooms in `ROOMS_METADATA`)
 

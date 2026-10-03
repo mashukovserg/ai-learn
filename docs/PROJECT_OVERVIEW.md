@@ -153,7 +153,6 @@ All tasks are bilingual — `en` and `ru` fields required for every visible stri
 
 ### Not yet implemented
 - `/${lang}/compete` — competition/challenge mode.
-- `/${lang}/leaderboard` — public rankings.
 - Prompt Lab (side-by-side model output comparison).
 - Adaptive learning (repeat weak topics, spaced repetition).
 - Mistake Notebook (failed tasks → adaptive retry).
