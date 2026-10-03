@@ -81,7 +81,7 @@ shipping the full build. Ask "should we build this", not only "can we". Keep acc
 traceable: every task in the implementation plan must point at one.
 
 For **learning rooms** specifically, do not use this operation — rooms have their own pipeline in
-`docs/ROOM_DEVELOPMENT.md`. Use `spec` for product features (leaderboard, compete, labs, auth
+`docs/ROOM_DEVELOPMENT.md`. Use `spec` for product features (compete, labs, auth
 flows, dashboards).
 
 ### 4. REVIEW-SETUP

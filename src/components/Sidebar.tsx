@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import { Home, BookOpen, Briefcase, Layout, Terminal, Settings, PanelLeftClose, PanelLeftOpen, LogIn, LogOut, FlaskConical, HelpCircle, Trophy, Swords, X } from 'lucide-react';
+import { Home, BookOpen, Briefcase, Layout, Terminal, Settings, PanelLeftClose, PanelLeftOpen, LogIn, LogOut, FlaskConical, HelpCircle, Swords, X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { useLang } from '@/hooks/useLang';
@@ -32,7 +32,6 @@ export default function Sidebar({
     { icon: Layout, label: lang === 'ru' ? 'Все комнаты' : 'All Rooms', href: `/${lang}/rooms` },
     { icon: FlaskConical, label: lang === 'ru' ? 'Лаборатории' : 'Labs', href: `/${lang}/labs` },
     { icon: Swords, label: lang === 'ru' ? 'Соревнования' : 'Compete', href: `/${lang}/compete` },
-    { icon: Trophy, label: lang === 'ru' ? 'Таблица лидеров' : 'Leaderboard', href: `/${lang}/leaderboard` },
     { icon: HelpCircle, label: lang === 'ru' ? 'FAQ' : 'FAQ', href: `/${lang}/faq` },
     { icon: Settings, label: lang === 'ru' ? 'Профиль' : 'Profile', href: `/${lang}/settings` },
   ];

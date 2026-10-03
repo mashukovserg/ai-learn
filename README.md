@@ -118,7 +118,7 @@ AI learning platform with interactive theory + tasks, built with Next.js App Rou
 - `uv` (package manager)
 
 ## Known limitations
-- Sidebar links `/${lang}/compete` and `/${lang}/leaderboard` are present in UI but routes are not implemented yet.
+- The sidebar link `/${lang}/compete` leads to a "coming soon" placeholder. The leaderboard was removed on 2026-10-03 at the owner's request.
 - Room metadata is duplicated across pages (dashboard/rooms/path each define their own room arrays).
 - Agent Ops cycle scheduling is manual in this MVP (`POST /api/agent/cycle/run`); a periodic scheduler is not wired yet.
 
