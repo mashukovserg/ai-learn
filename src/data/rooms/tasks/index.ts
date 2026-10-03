@@ -17,6 +17,8 @@ import { nativeMultimodalityTasks } from './native-multimodality';
 import { aiImageCreationTasks } from './ai-image-creation';
 import { fineTuning101Tasks } from './fine-tuning-101';
 import { transferLearningTasks } from './transfer-learning';
+import { reasoningModelsTasks } from './reasoning-models';
+import { llmInterpretabilityTasks } from './llm-interpretability';
 import { localModels101Tasks } from './local-models-101';
 import { llama31_8bTasks } from './llama-3-1-8b';
 import { embeddings101Tasks } from './embeddings-101';
@@ -74,6 +76,8 @@ export const ROOM_TASKS: Record<string, LocalizedTask[]> = {
   'ai-image-creation': aiImageCreationTasks,
   'fine-tuning-101': fineTuning101Tasks,
   'transfer-learning': transferLearningTasks,
+  'reasoning-models': reasoningModelsTasks,
+  'llm-interpretability': llmInterpretabilityTasks,
   'local-models-101': localModels101Tasks,
   'llama-3-1-8b': llama31_8bTasks,
   'embeddings-101': embeddings101Tasks,

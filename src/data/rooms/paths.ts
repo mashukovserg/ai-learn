@@ -27,6 +27,8 @@ export const PATHS_METADATA: PathMetadata[] = [
       'llama-3-1-8b',
       'transfer-learning',
       'fine-tuning-101',
+      'reasoning-models',
+      'llm-interpretability',
       'embeddings-101',
       'local-rag-docs',
       'research-grounding',
@@ -47,16 +49,19 @@ export const PATHS_METADATA: PathMetadata[] = [
     unlocked: true,
     // Chronological: origins -> the ChatGPT break -> what the break did to one
     // concrete institution (search) -> what followed -> the forward-looking
-    // debates (scaling, then singularity as the far horizon).
+    // debates (scaling and its second axis, test-time compute, then singularity
+    // as the far horizon) -> risk and alignment -> whether we can look inside.
     roomIds: [
       'ai-history',
       'chatgpt-moment',
       'search-retrieval-to-synthesis',
       'post-chatgpt-history',
       'scaling-hypothesis',
+      'reasoning-models',
       'ai-singularity',
       'ai-existential-risk',
       'ai-alignment-limits',
+      'llm-interpretability',
     ],
   },
   {

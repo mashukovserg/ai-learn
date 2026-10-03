@@ -1157,4 +1157,68 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
       en: 'All the training that comes after pretraining and turns a "text continuer" into an assistant: usually SFT on examples of instructions and answers first, then reinforcement learning — on human ratings (RLHF) or on tasks with verifiable answers, such as maths and code. Formally this is transfer learning too: the pretrained weights shift toward a new goal. It uses orders of magnitude less data than pretraining, yet it changes the product\'s behaviour noticeably.',
     },
   },
+  'chain-of-thought': {
+    id: 'chain-of-thought',
+    term: { ru: 'Chain of thought (цепочка рассуждений)', en: 'Chain of Thought' },
+    definition: {
+      ru: 'Языковая модель тратит на каждый токен один и тот же объём вычислений. Если ответ на трудную задачу нужно выдать сразу, вся работа должна уместиться в эти несколько шагов. Если же модель сначала выписывает промежуточные шаги, каждый шаг становится частью входа для следующего — получается черновик, на который можно опереться. Такие промежуточные шаги перед ответом называют цепочкой рассуждений (chain of thought, CoT). Её можно вызвать промптом («рассуждай по шагам») или выучить обучением, как у моделей-рассуждателей.',
+      en: 'A language model spends the same amount of computation on every token. If the answer to a hard problem must come out at once, all the work has to fit into those few steps. If the model first writes out intermediate steps, each step becomes part of the input for the next one — a scratchpad it can lean on. Such intermediate steps before the answer are called a chain of thought (CoT). It can be elicited with a prompt ("reason step by step") or learned through training, as in reasoning models.',
+    },
+  },
+  'rlvr': {
+    id: 'rlvr',
+    term: { ru: 'RLVR (обучение с подкреплением на проверяемых наградах)', en: 'RLVR (Reinforcement Learning with Verifiable Rewards)' },
+    definition: {
+      ru: 'В математике и программировании ответ часто можно проверить без человека: сравнить число с эталоном или прогнать тесты. Тогда награду для обучения с подкреплением выдаёт программа: правильный итог — плюс, неправильный — ноль. Модель пробует много решений, и закрепляются те ходы мысли, которые чаще приводят к верному ответу. Такой режим называют RLVR — reinforcement learning with verifiable rewards. Он дешевле RLHF, где оценки ставят люди, но работает только там, где правильность можно проверить автоматически.',
+      en: 'In maths and programming an answer can often be checked without a human: compare the number with a reference, or run the tests. The reward for reinforcement learning is then issued by a program: a correct result earns a point, a wrong one earns zero. The model tries many solutions, and the lines of reasoning that more often lead to a correct answer get reinforced. This regime is called RLVR — reinforcement learning with verifiable rewards. It is cheaper than RLHF, where people give the ratings, but it works only where correctness can be checked automatically.',
+    },
+  },
+  'distillation': {
+    id: 'distillation',
+    term: { ru: 'Дистилляция (distillation)', en: 'Distillation' },
+    definition: {
+      ru: 'Большая модель дорога в работе, а её умение хочется получить в маленькой. Для этого большую модель-«учителя» просят решить много задач, а её ответы — вместе с рассуждениями — используют как обучающие примеры для маленькой модели-«ученика». Ученик учится подражать учителю обычным дообучением (SFT), без собственного обучения с подкреплением. Этот приём называют дистилляцией. Так из DeepSeek-R1 получили семейство моделей R1-Distill на основе Qwen и Llama.',
+      en: 'A large model is expensive to run, and you want its skill in a small one. So the large "teacher" model is asked to solve many problems, and its answers — together with the reasoning — become training examples for a small "student" model. The student learns to imitate the teacher through ordinary fine-tuning (SFT), without reinforcement learning of its own. This technique is called distillation. That is how the R1-Distill family, based on Qwen and Llama, was obtained from DeepSeek-R1.',
+    },
+  },
+  'cot-faithfulness': {
+    id: 'cot-faithfulness',
+    term: { ru: 'Верность рассуждений (CoT faithfulness)', en: 'Chain-of-Thought Faithfulness' },
+    definition: {
+      ru: 'Человек, который объясняет своё решение, может искренне назвать не ту причину, по которой он его принял. С моделью то же: текст рассуждения — это ещё один выход модели, а не запись её внутренних вычислений. Верностью рассуждений (CoT faithfulness) называют степень, в которой написанная цепочка отражает настоящие причины ответа. Её проверяют экспериментом: дают модели подсказку, видят, что ответ из-за неё изменился, и смотрят, упомянула ли модель подсказку в рассуждении.',
+      en: 'A person explaining a decision can sincerely name a reason other than the one that actually drove it. The same holds for a model: the text of its reasoning is one more output of the model, not a record of its internal computation. Chain-of-thought faithfulness is the degree to which the written chain reflects the real reasons for the answer. It is tested by experiment: give the model a hint, see that the answer changed because of it, and check whether the model mentioned the hint in its reasoning.',
+    },
+  },
+  'mechanistic-interpretability': {
+    id: 'mechanistic-interpretability',
+    term: { ru: 'Механистическая интерпретируемость', en: 'Mechanistic Interpretability' },
+    definition: {
+      ru: 'Можно объяснять модель снаружи — по тому, как ответ меняется при изменении входа. А можно разбирать её изнутри, как часовщик разбирает механизм: искать, какие направления в активациях кодируют понятия и какие цепочки вычислений связывают их от входа к ответу. Второй подход называют механистической интерпретируемостью (mechanistic interpretability). Её единицы — признаки (features) и схемы (circuits): признак — понятие, которое модель представляет внутри, схема — путь, по которому признаки влияют друг на друга и на ответ.',
+      en: 'You can explain a model from the outside — by how the answer changes when the input changes. Or you can take it apart from the inside, the way a watchmaker takes apart a movement: look for which directions in the activations encode concepts, and which chains of computation link them from input to answer. The second approach is called mechanistic interpretability. Its units are features and circuits: a feature is a concept the model represents internally, a circuit is the path along which features influence each other and the answer.',
+    },
+  },
+  'superposition': {
+    id: 'superposition',
+    term: { ru: 'Суперпозиция', en: 'Superposition' },
+    definition: {
+      ru: 'Понятий, которые модели полезно различать, намного больше, чем нейронов в слое. Но большинство понятий в любом конкретном тексте отсутствует: в фразе про погоду нет ни Python, ни ДНК. Поэтому модель может хранить больше признаков, чем у неё измерений, — каждый как своё направление, почти не пересекаясь с другими, пока они редко встречаются вместе. Это и называют суперпозицией. Её следствие — полисемантичные нейроны: один нейрон участвует в нескольких несвязанных понятиях, и читать модель «по нейронам» не получается.',
+      en: 'There are far more concepts a model would find useful to tell apart than there are neurons in a layer. But most concepts are absent from any given text: a sentence about the weather contains neither Python nor DNA. So the model can store more features than it has dimensions — each as its own direction, barely interfering with the others as long as they rarely occur together. This is called superposition. Its consequence is polysemantic neurons: one neuron takes part in several unrelated concepts, so the model cannot be read "neuron by neuron".',
+    },
+  },
+  'sparse-autoencoder': {
+    id: 'sparse-autoencoder',
+    term: { ru: 'Sparse autoencoder (разреженный автокодировщик, SAE)', en: 'Sparse Autoencoder (SAE)' },
+    definition: {
+      ru: 'Если признаки в модели лежат в суперпозиции, их надо как-то «распутать». Sparse autoencoder — небольшая отдельная сеть, которую учат восстанавливать активации слоя модели через словарь из тысяч или миллионов признаков, с условием, что на каждом токене включено лишь несколько из них. Из-за этого условия признаки словаря часто получаются понятными человеку: «Золотые Ворота», «ошибка в коде», «текст на иврите». Найденный признак можно проверить, искусственно усилив его и посмотрев, как изменится поведение модели.',
+      en: 'If a model\'s features sit in superposition, they need to be "untangled" somehow. A sparse autoencoder is a small separate network trained to reconstruct a model layer\'s activations through a dictionary of thousands or millions of features, under the constraint that only a few of them are active on each token. Because of that constraint, the dictionary\'s features often turn out human-readable: "the Golden Gate Bridge", "a bug in code", "text in Hebrew". A feature found this way can be tested by artificially amplifying it and watching how the model\'s behaviour changes.',
+    },
+  },
+  'probing': {
+    id: 'probing',
+    term: { ru: 'Пробинг (probing)', en: 'Probing' },
+    definition: {
+      ru: 'Чтобы узнать, хранит ли модель внутри какое-то свойство — например, часть речи слова или состояние доски в игре, — можно взять её активации на многих примерах и обучить на них маленький отдельный классификатор угадывать это свойство. Такой классификатор называют зондом (probe), а метод — пробингом. Если зонд угадывает хорошо, информация из активаций извлекается. Но это ещё не доказывает, что сама модель ею пользуется: для этого нужен эксперимент с вмешательством в активации.',
+      en: 'To find out whether a model stores some property internally — say, a word\'s part of speech, or the state of a game board — you can take its activations on many examples and train a small separate classifier on them to guess that property. Such a classifier is called a probe, and the method probing. If the probe guesses well, the information can be read out of the activations. But that does not yet prove the model itself uses it: that takes an experiment that intervenes in the activations.',
+    },
+  },
 };
