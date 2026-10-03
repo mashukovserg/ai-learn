@@ -50,8 +50,8 @@ const SOURCES: { authors: string; title: string; venue: string; note: LocalizedT
   {
     authors: 'Rudin C.',
     title: 'Stop explaining black box machine learning models for high stakes decisions and use interpretable models instead',
-    venue: 'Nature Machine Intelligence 1, 206–215 (2019); страницы — по arXiv v3 / pages from arXiv v3',
-    note: { ru: 'COMPAS (130+ факторов) против списка из трёх правил CORELS', en: 'COMPAS (130+ factors) against a three-rule CORELS list' },
+    venue: 'Nature Machine Intelligence 1, 206–215 (2019)',
+    note: { ru: 'COMPAS (130+ факторов) против списка из трёх правил CORELS; страницы в тексте — по arXiv v3', en: 'COMPAS (130+ factors) against a three-rule CORELS list; pages in the text follow arXiv v3' },
     href: RUDIN_URL,
     label: 'doi:10.1038/s42256-019-0048-x',
   },
@@ -90,8 +90,8 @@ const SOURCES: { authors: string; title: string; venue: string; note: LocalizedT
   {
     authors: 'Adebayo J. et al.',
     title: 'Sanity Checks for Saliency Maps',
-    venue: 'NeurIPS 2018; страницы — по arXiv v3 / pages from arXiv v3',
-    note: { ru: 'тест со случайными весами: часть карт значимости почти не зависит от модели', en: 'the random-weights test: some saliency maps barely depend on the model' },
+    venue: 'NeurIPS 2018',
+    note: { ru: 'тест со случайными весами: часть карт значимости почти не зависит от модели; страницы в тексте — по arXiv v3', en: 'the random-weights test: some saliency maps barely depend on the model; pages in the text follow arXiv v3' },
     href: ADEBAYO_URL,
     label: 'arXiv:1810.03292',
   },

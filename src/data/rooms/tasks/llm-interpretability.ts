@@ -187,4 +187,138 @@ export const llmInterpretabilityTasks: LocalizedTask[] = [
       en: 'The model saw only moves, no rules. The intervention was decisive: probe accuracy only shows that information can be extracted.'
     }
   },
+  {
+    id: 9,
+    type: 'input',
+    question: {
+      ru: 'Как называется программа исследований, которая разбирает модель изнутри как механизм — ищет признаки и схемы (circuits), связывающие их от входа к ответу? (два слова)',
+      en: 'What is the research programme called that takes a model apart from the inside like a mechanism — looking for features and the circuits linking them from input to answer? (two words)'
+    },
+    answer: [
+      'механистическая интерпретируемость',
+      'механистической интерпретируемостью',
+      'механистическую интерпретируемость',
+      'mechanistic interpretability',
+      'mech interp',
+      'mechinterp',
+    ],
+    hint: {
+      ru: 'Первое слово — от «механизм», второе — название этой комнаты.',
+      en: 'The first word comes from "mechanism", the second is in this room\'s title.'
+    },
+    explanation: {
+      ru: 'Механистическая интерпретируемость. Её исходные гипотезы сформулировали Ола и соавторы в «Zoom In»: признаки соответствуют направлениям, признаки связаны в схемы, похожие схемы возникают в разных моделях.',
+      en: 'Mechanistic interpretability. Its starting hypotheses were set out by Olah and colleagues in "Zoom In": features correspond to directions, features are linked into circuits, and similar circuits arise in different models.'
+    }
+  },
+  {
+    id: 10,
+    type: 'timeline',
+    question: {
+      ru: 'Расположите вехи интерпретируемости в хронологическом порядке.',
+      en: 'Arrange the interpretability milestones in chronological order.'
+    },
+    answer: '',
+    explanation: {
+      ru: 'Зонды (2016) → проверки карт значимости (2018) → «Zoom In» и схемы (2020) → суперпозиция на игрушечных моделях (2022) → первый словарь признаков SAE (2023) → Golden Gate Claude (2024) → графы атрибуции (2025).',
+      en: 'Probes (2016) → sanity checks for saliency maps (2018) → "Zoom In" and circuits (2020) → superposition in toy models (2022) → the first SAE feature dictionary (2023) → Golden Gate Claude (2024) → attribution graphs (2025).'
+    },
+    timeline: {
+      events: [
+        { label: { ru: 'Golden Gate Claude: модель с зафиксированным признаком открыта на сутки', en: 'Golden Gate Claude: a model with a clamped feature opened for a day' }, year: '2024' },
+        { label: { ru: 'Линейные зонды как «термометры» в слоях сети', en: 'Linear probes as "thermometers" in network layers' }, year: '2016' },
+        { label: { ru: 'Графы атрибуции: Dallas → Texas → Austin', en: 'Attribution graphs: Dallas → Texas → Austin' }, year: '2025' },
+        { label: { ru: 'Тест со случайными весами для карт значимости', en: 'The random-weights test for saliency maps' }, year: '2018' },
+        { label: { ru: 'Toy Models of Superposition', en: 'Toy Models of Superposition' }, year: '2022' },
+        { label: { ru: '«Zoom In»: признаки, схемы, универсальность', en: '"Zoom In": features, circuits, universality' }, year: '2020' },
+        { label: { ru: 'Первый словарь признаков SAE: 512 нейронов → 4096 признаков', en: 'The first SAE feature dictionary: 512 neurons → 4,096 features' }, year: '2023' },
+      ],
+      correctOrder: [
+        { ru: 'Линейные зонды как «термометры» в слоях сети', en: 'Linear probes as "thermometers" in network layers' },
+        { ru: 'Тест со случайными весами для карт значимости', en: 'The random-weights test for saliency maps' },
+        { ru: '«Zoom In»: признаки, схемы, универсальность', en: '"Zoom In": features, circuits, universality' },
+        { ru: 'Toy Models of Superposition', en: 'Toy Models of Superposition' },
+        { ru: 'Первый словарь признаков SAE: 512 нейронов → 4096 признаков', en: 'The first SAE feature dictionary: 512 neurons → 4,096 features' },
+        { ru: 'Golden Gate Claude: модель с зафиксированным признаком открыта на сутки', en: 'Golden Gate Claude: a model with a clamped feature opened for a day' },
+        { ru: 'Графы атрибуции: Dallas → Texas → Austin', en: 'Attribution graphs: Dallas → Texas → Austin' },
+      ]
+    }
+  },
+  {
+    id: 11,
+    type: 'multiple-choice',
+    question: {
+      ru: 'Адебайо и соавторы строили карту значимости для обученной сети и для такой же сети со случайными весами. Что значит, если карта почти не изменилась?',
+      en: 'Adebayo and colleagues built a saliency map for a trained network and for the same network with random weights. What does it mean if the map barely changed?'
+    },
+    options: [
+      { ru: 'Метод описывает саму картинку, а не то, чему научилась модель', en: 'The method describes the picture itself, not what the model learned' },
+      { ru: 'Модель настолько устойчива, что её веса не важны', en: 'The model is so robust that its weights do not matter' },
+      { ru: 'Объяснение особенно надёжно, раз оно не зависит от весов', en: 'The explanation is especially reliable, since it does not depend on the weights' },
+    ],
+    answer: { ru: 'Метод описывает саму картинку, а не то, чему научилась модель', en: 'The method describes the picture itself, not what the model learned' },
+    explanation: {
+      ru: 'Если объяснение не меняется, когда модель сломана, оно не объясняет модель. Так часть популярных методов, например Guided Backprop, оказалась похожа на обычное выделение контуров; простые градиенты и GradCAM проверку прошли.',
+      en: 'If an explanation does not change when the model is broken, it does not explain the model. That is how some popular methods, such as Guided Backprop, turned out to resemble plain edge detection; plain gradients and GradCAM passed the check.'
+    }
+  },
+  {
+    id: 12,
+    type: 'scenario',
+    question: {
+      ru: 'Миссия: регулятор спрашивает про отказ в кредите',
+      en: 'Mission: the regulator asks about a loan refusal'
+    },
+    answer: '',
+    explanation: {
+      ru: 'Сегодняшние методы не дают надёжного объяснения отдельного решения большой языковой модели. Для решений с высокой ценой ошибки разумнее понятная по устройству модель с явными причинами, а языковой модели — работа, где её ошибку легко заметить.',
+      en: 'Today\'s methods do not give a reliable explanation of an individual decision by a large language model. For high-stakes decisions an understandable-by-design model with explicit reasons is the better choice, and the language model gets work where its mistakes are easy to spot.'
+    },
+    scenario: {
+      brief: {
+        ru: 'Банк использует большую языковую модель, которая читает анкету и выписку клиента и сама решает, одобрить ли кредит. Регулятор спрашивает, почему клиенту отказали, а сам клиент требует объяснения. Оценка кредитоспособности по регламенту ЕС об ИИ — система высокого риска. Что вы предложите?',
+        en: 'A bank uses a large language model that reads a customer\'s application and statement and decides on its own whether to approve a loan. The regulator asks why the customer was refused, and the customer demands an explanation. Under the EU AI Act, creditworthiness assessment is a high-risk system. What do you propose?'
+      },
+      constraints: [
+        { ru: 'Человек, затронутый решением, вправе получить объяснение роли ИИ в нём', en: 'A person affected by the decision is entitled to an explanation of the AI\'s role in it' },
+        { ru: 'Графы атрибуции дают содержательный результат примерно для четверти промптов', en: 'Attribution graphs give a meaningful result for about a quarter of prompts' },
+        { ru: 'Описания признаков генерируют модели, и они могут ошибаться', en: 'Feature explanations are generated by models and can be wrong' }
+      ],
+      choices: [
+        {
+          text: { ru: 'Перенести решение о кредите на понятную по устройству модель с явными причинами отказа, а языковой модели оставить черновик письма клиенту', en: 'Move the credit decision to an understandable-by-design model with explicit reasons for refusal, and leave the language model a draft of the letter to the customer' },
+          outcome: {
+            ru: 'Верно. Это аргумент Рудин: для решений с высокой ценой ошибки не объяснять чёрный ящик, а брать модель, причины которой видны сразу. Список из трёх правил CORELS показал на данных COMPAS сопоставимую точность. Ошибку в черновике письма человек заметит легко.',
+            en: 'Correct. This is Rudin\'s argument: for high-stakes decisions, do not explain a black box — use a model whose reasons are visible from the start. A three-rule CORELS list showed comparable accuracy on the COMPAS data. A mistake in a letter draft is easy for a person to spot.'
+          },
+          score: 95
+        },
+        {
+          text: { ru: 'Показать регулятору карту внимания модели на анкете клиента', en: 'Show the regulator the model\'s attention map over the customer\'s application' },
+          outcome: {
+            ru: 'Карта внимания — сигнал, а не объяснение: веса внимания слабо согласуются с важностью слов, и одному предсказанию соответствуют разные распределения внимания. Выдавать её за причину отказа нельзя.',
+            en: 'An attention map is a signal, not an explanation: attention weights agree only weakly with word importance, and one prediction fits different attention distributions. It cannot be passed off as the reason for refusal.'
+          },
+          score: 15
+        },
+        {
+          text: { ru: 'Обучить SAE на модели и показать регулятору описания самых активных признаков', en: 'Train an SAE on the model and show the regulator the explanations of the most active features' },
+          outcome: {
+            ru: 'Это исследовательский инструмент, а не объяснение отдельного решения. Словарь объясняет активации не полностью, описания признаков пишут модели и они ошибаются — как с признаком 1566, подписанным «Golden Gate» вместо «Golden» вообще.',
+            en: 'That is a research tool, not an explanation of an individual decision. The dictionary does not fully explain the activations, and feature explanations are written by models and can be wrong — as with feature 1566, labelled "Golden Gate" instead of "Golden" in general.'
+          },
+          score: 35
+        },
+        {
+          text: { ru: 'Попросить саму модель объяснить своё решение и передать этот текст клиенту', en: 'Ask the model itself to explain its decision and pass that text to the customer' },
+          outcome: {
+            ru: 'Текст объяснения — ещё один выход модели и не обязан называть настоящую причину. В экспериментах модели пользовались подсказкой и признавали это лишь в части случаев (комната о моделях-рассуждателях).',
+            en: 'The explanation text is one more output of the model and is not bound to name the real reason. In experiments models used a hint and admitted it in only some cases (the reasoning models room).'
+          },
+          score: 10
+        }
+      ],
+      passingScore: 60
+    }
+  },
 ];
