@@ -66,7 +66,7 @@ src/
 │   └── ...                      # AppShell, Sidebar, Navbar, modals, charts
 ├── data/
 │   ├── rooms/                   # SINGLE SOURCE OF TRUTH for room content
-│   │   ├── metadata.ts          # ROOMS_METADATA (54 rooms)
+│   │   ├── metadata.ts          # ROOMS_METADATA (56 rooms)
 │   │   ├── paths.ts             # PATHS_METADATA
 │   │   ├── types.ts             # LocalizedString, LocalizedTask, LocalizedRoomMetadata, PathMetadata
 │   │   ├── tasks/<room-id>.ts   # per-room task arrays → assembled in tasks/index.ts as ROOM_TASKS
@@ -170,7 +170,7 @@ These are enforced conventions, not suggestions. Read `docs/AGENTS.md` for full 
 
 ## Current State & Limitations
 
-- **54 rooms** in `ROOMS_METADATA`, all fully wired (theory + tasks) — `transfer-learning` (the pretrain → adapt paradigm, right before `fine-tuning-101`) was authored 2026-09-28; `agentic-team-protocols` (AC-303) was authored 2026-09-03, leaving AC-401/AC-402 as the M2-1 tail; `agentic-guardrails` (AC-301) and `agentic-cost-latency` (AC-302) were authored 2026-08-07 and merged 2026-08-23, closing the roadmap's M2-1 tail; `opencode-terminal-agent` added 2026-08-22; `research-ai-era` was wired up on 2026-08-18, having sat unreachable on disk since 2026-07-21.
+- **56 rooms** in `ROOMS_METADATA`, all fully wired (theory + tasks) — `reasoning-models` and `llm-interpretability` (beginner path right after `fine-tuning-101`; ideas-history after `scaling-hypothesis` and at the very end) were authored 2026-10-01…03; `transfer-learning` (the pretrain → adapt paradigm, right before `fine-tuning-101`) was authored 2026-09-28; `agentic-team-protocols` (AC-303) was authored 2026-09-03, leaving AC-401/AC-402 as the M2-1 tail; `agentic-guardrails` (AC-301) and `agentic-cost-latency` (AC-302) were authored 2026-08-07 and merged 2026-08-23, closing the roadmap's M2-1 tail; `opencode-terminal-agent` added 2026-08-22; `research-ai-era` was wired up on 2026-08-18, having sat unreachable on disk since 2026-07-21.
 - `compete/` and `leaderboard/` render bilingual "coming soon" placeholder pages; no ranking/competition backend yet (the `leaderboard` backend package is a stub with no router).
 - Agent Ops cycle scheduling is **manual** (`POST /api/agent/cycle/run`); no periodic scheduler.
 
