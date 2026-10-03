@@ -385,6 +385,16 @@ current pages annotated. The same references are logged in [`REFERENCES.md`](REF
 *room page* on real AC-303 content (current; Vercel-style three-column; two-column with tasks
 inside the reading flow), both themes, 375 px — and judge by eye.
 
+**Picker, first page — Learning Paths (built 2026-10-03).** The owner flagged `/paths` first
+(«не нравится расположение блоков»), so the picker started there rather than on the room page:
+[`structure-picker.html`](structure-picker.html) shows the page in four layouts on real
+`PATHS_METADATA` (room counts, total time, tasks; demo progress), both themes, desktop and 375 px —
+**A** current (a frame per path, button on the far right), **B** rows (one surface, hairlines, group
+headers, mono meta + progress on the right, one "continue" line as the only accent), **C** two columns
+(text list of paths left, the selected path's numbered rooms right — merges `/paths` and
+`/paths/[id]`), **D** compact two-column grid of quiet cards. A criteria table scores each against
+the five properties above. The room-page variants remain the next page to add.
+
 **Current pick:** none yet — the shipped layout stays until a variant is chosen.
 
 ---

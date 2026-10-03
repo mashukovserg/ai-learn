@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI-Learn · Fork 6: структура страницы «Пути обучения»</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'IBM Plex Sans',system-ui,sans-serif;background:#0b0b0a;color:#e6e2da;line-height:1.5;-webkit-font-smoothing:antialiased;padding:28px 22px 60px}
+.wrap{max-width:1180px;margin:0 auto}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+
+h1{font-size:24px;font-weight:600;letter-spacing:-.02em;margin-bottom:6px}
+h1 .muted{color:#6b665e;font-weight:400}
+.lede{color:#8f8a82;font-size:13.5px;max-width:82ch;margin-bottom:10px}
+.lede b{color:#c9c4ba;font-weight:500}
+.lede a{color:#34d399;text-decoration:none;border-bottom:1px solid rgba(52,211,153,.35)}
+.crit{color:#8f8a82;font-size:13px;max-width:82ch;margin:0 0 22px 18px}
+.crit li{margin-bottom:3px}
+
+.controls{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.controls .lbl{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#6b665e;min-width:118px}
+button{font:inherit;cursor:pointer;transition:border-color .15s,color .15s,background .15s}
+.opt{background:#161615;border:1px solid #2b2926;color:#c9c4ba;border-radius:9px;padding:7px 13px;font-size:13px}
+.opt:hover{border-color:#4a4640}
+.opt.on{border-color:#34d399;color:#fff;background:#16201b}
+.controls-gap{height:20px}
+
+/* ---------- variant sections ---------- */
+.variant{margin-bottom:48px}
+.vhead{display:flex;align-items:baseline;gap:12px;margin-bottom:4px;flex-wrap:wrap}
+.vhead h2{font-size:17px;font-weight:600;letter-spacing:-.01em}
+.vtag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:2.5px 8px;border-radius:99px;border:1px solid #2b2926;color:#8f8a82}
+.vtag.cur{border-color:#7a4a1e;color:#e0a458}
+.vtag.rec{border-color:#2c5a41;color:#34d399}
+.vdesc{color:#8f8a82;font-size:13px;max-width:84ch;margin-bottom:6px}
+.tradeoff{font-size:12.5px;max-width:84ch;margin-bottom:14px}
+.tradeoff b{color:#a8b89d;font-weight:500}
+.tradeoff s{color:#b8938d;text-decoration:none;font-weight:500}
+.tradeoff span{color:#736e66}
+
+/* ---------- stage: emulates the site's content area with real tokens ---------- */
+.stage{border:1px solid #2b2926;border-radius:14px;padding:34px 30px 38px;transition:background .2s;container-type:inline-size;margin:0 auto}
+.stage.narrow{max-width:375px;padding:22px 16px 28px}
+.stage[data-page="dark"]{background:#121211;
+  --input:#1a1917;--card:#1c1b19;--card-dark:#171715;--deep:#0e0e0d;--muted:#2d2b28;
+  --b-card:#2b2926;--b-sub:#302e2b;--b-emph:#393733;
+  --t1:#e5e5e5;--t2:#a3a3a3;--t3:#737373;--t4:#525252;--heading:#d4d4d4;
+  --acc:#34d399;--acc300:#6ee7b7;--acc950:#022c22;--acc-dim:rgba(16,185,129,.10);--acc-line:rgba(16,185,129,.35);
+  --hover:rgba(255,255,255,.025);--chip:rgba(255,255,255,.05);--track:#2d2b28;
+  --amber:#fbbf24;--rose:#fb7185;
+  --btn-shadow:0 0 0 1px rgba(16,185,129,.35),0 10px 24px -12px rgba(52,211,153,.45)}
+.stage[data-page="light"]{background:#fafafa;
+  --input:#ffffff;--card:#ffffff;--card-dark:#ffffff;--deep:#f2f2f2;--muted:#efefef;
+  --b-card:#e4e4e4;--b-sub:#dcdcdc;--b-emph:#cfcfcf;
+  --t1:#1a1a1a;--t2:#4d4d4d;--t3:#6f6f6f;--t4:#9e9e9e;--heading:#3f3f46;
+  --acc:#047857;--acc300:#065f46;--acc950:#ecfdf5;--acc-dim:rgba(4,120,87,.08);--acc-line:rgba(4,120,87,.35);
+  --hover:rgba(0,0,0,.025);--chip:rgba(0,0,0,.045);--track:#e7e5e4;
+  --amber:#b45309;--rose:#be123c;
+  --btn-shadow:0 0 0 1px rgba(4,120,87,.25)}
+.stage svg{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+.page{max-width:1024px;margin:0 auto;color:var(--t1)}
+.ph1{font-size:24px;font-weight:600;letter-spacing:-.02em;color:var(--t1);margin-bottom:10px}
+.plede{font-size:14px;color:var(--t3);max-width:42rem;line-height:1.65}
+
+/* =============== A · current =============== */
+.a-head{margin-bottom:48px}
+.a-list{display:grid;gap:16px}
+.a-card{background:var(--input);border:1px solid var(--b-sub);border-radius:8px;padding:24px;display:flex;align-items:center;gap:24px;transition:border-color .15s}
+.a-card:hover{border-color:var(--acc-line)}
+.a-card.locked{opacity:.5}
+.a-tile{width:56px;height:56px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:28px;background:var(--acc-dim);color:var(--acc300);border:1px solid var(--acc-line);flex-shrink:0}
+.a-card.locked .a-tile{background:var(--chip);color:var(--t2);border-color:transparent}
+.a-body{flex:1;min-width:0}
+.a-tl{display:flex;align-items:center;gap:12px;margin-bottom:6px;flex-wrap:wrap}
+.a-title{font-size:18px;font-weight:600;color:var(--t1)}
+.a-badge{padding:2px 8px;border-radius:4px;font-size:10px;font-weight:500;text-transform:uppercase;color:var(--t3);background:var(--chip)}
+.a-desc{font-size:14px;color:var(--t3);max-width:36rem;line-height:1.65}
+.a-btn{padding:8px 20px;border-radius:6px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;white-space:nowrap;background:var(--acc300);color:var(--acc950);box-shadow:var(--btn-shadow)}
+.a-btn.off{background:var(--chip);color:var(--t4);box-shadow:none;font-weight:500}
+@container (max-width:640px){
+  .a-card{flex-direction:column;align-items:center;text-align:left}
+  .a-btn{align-self:flex-end}
+}
+
+/* =============== B · rows =============== */
+.b-head{margin-bottom:28px}
+.b-continue{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--b-sub);border-bottom:1px solid var(--b-sub);margin-bottom:34px;font-size:14px;color:var(--t2);flex-wrap:wrap}
+.b-continue .k{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)}
+.b-continue a{color:var(--acc);text-decoration:none;font-weight:500;display:inline-flex;align-items:center;gap:6px}
+.b-continue a:hover{text-decoration:underline;text-underline-offset:4px}
+.b-group{margin-bottom:30px}
+.b-gh{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);padding-bottom:8px;border-bottom:1px solid var(--b-sub)}
+.b-row{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:28px;align-items:center;padding:16px 10px;margin:0 -10px;border-bottom:1px solid var(--b-sub);text-decoration:none;color:inherit;border-radius:4px;transition:background .12s}
+.b-row:hover{background:var(--hover)}
+.b-row:hover .b-title .arr{opacity:1;transform:translateX(0)}
+.b-title{font-size:16px;font-weight:600;color:var(--t1);display:flex;align-items:center;gap:8px;margin-bottom:3px}
+.b-title .arr{color:var(--t3);font-size:14px;opacity:0;transform:translateX(-4px);transition:opacity .12s,transform .12s;display:inline-flex}
+.b-desc{font-size:13.5px;color:var(--t3);line-height:1.55;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.b-meta{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--t3);display:flex;flex-direction:column;gap:7px}
+.b-meta .l1{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.dot{width:6px;height:6px;border-radius:50%;display:inline-block;flex-shrink:0}
+.dot.beg{background:var(--acc)}.dot.int{background:var(--amber)}.dot.adv{background:var(--rose)}
+.b-prog{display:flex;align-items:center;gap:9px}
+.b-track{flex:1;height:2px;background:var(--track);border-radius:2px;overflow:hidden}
+.b-track i{display:block;height:100%;background:var(--acc)}
+.b-prog .n{min-width:44px;text-align:right}
+.b-prog .n.on{color:var(--acc)}
+.b-row.locked{opacity:.55}
+.b-row.locked .b-title svg.lk{color:var(--t3);font-size:13px}
+@container (max-width:640px){
+  .b-row{grid-template-columns:1fr;gap:10px}
+  .b-desc{-webkit-line-clamp:2}
+}
+
+/* =============== C · path list + its rooms =============== */
+.c-head{margin-bottom:26px}
+.c-grid{display:grid;grid-template-columns:250px minmax(0,1fr);gap:40px;border-top:1px solid var(--b-sub);padding-top:22px}
+.c-nav{display:flex;flex-direction:column;gap:2px}
+.c-nh{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);margin:14px 0 6px 10px}
+.c-nh:first-child{margin-top:0}
+.c-item{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:7px 10px;border-radius:5px;border:0;background:none;text-align:left;color:var(--t2);font-size:14px;border-left:2px solid transparent}
+.c-item:hover{background:var(--hover);color:var(--t1)}
+.c-item.on{color:var(--t1);background:var(--hover);border-left-color:var(--acc);border-radius:0 5px 5px 0}
+.c-item .n{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--t3);white-space:nowrap}
+.c-item.locked{color:var(--t4)}
+.c-detail h3{font-size:20px;font-weight:600;letter-spacing:-.015em;color:var(--t1);margin-bottom:6px}
+.c-detail .d{font-size:14px;color:var(--t3);max-width:62ch;line-height:1.6;margin-bottom:12px}
+.c-meta{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--t3);display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.c-meta .sep{color:var(--t4)}
+.c-act{display:flex;align-items:center;gap:16px;margin-bottom:22px;flex-wrap:wrap}
+.c-btn{padding:8px 16px;border-radius:6px;font-size:14px;font-weight:600;display:inline-flex;align-items:center;gap:8px;background:var(--acc300);color:var(--acc950);text-decoration:none}
+.c-btn.off{background:var(--chip);color:var(--t4);font-weight:500}
+.c-track{width:200px;height:2px;background:var(--track);border-radius:2px;overflow:hidden}
+.c-track i{display:block;height:100%;background:var(--acc)}
+.c-pt{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--t3)}
+.c-rooms{list-style:none;border-top:1px solid var(--b-sub)}
+.c-room{display:grid;grid-template-columns:28px 18px minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 6px;border-bottom:1px solid var(--b-sub);font-size:14px;color:var(--t2)}
+.c-room .i{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--t4);text-align:right}
+.c-room .st{display:flex;justify-content:center;color:var(--t4);font-size:13px}
+.c-room .st .ring{width:9px;height:9px;border-radius:50%;border:1.5px solid var(--t4)}
+.c-room.done{color:var(--t3)}
+.c-room.done .st{color:var(--acc)}
+.c-room.next{color:var(--t1);font-weight:500}
+.c-room.next .st .ring{border-color:var(--acc);background:var(--acc)}
+.c-room .tm{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--t3)}
+.c-detail.locked .c-rooms{opacity:.55}
+@container (max-width:640px){
+  .c-grid{grid-template-columns:1fr;gap:18px}
+  .c-nav{flex-direction:row;overflow-x:auto;gap:6px;padding-bottom:4px}
+  .c-nh{display:none}
+  .c-item{white-space:nowrap;border-left:0;border:1px solid var(--b-sub);border-radius:99px;padding:5px 12px;font-size:13px}
+  .c-item.on{border-color:var(--acc-line);border-radius:99px}
+  .c-item .n{display:none}
+  .c-track{width:120px}
+}
+
+/* =============== D · compact grid =============== */
+.d-head{margin-bottom:22px}
+.d-continue{display:flex;align-items:center;justify-content:space-between;gap:14px;background:var(--acc-dim);border:1px solid var(--acc-line);border-radius:8px;padding:12px 16px;margin-bottom:22px;font-size:14px;color:var(--t2);flex-wrap:wrap}
+.d-continue b{color:var(--t1);font-weight:600}
+.d-continue a{color:var(--acc);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.d-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.d-card{position:relative;background:var(--card-dark);border:1px solid var(--b-card);border-radius:8px;padding:18px 18px 20px;display:flex;flex-direction:column;text-decoration:none;color:inherit;overflow:hidden;transition:border-color .15s}
+.d-card:hover{border-color:var(--acc-line)}
+.d-card.locked{opacity:.55}
+.d-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+.d-title{font-size:16px;font-weight:600;color:var(--t1)}
+.d-lvl{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--t3);display:flex;align-items:center;gap:6px;white-space:nowrap}
+.d-desc{font-size:13.5px;color:var(--t3);line-height:1.55;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.d-meta{margin-top:auto;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--t3);display:flex;justify-content:space-between;gap:10px}
+.d-meta .on{color:var(--acc)}
+.d-bar{position:absolute;left:0;right:0;bottom:0;height:2px}
+.d-bar i{display:block;height:100%;background:var(--acc)}
+@container (max-width:640px){ .d-grid{grid-template-columns:1fr} }
+
+/* ---------- criteria table ---------- */
+table{border-collapse:collapse;width:100%;font-size:13px;margin-top:8px}
+th,td{border-bottom:1px solid #2b2926;padding:9px 10px;text-align:left;vertical-align:top}
+th{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#6b665e;font-weight:500}
+td{color:#c9c4ba}
+td.y{color:#34d399}td.n{color:#e08a7f}td.p{color:#e0a458}
+.foot{color:#8f8a82;font-size:13px;max-width:84ch;margin-top:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Fork 6 · страница «Пути обучения» <span class="muted">— четыре раскладки</span></h1>
+  <p class="lede">
+    Владелец 03.10.2026: «не нравится расположение блоков» на <span class="mono">/ru/paths</span>. Это часть открытой
+    <b>Fork 6 — структура и плотность</b> (<a href="DESIGN_FORKS.md">DESIGN_FORKS.md</a>, доска референсов —
+    <a href="design-references.html">design-references.html</a>). Ниже одна и та же страница в четырёх раскладках:
+    A — как сейчас, B–D — альтернативы. Данные настоящие (<span class="mono">PATHS_METADATA</span> в <span class="mono">main</span>
+    на 03.10.2026: число комнат, суммарное время, заданий), <b>прогресс демонстрационный</b>: в «Основах AI» пройдено 3 комнаты,
+    в «Агентной разработке» — 2. Цвета — токены сайта из <span class="mono">globals.css</span> в обеих темах.
+  </p>
+  <p class="lede">Критерии Fork 6, по которым стоит судить (общие для всех «тихих тёмных» референсов):</p>
+  <ol class="crit">
+    <li>Одна поверхность: блоки разделяет тонкая линия или чуть более светлая заливка, а не рамка.</li>
+    <li>Иерархия шрифтом и воздухом: два уровня заголовков, моноширинные строки метаданных.</li>
+    <li>Навигация текстом: список строк с маленькими заголовками разделов, а не плитки с иконками.</li>
+    <li>Правая колонка тонкая — свойства и метаданные, а не второй столбец карточек.</li>
+    <li>Один акцент на экран: цвет несёт состояние и одно действие, остальное — серое.</li>
+  </ol>
+
+  <div class="controls">
+    <span class="lbl">Тема сайта</span>
+    <button class="opt on" data-theme="dark">Тёмная (terminal)</button>
+    <button class="opt" data-theme="light">Светлая (saas)</button>
+  </div>
+  <div class="controls">
+    <span class="lbl">Ширина</span>
+    <button class="opt on" data-width="wide">Десктоп</button>
+    <button class="opt" data-width="narrow">Телефон, 375 px</button>
+  </div>
+  <div class="controls-gap"></div>
+
+  <section class="variant">
+    <div class="vhead"><h2>A · Как сейчас — карточка на путь с кнопкой справа</h2><span class="vtag cur">сейчас в проде</span></div>
+    <p class="vdesc">Каждый путь — отдельная коробка: плитка с иконкой, название с бейджем сложности, описание и зелёная кнопка «Начать путь», уехавшая к правому краю.</p>
+    <p class="tradeoff"><b>Плюс:</b> крупно и понятно, что пути — главные сущности. <s>Минус:</s> пять рамок и пять зелёных кнопок на экране, середина каждой строки пустая, не видно ни числа комнат, ни времени, ни прогресса — чтобы понять, что внутри, нужно зайти в путь. <span>Против критериев 1, 3 и 5.</span></p>
+    <div class="stage" data-page="dark"><div class="page" id="A"></div></div>
+  </section>
+
+  <section class="variant">
+    <div class="vhead"><h2>B · Список строками</h2><span class="vtag rec">ближе всего к критериям Fork 6</span></div>
+    <p class="vdesc">Одна поверхность, пути разделены тонкими линиями и сгруппированы маленькими заголовками. Справа в строке — моно-метаданные: сложность, комнаты, время и полоска прогресса. Кнопок нет: кликабельна вся строка. Единственный акцент на экране — строка «Продолжить» сверху. Референс — каталог CodeCrafters и списки Linear.</p>
+    <p class="tradeoff"><b>Плюс:</b> всё сравнивается одним взглядом — объём, время, прогресс; меньше всего визуального шума; хорошо масштабируется, если путей станет 10. <s>Минус:</s> пути выглядят менее «весомо», чем коробки; без иконок страница строже. <span>Внутрь пути — по-прежнему отдельный переход.</span></p>
+    <div class="stage" data-page="dark"><div class="page" id="B"></div></div>
+  </section>
+
+  <section class="variant">
+    <div class="vhead"><h2>C · Две колонки: пути слева, комнаты выбранного пути справа</h2><span class="vtag rec">убирает лишний переход</span></div>
+    <p class="vdesc">Слева — текстовая навигация по путям (как сайдбар документации Vercel), справа — выбранный путь целиком: описание, объём, одна кнопка «Продолжить с …» и нумерованный список комнат со статусами. Список и страница пути сливаются в одну страницу. Нажмите на путь слева — правая часть переключится.</p>
+    <p class="tradeoff"><b>Плюс:</b> до нужной комнаты — один клик; видно, где вы остановились и что дальше; хорошо ложится на гипотезу Fork 6 для страницы пути («вертикальный список этапов, одна линия прогресса, общее время и кнопка сверху»). <s>Минус:</s> одновременно видно описание только одного пути; на телефоне левая колонка превращается в ленту переключателей. <span>Затрагивает и <span class="mono">/paths</span>, и <span class="mono">/paths/[id]</span>.</span></p>
+    <div class="stage" data-page="dark"><div class="page" id="C"></div></div>
+  </section>
+
+  <section class="variant">
+    <div class="vhead"><h2>D · Компактная сетка в два столбца</h2><span class="vtag">компромисс</span></div>
+    <p class="vdesc">Карточки остаются, но без плиток-иконок и без кнопок: вся карточка кликабельна, внизу — моно-метаданные и тонкая полоска прогресса (как у «тихих» карточек комнат из Fork 5). Сверху — одна плашка «Продолжить».</p>
+    <p class="tradeoff"><b>Плюс:</b> знакомо и согласовано с каталогом комнат; плотнее, чем сейчас, — все пять путей помещаются на один экран. <s>Минус:</s> рамки остаются, так что критерий 1 не выполнен; в сетке труднее читать длинные описания. <span>Наименьший по объёму переход от текущего вида.</span></p>
+    <div class="stage" data-page="dark"><div class="page" id="D"></div></div>
+  </section>
+
+  <section class="variant">
+    <div class="vhead"><h2>Сравнение по критериям Fork 6</h2></div>
+    <table>
+      <thead><tr><th>Критерий</th><th>A · сейчас</th><th>B · строки</th><th>C · две колонки</th><th>D · сетка</th></tr></thead>
+      <tbody>
+        <tr><td>1. Одна поверхность</td><td class="n">рамка на каждом пути</td><td class="y">тонкие линии</td><td class="y">тонкие линии</td><td class="n">лёгкие рамки</td></tr>
+        <tr><td>2. Иерархия шрифтом</td><td class="p">бейджи и плитки</td><td class="y">да, моно-мета</td><td class="y">да, моно-мета</td><td class="y">да</td></tr>
+        <tr><td>3. Навигация текстом</td><td class="n">плитки с иконками</td><td class="y">строки с заголовками групп</td><td class="y">текстовый список</td><td class="p">карточки без иконок</td></tr>
+        <tr><td>4. Тонкая правая часть</td><td class="p">кнопка в пустом краю</td><td class="y">мета-колонка</td><td class="p">вторая колонка — содержимое</td><td class="p">—</td></tr>
+        <tr><td>5. Один акцент</td><td class="n">5 зелёных кнопок + 5 плиток</td><td class="y">одна строка «Продолжить»</td><td class="y">одна кнопка</td><td class="y">одна плашка</td></tr>
+        <tr><td>Видно объём, время, прогресс</td><td class="n">нет</td><td class="y">да, у всех путей</td><td class="p">подробно — у выбранного</td><td class="y">да</td></tr>
+        <tr><td>Кликов до комнаты</td><td class="p">2</td><td class="p">2 (1 через «Продолжить»)</td><td class="y">1</td><td class="p">2 (1 через «Продолжить»)</td></tr>
+      </tbody>
+    </table>
+    <p class="foot">Как выбрать: назовите букву. Варианты можно сочетать — например, B для списка путей и правая часть C для страницы одного пути. Выбранную раскладку стоит затем проверить на странице комнаты и каталоге, чтобы сайт не собирался из разных систем.</p>
+  </section>
+</div>
+
+<script>
+const I = {
+  cap:'<svg viewBox="0 0 24 24"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>',
+  book:'<svg viewBox="0 0 24 24"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>',
+  brain:'<svg viewBox="0 0 24 24"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z"/></svg>',
+  cpu:'<svg viewBox="0 0 24 24"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2M15 20v2M2 15h2M2 9h2M20 15h2M20 9h2M9 2v2M9 20v2"/></svg>',
+  lock:'<svg viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>',
+  arrow:'<svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>',
+  check:'<svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>',
+};
+
+// Real data: PATHS_METADATA on main, 2026-10-03. `done` is demo progress.
+const PATHS = [
+  {id:'beginner', icon:'cap', title:'Основы AI', lvl:'beg', lvlRu:'Новичок', unlocked:true, done:3, mins:510, tasks:140,
+   desc:'Идеальная точка входа. Изучите историю, терминологию и основные концепции LLM.',
+   rooms:[['Ландшафт LLM',25],['Как мыслят LLM',25],['История AI',25],['Карьерные траектории в AI',35],['Локальные модели 101: свой ИИ без облака',35],['Llama 3.1 8B: открытая модель, которая меняет правила',30],['Transfer learning: предобучение и адаптация',35],['Файн-тюнинг и адаптация',35],['Эмбеддинги и векторный поиск',30],['Локальный RAG: приватный поиск по своим документам',35],['Исследования и заземление (grounding)',20],['AI-регулирование в России 2026',30],['EU AI Act: Глобальный стандарт',30],['AI Research: ИИ-исследователь',120]]},
+  {id:'ideas-history', icon:'book', title:'Идеи и споры об ИИ', lvl:'beg', lvlRu:'Новичок', unlocked:true, done:0, mins:215, tasks:83,
+   desc:'Как менялись представления об интеллекте, мышлении и автоматизации: от ранних идей до современных дебатов о рисках и роли AI.',
+   rooms:[['История AI',25],['ChatGPT moment',25],['Поиск: от извлечения к синтезу',35],['Пост-ChatGPT эпоха',20],['Гипотеза масштабирования',25],['Сингулярность в AI-дебатах',25],['Экзистенциальный риск: анатомия аргумента',30],['Чьи ценности? Пределы выравнивания',30]]},
+  {id:'intermediate', icon:'brain', title:'Практический ML: от данных к моделям', lvl:'int', lvlRu:'Средний', unlocked:false, done:0, mins:200, tasks:62,
+   desc:'Путь для тех, кто хочет понимать, как ML-системы строятся в реальности: подготовка данных, обучение, оценка качества и выбор архитектуры.',
+   rooms:[['Локальные модели 101: свой ИИ без облака',35],['Llama 3.1 8B: открытая модель, которая меняет правила',30],['Transfer learning: предобучение и адаптация',35],['Файн-тюнинг и адаптация',35],['Эмбеддинги и векторный поиск',30],['Локальный RAG: приватный поиск по своим документам',35]]},
+  {id:'agentic-systems', icon:'cpu', title:'Агентские системы', lvl:'adv', lvlRu:'Продвинутый', unlocked:true, done:0, mins:370, tasks:70,
+   desc:'От простых чат-ботов к автономным исполнителям. Изучите, как строить системы, которые «делают», а не просто «говорят».',
+   rooms:[['Agents & Tools: Модели с руками',180],['Глубокий поиск в AI-агентах',35],['Исследование в эпоху ИИ: метод Эбботта',35],['Литературный обзор в эпоху ИИ',60],['MCP & Tool Ecosystems',30],['Управление агентными роями',30]]},
+  {id:'agent-coding', icon:'cpu', title:'Агентная разработка', lvl:'beg', lvlRu:'Новичок', unlocked:true, done:2, mins:580, tasks:201,
+   desc:'Путь про инженерную работу с coding-агентами: чёткая постановка задач, проверяемые критерии качества, guardrails и безопасные релизы.',
+   rooms:[['AC-101: Основы агентной разработки',30],['AC-102: Инструменты Agent Coding',30],['AC-105: Git как страховка агентной работы',30],['AC-103: Промпт-контракты для агентов',30],['AC-104: Паттерны многоагентного взаимодействия',30],['Анатомия цикла Claude Code',25],['AC-201: CLI-инструменты для Agent Coding',35],['OpenCode: открытый агент в терминале',30],['Контекст-инжиниринг 101',35],['AC-202: Агентный цикл тестирования',35],['AC-206: CI своими руками — GitHub Actions',35],['AC-205: Релизный контур для агентного кода',35],['AC-301: Доставка agentic-фич с guardrails',35],['AC-302: Стоимость и задержка агентов',35],['AC-303: Командные протоколы Agent Coding',35],['AC-203: Агентная UI-доставка',30],['MCP & Tool Ecosystems',30],['Claude Code: Профессиональный воркфлоу',35]]},
+];
+
+const plural = (n, f) => { const m10=n%10, m100=n%100; return n + ' ' + (m10===1&&m100!==11 ? f[0] : (m10>=2&&m10<=4&&(m100<12||m100>14)) ? f[1] : f[2]); };
+const rooms = n => plural(n, ['комната','комнаты','комнат']);
+const tasks = n => plural(n, ['задание','задания','заданий']);
+const hours = m => '≈ ' + (m/60).toFixed(1).replace('.', ',') + ' ч';
+const pct = p => Math.round(p.done / p.rooms.length * 100);
+const next = p => p.rooms[p.done][0];
+const H = (h, intro) => `<div class="${h}"><div class="ph1">Пути обучения</div><p class="plede">${intro}</p></div>`;
+const LEDE = 'Структурированные треки, разработанные для того, чтобы превратить вас из новичка в эксперта по ИИ.';
+
+// A · current
+document.getElementById('A').innerHTML = H('a-head', LEDE) + '<div class="a-list">' + PATHS.map(p => `
+  <div class="a-card ${p.unlocked?'':'locked'}">
+    <div class="a-tile">${I[p.icon]}</div>
+    <div class="a-body">
+      <div class="a-tl"><span class="a-title">${p.title}</span><span class="a-badge">${p.lvlRu}</span>${p.unlocked?'':'<span style="color:var(--t4);font-size:13px;display:inline-flex">'+I.lock+'</span>'}</div>
+      <p class="a-desc">${p.desc}</p>
+    </div>
+    ${p.unlocked ? `<span class="a-btn">Начать путь ${I.arrow}</span>` : `<span class="a-btn off">Заблокировано ${I.lock}</span>`}
+  </div>`).join('') + '</div>';
+
+// B · rows
+const cur = PATHS[0];
+const bRow = p => `
+  <a class="b-row ${p.unlocked?'':'locked'}" href="#" onclick="return false">
+    <div>
+      <div class="b-title">${p.title}${p.unlocked ? '<span class="arr">'+I.arrow+'</span>' : '<svg class="lk" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>'}</div>
+      <div class="b-desc">${p.desc}</div>
+    </div>
+    <div class="b-meta">
+      <div class="l1"><span class="dot ${p.lvl}"></span>${p.lvlRu.toLowerCase()} · ${rooms(p.rooms.length)} · ${hours(p.mins)}</div>
+      ${p.unlocked ? `<div class="b-prog"><span class="b-track"><i style="width:${pct(p)}%"></i></span><span class="n ${p.done?'on':''}">${p.done}/${p.rooms.length}</span></div>` : '<div>откроется позже</div>'}
+    </div>
+  </a>`;
+document.getElementById('B').innerHTML = H('b-head', 'Пять треков — от основ до агентной разработки. Внутри каждого — комнаты по порядку.') + `
+  <div class="b-continue"><span class="k">Продолжить</span><span>${cur.title} · следующая комната:</span><a href="#" onclick="return false">${next(cur)} ${I.arrow}</a></div>
+  <div class="b-group"><div class="b-gh">С чего начать</div>${[PATHS[0],PATHS[1],PATHS[4]].map(bRow).join('')}</div>
+  <div class="b-group"><div class="b-gh">Углубиться</div>${[PATHS[3]].map(bRow).join('')}</div>
+  <div class="b-group"><div class="b-gh">Скоро</div>${[PATHS[2]].map(bRow).join('')}</div>`;
+
+// C · two columns
+function renderC(sel) {
+  const p = PATHS.find(x => x.id === sel);
+  const item = x => `<button class="c-item ${x.id===sel?'on':''} ${x.unlocked?'':'locked'}" data-p="${x.id}"><span>${x.title}</span><span class="n">${x.unlocked ? x.done+'/'+x.rooms.length : 'скоро'}</span></button>`;
+  const roomsList = p.rooms.map((r, i) => {
+    const st = !p.unlocked ? '' : i < p.done ? 'done' : i === p.done ? 'next' : '';
+    const icon = st === 'done' ? I.check : '<span class="ring"></span>';
+    return `<li class="c-room ${st}"><span class="i">${String(i+1).padStart(2,'0')}</span><span class="st">${icon}</span><span>${r[0]}</span><span class="tm">${r[1] >= 60 ? (r[1]/60).toString().replace(".", ",") + " ч" : r[1] + " мин"}</span></li>`;
+  }).join('');
+  const action = !p.unlocked
+    ? `<span class="c-btn off">Путь откроется позже ${I.lock}</span>`
+    : `<a class="c-btn" href="#" onclick="return false">${p.done ? 'Продолжить' : 'Начать'} с «${next(p)}» ${I.arrow}</a>
+       <span class="c-track"><i style="width:${pct(p)}%"></i></span><span class="c-pt">${p.done}/${p.rooms.length}</span>`;
+  document.getElementById('C').innerHTML = H('c-head', 'Выберите путь слева — справа его комнаты по порядку.') + `
+    <div class="c-grid">
+      <nav class="c-nav">
+        <div class="c-nh">С чего начать</div>${[PATHS[0],PATHS[1],PATHS[4]].map(item).join('')}
+        <div class="c-nh">Углубиться</div>${item(PATHS[3])}
+        <div class="c-nh">Скоро</div>${item(PATHS[2])}
+      </nav>
+      <div class="c-detail ${p.unlocked?'':'locked'}">
+        <h3>${p.title}</h3>
+        <p class="d">${p.desc}</p>
+        <div class="c-meta"><span class="dot ${p.lvl}"></span>${p.lvlRu.toLowerCase()}<span class="sep">·</span>${rooms(p.rooms.length)}<span class="sep">·</span>${hours(p.mins)}<span class="sep">·</span>${tasks(p.tasks)}</div>
+        <div class="c-act">${action}</div>
+        <ol class="c-rooms">${roomsList}</ol>
+      </div>
+    </div>`;
+  document.querySelectorAll('#C .c-item').forEach(b => b.onclick = () => renderC(b.dataset.p));
+}
+renderC('beginner');
+
+// D · compact grid
+document.getElementById('D').innerHTML = H('d-head', LEDE) + `
+  <div class="d-continue"><span>Продолжить: <b>${cur.title}</b> — ${next(cur)}</span><a href="#" onclick="return false">Открыть комнату ${I.arrow}</a></div>
+  <div class="d-grid">` + PATHS.map(p => `
+    <a class="d-card ${p.unlocked?'':'locked'}" href="#" onclick="return false">
+      <div class="d-top"><span class="d-title">${p.title}</span><span class="d-lvl"><span class="dot ${p.lvl}"></span>${p.lvlRu.toLowerCase()}</span></div>
+      <p class="d-desc">${p.desc}</p>
+      <div class="d-meta"><span>${rooms(p.rooms.length)} · ${hours(p.mins)}</span><span class="${p.done?'on':''}">${p.unlocked ? p.done+'/'+p.rooms.length : 'скоро'}</span></div>
+      ${p.done ? `<div class="d-bar"><i style="width:${pct(p)}%"></i></div>` : ''}
+    </a>`).join('') + '</div>';
+
+// controls
+document.querySelectorAll('[data-theme]').forEach(b => b.onclick = () => {
+  document.querySelectorAll('[data-theme]').forEach(x => x.classList.toggle('on', x === b));
+  document.querySelectorAll('.stage').forEach(s => s.dataset.page = b.dataset.theme);
+});
+document.querySelectorAll('[data-width]').forEach(b => b.onclick = () => {
+  document.querySelectorAll('[data-width]').forEach(x => x.classList.toggle('on', x === b));
+  document.querySelectorAll('.stage').forEach(s => s.classList.toggle('narrow', b.dataset.width === 'narrow'));
+});
+</script>
+</body>
+</html>
