@@ -34,6 +34,29 @@ For coding tasks, the agent response must:
    - exact failure reason
    - immediate next action (for example escalation request or user override path)
 
+## Communication style with the owner — ~80% ASD-STE100 (Mandatory)
+
+The owner adopted this rule on 2026-10-03, after Karpathy's post on readable LLM output (`REFERENCES.md` → "Карпати о том, в каком виде просить вывод у LLM"). The rule numbers below are from ASD-STE100 Issue 9 (2025-01-15).
+
+**Scope.** Use this style in all agent communication with the owner: chat replies, status updates, questions, and end-of-task reports. Do **not** apply it to room content (theory, tasks, glossary). Room content keeps the depth gate and the simple-prose rule. An STE-style room is an open experiment, not a rule (see `docs/style-compare-ste.html`).
+
+**Rules.** "80%" means that the limits are targets, not counters. Do not change the meaning to hit a number.
+
+1. Write one statement or one instruction in each sentence (5.2).
+2. Keep an instruction to 20 words or fewer and a description to 25 words or fewer (5.1, 6.3).
+3. Give each paragraph one topic and no more than six sentences (6.5, 6.6).
+4. Use the active voice. Say who does what (3.6).
+5. Use simple common words: "use", not "utilize"; "start", not "commence"; "before", not "prior to". Keep technical terms, code, paths, numbers and quotes exactly as they are (1.5).
+6. Use one name for one thing. Do not change to a synonym for variety (1.11).
+7. Keep noun clusters to three words or fewer. Write longer ones in full (2.1).
+8. Give information gradually. Start with the result, then give the details (6.1).
+9. Use a vertical list for steps and for complex text (4.3).
+10. Do not drop words to make a sentence shorter. Telegraphic text is not STE (4.2).
+
+**Russian.** STE is an English specification. Apply the same principles in Russian. Russian has no articles, so a 25-word Russian sentence holds more than a 25-word English one. Use the numbers as a guide only.
+
+**Format ladder.** When text is hard to follow, offer a better format: a diagram for a process or a structure, and an HTML page for a large comparison. This is Karpathy's order: text → diagram → page.
+
 ## Scope and Assumptions
 
 1. No application API/schema/type changes are required by this policy.
