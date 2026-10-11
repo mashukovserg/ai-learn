@@ -141,5 +141,69 @@ export const aiSecurityTasks: LocalizedTask[] = [
         ],
         passingScore: 50
       }
+    },
+    {
+      id: 7,
+      type: 'input',
+      question: {
+        ru: 'Как называется сумма всех точек, через которые систему можно атаковать, — то, что защитникам приходится отслеживать и защищать? (термин по-русски или на английском)',
+        en: 'What is the sum of all points through which a system can be attacked called — the thing defenders have to monitor and protect?'
+      },
+      answer: [
+        'поверхность атаки',
+        'поверхность атак',
+        'поверхностью атаки',
+        'поверхности атаки',
+        'attack surface',
+        'attack-surface',
+      ],
+      hint: { ru: 'Два слова; второе — «атаки».', en: 'Two words; the first is "attack".' },
+      explanation: {
+        ru: 'Верно. Поверхность атаки (attack surface) — сумма всех точек, через которые систему можно атаковать. Когда ИИ снижает порог входа, до слабых программ дотягивается больше людей, и защитникам приходится следить за большей поверхностью.',
+        en: 'Correct. The attack surface is the sum of all points through which a system can be attacked. When AI lowers the barrier to entry, more people can reach weak software, and defenders have more of this surface to watch.'
+      }
+    },
+    {
+      id: 8,
+      type: 'sorting',
+      question: {
+        ru: 'Расположите звенья рассуждения Цамадоса и Ньюлендса в причинном порядке: от оценки NCSC до нагрузки на защитников.',
+        en: 'Arrange the links of Tsamados and Newlands\' reasoning in causal order: from the NCSC assessment to the load on defenders.'
+      },
+      answer: '',
+      explanation: {
+        ru: 'Цепочка идет от возможностей к нагрузке: ИИ усиливает тактики, техники и процедуры атакующих (NCSC 2024); из-за этого падает порог входа; новички с минимальной подготовкой получают доступ к массе плохо написанных программ; у защитников становится больше точек, которые нужно отслеживать и защищать.',
+        en: 'The chain runs from capability to workload: AI improves attackers\' tactics, techniques and procedures (NCSC 2024); this lowers the barrier to entry; novices with minimal training can reach the mass of poorly written software; defenders get more points to monitor and protect.'
+      },
+      initialItems: [
+        { ru: 'Новички с минимальной подготовкой атакуют плохо написанные программы', en: 'Novices with minimal training attack poorly written software' },
+        { ru: 'У защитников становится больше точек, которые нужно отслеживать и защищать', en: 'Defenders get more points to monitor and protect' },
+        { ru: 'ИИ усиливает тактики, техники и процедуры атакующих', en: 'AI improves attackers\' tactics, techniques and procedures' },
+        { ru: 'Порог входа для начинающих хакеров падает', en: 'The barrier to entry for novice hackers falls' },
+      ],
+      correctOrder: [
+        { ru: 'ИИ усиливает тактики, техники и процедуры атакующих', en: 'AI improves attackers\' tactics, techniques and procedures' },
+        { ru: 'Порог входа для начинающих хакеров падает', en: 'The barrier to entry for novice hackers falls' },
+        { ru: 'Новички с минимальной подготовкой атакуют плохо написанные программы', en: 'Novices with minimal training attack poorly written software' },
+        { ru: 'У защитников становится больше точек, которые нужно отслеживать и защищать', en: 'Defenders get more points to monitor and protect' },
+      ]
+    },
+    {
+      id: 9,
+      type: 'multiple-choice',
+      question: {
+        ru: 'Компания публикует бенчмарк: ее модель решает большинство хакерских задач Capture The Flag (CTF). Что этот результат говорит о том, как модель изменит живую работу по защите?',
+        en: 'A company publishes a benchmark: its model solves most Capture The Flag (CTF) hacking tasks. What does this result tell us about how the model will change live security operations?'
+      },
+      options: [
+        { ru: 'Все: результат в CTF напрямую переносится на живую операционную среду', en: 'Everything: a CTF result transfers directly to the live operational environment' },
+        { ru: 'Немного: бенчмарк измеряет технические возможности, а данных о реальных внедрениях в работу по защите мало', en: 'Little: a benchmark measures technical ability, while data on real deployments in security operations is scarce' },
+        { ru: 'Достаточно для решения о внедрении: исследования разработки программ уже покрывают живую работу по защите', en: 'Enough to decide on deployment: research on software development already covers live security operations' }
+      ],
+      answer: { ru: 'Немного: бенчмарк измеряет технические возможности, а данных о реальных внедрениях в работу по защите мало', en: 'Little: a benchmark measures technical ability, while data on real deployments in security operations is scarce' },
+      explanation: {
+        ru: 'Верно. Данных о технических возможностях моделей становится больше, а данных о реальных внедрениях мало: область молодая, индустрия закрытая, а исследования чаще изучают разработку программ. В живой операционной среде ошибка может обернуться утечкой данных или взломом системы, и этот случай изучен меньше всего.',
+        en: 'Correct. Data on the technical abilities of models is growing, while data on real deployments is scarce: the field is young, the industry is closed, and studies look mostly at software development. In a live operational environment an error can mean a data breach or a compromised system, and this case is the least studied.'
+      }
     }
   ];

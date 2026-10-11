@@ -261,6 +261,14 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
       en: 'An attack that forces the AI to ignore its instructions and follow the attacker\'s commands.' 
     }
   },
+  'attack-surface': {
+    id: 'attack-surface',
+    term: { ru: 'Поверхность атаки', en: 'Attack surface' },
+    definition: {
+      ru: 'Сумма всех точек, через которые систему можно атаковать: открытые сервисы, слабые программы, учетные записи, подключенные инструменты. Каждая новая точка — еще одно место, которое защитникам приходится отслеживать и защищать.',
+      en: 'The sum of all points through which a system can be attacked: exposed services, weak software, user accounts, connected tools. Every new point is one more place that defenders have to monitor and protect.'
+    }
+  },
   'guardrails': {
     id: 'guardrails',
     term: { ru: 'Guardrails', en: 'Guardrails' },
