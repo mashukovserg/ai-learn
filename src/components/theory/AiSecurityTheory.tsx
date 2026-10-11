@@ -2,8 +2,21 @@
 
 import React from 'react';
 import Term from '@/components/Term';
-import { ShieldAlert, Lock, Zap, Skull, Eye, ShieldCheck, UserCheck, Database, Ghost, Terminal } from 'lucide-react';
+import { Lock, UserCheck, Ghost, Terminal } from 'lucide-react';
 import { motion } from 'framer-motion';
+
+const NCSC_URL = 'https://www.ncsc.gov.uk/report/impact-of-ai-on-cyber-threat';
+const TSAMADOS_NEWLANDS_URL = 'https://doi.org/10.2139/ssrn.6544258';
+const CREMER_URL = 'https://doi.org/10.1057/s41288-022-00266-6';
+const TSAMADOS_2023_URL = 'https://doi.org/10.48550/arXiv.2311.09224';
+
+function Cite({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
+      {children}
+    </a>
+  );
+}
 
 export default function AiSecurityTheory({ lang }: { lang: string }) {
   return (
@@ -11,7 +24,6 @@ export default function AiSecurityTheory({ lang }: { lang: string }) {
       {/* Chapter 1: The New Frontier of Hacking */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-danger-400">
-          <ShieldAlert className="text-danger-500" />
           {lang === 'ru' ? 'Глава 1: Новая эра взлома — Психология вместо кода' : 'Chapter 1: A New Era of Hacking — Psychology Over Code'}
         </h2>
         <div className="space-y-6">
@@ -33,13 +45,87 @@ export default function AiSecurityTheory({ lang }: { lang: string }) {
               ? 'Важно понимать, что мы защищаем не только саму модель, но и всю экосистему вокруг неё: доступ к вашим письмам, базам данных и инструментам, которыми ИИ может управлять от вашего имени. Взлом агента — это не получение "плохого слова" в чате, а потенциальный доступ к реальным корпоративным секретам и операциям.'
               : 'It is important to understand that we are protecting not just the model itself, but the entire ecosystem around it: access to your emails, databases, and tools that the AI can control on your behalf. Hacking an agent is not just about getting a "bad word" in chat; it is potential access to real corporate secrets and operations.'}
           </p>
+          <h3 className="text-xl font-bold pt-2 text-heading">
+            {lang === 'ru' ? 'Другая сторона: ИИ как инструмент атакующего' : 'The other side: AI as the attacker\'s tool'}
+          </h3>
+          <p className="text-neutral-300 leading-relaxed">
+            {lang === 'ru' ? (
+              <>
+                {'До сих пор мы смотрели на ИИ как на цель атаки. Но те же модели работают и на атакующего. Во многих атаках много рутины: собрать сведения о цели, найти способ получить доступ, подогнать известный эксплойт под конкретную систему. Модель, которая пишет текст и код, делает такую рутину быстро. В январе 2024 года Национальный центр кибербезопасности Великобритании (NCSC) оценил, что в ближайшие два года ИИ почти наверняка увеличит и число кибератак, и ущерб от них, потому что усиливает тактики, техники и процедуры атакующих ('}
+                <Cite href={NCSC_URL}>NCSC 2024</Cite>
+                {').'}
+              </>
+            ) : (
+              <>
+                {'So far we have looked at AI as the target of an attack. The same models also work for the attacker. Many attacks involve a lot of routine work: gathering information about the target, finding a way in, adapting a known exploit to a specific system. A model that writes text and code does this routine work quickly. In January 2024 the UK National Cyber Security Centre (NCSC) assessed that over the next two years AI would almost certainly increase both the number of cyberattacks and the damage they cause, because it improves the attackers\' tactics, techniques and procedures ('}
+                <Cite href={NCSC_URL}>NCSC 2024</Cite>
+                {').'}
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {lang === 'ru' ? (
+              <>
+                {'Цамадос и Ньюлендс делают следующий шаг. Когда часть навыка переходит в инструмент, порог входа падает: новичок с минимальной подготовкой теперь может атаковать программы, которые раньше были ему не по силам. А плохо написанных программ в сегодняшнем интернете много. Каждая слабая программа, до которой теперь дотягивается новичок, — еще одна точка, через которую можно атаковать систему. Сумму всех таких точек называют '}
+                <Term id="attack-surface" lang={lang}>поверхностью атаки</Term>
+                {' (attack surface). Чем больше людей способны атаковать, тем больше поверхность атаки, которую защитникам приходится отслеживать и защищать ('}
+                <Cite href={TSAMADOS_NEWLANDS_URL}>Цамадос и Ньюлендс 2026: 3</Cite>
+                {'; они опираются на работы: '}
+                <Cite href={CREMER_URL}>Кремер и др. 2022</Cite>
+                {' и '}
+                <Cite href={TSAMADOS_2023_URL}>Цамадос и др. 2023</Cite>
+                {').'}
+              </>
+            ) : (
+              <>
+                {'Tsamados and Newlands take the next step. When part of the skill moves into the tool, the barrier to entry falls: a novice with minimal training can now attack software that used to be out of their reach. And today\'s internet runs on a great deal of poorly written software. Every weak program that a novice can now reach is one more point through which a system can be attacked. The sum of all such points is called the '}
+                <Term id="attack-surface" lang={lang}>attack surface</Term>
+                {'. The more people are able to attack, the larger the attack surface that defenders have to monitor and protect ('}
+                <Cite href={TSAMADOS_NEWLANDS_URL}>Tsamados &amp; Newlands 2026: 3</Cite>
+                {'; they draw on '}
+                <Cite href={CREMER_URL}>Cremer et al. 2022</Cite>
+                {' and '}
+                <Cite href={TSAMADOS_2023_URL}>Tsamados et al. 2023</Cite>
+                {').'}
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {lang === 'ru' ? (
+              <>
+                {'Насколько эти выводы подкреплены измерениями? Данных о технических возможностях моделей становится больше: исследователи и компании собирают бенчмарки по кибербезопасности и проверяют модели на хакерских задачах, например на соревнованиях Capture The Flag (CTF). С реальными внедрениями все иначе. Область молодая, а индустрия безопасности редко рассказывает о своей работе, поэтому данных о том, что на самом деле меняется, когда такие системы попадают в живую работу по защите, мало. Исследования внедрения ИИ чаще всего смотрят на разработку программ: генерацию кода, код-ревью, вайб-кодинг. Гораздо меньше известно о живой операционной среде, где ошибка стоит дороже бага: она может обернуться утечкой данных, взломом системы или ущербом для всей организации ('}
+                <Cite href={TSAMADOS_NEWLANDS_URL}>Цамадос и Ньюлендс 2026: 3–4</Cite>
+                {'). Поэтому оценка NCSC выше — прогноз, а не измеренный результат.'}
+              </>
+            ) : (
+              <>
+                {'How firmly are these claims backed by measurement? Data on the technical abilities of models is growing: researchers and companies build cybersecurity benchmarks and test models on hacking tasks, for example Capture The Flag (CTF) exercises. Real deployments are a different matter. The field is young and the security industry rarely talks about its work, so there is little data on what actually changes when such systems enter live security operations. Studies of AI adoption have looked mostly at software development: code generation, code review, vibe coding. Much less is known about live operational environments, where an error costs more than a bug: it can mean a data breach, a compromised system or harm to the whole organization ('}
+                <Cite href={TSAMADOS_NEWLANDS_URL}>Tsamados &amp; Newlands 2026: 3–4</Cite>
+                {'). So the NCSC assessment above is a forecast, not a measured result.'}
+              </>
+            )}
+          </p>
+          <p className="text-neutral-300 leading-relaxed">
+            {lang === 'ru' ? (
+              <>
+                {'Это связано с правилом из конца главы 5: атака должна обходиться злоумышленнику дороже, чем стоят данные, которые он хочет получить. ИИ снижает его сторону этого расчета: меньше часов на обучение, меньше ручной работы на каждую цель. Цамадос, Флориди и Таддео добавляют наблюдение, важное для всей комнаты: атаки на языковые модели используют естественный язык как канал атаки ('}
+                <Cite href={TSAMADOS_2023_URL}>Цамадос и др. 2023</Cite>
+                {'). Промпт-инъекциям и джейлбрейкам из следующих глав не нужно программирование, поэтому попробовать их может любой, кто умеет сформулировать запрос.'}
+              </>
+            ) : (
+              <>
+                {'This connects to the rule at the end of Chapter 5: an attack should cost the attacker more than the data they want is worth. AI lowers the attacker\'s side of that calculation: fewer hours of learning, less manual work per target. Tsamados, Floridi and Taddeo add an observation that matters for the whole room: attacks on language models use natural language as their vector of attack ('}
+                <Cite href={TSAMADOS_2023_URL}>Tsamados et al. 2023</Cite>
+                {'). The prompt injections and jailbreaks in the next chapters need no programming, so anyone who can phrase a request can try them.'}
+              </>
+            )}
+          </p>
         </div>
       </div>
 
       {/* Chapter 2: Prompt Injection — Highjacking the Model */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-danger-400">
-          <Zap className="text-danger-500" />
           {lang === 'ru' ? <>Глава 2: <Term id="prompt-injection" /> — Захват управления</> : <>Chapter 2: <Term id="prompt-injection" lang={lang} /> — Hijacking Control</>}
         </h2>
         <div className="space-y-6">
@@ -80,7 +166,6 @@ export default function AiSecurityTheory({ lang }: { lang: string }) {
       {/* Chapter 3: Jailbreaking — Breaking the Moral Compass */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-danger-400">
-          <Skull className="text-danger-500" />
           {lang === 'ru' ? 'Глава 3: Jailbreaking — Слом моральных барьеров через роли' : 'Chapter 3: Jailbreaking — Breaking Moral Barriers via Roles'}
         </h2>
         <div className="space-y-6">
@@ -119,7 +204,6 @@ export default function AiSecurityTheory({ lang }: { lang: string }) {
       {/* Chapter 4: Data Poisoning and Exfiltration */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-danger-400">
-          <Database className="text-danger-500" />
           {lang === 'ru' ? 'Глава 4: Отравление данных и кража секретов' : 'Chapter 4: Data Poisoning and Exfiltration'}
         </h2>
         <div className="space-y-6">
@@ -130,7 +214,6 @@ export default function AiSecurityTheory({ lang }: { lang: string }) {
           </p>
           <div className="bg-danger-500/5 border border-danger-500/20 p-6 rounded-xl my-6">
              <h4 className="text-danger-400 font-bold mb-3 flex items-center gap-2">
-               <Eye size={18} />
                {lang === 'ru' ? 'Проблема кражи данных через RAG:' : 'Data Exfiltration via RAG:'}
              </h4>
              <p className=" text-neutral-300 leading-relaxed text-sm">
@@ -150,7 +233,6 @@ export default function AiSecurityTheory({ lang }: { lang: string }) {
       {/* Chapter 5: Defense Strategies — Building the Firewall */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-3xl font-bold mb-6 flex items-center gap-3 text-heading">
-          <ShieldCheck className="text-accent-500" />
           {lang === 'ru' ? 'Глава 5: Стратегии защиты — Как построить ИИ-фаервол' : 'Chapter 5: Defense Strategies — Building an AI Firewall'}
         </h2>
         <div className="space-y-6">
