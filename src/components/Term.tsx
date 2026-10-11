@@ -46,7 +46,7 @@ export default function Term({ id, children, lang: forcedLang }: TermProps) {
           >
             <span className="flex items-center gap-2 mb-2">
               <BookOpen size={14} className="text-accent-500" />
-              <span className="text-xs font-bold text-white uppercase tracking-widest">Глоссарий</span>
+              <span className="text-xs font-bold text-white uppercase tracking-widest">{l === 'ru' ? 'Глоссарий' : 'Glossary'}</span>
             </span>
             <span className="block text-sm text-neutral-200 leading-relaxed">
               {definition}

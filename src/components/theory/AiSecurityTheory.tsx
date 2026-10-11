@@ -67,7 +67,7 @@ export default function AiSecurityTheory({ lang }: { lang: string }) {
             {lang === 'ru' ? (
               <>
                 {'Цамадос и Ньюлендс делают следующий шаг. Когда часть навыка переходит в инструмент, порог входа падает: новичок с минимальной подготовкой теперь может атаковать программы, которые раньше были ему не по силам. А плохо написанных программ в сегодняшнем интернете много. Каждая слабая программа, до которой теперь дотягивается новичок, — еще одна точка, через которую можно атаковать систему. Сумму всех таких точек называют '}
-                <strong className="text-white">поверхностью атаки</strong>
+                <Term id="attack-surface" lang={lang}>поверхностью атаки</Term>
                 {' (attack surface). Чем больше людей способны атаковать, тем больше поверхность атаки, которую защитникам приходится отслеживать и защищать ('}
                 <Cite href={TSAMADOS_NEWLANDS_URL}>Цамадос и Ньюлендс 2026: 3</Cite>
                 {'; они опираются на работы: '}
@@ -79,7 +79,7 @@ export default function AiSecurityTheory({ lang }: { lang: string }) {
             ) : (
               <>
                 {'Tsamados and Newlands take the next step. When part of the skill moves into the tool, the barrier to entry falls: a novice with minimal training can now attack software that used to be out of their reach. And today\'s internet runs on a great deal of poorly written software. Every weak program that a novice can now reach is one more point through which a system can be attacked. The sum of all such points is called the '}
-                <strong className="text-white">attack surface</strong>
+                <Term id="attack-surface" lang={lang}>attack surface</Term>
                 {'. The more people are able to attack, the larger the attack surface that defenders have to monitor and protect ('}
                 <Cite href={TSAMADOS_NEWLANDS_URL}>Tsamados &amp; Newlands 2026: 3</Cite>
                 {'; they draw on '}
