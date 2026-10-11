@@ -275,17 +275,17 @@ export const llmLandscapeTasks: LocalizedTask[] = [
       },
       answer: '',
       explanation: {
-        ru: 'GPT-4o и o1 — OpenAI (США), Claude — Anthropic (США), Gemini — Google DeepMind (США), DeepSeek — DeepSeek (Китай), Mistral — Mistral AI (Европа/Франция).',
-        en: 'GPT-4o and o1 — OpenAI (USA), Claude — Anthropic (USA), Gemini — Google DeepMind (USA), DeepSeek — DeepSeek (China), Mistral — Mistral AI (Europe/France).'
+        ru: 'GPT-6 Astra — OpenAI (США), Claude Opus 5.5 — Anthropic (США), Gemini 3.8 Flash — Google (США), DeepSeek V4-Pro — DeepSeek (Китай), Kimi K3 — Moonshot AI (Китай), Mistral Large 4 — Mistral AI (Франция, Европа).',
+        en: 'GPT-6 Astra — OpenAI (USA), Claude Opus 5.5 — Anthropic (USA), Gemini 3.8 Flash — Google (USA), DeepSeek V4-Pro — DeepSeek (China), Kimi K3 — Moonshot AI (China), Mistral Large 4 — Mistral AI (France, Europe).'
       },
       categorize: {
         items: [
-          { ru: 'GPT-4o', en: 'GPT-4o' },
-          { ru: 'Claude', en: 'Claude' },
-          { ru: 'Gemini', en: 'Gemini' },
-          { ru: 'DeepSeek-V3', en: 'DeepSeek-V3' },
-          { ru: 'Mistral Large', en: 'Mistral Large' },
-          { ru: 'o1', en: 'o1' },
+          { ru: 'GPT-6 Astra', en: 'GPT-6 Astra' },
+          { ru: 'Claude Opus 5.5', en: 'Claude Opus 5.5' },
+          { ru: 'Gemini 3.8 Flash', en: 'Gemini 3.8 Flash' },
+          { ru: 'DeepSeek V4-Pro', en: 'DeepSeek V4-Pro' },
+          { ru: 'Mistral Large 4', en: 'Mistral Large 4' },
+          { ru: 'Kimi K3', en: 'Kimi K3' },
         ],
         buckets: [
           { ru: 'США', en: 'USA' },
@@ -293,12 +293,12 @@ export const llmLandscapeTasks: LocalizedTask[] = [
           { ru: 'Европа', en: 'Europe' },
         ],
         correctMapping: {
-          'GPT-4o': 'USA',
-          'Claude': 'USA',
-          'Gemini': 'USA',
-          'DeepSeek-V3': 'China',
-          'Mistral Large': 'Europe',
-          'o1': 'USA',
+          'GPT-6 Astra': 'USA',
+          'Claude Opus 5.5': 'USA',
+          'Gemini 3.8 Flash': 'USA',
+          'DeepSeek V4-Pro': 'China',
+          'Mistral Large 4': 'Europe',
+          'Kimi K3': 'China',
         }
       }
     },
@@ -336,7 +336,7 @@ export const llmLandscapeTasks: LocalizedTask[] = [
             tags: ['over-engineering', 'budget-risk'],
           },
           {
-            text: { ru: 'Использовать frontier API (Claude/GPT-4o) + RAG на юридических документах', en: 'Use a frontier API (Claude/GPT-4o) + RAG on legal documents' },
+            text: { ru: 'Использовать frontier API (Claude/GPT) + RAG на юридических документах', en: 'Use a frontier API (Claude/GPT) + RAG on legal documents' },
             outcome: {
               ru: 'MVP готов за 2 месяца. Качество высокое благодаря RAG-грounding. Расходы на API предсказуемы. Данные клиентов проходят через внешний API — нужен DPA и анализ рисков.',
               en: 'MVP ships in 2 months. Quality is high thanks to RAG grounding. API costs are predictable. Client data passes through external API — need DPA and risk analysis.'

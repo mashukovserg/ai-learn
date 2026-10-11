@@ -125,64 +125,116 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
         </div>
       </div>
 
-      {/* 3. Category map */}
+      {/* 3. Category map (state: October 2026) */}
       <div className="bg-card-dark border border-border-card rounded-xl p-8 mb-8">
         <h2 className="text-2xl font-bold mb-3 text-heading">
           {lang === 'ru' ? 'Карта LLM-ландшафта' : 'LLM Landscape Map'}
         </h2>
-        <p className="text-neutral-400 leading-relaxed mb-5">
+        <p className="text-neutral-300 leading-relaxed mb-5">
           {lang === 'ru'
-            ? 'Простая карта категорий: начните с класса модели, а не с бренда.'
-            : 'A simple category map: start from model class, not from brand.'}
+            ? 'Названия моделей меняются каждые несколько месяцев, а классы — гораздо реже. Поэтому начинайте с класса модели, а не с бренда. Класс подсказывает три вещи сразу: сколько стоит запрос, как быстро придет ответ и где модель может работать — только через чужой API, на ваших серверах или прямо на телефоне. Конкретную модель внутри класса выбирают уже потом, по своим тестам. Таблица ниже показывает состояние на октябрь 2026 года.'
+            : 'Model names change every few months; classes change much more slowly. So start from the model class, not the brand. The class tells you three things at once: what a request costs, how fast the answer arrives, and where the model can run — only through someone else\'s API, on your own servers, or right on a phone. The specific model within the class is chosen later, with your own tests. The table below shows the state as of October 2026.'}
         </p>
 
         <div className="overflow-x-auto border border-border-subtle rounded-xl">
           <table className="min-w-[920px] w-full text-left">
             <thead>
               <tr className="border-b border-border-subtle bg-input">
-                <th className="px-4 py-3 text-xs uppercase tracking-wider text-neutral-500">{lang === 'ru' ? 'Категория' : 'Category'}</th>
-                <th className="px-4 py-3 text-xs uppercase tracking-wider text-neutral-300 border-l border-border-subtle">{lang === 'ru' ? 'Примеры' : 'Examples'}</th>
+                <th className="px-4 py-3 text-xs uppercase tracking-wider text-neutral-500">{lang === 'ru' ? 'Класс' : 'Class'}</th>
+                <th className="px-4 py-3 text-xs uppercase tracking-wider text-neutral-300 border-l border-border-subtle">{lang === 'ru' ? 'Примеры (октябрь 2026)' : 'Examples (October 2026)'}</th>
                 <th className="px-4 py-3 text-xs uppercase tracking-wider text-accent-300 border-l border-border-subtle">{lang === 'ru' ? 'Когда использовать' : 'When to use'}</th>
               </tr>
             </thead>
             <tbody className="text-sm">
-              <tr className="border-b border-border-subtle">
-                <td className="px-4 py-3 text-neutral-200">{lang === 'ru' ? 'Фронтир-модели' : 'Frontier models'}</td>
-                <td className="px-4 py-3 text-neutral-300 border-l border-border-subtle">GPT-4o, Claude 3.5, Gemini 1.5</td>
-                <td className="px-4 py-3 text-neutral-400 border-l border-border-subtle">{lang === 'ru' ? 'Сложные reasoning-задачи' : 'Complex reasoning tasks'}</td>
-              </tr>
-              <tr className="border-b border-border-subtle">
-                <td className="px-4 py-3 text-neutral-200">{lang === 'ru' ? 'Эффективные модели' : 'Efficient models'}</td>
-                <td className="px-4 py-3 text-neutral-300 border-l border-border-subtle">Mistral, Mixtral, LLaMA</td>
-                <td className="px-4 py-3 text-neutral-400 border-l border-border-subtle">{lang === 'ru' ? 'Дешёвый инференс' : 'Low-cost inference'}</td>
-              </tr>
-              <tr className="border-b border-border-subtle">
-                <td className="px-4 py-3 text-neutral-200">{lang === 'ru' ? 'Кодовые модели' : 'Coding models'}</td>
-                <td className="px-4 py-3 text-neutral-300 border-l border-border-subtle">DeepSeek-Coder, GPT-4o</td>
-                <td className="px-4 py-3 text-neutral-400 border-l border-border-subtle">{lang === 'ru' ? 'Программирование' : 'Programming'}</td>
-              </tr>
-              <tr className="border-b border-border-subtle">
-                <td className="px-4 py-3 text-neutral-200">{lang === 'ru' ? 'Модели рассуждения' : 'Reasoning models'}</td>
-                <td className="px-4 py-3 text-neutral-300 border-l border-border-subtle">o1, Claude 4, DeepSeek-R1</td>
-                <td className="px-4 py-3 text-neutral-400 border-l border-border-subtle">{lang === 'ru' ? 'Сложные логические и многошаговые задачи' : 'Hard logic and multi-step planning tasks'}</td>
-              </tr>
-              <tr className="border-b border-border-subtle">
-                <td className="px-4 py-3 text-neutral-200">{lang === 'ru' ? 'Длинный контекст' : 'Long-context'}</td>
-                <td className="px-4 py-3 text-neutral-300 border-l border-border-subtle">Gemini 1.5+, Claude Sonnet 4.6 (beta)</td>
-                <td className="px-4 py-3 text-neutral-400 border-l border-border-subtle">{lang === 'ru' ? 'Анализ больших документов' : 'Large document analysis'}</td>
-              </tr>
-              <tr className="border-b border-border-subtle">
-                <td className="px-4 py-3 text-neutral-200">{lang === 'ru' ? 'Мультимодальные' : 'Multimodal'}</td>
-                <td className="px-4 py-3 text-neutral-300 border-l border-border-subtle">GPT-4o, Gemini</td>
-                <td className="px-4 py-3 text-neutral-400 border-l border-border-subtle">{lang === 'ru' ? 'Изображения, аудио, видео' : 'Images, audio, and video tasks'}</td>
-              </tr>
-              <tr>
-                <td className="px-4 py-3 text-neutral-200">{lang === 'ru' ? 'Локальные (on-device)' : 'On-device'}</td>
-                <td className="px-4 py-3 text-neutral-300 border-l border-border-subtle">Phi-3, Gemma</td>
-                <td className="px-4 py-3 text-neutral-400 border-l border-border-subtle">{lang === 'ru' ? 'Edge-устройства' : 'Edge devices'}</td>
-              </tr>
+              {[
+                {
+                  cls: { ru: 'Флагманские модели', en: 'Flagship models' },
+                  examples: 'GPT-6 Astra, Claude Fable 5.1, Claude Opus 5.5, Gemini 3.1 Pro (preview)',
+                  use: { ru: 'Самые трудные задачи: долгая агентная работа, сложный код и анализ, где ошибка дорого стоит', en: 'The hardest tasks: long agentic work, complex code, and analysis where a mistake is expensive' },
+                },
+                {
+                  cls: { ru: 'Сбалансированные модели', en: 'Balanced models' },
+                  examples: 'Claude Sonnet 5.5, GPT-6.1 Sol, Gemini 3.8 Flash',
+                  use: { ru: 'Основной поток рабочих задач: качество близко к флагману, но дешевле и быстрее', en: 'The bulk of production work: quality close to the flagship, but cheaper and faster' },
+                },
+                {
+                  cls: { ru: 'Быстрые и дешевые', en: 'Fast and low-cost' },
+                  examples: 'Claude Haiku 5.5, GPT-6 Luna, Gemini 3.5 Flash-Lite, DeepSeek V4.1 Flash',
+                  use: { ru: 'Большие объемы: классификация, извлечение данных, роутинг запросов', en: 'High volume: classification, data extraction, request routing' },
+                },
+                {
+                  cls: { ru: 'Кодинг и агенты', en: 'Coding and agents' },
+                  examples: 'Claude Opus 5.5, GPT-6 Sol, Kimi K2.7-Code',
+                  use: { ru: 'Агенты, которые сами пишут, запускают и исправляют код', en: 'Agents that write, run, and fix code on their own' },
+                },
+                {
+                  cls: { ru: 'Открытые веса (open-weight)', en: 'Open-weight' },
+                  examples: 'Kimi K3, GLM-5.3, DeepSeek V4-Pro, Qwen3.8, Mistral Large 4, gpt-oss-120b',
+                  use: { ru: 'Свои серверы: контроль над данными, дообучение, нет зависимости от чужого API', en: 'Your own servers: control over data, fine-tuning, no dependence on someone else\'s API' },
+                },
+                {
+                  cls: { ru: 'Голос и реальное время', en: 'Voice and real time' },
+                  examples: 'GPT-Live 1, GPT-Realtime-2.1, Gemini 3.8 Live',
+                  use: { ru: 'Голосовые агенты и живой диалог, в котором модель можно перебить', en: 'Voice agents and live dialogue in which the user can interrupt the model' },
+                },
+                {
+                  cls: { ru: 'На устройстве (on-device)', en: 'On-device' },
+                  examples: 'Gemma 4 E2B / E4B, Apple AFM 3 Core, Ministral 3 3B, Phi-4-mini',
+                  use: { ru: 'Телефон, ноутбук, браузер: работа без сети, данные не покидают устройство', en: 'Phone, laptop, browser: works offline, data stays on the device' },
+                },
+              ].map((row, idx, rows) => (
+                <tr key={row.cls.en} className={idx < rows.length - 1 ? 'border-b border-border-subtle' : undefined}>
+                  <td className="px-4 py-3 text-neutral-200">{lang === 'ru' ? row.cls.ru : row.cls.en}</td>
+                  <td className="px-4 py-3 text-neutral-300 border-l border-border-subtle">{row.examples}</td>
+                  <td className="px-4 py-3 text-neutral-400 border-l border-border-subtle">{lang === 'ru' ? row.use.ru : row.use.en}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
+        </div>
+
+        <p className="text-neutral-400 text-sm leading-relaxed mt-4">
+          {lang === 'ru'
+            ? 'Происхождение моделей из таблицы: OpenAI (GPT, gpt-oss), Anthropic (Claude), Google (Gemini, Gemma), Apple и Microsoft (Phi) — США; DeepSeek, Moonshot AI (Kimi), Z.ai (GLM) и Alibaba (Qwen) — Китай; Mistral AI (Mistral, Ministral) — Франция, Европа.'
+            : 'Origin of the models in the table: OpenAI (GPT, gpt-oss), Anthropic (Claude), Google (Gemini, Gemma), Apple, and Microsoft (Phi) — USA; DeepSeek, Moonshot AI (Kimi), Z.ai (GLM), and Alibaba (Qwen) — China; Mistral AI (Mistral, Ministral) — France, Europe.'}
+        </p>
+        <p className="text-neutral-500 text-sm leading-relaxed mt-2">
+          {lang === 'ru' ? 'Названия сверены 12.10.2026 с официальными страницами моделей: ' : 'Names checked on 12 Oct 2026 against the official model pages: '}
+          {[
+            ['OpenAI', 'https://developers.openai.com/api/docs/models/all'],
+            ['Anthropic', 'https://platform.claude.com/docs/en/about-claude/models/overview'],
+            ['Gemini', 'https://ai.google.dev/gemini-api/docs/models'],
+            ['Gemma', 'https://ai.google.dev/gemma/docs/core'],
+            ['DeepSeek', 'https://api-docs.deepseek.com/quick_start/pricing'],
+            ['Mistral', 'https://docs.mistral.ai/getting-started/models'],
+            ['Kimi', 'https://huggingface.co/moonshotai'],
+            ['GLM', 'https://huggingface.co/zai-org'],
+            ['Qwen', 'https://huggingface.co/Qwen'],
+            ['Apple', 'https://machinelearning.apple.com/research/introducing-third-generation-of-apple-foundation-models'],
+          ].map(([label, href], idx, all) => (
+            <React.Fragment key={label}>
+              <a href={href} target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{label}</a>
+              {idx < all.length - 1 ? ', ' : '.'}
+            </React.Fragment>
+          ))}
+        </p>
+
+        <div className="space-y-5 text-neutral-300 leading-relaxed mt-6">
+          <p>
+            {lang === 'ru'
+              ? 'Разница в цене между классами большая. У Anthropic самая мощная модель, Claude Fable 5.1, стоит 10 долларов за миллион входных токенов и 50 долларов за миллион выходных, а Claude Haiku 5.5 — от 0,10 и 0,50 доллара. Это разница в сто раз внутри одной линейки. DeepSeek V4.1 Flash в часы пик берет 0,30 доллара за миллион входных токенов. Поэтому в продакшене часто строят роутинг: простые и массовые запросы идут в быструю модель, и только трудные попадают к флагману.'
+              : 'The price gap between classes is large. Anthropic\'s most capable model, Claude Fable 5.1, costs $10 per million input tokens and $50 per million output tokens, while Claude Haiku 5.5 starts at $0.10 and $0.50. That is a hundredfold difference within one lineup. DeepSeek V4.1 Flash charges $0.30 per million input tokens at peak hours. This is why production systems often use routing: simple, high-volume requests go to a fast model, and only the hard ones reach the flagship.'}
+          </p>
+          <p>
+            {lang === 'ru'
+              ? 'В прошлой версии этой таблицы были строки «модели рассуждения», «длинный контекст» и «мультимодальные». В 2026 году это уже не отдельные классы, а свойства большинства моделей. Все четыре текущие модели Claude рассуждают адаптивно, то есть сами решают, сколько думать, и принимают до миллиона токенов. У DeepSeek V4 рассуждение включено по умолчанию, контекст — тоже миллион токенов. Gemini 3.8 Flash принимает миллион токенов и позволяет выбрать уровень рассуждения: low, medium или high. Изображения на вход принимают все текущие модели Claude, а Gemma 4 — текст, аудио и изображения. Отдельной строкой остался голос в реальном времени: там решают задержка и умение модели остановиться, когда ее перебивают.'
+              : 'The previous version of this table had rows for "reasoning models", "long context", and "multimodal". In 2026 these are no longer separate classes but properties of most models. All four current Claude models reason adaptively, meaning they decide for themselves how much to think, and accept up to a million tokens. DeepSeek V4 has reasoning on by default and a context of a million tokens as well. Gemini 3.8 Flash accepts a million tokens and lets you choose the reasoning level: low, medium, or high. All current Claude models accept images as input, and Gemma 4 accepts text, audio, and images. Voice in real time kept its own row: there, latency and the model\'s ability to stop when interrupted are what matter.'}
+          </p>
+          <p>
+            {lang === 'ru'
+              ? 'Такая таблица устаревает быстро. Прошлая версия называла примерами GPT-4o и o1; теперь на странице моделей OpenAI o1 стоит в разделе устаревших (deprecated), и туда же перенесены отдельные Codex-модели для кода. На странице моделей Google в октябре 2026 года одновременно перечислены Flash-модели версий 3, 3.1, 3.5, 3.6 и 3.8. Поэтому запоминайте классы и то, чем они отличаются, а конкретное имя проверяйте на официальной странице поставщика в тот день, когда выбираете модель.'
+              : 'A table like this goes stale quickly. The previous version gave GPT-4o and o1 as examples; now OpenAI\'s model page lists o1 under deprecated models, and the separate Codex models for code have moved there too. In October 2026, Google\'s model page lists Flash models of versions 3, 3.1, 3.5, 3.6, and 3.8 at the same time. So remember the classes and what sets them apart, and check the specific name on the provider\'s official page on the day you choose a model.'}
+          </p>
         </div>
       </div>
 
@@ -641,17 +693,17 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
         <div className="grid grid-cols-1 gap-4 mb-5">
           <div className="bg-card border border-border-card rounded-lg p-4">
             <h4 className="font-bold text-neutral-200 mb-1">ChatGPT (OpenAI)</h4>
-            <p className="text-neutral-500 mb-2">{lang === 'ru' ? 'Frontier + reasoning + Responses API' : 'Frontier + reasoning + Responses API'}</p>
+            <p className="text-neutral-500 mb-2">{lang === 'ru' ? 'GPT-6 (Astra, Sol, Luna) + Responses API' : 'GPT-6 (Astra, Sol, Luna) + Responses API'}</p>
             <p className="text-neutral-400">{lang === 'ru' ? 'Сильный универсал с акцентом на reasoning-модели и tool/agent workflows.' : 'Strong generalist with a focus on reasoning models and tool/agent workflows.'}</p>
           </div>
           <div className="bg-card border border-border-card rounded-lg p-4">
             <h4 className="font-bold text-neutral-200 mb-1">Claude (Anthropic)</h4>
-            <p className="text-neutral-500 mb-2">{lang === 'ru' ? 'Claude 4, hybrid reasoning' : 'Claude 4, hybrid reasoning'}</p>
+            <p className="text-neutral-500 mb-2">{lang === 'ru' ? 'Claude 5.x (Fable, Opus, Sonnet, Haiku), адаптивное рассуждение' : 'Claude 5.x (Fable, Opus, Sonnet, Haiku), adaptive thinking'}</p>
             <p className="text-neutral-400">{lang === 'ru' ? 'Стабильное качество текста/кода и прозрачность через system cards.' : 'Strong writing/coding consistency with transparent system cards.'}</p>
           </div>
           <div className="bg-card border border-border-card rounded-lg p-4">
             <h4 className="font-bold text-neutral-200 mb-1">Gemini (Google)</h4>
-            <p className="text-neutral-500 mb-2">Gemini 2.5/3 + Live</p>
+            <p className="text-neutral-500 mb-2">Gemini 3.x (Pro, Flash, Flash-Lite) + Live</p>
             <p className="text-neutral-400">{lang === 'ru' ? 'Сильный long-context, multimodal и real-time voice/video API.' : 'Strong in long-context, multimodal, and real-time voice/video APIs.'}</p>
           </div>
           <div className="bg-card border border-border-card rounded-lg p-4">
@@ -661,7 +713,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
           </div>
           <div className="bg-card border border-border-card rounded-lg p-4">
             <h4 className="font-bold text-neutral-200 mb-1">DeepSeek</h4>
-            <p className="text-neutral-500 mb-2">V3 (MoE), R1 (reasoning)</p>
+            <p className="text-neutral-500 mb-2">{lang === 'ru' ? 'V4 (Pro, Flash): MoE, рассуждение по умолчанию' : 'V4 (Pro, Flash): MoE, reasoning on by default'}</p>
             <p className="text-neutral-400">{lang === 'ru' ? 'Усилил open-weight reasoning-тренд и предлагает OpenAI-совместимый API-формат.' : 'A key open-weight reasoning player with OpenAI-compatible API formatting.'}</p>
           </div>
           <div className="bg-card border border-border-card rounded-lg p-4">
@@ -689,7 +741,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
           <div className="grid grid-cols-1 gap-x-6 gap-y-2 text-sm">
             <a href="https://developers.openai.com/api/docs/models" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{lang === 'ru' ? 'Модели OpenAI' : 'OpenAI Models'}</a>
             <a href="https://developers.openai.com/api/docs/guides/reasoning/" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{lang === 'ru' ? 'Гайд OpenAI по reasoning' : 'OpenAI Reasoning Guide'}</a>
-            <a href="https://www.anthropic.com/claude-4-system-card" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{lang === 'ru' ? 'System Card Claude 4' : 'Anthropic Claude 4 System Card'}</a>
+            <a href="https://www.anthropic.com/system-cards" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{lang === 'ru' ? 'Системные карточки Anthropic' : 'Anthropic System Cards'}</a>
             <a href="https://ai.google.dev/gemini-api/docs/models" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{lang === 'ru' ? 'Модели Gemini API' : 'Gemini API Models'}</a>
             <a href="https://ai.google.dev/gemini-api/docs/long-context" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{lang === 'ru' ? 'Long-context в Gemini' : 'Gemini Long Context'}</a>
             <a href="https://ai.meta.com/blog/llama-4-multimodal-intelligence/" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{lang === 'ru' ? 'Llama 4 от Meta' : 'Meta Llama 4'}</a>
