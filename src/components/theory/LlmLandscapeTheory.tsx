@@ -14,18 +14,18 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
         </h2>
         <p className="text-neutral-300 leading-relaxed mb-4">
           {lang === 'ru'
-            ? 'В 2026 году ИИ корректнее рассматривать как слой цифровой инфраструктуры, а не как один класс продуктов. Практический результат зависит не только от "умности" модели, но и от стоимости инференса, доступа к вычислениям, качества интеграции и регуляторных ограничений.'
-            : 'In 2026, AI is better understood as a digital infrastructure layer rather than a single product category. Practical outcomes depend not only on model capability but also on inference economics, compute access, integration quality, and regulatory constraints.'}
+            ? 'В 2026 году ИИ корректнее рассматривать как слой цифровой инфраструктуры, а не как один класс продуктов. Практический результат зависит не только от "умности" модели, но и от стоимости инференса, доступа к вычислениям, качества интеграции и регуляторных ограничений. Поэтому одна и та же модель подходит не каждой команде.'
+            : 'In 2026, AI is better understood as a digital infrastructure layer rather than a single product category. Practical outcomes depend not only on model capability but also on inference economics, compute access, integration quality, and regulatory constraints. That is why the same model does not suit every team.'}
         </p>
         <p className="text-neutral-300 leading-relaxed mb-4">
           {lang === 'ru'
-            ? 'Задача этой комнаты — дать вам рабочую карту выбора: какую модель брать под конкретный workload, когда идти в закрытый API, когда — в open-weight, и как учитывать геополитику/комплаенс.'
-            : 'This room gives you a practical selection map: which model class to use for each workload, when to use closed APIs vs open-weight models, and how to account for geopolitics/compliance.'}
+            ? 'Задача этой комнаты — дать вам рабочую карту выбора: какую модель брать под конкретный workload (тип задачи, которую решает ваш продукт), когда идти в закрытый API, когда — в open-weight, и как учитывать геополитику/комплаенс.'
+            : 'This room gives you a practical selection map: which model class to use for each workload (the job the model does in your product), when to use closed APIs vs open-weight models, and how to account for geopolitics/compliance.'}
         </p>
         <p className="text-neutral-300 leading-relaxed mb-4">
           {lang === 'ru' ? (
             <>
-              По состоянию на 2026, зрелые команды редко ставят всё на одну модель. Типичный подход: портфель из нескольких моделей и роутинг по типу задачи. Это хорошо сочетается с мульти-модельными каталогами вроде{' '}
+              По состоянию на 2026, зрелые команды редко ставят всё на одну модель. Типичный подход — портфель из нескольких моделей и роутинг по типу задачи: простые запросы — в дешёвую модель, сложные — в сильную. Это хорошо сочетается с мульти-модельными каталогами вроде{' '}
               <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
                 AWS Bedrock
               </a>{' '}
@@ -33,7 +33,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
             </>
           ) : (
             <>
-              As of 2026, mature teams rarely bet on a single model. The typical pattern is a multi-model portfolio with routing by workload type. This fits multi-model catalogs such as{' '}
+              As of 2026, mature teams rarely bet on a single model. The typical pattern is a multi-model portfolio with routing by workload type: easy requests to a cheap model, hard ones to a strong one. This fits multi-model catalogs such as{' '}
               <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">
                 AWS Bedrock
               </a>{' '}
@@ -65,7 +65,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
                 >
                   [1]
                 </Link>
-                . Современные модели ближе к тому, что мы называем интуицией: в процессе обучения на миллиардах страниц текста модель усвоила статистические паттерны — какие слова, фразы и идеи чаще появляются рядом друг с другом.
+                . Современные модели ближе к тому, что мы называем интуицией: в процессе обучения на миллиардах страниц текста модель усвоила статистические паттерны — какие слова, фразы и идеи чаще появляются рядом друг с другом. Например, после «чашка горячего» обычно идёт «чая» или «кофе».
               </>
             ) : (
               <>
@@ -77,7 +77,7 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
                 >
                   [1]
                 </Link>
-                . Modern models are closer to what we call intuition: during training on billions of pages, the model absorbs statistical patterns of which words, phrases, and ideas tend to appear together.
+                . Modern models are closer to what we call intuition: during training on billions of pages, the model absorbs statistical patterns of which words, phrases, and ideas tend to appear together. After &quot;a cup of hot&quot; usually comes &quot;tea&quot; or &quot;coffee&quot;.
               </>
             )}
           </p>
@@ -85,19 +85,19 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
           <p>
             {lang === 'ru' ? (
               <>
-                Когда вы задаёте вопрос, модель не «ищет ответ в базе данных», а достраивает наиболее вероятное продолжение. За этой метафорой стоит конкретный артефакт: статический файл (часто в формате <code className="bg-white/5 px-1.5 py-0.5 rounded text-neutral-200">.safetensors</code>), содержащий миллиарды параметров — «весов».
+                Когда вы задаёте вопрос, модель не «ищет ответ в базе данных», а достраивает наиболее вероятное продолжение. За этой метафорой стоит конкретный артефакт: статический файл (часто в формате <code className="bg-white/5 px-1.5 py-0.5 rounded text-neutral-200">.safetensors</code>), содержащий миллиарды параметров — «весов». Каждый вес — одно число, подобранное при обучении.
               </>
             ) : (
               <>
-                When you prompt the model, it does not &quot;look up&quot; an answer in a hidden database; it predicts the most likely continuation. Behind this metaphor is a concrete artifact: a static file (often in <code className="bg-white/5 px-1.5 py-0.5 rounded text-neutral-200">.safetensors</code> format) containing billions of parameters, the model weights.
+                When you prompt the model, it does not &quot;look up&quot; an answer in a hidden database; it predicts the most likely continuation. Behind this metaphor is a concrete artifact: a static file (often in <code className="bg-white/5 px-1.5 py-0.5 rounded text-neutral-200">.safetensors</code> format) containing billions of parameters, the model weights. Each weight is a single number tuned during training.
               </>
             )}
           </p>
 
           <p>
             {lang === 'ru'
-              ? 'Сам по себе файл ничего не делает; чтобы он «ожил», нужен GPU. И модель не меняется от разговора к разговору: чтобы она стала лучше, разработчики выпускают новую версию весов.'
-              : 'The file alone does nothing; a GPU is needed to run inference. And the model does not change from chat to chat: to improve it, developers release a new version of weights.'}
+              ? 'Сам по себе файл ничего не делает; чтобы он «ожил», нужен GPU — видеокарта для быстрых вычислений. И модель не меняется от разговора к разговору: чтобы она стала лучше, разработчики выпускают новую версию весов.'
+              : 'The file alone does nothing; a GPU (a graphics card built for fast math) is needed to run inference. And the model does not change from chat to chat: to improve it, developers release a new version of weights.'}
           </p>
 
           <div className="pt-3 border-t border-border-card text-sm text-neutral-500">
