@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Term from '@/components/Term';
+import Terminal from '@/components/Terminal';
 
 export default function LlmLandscapeTheory({ lang }: { lang: string }) {
   return (
@@ -192,6 +193,106 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
           {lang === 'ru' ? 'Закрытый API vs Open-weight: базовый выбор' : 'Closed API vs Open-weight: First Decision'}
         </h2>
         <div className="space-y-5">
+          <div className="space-y-5 text-neutral-300 leading-relaxed">
+            <p>
+              {lang === 'ru'
+                ? 'Представьте, что вам нужно перевести письмо. Можно нанять переводчика в штат: он работает у вас в офисе, видит ваши документы, и вы сами решаете, чему его учить. А можно отправить текст в бюро переводов: вы отдаёте письмо, через минуту получаете перевод и платите за объём. Как бюро устроено внутри, кто переводит и по каким правилам, решаете уже не вы.'
+                : 'Imagine you need to translate a letter. You can hire a translator on staff: they work in your office, see your documents, and you decide what to train them on. Or you can send the text to a translation agency: you hand over the letter, get the translation back a minute later, and pay by volume. How the agency works inside, who translates and by what rules, is no longer your decision.'}
+            </p>
+            <p>
+              {lang === 'ru'
+                ? 'С языковыми моделями работают те же два варианта. Во втором варианте модель — тот самый файл весов из прошлой главы — лежит в дата-центре компании-разработчика: OpenAI, Anthropic, Google. Файл никогда не покидает их серверы. Ваше приложение отправляет текст по сети и получает ответ. Адрес, на который уходит запрос, называется endpoint. Endpoint — это URL API, куда ваше приложение отправляет запрос и откуда получает ответ модели. Такой способ доступа к модели называется закрытым API. API (Application Programming Interface, программный интерфейс приложения) — это договорённость о формате: какие поля программа отправляет в запросе и какие получает в ответе.'
+                : 'Language models come with the same two options. In the second one, the model — the weights file from the previous chapter — sits in the developer\'s data center: OpenAI, Anthropic, Google. The file never leaves their servers. Your app sends text over the network and gets an answer back. The address the request goes to is called an endpoint. An endpoint is the API URL where your app sends a request and receives the model response. This way of accessing a model is called a closed API. An API (Application Programming Interface) is an agreement about format: which fields a program sends in a request and which it receives in the response.'}
+            </p>
+            <p>
+              {lang === 'ru'
+                ? 'Слово «закрытый» относится к модели, а не к API. Документация API открыта: любой разработчик может её прочитать, получить ключ и отправить запрос. Закрыты веса: их нельзя скачать, запустить у себя или изучить изнутри. Поэтому такие модели ещё называют проприетарными.'
+                : 'The word "closed" describes the model, not the API. The API documentation is public: any developer can read it, get a key, and send a request. What is closed is the weights: you cannot download them, run them yourself, or inspect them. That is why such models are also called proprietary.'}
+            </p>
+            <p>
+              {lang === 'ru'
+                ? 'Вот как выглядит один вызов закрытого API из терминала (ответ сокращён). Ключ в заголовке Authorization выдаёт провайдер: по нему он узнаёт, кто вы, и кому выставить счёт.'
+                : 'Here is what one closed-API call looks like from a terminal (the response is shortened). The key in the Authorization header is issued by the provider: it tells the provider who you are and whom to bill.'}
+            </p>
+          </div>
+
+          <Terminal
+            title="curl · zsh"
+            lines={[
+              { cmd: 'curl https://api.openai.com/v1/responses \\' },
+              { prompt: '>', cmd: '  -H "Authorization: Bearer $OPENAI_API_KEY" \\' },
+              { prompt: '>', cmd: '  -H "Content-Type: application/json" \\' },
+              {
+                prompt: '>',
+                cmd: lang === 'ru'
+                  ? `  -d '{"model": "gpt-4.1", "input": "Переведи на английский: Доставка задерживается на два дня"}'`
+                  : `  -d '{"model": "gpt-4.1", "input": "Translate to German: The delivery is delayed by two days"}'`,
+              },
+              { out: '{' },
+              { out: '  "object": "response",' },
+              { out: '  "model": "gpt-4.1-2025-04-14",' },
+              { out: '  "output": [{ "type": "message", "content": [{ "type": "output_text",' },
+              {
+                out: lang === 'ru'
+                  ? '      "text": "The delivery is delayed by two days." }] }],'
+                  : '      "text": "Die Lieferung verzögert sich um zwei Tage." }] }],',
+                tone: 'ok',
+              },
+              { out: lang === 'ru' ? '  "usage": { "input_tokens": 19, "output_tokens": 9 }' : '  "usage": { "input_tokens": 15, "output_tokens": 11 }', tone: 'warn' },
+              { out: '}' },
+            ]}
+          />
+
+          <div className="space-y-5 text-neutral-300 leading-relaxed">
+            <p>
+              {lang === 'ru' ? (
+                <>
+                  {'Посмотрите, что вернулось. В ответе есть текст перевода и поле usage: сколько '}
+                  <Term id="token" lang={lang}>токенов</Term>
+                  {' ушло на запрос и на ответ. Именно за токены вы и платите: провайдеры указывают цену за миллион входных и выходных токенов. Больше от модели к вам ничего не приходит: ни весов, ни способа запустить её без интернета. Свои GPU тоже не нужны, потому что вычисления идут на стороне провайдера. Поэтому запуск через закрытый API такой быстрый.'}
+                </>
+              ) : (
+                <>
+                  {'Look at what came back. The response contains the translated text and a usage field: how many '}
+                  <Term id="token" lang={lang}>tokens</Term>
+                  {' the request and the answer took. Tokens are what you pay for: providers list a price per million input and output tokens. Nothing else of the model reaches you: no weights, no way to run it offline. You need no GPUs of your own either, because the computation runs on the provider\'s side. That is why launching through a closed API is so fast.'}
+                </>
+              )}
+            </p>
+            <p>
+              {lang === 'ru' ? (
+                <>
+                  {'У этого удобства есть цена — зависимость. Ваш текст обрабатывается на чужих серверах по условиям провайдера. Провайдер сам решает, сколько живёт модель. OpenAI объявила о прекращении поддержки GPT-4.5 Preview 14 апреля 2025 года и отключила её 14 июля 2025 года: у разработчиков было три месяца на переход ('}
+                  <a href="https://developers.openai.com/api/docs/deprecations" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">OpenAI, Deprecations</a>
+                  {'). Anthropic в своей документации пишет прямо: запросы к выведенной из эксплуатации модели завершаются ошибкой, а о выводе компания предупреждает минимум за 60 дней ('}
+                  <a href="https://platform.claude.com/docs/en/about-claude/model-deprecations" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Anthropic, Model deprecations</a>
+                  {'). Цены, лимиты запросов и доступ из вашей страны тоже задаёт провайдер.'}
+                </>
+              ) : (
+                <>
+                  {'This convenience comes with a dependency. Your text is processed on someone else\'s servers under the provider\'s terms. The provider decides how long a model lives. OpenAI announced the deprecation of GPT-4.5 Preview on April 14, 2025 and shut it down on July 14, 2025, giving developers three months to migrate ('}
+                  <a href="https://developers.openai.com/api/docs/deprecations" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">OpenAI, Deprecations</a>
+                  {'). Anthropic\'s documentation states it plainly: requests to a retired model fail, and the company gives at least 60 days\' notice before retirement ('}
+                  <a href="https://platform.claude.com/docs/en/about-claude/model-deprecations" target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">Anthropic, Model deprecations</a>
+                  {'). Prices, rate limits, and availability in your country are also set by the provider.'}
+                </>
+              )}
+            </p>
+            <p>
+              {lang === 'ru' ? (
+                <>
+                  <Term id="open-weights" lang={lang}>Open-weight</Term>
+                  {' — первый вариант, «переводчик в штате». Вы скачиваете файл весов и запускаете модель на своих серверах. Данные не уходят наружу, а файл, который уже лежит на вашем диске, никто не может отключить. Взамен вы сами покупаете или арендуете GPU, обновляете модель и следите за её работой.'}
+                </>
+              ) : (
+                <>
+                  <Term id="open-weights" lang={lang}>Open-weight</Term>
+                  {' is the first option, the translator on staff. You download the weights file and run the model on your own servers. Data does not leave your perimeter, and no one can switch off a file that already sits on your disk. In exchange, you buy or rent the GPUs, update the model, and keep it running yourself.'}
+                </>
+              )}
+            </p>
+          </div>
+
           <p className="text-neutral-400 leading-relaxed max-w-4xl">
             {lang === 'ru'
               ? 'Выбор не между “модно/не модно”, а между скоростью запуска и степенью контроля над инфраструктурой и данными.'
@@ -199,21 +300,6 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
           </p>
 
           <div className="space-y-4">
-            <div className="rounded-xl border border-border-subtle bg-gradient-to-br from-[#161a18] via-card-dark to-card-dark p-5">
-              <div className="inline-flex items-center px-2.5 py-1 rounded-md bg-accent-500/10 border border-accent-500/30 text-[11px] font-semibold text-accent-300 uppercase tracking-wider mb-3">
-                {lang === 'ru' ? 'КОНЦЕПТ' : 'CONCEPT'}
-              </div>
-              <h3 className="text-xl font-semibold text-neutral-100 mb-2">Endpoint</h3>
-              <p className="text-neutral-300 leading-relaxed mb-4">
-                {lang === 'ru'
-                  ? 'Endpoint — это URL API, куда ваше приложение отправляет запрос и откуда получает ответ модели.'
-                  : 'An endpoint is the API URL where your app sends a request and receives the model response.'}
-              </p>
-              <div className="rounded-lg border border-border-emphasis bg-card-dark px-3 py-2 text-xs text-neutral-400 font-mono">
-                POST /v1/responses
-              </div>
-            </div>
-
             <div className="rounded-xl border border-border-subtle bg-card p-5">
               <div className="text-[11px] uppercase tracking-wider text-accent-300/90 mb-3">
                 {lang === 'ru' ? 'Закрытый API' : 'Closed API'}

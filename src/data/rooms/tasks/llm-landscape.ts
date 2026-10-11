@@ -429,5 +429,41 @@ export const llmLandscapeTasks: LocalizedTask[] = [
         ru: 'Верно. В комнате xAI (Grok) отнесён к стратегии agentic-API с оплатой инструментов, тогда как компактные модели — это Phi (Microsoft), а enterprise-RAG — Command R (Cohere).',
         en: 'Correct. The room places xAI (Grok) in the tool-priced agentic-API strategy, while compact models are Phi (Microsoft) and enterprise RAG is Command R (Cohere).'
       }
+    },
+    {
+      id: 17,
+      type: 'input',
+      question: {
+        ru: 'Модель работает на серверах компании-разработчика, её веса скачать нельзя, а ваше приложение отправляет запрос на endpoint и получает только ответ. Как называется такой способ доступа к модели? (два слова)',
+        en: 'The model runs on the developer\'s servers, its weights cannot be downloaded, and your app sends a request to an endpoint and gets back only the answer. What is this way of accessing a model called? (two words)'
+      },
+      answer: ['закрытый api', 'закрытое api', 'закрытый апи', 'закрытые api', 'closed api', 'closed apis'],
+      hint: {
+        ru: 'Подсказка: этот вариант стоит в паре с open-weight в заголовке главы 4.',
+        en: 'Hint: this option is paired with open-weight in the title of chapter 4.'
+      },
+      explanation: {
+        ru: 'Верно. Закрытый API: модель живёт у провайдера, вы получаете ответы через endpoint, но не веса.',
+        en: 'Correct. A closed API: the model lives with the provider, and you get answers through an endpoint, not the weights.'
+      }
+    },
+    {
+      id: 18,
+      type: 'multiple-choice',
+      question: {
+        ru: 'Что именно «закрыто» в закрытом API?',
+        en: 'What exactly is "closed" in a closed API?'
+      },
+      options: [
+        { ru: 'Документация: формат запросов знают только партнёры компании', en: 'The documentation: only the company\'s partners know the request format' },
+        { ru: 'Веса модели: их нельзя скачать и запустить у себя', en: 'The model weights: you cannot download them or run them yourself' },
+        { ru: 'Ответы: их запрещено сохранять в своей базе данных', en: 'The answers: you may not store them in your own database' },
+        { ru: 'Регистрация: ключ выдают только крупным корпорациям', en: 'Sign-up: keys are issued only to large corporations' }
+      ],
+      answer: { ru: 'Веса модели: их нельзя скачать и запустить у себя', en: 'The model weights: you cannot download them or run them yourself' },
+      explanation: {
+        ru: 'Верно. «Закрытый» относится к модели, а не к API: документация открыта, ключ может получить любой разработчик, а веса остаются на серверах провайдера.',
+        en: 'Correct. "Closed" describes the model, not the API: the documentation is public, any developer can get a key, and the weights stay on the provider\'s servers.'
+      }
     }
   ];
