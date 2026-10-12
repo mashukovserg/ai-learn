@@ -149,43 +149,85 @@ export default function LlmLandscapeTheory({ lang }: { lang: string }) {
               {[
                 {
                   cls: { ru: 'Флагманские модели', en: 'Flagship models' },
-                  examples: 'GPT-6 Astra, Claude Fable 5.1, Claude Opus 5.5, Gemini 3.1 Pro (preview)',
+                  examples: [
+                    ['GPT-6 Astra', 'https://developers.openai.com/api/docs/models/gpt-6-astra'],
+                    ['Claude Fable 5.1', 'https://platform.claude.com/docs/en/models/fable-5-1/overview'],
+                    ['Claude Opus 5.5', 'https://platform.claude.com/docs/en/models/opus-5-5/overview'],
+                    ['Gemini 3.1 Pro (preview)', 'https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview'],
+                  ],
                   use: { ru: 'Самые трудные задачи: долгая агентная работа, сложный код и анализ, где ошибка дорого стоит', en: 'The hardest tasks: long agentic work, complex code, and analysis where a mistake is expensive' },
                 },
                 {
                   cls: { ru: 'Сбалансированные модели', en: 'Balanced models' },
-                  examples: 'Claude Sonnet 5.5, GPT-6.1 Sol, Gemini 3.8 Flash',
+                  examples: [
+                    ['Claude Sonnet 5.5', 'https://platform.claude.com/docs/en/models/sonnet-5-5/overview'],
+                    ['GPT-6.1 Sol', 'https://developers.openai.com/api/docs/models/gpt-6.1-sol'],
+                    ['Gemini 3.8 Flash', 'https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash'],
+                  ],
                   use: { ru: 'Основной поток рабочих задач: качество близко к флагману, но дешевле и быстрее', en: 'The bulk of production work: quality close to the flagship, but cheaper and faster' },
                 },
                 {
                   cls: { ru: 'Быстрые и дешевые', en: 'Fast and low-cost' },
-                  examples: 'Claude Haiku 5.5, GPT-6 Luna, Gemini 3.5 Flash-Lite, DeepSeek V4.1 Flash',
+                  examples: [
+                    ['Claude Haiku 5.5', 'https://platform.claude.com/docs/en/models/haiku-5-5/overview'],
+                    ['GPT-6 Luna', 'https://developers.openai.com/api/docs/models/gpt-6-luna'],
+                    ['Gemini 3.5 Flash-Lite', 'https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite'],
+                    ['DeepSeek V4.1 Flash', 'https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash'],
+                  ],
                   use: { ru: 'Большие объемы: классификация, извлечение данных, роутинг запросов', en: 'High volume: classification, data extraction, request routing' },
                 },
                 {
                   cls: { ru: 'Кодинг и агенты', en: 'Coding and agents' },
-                  examples: 'Claude Opus 5.5, GPT-6 Sol, Kimi K2.7-Code',
+                  examples: [
+                    ['Claude Opus 5.5', 'https://platform.claude.com/docs/en/models/opus-5-5/overview'],
+                    ['GPT-6 Sol', 'https://developers.openai.com/api/docs/models/gpt-6-sol'],
+                    ['Kimi K2.7-Code', 'https://huggingface.co/moonshotai/Kimi-K2.7-Code'],
+                  ],
                   use: { ru: 'Агенты, которые сами пишут, запускают и исправляют код', en: 'Agents that write, run, and fix code on their own' },
                 },
                 {
                   cls: { ru: 'Открытые веса (open-weight)', en: 'Open-weight' },
-                  examples: 'Kimi K3, GLM-5.3, DeepSeek V4-Pro, Qwen3.8, Mistral Large 4, gpt-oss-120b',
+                  examples: [
+                    ['Kimi K3', 'https://huggingface.co/moonshotai/Kimi-K3'],
+                    ['GLM-5.3', 'https://huggingface.co/zai-org/GLM-5.3'],
+                    ['DeepSeek V4-Pro', 'https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro'],
+                    ['Qwen3.8', 'https://huggingface.co/collections/Qwen/qwen38-6a7d69d63a8fa0914eb7e54c'],
+                    ['Mistral Large 4', 'https://docs.mistral.ai/models/mistral-large-4-0'],
+                    ['gpt-oss-120b', 'https://developers.openai.com/api/docs/models/gpt-oss-120b'],
+                  ],
                   use: { ru: 'Свои серверы: контроль над данными, дообучение, нет зависимости от чужого API', en: 'Your own servers: control over data, fine-tuning, no dependence on someone else\'s API' },
                 },
                 {
                   cls: { ru: 'Голос и реальное время', en: 'Voice and real time' },
-                  examples: 'GPT-Live 1, GPT-Realtime-2.1, Gemini 3.8 Live',
+                  examples: [
+                    ['GPT-Live 1', 'https://developers.openai.com/api/docs/models/gpt-live-1'],
+                    ['GPT-Realtime-2.1', 'https://developers.openai.com/api/docs/models/gpt-realtime-2.1'],
+                    ['Gemini 3.8 Live', 'https://ai.google.dev/gemini-api/docs/models/gemini-3.8-live'],
+                  ],
                   use: { ru: 'Голосовые агенты и живой диалог, в котором модель можно перебить', en: 'Voice agents and live dialogue in which the user can interrupt the model' },
                 },
                 {
                   cls: { ru: 'На устройстве (on-device)', en: 'On-device' },
-                  examples: 'Gemma 4 E2B / E4B, Apple AFM 3 Core, Ministral 3 3B, Phi-4-mini',
+                  examples: [
+                    ['Gemma 4 E2B', 'https://huggingface.co/google/gemma-4-E2B-it'],
+                    ['Gemma 4 E4B', 'https://huggingface.co/google/gemma-4-E4B-it'],
+                    ['Apple AFM 3 Core', 'https://machinelearning.apple.com/research/introducing-third-generation-of-apple-foundation-models'],
+                    ['Ministral 3 3B', 'https://docs.mistral.ai/models/ministral-3-3b-25-12'],
+                    ['Phi-4-mini', 'https://huggingface.co/microsoft/Phi-4-mini-instruct'],
+                  ],
                   use: { ru: 'Телефон, ноутбук, браузер: работа без сети, данные не покидают устройство', en: 'Phone, laptop, browser: works offline, data stays on the device' },
                 },
               ].map((row, idx, rows) => (
                 <tr key={row.cls.en} className={idx < rows.length - 1 ? 'border-b border-border-subtle' : undefined}>
                   <td className="px-4 py-3 text-neutral-200">{lang === 'ru' ? row.cls.ru : row.cls.en}</td>
-                  <td className="px-4 py-3 text-neutral-300 border-l border-border-subtle">{row.examples}</td>
+                  <td className="px-4 py-3 text-neutral-300 border-l border-border-subtle">
+                    {row.examples.map(([name, href], i) => (
+                      <React.Fragment key={name}>
+                        <a href={href} target="_blank" rel="noreferrer noopener" className="text-accent-300 hover:text-accent-200 underline underline-offset-4">{name}</a>
+                        {i < row.examples.length - 1 ? ', ' : ''}
+                      </React.Fragment>
+                    ))}
+                  </td>
                   <td className="px-4 py-3 text-neutral-400 border-l border-border-subtle">{lang === 'ru' ? row.use.ru : row.use.en}</td>
                 </tr>
               ))}
