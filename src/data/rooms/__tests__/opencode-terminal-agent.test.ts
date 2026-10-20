@@ -6,8 +6,8 @@
  * know: that this room is wired into all three registries, that it sits where
  * the curriculum decision put it (right after `agentic-cli-tools` in the
  * agent-coding path), that it satisfies the task-mix rule, that every glossary
- * term its theory references exists, and that the three genuine session
- * captures the theory is built around actually ship under `public/`.
+ * term its theory references exists (including `stealth-model`), and that the
+ * four genuine captures the theory is built around actually ship under `public/`.
  */
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -76,9 +76,14 @@ describe(`room ${ROOM_ID}`, () => {
     expect(enChapters).toEqual([1, 2, 3, 4, 5]);
   });
 
-  it('ships the three genuine session captures it teaches from', () => {
+  it('explains stealth models through the glossary', () => {
+    const ids = [...theorySource.matchAll(/<Term id="([^"]+)"/g)].map(m => m[1]);
+    expect(ids).toContain('stealth-model');
+  });
+
+  it('ships the four genuine captures it teaches from', () => {
     const shots = [...theorySource.matchAll(/\$\{SHOTS\}\/([\w.-]+)/g)].map(m => m[1]);
-    expect(shots.length).toBe(3);
+    expect(shots.length).toBe(4);
     for (const shot of shots) {
       const file = join(process.cwd(), 'public/images/rooms/opencode-terminal-agent', shot);
       expect(existsSync(file), `screenshot ${shot} is missing under public/`).toBe(true);
