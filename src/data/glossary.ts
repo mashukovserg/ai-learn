@@ -1165,4 +1165,12 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
       en: 'All the training that comes after pretraining and turns a "text continuer" into an assistant: usually SFT on examples of instructions and answers first, then reinforcement learning — on human ratings (RLHF) or on tasks with verifiable answers, such as maths and code. Formally this is transfer learning too: the pretrained weights shift toward a new goal. It uses orders of magnitude less data than pretraining, yet it changes the product\'s behaviour noticeably.',
     },
   },
+  'stealth-model': {
+    id: 'stealth-model',
+    term: { ru: 'Stealth-модель (модель под кодовым именем)', en: 'Stealth Model' },
+    definition: {
+      ru: 'Модель, которую выпускают в открытый доступ под кодовым именем, не называя разработчика, — через агрегаторы и шлюзы моделей или на аренах для слепого сравнения. Лаборатория получает полевой тест на реальных задачах без эффекта бренда и отзывы до официального релиза; позже разработчика обычно раскрывают. Пользователь часто получает модель бесплатно, но в обмен на данные и неопределённость: неизвестно, кто обрабатывает запросы, собранные данные могут идти на улучшение модели, а саму модель могут изменить или убрать в любой момент.',
+      en: 'A model released to the public under a codename without naming its developer — through model aggregators and gateways or on blind-comparison arenas. The lab gets a field test on real tasks without the brand effect, plus feedback before the official release; the developer is usually revealed later. Users often get the model for free, but in exchange for data and uncertainty: nobody says who processes the requests, the collected data may go toward improving the model, and the model itself can be changed or withdrawn at any moment.',
+    },
+  },
 };
