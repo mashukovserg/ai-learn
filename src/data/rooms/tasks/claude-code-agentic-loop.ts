@@ -3,80 +3,82 @@ import { LocalizedTask } from '../types';
 export const claudeCodeAgenticLoopTasks: LocalizedTask[] = [
   {
     id: 1,
-    type: 'multiple-choice',
+    type: 'categorize',
     question: {
-      ru: 'Из каких трех основных фаз состоит агентный цикл Claude Code?',
-      en: 'What are the three main phases of the Claude Code agentic loop?'
+      ru: 'Разложите действия из сессии, которая добавила термин в глоссарий, по фазам цикла.',
+      en: 'Sort the actions from the session that added a glossary term by the phases of the loop.'
     },
-    options: [
-      { ru: 'Планирование, Написание кода, Релиз', en: 'Planning, Coding, Release' },
-      { ru: 'Сбор контекста, Действие, Верификация', en: 'Gather Context, Take Action, Verify Results' },
-      { ru: 'Чтение, Редактирование, Удаление', en: 'Read, Edit, Delete' },
-      { ru: 'Запрос, Ответ, Оплата', en: 'Request, Response, Payment' }
-    ],
-    answer: {
-      ru: 'Сбор контекста, Действие, Верификация',
-      en: 'Gather Context, Take Action, Verify Results'
+    answer: '',
+    categorize: {
+      items: [
+        { ru: 'Прочитать тест комнаты перед правкой', en: 'Read the room test before editing' },
+        { ru: 'Найти через grep точное название комнаты для ссылки', en: 'Find the exact room title for a link with grep' },
+        { ru: 'Отредактировать src/data/glossary.ts', en: 'Edit src/data/glossary.ts' },
+        { ru: 'Обновить тест под четыре снимка', en: 'Update the test for four captures' },
+        { ru: 'Запустить npm run check-all', en: 'Run npm run check-all' },
+        { ru: 'Открыть комнату в браузере на двух языках', en: 'Open the room in a browser in both languages' }
+      ],
+      buckets: [
+        { ru: 'Сбор контекста', en: 'Gather context' },
+        { ru: 'Действие', en: 'Take action' },
+        { ru: 'Проверка', en: 'Verify results' }
+      ],
+      correctMapping: {
+        'Read the room test before editing': 'Gather context',
+        'Find the exact room title for a link with grep': 'Gather context',
+        'Edit src/data/glossary.ts': 'Take action',
+        'Update the test for four captures': 'Take action',
+        'Run npm run check-all': 'Verify results',
+        'Open the room in a browser in both languages': 'Verify results'
+      }
     },
     explanation: {
-      ru: 'Этот цикл повторяется непрерывно, пока цель не будет достигнута или агент не запросит помощь.',
-      en: 'This loop repeats continuously until the goal is achieved or the agent requests help.'
+      ru: 'Чтение и поиск — сбор контекста, даже если поиск случился посреди правок; правки файлов — действие; тесты и проверка страницы в браузере — два слоя проверки.',
+      en: 'Reading and searching are context gathering, even when the search happens in the middle of editing; file edits are action; the tests and the browser check of the page are two layers of verification.'
     }
   },
   {
     id: 2,
-    type: 'categorize',
+    type: 'multiple-choice',
     question: {
-      ru: 'Распределите действия агента по фазам цикла:',
-      en: 'Distribute agent actions by cycle phases:'
+      ru: 'Что документация Claude Code называет агентной обвязкой (agentic harness)?',
+      en: 'What does the Claude Code documentation call the agentic harness?'
     },
-    answer: '',
+    options: [
+      { ru: 'Саму языковую модель Claude', en: 'The Claude language model itself' },
+      { ru: 'Слой вокруг модели, который даёт ей инструменты и управляет её контекстом', en: 'The layer around the model that gives it tools and manages its context' },
+      { ru: 'Набор тестов, который агент запускает на этапе проверки', en: 'The test suite the agent runs during verification' },
+      { ru: 'Расширение для IDE, через которое работает агент', en: 'The IDE extension the agent works through' }
+    ],
+    answer: {
+      ru: 'Слой вокруг модели, который даёт ей инструменты и управляет её контекстом',
+      en: 'The layer around the model that gives it tools and manages its context'
+    },
     explanation: {
-      ru: 'Агент сначала изучает среду, затем меняет её, и обязательно проверяет результат изменения.',
-      en: 'The agent first studies the environment, then changes it, and must verify the result of the change.'
-    },
-    categorize: {
-      items: [
-        { ru: 'Чтение файла test.py', en: 'Reading test.py' },
-        { ru: 'Запуск npm test', en: 'Running npm test' },
-        { ru: 'Применение патча к коду', en: 'Applying a code patch' },
-        { ru: 'Поиск по кодовой базе', en: 'Searching the codebase' },
-        { ru: 'Проверка статус-кода API', en: 'Checking API status code' }
-      ],
-      buckets: [
-        { ru: 'Сбор контекста', en: 'Gather Context' },
-        { ru: 'Действие', en: 'Take Action' },
-        { ru: 'Верификация', en: 'Verify' }
-      ],
-      correctMapping: {
-        'Reading test.py': 'Gather Context',
-        'Running npm test': 'Verify',
-        'Applying a code patch': 'Take Action',
-        'Searching the codebase': 'Gather Context',
-        'Checking API status code': 'Verify',
-      }
+      ru: 'Модель рассуждает, инструменты действуют, а Claude Code — это обвязка вокруг модели: она предоставляет инструменты и решает, что попадает в контекст.',
+      en: 'The model reasons, the tools act, and Claude Code is the harness around the model: it provides the tools and decides what goes into the context.'
     }
   },
   {
     id: 3,
     type: 'multiple-choice',
     question: {
-      ru: 'Что происходит, когда Claude Code достигает лимита контекстного окна?',
-      en: 'What happens when Claude Code reaches the context window limit?'
+      ru: 'Агент решил отредактировать файл инструментом Edit. Как это происходит технически?',
+      en: 'The agent decided to edit a file with the Edit tool. How does this happen technically?'
     },
     options: [
-      { ru: 'Он прекращает работу и требует перезагрузки', en: 'It stops working and requires a restart' },
-      { ru: 'Он автоматически сжимает (compact) историю сообщений, сохраняя суть', en: 'It automatically compacts the message history, preserving the essence' },
-      { ru: 'Он удаляет все файлы в проекте', en: 'It deletes all files in the project' },
-      { ru: 'Он переключается на Haiku', en: 'It switches to Haiku' }
+      { ru: 'Модель сама записывает изменения на диск', en: 'The model writes the changes to disk itself' },
+      { ru: 'Модель формирует запрос — имя инструмента и аргументы, обвязка его выполняет, а результат возвращается в контекст модели', en: 'The model forms a request — a tool name and arguments, the harness executes it, and the result goes back into the model\'s context' },
+      { ru: 'Агент показывает правку, а пользователь вручную копирует её в файл', en: 'The agent shows the edit and the user copies it into the file by hand' },
+      { ru: 'IDE угадывает правку по тексту ответа модели', en: 'The IDE guesses the edit from the model\'s text reply' }
     ],
     answer: {
-      ru: 'Он автоматически сжимает (compact) историю сообщений, сохраняя суть',
-      en: 'It automatically compacts the message history, preserving the essence'
+      ru: 'Модель формирует запрос — имя инструмента и аргументы, обвязка его выполняет, а результат возвращается в контекст модели',
+      en: 'The model forms a request — a tool name and arguments, the harness executes it, and the result goes back into the model\'s context'
     },
     explanation: {
-      ru: 'Функция auto-compact позволяет продолжать длинные сессии без потери критического контекста.',
-      en: 'The auto-compact feature allows long sessions to continue without losing critical context.'
+      ru: 'Это вызов функций: модель лишь формирует структурированный запрос, исполняет его обвязка, и результат становится новым наблюдением для следующего шага цикла.',
+      en: 'This is function calling: the model only forms a structured request, the harness executes it, and the result becomes a new observation for the next step of the loop.'
     }
   },
   {
@@ -84,186 +86,215 @@ export const claudeCodeAgenticLoopTasks: LocalizedTask[] = [
     type: 'sorting',
     answer: '',
     question: {
-      ru: 'Восстановите логический порядок работы агента при исправлении бага:',
-      en: 'Restore the logical order of agent work when fixing a bug:'
+      ru: 'Агента попросили починить упавшие тесты. Расставьте шаги в типичном порядке:',
+      en: 'The agent was asked to fix failing tests. Put the steps in their typical order:'
     },
     initialItems: [
-      { ru: 'Запустить тесты для проверки фикса', en: 'Run tests to verify the fix' },
-      { ru: 'Прочитать логи ошибки', en: 'Read error logs' },
-      { ru: 'Внести изменения в файл', en: 'Apply changes to the file' },
-      { ru: 'Найти место возникновения ошибки', en: 'Locate the bug source' }
+      { ru: 'Внести правку', en: 'Make the fix' },
+      { ru: 'Найти файлы, связанные с ошибкой', en: 'Find the files related to the error' },
+      { ru: 'Снова запустить тесты', en: 'Run the tests again' },
+      { ru: 'Запустить тесты и увидеть, что падает', en: 'Run the tests and see what fails' },
+      { ru: 'Прочитать код и понять причину', en: 'Read the code and understand the cause' }
     ],
     correctOrder: [
-      { ru: 'Прочитать логи ошибки', en: 'Read error logs' },
-      { ru: 'Найти место возникновения ошибки', en: 'Locate the bug source' },
-      { ru: 'Внести изменения в файл', en: 'Apply changes to the file' },
-      { ru: 'Запустить тесты для проверки фикса', en: 'Run tests to verify the fix' }
+      { ru: 'Запустить тесты и увидеть, что падает', en: 'Run the tests and see what fails' },
+      { ru: 'Найти файлы, связанные с ошибкой', en: 'Find the files related to the error' },
+      { ru: 'Прочитать код и понять причину', en: 'Read the code and understand the cause' },
+      { ru: 'Внести правку', en: 'Make the fix' },
+      { ru: 'Снова запустить тесты', en: 'Run the tests again' }
     ],
     explanation: {
-      ru: 'Агент всегда идет от анализа проблемы к действию и проверке.',
-      en: 'The agent always moves from problem analysis to action and verification.'
+      ru: 'Сначала воспроизвести ошибку и найти причину (сбор контекста), затем поправить (действие), затем снова прогнать тесты (проверка). Если тесты упадут, цикл вернётся к поиску.',
+      en: 'First reproduce the error and find the cause (gathering context), then fix it (action), then run the tests again (verification). If they fail, the loop goes back to searching.'
     }
   },
   {
     id: 5,
     type: 'multiple-choice',
     question: {
-      ru: 'Почему агенту Claude Code нужны "инструменты" (tools)?',
-      en: 'Why does the Claude Code agent need "tools"?'
+      ru: 'Почему в журнале сессии на Linux поиск часто выглядит как команда Bash (grep, find), а не как вызов отдельного инструмента?',
+      en: 'Why does a search in a Linux session log often look like a Bash command (grep, find) rather than a call to a dedicated tool?'
     },
     options: [
-      { ru: 'Чтобы лучше понимать человеческий язык', en: 'To better understand human language' },
-      { ru: 'Для взаимодействия с внешним миром: файловой системой, терминалом и сетью', en: 'To interact with the outside world: file system, terminal, and network' },
-      { ru: 'Чтобы снизить стоимость токенов', en: 'To reduce token costs' },
-      { ru: 'Для генерации картинок', en: 'To generate images' }
+      { ru: 'Отдельных инструментов поиска в Claude Code не существует', en: 'Claude Code has no dedicated search tools at all' },
+      { ru: 'На macOS, Linux и WSL инструменты Glob и Grep по умолчанию не входят в набор, и агент ищет через Bash', en: 'On macOS, Linux, and WSL the Glob and Grep tools are not in the default set, and the agent searches through Bash' },
+      { ru: 'Так агент экономит токены: Bash не попадает в контекст', en: 'This saves tokens: Bash output does not enter the context' },
+      { ru: 'Поиск через Bash никогда не требует разрешений', en: 'A Bash search never needs permissions' }
     ],
     answer: {
-      ru: 'Для взаимодействия с внешним миром: файловой системой, терминалом и сетью',
-      en: 'To interact with the outside world: file system, terminal, and network'
+      ru: 'На macOS, Linux и WSL инструменты Glob и Grep по умолчанию не входят в набор, и агент ищет через Bash',
+      en: 'On macOS, Linux, and WSL the Glob and Grep tools are not in the default set, and the agent searches through Bash'
     },
     explanation: {
-      ru: 'Сама по себе LLM — это "мозг в банке". Инструменты — это её руки в вашей системе.',
-      en: 'An LLM is a "brain in a jar." Tools are its hands in your system.'
+      ru: 'На этих системах поиск идёт командами find и grep, за которыми стоят встроенные bfs и ugrep. Поэтому он выглядит как команда оболочки и проходит через правила для Bash.',
+      en: 'On these systems search runs through find and grep, backed by built-in bfs and ugrep. That is why it looks like a shell command and goes through the rules for Bash.'
     }
   },
   {
     id: 6,
-    type: 'multiple-choice',
+    type: 'multiple-select',
     question: {
-      ru: 'Какую модель Andrew Brown называет "Goldilocks" (Златовласка) — идеально сбалансированной для кодинга?',
-      en: 'Which model does Andrew Brown call "Goldilocks" — perfectly balanced for coding?'
+      ru: 'Что загружается в контекстное окно ещё до вашего первого сообщения? (выберите все подходящие)',
+      en: 'What is loaded into the context window before your first message? (select all that apply)'
     },
     options: [
-      { ru: 'Claude Opus (Слишком медленная/умная)', en: 'Claude Opus (Too slow/smart)' },
-      { ru: 'Claude Sonnet (То что нужно)', en: 'Claude Sonnet (Just right)' },
-      { ru: 'Claude Haiku (Слишком быстрая/простая)', en: 'Claude Haiku (Too fast/simple)' }
+      { ru: 'Файлы CLAUDE.md', en: 'CLAUDE.md files' },
+      { ru: 'Начало файла автоматической памяти MEMORY.md', en: 'The start of the auto memory file MEMORY.md' },
+      { ru: 'Имена инструментов MCP-серверов', en: 'The tool names of MCP servers' },
+      { ru: 'Однострочные описания скиллов', en: 'One-line skill descriptions' },
+      { ru: 'Полные тексты всех скиллов', en: 'The full text of every skill' },
+      { ru: 'Содержимое всех файлов репозитория', en: 'The contents of every file in the repository' }
     ],
-    answer: {
-      ru: 'Claude Sonnet (То что нужно)',
-      en: 'Claude Sonnet (Just right)'
-    },
+    answer: [
+      { ru: 'Файлы CLAUDE.md', en: 'CLAUDE.md files' },
+      { ru: 'Начало файла автоматической памяти MEMORY.md', en: 'The start of the auto memory file MEMORY.md' },
+      { ru: 'Имена инструментов MCP-серверов', en: 'The tool names of MCP servers' },
+      { ru: 'Однострочные описания скиллов', en: 'One-line skill descriptions' }
+    ],
     explanation: {
-      ru: 'Sonnet обеспечивает лучший баланс скорости, интеллекта и стоимости для ежедневных задач.',
-      en: 'Sonnet provides the best balance of speed, intelligence, and cost for daily tasks.'
+      ru: 'При старте загружаются CLAUDE.md, начало автопамяти, сведения о среде и git, имена MCP-инструментов и описания скиллов. Полные тексты скиллов и схемы MCP подгружаются по требованию, а файлы проекта агент читает сам по ходу работы.',
+      en: 'At startup the agent gets CLAUDE.md, the start of auto memory, environment and git info, MCP tool names, and skill descriptions. Full skill bodies and MCP schemas load on demand, and project files are read by the agent as it works.'
     }
   },
   {
     id: 7,
-    type: 'multiple-choice',
+    type: 'input',
     question: {
-      ru: 'Что произойдет, если вы прервете цикл агента (Ctrl+C)?',
-      en: 'What happens if you interrupt the agentic loop (Ctrl+C)?'
+      ru: 'Как называется автоматическое сжатие истории диалога при приближении к пределу контекстного окна? (одно слово)',
+      en: 'What is the automatic compression of the conversation history near the context-window limit called? (one word)'
     },
-    options: [
-      { ru: 'Все изменения в файлах откатятся автоматически', en: 'All file changes will be rolled back automatically' },
-      { ru: 'Агент остановится и будет ждать вашего фидбека или новой команды', en: 'The agent will stop and wait for your feedback or a new command' },
-      { ru: 'Сессия будет безвозвратно удалена', en: 'The session will be permanently deleted' },
-      { ru: 'Ваш аккаунт заблокируют', en: 'Your account will be banned' }
-    ],
-    answer: {
-      ru: 'Агент остановится и будет ждать вашего фидбека или новой команды',
-      en: 'The agent will stop and wait for your feedback or a new command'
+    answer: ['компакция', 'автокомпакция', 'compaction', 'auto-compaction', 'autocompaction', 'compact'],
+    hint: {
+      ru: 'Команда, которая делает то же самое вручную, называется /compact.',
+      en: 'The command that does the same thing by hand is called /compact.'
     },
     explanation: {
-      ru: 'Вы всегда контролируете цикл и можете вмешаться, если видите, что агент "пошел не туда".',
-      en: 'You always control the loop and can intervene if you see the agent "going the wrong way."'
+      ru: 'Компакция: сначала убираются старые выводы инструментов, затем история заменяется структурированным резюме. Корневой CLAUDE.md, автопамять и план после этого перечитываются с диска.',
+      en: 'Compaction: old tool outputs are cleared first, then the history is replaced with a structured summary. The root CLAUDE.md, auto memory, and the plan are re-read from disk afterwards.'
     }
   },
   {
     id: 8,
     type: 'scenario',
-    image: {
-      src: '/images/tasks/claude-code-agentic-loop/agentic-loop-phases.svg',
-      alt: { ru: 'Схема трёхфазного агентного цикла Claude Code: Сбор контекста, Действие, Верификация, с возвратом в начало.', en: 'Diagram of the three-phase Claude Code agentic loop: Gather Context, Act, Verify, looping back to the start.' },
-      caption: { ru: 'Цикл повторяется: после провала верификации агент возвращается к сбору контекста.', en: 'The loop repeats: after a failed verification the agent returns to gathering context.' },
-    },
     question: {
-      ru: 'Самокоррекция агента',
-      en: 'Agent Self-Correction'
+      ru: 'Забытое правило',
+      en: 'The Forgotten Rule'
     },
     answer: '',
+    explanation: {
+      ru: 'Ранние инструкции из сообщений могут потеряться при сжатии контекста, а CLAUDE.md перечитывается с диска. Постоянное правило должно жить в файле.',
+      en: 'Early instructions from messages can be lost in compaction, while CLAUDE.md is re-read from disk. A persistent rule belongs in the file.'
+    },
     scenario: {
       brief: {
-      ru: 'Агент внес изменения в код, запустил тесты, и они провалились с ошибкой синтаксиса. Что он должен сделать в следующей итерации цикла?',
-      en: 'The agent applied code changes, ran tests, and they failed with a syntax error. What should it do in the next loop iteration?'
-    },
+        ru: 'В начале долгой сессии вы написали агенту: «не трогай файлы миграций». Через несколько часов работы, после автоматического сжатия контекста, агент правит миграцию. Как предотвратить такое в будущем?',
+        en: 'At the start of a long session you told the agent, "don\'t touch the migration files." Several hours later, after an automatic context compaction, the agent edits a migration. How do you prevent this in the future?'
+      },
       constraints: [
-      { ru: 'Нельзя игнорировать ошибку тестов', en: 'Cannot ignore test failure' },
-      { ru: 'Нужно исправить причину провала', en: 'Must fix the root cause of the failure' }
-    ],
+        { ru: 'Правило действует для всего проекта, а не для одной задачи', en: 'The rule applies to the whole project, not to one task' },
+        { ru: 'Сессии в проекте обычно длинные', en: 'Sessions in this project are usually long' }
+      ],
       choices: [
-      {
-        text: { ru: 'Удалить файл с ошибкой', en: 'Delete the file with the error' },
-        outcome: { ru: 'Плохо. Проблема не решена.', en: 'Bad. Problem not solved.' },
-        score: 0
-      },
-      {
-        text: { ru: 'Прочитать файл, найти синтаксическую ошибку и применить новый паттерн исправления', en: 'Read the file, locate the syntax error, and apply a new fix pattern' },
-        outcome: { ru: 'Верно. Это пример верификации и возврата к фазе сбора контекста.', en: 'Correct. This is an example of verification and returning to context gathering.' },
-        score: 10
-      },
-      {
-        text: { ru: 'Запросить у пользователя правильный код', en: 'Ask the user for the correct code' },
-        outcome: { ru: 'Приемлемо, но агент должен сначала попробовать сам.', en: 'Acceptable, but the agent should try itself first.' },
-        score: 5
-      }
-    ],
-      passingScore: 8
-    },
-    explanation: {
-      ru: 'Агентный цикл ценен способностью анализировать свои ошибки через фазу верификации.',
-      en: 'The agentic loop is valuable for its ability to analyze its own mistakes through the verification phase.'
+        {
+          text: { ru: 'Записать правило в CLAUDE.md проекта', en: 'Write the rule into the project CLAUDE.md' },
+          outcome: { ru: 'Верно: CLAUDE.md перечитывается с диска после сжатия, поэтому правило не потеряется ни в этой сессии, ни в следующих.', en: 'Correct: CLAUDE.md is re-read from disk after compaction, so the rule is not lost in this session or in the next ones.' },
+          score: 10
+        },
+        {
+          text: { ru: 'Повторять правило в каждом новом сообщении', en: 'Repeat the rule in every new message' },
+          outcome: { ru: 'Сработает, пока вы не забудете, — и тратит контекст. Правило проекта должно жить в файле, а не в памяти человека.', en: 'Works until you forget — and it wastes context. A project rule should live in a file, not in a person\'s memory.' },
+          score: 4
+        },
+        {
+          text: { ru: 'Отключить сжатие и работать короткими сессиями без правил', en: 'Turn off compaction and work in short sessions without rules' },
+          outcome: { ru: 'Сжатие не главная проблема: правило, которое существует только в разговоре, исчезнет и в новой сессии.', en: 'Compaction is not the main problem: a rule that exists only in the conversation is gone in a new session too.' },
+          score: 2
+        }
+      ],
+      passingScore: 9
     }
   },
   {
     id: 9,
     type: 'mentor',
     question: {
-      ru: 'Ментор о контексте',
-      en: 'Mentor on Context'
+      ru: 'Ментор о вмешательстве',
+      en: 'Mentor on Stepping In'
     },
     answer: '',
-    explanation: { ru: 'Замедление вызвано переполнением контекстного окна: чем больше файлов и истории в сессии, тем чаще нужна «упаковка» (compacting) и тем дороже каждый шаг. Дробите задачу на небольшие этапы.', en: 'The slowdown comes from context-window overflow: the more files and history in a session, the more often compacting is needed and the more each step costs. Split work into small stages.' },
+    explanation: {
+      ru: 'Esc останавливает агента сразу и сохраняет сделанное; уточнение с Enter встаёт в очередь и учитывается после текущих вызовов инструментов.',
+      en: 'Esc stops the agent at once and keeps the work done; a correction sent with Enter is queued and taken into account after the current tool calls.'
+    },
     dialogue: {
       mentorMessage: {
-      ru: 'Я хочу, чтобы Claude Code написал тесты для всего моего огромного проекта сразу. Почему он может начать тормозить?',
-      en: 'I want Claude Code to write tests for my entire massive project at once. Why might it start slowing down?'
-    },
-      userOptions: [
-      {
-        text: { ru: 'Потому что у него мало памяти на моем компьютере', en: 'Because it has low memory on my computer' },
-        reaction: { ru: 'Не совсем. Claude Code работает в облаке, но контекстное окно ограничено.', en: 'Not exactly. Claude Code runs in the cloud, but the context window is limited.' },
-        isCorrect: false
+        ru: 'Агент начал переписывать модуль оплаты, хотя я просил только поправить текст ошибки. Он уже на середине. Что делать?',
+        en: 'The agent started rewriting the payments module, though I only asked it to fix an error message. It is halfway through. What should I do?'
       },
-      {
-        text: { ru: 'Потому что при обработке всего проекта контекстное окно переполняется и требуется частая "упаковка" (compacting) истории', en: 'Because when processing the entire project, the context window overflows and requires frequent history "compacting"' },
-        reaction: { ru: 'Верно! Чем больше файлов и истории в сессии, тем больше токенов тратится на каждый шаг.', en: 'Correct! The more files and history in a session, the more tokens are spent on each step.' },
-        isCorrect: true,
-        deepening: { ru: 'Разбиение задачи на мелкие этапы помогает экономить контекст.', en: 'Breaking the task into small stages helps save context.' }
-      }
-    ]
+      userOptions: [
+        {
+          text: { ru: 'Нажать Esc и объяснить, что нужна только правка текста', en: 'Press Esc and explain that only the message text needs changing' },
+          reaction: { ru: 'Верно. Esc отменяет текущий вызов инструмента, сохраняет сделанное, и агент ждёт ваших указаний.', en: 'Correct. Esc cancels the running tool call, keeps the work done, and the agent waits for your instructions.' },
+          isCorrect: true,
+          deepening: { ru: 'Если лишние правки уже сделаны, их можно откатить через /rewind — для правок, сделанных инструментами редактирования.', en: 'If unwanted edits are already made, /rewind can roll them back — for edits made by the file-editing tools.' }
+        },
+        {
+          text: { ru: 'Закрыть терминал и начать новую сессию', en: 'Close the terminal and start a new session' },
+          reaction: { ru: 'Так вы потеряете контекст и не остановите проблему точечно. Остановить агента можно не выходя из сессии.', en: 'That loses the context and does not stop the problem precisely. You can stop the agent without leaving the session.' },
+          isCorrect: false
+        },
+        {
+          text: { ru: 'Дождаться конца хода, а потом попросить всё вернуть', en: 'Wait until the turn ends, then ask to undo everything' },
+          reaction: { ru: 'Пока вы ждёте, агент продолжает лишнюю работу. Вмешаться можно в любой момент — для этого и есть Esc.', en: 'While you wait, the agent keeps doing unwanted work. You can step in at any moment — that is what Esc is for.' },
+          isCorrect: false
+        }
+      ]
     }
   },
   {
     id: 10,
     type: 'multiple-choice',
     question: {
-      ru: 'Что такое "RAG" в контексте сбора данных агентом?',
-      en: 'What is "RAG" in the context of agent context gathering?'
+      ru: 'Агент удалил файл командой rm через Bash. Вернёт ли его /rewind?',
+      en: 'The agent deleted a file with rm through Bash. Will /rewind bring it back?'
     },
     options: [
-      { ru: 'Способ удаления старых файлов', en: 'A way to delete old files' },
-      { ru: 'Retrieval Augmented Generation — извлечение нужных данных из базы для обогащения запроса', en: 'Retrieval Augmented Generation — retrieving necessary data from a DB to enrich the prompt' },
-      { ru: 'Автоматический генератор README', en: 'An automatic README generator' },
-      { ru: 'Протокол общения между агентами', en: 'A communication protocol between agents' }
+      { ru: 'Да, /rewind откатывает любые изменения в сессии', en: 'Yes, /rewind reverts any change made in the session' },
+      { ru: 'Нет: чекпоинты отслеживают только правки, сделанные инструментами редактирования файлов', en: 'No: checkpoints track only edits made by the file-editing tools' },
+      { ru: 'Да, но только если файл был закоммичен', en: 'Yes, but only if the file was committed' },
+      { ru: 'Нет, /rewind откатывает только разговор, а не файлы', en: 'No, /rewind only rolls back the conversation, not files' }
     ],
     answer: {
-      ru: 'Retrieval Augmented Generation — извлечение нужных данных из базы для обогащения запроса',
-      en: 'Retrieval Augmented Generation — retrieving necessary data from a DB to enrich the prompt'
+      ru: 'Нет: чекпоинты отслеживают только правки, сделанные инструментами редактирования файлов',
+      en: 'No: checkpoints track only edits made by the file-editing tools'
     },
     explanation: {
-      ru: 'Когда агент ищет информацию в вашей кодовой базе, он по сути выполняет локальный RAG.',
-      en: 'When the agent searches for information in your codebase, it is essentially performing a local RAG.'
+      ru: 'Изменения от команд оболочки (rm, mv, cp) в чекпоинты не попадают. Удалённый файл можно восстановить из git, если он был закоммичен, — поэтому git остаётся главной страховкой.',
+      en: 'Changes made by shell commands (rm, mv, cp) are not checkpointed. A deleted file can be restored from git if it was committed — which is why git remains the main safety net.'
+    }
+  },
+  {
+    id: 11,
+    type: 'multiple-select',
+    question: {
+      ru: 'Что верно про разобранную в главе 3 реальную сессию? (выберите все подходящие)',
+      en: 'Which statements about the real session from chapter 3 are true? (select all that apply)'
+    },
+    options: [
+      { ru: 'До первой правки кода агент сделал больше десяти вызовов инструментов', en: 'The agent made more than ten tool calls before the first code edit' },
+      { ru: 'Проверка шла в два слоя: тесты и просмотр страницы в браузере', en: 'Verification came in two layers: tests and viewing the page in a browser' },
+      { ru: 'Посреди правок агент вернулся к сбору контекста', en: 'In the middle of editing the agent went back to gathering context' },
+      { ru: 'Правки заняли большую часть времени сессии', en: 'The edits took most of the session time' },
+      { ru: 'Агент сначала правил файлы, а потом читал тест комнаты', en: 'The agent edited files first and read the room test afterwards' }
+    ],
+    answer: [
+      { ru: 'До первой правки кода агент сделал больше десяти вызовов инструментов', en: 'The agent made more than ten tool calls before the first code edit' },
+      { ru: 'Проверка шла в два слоя: тесты и просмотр страницы в браузере', en: 'Verification came in two layers: tests and viewing the page in a browser' },
+      { ru: 'Посреди правок агент вернулся к сбору контекста', en: 'In the middle of editing the agent went back to gathering context' }
+    ],
+    explanation: {
+      ru: 'Одиннадцать вызовов до первой правки, поиск названия комнаты посреди правок, два слоя проверки. Правки заняли меньше двух минут из шести, а тест агент прочитал заранее — поэтому и обновил его до запуска.',
+      en: 'Eleven calls before the first edit, a room-title search in the middle of editing, two layers of verification. The edits took under two of the six minutes, and the agent read the test beforehand — which is why it updated it before running anything.'
     }
   }
 ];

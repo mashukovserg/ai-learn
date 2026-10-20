@@ -1173,4 +1173,52 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
       en: 'A model released to the public under a codename without naming its developer — through model aggregators and gateways or on blind-comparison arenas. The lab gets a field test on real tasks without the brand effect, plus feedback before the official release; the developer is usually revealed later. Users often get the model for free, but in exchange for data and uncertainty: nobody says who processes the requests, the collected data may go toward improving the model, and the model itself can be changed or withdrawn at any moment.',
     },
   },
+  'agentic-harness': {
+    id: 'agentic-harness',
+    term: { ru: 'Агентная обвязка (agentic harness)', en: 'Agentic Harness' },
+    definition: {
+      ru: 'Программный слой вокруг языковой модели, который превращает её в агента: даёт модели инструменты, исполняет её вызовы, возвращает результаты и решает, что попадает в контекстное окно. Claude Code и OpenCode — примеры обвязок. Модель внутри может быть одной и той же, а поведение агента — разным, потому что его определяют и рассуждения модели, и то, как обвязка собирает для неё контекст.',
+      en: 'The software layer around a language model that turns it into an agent: it gives the model tools, executes its calls, returns the results, and decides what goes into the context window. Claude Code and OpenCode are examples of harnesses. The model inside can be the same while the agent behaves differently, because behaviour depends both on the model\'s reasoning and on how the harness assembles its context.',
+    },
+  },
+  'compaction': {
+    id: 'compaction',
+    term: { ru: 'Компакция (сжатие контекста)', en: 'Compaction' },
+    definition: {
+      ru: 'Автоматическое сжатие истории диалога агента при приближении к пределу контекстного окна: сначала удаляются старые выводы инструментов, затем история заменяется структурированным резюме. Запросы пользователя и ключевой код сохраняются, но ранние подробные инструкции могут потеряться. Поэтому постоянные правила держат в файлах вроде CLAUDE.md: после сжатия они перечитываются с диска.',
+      en: 'Automatic compression of an agent\'s conversation history as it approaches the context-window limit: old tool outputs are cleared first, then the history is replaced with a structured summary. User requests and key code are preserved, but detailed early instructions may be lost. That is why persistent rules are kept in files such as CLAUDE.md: they are re-read from disk after compaction.',
+    },
+  },
+  'checkpoint': {
+    id: 'checkpoint',
+    term: { ru: 'Чекпоинт', en: 'Checkpoint' },
+    definition: {
+      ru: 'Автоматический снимок файлов, который агент сохраняет перед каждым ходом, чтобы правки можно было откатить. В Claude Code чекпоинты покрывают правки, сделанные инструментами редактирования, и открываются через /rewind или двойное нажатие Esc. Изменения от команд оболочки и действия во внешних системах они не покрывают и git не заменяют.',
+      en: 'An automatic snapshot of files that an agent saves before each turn so its edits can be rolled back. In Claude Code, checkpoints cover edits made by the file-editing tools and are opened with /rewind or a double Esc. They do not cover changes made by shell commands or actions in external systems, and they do not replace git.',
+    },
+  },
+  'subagent': {
+    id: 'subagent',
+    term: { ru: 'Субагент', en: 'Subagent' },
+    definition: {
+      ru: 'Отдельный экземпляр агента, которому основной агент поручает часть работы — например, исследование большой кодовой базы. Субагент работает в собственном контекстном окне, и в основной разговор возвращается только итоговая сводка, поэтому объёмные чтения не засоряют контекст основной сессии.',
+      en: 'A separate agent instance to which the main agent delegates part of the work — for example, exploring a large codebase. A subagent works in its own context window, and only a final summary comes back into the main conversation, so bulky reads do not clutter the main session\'s context.',
+    },
+  },
+  'permission-mode': {
+    id: 'permission-mode',
+    term: { ru: 'Режим прав (permission mode)', en: 'Permission Mode' },
+    definition: {
+      ru: 'Базовая настройка агента, которая определяет, какие действия он выполняет без подтверждения человека. В Claude Code это Manual (спрашивать перед правками и командами), acceptEdits, plan (только исследование и план), auto (фоновый классификатор вместо вопросов), dontAsk и bypassPermissions. Поверх режима действуют правила разрешения и запрета для конкретных инструментов.',
+      en: 'A baseline agent setting that determines which actions it performs without human approval. In Claude Code these are Manual (ask before edits and commands), acceptEdits, plan (exploration and a plan only), auto (a background classifier instead of questions), dontAsk, and bypassPermissions. Allow and deny rules for specific tools apply on top of the mode.',
+    },
+  },
+  'agent-hook': {
+    id: 'agent-hook',
+    term: { ru: 'Хук агента (hook)', en: 'Agent Hook' },
+    definition: {
+      ru: 'Команда, которую обвязка агента запускает автоматически в определённый момент жизненного цикла: перед вызовом инструмента, после него, при старте сессии, по окончании ответа. В отличие от инструкции в промпте, хук выполняется детерминированно, без участия модели, поэтому им оформляют то, что должно происходить всегда: форматирование, блокировку правок защищённых файлов, уведомления.',
+      en: 'A command that an agent harness runs automatically at a specific point in its lifecycle: before a tool call, after it, at session start, when a response ends. Unlike an instruction in a prompt, a hook runs deterministically, without the model\'s involvement, so it is used for what must always happen: formatting, blocking edits to protected files, notifications.',
+    },
+  },
 };
