@@ -3,6 +3,18 @@
 import { useState, useEffect, useCallback } from 'react';
 import { ROOM_TASKS } from '@/data/rooms';
 
+/** localStorage key holding the id of the room where a task was last solved. */
+export const LAST_ROOM_KEY = 'last-room';
+
+export function getLastRoomId(): string | null {
+  if (typeof window === 'undefined') return null;
+  try {
+    return localStorage.getItem(LAST_ROOM_KEY);
+  } catch {
+    return null;
+  }
+}
+
 async function fetchAuth<T>(url: string, options?: RequestInit): Promise<T | null> {
   try {
     const res = await fetch(url, { credentials: 'include', ...options });
@@ -55,6 +67,9 @@ export function useProgress(roomId: string) {
 
       try {
         localStorage.setItem(`progress:${roomId}`, JSON.stringify([...next]));
+        // Outside the `progress:` prefix on purpose: guest→account migration
+        // replays every `progress:*` key as a room id.
+        localStorage.setItem(LAST_ROOM_KEY, roomId);
         window.dispatchEvent(new CustomEvent('progress-updated'));
       } catch { /* storage full */ }
 

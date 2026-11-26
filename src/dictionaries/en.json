@@ -17,13 +17,18 @@
   },
   "dashboard": {
     "welcome": "Welcome back",
-    "description": "Your AI learning journey continues. Last topic:",
-    "featured": "Recommended rooms",
-    "viewAll": "View all",
-    "pathTitle": "Latest Path: The LLM Revolution",
-    "pathDesc": "Dive into the technology that changed everything. From Transformers to RLHF.",
-    "continue": "Continue Path",
-    "curriculum": "View Curriculum"
+    "currentPath": "Current path",
+    "startHere": "Start here",
+    "next": "Next room",
+    "pathProgress": "Path progress",
+    "continue": "Continue path",
+    "start": "Start path",
+    "pathDone": "Every room of this path is completed",
+    "pickNextPath": "Pick the next path",
+    "upcoming": "Next in this path",
+    "viewAll": "All rooms",
+    "pathTitle": "All learning paths",
+    "pathDesc": "Switch path or see the whole curriculum."
   },
   "room": {
     "tasks": "Room Tasks",
