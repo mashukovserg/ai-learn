@@ -2,7 +2,6 @@
 
 import React, { use, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ChevronRight, HelpCircle, Clock, ListChecks, RotateCcw } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { notFound } from 'next/navigation';
@@ -88,31 +87,16 @@ export default function DynamicRoomPage(props: { params: Promise<{ lang: string,
             <span className="text-accent-500 font-medium truncate">{metadata.title[lang]}</span>
           </nav>
 
-          <div className="mb-8 flex flex-col md:flex-row md:items-start gap-5">
-            <div className="flex-1 min-w-0">
-              <h1 className="text-3xl md:text-4xl font-semibold mb-4">{metadata.title[lang]}</h1>
-              <div className="flex items-center gap-6 text-sm text-neutral-400">
-                <span className="flex items-center gap-2 text-accent-500 font-bold bg-accent-500/10 px-2 py-1 rounded text-xs uppercase border border-accent-500/20">
-                  {metadata.difficulty}
-                </span>
-                <span className="flex items-center gap-2">
-                  <Clock size={16} className="text-neutral-500" /> {metadata.time[lang]}
-                </span>
-              </div>
+          <div className="mb-8 min-w-0">
+            <h1 className="text-3xl md:text-4xl font-semibold mb-4 wrap-break-word">{metadata.title[lang]}</h1>
+            <div className="flex items-center gap-6 text-sm text-neutral-400">
+              <span className="flex items-center gap-2 text-accent-500 font-bold bg-accent-500/10 px-2 py-1 rounded text-xs uppercase border border-accent-500/20">
+                {metadata.difficulty}
+              </span>
+              <span className="flex items-center gap-2">
+                <Clock size={16} className="text-neutral-500" /> {metadata.time[lang]}
+              </span>
             </div>
-
-            {metadata.image && (
-              <div className="w-full md:w-[320px] rounded-xl overflow-hidden border border-border-card bg-card-dark shrink-0">
-                <Image
-                  src={metadata.image}
-                  alt={metadata.title[lang]}
-                  width={640}
-                  height={360}
-                  priority
-                  className="w-full h-[180px] object-cover"
-                />
-              </div>
-            )}
           </div>
 
           <div className="prose prose-invert max-w-none reading-prose">
