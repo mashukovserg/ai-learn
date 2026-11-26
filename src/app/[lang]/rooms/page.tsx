@@ -39,7 +39,7 @@ import {
   Workflow,
   Wrench,
 } from 'lucide-react';
-import { ROOM_TASKS, ROOMS_METADATA } from '@/data/rooms';
+import { DIFFICULTY_LABELS, ROOM_TASKS, ROOMS_METADATA } from '@/data/rooms';
 import { getRoomProgress } from '@/hooks/useProgress';
 import { toLang } from '@/types/lang';
 
@@ -293,9 +293,9 @@ export default function RoomsPage(props: {
                   className="bg-input border border-border-subtle rounded-lg px-3 py-2 text-sm text-neutral-200 outline-none focus:border-cyan-400/70 transition-colors"
                 >
                   <option value="all">{lang === 'ru' ? 'Все уровни' : 'All levels'}</option>
-                  <option value="Beginner">BEGINNER</option>
-                  <option value="Intermediate">INTERMEDIATE</option>
-                  <option value="Advanced">ADVANCED</option>
+                  <option value="Beginner">{DIFFICULTY_LABELS.Beginner[lang]}</option>
+                  <option value="Intermediate">{DIFFICULTY_LABELS.Intermediate[lang]}</option>
+                  <option value="Advanced">{DIFFICULTY_LABELS.Advanced[lang]}</option>
                 </select>
               </label>
 
@@ -378,7 +378,7 @@ export default function RoomsPage(props: {
           const title = room.title[lang];
           const description = room.description[lang];
           const time = room.time[lang];
-          const difficultyLabel = room.difficulty.toUpperCase();
+          const difficultyLabel = DIFFICULTY_LABELS[room.difficulty][lang].toUpperCase();
           const Icon = (room.icon && ICON_MAP[room.icon]) || Terminal;
           const categoryTone = getCategoryTone(room.category.en);
 

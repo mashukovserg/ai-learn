@@ -92,3 +92,14 @@ for (const room of ROOMS_METADATA) {
   room.outcomes ??= buildDefaultOutcomes(room);
   room.taskCountByType = buildTaskCountByType(ROOM_TASKS[room.id] ?? []);
 }
+
+/**
+ * Display label for a room's difficulty. `difficulty` itself is an English
+ * enum used for filtering and colour; render it through this map so the RU UI
+ * never shows "Beginner".
+ */
+export const DIFFICULTY_LABELS: Record<LocalizedRoomMetadata['difficulty'], LocalizedString> = {
+  Beginner: { ru: 'Новичок', en: 'Beginner' },
+  Intermediate: { ru: 'Средний', en: 'Intermediate' },
+  Advanced: { ru: 'Продвинутый', en: 'Advanced' },
+};

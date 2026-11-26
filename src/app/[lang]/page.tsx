@@ -1,112 +1,48 @@
 import Link from 'next/link';
-import { ArrowRight, Clock, Bot, Brain, Waves, Terminal, TrendingUp, Search, MessageSquare, Eye, ClipboardCheck, Image, Shield, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { getDictionary } from "@/dictionaries/get-dictionary";
-import DashboardProgress from '@/components/DashboardProgress';
+import DashboardContinue from '@/components/DashboardContinue';
 import WelcomeLine from '@/components/WelcomeLine';
-import { ROOMS_METADATA } from '@/data/rooms';
 import { toLang } from '@/types/lang';
-
-const ICON_MAP: Record<string, React.ComponentType<{ size?: number }>> = {
-  Bot, Brain, Waves, Terminal, TrendingUp, Search, MessageSquare, Eye, ClipboardCheck, Image, Shield, Sparkles,
-};
 
 export default async function Home(props: {
   params: Promise<{ lang: string }>;
 }) {
   const lang = toLang((await props.params).lang);
   const dict = await getDictionary(lang);
-
-  // Use the first 3 rooms from our metadata for the dashboard
-  const featuredRooms = ROOMS_METADATA.slice(0, 3);
-  const totalRooms = ROOMS_METADATA.length;
+  const d = dict.dashboard;
 
   return (
     <div className="max-w-4xl mx-auto">
       {/* Welcome — compact */}
-      <WelcomeLine welcomeText={dict.dashboard.welcome} />
+      <WelcomeLine welcomeText={d.welcome} />
 
-      {/* Continue learning — primary CTA */}
-      <section className="bg-gradient-to-br from-card to-card-dark border border-accent-500/25 rounded-xl p-5 mb-9">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 sm:gap-6">
-          <div className="flex-1 min-w-0">
-            <p className="text-xs text-accent-300/80 mb-1.5">
-              {lang === 'ru' ? 'Текущий путь' : 'Current path'}
-            </p>
-            <h2 className="font-semibold text-neutral-200 mb-1">
-              {lang === 'ru' ? 'Основы AI' : 'AI Foundations'}
-            </h2>
-            <p className="text-sm text-neutral-500">
-              {lang === 'ru' ? 'Следующее: Как мыслят LLM' : 'Next: How LLMs Think'}
-            </p>
-            <DashboardProgress totalRooms={totalRooms} />
-          </div>
+      <DashboardContinue
+        lang={lang}
+        labels={{
+          currentPath: d.currentPath,
+          startHere: d.startHere,
+          next: d.next,
+          pathProgress: d.pathProgress,
+          continue: d.continue,
+          start: d.start,
+          pathDone: d.pathDone,
+          pickNextPath: d.pickNextPath,
+          upcoming: d.upcoming,
+          viewAll: d.viewAll,
+        }}
+      />
 
-          <Link
-            href={`/${lang}/rooms/llm-mechanics`}
-            className="px-5 py-2.5 bg-accent-300 text-accent-950 text-sm font-semibold rounded-md hover:bg-accent-200 transition-colors shadow-[0_0_0_1px_rgba(16,185,129,0.35),0_10px_24px_-12px_rgba(52,211,153,0.45)] flex items-center justify-center sm:justify-start gap-1.5 shrink-0"
-          >
-            {dict.dashboard.continue} <ArrowRight size={14} />
-          </Link>
-        </div>
-      </section>
-
-      {/* Recommended rooms */}
-      <section className="mb-10">
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="text-sm text-neutral-400">
-            {dict.dashboard.featured}
-          </h3>
-          <Link href={`/${lang}/rooms`} className="text-xs text-neutral-500 hover:text-neutral-300 transition-colors">
-            {dict.dashboard.viewAll}
-          </Link>
-        </div>
-
-        <div className="space-y-2">
-          {featuredRooms.map((room) => {
-            const Icon = (room.icon && ICON_MAP[room.icon]) || Bot;
-            const title = room.title[lang];
-            const description = room.description[lang];
-            const time = room.time[lang];
-
-            return (
-              <Link key={room.id} href={`/${lang}/rooms/${room.id}`} className="flex items-center gap-3 bg-input border border-border-subtle rounded-lg px-3.5 py-3 hover:border-accent-500/35 hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-16px_rgba(16,185,129,0.55)] transition-all group">
-                <div className="w-9 h-9 rounded-md bg-accent-500/10 border border-accent-500/25 text-accent-300 flex items-center justify-center shrink-0">
-                  <Icon size={16} />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-0.5">
-                    <h4 className="text-sm font-medium text-neutral-300 group-hover:text-neutral-100 transition-colors truncate">
-                      {title}
-                    </h4>
-                    <span className="text-[10px] text-neutral-600 shrink-0">
-                      {room.difficulty}
-                    </span>
-                  </div>
-                  <p className="text-xs text-neutral-500 truncate">{description}</p>
-                </div>
-
-                <div className="flex items-center gap-3 shrink-0">
-                  <span className="flex items-center gap-1 text-[11px] text-neutral-600">
-                    <Clock size={12} /> {time}
-                  </span>
-                  <ArrowRight size={14} className="text-neutral-700 group-hover:text-neutral-400 transition-colors" />
-                </div>
-              </Link>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Curriculum link — compact */}
+      {/* All paths — compact */}
       <Link
         href={`/${lang}/paths`}
         className="flex items-center justify-between bg-input border border-border-subtle rounded-lg px-4 py-2.5 hover:border-accent-500/35 transition-colors group"
       >
         <div>
           <h3 className="text-sm font-medium text-neutral-300 group-hover:text-neutral-100 transition-colors">
-            {dict.dashboard.pathTitle}
+            {d.pathTitle}
           </h3>
-          <p className="text-xs text-neutral-500">{dict.dashboard.pathDesc}</p>
+          <p className="text-xs text-neutral-500">{d.pathDesc}</p>
         </div>
         <ArrowRight size={14} className="text-neutral-700 group-hover:text-neutral-400 transition-colors shrink-0" />
       </Link>

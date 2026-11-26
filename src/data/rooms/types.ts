@@ -14,13 +14,6 @@ export interface LocalizedRoomMetadata {
   category: LocalizedString;
   difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
   time: LocalizedString;
-  /**
-   * Optional cover asset under `public/`. The room page already guards on it
-   * (`metadata.image && …`) and the catalog draws a programmatic `RoomCover`,
-   * so a room without one renders fine. Omit it rather than pointing at a file
-   * that does not exist — a dangling path renders a broken-image box.
-   */
-  image?: string;
   pathIds?: string[];
   icon?: string;
   locked?: boolean;
